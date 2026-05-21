@@ -102,3 +102,17 @@ export default defineConfig([
   },
 ])
 ```
+
+## Diseño visual
+
+**Estado actual**: estilo "B · Cocina cálida" — paleta tierra cálida (marrón `#8a4a2f` + crema `#fdfaf6`).
+
+**Provisorio**. La identidad visual definitiva se rediseñará en Etapa 6 (PWA pulida) con Claude Design. Hasta entonces, este estilo es la base de trabajo.
+
+**Themeability**: todos los colores y radios viven en CSS variables en `src/styles/tokens.css`. Para cambiar paleta:
+
+1. Editar los `--bg`, `--surface`, `--primary`, etc en `tokens.css`.
+2. Ningún componente React tiene hex hardcodeado.
+3. Re-deploy.
+
+El cambio de paleta es 100% en CSS — no requiere modificar componentes.
