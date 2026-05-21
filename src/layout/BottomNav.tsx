@@ -1,24 +1,25 @@
 import { NavLink } from "react-router-dom";
+import { Home, BookOpen, ShoppingBag, History } from "lucide-react";
 
 const items = [
-  { to: "/",           label: "Inicio",     glyph: "🏠" },
-  { to: "/biblioteca", label: "Biblioteca", glyph: "📖" },
-  { to: "/compras",    label: "Compras",    glyph: "🧾" },
-  { to: "/historial",  label: "Historial",  glyph: "⭐" },
+  { to: "/",           label: "Inicio",     Icon: Home },
+  { to: "/biblioteca", label: "Biblioteca", Icon: BookOpen },
+  { to: "/compras",    label: "Compras",    Icon: ShoppingBag },
+  { to: "/historial",  label: "Historial",  Icon: History },
 ];
 
 export function BottomNav() {
   return (
     <nav className="bottom-nav" aria-label="Navegación principal">
-      {items.map(item => (
+      {items.map(({ to, label, Icon }) => (
         <NavLink
-          key={item.to}
-          to={item.to}
-          end={item.to === "/"}
+          key={to}
+          to={to}
+          end={to === "/"}
           className={({ isActive }) => (isActive ? "nav-btn active" : "nav-btn")}
         >
-          <span className="nav-glyph" aria-hidden="true">{item.glyph}</span>
-          <span>{item.label}</span>
+          <Icon size={20} strokeWidth={2} aria-hidden />
+          <span>{label}</span>
         </NavLink>
       ))}
     </nav>
