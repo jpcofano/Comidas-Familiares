@@ -233,3 +233,29 @@ export interface Plan {
   comentariosPlan: Record<MiembroId, string>;
   datosCocinero: DatosCocinero;
 }
+
+// ─── Historial ────────────────────────────────────────────────────────────────
+export interface Historial {
+  idHist: string;
+  fechaRealizada: string;
+  fechaRealizadaTimestamp: FirestoreTimestamp;
+  idPlan: string;
+  idReceta: string;
+  idMenu: string;
+  receta: string;
+  tipoSeleccion: TipoSeleccion;
+  idSeleccion: string;
+  nombreSeleccion: string;
+  semanaInicio: string;
+  ocasion: Ocasion | "";
+  calificaciones: Record<MiembroId, number>;
+  comentarios: Record<MiembroId, string>;
+  promedio: number;
+  resultado: Resultado | "";
+  repetir: "" | "Sí" | "No";
+  costoRealAprox: string;
+  dificultadReal: "" | Dificultad;
+  queSalioBien: string;
+  queCambiaria: string;
+  notasFamiliares: string;
+}
