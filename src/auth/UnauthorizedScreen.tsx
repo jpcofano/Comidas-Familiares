@@ -1,4 +1,6 @@
+import { Lock } from "lucide-react";
 import { useAuth } from "./useAuth";
+import "./auth.css";
 
 interface Props {
   email: string;
@@ -8,36 +10,22 @@ export function UnauthorizedScreen({ email }: Props) {
   const { signOut } = useAuth();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        fontFamily: "system-ui, sans-serif",
-        backgroundColor: "#fafafa",
-      }}
-    >
-      <p style={{ fontSize: 18, marginBottom: 8, textAlign: "center", maxWidth: 360 }}>
-        Esta app es de uso familiar privado. Tu mail no está autorizado.
-      </p>
-      <p style={{ color: "#888", fontSize: 13, marginBottom: 32 }}>
-        Mail intentado: {email}
-      </p>
-      <button
-        onClick={signOut}
-        style={{
-          padding: "10px 24px",
-          fontSize: 15,
-          cursor: "pointer",
-          borderRadius: 8,
-          border: "1px solid #ddd",
-          backgroundColor: "#fff",
-        }}
-      >
-        Salir
-      </button>
+    <div className="login-screen">
+      <div className="login-card">
+        <div className="login-icon" aria-hidden="true">
+          <Lock size={36} strokeWidth={1.5} />
+        </div>
+        <h1 style={{ fontSize: "var(--fs-xl)" }}>Acceso restringido</h1>
+        <p>Esta app es de uso familiar privado. Tu mail no está autorizado.</p>
+        <p className="meta">Mail intentado: {email}</p>
+        <button
+          type="button"
+          className="btn btn-secondary login-button"
+          onClick={signOut}
+        >
+          Salir
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,53 +1,47 @@
 import { useState } from "react";
+import { ChefHat } from "lucide-react";
 import { useAuth } from "./useAuth";
+import "./auth.css";
 
 export function LoginScreen() {
   const { signIn } = useAuth();
   const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   async function handleSignIn() {
+    setBusy(true);
     setError(null);
     try {
       await signIn();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Error al iniciar sesión");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Error al iniciar sesión");
+    } finally {
+      setBusy(false);
     }
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        fontFamily: "system-ui, sans-serif",
-        backgroundColor: "#fafafa",
-      }}
-    >
-      <h1 style={{ fontSize: 32, marginBottom: 8 }}>Comida Familiar</h1>
-      <p style={{ color: "#666", marginBottom: 32, textAlign: "center" }}>
-        Planificación semanal de comidas para la familia Cofano
-      </p>
-      <button
-        onClick={handleSignIn}
-        style={{
-          padding: "12px 24px",
-          fontSize: 16,
-          cursor: "pointer",
-          borderRadius: 8,
-          border: "1px solid #ddd",
-          backgroundColor: "#fff",
-        }}
-      >
-        Entrar con Google
-      </button>
-      {error && (
-        <p style={{ color: "red", marginTop: 16, maxWidth: 320, textAlign: "center" }}>
-          {error}
+    <div className="login-screen">
+      <div className="login-card">
+        <div className="login-icon" aria-hidden="true">
+          <ChefHat size={36} strokeWidth={1.5} />
+        </div>
+        <h1>Comida Familiar</h1>
+        <p className="meta">
+          Planificación semanal de comidas para la familia Cofano
         </p>
-      )}
+        <button
+          type="button"
+          className="btn btn-primary login-button"
+          onClick={handleSignIn}
+          disabled={busy}
+        >
+          {busy ? "Entrando…" : "Entrar con Google"}
+        </button>
+        {error && (
+          <p className="login-error">{error}</p>
+        )}
+      </div>
     </div>
   );
 }
