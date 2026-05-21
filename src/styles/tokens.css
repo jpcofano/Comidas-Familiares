@@ -1,63 +1,156 @@
 :root {
-  /* Backgrounds */
-  --bg:             #ffffff;
-  --surface:        #f9fafb;
-  --surface-strong: #ffffff;
-  --surface-alt:    #f3f4f6;
+  /* ============================================
+     PALETA — Estilo B · Cocina cálida (provisoria)
+     A revisar en Etapa 6 con Claude Design
+     ============================================ */
+
+  /* Backgrounds — tonos crema cálidos */
+  --bg:             #fdfaf6;   /* página: crema apenas tintado */
+  --surface:        #fdf8f3;   /* cards: crema más visible */
+  --surface-strong: #ffffff;   /* superficies elevadas: blanco puro */
+  --surface-alt:    #f6efe5;   /* hovers, fondos secundarios */
 
   /* Text */
-  --text:   #111827;
-  --muted:  #6b7280;
+  --text:           #1f1a16;   /* casi negro con calidez */
+  --text-strong:    #0e0a07;   /* títulos importantes */
+  --muted:          #6b5d52;   /* secundario, hints */
+  --muted-strong:   #4a3f37;   /* secundario contrastado */
 
   /* Borders */
-  --line:   #d1d5db;
-  --border: #e5e7eb;
+  --line:           #d8cdbe;   /* divisores fuertes */
+  --border:         #e8dfd4;   /* borders default cards */
+  --border-subtle:  #efe8de;   /* borders sutiles */
 
-  /* Brand */
-  --primary:        #74324a;
-  --primary-strong: #5b2438;
-  --accent:         #3b82f6;
+  /* Brand — marrón cálido cocina */
+  --primary:        #8a4a2f;
+  --primary-strong: #6e3a23;
+  --primary-soft:   rgba(138, 74, 47, 0.10);
+  --primary-on:     #ffffff;   /* texto sobre primary */
 
-  /* Semantic — ok / err / warn / wait */
-  --ok-bg:    #ecfdf5;
-  --ok-line:  #a7f3d0;
-  --ok-text:  #065f46;
-  --err-bg:   #fef2f2;
-  --err-line: #fecaca;
-  --err-text: #991b1b;
-  --warn-bg:  #fffbeb;
-  --warn-line:#fde68a;
-  --warn-text:#92400e;
-  --wait-bg:  #eff6ff;
-  --wait-line:#bfdbfe;
-  --wait-text:#1e40af;
+  /* Accent — bordó del Apps Script (guiño, uso restringido) */
+  --accent:         #74324a;
+  --accent-strong:  #5b2438;
+  --accent-soft:    rgba(116, 50, 74, 0.10);
 
-  /* Persona (member chip) */
-  --persona-bg:   #dbeafe;
-  --persona-text: #1e40af;
+  /* Semantic — ok / err / warn / info */
+  --ok-bg:    #ecf5ec;
+  --ok-line:  #b6d6b6;
+  --ok-text:  #2e5d2e;
+  --err-bg:   #f7e8e3;
+  --err-line: #e8c0b3;
+  --err-text: #8a3520;
+  --warn-bg:  #fbf2dd;
+  --warn-line:#ecd49a;
+  --warn-text:#7d5610;
+  --info-bg:  #ebeef5;
+  --info-line:#bec5d8;
+  --info-text:#3c4a6e;
 
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
+  /* ============================================
+     SPACING — escala 4px base
+     ============================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
 
-  /* Shadow (header only) */
-  --shadow-header: 0 1px 4px rgba(0, 0, 0, 0.06);
+  /* ============================================
+     RADIUS
+     ============================================ */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
 
-  /* Typography */
-  --font-family: Arial, sans-serif;
+  /* ============================================
+     SHADOWS — solo funcionales
+     ============================================ */
+  --shadow-header: 0 1px 3px rgba(31, 26, 22, 0.06);
+  --shadow-menu:   0 4px 12px rgba(31, 26, 22, 0.10);
+  --shadow-focus:  0 0 0 3px var(--primary-soft);
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  --fs-xs:   12px;
+  --fs-sm:   13px;
+  --fs-base: 14px;
+  --fs-md:   15px;
+  --fs-lg:   17px;
+  --fs-xl:   20px;
+  --fs-2xl:  24px;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  --lh-tight:   1.25;
+  --lh-base:    1.5;
+  --lh-relaxed: 1.7;
+
+  /* ============================================
+     TRANSITIONS
+     ============================================ */
+  --t-fast: 120ms ease;
+  --t-base: 180ms ease;
 }
 
-/* Resets compactos del Apps Script */
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
+/* ============================================
+   Resets compactos
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  font-family: var(--font-family);
-  font-size: 14px;
-  line-height: 1.5;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
-h1, h2, h3, p { margin: 0; }
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+h1 { font-size: var(--fs-2xl); font-weight: var(--fw-bold);   line-height: var(--lh-tight);  letter-spacing: -0.01em;  }
+h2 { font-size: var(--fs-xl);  font-weight: var(--fw-bold);   line-height: var(--lh-tight);  letter-spacing: -0.005em; }
+h3 { font-size: var(--fs-lg);  font-weight: var(--fw-medium); line-height: var(--lh-tight);  }
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
