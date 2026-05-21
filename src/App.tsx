@@ -18,7 +18,7 @@ function App() {
   const { state } = useAuth();
 
   if (state.status === "loading") {
-    return <div style={{ padding: 32 }}>Cargando…</div>;
+    return <div className="loading-screen">Cargando…</div>;
   }
   if (state.status === "unauthenticated") {
     return <LoginScreen />;
