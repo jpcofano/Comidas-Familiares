@@ -1,4 +1,5 @@
 import { useSearchParams, Link } from "react-router-dom";
+import { Plus } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 
 export function BibliotecaRoute() {
@@ -26,7 +27,8 @@ export function BibliotecaRoute() {
         </button>
         {isJP && tab === "recetas" && (
           <Link to="/biblioteca/importar" className="tab-action">
-            + Importar
+            <Plus size={16} aria-hidden />
+            <span>Importar</span>
           </Link>
         )}
       </div>
