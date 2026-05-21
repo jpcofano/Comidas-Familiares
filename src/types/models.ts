@@ -86,3 +86,16 @@ export interface Ingrediente {
   paraJuanPablo?: boolean;
   notas?: string;
 }
+
+// ─── Paso ─────────────────────────────────────────────────────────────────────
+export interface Paso {
+  nroPaso: number;
+  titulo: string;
+  detalle: string;
+  tiempoEstimadoLabel: string;
+  tiempoEstimadoMin: number | null;
+  momento?: string;
+  puntoClave?: string;
+  errorComun?: string;
+  notas?: string;
+}
