@@ -1,0 +1,91 @@
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import type { Receta } from "../types/models";
+import { ok, err, type Result, type AppError } from "../lib/result";
+import { firebaseErrorMessage } from "./_helpers";
+import { normalizeText } from "../lib/canonical";
+
+// ─── Reads ────────────────────────────────────────────────────────────────────
+
+export async function getRecetas(): Promise<Receta[]> {
+  const q = query(collection(db, "recetas"), orderBy("nombre"));
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => d.data() as Receta);
+}
+
+export async function getReceta(idReceta: string): Promise<Receta | null> {
+  const snap = await getDoc(doc(db, "recetas", idReceta));
+  return snap.exists() ? (snap.data() as Receta) : null;
+}
+
+export async function getRecetasByIds(ids: string[]): Promise<Receta[]> {
+  if (ids.length === 0) return [];
+  const snaps = await Promise.all(ids.map((id) => getDoc(doc(db, "recetas", id))));
+  return snaps.filter((s) => s.exists()).map((s) => s.data() as Receta);
+}
+
+// ─── Writes ───────────────────────────────────────────────────────────────────
+
+export async function crearReceta(
+  receta: Omit<Receta, "fechaImportacion" | "vecesCocinada">
+): Promise<Result<Receta, AppError>> {
+  try {
+    const ref = doc(db, "recetas", receta.idReceta);
+    const existing = await getDoc(ref);
+    if (existing.exists()) {
+      return err("recipe-already-exists", `Ya existe una receta con ID "${receta.idReceta}".`);
+    }
+
+    const nombreCanonico = normalizeText(receta.nombre);
+    const docData: Receta = {
+      ...receta,
+      nombreCanonico,
+      vecesCocinada: 0,
+      fechaImportacion: serverTimestamp() as unknown as string,
+    };
+
+    await setDoc(ref, docData);
+    return ok(docData);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo crear la receta.";
+    return err("recipe-create-failed", msg, e);
+  }
+}
+
+export async function actualizarReceta(
+  idReceta: string,
+  updates: Partial<Receta>
+): Promise<Result<void, AppError>> {
+  try {
+    const patched: Partial<Receta> = { ...updates };
+    if (updates.nombre) {
+      patched.nombreCanonico = normalizeText(updates.nombre);
+    }
+    await updateDoc(doc(db, "recetas", idReceta), patched as Record<string, unknown>);
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar la receta.";
+    return err("recipe-update-failed", msg, e);
+  }
+}
+
+export async function eliminarReceta(idReceta: string): Promise<Result<void, AppError>> {
+  try {
+    await deleteDoc(doc(db, "recetas", idReceta));
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo eliminar la receta.";
+    return err("recipe-delete-failed", msg, e);
+  }
+}
