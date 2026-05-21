@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.1 (cierre Etapa 0 + whitelist con aliases y mails reales)
+> **Versión**: 1.2 (modelo M: menús referencian recetas vivas, sin tipoItem "Componente")
 > **Fecha**: 2026-05-21
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -51,6 +51,25 @@
 - 10 pantallas principales del front (home, recetas, detalle, importar, menus, menuDetalle, compras, cocinar, resultado, historial) + dashboard miembro + voto miembro.
 - Importador TXT (todas las validaciones y reglas anti-duplicado).
 - Diccionarios editables (`Tipos de ítem`, `Proteínas`, `Escenarios`, `Clima del plato`, `Pensada para`, `Tipos de plan`, `Miembros`, `Ocasiones`).
+
+### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
+
+Después de revisar el modelo de Apps Script, se detectó duplicación entre `/recetas` y `/menus` (campos paralelos: tiempos, dificultad, restricciones, etc.). El menú actual es un híbrido raro: tabla propia con campos de receta + un array de "componentes" que ya apuntan a recetas reales marcadas con `tipoItem: "Componente"`.
+
+**Decisiones tomadas para v1.2:**
+
+1. **Modelo M — menús como composiciones vivas**: `/menus/{idMenu}` se reduce a metadata + array de referencias a recetas. **Los tiempos, dificultad, restricciones se derivan al vuelo desde las recetas componentes**. Si una receta componente cambia (ej. JP le agrega 5 min al ajillo), el menú "ve" el cambio en su próxima query. Sin snapshots.
+
+2. **`tipoItem: "Componente"` eliminado**: las recetas marcadas hoy como `Componente` se migran a su tipo real según el rol que cumplen en el menú donde participan (`Entrada`, `Receta principal`, `Postre`, etc.). Pasan a ser recetas normales, visibles en la Biblioteca, elegibles según las reglas del §3.
+
+3. **`elegibleSemana` eliminado**: campo redundante con el modelo nuevo. Todas las recetas son potencialmente elegibles; la restricción queda solo por `tipoItem` (ver §3.3).
+
+4. **Solo `tipoItem === "Receta principal"` puede ser Especial de la semana** (ver §3.3). El resto puede sumarse como Extra o En proceso.
+
+5. **Importador de menús**: incluido en scope desde Etapa 2 (no Etapa 5). El TXT del menú referencia componentes por **nombre o por idReceta** — el importador resuelve. Si el componente no existe, el menú no se importa y avisa qué falta.
+
+6. **Migración de seeds**: el script de seeding del Etapa 2 (`PROMPT_E2.4`) aplica el mapeo automático componente → tipo real basado en el rol del componente en el menú. Si alguna receta se "lee raro" como receta independiente, se ajusta manualmente más tarde (no bloqueante).
+
 
 ### 1.3 Volumen de seeds a migrar
 
@@ -119,7 +138,9 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
   aptoNocheDeADos: "Adaptable",    // enum: "Sí" | "No" | "Adaptable"
   paraJuanPablo: true,             // boolean
   paraFamilia: true,               // boolean
-  elegibleSemana: true,            // boolean — false significa "es componente de menú, no elegible directo"
+  // NOTA v1.2: el campo `elegibleSemana` (booleano) fue eliminado.
+  // Toda receta es elegible; la única restricción para Especial es
+  // tipoItem === "Receta principal" (ver §3.3).
 
   // Tiempos y dificultad
   tiempoActivoLabel: "35 min",     // string display original
@@ -203,7 +224,9 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
 
 ---
 
-### 2.3 `/menus/{idMenu}` — Menú compuesto
+### 2.3 `/menus/{idMenu}` — Menú como composición de recetas (Modelo M)
+
+**Cambio en v1.2**: el menú ya NO duplica campos de receta (tiempos, dificultad, restricciones, etc.). Es un objeto liviano que **referencia recetas existentes** en `/recetas`. Los campos derivados (tiempo total, dificultad agregada, restricciones de dieta) se calculan al vuelo en el cliente leyendo las recetas componentes.
 
 **Shape:**
 
@@ -211,51 +234,90 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
 {
   idMenu: "MENU-0001",
   nombreMenu: "Español de mar",
-  nombreCanonico: "espanol de mar",
-  estado: "Para probar",           // enum interno: "Para probar" | "Probado" | "Archivado"
-  estilo: "Español / mediterráneo",
-  dificultad: "Alta",
-  dificultadOrden: 4,
+  nombreCanonico: "espanol de mar",            // lowercase, sin tildes — clave anti-dup
 
-  sinLacteos: true,
-  hidratos: true,                  // true si algún componente lleva hidratos
-  hidratoOpcional: "Arroz blanco o pan aparte",
-
-  tiempoActivoEstimadoLabel: "1 h 15 min",
-  tiempoActivoEstimadoMin: 75,
-  tiempoTotalEstimadoLabel: "2 h",
-  tiempoTotalEstimadoMin: 120,
-
+  estado: "Para probar",                       // "Para probar" | "Probado" | "Archivado"
+  estilo: "Español / mediterráneo",            // texto libre
+  escenarioUso: "Noche de a dos",              // del diccionario "Escenarios"
+  climaDelMenu: "Restaurante",                 // texto libre (NO se valida contra diccionario)
   idealPara: "Sábado especial / invitados",
   descripcion: "Menú de mar con entrada de langostinos, zarzuela como principal...",
+
+  // Adaptaciones específicas del menú (overrides sobre las recetas):
   paraJuanPablo: "Zarzuela sola, sin arroz ni pan. Postre sin crema.",
   paraFamilia: "Arroz blanco o pan para acompañar.",
   riesgos: "Coordinar tiempos de mariscos para que no se pasen.",
   notas: "Muy especial, ideal para comida evento.",
-  escenarioUso: "Noche de a dos",
-  climaDelMenu: "Restaurante",     // OJO: el seed usa "Restaurante" que no es valor de "Clima del plato"
-  aptoNocheDeADos: "Sí",
   notasOcasion: "Menú de mar para una cena especial; mantener arroz o pan aparte.",
+  aptoNocheDeADos: "Sí",                       // "Sí" | "No" | "Adaptable"
+  hidratoOpcional: "Arroz blanco o pan aparte",
 
-  // Items embebidos
-  items: [
+  // Composición — array de referencias a recetas:
+  componentes: [
     {
-      orden: 1,
-      tipo: "Entrada",             // "Entrada" | "Principal" | "Acompañamiento" | "Postre"
-      idReceta: "REC-0101",        // ID de la receta componente
-      recetaComponente: "Langostinos al ajillo",
-      obligatorio: true,           // boolean (era "Sí"/"No")
-      paraJuanPablo: true,
-      hidrato: "Bajo",             // enum: "Sí" | "No" | "Bajo" | "Adaptado"
-      notas: "Usar aceite de oliva, ajo, perejil y limón. Sin manteca."
+      orden: 1,                                // number, único dentro del menú
+      tipo: "Entrada",                         // "Entrada" | "Principal" | "Acompañamiento" | "Postre"
+      idReceta: "REC-0101",                    // referencia a /recetas/REC-0101
+      obligatorio: true,                       // boolean
+      notas: "Sin manteca, solo aceite de oliva."   // override opcional para este menú
+    },
+    {
+      orden: 2,
+      tipo: "Principal",
+      idReceta: "REC-0102",
+      obligatorio: true,
+      notas: ""
     },
     // ...
-  ]
+  ],
+
+  // Metadata:
+  fechaCreacion: Timestamp,
+  ultimaModificacion: Timestamp
 }
 ```
 
-**Nota sobre `climaDelMenu`:**
-- En las seeds aparecen valores no canónicos ("Restaurante", "Domingo familiar", "Brasa criolla"). Se mantienen como texto libre — no se valida contra el diccionario "Clima del plato".
+**Lo que NO está en el shape (y por qué):**
+
+| Campo eliminado | Por qué |
+|---|---|
+| `dificultad`, `dificultadOrden` | Se deriva: máximo de los componentes obligatorios. |
+| `tiempoActivoEstimadoMin/Label` | Se deriva: suma de tiempos activos de los componentes. |
+| `tiempoTotalEstimadoMin/Label` | Se deriva: ver §3.8 (regla de cálculo). |
+| `sinLacteos` | Se deriva: AND lógico de los componentes (todos sin lácteos → menú sin lácteos). |
+| `hidratos` | Se deriva: OR lógico (alguno con hidratos → menú con hidratos). |
+| `recetaComponente` (nombre embebido) | Se resuelve al leer la receta. |
+| `paraJuanPablo: true/false` (boolean del componente) | Se deriva de la receta. El campo `paraJuanPablo: string` del menú es solo nota de adaptación. |
+| `hidrato: "Sí" | "No" | "Bajo" | "Adaptado"` del componente | Se deriva de la receta. |
+
+**Campos derivados — implementación:**
+
+Helper en `src/data/menus.ts` (a crear en Etapa 2):
+
+```typescript
+async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
+  const recetas = await Promise.all(
+    menu.componentes
+      .filter(c => c.obligatorio)
+      .map(c => getDoc(doc(db, "recetas", c.idReceta)))
+  );
+  const datos = recetas.map(r => r.data() as Receta);
+
+  return {
+    tiempoActivoMin: datos.reduce((sum, r) => sum + (r.tiempoActivoMin ?? 0), 0),
+    tiempoTotalMin: calcTiempoTotalMenu(datos),   // ver §3.8
+    dificultadOrden: Math.max(...datos.map(r => r.dificultadOrden ?? 1)),
+    sinLacteos: datos.every(r => r.sinLacteos),
+    hidratos: datos.some(r => r.hidratos),
+    porcionesMin: Math.min(...datos.map(r => r.porcionesMin ?? 1)),
+    porcionesMax: Math.min(...datos.map(r => r.porcionesMax ?? 1)),
+    costoOrden: Math.max(...datos.map(r => r.costoOrden ?? 1))
+  };
+}
+```
+
+**Cache:** los derivados se calculan al renderizar el detalle del menú. Si el menú aparece en una lista (Biblioteca), se pueden cachear en memoria por la sesión.
+
 
 ---
 
@@ -465,8 +527,10 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
 ```typescript
 {
   // Enums simples (arrays de strings):
+  // NOTA v1.2: "Componente" eliminado del enum. Las recetas que eran componentes
+  // se migraron a su tipo real (Entrada, Receta principal, Postre, etc).
   tiposItem: ["Receta principal", "Entrada", "Guarnición", "Postre",
-              "Panificado", "Snack", "Desayuno", "Conserva", "Hidrato opcional", "Componente"],
+              "Panificado", "Snack", "Desayuno", "Conserva", "Hidrato opcional"],
   proteinas: ["Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado",
               "Mariscos", "Huevos", "Legumbres", "Mixta", "Vegetariana"],
   escenarios: ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"],
@@ -635,9 +699,13 @@ Elegida ──────────► Compra pendiente ──► Compra list
 
 ### 3.3 Reglas de elegibilidad
 
-- Receta con `tipoItem === "Componente"` **NO puede elegirse como ningún tipo de plan** (ni Especial, ni Extra, ni En proceso).
-- Receta con `elegibleSemana === false` **NO puede elegirse como Especial**. Puede usarse como Extra o En proceso.
-- Los menús no pueden tener extras (el menú ya define sus componentes).
+**Cambio en v1.2**: ya no existe `tipoItem === "Componente"` ni el campo `elegibleSemana`. Todas las recetas son elegibles dentro de las siguientes reglas:
+
+- **Especial de la semana**: solo recetas con `tipoItem === "Receta principal"`. Esto evita elegir como Especial una entrada, postre o panificado.
+- **Especial extra**: cualquier receta excepto la que ya es la Especial activa o ya es otro extra del mismo padre (anti-dup, §3.2).
+- **En proceso**: cualquier receta.
+- **Menús no tienen extras**: el menú ya define sus componentes. Si querés sumar algo, lo agregás como Especial extra al lado del menú-plan.
+- **Menús como Especial/Extra/En proceso**: un plan con `tipoSeleccion: "menu"` apunta a un `idMenu`. El menú internamente referencia sus componentes (recetas en `/recetas`). El plan no replica esos componentes.
 
 ### 3.4 Umbrales de resultado textual
 
@@ -682,9 +750,8 @@ Elegida ──────────► Compra pendiente ──► Compra list
 - `idReceta === "AUTO"` o vacío → próximo `REC-XXXX` libre (max(idReceta REC-*) + 1, padded a 4 dígitos).
 - `pensadaPara` vacío → calcular: si `tiempoTotalMin > 90` o `dificultad ∈ {Alta, Media-alta}` → `"Especial"`; si `tiempoTotalMin ≤ 45` y `dificultad === "Baja"` → `"Semana"`; resto → `"Cualquiera"`.
 
-**Defaults al cargar:**
+**Defaults al cargar receta:**
 - `tipoItem` → `"Receta principal"`.
-- `elegibleSemana` → `false`.
 - `aptoNocheDeADos` → `"No"`.
 - `sinLacteos` → `true`.
 - `hidratos` → `false`.
@@ -692,14 +759,60 @@ Elegida ──────────► Compra pendiente ──► Compra list
 - `fuente` → `"ChatGPT"`.
 - `fechaImportacion` → hoy.
 
+**Importador de menús (`#MENU` + `#COMPONENTES`) — nuevo en v1.2:**
+
+Estructura del TXT:
+
+```
+#MENU
+nombre: Español de mar
+nombreCanonico: (auto si vacío)
+descripcion: Menú de mar con entrada de langostinos...
+escenarioUso: Noche de a dos
+climaDelMenu: Restaurante (texto libre)
+idealPara: Sábado especial / invitados
+estilo: Español / mediterráneo
+estado: Para probar
+aptoNocheDeADos: Sí
+hidratoOpcional: Arroz blanco o pan aparte
+paraJuanPablo: Zarzuela sola, sin arroz ni pan
+paraFamilia: Arroz blanco o pan para acompañar
+riesgos: Coordinar tiempos de mariscos
+notas: Muy especial
+notasOcasion: Mantener arroz o pan aparte
+
+#COMPONENTES
+orden | tipo        | idReceta_o_nombre        | obligatorio | notas
+1     | Entrada     | Langostinos al ajillo    | Sí          | Sin manteca
+2     | Principal   | REC-0102                 | Sí          |
+3     | Postre      | Crema catalana           | No          | Si hay tiempo
+```
+
+**Resolución de componentes**:
+1. Si el valor empieza con `REC-` → match exacto por `idReceta`.
+2. Si no → match por `nombreCanonico` contra `/recetas`. Si hay más de un match, error.
+3. Si no encuentra → error: `Componente "X" no encontrado. Importar primero la receta.`
+4. Si vienen ambos (`REC-0102 / Langostinos al ajillo`) en el mismo campo separados por `/`, validar que el ID y el nombre coincidan (cross-check). Si no coinciden, error.
+
+**Validaciones obligatorias en `#MENU`:**
+- `nombre`, `escenarioUso`, al menos 1 componente con `tipo === "Principal"` y `obligatorio === "Sí"`.
+
+**Anti-duplicado de menú**: no crear si existe `idMenu` o `nombreCanonico`.
+
+**Defaults al cargar menú:**
+- `estado` → `"Para probar"`.
+- `idMenu === "AUTO"` o vacío → próximo `MENU-XXXX` libre.
+- `obligatorio` componente → `"Sí"`.
+- Campos `aptoNocheDeADos`, restricciones, etc → vacío si no vienen.
+
 ### 3.6 Reglas que NO se enforcean en Security Rules
 
 (quedan como lógica de cliente o transacción, ver §4):
 
 - No eliminar receta principal de menú.
-- No eliminar receta componente de menú.
+- No eliminar receta componente de menú (la receta sigue existiendo, pero hay que avisar que está siendo usada).
 - No eliminar receta en plan activo de la semana actual.
-- No elegir como Especial una receta con `tipoItem === "Componente"`.
+- No elegir como Especial una receta con `tipoItem` distinto de `"Receta principal"` (ver §3.3).
 - No votar un plan en estado distinto de `Cocinada`.
 - No modificar asignaciones de plan `Evaluada`.
 
@@ -718,6 +831,27 @@ El voto + cierre se hace en **una sola transacción** del cliente Firestore. Pas
    - `tx.update(recetaRef, { vecesCocinada: increment(1), ultimaEvaluacion: <fecha>, ultimoPuntaje: promedio })` — solo si `tipoSeleccion === "receta"`.
 
 Si la transacción aborta (por concurrencia), Firestore reintenta automáticamente con el estado refrescado.
+
+### 3.8 Cálculo de campos derivados del menú (Modelo M, nuevo en v1.2)
+
+Cuando se muestra un menú, los campos `tiempoActivoMin`, `tiempoTotalMin`, `dificultadOrden`, `sinLacteos`, `hidratos`, `porciones`, `costoOrden` se calculan al vuelo desde las recetas componentes. Reglas:
+
+| Campo derivado | Cálculo |
+|---|---|
+| `tiempoActivoMin` | Suma de `tiempoActivoMin` de todos los componentes obligatorios. |
+| `tiempoTotalMin` | `max(tiempoTotalMin)` de los componentes + suma de `tiempoActivoMin` de los demás obligatorios. (Asume que las cocciones pasivas se solapan, pero las activas se hacen en secuencia.) |
+| `dificultadOrden` | `max(dificultadOrden)` de los componentes obligatorios (la dificultad del más difícil define el menú). |
+| `sinLacteos` | `AND` lógico: todos los componentes deben ser `sinLacteos === true`. Componentes opcionales se ignoran. |
+| `hidratos` | `OR` lógico: alguno tiene `hidratos === true`. |
+| `porcionesMin` | `min(porcionesMin)` de los componentes obligatorios. |
+| `porcionesMax` | `min(porcionesMax)` de los componentes obligatorios. |
+| `costoOrden` | `max(costoOrden)` de los componentes obligatorios. |
+
+**Componentes opcionales** (`obligatorio: false`):
+- Influyen en `hidratos` solo si están "incluidos" en una elección del usuario (futuro).
+- En v1.2 simplemente se omiten para los cálculos derivados base.
+
+**Cache**: se calculan al renderizar y se guardan en estado del cliente. Si se modifica una receta componente desde otra pestaña, el siguiente render del menú lee los datos frescos.
 
 ---
 
@@ -896,17 +1030,23 @@ const pendientesEvaluar = cocinados.docs.filter(d => !d.data().votos?.[miembroId
 // Levantar items y filtrar en cliente por aportes[].idPlan ∈ misPlanes.
 ```
 
-**Listado de recetas (`/recetas`):**
+**Listado de Biblioteca → tab "Recetas" (`/biblioteca`):**
 
 ```typescript
-// Por defecto, todas con tipoItem !== "Componente":
-const todas = await getDocs(
-  query(collection(db, "recetas"), where("tipoItem", "!=", "Componente"))
-);
+// v1.2: simple, sin filtro por "Componente" (ese tipoItem ya no existe):
+const todas = await getDocs(collection(db, "recetas"));
 
-// Filtros adicionales (proteína, sin lácteos, sin hidratos):
-// Composición de where() en cliente o múltiples queries.
+// Filtros adicionales en cliente (tipoItem, proteína, sin lácteos, sin hidratos):
+// Aplicar con .filter() sobre los resultados, o múltiples queries para casos comunes.
 // Para sin hidratos: where("hidratos", "==", false)
+```
+
+**Listado de Biblioteca → tab "Menús" (`/biblioteca?tab=menus`):**
+
+```typescript
+const menus = await getDocs(collection(db, "menus"));
+// Para cada menú en la lista, opcionalmente calcular derivados (tiempos, dificultad)
+// con deriveMenuMetadata() — ver §2.3. Cachear en memoria por sesión.
 ```
 
 **Detalle de receta (`/recetas/:id`):**
@@ -1045,6 +1185,15 @@ Apps Script no permite "recetas en menos de 30 min" porque `tiempoTotal` es stri
 
 Apps Script confía en el URL param `?miembro=X` (cualquiera con el link puede falsificar identidad). Firebase Auth + whitelist hace imposible entrar como otro miembro sin estar logueado con su Google.
 
+### 6.7 Menús como composiciones vivas (Modelo M) 🆕
+
+Apps Script duplicaba campos de receta (tiempos, dificultad, sinLacteos, etc.) en los menús, lo que generaba dos fuentes de verdad y forzaba a mantenerlas en sincronía manualmente. Firebase + Modelo M:
+
+- El menú solo guarda metadata propia y referencias a recetas.
+- Los campos derivados (tiempos, dificultad, restricciones) se calculan al vuelo desde las recetas componentes.
+- Si JP modifica una receta componente (ej. le agrega 5 min al ajillo), el menú "ve" el cambio en su próxima query — sin código adicional.
+- El listado "Biblioteca" pasa a tener tabs `Recetas | Menús` que comparten la query base de `/recetas`.
+
 ---
 
 ## 7. Plan de prompts para Claude Code
@@ -1059,11 +1208,15 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 
 ### 7.2 Etapa 2 — Modelo de datos + Security Rules + Seeds
 
-- **`PROMPT_E2.1_types_and_helpers.md`**: types TypeScript en `src/types/models.ts` con TODAS las shapes de §2. Helpers de canonicalización (normalizeText, parseTime, parseRange).
-- **`PROMPT_E2.2_data_layer.md`**: módulos `src/data/recetas.ts`, `planes.ts`, `compras.ts`, `historial.ts`, `menus.ts`, `diccionarios.ts`. Cada uno expone funciones tipadas (read/write/queries) que envuelven el SDK Firestore.
+- **`PROMPT_E2.1_types_and_helpers.md`**: types TypeScript en `src/types/models.ts` con TODAS las shapes de §2 (Receta, Menu con `componentes[]`, Plan con `votos: {}` map, etc). Helpers de canonicalización (normalizeText, parseTime, parseRange).
+- **`PROMPT_E2.2_data_layer.md`**: módulos `src/data/recetas.ts`, `planes.ts`, `compras.ts`, `historial.ts`, `menus.ts`, `diccionarios.ts`. Cada uno expone funciones tipadas (read/write/queries) que envuelven el SDK Firestore. **`menus.ts`** incluye `deriveMenuMetadata()` para calcular campos derivados (§2.3, §3.8).
 - **`PROMPT_E2.3_security_rules.md`**: `firestore.rules` con la versión de §4.2 + tests con emulador.
-- **`PROMPT_E2.4_seeds_import.md`**: `scripts/seed-firestore.ts` con Admin SDK. Lee `30_Seeds.gs`, parsea las tuples, convierte a objetos con campos derivados (campos `xxxMin/Max`), sube a Firestore. Idempotente (skip si ya existe).
-- **`PROMPT_E2.5_indexes.md`**: `firestore.indexes.json` con los índices de §5.3 + deploy.
+- **`PROMPT_E2.4_seeds_import.md`**: `scripts/seed-firestore.ts` con Admin SDK. Tres pasos:
+  1. Lee `30_Seeds.gs`, parsea las tuples, convierte a objetos con campos derivados (campos `xxxMin/Max`).
+  2. **Aplica el mapeo de migración de componentes**: detecta recetas con `tipoItem === "Componente"` y, basándose en el rol del componente en los menús, las re-asigna a su tipo real (Entrada, Receta principal, Postre, etc.). Elimina el flag `elegibleSemana` si está presente.
+  3. Sube todo a Firestore. Idempotente (sobreescribe).
+- **`PROMPT_E2.5_menu_importer.md`**: implementa el importador de menús (`#MENU` + `#COMPONENTES`) con resolución de componentes por nombre o por `idReceta` (§3.5). Pantalla simple primero, integración al flow completo viene en E5.
+- **`PROMPT_E2.6_indexes.md`**: `firestore.indexes.json` con los índices de §5.3 + deploy.
 
 ### 7.3 Etapa 3 — Funcionalidad core modo JP
 
