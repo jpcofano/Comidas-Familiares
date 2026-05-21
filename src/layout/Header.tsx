@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { LogOut } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import "./Header.css";
 
@@ -7,14 +8,16 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  // Close menu when clicking outside the header
+  // Click outside cierra el menú.
   useEffect(() => {
     if (!menuOpen) return;
+
     function handleClick(e: MouseEvent) {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setMenuOpen(false);
       }
     }
+
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, [menuOpen]);
@@ -30,10 +33,11 @@ export function Header() {
         <h1 className="header-title">Comida Familiar</h1>
         <button
           className="avatar-button"
-          onClick={() => setMenuOpen(v => !v)}
+          onClick={() => setMenuOpen((v) => !v)}
           aria-label="Menú de usuario"
+          aria-expanded={menuOpen}
         >
-          <span className="avatar">{inicial}</span>
+          <span className="avatar" aria-hidden="true">{inicial}</span>
           <span className="username">{nombre}</span>
         </button>
       </div>
@@ -47,7 +51,8 @@ export function Header() {
               signOut();
             }}
           >
-            Cerrar sesión
+            <LogOut size={16} aria-hidden />
+            <span>Cerrar sesión</span>
           </button>
         </div>
       )}
