@@ -201,3 +201,35 @@ export interface MenuDerived {
   porcionesMax: number;
   costoOrden: number;
 }
+
+// ─── Plan ─────────────────────────────────────────────────────────────────────
+export interface DatosCocinero {
+  repetir: "" | "Sí" | "No";
+  costoRealAprox: string;
+  dificultadReal: "" | Dificultad;
+  queSalioBien: string;
+  queCambiaria: string;
+  notasFamiliares: string;
+}
+
+export interface Plan {
+  idPlan: string;
+  semanaInicio: string;
+  semanaFin: string;
+  tipoSeleccion: TipoSeleccion;
+  tipoPlan: TipoPlan;
+  idSeleccion: string;
+  nombreSeleccion: string;
+  recetaPrincipal: string;
+  estado: EstadoPlan;
+  fechaEleccion: FirestoreTimestamp;
+  fechaPrevistaComida: string | null;
+  cantidadPersonas: number;
+  listaComprasId: string | null;
+  notas: string;
+  origen: string | null;
+  asignaciones: MiembroId[];
+  votos: Record<MiembroId, number | null>;
+  comentariosPlan: Record<MiembroId, string>;
+  datosCocinero: DatosCocinero;
+}
