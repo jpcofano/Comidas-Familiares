@@ -1,0 +1,63 @@
+:root {
+  /* Backgrounds */
+  --bg:             #ffffff;
+  --surface:        #f9fafb;
+  --surface-strong: #ffffff;
+  --surface-alt:    #f3f4f6;
+
+  /* Text */
+  --text:   #111827;
+  --muted:  #6b7280;
+
+  /* Borders */
+  --line:   #d1d5db;
+  --border: #e5e7eb;
+
+  /* Brand */
+  --primary:        #74324a;
+  --primary-strong: #5b2438;
+  --accent:         #3b82f6;
+
+  /* Semantic — ok / err / warn / wait */
+  --ok-bg:    #ecfdf5;
+  --ok-line:  #a7f3d0;
+  --ok-text:  #065f46;
+  --err-bg:   #fef2f2;
+  --err-line: #fecaca;
+  --err-text: #991b1b;
+  --warn-bg:  #fffbeb;
+  --warn-line:#fde68a;
+  --warn-text:#92400e;
+  --wait-bg:  #eff6ff;
+  --wait-line:#bfdbfe;
+  --wait-text:#1e40af;
+
+  /* Persona (member chip) */
+  --persona-bg:   #dbeafe;
+  --persona-text: #1e40af;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  /* Shadow (header only) */
+  --shadow-header: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  /* Typography */
+  --font-family: Arial, sans-serif;
+}
+
+/* Resets compactos del Apps Script */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
