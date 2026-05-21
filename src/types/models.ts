@@ -289,3 +289,61 @@ export interface ListaCompras {
   totalItems?: number;
   totalYaTengo?: number;
 }
+
+// ─── Config ───────────────────────────────────────────────────────────────────
+export interface MiembroConfig {
+  id: MiembroId;
+  nombre: string;
+  rol: Rol;
+}
+
+export interface FamiliaConfigMiembro {
+  nombre: string;
+  rol: Rol;
+  mails: string[];
+}
+
+export interface FamiliaConfig {
+  miembros: Record<MiembroId, FamiliaConfigMiembro>;
+  owner: MiembroId;
+  timezone: string;
+  semanaArrancaEn: "lunes" | "domingo";
+}
+
+export interface DiccionariosConfig {
+  tiposItem: TipoItem[];
+  proteinas: Proteina[];
+  escenarios: Escenario[];
+  climaPlato: ClimaPlato[];
+  pensadaPara: PensadaPara[];
+  tiposPlan: TipoPlan[];
+  ocasiones: Ocasion[];
+  aptoNocheDeADos: AptoNocheDeADos[];
+  dificultades: Dificultad[];
+  costos: Costo[];
+  miembros: MiembroConfig[];
+  estadosPlan: {
+    activos: EstadoPlan[];
+    finales: EstadoPlan[];
+  };
+  seccionesIngredientes: string[];
+  unidadesCanonicas: string[];
+  version: number;
+  ultimaActualizacion: FirestoreTimestamp;
+}
+
+export interface UserDoc {
+  uid: string;
+  email: string;
+  memberId: MiembroId;
+  nombre: string;
+  rol?: Rol;                             // kept for upsertUserDoc backward compat
+  ultimoLogin: FirestoreTimestamp;
+  fechaPrimerLogin?: FirestoreTimestamp; // kept for upsertUserDoc Omit compat
+  fechaCreacion?: FirestoreTimestamp;
+}
+
+// ─── Backward-compat aliases (usados por src/auth/ desde E1) ─────────────────
+export type MemberId = MiembroId;
+export type MemberRole = Rol;
+export type MemberInfo = FamiliaConfigMiembro;
