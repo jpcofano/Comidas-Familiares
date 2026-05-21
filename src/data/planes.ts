@@ -67,7 +67,7 @@ export async function crearPlan(
 
     const docData: Plan = {
       ...plan,
-      fechaEleccion: serverTimestamp() as unknown as typeof plan.fechaEleccion,
+      fechaEleccion: serverTimestamp() as unknown as Plan["fechaEleccion"],
       votos,
       comentariosPlan,
       datosCocinero: null,
@@ -169,8 +169,10 @@ export interface VoteOutcome {
 }
 
 class TransactionAbort extends Error {
-  constructor(public code: string, message: string) {
+  code: string;
+  constructor(code: string, message: string) {
     super(message);
+    this.code = code;
   }
 }
 
@@ -225,7 +227,7 @@ export async function voteAndCloseIfComplete(
         return {
           planActualizado: { ...plan, votos: nuevosVotos, comentariosPlan: nuevosComentarios },
           cerrado: false,
-        } satisfies VoteOutcome;
+        } as VoteOutcome;
       }
 
       // Todos votaron — cerrar evaluación
@@ -251,7 +253,7 @@ export async function voteAndCloseIfComplete(
         calificaciones: nuevosVotos as Record<MiembroId, number>,
         comentarios: nuevosComentarios,
         promedio,
-        resultado,
+        resultado: resultado as Historial["resultado"],
         repetir: plan.datosCocinero?.repetir ?? "",
         costoRealAprox: plan.datosCocinero?.costoRealAprox ?? "",
         dificultadReal: plan.datosCocinero?.dificultadReal ?? "",
@@ -285,7 +287,7 @@ export async function voteAndCloseIfComplete(
         promedio,
         resultado,
         idHistorial,
-      } satisfies VoteOutcome;
+      } as VoteOutcome;
     });
 
     return ok(result);

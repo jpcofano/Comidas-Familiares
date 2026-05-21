@@ -1,4 +1,4 @@
-import type { Plan, Receta, ItemCompra, Aporte } from "../types/models";
+import type { Plan, Receta, ItemCompra } from "../types/models";
 import { canonicalizarIngrediente } from "./canonical";
 
 export interface AporteInput {

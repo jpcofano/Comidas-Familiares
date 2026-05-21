@@ -1,4 +1,4 @@
-import { DocumentData, QueryDocumentSnapshot, Timestamp } from "firebase/firestore";
+import { type DocumentData, QueryDocumentSnapshot, Timestamp } from "firebase/firestore";
 
 export function converter<T>() {
   return {
