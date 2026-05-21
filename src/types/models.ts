@@ -204,6 +204,7 @@ export interface MenuDerived {
 
 // ─── Plan ─────────────────────────────────────────────────────────────────────
 export interface DatosCocinero {
+  ocasion?: Ocasion | "";
   repetir: "" | "Sí" | "No";
   costoRealAprox: string;
   dificultadReal: "" | Dificultad;
@@ -231,7 +232,7 @@ export interface Plan {
   asignaciones: MiembroId[];
   votos: Record<MiembroId, number | null>;
   comentariosPlan: Record<MiembroId, string>;
-  datosCocinero: DatosCocinero;
+  datosCocinero: DatosCocinero | null;
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────
@@ -347,3 +348,6 @@ export interface UserDoc {
 export type MemberId = MiembroId;
 export type MemberRole = Rol;
 export type MemberInfo = FamiliaConfigMiembro;
+
+// Alias usado en src/data/diccionarios.ts
+export type Diccionarios = DiccionariosConfig;

@@ -5,7 +5,11 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBjs-atkLON7zhMS363sEhP-AmI6dwm1-I",
@@ -18,4 +22,16 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app);
+
+// Multi-tab persistent local cache — JP may have the app open on phone + iPad
+// simultaneously. The multi-tab manager coordinates IndexedDB across tabs so
+// writes from one tab are visible in others without conflicts.
+// Uses the modern (post-9.0) API. Do NOT use the legacy enableIndexedDbPersistence
+// or enableMultiTabIndexedDbPersistence — those are deprecated.
+// Note: in Safari ITP / incognito, IndexedDB may be limited. The SDK logs a
+// warning and falls back to memory — no explicit catch needed.
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({
+    tabManager: persistentMultipleTabManager(),
+  }),
+});
