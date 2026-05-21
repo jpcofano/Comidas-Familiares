@@ -1,3 +1,34 @@
+# Comidas Familiares
+
+## Bootstrap de configuración (one-off)
+
+El script `scripts/bootstrap-config.ts` inicializa los documentos `/config/familia` y `/config/diccionarios` en Firestore. **Sin correrlo, ningún miembro de la familia puede loguearse** (la whitelist no existe todavía).
+
+Es **idempotente**: podés correrlo N veces — siempre sobreescribe los docs con los datos canónicos, sin romper nada ni duplicar información.
+
+### Cómo generár el service account
+
+1. Abrí [Firebase Console → Project Settings](https://console.firebase.google.com/project/comida-familiar/settings/serviceaccounts/adminsdk)
+2. Pestaña **Service accounts** → botón **"Generate new private key"** → confirmar
+3. Renombrá el archivo descargado a `service-account.json`
+4. Guardalo en `scripts/service-account.json` (está gitignored — **no lo commiteés**)
+
+### Cómo correrlo
+
+```bash
+npm run bootstrap:config
+```
+
+El script falla con instrucciones claras si no encuentra el JSON de credenciales.
+
+### Verificación
+
+Después de correrlo, confirmá en [Firebase Console → Firestore](https://console.firebase.google.com/project/comida-familiar/firestore/data) que existen:
+- `config/familia` con los 4 miembros
+- `config/diccionarios` con los 10 enums
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
