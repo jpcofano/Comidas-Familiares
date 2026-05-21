@@ -4,6 +4,9 @@ import './styles/tokens.css'
 import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './auth/AuthProvider.tsx'
+import { detectAndMarkDesktop } from './styles/detectDesktop'
+
+detectAndMarkDesktop();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
