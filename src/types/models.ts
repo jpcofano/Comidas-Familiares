@@ -259,3 +259,33 @@ export interface Historial {
   queCambiaria: string;
   notasFamiliares: string;
 }
+
+// ─── Compras ──────────────────────────────────────────────────────────────────
+export interface Aporte {
+  idPlan: string;
+  idReceta: string;
+  nombreReceta: string;
+  cantidad: number;
+  cantidadLabel: string;
+}
+
+export interface ItemCompra {
+  id: string;
+  ingredienteCanonico: string;
+  ingredienteLabel: string;
+  cantidadTotal: number;
+  cantidadLabel: string;
+  unidad: string;
+  categoria: string;
+  yaTengo: boolean;
+  aportes: Aporte[];
+  notas?: string;
+}
+
+export interface ListaCompras {
+  idLista: string;
+  semanaInicio: string;
+  fechaGeneracion: FirestoreTimestamp;
+  totalItems?: number;
+  totalYaTengo?: number;
+}
