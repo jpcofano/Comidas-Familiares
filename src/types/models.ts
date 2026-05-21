@@ -99,3 +99,59 @@ export interface Paso {
   errorComun?: string;
   notas?: string;
 }
+
+// ─── Receta ───────────────────────────────────────────────────────────────────
+export interface Receta {
+  idReceta: string;
+  nombre: string;
+  nombreCanonico: string;
+
+  tipoItem: TipoItem;
+  proteinaPrincipal: Proteina;
+  estilo: string;
+  tecnicaPrincipal: string;
+  escenarioUso: Escenario;
+  climaDelPlato?: ClimaPlato;
+  pensadaPara: PensadaPara;
+
+  sinLacteos: boolean;
+  hidratos: boolean;
+  aptoNocheDeADos: AptoNocheDeADos;
+  paraJuanPablo: boolean;
+  paraFamilia: boolean;
+
+  tiempoActivoLabel: string;
+  tiempoActivoMin: number | null;
+  tiempoTotalLabel: string;
+  tiempoTotalMin: number | null;
+  dificultad: Dificultad;
+  dificultadOrden: number;
+
+  porcionesLabel: string;
+  porcionesMin: number | null;
+  porcionesMax: number | null;
+  costoEstimado: Costo;
+  costoOrden: number;
+
+  hidratoOpcional?: string;
+  acompPadres?: string;
+  porQueEspecial?: string;
+  riesgos?: string;
+  notas?: string;
+  notasNocheDeADos?: string;
+
+  fuente?: string;
+  urlFuente?: string;
+  imagenUrl?: string;
+
+  ingredientes: Ingrediente[];
+  pasos: Paso[];
+
+  vecesCocinada: number;
+  ultimaEvaluacion?: string;
+  ultimoPuntaje?: number;
+
+  fechaImportacion?: string;
+  fechaCreacion?: FirestoreTimestamp;
+  ultimaModificacion?: FirestoreTimestamp;
+}
