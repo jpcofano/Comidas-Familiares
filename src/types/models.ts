@@ -68,3 +68,21 @@ export interface RangoNumerico {
   max?: number;
   raw: string;
 }
+
+// ─── Ingrediente ──────────────────────────────────────────────────────────────
+export interface Ingrediente {
+  nroOrden: number;
+  ingrediente: string;
+  ingredienteCanonico: string;
+  cantidad: number | null;
+  cantidadMin?: number;
+  cantidadMax?: number;
+  cantidadLabel: string;
+  unidad: string;
+  unidadOriginal?: string;
+  categoria: string;
+  seccion?: string;
+  opcional: boolean;
+  paraJuanPablo?: boolean;
+  notas?: string;
+}
