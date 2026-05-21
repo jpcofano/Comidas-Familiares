@@ -155,3 +155,49 @@ export interface Receta {
   fechaCreacion?: FirestoreTimestamp;
   ultimaModificacion?: FirestoreTimestamp;
 }
+
+// ─── Menu (Modelo M) ──────────────────────────────────────────────────────────
+export interface ComponenteMenu {
+  orden: number;
+  tipo: TipoComponente;
+  idReceta: string;
+  obligatorio: boolean;
+  notas?: string;
+}
+
+export interface Menu {
+  idMenu: string;
+  nombreMenu: string;
+  nombreCanonico: string;
+
+  estado: EstadoMenu;
+  estilo: string;
+  escenarioUso: Escenario;
+  climaDelMenu?: string;
+  idealPara?: string;
+  descripcion?: string;
+
+  paraJuanPablo?: string;
+  paraFamilia?: string;
+  riesgos?: string;
+  notas?: string;
+  notasOcasion?: string;
+  aptoNocheDeADos?: AptoNocheDeADos;
+  hidratoOpcional?: string;
+
+  componentes: ComponenteMenu[];
+
+  fechaCreacion?: FirestoreTimestamp;
+  ultimaModificacion?: FirestoreTimestamp;
+}
+
+export interface MenuDerived {
+  tiempoActivoMin: number;
+  tiempoTotalMin: number;
+  dificultadOrden: number;
+  sinLacteos: boolean;
+  hidratos: boolean;
+  porcionesMin: number;
+  porcionesMax: number;
+  costoOrden: number;
+}
