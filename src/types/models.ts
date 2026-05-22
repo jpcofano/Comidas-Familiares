@@ -171,7 +171,7 @@ export interface Menu {
   nombreCanonico: string;
 
   estado: EstadoMenu;
-  estilo: string;
+  estilo?: string;
   escenarioUso: Escenario;
   climaDelMenu?: string;
   idealPara?: string;

@@ -89,3 +89,9 @@ export async function eliminarReceta(idReceta: string): Promise<Result<void, App
     return err("recipe-delete-failed", msg, e);
   }
 }
+
+export async function buscarRecetasPorNombre(nombre: string): Promise<Receta[]> {
+  const nc = normalizeText(nombre);
+  const snap = await getDocs(collection(db, "recetas"));
+  return snap.docs.map(d => d.data() as Receta).filter(r => r.nombreCanonico === nc);
+}

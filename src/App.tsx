@@ -9,6 +9,7 @@ import { ImportarRecetaRoute } from "./routes/ImportarReceta";
 import { DetalleRecetaRoute } from "./routes/DetalleReceta";
 import { CocinarRoute } from "./routes/Cocinar";
 import { DetalleMenuRoute } from "./routes/DetalleMenu";
+import { ImportarMenuRoute } from "./routes/ImportarMenu";
 import { ComprasRoute } from "./routes/Compras";
 import { HistorialRoute } from "./routes/Historial";
 import { VotoRoute } from "./routes/Voto";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/biblioteca/importar" element={<ImportarRecetaRoute />} />
           <Route path="/recetas/:id" element={<DetalleRecetaRoute />} />
           <Route path="/recetas/:id/cocinar" element={<CocinarRoute />} />
+          <Route path="/menus/importar" element={<ImportarMenuRoute />} />
           <Route path="/menus/:id" element={<DetalleMenuRoute />} />
           <Route path="/compras" element={<ComprasRoute />} />
           <Route path="/historial" element={<HistorialRoute />} />
