@@ -1,0 +1,183 @@
+import { describe, it, expect } from "vitest";
+import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "./filtros";
+import type { Receta } from "../types/models";
+
+// ─── Fixture ──────────────────────────────────────────────────────────────────
+
+function makeReceta(overrides: Partial<Receta>): Receta {
+  return {
+    idReceta: "REC-0001",
+    nombre: "Receta base",
+    nombreCanonico: "receta base",
+    tipoItem: "Receta principal",
+    proteinaPrincipal: "Vacuna",
+    estilo: "Argentino",
+    tecnicaPrincipal: "Braseado",
+    escenarioUso: "Cena Especial",
+    pensadaPara: "Especial",
+    sinLacteos: false,
+    hidratos: false,
+    aptoNocheDeADos: "Sí",
+    paraJuanPablo: true,
+    paraFamilia: true,
+    tiempoActivoLabel: "30 min",
+    tiempoActivoMin: 30,
+    tiempoTotalLabel: "2h",
+    tiempoTotalMin: 120,
+    dificultad: "Media",
+    dificultadOrden: 2,
+    porcionesLabel: "4",
+    porcionesMin: 4,
+    porcionesMax: 4,
+    costoEstimado: "Medio",
+    costoOrden: 2,
+    ingredientes: [],
+    pasos: [],
+    vecesCocinada: 0,
+    ...overrides,
+  };
+}
+
+const recetaVacuna   = makeReceta({ idReceta: "REC-001", nombre: "Bondiola braseada", nombreCanonico: "bondiola braseada", tipoItem: "Receta principal", proteinaPrincipal: "Vacuna", sinLacteos: false, hidratos: true });
+const recetaPollo    = makeReceta({ idReceta: "REC-002", nombre: "Pollo al horno", nombreCanonico: "pollo al horno", tipoItem: "Receta principal", proteinaPrincipal: "Pollo", sinLacteos: true, hidratos: false });
+const recetaEntrada  = makeReceta({ idReceta: "REC-003", nombre: "Langostinos al ajillo", nombreCanonico: "langostinos al ajillo", tipoItem: "Entrada", proteinaPrincipal: "Mariscos", sinLacteos: true, hidratos: false });
+const recetaPostre   = makeReceta({ idReceta: "REC-004", nombre: "Peras al Malbec", nombreCanonico: "peras al malbec", tipoItem: "Postre", proteinaPrincipal: "Vegetariana", sinLacteos: true, hidratos: true });
+
+const RECETAS = [recetaVacuna, recetaPollo, recetaEntrada, recetaPostre];
+
+// ─── Sin filtros ──────────────────────────────────────────────────────────────
+
+describe("filtrarRecetas — sin filtros", () => {
+  it("devuelve todas las recetas cuando no hay filtros activos", () => {
+    expect(filtrarRecetas(RECETAS, FILTROS_INICIALES)).toHaveLength(4);
+  });
+});
+
+// ─── Filtro por tipoItem ──────────────────────────────────────────────────────
+
+describe("filtrarRecetas — tipoItem", () => {
+  it("filtra por tipo Entrada", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Entrada" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-003");
+  });
+
+  it("filtra por tipo Postre", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Postre" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-004");
+  });
+
+  it("devuelve vacío cuando no hay coincidencia", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Desayuno" });
+    expect(r).toHaveLength(0);
+  });
+});
+
+// ─── Filtro por proteína ──────────────────────────────────────────────────────
+
+describe("filtrarRecetas — proteína", () => {
+  it("filtra por proteína Pollo", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Pollo" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-002");
+  });
+
+  it("filtra por proteína Mariscos", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Mariscos" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-003");
+  });
+});
+
+// ─── Filtros booleanos ────────────────────────────────────────────────────────
+
+describe("filtrarRecetas — sinLacteos", () => {
+  it("filtra recetas sin lácteos", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, sinLacteos: true });
+    expect(r.every(x => x.sinLacteos)).toBe(true);
+    expect(r).toHaveLength(3);
+  });
+});
+
+describe("filtrarRecetas — sinHidratos", () => {
+  it("filtra recetas sin hidratos (hidratos === false)", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, sinHidratos: true });
+    expect(r.every(x => !x.hidratos)).toBe(true);
+    expect(r).toHaveLength(2);
+  });
+});
+
+// ─── Búsqueda por texto ───────────────────────────────────────────────────────
+
+describe("filtrarRecetas — búsqueda", () => {
+  it("busca ignorando mayúsculas", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "POLLO" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-002");
+  });
+
+  it("busca ignorando tildes", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "Peras al Malbec" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-004");
+  });
+
+  it("coincidencia parcial dentro del nombre", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "ajillo" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-003");
+  });
+
+  it("busqueda sin resultados", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "xyz no existe" });
+    expect(r).toHaveLength(0);
+  });
+});
+
+// ─── Filtros combinados (AND) ─────────────────────────────────────────────────
+
+describe("filtrarRecetas — combinados", () => {
+  it("tipoItem + proteína combinados", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Receta principal", proteina: "Pollo" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-002");
+  });
+
+  it("sinLacteos + sinHidratos combinados", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, sinLacteos: true, sinHidratos: true });
+    expect(r.every(x => x.sinLacteos && !x.hidratos)).toBe(true);
+    expect(r).toHaveLength(2);
+  });
+
+  it("búsqueda + filtro booleano combinados", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "langostinos", sinLacteos: true });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-003");
+  });
+
+  it("filtro que no coincide anula el resultado aunque la búsqueda coincida", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, busqueda: "bondiola", sinLacteos: true });
+    expect(r).toHaveLength(0);
+  });
+});
+
+// ─── hayFiltrosActivos ────────────────────────────────────────────────────────
+
+describe("hayFiltrosActivos", () => {
+  it("false para FILTROS_INICIALES", () => {
+    expect(hayFiltrosActivos(FILTROS_INICIALES)).toBe(false);
+  });
+
+  it("true si tipoItem tiene valor", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, tipoItem: "Entrada" })).toBe(true);
+  });
+
+  it("true si sinLacteos es true", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, sinLacteos: true })).toBe(true);
+  });
+
+  it("true si busqueda no está vacía", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, busqueda: "algo" })).toBe(true);
+  });
+});
