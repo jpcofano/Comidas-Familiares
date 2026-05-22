@@ -54,6 +54,11 @@ function EstadoBadge({ estado }: { estado: string }) {
   );
 }
 
+function detallePath(plan: Plan): string {
+  // TODO E3.3: cuando exista DetalleMenu, rutear menus a /menus/:id
+  return `/recetas/${plan.idSeleccion}`;
+}
+
 interface PlanCardProps {
   plan: Plan;
   featured?: boolean;
@@ -65,12 +70,12 @@ interface PlanCardProps {
   onCancelDiscard: () => void;
   onDescartar: () => void;
   onEvaluar: () => void;
-  onSumarExtra?: () => void;
+  onVerDetalle: () => void;
 }
 
 function PlanCard({
   plan, featured, isEspecial, busy, confirming,
-  onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onSumarExtra,
+  onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onVerDetalle,
 }: PlanCardProps) {
   const canCook = ["Elegida", "Compra pendiente", "Compra lista"].includes(plan.estado);
 
@@ -96,9 +101,11 @@ function PlanCard({
       )}
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-2)" }}>
+        {/* Fix 2.1: color explícito para texto principal sobre fondo claro */}
         <p style={{
           fontWeight: "var(--fw-medium)",
           fontSize: featured ? "var(--fs-md)" : "var(--fs-base)",
+          color: "var(--text-strong)",
           margin: 0,
         }}>
           {plan.nombreSeleccion}
@@ -106,7 +113,7 @@ function PlanCard({
         <EstadoBadge estado={plan.estado} />
       </div>
 
-      <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)", flexWrap: "wrap", alignItems: "center" }}>
         {canCook && (
           <button className="btn btn-primary" onClick={onMarcarCocinada} disabled={busy} style={{ fontSize: "var(--fs-sm)" }}>
             {busy ? "…" : "Marcar Cocinada"}
@@ -117,11 +124,10 @@ function PlanCard({
             Ir a evaluar
           </button>
         )}
-        {isEspecial && canCook && onSumarExtra && (
-          <button className="btn btn-secondary" onClick={onSumarExtra} style={{ fontSize: "var(--fs-sm)" }}>
-            + Extra
-          </button>
-        )}
+        {/* Fix 2.3: botón Ver receta en todas las tarjetas */}
+        <button className="btn btn-secondary" onClick={onVerDetalle} style={{ fontSize: "var(--fs-sm)" }}>
+          Ver receta
+        </button>
         {!confirming && (
           <button
             className="btn btn-ghost"
@@ -218,7 +224,8 @@ function HomeJP() {
 
   return (
     <div className="card" style={{ paddingBottom: "var(--space-6)" }}>
-      <h2 style={{ marginBottom: "var(--space-4)" }}>Esta semana</h2>
+      {/* Fix 2.1: color explícito para el título de sección */}
+      <h2 style={{ marginBottom: "var(--space-4)", color: "var(--text-strong)" }}>Esta semana</h2>
 
       {/* ── Sin planes ────────────────────────────────────────────────── */}
       {!hasPlanes && (
@@ -229,47 +236,65 @@ function HomeJP() {
           <Link
             to="/biblioteca"
             className="btn btn-primary"
-            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "var(--space-2)" }}
+            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
           >
             Ver recetas
           </Link>
         </div>
       )}
 
-      {/* ── Especial ──────────────────────────────────────────────────── */}
+      {/* ── Especial + extras anidados (Fix 2.2) ──────────────────────── */}
       {especial && (
-        <PlanCard
-          plan={especial}
-          featured
-          isEspecial
-          busy={busy === especial.idPlan}
-          confirming={confirmDiscard === especial.idPlan}
-          onMarcarCocinada={() => handleMarcarCocinada(especial.idPlan)}
-          onAskDiscard={() => setConfirmDiscard(especial.idPlan)}
-          onCancelDiscard={() => setConfirmDiscard(null)}
-          onDescartar={() => handleDescartar(especial.idPlan)}
-          onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
-          onSumarExtra={() => navigate("/biblioteca")}
-        />
-      )}
+        <section style={{ marginBottom: "var(--space-2)" }}>
+          <PlanCard
+            plan={especial}
+            featured
+            isEspecial
+            busy={busy === especial.idPlan}
+            confirming={confirmDiscard === especial.idPlan}
+            onMarcarCocinada={() => handleMarcarCocinada(especial.idPlan)}
+            onAskDiscard={() => setConfirmDiscard(especial.idPlan)}
+            onCancelDiscard={() => setConfirmDiscard(null)}
+            onDescartar={() => handleDescartar(especial.idPlan)}
+            onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
+            onVerDetalle={() => navigate(detallePath(especial))}
+          />
 
-      {/* ── Extras ────────────────────────────────────────────────────── */}
-      {extras.length > 0 && (
-        <section style={{ marginTop: "var(--space-4)" }}>
-          <p className="meta" style={{ marginBottom: "var(--space-2)" }}>Extras</p>
-          {extras.map(p => (
-            <PlanCard
-              key={p.idPlan}
-              plan={p}
-              busy={busy === p.idPlan}
-              confirming={confirmDiscard === p.idPlan}
-              onMarcarCocinada={() => handleMarcarCocinada(p.idPlan)}
-              onAskDiscard={() => setConfirmDiscard(p.idPlan)}
-              onCancelDiscard={() => setConfirmDiscard(null)}
-              onDescartar={() => handleDescartar(p.idPlan)}
-              onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-            />
-          ))}
+          {/* Extras anidados bajo el Especial con línea lateral */}
+          <div style={{
+            marginLeft: "var(--space-5)",
+            paddingLeft: "var(--space-4)",
+            borderLeft: "3px solid var(--line)",
+          }}>
+            {extras.length > 0 && (
+              <>
+                <p className="meta" style={{ fontSize: "var(--fs-xs)", margin: "var(--space-1) 0 var(--space-2)" }}>
+                  Extras
+                </p>
+                {extras.map(p => (
+                  <PlanCard
+                    key={p.idPlan}
+                    plan={p}
+                    busy={busy === p.idPlan}
+                    confirming={confirmDiscard === p.idPlan}
+                    onMarcarCocinada={() => handleMarcarCocinada(p.idPlan)}
+                    onAskDiscard={() => setConfirmDiscard(p.idPlan)}
+                    onCancelDiscard={() => setConfirmDiscard(null)}
+                    onDescartar={() => handleDescartar(p.idPlan)}
+                    onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+                    onVerDetalle={() => navigate(detallePath(p))}
+                  />
+                ))}
+              </>
+            )}
+            <button
+              className="btn btn-ghost"
+              onClick={() => navigate("/biblioteca")}
+              style={{ fontSize: "var(--fs-sm)", marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)", marginBottom: "var(--space-2)" }}
+            >
+              + Sumar extra
+            </button>
+          </div>
         </section>
       )}
 
@@ -288,12 +313,13 @@ function HomeJP() {
               onCancelDiscard={() => setConfirmDiscard(null)}
               onDescartar={() => handleDescartar(p.idPlan)}
               onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+              onVerDetalle={() => navigate(detallePath(p))}
             />
           ))}
         </section>
       )}
 
-      {/* ── Sumar en proceso (si no hay ninguno aún) ──────────────────── */}
+      {/* ── Sumar en proceso ──────────────────────────────────────────── */}
       {!enProceso.length && hasPlanes && (
         <div style={{ marginTop: "var(--space-3)" }}>
           <button
@@ -324,7 +350,7 @@ function HomeJP() {
             )}
           </div>
           {lista ? (
-            <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)" }}>
+            <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--text)" }}>
               <strong>{(lista.totalItems ?? 0) - (lista.totalYaTengo ?? 0)}</strong> pendientes
               {" · "}
               <strong>{lista.totalYaTengo ?? 0}</strong> ya tengo
