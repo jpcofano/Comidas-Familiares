@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, MiembroId, MemberId } from "../types/models";
+import type { Plan, Historial, Receta, MiembroId, MemberId } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -156,6 +156,95 @@ export async function marcarCocinada(
     const msg = firebaseErrorMessage(e) ?? "No se pudo marcar el plan como Cocinada.";
     return err("plan-marcar-cocinada-failed", msg, e);
   }
+}
+
+// ─── Creación de planes (§3.2, §3.3) ─────────────────────────────────────────
+
+function generarIdPlan(): string {
+  const hoy = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  return `PLAN-${hoy}-${Date.now()}`;
+}
+
+export async function elegirComoEspecial(
+  receta: Receta,
+  semanaInicio: string,
+  semanaFin: string,
+  especialExistente?: Plan
+): Promise<Result<Plan, AppError>> {
+  if (especialExistente) {
+    const borrado = await descartarPlan(especialExistente.idPlan);
+    if (!borrado.ok) return borrado as Result<Plan, AppError>;
+  }
+
+  return crearPlan({
+    idPlan: generarIdPlan(),
+    semanaInicio,
+    semanaFin,
+    tipoSeleccion: "receta",
+    tipoPlan: "Especial",
+    idSeleccion: receta.idReceta,
+    nombreSeleccion: receta.nombre,
+    recetaPrincipal: receta.nombre,
+    estado: "Elegida",
+    fechaPrevistaComida: null,
+    cantidadPersonas: 4,
+    listaComprasId: null,
+    notas: "",
+    origen: null,
+    asignaciones: ["juanpablo"],
+    // TODO E3.4: sincronizar lista de compras al crear plan
+  });
+}
+
+export async function sumarComoExtra(
+  receta: Receta,
+  especial: Plan,
+  semanaInicio: string,
+  semanaFin: string
+): Promise<Result<Plan, AppError>> {
+  return crearPlan({
+    idPlan: generarIdPlan(),
+    semanaInicio,
+    semanaFin,
+    tipoSeleccion: "receta",
+    tipoPlan: "Especial extra",
+    idSeleccion: receta.idReceta,
+    nombreSeleccion: receta.nombre,
+    recetaPrincipal: receta.nombre,
+    estado: "Elegida",
+    fechaPrevistaComida: null,
+    cantidadPersonas: 4,
+    listaComprasId: null,
+    notas: "",
+    origen: `extra:${especial.idPlan}`,
+    asignaciones: ["juanpablo"],
+    // TODO E3.4: sincronizar lista de compras al crear plan
+  });
+}
+
+export async function sumarComoEnProceso(
+  receta: Receta,
+  semanaInicio: string,
+  semanaFin: string
+): Promise<Result<Plan, AppError>> {
+  return crearPlan({
+    idPlan: generarIdPlan(),
+    semanaInicio,
+    semanaFin,
+    tipoSeleccion: "receta",
+    tipoPlan: "En proceso",
+    idSeleccion: receta.idReceta,
+    nombreSeleccion: receta.nombre,
+    recetaPrincipal: receta.nombre,
+    estado: "Elegida",
+    fechaPrevistaComida: null,
+    cantidadPersonas: 4,
+    listaComprasId: null,
+    notas: "",
+    origen: null,
+    asignaciones: ["juanpablo"],
+    // TODO E3.4: sincronizar lista de compras al crear plan
+  });
 }
 
 // ─── Voto + cierre transaccional (§3.7) ──────────────────────────────────────
