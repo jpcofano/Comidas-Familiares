@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.2 (modelo M: menús referencian recetas vivas, sin tipoItem "Componente")
+> **Versión**: 1.3 (realtime nativo en planes activos + compras, offline persistence del SDK)
 > **Fecha**: 2026-05-21
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -69,6 +69,21 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 5. **Importador de menús**: incluido en scope desde Etapa 2 (no Etapa 5). El TXT del menú referencia componentes por **nombre o por idReceta** — el importador resuelve. Si el componente no existe, el menú no se importa y avisa qué falta.
 
 6. **Migración de seeds**: el script de seeding del Etapa 2 (`PROMPT_E2.4`) aplica el mapeo automático componente → tipo real basado en el rol del componente en el menú. Si alguna receta se "lee raro" como receta independiente, se ajusta manualmente más tarde (no bloqueante).
+
+
+### 1.2.ter Cambios en v1.3 (realtime + offline)
+
+1. **Realtime nativo** en planes activos y compras vía `onSnapshot`. Cuando María tilda "Ya tengo" desde su celu, JP lo ve al toque sin refrescar. El cambio de estado de un plan (Elegida → Compra pendiente → Cocinada) se propaga en vivo. Esto reemplaza el "refresh manual" que aplicaba en v1.2.
+
+2. **Offline persistence del SDK** habilitado en `src/firebase.ts` con `enableIndexedDbPersistence()`. La app funciona en el super sin señal: leer recetas/lista de compras, tildar items. Sincroniza al volver la red.
+
+3. **Hooks genéricos** del data layer: `useDoc<T>(ref)`, `useCollection<T>(ref, queryConstraints?)`, `useCollectionRealtime<T>(ref, queryConstraints?)`. Cubren el 80% de los componentes; el resto consume funciones puras directas.
+
+4. **§9.9 promovido a §6.8**: realtime ya no es "futuro", se implementa desde E2.2.
+
+5. **Manejo de errores diferenciado**: reads tiran excepciones (capturadas por error boundary genérico); writes devuelven `Result<T, Error>` para feedback explícito al usuario.
+
+6. **`runTransaction` del voto** se entrega en E2.2 (no se difiere a E3.6). Vivirá en `src/data/planes.ts` como `voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario)`. Implementa el flujo de §3.7.
 
 
 ### 1.3 Volumen de seeds a migrar
@@ -980,6 +995,12 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 
 ### 5.2 Queries por pantalla
 
+> **Nota v1.3 — realtime vs snapshot**: los ejemplos siguientes usan `getDocs`/`getDoc` por claridad, pero en la práctica las queries de **planes activos de la semana actual** y **items de la lista de compras activa** usan `onSnapshot` (hook `useCollectionRealtime`). El resto (recetas, menús, historial, config) usa `getDocs`/`getDoc` (hooks `useCollection`/`useDoc`).
+>
+> Regla simple: si el dato se edita en simultáneo por varios miembros → `onSnapshot`. Si cambia poco o solo en respuesta a acciones del usuario → snapshot único.
+>
+> El SDK tiene **offline persistence** activada (`enableIndexedDbPersistence`), así que los snapshots se sirven desde IndexedDB cuando no hay red. Las escrituras quedan en cola y se aplican al reconectar.
+
 **Home modo JP (`/`):**
 
 ```typescript
@@ -1194,6 +1215,18 @@ Apps Script duplicaba campos de receta (tiempos, dificultad, sinLacteos, etc.) e
 - Si JP modifica una receta componente (ej. le agrega 5 min al ajillo), el menú "ve" el cambio en su próxima query — sin código adicional.
 - El listado "Biblioteca" pasa a tener tabs `Recetas | Menús` que comparten la query base de `/recetas`.
 
+### 6.8 Realtime en planes activos y compras (v1.3) 🆕
+
+Antes: cada miembro veía la lista pero las marcas "Ya tengo" se sincronizaban solo al refrescar; los cambios de estado de un plan también requerían refresh.
+
+Ahora: `useCollectionRealtime` (hook genérico del data layer) suscribe a `onSnapshot` de Firestore. Cuando María tilda "Ya tengo" desde su celu, JP lo ve **al toque sin refrescar**. Cuando JP marca un plan como Cocinada, María recibe la notificación visual en su Home.
+
+**Implementación**: vive en `src/data/planes.ts` (`subscribeToPlanesActivos(semanaInicio, callback)`) y `src/data/compras.ts` (`subscribeToItemsLista(idLista, callback)`). El cleanup automático se maneja por el hook.
+
+**Combinado con offline persistence** (`enableIndexedDbPersistence` en `src/firebase.ts`): los listeners siguen funcionando offline contra el cache local; al reconectar, Firestore sincroniza y dispara nuevos snapshots con los cambios del servidor.
+
+**Costo en reads**: cada miembro suscrito a planes activos consume reads continuamente pero Firestore solo factura por cambios reales, no por refresh idle. Para 4 miembros y ~5 planes activos por semana, el orden es decenas de reads/día por miembro — muy por debajo de la cuota gratuita.
+
 ---
 
 ## 7. Plan de prompts para Claude Code
@@ -1208,8 +1241,14 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 
 ### 7.2 Etapa 2 — Modelo de datos + Security Rules + Seeds
 
-- **`PROMPT_E2.1_types_and_helpers.md`**: types TypeScript en `src/types/models.ts` con TODAS las shapes de §2 (Receta, Menu con `componentes[]`, Plan con `votos: {}` map, etc). Helpers de canonicalización (normalizeText, parseTime, parseRange).
-- **`PROMPT_E2.2_data_layer.md`**: módulos `src/data/recetas.ts`, `planes.ts`, `compras.ts`, `historial.ts`, `menus.ts`, `diccionarios.ts`. Cada uno expone funciones tipadas (read/write/queries) que envuelven el SDK Firestore. **`menus.ts`** incluye `deriveMenuMetadata()` para calcular campos derivados (§2.3, §3.8).
+- **`PROMPT_E2.1_types_and_helpers.md`** ✅ **CERRADO**: types TypeScript en `src/types/models.ts` (Receta, Menu con `componentes[]`, Plan con `votos: {}` map, etc) + helpers `src/lib/canonical.ts` (normalizeText, canonicalizarIngrediente, SINONIMOS_INGREDIENTES) + parsers permisivos `src/lib/parsers.ts` (parseNumber, parseTime, parseDificultad, parseCosto, parseSiNo) + 56 tests Vitest verdes. 15 commits `Stage 2.1:`.
+- **`PROMPT_E2.2_data_layer.md`** ⏳ próximo: módulos `src/data/recetas.ts`, `planes.ts`, `compras.ts`, `historial.ts`, `menus.ts`, `diccionarios.ts`. Cada uno expone funciones tipadas (read/write/queries) que envuelven el SDK Firestore. Además (nuevo v1.3):
+  - **Hooks genéricos** `useDoc<T>`, `useCollection<T>`, `useCollectionRealtime<T>` para que los componentes no escriban `useEffect` con cleanup de suscripciones.
+  - **Realtime** en `planes.ts` (`subscribeToPlanesActivos`) y `compras.ts` (`subscribeToItemsLista`) vía `onSnapshot`.
+  - **Offline persistence** del SDK habilitada en `src/firebase.ts` con `enableIndexedDbPersistence()`.
+  - **`menus.ts`** incluye `deriveMenuMetadata()` para calcular campos derivados (§2.3, §3.8).
+  - **`planes.ts`** incluye `voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario)` con `runTransaction` que implementa el flujo de §3.7 (voto + cierre automático cuando los 4 miembros votaron).
+  - **Manejo de errores**: reads tiran excepciones; writes devuelven `Result<T, Error>`.
 - **`PROMPT_E2.3_security_rules.md`**: `firestore.rules` con la versión de §4.2 + tests con emulador.
 - **`PROMPT_E2.4_seeds_import.md`**: `scripts/seed-firestore.ts` con Admin SDK. Tres pasos:
   1. Lee `30_Seeds.gs`, parsea las tuples, convierte a objetos con campos derivados (campos `xxxMin/Max`).
@@ -1341,8 +1380,10 @@ Hoy: `costoReal` es texto libre del cocinero. Futuro: form con precio por ingred
 ### 9.8 Modo "noche de a dos"
 Filtrar todo lo no-apto, ajustar porciones, ocultar lo de los chicos. Switch global.
 
-### 9.9 Lista de compras compartida en tiempo real
-Hoy: cada miembro ve la lista pero las marcas "Ya tengo" se sincronizan al refrescar. Futuro: listener real-time (`onSnapshot`), ver el toggle de María mientras estoy en el super.
+### 9.9 Lista de compras compartida en tiempo real ✅ Movida a §6.8 en v1.3
+~~Hoy: cada miembro ve la lista pero las marcas "Ya tengo" se sincronizan al refrescar. Futuro: listener real-time (`onSnapshot`), ver el toggle de María mientras estoy en el super.~~
+
+**Implementado en v1.3** vía `onSnapshot` en `src/data/compras.ts` (`subscribeToItemsLista`) + hook `useCollectionRealtime` (E2.2). Ver §6.8.
 
 ### 9.10 Backup / export
 Botón "Exportar todo a JSON" para snapshot offline. Útil si en el futuro queremos migrar de Firebase.

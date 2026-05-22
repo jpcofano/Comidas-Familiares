@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Firebase deploy cache
+.firebase/
+
 # Service account credentials — never commit
 scripts/service-account.json
 **/*-service-account*.json
