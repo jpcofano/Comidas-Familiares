@@ -1,6 +1,7 @@
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   setDoc,
   addDoc,
@@ -19,6 +20,11 @@ import { firebaseErrorMessage } from "./_helpers";
 import { agruparPorClaveCanonica } from "../lib/compras";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
+
+export async function getListaById(idLista: string): Promise<ListaCompras | null> {
+  const snap = await getDoc(doc(db, "compras", idLista));
+  return snap.exists() ? (snap.data() as ListaCompras) : null;
+}
 
 export async function getListaActiva(semanaInicio: string): Promise<ListaCompras | null> {
   const q = query(collection(db, "compras"), where("semanaInicio", "==", semanaInicio));
