@@ -3,22 +3,67 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // /config/* - read for any authenticated user, write only via Admin SDK
+    // Resolves the caller's memberId by looking up their email in /config/familia.
+    // Uses a nested ternary over the 4 known member IDs — the Firestore Rules
+    // language does not support lambda-based .filter() on maps, so we enumerate.
+    // Reads 1 doc from Firestore per evaluation (cached within the request).
+    function resolveMemberId() {
+      let familia = get(/databases/$(database)/documents/config/familia).data;
+      let email = request.auth.token.email.lower();
+      return familia.miembros.juanpablo.mails.hasAny([email]) ? "juanpablo" :
+             familia.miembros.maria.mails.hasAny([email]) ? "maria" :
+             familia.miembros.sofia.mails.hasAny([email]) ? "sofia" :
+             familia.miembros.federico.mails.hasAny([email]) ? "federico" : null;
+    }
+
+    // Is the caller an authenticated family member (in the whitelist)?
+    function isFamilyMember() {
+      return request.auth != null && resolveMemberId() != null;
+    }
+
+    // Is the caller the family owner? Reads /config/familia once more to
+    // check the owner field against the resolved memberId.
+    function isOwner() {
+      let memberId = resolveMemberId();
+      return request.auth != null
+        && memberId != null
+        && get(/databases/$(database)/documents/config/familia).data.owner == memberId;
+    }
+
+    match /recetas/{id} {
+      allow read, write: if isFamilyMember();
+    }
+
+    match /menus/{id} {
+      allow read, write: if isFamilyMember();
+    }
+
+    match /planes/{id} {
+      allow read, write: if isFamilyMember();
+    }
+
+    match /historial/{id} {
+      allow read, write: if isFamilyMember();
+    }
+
+    match /compras/{id} {
+      allow read, write: if isFamilyMember();
+
+      match /items/{itemId} {
+        allow read, write: if isFamilyMember();
+      }
+    }
+
     match /config/{docId} {
-      allow read: if request.auth != null;
-      allow write: if false;
+      allow read: if isFamilyMember();
+      allow write: if isOwner();
     }
 
-    // /users/{uid} - each user owns their own doc
     match /users/{uid} {
-      allow read, create, update: if request.auth != null
-                                  && request.auth.uid == uid;
-      allow delete: if false;
-    }
-
-    // Everything else - explicit deny (will be opened up in PROMPT_E2.3)
-    match /{document=**} {
-      allow read, write: if false;
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid && isFamilyMember();
+      allow update: if isFamilyMember() && (request.auth.uid == uid || isOwner());
+      allow delete: if isOwner();
     }
   }
 }
