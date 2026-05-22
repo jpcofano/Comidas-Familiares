@@ -1,0 +1,46 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "planes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "semanaInicio", "order": "ASCENDING" },
+        { "fieldPath": "estado", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "planes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "semanaInicio", "order": "ASCENDING" },
+        { "fieldPath": "estado", "order": "ASCENDING" },
+        { "fieldPath": "asignaciones", "arrayConfig": "CONTAINS" }
+      ]
+    },
+    {
+      "collectionGroup": "planes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "semanaInicio", "order": "ASCENDING" },
+        { "fieldPath": "tipoPlan", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "recetas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tipoItem", "order": "ASCENDING" },
+        { "fieldPath": "proteinaPrincipal", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "historial",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "idReceta", "order": "ASCENDING" },
+        { "fieldPath": "fechaRealizadaTimestamp", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
