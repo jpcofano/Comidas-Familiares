@@ -120,6 +120,20 @@ describe("evaluarEspecial", () => {
 // ─── evaluarExtra ─────────────────────────────────────────────────────────────
 
 describe("evaluarExtra", () => {
+  it("no puede si tipoItem === 'Receta principal'", () => {
+    const otraPrincipal = makeReceta({ idReceta: "REC-0099", tipoItem: "Receta principal", nombre: "Otra principal" });
+    const r = evaluarExtra(otraPrincipal, [planEspecial]);
+    expect(r.puede).toBe(false);
+    expect(r.razon).toMatch(/receta principal/i);
+  });
+
+  it("sí puede si tipoItem !== 'Receta principal' (Guarnición)", () => {
+    const guarnicion = makeReceta({ idReceta: "REC-0200", tipoItem: "Guarnición", nombre: "Puré" });
+    const r = evaluarExtra(guarnicion, [planEspecial]);
+    expect(r.puede).toBe(true);
+    expect(r.especial?.idPlan).toBe("PLAN-ESP");
+  });
+
   it("no puede si no hay Especial activa", () => {
     const r = evaluarExtra(recetaEntrada, []);
     expect(r.puede).toBe(false);
@@ -161,7 +175,18 @@ describe("evaluarExtra", () => {
 describe("evaluarEnProceso", () => {
   it("puede si la receta no está en proceso esta semana", () => {
     expect(evaluarEnProceso(recetaPrincipal, []).puede).toBe(true);
-    expect(evaluarEnProceso(recetaPrincipal, [planEspecial]).puede).toBe(true);
+  });
+
+  it("no puede si la receta ya es la Especial activa", () => {
+    const r = evaluarEnProceso(recetaPrincipal, [planEspecial]);
+    expect(r.puede).toBe(false);
+    expect(r.razon).toMatch(/ya está activa/i);
+  });
+
+  it("no puede si la receta ya es un extra activo", () => {
+    const r = evaluarEnProceso(recetaEntrada, [planEspecial, planExtra]);
+    expect(r.puede).toBe(false);
+    expect(r.razon).toMatch(/ya está activa/i);
   });
 
   it("no puede si la misma receta ya está En proceso", () => {

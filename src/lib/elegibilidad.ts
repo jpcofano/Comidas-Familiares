@@ -32,11 +32,15 @@ export interface ElegibilidadExtra {
 
 export function evaluarExtra(receta: Receta, planesActivos: Plan[]): ElegibilidadExtra {
   const especial = planesActivos.find(p => p.tipoPlan === "Especial");
+  // "ya es la Especial" tiene precedencia para preservar el mensaje cuando la receta está asignada
+  if (especial && especial.idSeleccion === receta.idReceta) {
+    return { puede: false, razon: "Esta receta ya es la Especial de la semana." };
+  }
+  if (receta.tipoItem === "Receta principal") {
+    return { puede: false, razon: "Una receta principal no puede ser un extra; elegila como Especial." };
+  }
   if (!especial) {
     return { puede: false, razon: "Primero elegí una Especial para esta semana." };
-  }
-  if (especial.idSeleccion === receta.idReceta) {
-    return { puede: false, razon: "Esta receta ya es la Especial de la semana." };
   }
   const yaEsExtra = planesActivos.some(
     p => p.tipoPlan === "Especial extra"
@@ -58,13 +62,21 @@ export interface ElegibilidadEnProceso {
 }
 
 export function evaluarEnProceso(receta: Receta, planesActivos: Plan[]): ElegibilidadEnProceso {
-  const ya = planesActivos.some(
+  // Primero: ¿ya es un plan "En proceso" exacto? (preserva mensaje original)
+  const yaEnProceso = planesActivos.some(
     p => p.tipoPlan === "En proceso"
       && p.tipoSeleccion === "receta"
       && p.idSeleccion === receta.idReceta
   );
-  if (ya) {
+  if (yaEnProceso) {
     return { puede: false, razon: "Esta receta ya está En proceso esta semana." };
+  }
+  // Segundo: ¿ya está activa en cualquier otro tipo de plan? (Especial, extra…)
+  const yaActiva = planesActivos.some(
+    p => p.tipoSeleccion === "receta" && p.idSeleccion === receta.idReceta
+  );
+  if (yaActiva) {
+    return { puede: false, razon: "Esta receta ya está activa esta semana." };
   }
   return { puede: true };
 }

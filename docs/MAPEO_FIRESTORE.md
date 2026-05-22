@@ -709,16 +709,16 @@ Elegida ──────────► Compra pendiente ──► Compra list
 | Tipo | Regla |
 |---|---|
 | Especial | **Máximo 1 activa por semana**. Al elegir otra, se descarta la anterior (con cascada de extras). |
-| Especial extra | Sin límite, pero **no se puede agregar como extra una receta que ya es la Especial** o que ya es otro extra activo del mismo padre. |
-| En proceso | Sin límite, pero **no duplicar `(tipoSeleccion, idSeleccion)` en planes activos** de la misma semana. |
+| Especial extra | Sin límite, pero **no se puede agregar como extra una receta que ya es la Especial**, que ya es otro extra activo del mismo padre, **ni una receta con `tipoItem === "Receta principal"`** (esas van como Especial). |
+| En proceso | Sin límite, pero **no duplicar `(tipoSeleccion, idSeleccion)` en cualquier plan activo de la semana** — incluyendo Especial, Especial extra y otros En proceso. Una receta ya activa esta semana no puede sumarse de nuevo como En proceso. |
 
 ### 3.3 Reglas de elegibilidad
 
 **Cambio en v1.2**: ya no existe `tipoItem === "Componente"` ni el campo `elegibleSemana`. Todas las recetas son elegibles dentro de las siguientes reglas:
 
 - **Especial de la semana**: solo recetas con `tipoItem === "Receta principal"`. Esto evita elegir como Especial una entrada, postre o panificado.
-- **Especial extra**: cualquier receta excepto la que ya es la Especial activa o ya es otro extra del mismo padre (anti-dup, §3.2).
-- **En proceso**: cualquier receta.
+- **Especial extra**: cualquier receta **que no sea `"Receta principal"`** (esas van como Especial), excepto además la que ya es la Especial activa o ya es otro extra del mismo padre (anti-dup, §3.2). _(Precisado en E3.3.1.)_
+- **En proceso**: cualquier receta **que no esté ya activa esta semana** en otro plan (Especial, Especial extra u otro En proceso). _(Precisado en E3.3.1.)_
 - **Menús no tienen extras**: el menú ya define sus componentes. Si querés sumar algo, lo agregás como Especial extra al lado del menú-plan.
 - **Menús como Especial/Extra/En proceso**: un plan con `tipoSeleccion: "menu"` apunta a un `idMenu`. El menú internamente referencia sus componentes (recetas en `/recetas`). El plan no replica esos componentes.
 
