@@ -139,6 +139,41 @@ export async function toggleYaTengo(
   }
 }
 
+// Sincroniza la lista Y avanza planes: Elegida→Compra pendiente + setea listaComprasId.
+// Invariante §3.1.6 del MAPEO.
+export async function sincronizarYAvanzarPlanes(
+  semanaInicio: string,
+  planes: Plan[],
+  recetas: Map<string, Receta>
+): Promise<Result<{ idLista: string }, AppError>> {
+  try {
+    const syncResult = await sincronizarListaSemana(semanaInicio, planes, recetas);
+    if (!syncResult.ok) return syncResult as unknown as Result<{ idLista: string }, AppError>;
+
+    const lista = await getListaActiva(semanaInicio);
+    if (!lista) return err("lista-not-found", "Lista no encontrada después de sincronizar.");
+
+    const batch = writeBatch(db);
+    let hasUpdates = false;
+    for (const plan of planes) {
+      const planRef = doc(db, "planes", plan.idPlan);
+      const updates: Record<string, unknown> = {};
+      if (plan.listaComprasId !== lista.idLista) updates.listaComprasId = lista.idLista;
+      if (plan.estado === "Elegida") updates.estado = "Compra pendiente";
+      if (Object.keys(updates).length > 0) {
+        batch.update(planRef, updates);
+        hasUpdates = true;
+      }
+    }
+    if (hasUpdates) await batch.commit();
+
+    return ok({ idLista: lista.idLista });
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo sincronizar la lista.";
+    return err("lista-sync-failed", msg, e);
+  }
+}
+
 export async function agregarItemManual(
   idLista: string,
   item: Omit<ItemCompra, "id">
