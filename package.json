@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "bootstrap:config": "tsx scripts/bootstrap-config.ts",
+    "seed:firestore": "tsx scripts/seed-firestore.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
