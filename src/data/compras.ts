@@ -12,12 +12,15 @@ import {
   where,
   serverTimestamp,
   writeBatch,
+  increment,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { ListaCompras, ItemCompra, Plan, Receta } from "../types/models";
+import type { ListaCompras, ItemCompra, Plan, Receta, Menu } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { agruparPorClaveCanonica } from "../lib/compras";
+
+const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista"] as const;
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 
@@ -135,6 +138,132 @@ export async function toggleYaTengo(
     return ok(undefined);
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el item.";
+    return err("item-toggle-failed", msg, e);
+  }
+}
+
+// Auto-sync sin importar planes.ts: consulta Firestore directamente para evitar
+// dependencias circulares (planes.ts importa esta función).
+// Resuelve componentes de menús y filtra Cocinada/Evaluada (§3.1.6, decisión 2).
+export async function sincronizarListaDesdeFirestore(
+  semanaInicio: string
+): Promise<Result<void, AppError>> {
+  try {
+    const planesSnap = await getDocs(
+      query(
+        collection(db, "planes"),
+        where("semanaInicio", "==", semanaInicio),
+        where("estado", "in", [...ESTADOS_CONTRIBUYENTES])
+      )
+    );
+    const planes = planesSnap.docs.map((d) => d.data() as Plan);
+
+    // Recolectar todos los idReceta necesarios (directos + componentes de menú)
+    const recetaIds = new Set<string>();
+    const menuComponentes = new Map<string, string[]>(); // idPlan → [idReceta]
+    const missingItems: string[] = [];
+
+    for (const plan of planes) {
+      if (plan.tipoSeleccion === "receta") {
+        recetaIds.add(plan.idSeleccion);
+      } else {
+        const menuSnap = await getDoc(doc(db, "menus", plan.idSeleccion));
+        if (menuSnap.exists()) {
+          const menu = menuSnap.data() as Menu;
+          const ids = menu.componentes.map((c) => c.idReceta);
+          menuComponentes.set(plan.idPlan, ids);
+          ids.forEach((id) => recetaIds.add(id));
+        }
+      }
+    }
+
+    const recetasSnaps = await Promise.all(
+      [...recetaIds].map((id) => getDoc(doc(db, "recetas", id)))
+    );
+    const recetasMap = new Map<string, Receta>(
+      recetasSnaps.filter((s) => s.exists()).map((s) => [s.id, s.data() as Receta])
+    );
+
+    // Expandir menús en sus componentes
+    const planesConReceta: Array<{ plan: Plan; receta: Receta }> = [];
+    for (const plan of planes) {
+      if (plan.tipoSeleccion === "receta") {
+        const receta = recetasMap.get(plan.idSeleccion);
+        if (receta) planesConReceta.push({ plan, receta });
+        else missingItems.push(plan.nombreSeleccion);
+      } else {
+        const comps = menuComponentes.get(plan.idPlan) ?? [];
+        for (const cId of comps) {
+          const receta = recetasMap.get(cId);
+          if (receta) planesConReceta.push({ plan, receta });
+          else missingItems.push(`${plan.nombreSeleccion} / componente ${cId}`);
+        }
+      }
+    }
+
+    // Obtener o crear lista
+    let lista = await getListaActiva(semanaInicio);
+    if (!lista) {
+      const r = await crearLista(semanaInicio);
+      if (!r.ok) return r;
+      lista = r.value;
+    }
+    const idLista = lista.idLista;
+    const itemsAnteriores = await getItemsLista(idLista);
+
+    const nuevosItems = agruparPorClaveCanonica(planesConReceta, itemsAnteriores);
+
+    const batch = writeBatch(db);
+    for (const old of itemsAnteriores) {
+      batch.delete(doc(db, "compras", idLista, "items", old.id));
+    }
+    for (const item of nuevosItems) {
+      const ref = doc(collection(db, "compras", idLista, "items"));
+      batch.set(ref, { ...item, id: ref.id });
+    }
+    const totalItems = nuevosItems.length;
+    const totalYaTengo = nuevosItems.filter((i) => i.yaTengo).length;
+    batch.update(doc(db, "compras", idLista), {
+      totalItems,
+      totalYaTengo,
+      totalPendientes: totalItems - totalYaTengo,
+      missingItems,
+    });
+
+    for (const plan of planes) {
+      const planRef = doc(db, "planes", plan.idPlan);
+      const updates: Record<string, unknown> = {};
+      if (plan.listaComprasId !== idLista) updates.listaComprasId = idLista;
+      if (plan.estado === "Elegida") updates.estado = "Compra pendiente";
+      if (Object.keys(updates).length > 0) batch.update(planRef, updates);
+    }
+
+    await batch.commit();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo sincronizar la lista.";
+    return err("lista-sync-auto-failed", msg, e);
+  }
+}
+
+// Toggle yaTengo + actualiza resumen denormalizado del doc raíz (§2.5).
+export async function toggleItemYaTengo(
+  idLista: string,
+  itemId: string,
+  nuevoYaTengo: boolean
+): Promise<Result<void, AppError>> {
+  try {
+    const delta = nuevoYaTengo ? 1 : -1;
+    const batch = writeBatch(db);
+    batch.update(doc(db, "compras", idLista, "items", itemId), { yaTengo: nuevoYaTengo });
+    batch.update(doc(db, "compras", idLista), {
+      totalYaTengo: increment(delta),
+      totalPendientes: increment(-delta),
+    });
+    await batch.commit();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el ítem.";
     return err("item-toggle-failed", msg, e);
   }
 }

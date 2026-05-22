@@ -20,6 +20,7 @@ import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { calcularPromedio, calcularResultadoTextual, proximoIdHistorial } from "../lib/voto";
+import { sincronizarListaDesdeFirestore } from "./compras";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 
@@ -119,6 +120,7 @@ export async function descartarPlan(
     }
 
     await deleteDoc(ref);
+    sincronizarListaDesdeFirestore(plan.semanaInicio).catch(() => {});
     return ok({ cascadeBorrados: borrados });
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo descartar el plan.";
@@ -176,7 +178,7 @@ export async function elegirComoEspecial(
     if (!borrado.ok) return borrado as Result<Plan, AppError>;
   }
 
-  return crearPlan({
+  const result = await crearPlan({
     idPlan: generarIdPlan(),
     semanaInicio,
     semanaFin,
@@ -192,8 +194,9 @@ export async function elegirComoEspecial(
     notas: "",
     origen: null,
     asignaciones: ["juanpablo"],
-    // TODO E3.4: sincronizar lista de compras al crear plan
   });
+  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  return result;
 }
 
 export async function sumarComoExtra(
@@ -202,7 +205,7 @@ export async function sumarComoExtra(
   semanaInicio: string,
   semanaFin: string
 ): Promise<Result<Plan, AppError>> {
-  return crearPlan({
+  const result = await crearPlan({
     idPlan: generarIdPlan(),
     semanaInicio,
     semanaFin,
@@ -218,8 +221,9 @@ export async function sumarComoExtra(
     notas: "",
     origen: `extra:${especial.idPlan}`,
     asignaciones: ["juanpablo"],
-    // TODO E3.4: sincronizar lista de compras al crear plan
   });
+  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  return result;
 }
 
 export async function sumarComoEnProceso(
@@ -227,7 +231,7 @@ export async function sumarComoEnProceso(
   semanaInicio: string,
   semanaFin: string
 ): Promise<Result<Plan, AppError>> {
-  return crearPlan({
+  const result = await crearPlan({
     idPlan: generarIdPlan(),
     semanaInicio,
     semanaFin,
@@ -243,8 +247,9 @@ export async function sumarComoEnProceso(
     notas: "",
     origen: null,
     asignaciones: ["juanpablo"],
-    // TODO E3.4: sincronizar lista de compras al crear plan
   });
+  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  return result;
 }
 
 // ─── Voto + cierre transaccional (§3.7) ──────────────────────────────────────

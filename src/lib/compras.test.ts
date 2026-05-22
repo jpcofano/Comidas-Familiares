@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { agruparPorClaveCanonica } from "./compras";
+import { agruparPorClaveCanonica, agruparPorReceta } from "./compras";
 import type { Plan, Receta, ItemCompra } from "../types/models";
 
 function makePlan(overrides: Partial<Plan> = {}): Plan {
@@ -126,5 +126,48 @@ describe("agruparPorClaveCanonica", () => {
     const items = agruparPorClaveCanonica([{ plan: p, receta: r }], anterior);
 
     expect(items[0].yaTengo).toBe(true);
+  });
+});
+
+// ─── agruparPorReceta ─────────────────────────────────────────────────────────
+
+describe("agruparPorReceta", () => {
+  function makeItem(id: string, aportes: ItemCompra["aportes"]): ItemCompra {
+    return {
+      id,
+      ingredienteCanonico: id,
+      ingredienteLabel: id,
+      cantidadTotal: 1,
+      cantidadLabel: "1",
+      unidad: "unidades",
+      categoria: "Verdura",
+      yaTengo: false,
+      aportes,
+    };
+  }
+
+  it("agrupa ítems bajo cada receta que los aportó", () => {
+    const item = makeItem("cebolla", [
+      { idPlan: "P1", idReceta: "R1", nombreReceta: "Bondiola", cantidad: 1, cantidadLabel: "1" },
+    ]);
+    const grupos = agruparPorReceta([item]);
+    expect(grupos.has("Bondiola")).toBe(true);
+    expect(grupos.get("Bondiola")).toHaveLength(1);
+  });
+
+  it("un ítem con 2 aportes aparece en ambos grupos", () => {
+    const item = makeItem("ajo", [
+      { idPlan: "P1", idReceta: "R1", nombreReceta: "Bondiola", cantidad: 2, cantidadLabel: "2" },
+      { idPlan: "P2", idReceta: "R2", nombreReceta: "Berenjenas", cantidad: 1, cantidadLabel: "1" },
+    ]);
+    const grupos = agruparPorReceta([item]);
+    expect(grupos.get("Bondiola")).toHaveLength(1);
+    expect(grupos.get("Berenjenas")).toHaveLength(1);
+  });
+
+  it("ítem sin aportes cae en 'Sin origen'", () => {
+    const item = makeItem("sal", []);
+    const grupos = agruparPorReceta([item]);
+    expect(grupos.has("Sin origen")).toBe(true);
   });
 });

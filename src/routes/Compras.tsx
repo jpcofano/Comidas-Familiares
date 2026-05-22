@@ -1,76 +1,54 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
-import {
-  getListaActiva,
-  subscribeToItemsLista,
-  toggleYaTengo,
-  sincronizarYAvanzarPlanes,
-} from "../data/compras";
-import { getRecetasByIds } from "../data/recetas";
+import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
 import { getSemanaActual } from "../lib/fechas";
+import { agruparPorReceta } from "../lib/compras";
 import type { ListaCompras, ItemCompra, Plan } from "../types/models";
 
-// ─── Toast ────────────────────────────────────────────────────────────────────
-
-function Toast({ text, onDone }: { text: string; onDone: () => void }) {
-  useEffect(() => {
-    const t = setTimeout(onDone, 3000);
-    return () => clearTimeout(t);
-  }, [onDone]);
-  return (
-    <div style={{
-      position: "fixed", bottom: "var(--space-5)", left: "50%", transform: "translateX(-50%)",
-      background: "var(--surface-strong)", color: "var(--text)",
-      padding: "10px 20px", borderRadius: "var(--radius-md)",
-      boxShadow: "0 4px 12px rgba(0,0,0,.18)", fontSize: "var(--fs-sm)",
-      zIndex: 9999, maxWidth: "90vw", textAlign: "center",
-    }}>
-      {text}
-    </div>
-  );
-}
+type ModoVista = "categoria" | "receta";
+type Filtro = "todo" | "pendientes" | "yaTengo";
 
 // ─── Item row ─────────────────────────────────────────────────────────────────
 
 function ItemRow({
   item,
+  idLista,
   expanded,
-  onToggle,
   onToggleExpand,
 }: {
   item: ItemCompra;
+  idLista: string;
   expanded: boolean;
-  onToggle: () => void;
   onToggleExpand: () => void;
 }) {
+  async function handleToggle() {
+    await toggleItemYaTengo(idLista, item.id, !item.yaTengo);
+  }
+
   return (
     <div>
       <div style={{
         display: "flex", alignItems: "center", gap: "var(--space-3)",
-        padding: "8px 0", borderBottom: "1px solid var(--line)",
-        opacity: item.yaTengo ? 0.5 : 1,
+        padding: "9px 0", borderBottom: "1px solid var(--line)",
+        opacity: item.yaTengo ? 0.45 : 1,
       }}>
-        {/* Checkbox manual */}
         <button
-          onClick={onToggle}
+          onClick={handleToggle}
           aria-label={item.yaTengo ? "Quitar ya tengo" : "Marcar ya tengo"}
           style={{
-            flexShrink: 0, width: 22, height: 22, borderRadius: "var(--radius-sm)",
+            flexShrink: 0, width: 24, height: 24, borderRadius: "var(--radius-sm)",
             border: `2px solid ${item.yaTengo ? "var(--ok-text)" : "var(--border)"}`,
             background: item.yaTengo ? "var(--ok-bg)" : "transparent",
             cursor: "pointer", padding: 0,
             display: "flex", alignItems: "center", justifyContent: "center",
           }}
         >
-          {item.yaTengo && (
-            <span style={{ fontSize: 12, color: "var(--ok-text)", lineHeight: 1 }}>✓</span>
-          )}
+          {item.yaTengo && <span style={{ fontSize: 13, color: "var(--ok-text)", lineHeight: 1 }}>✓</span>}
         </button>
 
-        {/* Nombre + cantidad */}
         <div style={{ flex: 1, minWidth: 0 }}>
           <span style={{
             fontSize: "var(--fs-sm)", color: "var(--text)",
@@ -85,7 +63,6 @@ function ItemRow({
           )}
         </div>
 
-        {/* Expandir si hay más de 1 aporte */}
         {item.aportes.length > 1 && (
           <button
             onClick={onToggleExpand}
@@ -96,19 +73,15 @@ function ItemRow({
               display: "flex", alignItems: "center",
             }}
           >
-            {expanded
-              ? <ChevronDown size={15} />
-              : <ChevronRight size={15} />}
+            {expanded ? <ChevronDown size={15} /> : <ChevronRight size={15} />}
           </button>
         )}
       </div>
 
-      {/* Aportes expandidos */}
       {expanded && item.aportes.length > 1 && (
         <div style={{
-          paddingLeft: "calc(22px + var(--space-3))",
-          paddingTop: "var(--space-1)",
-          paddingBottom: "var(--space-2)",
+          paddingLeft: "calc(24px + var(--space-3))",
+          paddingTop: "var(--space-1)", paddingBottom: "var(--space-2)",
         }}>
           {item.aportes.map((a, i) => (
             <p key={i} className="meta" style={{ margin: "2px 0" }}>
@@ -116,12 +89,47 @@ function ItemRow({
             </p>
           ))}
           {item.notas && (
-            <p className="meta" style={{ margin: "4px 0 0", fontStyle: "italic" }}>
-              {item.notas}
-            </p>
+            <p className="meta" style={{ margin: "4px 0 0", fontStyle: "italic" }}>{item.notas}</p>
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+// ─── Sección de grupo ─────────────────────────────────────────────────────────
+
+function GrupoSeccion({
+  titulo,
+  items,
+  idLista,
+  expanded,
+  onToggleExpand,
+}: {
+  titulo: string;
+  items: ItemCompra[];
+  idLista: string;
+  expanded: Set<string>;
+  onToggleExpand: (id: string) => void;
+}) {
+  return (
+    <div className="card" style={{ marginBottom: "var(--space-2)" }}>
+      <p style={{
+        fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)",
+        textTransform: "uppercase", letterSpacing: ".05em",
+        color: "var(--muted)", marginBottom: "var(--space-2)",
+      }}>
+        {titulo}
+      </p>
+      {items.map((item) => (
+        <ItemRow
+          key={item.id}
+          item={item}
+          idLista={idLista}
+          expanded={expanded.has(item.id)}
+          onToggleExpand={() => onToggleExpand(item.id)}
+        />
+      ))}
     </div>
   );
 }
@@ -138,10 +146,9 @@ export function ComprasRoute() {
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [items, setItems] = useState<ItemCompra[]>([]);
   const [loadingPlanes, setLoadingPlanes] = useState(true);
-  const [loadingLista, setLoadingLista] = useState(true);
-  const [syncing, setSyncing] = useState(false);
+  const [modoVista, setModoVista] = useState<ModoVista>("categoria");
+  const [filtro, setFiltro] = useState<Filtro>("todo");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const [toast, setToast] = useState<string | null>(null);
   const unsubItems = useRef<(() => void) | null>(null);
 
   // Planes en tiempo real
@@ -152,15 +159,17 @@ export function ComprasRoute() {
     });
   }, [semanaInicio]);
 
-  // Lista de la semana (carga inicial)
+  // Lista: derivada del listaComprasId de los planes (realtime)
+  const listaId = useMemo(
+    () => planes.find((p) => p.listaComprasId != null)?.listaComprasId ?? null,
+    [planes]
+  );
+
   useEffect(() => {
     if (loadingPlanes) return;
-    setLoadingLista(true);
-    getListaActiva(semanaInicio).then((l) => {
-      setLista(l);
-      setLoadingLista(false);
-    });
-  }, [loadingPlanes, semanaInicio]);
+    if (!listaId) { setLista(null); return; }
+    getListaById(listaId).then(setLista);
+  }, [listaId, loadingPlanes]);
 
   // Items en tiempo real cuando cambia la lista
   useEffect(() => {
@@ -170,30 +179,6 @@ export function ComprasRoute() {
     return () => { if (unsubItems.current) unsubItems.current(); };
   }, [lista?.idLista]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleSincronizar = useCallback(async () => {
-    if (!planes.length) return;
-    setSyncing(true);
-    const ids = [...new Set(
-      planes.filter((p) => p.tipoSeleccion === "receta").map((p) => p.idSeleccion)
-    )];
-    const recetasList = await getRecetasByIds(ids);
-    const recetasMap = new Map(recetasList.map((r) => [r.idReceta, r]));
-    const result = await sincronizarYAvanzarPlanes(semanaInicio, planes, recetasMap);
-    if (result.ok) {
-      const nuevaLista = await getListaActiva(semanaInicio);
-      setLista(nuevaLista);
-      setToast("Lista actualizada.");
-    } else {
-      setToast("Error: " + result.error.message);
-    }
-    setSyncing(false);
-  }, [planes, semanaInicio]);
-
-  async function handleToggle(item: ItemCompra) {
-    if (!lista) return;
-    await toggleYaTengo(lista.idLista, item.id, !item.yaTengo);
-  }
-
   function toggleExpand(id: string) {
     setExpanded((prev) => {
       const next = new Set(prev);
@@ -202,111 +187,139 @@ export function ComprasRoute() {
     });
   }
 
-  // Agrupar items por categoría
+  // Aplicar filtro
+  const itemsFiltrados = useMemo(() => {
+    if (filtro === "pendientes") return items.filter((i) => !i.yaTengo);
+    if (filtro === "yaTengo") return items.filter((i) => i.yaTengo);
+    return items;
+  }, [items, filtro]);
+
+  // Agrupar por categoría
   const porCategoria = useMemo(() => {
     const map = new Map<string, ItemCompra[]>();
-    for (const item of items) {
+    for (const item of itemsFiltrados) {
       const cat = item.categoria || "Sin categoría";
       if (!map.has(cat)) map.set(cat, []);
       map.get(cat)!.push(item);
     }
-    for (const [, ings] of map) {
-      ings.sort((a, b) => a.ingredienteLabel.localeCompare(b.ingredienteLabel, "es"));
-    }
+    for (const [, ings] of map) ings.sort((a, b) => a.ingredienteLabel.localeCompare(b.ingredienteLabel, "es"));
     return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
-  }, [items]);
+  }, [itemsFiltrados]);
+
+  // Agrupar por receta
+  const porReceta = useMemo(() => {
+    const map = agruparPorReceta(itemsFiltrados);
+    for (const [, ings] of map) ings.sort((a, b) => a.ingredienteLabel.localeCompare(b.ingredienteLabel, "es"));
+    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
+  }, [itemsFiltrados]);
 
   const pendientes = items.filter((i) => !i.yaTengo).length;
   const yaTengoCount = items.filter((i) => i.yaTengo).length;
   const hasPlanes = planes.length > 0;
 
-  if (loadingPlanes || loadingLista) {
-    return (
-      <div className="card">
-        <p className="meta">Cargando…</p>
-      </div>
-    );
+  // missingItems del doc raíz (campo extra, no tipado)
+  const missingItems = (lista as (ListaCompras & { missingItems?: string[] }) | null)?.missingItems ?? [];
+
+  if (loadingPlanes) {
+    return <div className="card"><p className="meta">Cargando…</p></div>;
   }
+
+  const grupos = modoVista === "categoria" ? porCategoria : porReceta;
 
   return (
     <>
       {/* Cabecera */}
       <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1 style={{ fontSize: "var(--fs-lg)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: 0 }}>
-            Compras
-          </h1>
-          {hasPlanes && isJP && (
-            <button
-              className="btn btn-secondary"
-              onClick={handleSincronizar}
-              disabled={syncing}
-              style={{ fontSize: "var(--fs-sm)" }}
-            >
-              {syncing ? "Sincronizando…" : lista ? "Actualizar" : "Sincronizar"}
-            </button>
-          )}
-        </div>
+        <h1 style={{
+          fontSize: "var(--fs-lg)", fontWeight: "var(--fw-semibold)",
+          color: "var(--text-strong)", margin: "0 0 var(--space-2)",
+        }}>
+          Compras
+        </h1>
 
-        {/* Resumen */}
         {lista ? (
-          <p className="meta" style={{ marginTop: "var(--space-2)" }}>
-            <strong>{pendientes}</strong> pendientes
-            {" · "}
-            <strong>{yaTengoCount}</strong> ya tengo
-            {" · "}
-            <strong>{items.length}</strong> total
+          <p className="meta">
+            <strong>{pendientes}</strong> pendientes · <strong>{yaTengoCount}</strong> ya tengo · <strong>{items.length}</strong> total
           </p>
         ) : hasPlanes ? (
-          <p className="meta" style={{ marginTop: "var(--space-2)" }}>
-            {isJP
-              ? 'Sincronizá para generar la lista de ingredientes.'
-              : 'La lista de compras todavía no fue generada.'}
-          </p>
+          <p className="meta">Generando lista… aparece automáticamente al crear planes.</p>
         ) : (
-          <p className="meta" style={{ marginTop: "var(--space-2)" }}>
+          <p className="meta">
             No hay comidas elegidas esta semana.{" "}
-            {isJP && (
-              <Link to="/biblioteca" style={{ color: "var(--primary)" }}>
-                Ver recetas →
-              </Link>
-            )}
+            {isJP && <Link to="/biblioteca" style={{ color: "var(--primary)" }}>Ver recetas →</Link>}
+          </p>
+        )}
+
+        {/* Aviso de componentes sin ingredientes */}
+        {missingItems.length > 0 && (
+          <p style={{ marginTop: "var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
+            Sin ingredientes cargados: {missingItems.join(", ")}
           </p>
         )}
       </div>
 
-      {/* Items por categoría */}
-      {lista && porCategoria.length > 0 && porCategoria.map(([cat, catItems]) => (
-        <div key={cat} className="card" style={{ marginBottom: "var(--space-2)" }}>
-          <p style={{
-            fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)",
-            textTransform: "uppercase", letterSpacing: ".05em",
-            color: "var(--muted)", marginBottom: "var(--space-2)",
-          }}>
-            {cat}
-          </p>
-          {catItems.map((item) => (
-            <ItemRow
-              key={item.id}
-              item={item}
-              expanded={expanded.has(item.id)}
-              onToggle={() => handleToggle(item)}
-              onToggleExpand={() => toggleExpand(item.id)}
-            />
-          ))}
-        </div>
-      ))}
+      {/* Controles de vista y filtro */}
+      {lista && items.length > 0 && (
+        <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
+          {/* Toggle vista */}
+          <div style={{ display: "flex", borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--border)" }}>
+            {(["categoria", "receta"] as ModoVista[]).map((modo) => (
+              <button
+                key={modo}
+                onClick={() => setModoVista(modo)}
+                style={{
+                  padding: "5px 12px", fontSize: "var(--fs-xs)", border: "none", cursor: "pointer",
+                  background: modoVista === modo ? "var(--primary)" : "var(--surface-strong)",
+                  color: modoVista === modo ? "#fff" : "var(--text)",
+                }}
+              >
+                {modo === "categoria" ? "Por categoría" : "Por receta"}
+              </button>
+            ))}
+          </div>
 
-      {lista && items.length === 0 && (
-        <div className="card">
-          <p className="meta" style={{ textAlign: "center", padding: "var(--space-4) 0" }}>
-            Lista vacía. Actualizá para regenerarla.
-          </p>
+          {/* Filtro */}
+          <div style={{ display: "flex", borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--border)" }}>
+            {(["todo", "pendientes", "yaTengo"] as Filtro[]).map((f) => (
+              <button
+                key={f}
+                onClick={() => setFiltro(f)}
+                style={{
+                  padding: "5px 12px", fontSize: "var(--fs-xs)", border: "none", cursor: "pointer",
+                  background: filtro === f ? "var(--primary)" : "var(--surface-strong)",
+                  color: filtro === f ? "#fff" : "var(--text)",
+                }}
+              >
+                {f === "todo" ? "Todo" : f === "pendientes" ? "Pendientes" : "Ya tengo"}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
-      {/* Toast */}
-      {toast && <Toast text={toast} onDone={() => setToast(null)} />}
+      {/* Grupos de ítems */}
+      {lista && grupos.map(([titulo, catItems]) => (
+        <GrupoSeccion
+          key={titulo}
+          titulo={titulo}
+          items={catItems}
+          idLista={lista.idLista}
+          expanded={expanded}
+          onToggleExpand={toggleExpand}
+        />
+      ))}
+
+      {lista && itemsFiltrados.length === 0 && (
+        <div className="card">
+          <p className="meta" style={{ textAlign: "center", padding: "var(--space-4) 0" }}>
+            {filtro === "todo"
+              ? "Lista vacía. Los ingredientes aparecen al crear planes."
+              : filtro === "pendientes"
+              ? "No hay ítems pendientes."
+              : "No hay ítems marcados como ya tengo."}
+          </p>
+        </div>
+      )}
     </>
   );
 }
