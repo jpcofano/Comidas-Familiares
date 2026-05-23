@@ -30,6 +30,11 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/config/familia).data.owner == memberId;
     }
 
+    match /ingredientes/{id} {
+      allow read: if isFamilyMember();
+      allow write: if isOwner();
+    }
+
     match /recetas/{id} {
       allow read, write: if isFamilyMember();
     }

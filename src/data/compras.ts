@@ -15,10 +15,10 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { ListaCompras, ItemCompra, Plan, Receta, Menu } from "../types/models";
+import type { ListaCompras, ItemCompra, AporteCompra, Ingrediente, Plan, Receta, Menu } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
-import { agruparPorClaveCanonica } from "../lib/compras";
+import { getCatalogo } from "./ingredientes";
 
 const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista"] as const;
 
@@ -76,12 +76,113 @@ export async function crearLista(semanaInicio: string): Promise<Result<ListaComp
   }
 }
 
+// ─── Agrupación de ingredientes por catálogo ──────────────────────────────────
+
+function agruparPorIdIngrediente(
+  planesConReceta: Array<{ plan: Plan; receta: Receta }>,
+  itemsAnteriores: ItemCompra[],
+  catalogo: Map<string, Ingrediente>
+): ItemCompra[] {
+  const acc = new Map<string, ItemCompra>();
+
+  for (const { plan, receta } of planesConReceta) {
+    for (const ing of receta.ingredientes) {
+      const unidad = ing.unidad ?? "";
+      const clave = `${ing.idIngrediente}|${unidad}`;
+      const cat = catalogo.get(ing.idIngrediente);
+      if (!cat) continue;
+
+      const cantidadNum = typeof ing.cantidad === "number" ? ing.cantidad : 0;
+
+      const aporte: AporteCompra = {
+        idPlan: plan.idPlan,
+        idReceta: receta.idReceta,
+        nombreReceta: receta.nombre,
+        textoOriginal: ing.textoOriginal,
+        tipoAporte: "receta",
+        cantidad: cantidadNum,
+        unidad,
+      };
+
+      if (acc.has(clave)) {
+        const item = acc.get(clave)!;
+        item.cantidadTotal += cantidadNum;
+        item.aportes.push(aporte);
+        if (ing.notas) item.notas = item.notas ? `${item.notas} | ${ing.notas}` : ing.notas;
+        if (ing.opcional === false) item.opcional = false;
+      } else {
+        acc.set(clave, {
+          id: "",
+          idIngrediente: ing.idIngrediente,
+          nombrePreferido: cat.nombrePreferido,
+          categoria: ing.categoriaOverride || cat.categoria,
+          cantidadTotal: cantidadNum,
+          cantidadLabel: "",
+          unidad,
+          opcional: ing.opcional !== false,
+          yaTengo: false,
+          aportes: [aporte],
+          notas: ing.notas ?? "",
+        });
+      }
+    }
+  }
+
+  // Preservar yaTengo desde sincronización anterior
+  for (const old of itemsAnteriores) {
+    for (const it of acc.values()) {
+      if (it.idIngrediente === old.idIngrediente && it.unidad === old.unidad) {
+        it.yaTengo = old.yaTengo;
+        break;
+      }
+    }
+  }
+
+  // Componer cantidadLabel
+  for (const it of acc.values()) {
+    it.cantidadLabel = it.cantidadTotal > 0
+      ? `${it.cantidadTotal} ${it.unidad}`.trim()
+      : "a gusto";
+  }
+
+  return [...acc.values()];
+}
+
+// ─── Batch helpers ────────────────────────────────────────────────────────────
+
+function commitItemsBatch(
+  batch: ReturnType<typeof writeBatch>,
+  idLista: string,
+  itemsAnteriores: ItemCompra[],
+  nuevosItems: ItemCompra[],
+  missingItems: string[] = []
+): void {
+  for (const old of itemsAnteriores) {
+    batch.delete(doc(db, "compras", idLista, "items", old.id));
+  }
+  for (const item of nuevosItems) {
+    const ref = doc(collection(db, "compras", idLista, "items"));
+    const { id: _discard, ...rest } = item;
+    batch.set(ref, { ...rest, id: ref.id });
+  }
+  const totalItems = nuevosItems.length;
+  const totalYaTengo = nuevosItems.filter((i) => i.yaTengo).length;
+  batch.update(doc(db, "compras", idLista), {
+    totalItems,
+    totalYaTengo,
+    totalPendientes: totalItems - totalYaTengo,
+    missingItems,
+  });
+}
+
 export async function sincronizarListaSemana(
   semanaInicio: string,
   planes: Plan[],
   recetas: Map<string, Receta>
 ): Promise<Result<void, AppError>> {
   try {
+    const catalogo = await getCatalogo();
+
     let lista = await getListaActiva(semanaInicio);
     if (!lista) {
       const r = await crearLista(semanaInicio);
@@ -98,28 +199,10 @@ export async function sincronizarListaSemana(
       return [{ plan, receta }];
     });
 
-    const nuevosItems = agruparPorClaveCanonica(planesConReceta, itemsAnteriores);
+    const nuevosItems = agruparPorIdIngrediente(planesConReceta, itemsAnteriores, catalogo);
 
-    // Reemplazar subcollection items con batch
     const batch = writeBatch(db);
-
-    for (const old of itemsAnteriores) {
-      batch.delete(doc(db, "compras", idLista, "items", old.id));
-    }
-
-    for (const item of nuevosItems) {
-      const ref = doc(collection(db, "compras", idLista, "items"));
-      batch.set(ref, { ...item, id: ref.id });
-    }
-
-    const totalItems = nuevosItems.length;
-    const totalYaTengo = nuevosItems.filter((i) => i.yaTengo).length;
-    batch.update(doc(db, "compras", idLista), {
-      totalItems,
-      totalYaTengo,
-      totalPendientes: totalItems - totalYaTengo,
-    });
-
+    commitItemsBatch(batch, idLista, itemsAnteriores, nuevosItems);
     await batch.commit();
     return ok(undefined);
   } catch (e) {
@@ -211,24 +294,11 @@ export async function sincronizarListaDesdeFirestore(
     const idLista = lista.idLista;
     const itemsAnteriores = await getItemsLista(idLista);
 
-    const nuevosItems = agruparPorClaveCanonica(planesConReceta, itemsAnteriores);
+    const catalogo = await getCatalogo();
+    const nuevosItems = agruparPorIdIngrediente(planesConReceta, itemsAnteriores, catalogo);
 
     const batch = writeBatch(db);
-    for (const old of itemsAnteriores) {
-      batch.delete(doc(db, "compras", idLista, "items", old.id));
-    }
-    for (const item of nuevosItems) {
-      const ref = doc(collection(db, "compras", idLista, "items"));
-      batch.set(ref, { ...item, id: ref.id });
-    }
-    const totalItems = nuevosItems.length;
-    const totalYaTengo = nuevosItems.filter((i) => i.yaTengo).length;
-    batch.update(doc(db, "compras", idLista), {
-      totalItems,
-      totalYaTengo,
-      totalPendientes: totalItems - totalYaTengo,
-      missingItems,
-    });
+    commitItemsBatch(batch, idLista, itemsAnteriores, nuevosItems, missingItems);
 
     for (const plan of planes) {
       const planRef = doc(db, "planes", plan.idPlan);

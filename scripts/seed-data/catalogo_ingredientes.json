@@ -1,0 +1,2922 @@
+[
+  {
+    "idIngrediente": "ING-0001",
+    "canonico": "90%",
+    "nombrePreferido": "90%",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0002",
+    "canonico": "abadejo",
+    "nombrePreferido": "Abadejo",
+    "sinonimos": [],
+    "categoria": "Pescado",
+    "seccionDefault": "Pescados y mariscos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0003",
+    "canonico": "aceite de coco",
+    "nombrePreferido": "Aceite de coco",
+    "sinonimos": [
+      "Aceite de coco o neutro"
+    ],
+    "categoria": "Materia grasa",
+    "seccionDefault": "Materia grasa",
+    "unidadesHabituales": [
+      "cdas",
+      "cda"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0004",
+    "canonico": "aceite de oliva",
+    "nombrePreferido": "Aceite de oliva",
+    "sinonimos": [
+      "Aceite"
+    ],
+    "categoria": "Materia grasa",
+    "seccionDefault": "Cocción",
+    "unidadesHabituales": [
+      "cdas",
+      "cda"
+    ],
+    "vecesUsado": 49,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0005",
+    "canonico": "aceite de oliva suave",
+    "nombrePreferido": "Aceite de oliva suave",
+    "sinonimos": [
+      "Aceite de oliva suave o neutro"
+    ],
+    "categoria": "Materia grasa",
+    "seccionDefault": "Materia grasa",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0006",
+    "canonico": "aceite de sesamo",
+    "nombrePreferido": "Aceite de sesamo",
+    "sinonimos": [],
+    "categoria": "Materia grasa",
+    "seccionDefault": "Aderezo",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0007",
+    "canonico": "aceitunas negras",
+    "nombrePreferido": "Aceitunas negras",
+    "sinonimos": [
+      "Aceitunas"
+    ],
+    "categoria": "Conserva",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0008",
+    "canonico": "aceitunas verdes",
+    "nombrePreferido": "Aceitunas verdes",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0009",
+    "canonico": "agua",
+    "nombrePreferido": "Agua",
+    "sinonimos": [
+      "Agua caliente",
+      "Agua o vino blanco",
+      "Agua tibia"
+    ],
+    "categoria": "Básico",
+    "seccionDefault": "Hidratación",
+    "unidadesHabituales": [
+      "tazas",
+      "ml",
+      "cdas",
+      "cantidad necesaria"
+    ],
+    "vecesUsado": 16,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0010",
+    "canonico": "aji molido",
+    "nombrePreferido": "Aji molido",
+    "sinonimos": [
+      "Aji molido o peperoncino",
+      "Aji molido o sriracha"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita",
+      "pizca"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0011",
+    "canonico": "aji picante",
+    "nombrePreferido": "Aji picante",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0012",
+    "canonico": "ajo",
+    "nombrePreferido": "Ajo",
+    "sinonimos": [
+      "Ajo asado o salteado"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Sabor",
+    "unidadesHabituales": [
+      "dientes",
+      "diente",
+      "cdita/diente"
+    ],
+    "vecesUsado": 18,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0013",
+    "canonico": "ajo en polvo",
+    "nombrePreferido": "Ajo en polvo",
+    "sinonimos": [
+      "Ajo en polvo o ajo fresco"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita",
+      "cdita/diente"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0014",
+    "canonico": "almendra sin azucar",
+    "nombrePreferido": "Almendra sin azucar",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Base sin lácteos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0015",
+    "canonico": "almendras",
+    "nombrePreferido": "Almendras",
+    "sinonimos": [
+      "Almendras fileteadas",
+      "Almendras molidas",
+      "Almendras picadas"
+    ],
+    "categoria": "Fruto seco",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "g",
+      "cdas"
+    ],
+    "vecesUsado": 11,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0016",
+    "canonico": "amarillo",
+    "nombrePreferido": "Amarillo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Vegetales",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0017",
+    "canonico": "apio",
+    "nombrePreferido": "Apio",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Verduras",
+    "unidadesHabituales": [
+      "ramas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0018",
+    "canonico": "arroz cocido",
+    "nombrePreferido": "Arroz cocido",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "taza"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0019",
+    "canonico": "arroz jazmin",
+    "nombrePreferido": "Arroz jazmin",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "tazas"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0020",
+    "canonico": "arroz largo fino",
+    "nombrePreferido": "Arroz largo fino",
+    "sinonimos": [
+      "Arroz blanco cocido",
+      "Arroz blanco largo fino",
+      "Arroz blanco o pan"
+    ],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "tazas",
+      "taza"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0021",
+    "canonico": "atun al natural",
+    "nombrePreferido": "Atun al natural",
+    "sinonimos": [],
+    "categoria": "Pescado",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "latas",
+      "lata"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0022",
+    "canonico": "avena arrollada",
+    "nombrePreferido": "Avena arrollada",
+    "sinonimos": [
+      "Avena"
+    ],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "cdas",
+      "tazas"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0023",
+    "canonico": "azafran",
+    "nombrePreferido": "Azafran",
+    "sinonimos": [
+      "Azafran o curcuma"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0024",
+    "canonico": "azucar mascabo",
+    "nombrePreferido": "Azucar mascabo",
+    "sinonimos": [
+      "Azúcar mascabo o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "seccionDefault": "Dulzor",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0025",
+    "canonico": "baguette",
+    "nombrePreferido": "Baguette",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0026",
+    "canonico": "banana",
+    "nombrePreferido": "Banana",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidad",
+      "unidades"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0027",
+    "canonico": "batatas",
+    "nombrePreferido": "Batatas",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0028",
+    "canonico": "bebida de coco sin azucar",
+    "nombrePreferido": "Bebida de coco sin azucar",
+    "sinonimos": [
+      "Bebida de coco o almendra sin azúcar"
+    ],
+    "categoria": "Conserva",
+    "seccionDefault": "Base sin lácteos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0029",
+    "canonico": "bebida vegetal sin azucar",
+    "nombrePreferido": "Bebida vegetal sin azucar",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Base sin lácteos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0030",
+    "canonico": "berenjenas",
+    "nombrePreferido": "Berenjenas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "grandes",
+      "unidades"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0031",
+    "canonico": "bicarbonato de sodio",
+    "nombrePreferido": "Bicarbonato de sodio",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Repostería",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0032",
+    "canonico": "bifecitos de cuadril",
+    "nombrePreferido": "Bifecitos de cuadril",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0033",
+    "canonico": "bondiola de cerdo entera",
+    "nombrePreferido": "Bondiola de cerdo entera",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0034",
+    "canonico": "cacao amargo",
+    "nombrePreferido": "Cacao amargo",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Sabor",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0035",
+    "canonico": "calamares limpios",
+    "nombrePreferido": "Calamares limpios",
+    "sinonimos": [],
+    "categoria": "Mariscos",
+    "seccionDefault": "Pescados y mariscos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0036",
+    "canonico": "caldo de carne",
+    "nombrePreferido": "Caldo de carne",
+    "sinonimos": [
+      "Agua o caldo",
+      "Caldo de carne o verduras"
+    ],
+    "categoria": "Fondo",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0037",
+    "canonico": "caldo de pescado",
+    "nombrePreferido": "Caldo de pescado",
+    "sinonimos": [
+      "Caldo de pescado o verduras"
+    ],
+    "categoria": "Fondo",
+    "seccionDefault": "Líquido de cocción",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0038",
+    "canonico": "caldo de pollo",
+    "nombrePreferido": "Caldo de pollo",
+    "sinonimos": [
+      "Agua o caldo",
+      "Caldo de pollo o verduras"
+    ],
+    "categoria": "Fondo",
+    "seccionDefault": "Líquido",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0039",
+    "canonico": "caldo de verduras",
+    "nombrePreferido": "Caldo de verduras",
+    "sinonimos": [
+      "Agua o caldo caliente"
+    ],
+    "categoria": "Líquido",
+    "seccionDefault": "Hidratacion",
+    "unidadesHabituales": [
+      "tazas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0040",
+    "canonico": "canela",
+    "nombrePreferido": "Canela",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "rama o cdita",
+      "cdita"
+    ],
+    "vecesUsado": 8,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0041",
+    "canonico": "carne picada",
+    "nombrePreferido": "Carne picada",
+    "sinonimos": [
+      "Carne picada especial"
+    ],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0042",
+    "canonico": "carne vacuna en cubos",
+    "nombrePreferido": "Carne vacuna en cubos",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0043",
+    "canonico": "carne vacuna en tiras",
+    "nombrePreferido": "Carne vacuna en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0044",
+    "canonico": "cascara de limon",
+    "nombrePreferido": "Cascara de limon",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Aroma",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0045",
+    "canonico": "cebolla",
+    "nombrePreferido": "Cebolla",
+    "sinonimos": [
+      "Cebolla o echalote",
+      "Cebollas"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Base de sabor",
+    "unidadesHabituales": [
+      "unidades",
+      "unidad"
+    ],
+    "vecesUsado": 9,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0046",
+    "canonico": "cebolla de verdeo",
+    "nombrePreferido": "Cebolla de verdeo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Relleno",
+    "unidadesHabituales": [
+      "unidades",
+      "unidad"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0047",
+    "canonico": "cebolla morada",
+    "nombrePreferido": "Cebolla morada",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Criolla",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0048",
+    "canonico": "cerdo en tiras",
+    "nombrePreferido": "Cerdo en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0049",
+    "canonico": "champignon",
+    "nombrePreferido": "Champignon",
+    "sinonimos": [
+      "Hongos frescos"
+    ],
+    "categoria": "Hongo",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0050",
+    "canonico": "champinones",
+    "nombrePreferido": "Champinones",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Relleno",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0051",
+    "canonico": "chauchas",
+    "nombrePreferido": "Chauchas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Vegetales",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0052",
+    "canonico": "chia",
+    "nombrePreferido": "Chia",
+    "sinonimos": [],
+    "categoria": "Semilla",
+    "seccionDefault": "Semillas",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0053",
+    "canonico": "chocolate 85%",
+    "nombrePreferido": "Chocolate 85%",
+    "sinonimos": [
+      "Chocolate 85% o 90%"
+    ],
+    "categoria": "Repostería",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0054",
+    "canonico": "chocolate 90%",
+    "nombrePreferido": "Chocolate 90%",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Decoración",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0055",
+    "canonico": "churrasquitos de cerdo",
+    "nombrePreferido": "Churrasquitos de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0056",
+    "canonico": "ciboulette",
+    "nombrePreferido": "Ciboulette",
+    "sinonimos": [],
+    "categoria": "Hierba",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0057",
+    "canonico": "cilantro",
+    "nombrePreferido": "Cilantro",
+    "sinonimos": [],
+    "categoria": "Hierba",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "punado"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0058",
+    "canonico": "claras de huevo",
+    "nombrePreferido": "Claras de huevo",
+    "sinonimos": [],
+    "categoria": "Huevo",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0059",
+    "canonico": "clavo de olor",
+    "nombrePreferido": "Clavo de olor",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Aromas",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0060",
+    "canonico": "coco rallado extra",
+    "nombrePreferido": "Coco rallado extra",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Terminación",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0061",
+    "canonico": "coco rallado sin azucar",
+    "nombrePreferido": "Coco rallado sin azucar",
+    "sinonimos": [
+      "Coco rallado"
+    ],
+    "categoria": "Repostería",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 11,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0062",
+    "canonico": "coliflor",
+    "nombrePreferido": "Coliflor",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "grande"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0063",
+    "canonico": "colorado",
+    "nombrePreferido": "Colorado",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0064",
+    "canonico": "comino",
+    "nombrePreferido": "Comino",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0065",
+    "canonico": "comun",
+    "nombrePreferido": "Comun",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0066",
+    "canonico": "coriandro",
+    "nombrePreferido": "Coriandro",
+    "sinonimos": [
+      "Coriandro o curry suave"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0067",
+    "canonico": "cous cous",
+    "nombrePreferido": "Cous cous",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "tazas"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0068",
+    "canonico": "curcuma",
+    "nombrePreferido": "Curcuma",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0069",
+    "canonico": "curry suave",
+    "nombrePreferido": "Curry suave",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0070",
+    "canonico": "echalote",
+    "nombrePreferido": "Echalote",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0071",
+    "canonico": "edulcorante apto",
+    "nombrePreferido": "Edulcorante apto",
+    "sinonimos": [],
+    "categoria": "Endulzante",
+    "seccionDefault": "Dulzor",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0072",
+    "canonico": "entrana",
+    "nombrePreferido": "Entrana",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0073",
+    "canonico": "eritritol",
+    "nombrePreferido": "Eritritol",
+    "sinonimos": [
+      "Erythritol"
+    ],
+    "categoria": "Endulzante",
+    "seccionDefault": "Endulzante",
+    "unidadesHabituales": [
+      "cdita",
+      "cdas",
+      "cda"
+    ],
+    "vecesUsado": 15,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0074",
+    "canonico": "esencia de vainilla",
+    "nombrePreferido": "Esencia de vainilla",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Sabor",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 8,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0075",
+    "canonico": "esparragos",
+    "nombrePreferido": "Esparragos",
+    "sinonimos": [
+      "Espárragos o chauchas"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Vegetales",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0076",
+    "canonico": "especias grill",
+    "nombrePreferido": "Especias grill",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0077",
+    "canonico": "espinaca",
+    "nombrePreferido": "Espinaca",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Relleno",
+    "unidadesHabituales": [
+      "taza"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0078",
+    "canonico": "fideos secos",
+    "nombrePreferido": "Fideos secos",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0079",
+    "canonico": "filetes de merluza",
+    "nombrePreferido": "Filetes de merluza",
+    "sinonimos": [],
+    "categoria": "Pescado",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0080",
+    "canonico": "fresco",
+    "nombrePreferido": "Fresco",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0081",
+    "canonico": "frutillas",
+    "nombrePreferido": "Frutillas",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "taza",
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0082",
+    "canonico": "galletas de arroz",
+    "nombrePreferido": "Galletas de arroz",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0083",
+    "canonico": "garbanzos en lata",
+    "nombrePreferido": "Garbanzos en lata",
+    "sinonimos": [
+      "Garbanzos cocidos"
+    ],
+    "categoria": "Legumbre",
+    "seccionDefault": "Hummus",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0084",
+    "canonico": "garbanzos secos",
+    "nombrePreferido": "Garbanzos secos",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "seccionDefault": "Hummus",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0085",
+    "canonico": "granola",
+    "nombrePreferido": "Granola",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0086",
+    "canonico": "griego",
+    "nombrePreferido": "Griego",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0087",
+    "canonico": "harina de almendra",
+    "nombrePreferido": "Harina de almendra",
+    "sinonimos": [],
+    "categoria": "Fruto seco",
+    "seccionDefault": "Secos",
+    "unidadesHabituales": [
+      "g",
+      "cdas"
+    ],
+    "vecesUsado": 17,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0088",
+    "canonico": "harina de coco",
+    "nombrePreferido": "Harina de coco",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Secos",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0089",
+    "canonico": "hojas verdes",
+    "nombrePreferido": "Hojas verdes",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "taza"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0090",
+    "canonico": "huevos",
+    "nombrePreferido": "Huevos",
+    "sinonimos": [
+      "Huevo",
+      "Huevos duros"
+    ],
+    "categoria": "Huevo",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "unidad",
+      "unidades"
+    ],
+    "vecesUsado": 29,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0091",
+    "canonico": "jamon cocido natural",
+    "nombrePreferido": "Jamon cocido natural",
+    "sinonimos": [],
+    "categoria": "Fiambre",
+    "seccionDefault": "Relleno",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0092",
+    "canonico": "jengibre fresco",
+    "nombrePreferido": "Jengibre fresco",
+    "sinonimos": [
+      "Jengibre o cascara de limón"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Aromas",
+    "unidadesHabituales": [
+      "cdita",
+      "cda"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0093",
+    "canonico": "langostinos",
+    "nombrePreferido": "Langostinos",
+    "sinonimos": [
+      "Langostinos limpios",
+      "Langostinos pelados"
+    ],
+    "categoria": "Mariscos",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0094",
+    "canonico": "laurel",
+    "nombrePreferido": "Laurel",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "hojas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0095",
+    "canonico": "leche de coco",
+    "nombrePreferido": "Leche de coco",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0096",
+    "canonico": "lechuga",
+    "nombrePreferido": "Lechuga",
+    "sinonimos": [
+      "Lechuga o rúcula"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0097",
+    "canonico": "lenguado",
+    "nombrePreferido": "Lenguado",
+    "sinonimos": [],
+    "categoria": "Pescado",
+    "seccionDefault": "Pescados y mariscos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0098",
+    "canonico": "limon",
+    "nombrePreferido": "Limon",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Sabor",
+    "unidadesHabituales": [
+      "unidad",
+      "cdas",
+      "unidades",
+      "cdita",
+      "cda"
+    ],
+    "vecesUsado": 30,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0099",
+    "canonico": "mani",
+    "nombrePreferido": "Mani",
+    "sinonimos": [],
+    "categoria": "Semilla / fruto seco",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0100",
+    "canonico": "manzana roja",
+    "nombrePreferido": "Manzana roja",
+    "sinonimos": [
+      "Manzana",
+      "Manzana o pera"
+    ],
+    "categoria": "Fruta",
+    "seccionDefault": "Fruta",
+    "unidadesHabituales": [
+      "unidades",
+      "cdas",
+      "unidad"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0101",
+    "canonico": "manzana verde",
+    "nombrePreferido": "Manzana verde",
+    "sinonimos": [
+      "Manzanas"
+    ],
+    "categoria": "Fruta",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "unidades",
+      "unidad"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0102",
+    "canonico": "manzanas verdes",
+    "nombrePreferido": "Manzanas verdes",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Fruta",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0103",
+    "canonico": "mejillones",
+    "nombrePreferido": "Mejillones",
+    "sinonimos": [],
+    "categoria": "Mariscos",
+    "seccionDefault": "Pescados y mariscos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0104",
+    "canonico": "menta",
+    "nombrePreferido": "Menta",
+    "sinonimos": [],
+    "categoria": "Hierba",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "punado"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0105",
+    "canonico": "merluza negra",
+    "nombrePreferido": "Merluza negra",
+    "sinonimos": [
+      "Pescado blanco firme"
+    ],
+    "categoria": "Pescado",
+    "seccionDefault": "Pescados y mariscos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0106",
+    "canonico": "miel",
+    "nombrePreferido": "Miel",
+    "sinonimos": [
+      "Miel o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "cdas",
+      "cdita"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0107",
+    "canonico": "miel azucar mascabo",
+    "nombrePreferido": "Miel azucar mascabo",
+    "sinonimos": [
+      "Miel, azúcar mascabo o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "seccionDefault": "Dulzor",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0108",
+    "canonico": "morron rojo",
+    "nombrePreferido": "Morron rojo",
+    "sinonimos": [
+      "Morrón",
+      "Morrón rojo o amarillo"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Criolla",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 10,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0109",
+    "canonico": "mostaza",
+    "nombrePreferido": "Mostaza",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cda",
+      "cdita",
+      "cdas"
+    ],
+    "vecesUsado": 7,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0110",
+    "canonico": "mostaza dijon",
+    "nombrePreferido": "Mostaza dijon",
+    "sinonimos": [
+      "Mostaza Dijon o común"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0111",
+    "canonico": "muslos",
+    "nombrePreferido": "Muslos",
+    "sinonimos": [
+      "Muslos o pata muslo de pollo"
+    ],
+    "categoria": "Pollo",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0112",
+    "canonico": "naranja",
+    "nombrePreferido": "Naranja",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Aromas",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0113",
+    "canonico": "neutro",
+    "nombrePreferido": "Neutro",
+    "sinonimos": [],
+    "categoria": "Materia grasa",
+    "seccionDefault": "Materia grasa",
+    "unidadesHabituales": [
+      "cdas",
+      "cda"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0114",
+    "canonico": "nueces",
+    "nombrePreferido": "Nueces",
+    "sinonimos": [
+      "Nueces o almendras",
+      "Nueces picadas"
+    ],
+    "categoria": "Fruto seco",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "g",
+      "cdas"
+    ],
+    "vecesUsado": 7,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0115",
+    "canonico": "nuez moscada",
+    "nombrePreferido": "Nuez moscada",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Guarnicion baja en hidratos",
+    "unidadesHabituales": [],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0116",
+    "canonico": "ojo de bife",
+    "nombrePreferido": "Ojo de bife",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "bifes"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0117",
+    "canonico": "oregano",
+    "nombrePreferido": "Oregano",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0118",
+    "canonico": "palitos de brochette",
+    "nombrePreferido": "Palitos de brochette",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "seccionDefault": "Utensilios",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0119",
+    "canonico": "palta",
+    "nombrePreferido": "Palta",
+    "sinonimos": [],
+    "categoria": "Fruta / verdura",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "unidad",
+      "unidades"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0120",
+    "canonico": "paltas maduras",
+    "nombrePreferido": "Paltas maduras",
+    "sinonimos": [],
+    "categoria": "Fruta / verdura",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0121",
+    "canonico": "pan",
+    "nombrePreferido": "Pan",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": true,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0122",
+    "canonico": "pan de campo",
+    "nombrePreferido": "Pan de campo",
+    "sinonimos": [
+      "Pan de campo o baguette"
+    ],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0123",
+    "canonico": "pan de hamburguesa",
+    "nombrePreferido": "Pan de hamburguesa",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0124",
+    "canonico": "pan pita",
+    "nombrePreferido": "Pan pita",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0125",
+    "canonico": "pan tostado",
+    "nombrePreferido": "Pan tostado",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0126",
+    "canonico": "papa",
+    "nombrePreferido": "Papa",
+    "sinonimos": [
+      "Papas",
+      "Papas aplastadas o rústicas",
+      "Papas chicas",
+      "Papas o batatas"
+    ],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "g",
+      "kg",
+      "unidad",
+      "unidades"
+    ],
+    "vecesUsado": 9,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0127",
+    "canonico": "passata de tomate",
+    "nombrePreferido": "Passata de tomate",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Base de sabor",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0128",
+    "canonico": "pasta de mani sin azucar",
+    "nombrePreferido": "Pasta de mani sin azucar",
+    "sinonimos": [],
+    "categoria": "Fruto seco",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0129",
+    "canonico": "pata muslo de pollo",
+    "nombrePreferido": "Pata muslo de pollo",
+    "sinonimos": [],
+    "categoria": "Pollo",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0130",
+    "canonico": "pechuga de pollo",
+    "nombrePreferido": "Pechuga de pollo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0131",
+    "canonico": "peperoncino",
+    "nombrePreferido": "Peperoncino",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0132",
+    "canonico": "pepino",
+    "nombrePreferido": "Pepino",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Bastones",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0133",
+    "canonico": "pepinos",
+    "nombrePreferido": "Pepinos",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0134",
+    "canonico": "pera",
+    "nombrePreferido": "Pera",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0135",
+    "canonico": "peras firmes",
+    "nombrePreferido": "Peras firmes",
+    "sinonimos": [
+      "Peras firmes o manzanas"
+    ],
+    "categoria": "Fruta",
+    "seccionDefault": "Fruta",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0136",
+    "canonico": "perejil",
+    "nombrePreferido": "Perejil",
+    "sinonimos": [
+      "Perejil fresco",
+      "Perejil o ciboulette",
+      "Perejil o cilantro",
+      "Perejil o menta"
+    ],
+    "categoria": "Hierba",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "punado",
+      "cda",
+      "cdas"
+    ],
+    "vecesUsado": 13,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0137",
+    "canonico": "pimenton",
+    "nombrePreferido": "Pimenton",
+    "sinonimos": [
+      "Pimentón o especias grill"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0138",
+    "canonico": "pimenton ahumado",
+    "nombrePreferido": "Pimenton ahumado",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0139",
+    "canonico": "pimenton dulce",
+    "nombrePreferido": "Pimenton dulce",
+    "sinonimos": [
+      "Pimentón"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 9,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0140",
+    "canonico": "pimienta negra",
+    "nombrePreferido": "Pimienta negra",
+    "sinonimos": [
+      "Pimienta",
+      "Sal gruesa y pimienta",
+      "Sal y pimienta"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "pizca"
+    ],
+    "vecesUsado": 39,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0141",
+    "canonico": "pollo cocido desmenuzado",
+    "nombrePreferido": "Pollo cocido desmenuzado",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0142",
+    "canonico": "pollo deshuesado",
+    "nombrePreferido": "Pollo deshuesado",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0143",
+    "canonico": "pollo en cubos",
+    "nombrePreferido": "Pollo en cubos",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0144",
+    "canonico": "pollo en tiras",
+    "nombrePreferido": "Pollo en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0145",
+    "canonico": "polvo de hornear",
+    "nombrePreferido": "Polvo de hornear",
+    "sinonimos": [],
+    "categoria": "Repostería",
+    "seccionDefault": "Repostería",
+    "unidadesHabituales": [
+      "cdita",
+      "cditas"
+    ],
+    "vecesUsado": 15,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0146",
+    "canonico": "portobello",
+    "nombrePreferido": "Portobello",
+    "sinonimos": [],
+    "categoria": "Hongo",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0147",
+    "canonico": "provoleta",
+    "nombrePreferido": "Provoleta",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0148",
+    "canonico": "psyllium",
+    "nombrePreferido": "Psyllium",
+    "sinonimos": [],
+    "categoria": "Semilla",
+    "seccionDefault": "Estructura",
+    "unidadesHabituales": [
+      "g",
+      "cda"
+    ],
+    "vecesUsado": 6,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0149",
+    "canonico": "queso crema",
+    "nombrePreferido": "Queso crema",
+    "sinonimos": [
+      "Queso crema o yogur natural"
+    ],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0150",
+    "canonico": "queso fresco",
+    "nombrePreferido": "Queso fresco",
+    "sinonimos": [
+      "Queso fresco o rallado"
+    ],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0151",
+    "canonico": "queso rallado",
+    "nombrePreferido": "Queso rallado",
+    "sinonimos": [
+      "Queso rallado o fresco"
+    ],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0152",
+    "canonico": "queso untable",
+    "nombrePreferido": "Queso untable",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0153",
+    "canonico": "rallado",
+    "nombrePreferido": "Rallado",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0154",
+    "canonico": "ralladura de limon",
+    "nombrePreferido": "Ralladura de limon",
+    "sinonimos": [
+      "Ralladura de limón o naranja"
+    ],
+    "categoria": "Fruta",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0155",
+    "canonico": "rebanadas de pan",
+    "nombrePreferido": "Rebanadas de pan",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0156",
+    "canonico": "repollo blanco",
+    "nombrePreferido": "Repollo blanco",
+    "sinonimos": [
+      "Repollo blanco o colorado"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0157",
+    "canonico": "ribs de cerdo",
+    "nombrePreferido": "Ribs de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "seccionDefault": "Principal",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0158",
+    "canonico": "romero",
+    "nombrePreferido": "Romero",
+    "sinonimos": [
+      "Romero o pimentón",
+      "Romero o tomillo"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "ramita",
+      "cdita"
+    ],
+    "vecesUsado": 7,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0159",
+    "canonico": "rucula",
+    "nombrePreferido": "Rucula",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0160",
+    "canonico": "rusticas",
+    "nombrePreferido": "Rusticas",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Opcional familia",
+    "unidadesHabituales": [],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0161",
+    "canonico": "sal fina",
+    "nombrePreferido": "Sal fina",
+    "sinonimos": [
+      "Sal",
+      "Sal y pimienta"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita",
+      "pizca"
+    ],
+    "vecesUsado": 61,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0162",
+    "canonico": "sal gruesa",
+    "nombrePreferido": "Sal gruesa",
+    "sinonimos": [
+      "Sal gruesa y pimienta"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0163",
+    "canonico": "salsa de soja",
+    "nombrePreferido": "Salsa de soja",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Aderezo",
+    "unidadesHabituales": [
+      "cdas",
+      "ml"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0164",
+    "canonico": "salteado",
+    "nombrePreferido": "Salteado",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Guarnicion baja en hidratos",
+    "unidadesHabituales": [
+      "dientes"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0165",
+    "canonico": "semillas de calabaza",
+    "nombrePreferido": "Semillas de calabaza",
+    "sinonimos": [],
+    "categoria": "Semilla",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0166",
+    "canonico": "semillas de chia",
+    "nombrePreferido": "Semillas de chia",
+    "sinonimos": [
+      "Semillas de chía o lino"
+    ],
+    "categoria": "Semilla",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0167",
+    "canonico": "semillas de girasol",
+    "nombrePreferido": "Semillas de girasol",
+    "sinonimos": [],
+    "categoria": "Semilla",
+    "seccionDefault": "Semillas",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0168",
+    "canonico": "semillas de lino",
+    "nombrePreferido": "Semillas de lino",
+    "sinonimos": [
+      "Lino molido",
+      "Semillas de lino enteras",
+      "Semillas de lino molidas"
+    ],
+    "categoria": "Semilla",
+    "seccionDefault": "Semillas",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 8,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0169",
+    "canonico": "semillas de sesamo",
+    "nombrePreferido": "Semillas de sesamo",
+    "sinonimos": [
+      "Semillas de sésamo o mani"
+    ],
+    "categoria": "Semilla",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "cda",
+      "cdas"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0170",
+    "canonico": "sesamo",
+    "nombrePreferido": "Sesamo",
+    "sinonimos": [],
+    "categoria": "Semilla",
+    "seccionDefault": "Semillas",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0171",
+    "canonico": "sriracha",
+    "nombrePreferido": "Sriracha",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Laqueado",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0172",
+    "canonico": "tahini",
+    "nombrePreferido": "Tahini",
+    "sinonimos": [],
+    "categoria": "Semilla / pasta",
+    "seccionDefault": "Hummus",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0173",
+    "canonico": "tinto",
+    "nombrePreferido": "Tinto",
+    "sinonimos": [],
+    "categoria": "Bebida / cocción",
+    "seccionDefault": "Salsa",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0174",
+    "canonico": "tomate fresco",
+    "nombrePreferido": "Tomate fresco",
+    "sinonimos": [
+      "Tomate"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Criolla",
+    "unidadesHabituales": [
+      "unidades",
+      "unidad"
+    ],
+    "vecesUsado": 4,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0175",
+    "canonico": "tomate triturado",
+    "nombrePreferido": "Tomate triturado",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Base de sabor",
+    "unidadesHabituales": [
+      "g",
+      "ml"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0176",
+    "canonico": "tomates cherry",
+    "nombrePreferido": "Tomates cherry",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Acompañamiento",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0177",
+    "canonico": "tomillo",
+    "nombrePreferido": "Tomillo",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "ramita"
+    ],
+    "vecesUsado": 2,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0178",
+    "canonico": "tortillas",
+    "nombrePreferido": "Tortillas",
+    "sinonimos": [],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0179",
+    "canonico": "tostadas integrales",
+    "nombrePreferido": "Tostadas integrales",
+    "sinonimos": [
+      "Tostadas"
+    ],
+    "categoria": "Hidrato",
+    "seccionDefault": "Hidrato opcional",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0180",
+    "canonico": "verdeo",
+    "nombrePreferido": "Verdeo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Terminacion",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0181",
+    "canonico": "verduras",
+    "nombrePreferido": "Verduras",
+    "sinonimos": [],
+    "categoria": "Fondo",
+    "seccionDefault": "Líquido de cocción",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0182",
+    "canonico": "vinagre de arroz",
+    "nombrePreferido": "Vinagre de arroz",
+    "sinonimos": [
+      "Vinagre de arroz o limón",
+      "Vinagre de arroz o manzana"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Aderezo",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0183",
+    "canonico": "vinagre de manzana",
+    "nombrePreferido": "Vinagre de manzana",
+    "sinonimos": [],
+    "categoria": "Condimento",
+    "seccionDefault": "Condimentos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0184",
+    "canonico": "vinagre de vino",
+    "nombrePreferido": "Vinagre de vino",
+    "sinonimos": [
+      "Vinagre",
+      "Vinagre o limón"
+    ],
+    "categoria": "Condimento",
+    "seccionDefault": "Aderezo",
+    "unidadesHabituales": [
+      "cdas",
+      "cda"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0185",
+    "canonico": "vino blanco seco",
+    "nombrePreferido": "Vino blanco seco",
+    "sinonimos": [
+      "Vino blanco o tinto"
+    ],
+    "categoria": "Bebida / cocción",
+    "seccionDefault": "Líquido de cocción",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 3,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0186",
+    "canonico": "vino malbec",
+    "nombrePreferido": "Vino malbec",
+    "sinonimos": [],
+    "categoria": "Bebida / cocción",
+    "seccionDefault": "Líquido de cocción",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0187",
+    "canonico": "vino tinto",
+    "nombrePreferido": "Vino tinto",
+    "sinonimos": [],
+    "categoria": "Bebida / cocción",
+    "seccionDefault": "Líquido",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0188",
+    "canonico": "whey protein powder",
+    "nombrePreferido": "Whey protein powder",
+    "sinonimos": [],
+    "categoria": "Suplemento",
+    "seccionDefault": "Proteína",
+    "unidadesHabituales": [
+      "cup"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0189",
+    "canonico": "yemas de huevo",
+    "nombrePreferido": "Yemas de huevo",
+    "sinonimos": [],
+    "categoria": "Huevo",
+    "seccionDefault": "Base",
+    "unidadesHabituales": [
+      "unidades"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0190",
+    "canonico": "yogur griego",
+    "nombrePreferido": "Yogur griego",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "seccionDefault": "Base láctea",
+    "unidadesHabituales": [
+      "cdas"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0191",
+    "canonico": "yogur natural",
+    "nombrePreferido": "Yogur natural",
+    "sinonimos": [
+      "Yogur natural o griego"
+    ],
+    "categoria": "Lacteo",
+    "seccionDefault": "Lácteo opcional",
+    "unidadesHabituales": [
+      "cdas",
+      "g"
+    ],
+    "vecesUsado": 5,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0192",
+    "canonico": "yogur vegetal sin azucar",
+    "nombrePreferido": "Yogur vegetal sin azucar",
+    "sinonimos": [],
+    "categoria": "Conserva",
+    "seccionDefault": "Base sin lácteos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "vecesUsado": 1,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0193",
+    "canonico": "zanahoria",
+    "nombrePreferido": "Zanahoria",
+    "sinonimos": [
+      "Zanahorias"
+    ],
+    "categoria": "Verdura",
+    "seccionDefault": "Verduras",
+    "unidadesHabituales": [
+      "unidades",
+      "unidad"
+    ],
+    "vecesUsado": 7,
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "idIngrediente": "ING-0194",
+    "canonico": "zucchini",
+    "nombrePreferido": "Zucchini",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "seccionDefault": "Vegetales",
+    "unidadesHabituales": [
+      "unidad",
+      "unidades"
+    ],
+    "vecesUsado": 7,
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

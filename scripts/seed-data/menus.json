@@ -1,0 +1,269 @@
+[
+  {
+    "idMenu": "MENU-0001",
+    "nombreMenu": "Español de mar",
+    "estado": "Para probar",
+    "estilo": "Español / mediterráneo",
+    "dificultad": "Alta",
+    "sinLacteos": "Sí",
+    "hidratos": "Medio",
+    "hidratoOpcional": "Arroz blanco o pan aparte",
+    "tiempoActivoLabel": "1 h 15 min",
+    "tiempoTotalLabel": "2 h",
+    "escenarioUso": "Sábado especial / invitados",
+    "descripcion": "Menú de mar con entrada de langostinos, zarzuela como principal y postre frutal sin crema.",
+    "queComeJp": "Zarzuela sola, sin arroz ni pan. Postre sin crema.",
+    "queComeFamilia": "Arroz blanco o pan para acompañar.",
+    "riesgos": "Coordinar tiempos de mariscos para que no se pasen.",
+    "porQueEsEspecial": "Muy especial, ideal para comida evento.",
+    "climaDelMenu": "Noche de a dos",
+    "idealPara": "Restaurante",
+    "aptoNocheDeADos": "Sí",
+    "notasOcasion": "Menú de mar para una cena especial; mantener arroz o pan aparte.",
+    "componentes": [
+      {
+        "orden": 1,
+        "tipo": "Entrada",
+        "idReceta": "REC-0101",
+        "obligatorio": true,
+        "notas": "Usar aceite de oliva, ajo, perejil y limón. Sin manteca."
+      },
+      {
+        "orden": 2,
+        "tipo": "Principal",
+        "idReceta": "REC-0102",
+        "obligatorio": true,
+        "notas": "Servir sola para Juan Pablo."
+      },
+      {
+        "orden": 3,
+        "tipo": "Acompañamiento",
+        "idReceta": "REC-0103",
+        "obligatorio": false,
+        "notas": "Solo para familia/invitados."
+      },
+      {
+        "orden": 4,
+        "tipo": "Postre",
+        "idReceta": "REC-0104",
+        "obligatorio": false,
+        "notas": "Sin crema ni helado común."
+      }
+    ]
+  },
+  {
+    "idMenu": "MENU-0002",
+    "nombreMenu": "Argentino gourmet",
+    "estado": "Para probar",
+    "estilo": "Argentino gourmet",
+    "dificultad": "Media-alta",
+    "sinLacteos": "Sí",
+    "hidratos": "Sí",
+    "hidratoOpcional": "Papas rústicas aparte",
+    "tiempoActivoLabel": "1 h",
+    "tiempoTotalLabel": "3 h 30 min",
+    "escenarioUso": "Domingo / invierno",
+    "descripcion": "Entrada de berenjenas, bondiola braseada al Malbec, puré de coliflor y postre de manzanas.",
+    "queComeJp": "Bondiola + puré de coliflor + berenjenas, sin papas.",
+    "queComeFamilia": "Papas rústicas para quienes quieran.",
+    "riesgos": "No apurar el braseado ni dejar salsa aguada.",
+    "porQueEsEspecial": "Menú base del sistema.",
+    "climaDelMenu": "Domingo familiar",
+    "idealPara": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasOcasion": "Se adapta a noche de a dos bajando porciones y dejando papas como extra aparte.",
+    "componentes": [
+      {
+        "orden": 1,
+        "tipo": "Entrada",
+        "idReceta": "REC-0201",
+        "obligatorio": true,
+        "notas": "Entrada sin lácteos, buena para abrir el menú."
+      },
+      {
+        "orden": 2,
+        "tipo": "Principal",
+        "idReceta": "REC-0001",
+        "obligatorio": true,
+        "notas": "Receta semilla ya cargada."
+      },
+      {
+        "orden": 3,
+        "tipo": "Acompañamiento",
+        "idReceta": "REC-0202",
+        "obligatorio": true,
+        "notas": "Guarnicion principal para Juan Pablo."
+      },
+      {
+        "orden": 4,
+        "tipo": "Extra",
+        "idReceta": "REC-0203",
+        "obligatorio": false,
+        "notas": "Para familia/adolescentes."
+      },
+      {
+        "orden": 5,
+        "tipo": "Postre",
+        "idReceta": "REC-0204",
+        "obligatorio": false,
+        "notas": "Sin crema. Controlar azúcar."
+      }
+    ]
+  },
+  {
+    "idMenu": "MENU-0003",
+    "nombreMenu": "Steakhouse familiar",
+    "estado": "Para probar",
+    "estilo": "Steakhouse",
+    "dificultad": "Media-alta",
+    "sinLacteos": "Sí",
+    "hidratos": "Sí",
+    "hidratoOpcional": "Papas aplastadas aparte",
+    "tiempoActivoLabel": "1 h",
+    "tiempoTotalLabel": "1 h 45 min",
+    "escenarioUso": "Sábado a la noche",
+    "descripcion": "Menú tipo steakhouse con entrada grillada, ojo de bife con salsa de hongos sin crema y vegetales.",
+    "queComeJp": "Carne + salsa sin crema + vegetales grillados.",
+    "queComeFamilia": "Papas aplastadas para los chicos.",
+    "riesgos": "Punto de la carne y reducción de salsa.",
+    "porQueEsEspecial": "Muy aceptable para adolescentes.",
+    "climaDelMenu": "Sábado noche",
+    "idealPara": "Restaurante",
+    "aptoNocheDeADos": "Adaptable",
+    "notasOcasion": "Muy bueno para dos si se cuida el punto de la carne y se priorizan vegetales.",
+    "componentes": [
+      {
+        "orden": 1,
+        "tipo": "Entrada",
+        "idReceta": "REC-0301",
+        "obligatorio": true,
+        "notas": "Evitar provoleta para Juan Pablo; puede ser opcional solo para otros."
+      },
+      {
+        "orden": 2,
+        "tipo": "Principal",
+        "idReceta": "REC-0302",
+        "obligatorio": true,
+        "notas": "Salsa con hongos, vino/caldo y mostaza, sin crema."
+      },
+      {
+        "orden": 3,
+        "tipo": "Acompañamiento",
+        "idReceta": "REC-0303",
+        "obligatorio": true,
+        "notas": "Guarnicion central."
+      },
+      {
+        "orden": 4,
+        "tipo": "Extra",
+        "idReceta": "REC-0304",
+        "obligatorio": false,
+        "notas": "Para chicos/familia."
+      }
+    ]
+  },
+  {
+    "idMenu": "MENU-0004",
+    "nombreMenu": "Asiático especial",
+    "estado": "Para probar",
+    "estilo": "Asiático",
+    "dificultad": "Media-alta",
+    "sinLacteos": "Sí",
+    "hidratos": "Medio",
+    "hidratoOpcional": "Arroz jazmín aparte",
+    "tiempoActivoLabel": "1 h",
+    "tiempoTotalLabel": "2 h 30 min",
+    "escenarioUso": "Sábado / comida distinta",
+    "descripcion": "Ensalada fresca, ribs laqueadas, ensalada de repollo asiática y arroz opcional.",
+    "queComeJp": "Ribs + ensaladas, sin arroz. Controlar azúcar de laqueado.",
+    "queComeFamilia": "Arroz jazmín para acompañar.",
+    "riesgos": "Balance dulce/salado y cocción tierna de ribs.",
+    "porQueEsEspecial": "Divertido y distinto.",
+    "climaDelMenu": "Sábado noche",
+    "idealPara": "Divertido",
+    "aptoNocheDeADos": "Adaptable",
+    "notasOcasion": "Plan más informal y compartido; ideal si se busca algo distinto.",
+    "componentes": [
+      {
+        "orden": 1,
+        "tipo": "Entrada",
+        "idReceta": "REC-0401",
+        "obligatorio": true,
+        "notas": "Fresca, rápida, sin lácteos."
+      },
+      {
+        "orden": 2,
+        "tipo": "Principal",
+        "idReceta": "REC-0402",
+        "obligatorio": true,
+        "notas": "Controlar azúcar/miel; se puede hacer bajo en azúcar."
+      },
+      {
+        "orden": 3,
+        "tipo": "Acompañamiento",
+        "idReceta": "REC-0403",
+        "obligatorio": true,
+        "notas": "Muy buena para cortar grasa de ribs."
+      },
+      {
+        "orden": 4,
+        "tipo": "Extra",
+        "idReceta": "REC-0404",
+        "obligatorio": false,
+        "notas": "Solo para quien quiera hidrato."
+      }
+    ]
+  },
+  {
+    "idMenu": "MENU-0005",
+    "nombreMenu": "Marroquí distinto",
+    "estado": "Para probar",
+    "estilo": "Marroquí",
+    "dificultad": "Media",
+    "sinLacteos": "Sí",
+    "hidratos": "Medio",
+    "hidratoOpcional": "Cous cous aparte",
+    "tiempoActivoLabel": "50 min",
+    "tiempoTotalLabel": "1 h 45 min",
+    "escenarioUso": "Domingo / otoño",
+    "descripcion": "Hummus con vegetales, pollo especiado con aceitunas y limón, coliflor al horno y cous cous opcional.",
+    "queComeJp": "Pollo + coliflor + bastones de verdura, poco hummus si se quiere bajar hidratos.",
+    "queComeFamilia": "Cous cous para quienes quieran.",
+    "riesgos": "No pasarse con especias fuertes.",
+    "porQueEsEspecial": "Aromático, diferente y adaptable.",
+    "climaDelMenu": "Noche de a dos",
+    "idealPara": "Exótico",
+    "aptoNocheDeADos": "Sí",
+    "notasOcasion": "Aromático, diferente y fácil de adaptar a bajo en hidratos.",
+    "componentes": [
+      {
+        "orden": 1,
+        "tipo": "Entrada",
+        "idReceta": "REC-0501",
+        "obligatorio": false,
+        "notas": "Hummus en porcion moderada para Juan Pablo; bastones libres."
+      },
+      {
+        "orden": 2,
+        "tipo": "Principal",
+        "idReceta": "REC-0502",
+        "obligatorio": true,
+        "notas": "Principal sin lácteos y bajo en hidratos."
+      },
+      {
+        "orden": 3,
+        "tipo": "Acompañamiento",
+        "idReceta": "REC-0503",
+        "obligatorio": true,
+        "notas": "Reemplazo bajo en hidratos del cous cous."
+      },
+      {
+        "orden": 4,
+        "tipo": "Extra",
+        "idReceta": "REC-0504",
+        "obligatorio": false,
+        "notas": "Para familia/adolescentes."
+      }
+    ]
+  }
+]

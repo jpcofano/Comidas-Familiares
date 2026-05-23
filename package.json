@@ -11,6 +11,7 @@
     "bootstrap:config": "tsx scripts/bootstrap-config.ts",
     "seed:firestore": "tsx scripts/seed-firestore.ts",
     "seed:planes": "tsx scripts/seed-planes-prueba.ts",
+    "reseed": "tsx scripts/reseed-ingredientes.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",

@@ -54,7 +54,7 @@ function ItemRow({
             fontSize: "var(--fs-sm)", color: "var(--text)",
             textDecoration: item.yaTengo ? "line-through" : "none",
           }}>
-            {item.ingredienteLabel}
+            {item.nombrePreferido}
           </span>
           {item.cantidadLabel && (
             <span className="meta" style={{ marginLeft: "var(--space-2)" }}>
@@ -85,7 +85,10 @@ function ItemRow({
         }}>
           {item.aportes.map((a, i) => (
             <p key={i} className="meta" style={{ margin: "2px 0" }}>
-              · {a.cantidadLabel} {item.unidad} — {a.nombreReceta}
+              {a.tipoAporte === "alternativa" ? "↳" : "·"} {a.textoOriginal}
+              {a.cantidad > 0 ? ` (${a.cantidad} ${a.unidad})` : ""} — {a.nombreReceta}
+              {a.tipoAporte === "alternativa" && a.alternativaCon?.length
+                ? ` · alt: ${a.alternativaCon.join(", ")}` : ""}
             </p>
           ))}
           {item.notas && (
@@ -202,14 +205,14 @@ export function ComprasRoute() {
       if (!map.has(cat)) map.set(cat, []);
       map.get(cat)!.push(item);
     }
-    for (const [, ings] of map) ings.sort((a, b) => a.ingredienteLabel.localeCompare(b.ingredienteLabel, "es"));
+    for (const [, ings] of map) ings.sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es"));
     return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
   }, [itemsFiltrados]);
 
   // Agrupar por receta
   const porReceta = useMemo(() => {
     const map = agruparPorReceta(itemsFiltrados);
-    for (const [, ings] of map) ings.sort((a, b) => a.ingredienteLabel.localeCompare(b.ingredienteLabel, "es"));
+    for (const [, ings] of map) ings.sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es"));
     return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
   }, [itemsFiltrados]);
 

@@ -69,22 +69,37 @@ export interface RangoNumerico {
   raw: string;
 }
 
-// ─── Ingrediente ──────────────────────────────────────────────────────────────
+// ─── Catálogo de ingredientes ─────────────────────────────────────────────────
 export interface Ingrediente {
-  nroOrden: number;
-  ingrediente: string;
-  ingredienteCanonico: string;
-  cantidad: number | null;
+  idIngrediente: string;
+  canonico: string;
+  nombrePreferido: string;
+  sinonimos: string[];
+  categoria: string;
+  seccionDefault: string;
+  unidadesHabituales: string[];
+  vecesUsado: number;
+  ambiguo: boolean;
+  origen: "seed" | "import" | "manual";
+  fechaCreacion?: FirestoreTimestamp;
+  ultimaModificacion?: FirestoreTimestamp;
+}
+
+// ─── Ingrediente en receta (referencia al catálogo) ───────────────────────────
+export interface IngredienteEnReceta {
+  idIngrediente: string;
+  textoOriginal: string;
+  preparacion?: string;
+  seccion?: string;
+  cantidad?: string | number;
+  cantidadLabel?: string;
   cantidadMin?: number;
   cantidadMax?: number;
-  cantidadLabel: string;
-  unidad: string;
-  unidadOriginal?: string;
-  categoria: string;
-  seccion?: string;
-  opcional: boolean;
-  paraJuanPablo?: boolean;
+  unidad?: string;
+  categoriaOverride?: string;
+  opcional?: boolean;
   notas?: string;
+  alternativas?: Array<{ idIngrediente: string }>;
 }
 
 // ─── Paso ─────────────────────────────────────────────────────────────────────
@@ -144,7 +159,7 @@ export interface Receta {
   urlFuente?: string;
   imagenUrl?: string;
 
-  ingredientes: Ingrediente[];
+  ingredientes: IngredienteEnReceta[];
   pasos: Paso[];
 
   vecesCocinada: number;
@@ -262,25 +277,29 @@ export interface Historial {
 }
 
 // ─── Compras ──────────────────────────────────────────────────────────────────
-export interface Aporte {
+export interface AporteCompra {
   idPlan: string;
   idReceta: string;
   nombreReceta: string;
+  textoOriginal: string;
+  tipoAporte: "receta" | "alternativa";
+  alternativaCon?: string[];
   cantidad: number;
-  cantidadLabel: string;
+  unidad: string;
 }
 
 export interface ItemCompra {
   id: string;
-  ingredienteCanonico: string;
-  ingredienteLabel: string;
+  idIngrediente: string;
+  nombrePreferido: string;
+  categoria: string;
   cantidadTotal: number;
   cantidadLabel: string;
   unidad: string;
-  categoria: string;
+  opcional: boolean;
   yaTengo: boolean;
-  aportes: Aporte[];
-  notas?: string;
+  aportes: AporteCompra[];
+  notas: string;
 }
 
 export interface ListaCompras {

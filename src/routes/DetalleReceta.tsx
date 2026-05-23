@@ -320,15 +320,15 @@ export function DetalleRecetaRoute() {
                   </p>
                 )}
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {ings.map((ing) => (
-                    <li key={ing.nroOrden} style={{
+                  {ings.map((ing, idx) => (
+                    <li key={idx} style={{
                       display: "flex", justifyContent: "space-between",
                       padding: "5px 0", borderBottom: "1px solid var(--line)",
                       fontSize: "var(--fs-sm)", color: ing.opcional ? "var(--muted)" : "var(--text)",
                     }}>
-                      <span>{ing.ingrediente}{ing.opcional ? " (opcional)" : ""}</span>
+                      <span>{ing.textoOriginal}{ing.opcional ? " (opcional)" : ""}</span>
                       <span style={{ color: "var(--muted-strong)", flexShrink: 0, marginLeft: "var(--space-3)" }}>
-                        {ing.cantidadLabel} {ing.unidad}
+                        {ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "")} {ing.unidad ?? ""}
                       </span>
                     </li>
                   ))}
