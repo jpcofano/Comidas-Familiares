@@ -20,7 +20,7 @@ import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { getCatalogo } from "./ingredientes";
 
-const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista"] as const;
+const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista", "Cocinando"] as const;
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 

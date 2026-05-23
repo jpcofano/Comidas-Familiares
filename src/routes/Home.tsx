@@ -5,7 +5,8 @@ import { subscribeToPlanesActivos, marcarCocinada, descartarPlan } from "../data
 import { getListaById } from "../data/compras";
 import { getSemanaActual } from "../lib/fechas";
 import { separarPlanes } from "../lib/home";
-import type { Plan, ListaCompras } from "../types/models";
+import type { Plan, ListaCompras, Menu } from "../types/models";
+import { getMenu } from "../data/menus";
 
 // ─── Public route ─────────────────────────────────────────────────────────────
 
@@ -36,6 +37,7 @@ function EstadoBadge({ estado }: { estado: string }) {
     "Elegida":          { bg: "var(--surface-alt)",  color: "var(--muted)" },
     "Compra pendiente": { bg: "var(--warn-bg)",       color: "var(--warn-text)" },
     "Compra lista":     { bg: "var(--info-bg)",       color: "var(--info-text)" },
+    "Cocinando":        { bg: "var(--primary)",       color: "#fff" },
     "Cocinada":         { bg: "var(--ok-bg)",         color: "var(--ok-text)" },
   };
   const s = styles[estado] ?? styles["Elegida"];
@@ -61,10 +63,12 @@ function detallePath(plan: Plan): string {
 
 interface PlanCardProps {
   plan: Plan;
+  menu?: Menu | null;
   featured?: boolean;
   isEspecial?: boolean;
   busy: boolean;
   confirming: boolean;
+  onCocinar: () => void;
   onMarcarCocinada: () => void;
   onAskDiscard: () => void;
   onCancelDiscard: () => void;
@@ -74,10 +78,14 @@ interface PlanCardProps {
 }
 
 function PlanCard({
-  plan, featured, isEspecial, busy, confirming,
-  onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onVerDetalle,
+  plan, menu, featured, isEspecial, busy, confirming,
+  onCocinar, onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onVerDetalle,
 }: PlanCardProps) {
-  const canCook = ["Elegida", "Compra pendiente", "Compra lista"].includes(plan.estado);
+  const canCocinar = ["Compra lista", "Cocinando"].includes(plan.estado);
+
+  // Progreso de menú en estado Cocinando
+  const cocinados = plan.componentesCocinados?.length ?? 0;
+  const obligatorios = menu?.componentes.filter((c) => c.obligatorio).length ?? 0;
 
   return (
     <div style={{
@@ -101,22 +109,38 @@ function PlanCard({
       )}
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-2)" }}>
-        {/* Fix 2.1: color explícito para texto principal sobre fondo claro */}
-        <p style={{
-          fontWeight: "var(--fw-medium)",
-          fontSize: featured ? "var(--fs-md)" : "var(--fs-base)",
-          color: "var(--text-strong)",
-          margin: 0,
-        }}>
-          {plan.nombreSeleccion}
-        </p>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p style={{
+            fontWeight: "var(--fw-medium)",
+            fontSize: featured ? "var(--fs-md)" : "var(--fs-base)",
+            color: "var(--text-strong)",
+            margin: 0,
+          }}>
+            {plan.nombreSeleccion}
+          </p>
+          {plan.estado === "Cocinando" && plan.tipoSeleccion === "menu" && obligatorios > 0 && (
+            <p className="meta" style={{ margin: "2px 0 0" }}>
+              {cocinados}/{obligatorios} cocinados
+            </p>
+          )}
+        </div>
         <EstadoBadge estado={plan.estado} />
       </div>
 
       <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)", flexWrap: "wrap", alignItems: "center" }}>
-        {canCook && (
-          <button className="btn btn-primary" onClick={onMarcarCocinada} disabled={busy} style={{ fontSize: "var(--fs-sm)" }}>
-            {busy ? "…" : "Marcar Cocinada"}
+        {canCocinar && (
+          <button className="btn btn-primary" onClick={onCocinar} disabled={busy} style={{ fontSize: "var(--fs-sm)" }}>
+            {busy ? "…" : plan.estado === "Cocinando" ? "Continuar cocinando" : "Cocinar"}
+          </button>
+        )}
+        {canCocinar && (
+          <button
+            className="btn btn-secondary"
+            onClick={onMarcarCocinada}
+            disabled={busy}
+            style={{ fontSize: "var(--fs-xs)", padding: "4px 10px" }}
+          >
+            Marcar Cocinada
           </button>
         )}
         {plan.estado === "Cocinada" && (
@@ -124,7 +148,6 @@ function PlanCard({
             Ir a evaluar
           </button>
         )}
-        {/* Fix 2.3: botón Ver receta en todas las tarjetas */}
         <button className="btn btn-secondary" onClick={onVerDetalle} style={{ fontSize: "var(--fs-sm)" }}>
           Ver receta
         </button>
@@ -179,6 +202,7 @@ function HomeJP() {
   const [planes, setPlanes] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [lista, setLista] = useState<ListaCompras | null>(null);
+  const [menusMap, setMenusMap] = useState<Map<string, Menu>>(new Map());
   const [confirmDiscard, setConfirmDiscard] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
 
@@ -197,11 +221,29 @@ function HomeJP() {
     getListaById(listaId).then(setLista);
   }, [planes]);
 
+  // Cargar menús de planes tipo menú para mostrar progreso
+  useEffect(() => {
+    const menuPlanes = planes.filter((p) => p.tipoSeleccion === "menu");
+    Promise.all(menuPlanes.map((p) => getMenu(p.idSeleccion))).then((menus) => {
+      const map = new Map<string, Menu>();
+      menuPlanes.forEach((p, i) => { if (menus[i]) map.set(p.idSeleccion, menus[i]!); });
+      setMenusMap(map);
+    });
+  }, [planes]);
+
   const { especial, extras, enProceso } = useMemo(() => separarPlanes(planes), [planes]);
 
-  async function handleMarcarCocinada(idPlan: string) {
-    setBusy(idPlan);
-    await marcarCocinada(idPlan);
+  function handleCocinar(plan: Plan) {
+    if (plan.tipoSeleccion === "menu") {
+      navigate(`/planes/${plan.idPlan}/componentes`);
+    } else {
+      navigate(`/planes/${plan.idPlan}/cocinar/${plan.idSeleccion}`);
+    }
+  }
+
+  async function handleMarcarCocinada(plan: Plan) {
+    setBusy(plan.idPlan);
+    await marcarCocinada(plan.idPlan, { resetComponentes: plan.tipoSeleccion === "menu" });
     setBusy(null);
   }
 
@@ -248,11 +290,13 @@ function HomeJP() {
         <section style={{ marginBottom: "var(--space-2)" }}>
           <PlanCard
             plan={especial}
+            menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
             featured
             isEspecial
             busy={busy === especial.idPlan}
             confirming={confirmDiscard === especial.idPlan}
-            onMarcarCocinada={() => handleMarcarCocinada(especial.idPlan)}
+            onCocinar={() => handleCocinar(especial)}
+            onMarcarCocinada={() => handleMarcarCocinada(especial)}
             onAskDiscard={() => setConfirmDiscard(especial.idPlan)}
             onCancelDiscard={() => setConfirmDiscard(null)}
             onDescartar={() => handleDescartar(especial.idPlan)}
@@ -275,9 +319,11 @@ function HomeJP() {
                   <PlanCard
                     key={p.idPlan}
                     plan={p}
+                    menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
                     busy={busy === p.idPlan}
                     confirming={confirmDiscard === p.idPlan}
-                    onMarcarCocinada={() => handleMarcarCocinada(p.idPlan)}
+                    onCocinar={() => handleCocinar(p)}
+                    onMarcarCocinada={() => handleMarcarCocinada(p)}
                     onAskDiscard={() => setConfirmDiscard(p.idPlan)}
                     onCancelDiscard={() => setConfirmDiscard(null)}
                     onDescartar={() => handleDescartar(p.idPlan)}
@@ -306,9 +352,11 @@ function HomeJP() {
             <PlanCard
               key={p.idPlan}
               plan={p}
+              menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
               busy={busy === p.idPlan}
               confirming={confirmDiscard === p.idPlan}
-              onMarcarCocinada={() => handleMarcarCocinada(p.idPlan)}
+              onCocinar={() => handleCocinar(p)}
+              onMarcarCocinada={() => handleMarcarCocinada(p)}
               onAskDiscard={() => setConfirmDiscard(p.idPlan)}
               onCancelDiscard={() => setConfirmDiscard(null)}
               onDescartar={() => handleDescartar(p.idPlan)}

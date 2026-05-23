@@ -8,6 +8,7 @@ import { BibliotecaRoute } from "./routes/Biblioteca";
 import { ImportarRecetaRoute } from "./routes/ImportarReceta";
 import { DetalleRecetaRoute } from "./routes/DetalleReceta";
 import { CocinarRoute } from "./routes/Cocinar";
+import { SeleccionarComponenteMenuRoute } from "./routes/SeleccionarComponenteMenu";
 import { DetalleMenuRoute } from "./routes/DetalleMenu";
 import { ImportarMenuRoute } from "./routes/ImportarMenu";
 import { ComprasRoute } from "./routes/Compras";
@@ -37,6 +38,8 @@ function App() {
           <Route path="/biblioteca/importar" element={<ImportarRecetaRoute />} />
           <Route path="/recetas/:id" element={<DetalleRecetaRoute />} />
           <Route path="/recetas/:id/cocinar" element={<CocinarRoute />} />
+          <Route path="/planes/:idPlan/cocinar/:idReceta" element={<CocinarRoute />} />
+          <Route path="/planes/:idPlan/componentes" element={<SeleccionarComponenteMenuRoute />} />
           <Route path="/menus/importar" element={<ImportarMenuRoute />} />
           <Route path="/menus/:id" element={<DetalleMenuRoute />} />
           <Route path="/compras" element={<ComprasRoute />} />

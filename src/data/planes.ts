@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, Receta, MiembroId, MemberId } from "../types/models";
+import type { Plan, Historial, Menu, Receta, MiembroId, MemberId, EstadoPlan } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -28,7 +28,7 @@ export async function getPlanesActivos(semanaInicio: string): Promise<Plan[]> {
   const q = query(
     collection(db, "planes"),
     where("semanaInicio", "==", semanaInicio),
-    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinada"])
+    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"])
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => d.data() as Plan);
@@ -48,7 +48,7 @@ export function subscribeToPlanesActivos(
   const q = query(
     collection(db, "planes"),
     where("semanaInicio", "==", semanaInicio),
-    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinada"])
+    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"])
   );
   return onSnapshot(q, (snap) => {
     callback(snap.docs.map((d) => d.data() as Plan));
@@ -110,7 +110,7 @@ export async function descartarPlan(
         query(
           collection(db, "planes"),
           where("origen", "==", `extra:${idPlan}`),
-          where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinada"])
+          where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"])
         )
       );
       for (const extra of extrasSnap.docs) {
@@ -132,11 +132,13 @@ export async function descartarPlan(
 
 export async function marcarCocinada(
   idPlan: string,
-  opciones?: { cocinarExtras: boolean }
+  opciones?: { cocinarExtras?: boolean; resetComponentes?: boolean }
 ): Promise<Result<void, AppError>> {
   try {
     const ref = doc(db, "planes", idPlan);
-    await updateDoc(ref, { estado: "Cocinada" });
+    const updates: Record<string, unknown> = { estado: "Cocinada" };
+    if (opciones?.resetComponentes) updates.componentesCocinados = [];
+    await updateDoc(ref, updates);
 
     if (opciones?.cocinarExtras) {
       const snap = await getDoc(ref);
@@ -159,6 +161,43 @@ export async function marcarCocinada(
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo marcar el plan como Cocinada.";
     return err("plan-marcar-cocinada-failed", msg, e);
+  }
+}
+
+export async function marcarComponenteCocinado(
+  idPlan: string,
+  idReceta: string
+): Promise<Result<{ nuevoEstado: EstadoPlan }, AppError>> {
+  try {
+    const planRef = doc(db, "planes", idPlan);
+    const planSnap = await getDoc(planRef);
+    if (!planSnap.exists()) return err("plan-not-found", "El plan no existe.");
+    const plan = planSnap.data() as Plan;
+
+    const menuRef = doc(db, "menus", plan.idSeleccion);
+    const menuSnap = await getDoc(menuRef);
+    if (!menuSnap.exists()) return err("menu-not-found", "El menú no existe.");
+    const menu = menuSnap.data() as Menu;
+
+    const prevCocinados = plan.componentesCocinados ?? [];
+    const nuevosCocinados = prevCocinados.includes(idReceta)
+      ? prevCocinados
+      : [...prevCocinados, idReceta];
+
+    // Si no hay obligatorios, todos los obligatorios están cocinados vacuamente
+    const obligatorios = menu.componentes.filter((c) => c.obligatorio).map((c) => c.idReceta);
+    const todosObligatoriosCocinados = obligatorios.every((id) => nuevosCocinados.includes(id));
+    const nuevoEstado: EstadoPlan = todosObligatoriosCocinados ? "Cocinada" : "Cocinando";
+
+    await updateDoc(planRef, {
+      estado: nuevoEstado,
+      componentesCocinados: nuevosCocinados,
+    });
+
+    return ok({ nuevoEstado });
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo marcar el componente como cocinado.";
+    return err("marcar-componente-failed", msg, e);
   }
 }
 

@@ -8,7 +8,7 @@ export type MiembroId = typeof MIEMBRO_IDS[number];
 export type Rol = "padre" | "madre" | "hija" | "hijo" | "invitado";
 
 // ─── Plan ─────────────────────────────────────────────────────────────────────
-export const ESTADOS_PLAN_ACTIVOS = ["Elegida", "Compra pendiente", "Compra lista", "Cocinada"] as const;
+export const ESTADOS_PLAN_ACTIVOS = ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"] as const;
 export const ESTADOS_PLAN_FINALES = ["Evaluada"] as const;
 export const ESTADOS_PLAN = [...ESTADOS_PLAN_ACTIVOS, ...ESTADOS_PLAN_FINALES] as const;
 export type EstadoPlan = typeof ESTADOS_PLAN[number];
@@ -248,6 +248,7 @@ export interface Plan {
   votos: Record<MiembroId, number | null>;
   comentariosPlan: Record<MiembroId, string>;
   datosCocinero: DatosCocinero | null;
+  componentesCocinados?: string[];
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────

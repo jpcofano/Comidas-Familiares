@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getReceta } from "../data/recetas";
@@ -342,9 +342,33 @@ export function DetalleRecetaRoute() {
       {/* Pasos */}
       {receta.pasos.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", marginBottom: "var(--space-3)" }}>
-            Preparación
-          </h2>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
+            <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: 0 }}>
+              Preparación
+            </h2>
+            {isJP && (
+              <Link
+                to={`/recetas/${idReceta}/cocinar`}
+                className="btn btn-primary"
+                style={{ fontSize: "var(--fs-xs)", textDecoration: "none" }}
+              >
+                Cocinar
+              </Link>
+            )}
+          </div>
+
+          {/* Banner riesgos a nivel receta */}
+          {receta.riesgos && (
+            <div style={{
+              marginBottom: "var(--space-3)", padding: "var(--space-3)",
+              background: "var(--warn-bg)", borderRadius: "var(--radius-sm)",
+            }}>
+              <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
+                ⚠ {receta.riesgos}
+              </p>
+            </div>
+          )}
+
           <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {[...receta.pasos].sort((a, b) => a.nroPaso - b.nroPaso).map((paso) => (
               <li key={paso.nroPaso} style={{ marginBottom: "var(--space-4)" }}>
@@ -370,9 +394,18 @@ export function DetalleRecetaRoute() {
                       <p className="meta" style={{ marginTop: "var(--space-1)" }}>{paso.tiempoEstimadoLabel}</p>
                     )}
                     {paso.puntoClave && (
-                      <p style={{ fontSize: "var(--fs-xs)", color: "var(--primary)", marginTop: "var(--space-1)", fontStyle: "italic" }}>
-                        Clave: {paso.puntoClave}
-                      </p>
+                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--ok-bg)", borderRadius: "var(--radius-sm)" }}>
+                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--ok-text)" }}>
+                          ✓ Clave: {paso.puntoClave}
+                        </p>
+                      </div>
+                    )}
+                    {paso.errorComun && (
+                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--warn-bg)", borderRadius: "var(--radius-sm)" }}>
+                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
+                          ⚠ Riesgo: {paso.errorComun}
+                        </p>
+                      </div>
                     )}
                   </div>
                 </div>
