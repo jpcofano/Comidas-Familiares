@@ -120,7 +120,9 @@ export async function descartarPlan(
     }
 
     await deleteDoc(ref);
-    sincronizarListaDesdeFirestore(plan.semanaInicio).catch(() => {});
+    sincronizarListaDesdeFirestore(plan.semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] descartarPlan — sincronizarListaDesdeFirestore falló:", r.error);
+    });
     return ok({ cascadeBorrados: borrados });
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo descartar el plan.";
@@ -195,7 +197,11 @@ export async function elegirComoEspecial(
     origen: null,
     asignaciones: ["juanpablo"],
   });
-  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  if (result.ok) {
+    sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] elegirComoEspecial — sincronizarListaDesdeFirestore falló:", r.error);
+    });
+  }
   return result;
 }
 
@@ -222,7 +228,11 @@ export async function sumarComoExtra(
     origen: `extra:${especial.idPlan}`,
     asignaciones: ["juanpablo"],
   });
-  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  if (result.ok) {
+    sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] sumarComoExtra — sincronizarListaDesdeFirestore falló:", r.error);
+    });
+  }
   return result;
 }
 
@@ -248,7 +258,11 @@ export async function sumarComoEnProceso(
     origen: null,
     asignaciones: ["juanpablo"],
   });
-  if (result.ok) sincronizarListaDesdeFirestore(semanaInicio).catch(() => {});
+  if (result.ok) {
+    sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] sumarComoEnProceso — sincronizarListaDesdeFirestore falló:", r.error);
+    });
+  }
   return result;
 }
 

@@ -95,7 +95,7 @@ export function agruparPorClaveCanonica(
       cantidad: a.cantidad,
       cantidadLabel: a.cantidadLabel,
     })),
-    notas: item.notas.join(" | ") || undefined,
+    notas: item.notas.join(" | ") || "",
   }));
 }
 
