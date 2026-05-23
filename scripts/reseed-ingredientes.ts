@@ -11,7 +11,7 @@ import { getFirestore } from "firebase-admin/firestore";
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { normalizeText } from "../src/lib/canonical";
-import { parseDificultad, parseCosto } from "../src/lib/parsers";
+import { parseDificultad, parseCosto, parseTime } from "../src/lib/parsers";
 
 const DRY_RUN = process.argv.includes("--dry-run");
 const SERVICE_ACCOUNT_PATH = resolve("scripts/service-account.json");
@@ -130,15 +130,20 @@ async function main() {
   console.log("\n3. Cargando recetas...");
   const rawRecetas = readJson("recetas.json") as Record<string, unknown>[];
 
-  const dificultadOrdenMap: Record<string, number> = { "Baja": 1, "Media": 2, "Media-alta": 3, "Alta": 4 };
-  const costoOrdenMap: Record<string, number> = { "Bajo": 1, "Medio": 2, "Medio/Alto": 3, "Alto": 4 };
-
   const recetasItems = rawRecetas.map((r) => {
     const nombre = String(r["nombre"] ?? "");
     const dif = String(r["dificultad"] ?? "");
     const costo = String(r["costoEstimado"] ?? "");
     const porcLabel = String(r["porcionesLabel"] ?? "");
     const { min: porMin, max: porMax } = parsePorciones(porcLabel);
+
+    // Bug 1 fix: parsers devuelven {label, orden} — extraer por separado
+    const difParsed = parseDificultad(dif);
+    const costoParsed = parseCosto(costo);
+
+    // Bug 3 fix: tiempos se derivan del label string con parseTime
+    const tiempoActivoLabel = String(r["tiempoActivoLabel"] ?? "");
+    const tiempoTotalLabel = String(r["tiempoTotalLabel"] ?? "");
 
     const data: Record<string, unknown> = {
       idReceta: r["idReceta"],
@@ -155,17 +160,17 @@ async function main() {
       aptoNocheDeADos: r["aptoNocheDeADos"] ?? "No",
       paraJuanPablo: parseBool(r["paraJuanPablo"] ?? "Sí"),
       paraFamilia: parseBool(r["paraFamilia"] ?? "Sí"),
-      tiempoActivoLabel: r["tiempoActivoLabel"] ?? "",
-      tiempoActivoMin: parseNumOrNull(r["tiempoActivoMin"]),
-      tiempoTotalLabel: r["tiempoTotalLabel"] ?? "",
-      tiempoTotalMin: parseNumOrNull(r["tiempoTotalMin"]),
-      dificultad: parseDificultad(dif) ?? dif,
-      dificultadOrden: dificultadOrdenMap[dif] ?? 2,
+      tiempoActivoLabel,
+      tiempoActivoMin: parseTime(tiempoActivoLabel)?.value ?? null,
+      tiempoTotalLabel,
+      tiempoTotalMin: parseTime(tiempoTotalLabel)?.value ?? null,
+      dificultad: difParsed.label || dif,
+      dificultadOrden: difParsed.orden,
       porcionesLabel: porcLabel,
       porcionesMin: porMin,
       porcionesMax: porMax,
-      costoEstimado: parseCosto(costo) ?? costo,
-      costoOrden: costoOrdenMap[costo] ?? 2,
+      costoEstimado: costoParsed.label || costo,
+      costoOrden: costoParsed.orden,
       vecesCocinada: Number(r["vecesCocinada"] ?? 0),
       ingredientes: (r["ingredientes"] as unknown[] ?? []).map((ing: unknown) => {
         const i = ing as Record<string, unknown>;
@@ -185,18 +190,20 @@ async function main() {
         }
         return out;
       }),
+      // Bug 2 fix: JSON usa orden/contenido/tiempoLabel/truco/riesgo
       pasos: (r["pasos"] as unknown[] ?? []).map((p: unknown) => {
         const paso = p as Record<string, unknown>;
+        const tiempoLabelPaso = String(paso["tiempoLabel"] ?? "");
         const out: Record<string, unknown> = {
-          nroPaso: Number(paso["nroPaso"] ?? 1),
+          nroPaso: Number(paso["orden"] ?? 1),
           titulo: paso["titulo"] ?? "",
-          detalle: paso["detalle"] ?? "",
-          tiempoEstimadoLabel: paso["tiempoEstimadoLabel"] ?? "",
-          tiempoEstimadoMin: parseNumOrNull(paso["tiempoEstimadoMin"]),
+          detalle: paso["contenido"] ?? "",
+          tiempoEstimadoLabel: tiempoLabelPaso,
+          tiempoEstimadoMin: parseTime(tiempoLabelPaso)?.value ?? null,
         };
         if (paso["momento"]) out["momento"] = paso["momento"];
-        if (paso["puntoClave"]) out["puntoClave"] = paso["puntoClave"];
-        if (paso["errorComun"]) out["errorComun"] = paso["errorComun"];
+        if (paso["truco"]) out["puntoClave"] = paso["truco"];
+        if (paso["riesgo"]) out["errorComun"] = paso["riesgo"];
         if (paso["notas"]) out["notas"] = paso["notas"];
         return out;
       }),
