@@ -116,7 +116,7 @@ function agruparPorIdIngrediente(
           id: "",
           idIngrediente: ing.idIngrediente,
           nombrePreferido: cat.nombrePreferido,
-          categoria: ing.categoriaOverride || cat.categoria,
+          seccionGondola: cat.seccionGondola || "Despensa / otros",
           cantidadTotal: cantidadNum,
           cantidadLabel: "",
           unidad: unidadCanonica ?? "",

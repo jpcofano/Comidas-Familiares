@@ -1,5 +1,5 @@
 import {
-  collection, doc, getDoc, getDocs, setDoc, updateDoc, arrayUnion, serverTimestamp,
+  collection, doc, getDoc, getDocs, setDoc, updateDoc, arrayUnion, serverTimestamp, query, where,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import type { Ingrediente } from "../types/models";
@@ -52,6 +52,33 @@ export async function crearIngrediente(
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo crear el ingrediente.";
     return err("ingrediente-create-failed", msg, e);
+  }
+}
+
+export async function getIngredientesAmbiguos(): Promise<Result<Ingrediente[], AppError>> {
+  try {
+    const snap = await getDocs(query(collection(db, "ingredientes"), where("ambiguo", "==", true)));
+    return ok(snap.docs.map((d) => d.data() as Ingrediente));
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo cargar el catálogo.";
+    return err("ingredientes-load-failed", msg, e);
+  }
+}
+
+export async function actualizarIngrediente(
+  idIngrediente: string,
+  cambios: Partial<Pick<Ingrediente, "categoria" | "rolNutricional" | "seccionGondola" | "ambiguo">>
+): Promise<Result<void, AppError>> {
+  try {
+    await updateDoc(doc(db, "ingredientes", idIngrediente), {
+      ...cambios,
+      ultimaModificacion: serverTimestamp(),
+    });
+    invalidateCatalogCache();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el ingrediente.";
+    return err("ingrediente-update-failed", msg, e);
   }
 }
 

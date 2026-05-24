@@ -6,6 +6,7 @@ import { AppShell } from "./layout/AppShell";
 import { HomeRoute } from "./routes/Home";
 import { BibliotecaRoute } from "./routes/Biblioteca";
 import { ImportarRecetaRoute } from "./routes/ImportarReceta";
+import { CatalogoIngredientesRoute } from "./routes/CatalogoIngredientes";
 import { DetalleRecetaRoute } from "./routes/DetalleReceta";
 import { CocinarRoute } from "./routes/Cocinar";
 import { SeleccionarComponenteMenuRoute } from "./routes/SeleccionarComponenteMenu";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/" element={<HomeRoute />} />
           <Route path="/biblioteca" element={<BibliotecaRoute />} />
           <Route path="/biblioteca/importar" element={<ImportarRecetaRoute />} />
+          <Route path="/biblioteca/catalogo" element={<CatalogoIngredientesRoute />} />
           <Route path="/recetas/:id" element={<DetalleRecetaRoute />} />
           <Route path="/recetas/:id/cocinar" element={<CocinarRoute />} />
           <Route path="/planes/:idPlan/cocinar/:idReceta" element={<CocinarRoute />} />

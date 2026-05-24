@@ -167,15 +167,18 @@ export function ImportarRecetaRoute() {
         const id = await proximoIdIngrediente();
         const canon = normalizeText(fila.decision.nombre);
         const texNorm = normalizeText(fila.raw.textoOriginal);
+        // New ingredients created via importer get fallback values; JP completes them
+        // in /biblioteca/catalogo (Catálogo de ingredientes) before the flag clears.
         const r = await crearIngrediente({
           idIngrediente: id,
           canonico: canon,
           nombrePreferido: fila.decision.nombre,
           sinonimos: canon !== texNorm && texNorm ? [texNorm] : [],
           categoria: fila.decision.categoria,
-          seccionDefault: fila.raw.seccion,
+          rolNutricional: [],
+          seccionGondola: "Despensa / otros",
           unidadesHabituales: normalizarUnidad(fila.raw.unidad) ? [normalizarUnidad(fila.raw.unidad)!] : [],
-          ambiguo: false,
+          ambiguo: true,
           origen: "import",
         });
         if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }

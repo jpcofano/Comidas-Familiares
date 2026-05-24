@@ -76,7 +76,8 @@ export interface Ingrediente {
   nombrePreferido: string;
   sinonimos: string[];
   categoria: string;
-  seccionDefault: string;
+  rolNutricional: string[];
+  seccionGondola: string;
   unidadesHabituales: string[];
   vecesUsado: number;
   ambiguo: boolean;
@@ -96,7 +97,6 @@ export interface IngredienteEnReceta {
   cantidadMin?: number;
   cantidadMax?: number;
   unidad?: string;
-  categoriaOverride?: string;
   opcional?: boolean;
   notas?: string;
   alternativas?: Array<{ idIngrediente: string }>;
@@ -294,7 +294,7 @@ export interface ItemCompra {
   id: string;
   idIngrediente: string;
   nombrePreferido: string;
-  categoria: string;
+  seccionGondola: string;
   cantidadTotal: number;
   cantidadLabel: string;
   unidad: string;
@@ -348,7 +348,9 @@ export interface DiccionariosConfig {
     activos: EstadoPlan[];
     finales: EstadoPlan[];
   };
-  seccionesIngredientes: string[];
+  categoriasIngrediente: string[];
+  rolesNutricionales: string[];
+  seccionesGondola: string[];
   unidadesCanonicas: string[];
   version: number;
   ultimaActualizacion: FirestoreTimestamp;

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { agruparPorReceta } from "./compras";
+import { ORDEN_GONDOLA } from "./catalogo";
 import type { ItemCompra, AporteCompra } from "../types/models";
 
 function makeAporte(nombreReceta: string, overrides: Partial<AporteCompra> = {}): AporteCompra {
@@ -15,12 +16,12 @@ function makeAporte(nombreReceta: string, overrides: Partial<AporteCompra> = {})
   };
 }
 
-function makeItem(id: string, aportes: AporteCompra[]): ItemCompra {
+function makeItem(id: string, aportes: AporteCompra[], seccionGondola = "Verduleria"): ItemCompra {
   return {
     id,
     idIngrediente: id,
     nombrePreferido: id,
-    categoria: "Verdura",
+    seccionGondola,
     cantidadTotal: 1,
     cantidadLabel: "1 unidades",
     unidad: "unidades",
@@ -55,5 +56,43 @@ describe("agruparPorReceta", () => {
     const item = makeItem("sal", []);
     const grupos = agruparPorReceta([item]);
     expect(grupos.has("Sin origen")).toBe(true);
+  });
+});
+
+// ─── ORDEN_GONDOLA ────────────────────────────────────────────────────────────
+
+describe("ORDEN_GONDOLA", () => {
+  it("tiene 9 secciones", () => {
+    expect(ORDEN_GONDOLA).toHaveLength(9);
+  });
+
+  it("empieza con Verduleria y termina con Despensa / otros", () => {
+    expect(ORDEN_GONDOLA[0]).toBe("Verduleria");
+    expect(ORDEN_GONDOLA[ORDEN_GONDOLA.length - 1]).toBe("Despensa / otros");
+  });
+
+  it("ordena 3 ítems de distintas secciones según recorrido de súper", () => {
+    const items: ItemCompra[] = [
+      makeItem("aceite", [makeAporte("Receta A")], "Almacen / secos"),
+      makeItem("carne", [makeAporte("Receta A")], "Carniceria"),
+      makeItem("lechuga", [makeAporte("Receta A")], "Verduleria"),
+    ];
+
+    // Simular la lógica de porGondola de Compras.tsx
+    const map = new Map<string, ItemCompra[]>();
+    for (const item of items) {
+      const sec = item.seccionGondola || "Despensa / otros";
+      if (!map.has(sec)) map.set(sec, []);
+      map.get(sec)!.push(item);
+    }
+    const ordered: [string, ItemCompra[]][] = [];
+    for (const sec of ORDEN_GONDOLA) {
+      if (map.has(sec)) ordered.push([sec, map.get(sec)!]);
+    }
+
+    expect(ordered).toHaveLength(3);
+    expect(ordered[0][0]).toBe("Verduleria");
+    expect(ordered[1][0]).toBe("Carniceria");
+    expect(ordered[2][0]).toBe("Almacen / secos");
   });
 });

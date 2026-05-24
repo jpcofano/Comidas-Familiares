@@ -6,9 +6,10 @@ import { subscribeToPlanesActivos } from "../data/planes";
 import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
 import { getSemanaActual } from "../lib/fechas";
 import { agruparPorReceta } from "../lib/compras";
+import { ORDEN_GONDOLA } from "../lib/catalogo";
 import type { ListaCompras, ItemCompra, Plan } from "../types/models";
 
-type ModoVista = "categoria" | "receta";
+type ModoVista = "gondola" | "receta";
 type Filtro = "todo" | "pendientes" | "yaTengo";
 
 // ─── Item row ─────────────────────────────────────────────────────────────────
@@ -149,7 +150,7 @@ export function ComprasRoute() {
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [items, setItems] = useState<ItemCompra[]>([]);
   const [loadingPlanes, setLoadingPlanes] = useState(true);
-  const [modoVista, setModoVista] = useState<ModoVista>("categoria");
+  const [modoVista, setModoVista] = useState<ModoVista>("gondola");
   const [filtro, setFiltro] = useState<Filtro>("todo");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const unsubItems = useRef<(() => void) | null>(null);
@@ -197,16 +198,24 @@ export function ComprasRoute() {
     return items;
   }, [items, filtro]);
 
-  // Agrupar por categoría
-  const porCategoria = useMemo(() => {
+  // Agrupar por sección de góndola, en el orden canónico de ORDEN_GONDOLA
+  const porGondola = useMemo(() => {
     const map = new Map<string, ItemCompra[]>();
     for (const item of itemsFiltrados) {
-      const cat = item.categoria || "Sin categoría";
-      if (!map.has(cat)) map.set(cat, []);
-      map.get(cat)!.push(item);
+      const sec = item.seccionGondola || "Despensa / otros";
+      if (!map.has(sec)) map.set(sec, []);
+      map.get(sec)!.push(item);
     }
     for (const [, ings] of map) ings.sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es"));
-    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
+    const ordered: [string, ItemCompra[]][] = [];
+    for (const sec of ORDEN_GONDOLA) {
+      if (map.has(sec)) ordered.push([sec, map.get(sec)!]);
+    }
+    // Secciones no reconocidas al final (no debería ocurrir con el catálogo normalizado)
+    for (const [sec, ings] of map) {
+      if (!ORDEN_GONDOLA.includes(sec as typeof ORDEN_GONDOLA[number])) ordered.push([sec, ings]);
+    }
+    return ordered;
   }, [itemsFiltrados]);
 
   // Agrupar por receta
@@ -227,7 +236,7 @@ export function ComprasRoute() {
     return <div className="card"><p className="meta">Cargando…</p></div>;
   }
 
-  const grupos = modoVista === "categoria" ? porCategoria : porReceta;
+  const grupos = modoVista === "gondola" ? porGondola : porReceta;
 
   return (
     <>
@@ -266,7 +275,7 @@ export function ComprasRoute() {
         <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
           {/* Toggle vista */}
           <div style={{ display: "flex", borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--border)" }}>
-            {(["categoria", "receta"] as ModoVista[]).map((modo) => (
+            {(["gondola", "receta"] as ModoVista[]).map((modo) => (
               <button
                 key={modo}
                 onClick={() => setModoVista(modo)}
@@ -276,7 +285,7 @@ export function ComprasRoute() {
                   color: modoVista === modo ? "#fff" : "var(--text)",
                 }}
               >
-                {modo === "categoria" ? "Por categoría" : "Por receta"}
+                {modo === "gondola" ? "Por góndola" : "Por receta"}
               </button>
             ))}
           </div>
