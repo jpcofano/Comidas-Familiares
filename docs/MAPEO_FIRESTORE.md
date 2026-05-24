@@ -4,8 +4,8 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.4 (E3.6: flujo de evaluación JP + historial + vecesCocinada)
-> **Fecha**: 2026-05-23
+> **Versión**: 1.5.6 (E3.7: pantalla de historial — Etapa 3 completa)
+> **Fecha**: 2026-05-24
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -123,6 +123,28 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 4. **Estado terminal `"Evaluada"`** (§3.7): en E3.6, el cierre lo dispara JP al confirmar la evaluación. En E4.2 el cierre será al 4º voto. La mecánica de transacción es idéntica; solo cambia la condición de cierre. El shape de `votos` y `comentariosPlan` nace multi-miembro desde E3.6 — no hay migración en E4.2.
 
+### 1.2.nonies Cambios en v1.5.5 (detalle de menú + acciones JP)
+
+1. **`DetalleMenuRoute`** (`src/routes/DetalleMenu.tsx`): reemplaza el stub. Muestra metadata completa (escenario, clima, idealPara, derivados en chips), lista de componentes ordenada con link a `/recetas/:id`, notas opcionales, acciones JP.
+
+2. **Evaluadores de menú** (`src/lib/elegibilidad.ts`): `evaluarEspecialMenu(menu, planesActivos)` y `evaluarEnProcesoMenu(menu, planesActivos)`. Los menús solo pueden ser Especial o En proceso — **no Especial extra** (son composiciones completas, no entradas/guarniciones).
+
+3. **Acciones de plan para menú** (`src/data/planes.ts`): `elegirMenuComoEspecial` y `sumarMenuComoEnProceso`. Ambas crean planes con `tipoSeleccion: "menu"` y llaman a `sincronizarListaDesdeFirestore` post-creación. El campo `recetaPrincipal` recibe el nombre de la receta componente de tipo "Principal" (o primer obligatorio si no hay "Principal" explícito).
+
+4. **Fix `detallePath` en Home** (`src/routes/Home.tsx`): resuelve el TODO de E3.3. Los planes con `tipoSeleccion === "menu"` ahora navegan a `/menus/:idSeleccion` en lugar de `/recetas/:idSeleccion`.
+
+### 1.2.decies Cambios en v1.5.6 (E3.7 — pantalla de historial — cierra Etapa 3)
+
+1. **`HistorialRoute`** (`src/routes/Historial.tsx`): lista de las 30 entradas más recientes (ordenadas por `fechaRealizadaTimestamp` desc). Buscador client-side con `normalizeText` (case-insensitive, normaliza acentos). Badge de resultado con color por etiqueta. Tapping navega a `/historial/:idHist`.
+
+2. **`HistorialDetalleRoute`** (`src/routes/HistorialDetalle.tsx`): promedio grande + badge resultado, calificaciones de los 4 miembros (`null` se muestra "Sin voto" — correcto para E3.6 donde solo JP vota; se llenará en E4.2 sin cambios), comentarios (vacíos omitidos), datos del cocinero (campos vacíos omitidos), links a `/recetas/:id` o `/menus/:id` según `tipoSeleccion`.
+
+3. **`src/data/historial.ts`**: `getHistorialReciente()` y `getHistorialPorId(idHist)` con wrapper `Result<T, AppError>`. La query de "últimas 30" solo usa `orderBy` + `limit` — no requiere índice compuesto adicional en Firestore.
+
+4. **Eliminación de `voteAndCloseIfComplete`** (`src/data/planes.ts`): función creada en E2.2 como prototipo del flujo multi-miembro. Reemplazada en E3.6 por `guardarEvaluacionJP`. Eliminada en E3.7 como limpieza (código muerto — ningún componente la importaba). El flujo E4.2 usará la misma mecánica de transacción que `guardarEvaluacionJP`, no resucitará `voteAndCloseIfComplete`.
+
+5. **Etapa 3 completa**: con E3.7, todas las pantallas de la Etapa 3 están implementadas: Home JP, Biblioteca (recetas + menús), Detalle receta, Detalle menú, Importar receta, Importar menú, Compras, Cocinar (guiada + scroll), Evaluar, Historial, Detalle historial.
+
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
 1. **Realtime nativo** en planes activos y compras vía `onSnapshot`. Cuando María tilda "Ya tengo" desde su celu, JP lo ve al toque sin refrescar. El cambio de estado de un plan (Elegida → Compra pendiente → Cocinada) se propaga en vivo. Esto reemplaza el "refresh manual" que aplicaba en v1.2.
@@ -135,7 +157,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 5. **Manejo de errores diferenciado**: reads tiran excepciones (capturadas por error boundary genérico); writes devuelven `Result<T, Error>` para feedback explícito al usuario.
 
-6. **`runTransaction` del voto** se entrega en E2.2 (no se difiere a E3.6). Vivirá en `src/data/planes.ts` como `voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario)`. Implementa el flujo de §3.7.
+6. **`runTransaction` del voto**: se creó en E2.2 como prototipo bajo el nombre `voteAndCloseIfComplete`. Fue reemplazado en E3.6 por `guardarEvaluacionJP` (flujo JP-first, ver §1.2.octies y §3.7) y eliminado en E3.7 como código muerto. El flujo multi-miembro (E4.2) monta sobre `guardarEvaluacionJP`, no sobre el prototipo.
 
 
 ### 1.3 Volumen de seeds a migrar
@@ -562,12 +584,12 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
 
 ```typescript
 {
-  idHist: "auto-id",                       // doc ID (auto-generado)
-  fechaRealizada: "2026-05-22",            // ISO date
-  fechaRealizadaTimestamp: Timestamp,      // serverTimestamp para indexar desc
+  idHist: "HIST-20260524123456-3401",      // generado por proximoIdHistorial() — HIST-YYYYMMDDHHmmss-XXXX
+  fechaRealizada: "2026-05-24",            // ISO date
+  fechaRealizadaTimestamp: Timestamp,      // Timestamp.now() — para orderBy desc
 
   // Referencia:
-  idPlan: "PLAN-20260518-...",
+  idPlan: "PLAN-20260524-...",
   idReceta: "REC-0001" | "",               // vacío si tipoSeleccion === "menu"
   idMenu: "" | "MENU-0001",                // vacío si tipoSeleccion === "receta"
   receta: "Bondiola braseada al Malbec",   // nombre snapshot (para historial robusto)
@@ -579,22 +601,24 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
   // Ocasión:
   ocasion: "Cena familiar",
 
-  // Votos individuales (snapshot del plan al cerrar evaluación):
+  // Votos individuales (snapshot al cerrar evaluación):
+  // En E3.6 solo vota JP; los otros 3 quedan null — correcto y esperado.
+  // En E4.2, todos votarán y null desaparecerá. NO tratar null como 0.
   calificaciones: {
     juanpablo: 8,
-    maria: 9,
-    sofia: 7,
-    federico: 10
+    maria: null,
+    sofia: null,
+    federico: null
   },
   comentarios: {
     juanpablo: "...",
-    maria: "...",
-    sofia: "...",
-    federico: "..."
+    maria: "",
+    sofia: "",
+    federico: ""
   },
 
   // Cálculos automáticos:
-  promedio: 8.5,                           // (8+9+7+10)/4, redondeado a 1 decimal
+  promedio: 8,                             // calculado sobre votos no nulos (ver §3.4); con JP solo = su puntaje
   resultado: "Muy bueno",                  // derivado de promedio (ver §3.4)
 
   // Datos del cocinero:
@@ -1067,20 +1091,23 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 
 ### 5.1 Inventario de pantallas
 
-| Pantalla (Apps Script) | Ruta React | Modo JP | Modo miembro |
-|---|---|---|---|
-| `home` | `/` | ✅ | ✅ (renderDashboardMiembro) |
-| `recetas` | `/recetas` | ✅ | ❌ |
-| `detalle` | `/recetas/:id` | ✅ | ✅ |
-| `cocinar` | `/recetas/:id/cocinar` | ✅ | ✅ |
-| `importar` | `/recetas/importar` | ✅ | ❌ |
-| `menus` | `/menus` | ✅ | ❌ |
-| `menuDetalle` | `/menus/:id` | ✅ | ❌ |
-| `menuCocinar` | `/menus/:id/cocinar` | ✅ | ❌ |
-| `compras` | `/compras` | ✅ | ✅ (filtrada) |
-| `voto` / `resultado` | `/voto/:idPlan` | ✅ | ✅ |
-| `historial` | `/historial` | ✅ | ✅ |
-| `pendientes` | `/pendientes` | ❌ | ✅ |
+| Pantalla (Apps Script) | Ruta React | Modo JP | Modo miembro | Estado |
+|---|---|---|---|---|
+| `home` | `/` | ✅ | stub | ✅ E3.1 |
+| `recetas` (biblioteca) | `/biblioteca` | ✅ | ❌ | ✅ E3.2 |
+| `detalle receta` | `/recetas/:id` | ✅ | ✅ | ✅ E3.3 |
+| `cocinar` | `/recetas/:id/cocinar` o `/planes/:idPlan/cocinar/:idReceta` | ✅ | ✅ | ✅ E3.5 |
+| `importar receta` | `/biblioteca/importar` | ✅ | ❌ | ✅ E3.4.6 |
+| `menus` (biblioteca tab) | `/biblioteca?tab=menus` | ✅ | ❌ | ✅ E3.2 |
+| `menuDetalle` | `/menus/:id` | ✅ | ❌ | ✅ v1.5.5 |
+| `menuImportar` | `/menus/importar` | ✅ | ❌ | ✅ E2.5 |
+| `componentes menú` | `/planes/:idPlan/componentes` | ✅ | ❌ | ✅ E3.5 |
+| `compras` | `/compras` | ✅ | ✅ | ✅ E3.4 |
+| `voto` / `evaluar` | `/voto/:idPlan` | ✅ | pendiente E4.2 | ✅ E3.6 |
+| `historial` | `/historial` | ✅ | ✅ | ✅ E3.7 |
+| `historial detalle` | `/historial/:idHist` | ✅ | ✅ | ✅ E3.7 |
+| `dashboard miembro` | `/` (modo miembro) | — | ❌ | pendiente E4.1 |
+| `pendientes` | `/pendientes` | ❌ | ❌ | pendiente E4.1 |
 
 ### 5.2 Queries por pantalla
 
