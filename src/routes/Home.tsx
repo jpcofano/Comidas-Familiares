@@ -57,7 +57,7 @@ function EstadoBadge({ estado }: { estado: string }) {
 }
 
 function detallePath(plan: Plan): string {
-  // TODO E3.3: cuando exista DetalleMenu, rutear menus a /menus/:id
+  if (plan.tipoSeleccion === "menu") return `/menus/${plan.idSeleccion}`;
   return `/recetas/${plan.idSeleccion}`;
 }
 

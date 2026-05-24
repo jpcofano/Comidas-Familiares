@@ -1,4 +1,4 @@
-import type { Receta, Plan } from "../types/models";
+import type { Receta, Plan, Menu } from "../types/models";
 
 // ─── Especial ─────────────────────────────────────────────────────────────────
 
@@ -77,6 +77,37 @@ export function evaluarEnProceso(receta: Receta, planesActivos: Plan[]): Elegibi
   );
   if (yaActiva) {
     return { puede: false, razon: "Esta receta ya está activa esta semana." };
+  }
+  return { puede: true };
+}
+
+// ─── Menú como Especial ───────────────────────────────────────────────────────
+
+export function evaluarEspecialMenu(menu: Menu, planesActivos: Plan[]): ElegibilidadEspecial {
+  const actual = planesActivos.find(p => p.tipoPlan === "Especial");
+  if (actual) {
+    if (actual.tipoSeleccion === "menu" && actual.idSeleccion === menu.idMenu) {
+      return { puede: false, razon: "Este menú ya es la Especial de la semana." };
+    }
+    return { puede: true, especialExistente: actual };
+  }
+  return { puede: true };
+}
+
+// ─── Menú como En proceso ─────────────────────────────────────────────────────
+
+export function evaluarEnProcesoMenu(menu: Menu, planesActivos: Plan[]): ElegibilidadEnProceso {
+  const yaEnProceso = planesActivos.some(
+    p => p.tipoPlan === "En proceso" && p.tipoSeleccion === "menu" && p.idSeleccion === menu.idMenu
+  );
+  if (yaEnProceso) {
+    return { puede: false, razon: "Este menú ya está En proceso esta semana." };
+  }
+  const yaActiva = planesActivos.some(
+    p => p.tipoSeleccion === "menu" && p.idSeleccion === menu.idMenu
+  );
+  if (yaActiva) {
+    return { puede: false, razon: "Este menú ya está activo esta semana." };
   }
   return { puede: true };
 }

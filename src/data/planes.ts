@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, Receta, MiembroId, MemberId, DatosCocinero } from "../types/models";
+import type { Plan, Historial, Receta, Menu, MiembroId, MemberId, DatosCocinero } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -319,6 +319,75 @@ export async function sumarComoEnProceso(
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
       if (!r.ok) console.error("[sync] sumarComoEnProceso — sincronizarListaDesdeFirestore falló:", r.error);
+    });
+  }
+  return result;
+}
+
+// ─── Acciones de plan para menús (E3.7) ──────────────────────────────────────
+
+export async function elegirMenuComoEspecial(
+  menu: Menu,
+  recetaPrincipalNombre: string,
+  semanaInicio: string,
+  semanaFin: string,
+  especialExistente?: Plan
+): Promise<Result<Plan, AppError>> {
+  if (especialExistente) {
+    const borrado = await descartarPlan(especialExistente.idPlan);
+    if (!borrado.ok) return borrado as Result<Plan, AppError>;
+  }
+  const result = await crearPlan({
+    idPlan: generarIdPlan(),
+    semanaInicio,
+    semanaFin,
+    tipoSeleccion: "menu",
+    tipoPlan: "Especial",
+    idSeleccion: menu.idMenu,
+    nombreSeleccion: menu.nombreMenu,
+    recetaPrincipal: recetaPrincipalNombre,
+    estado: "Elegida",
+    fechaPrevistaComida: null,
+    cantidadPersonas: 4,
+    listaComprasId: null,
+    notas: "",
+    origen: null,
+    asignaciones: ["juanpablo"],
+  });
+  if (result.ok) {
+    sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] elegirMenuComoEspecial — sincronizarListaDesdeFirestore falló:", r.error);
+    });
+  }
+  return result;
+}
+
+export async function sumarMenuComoEnProceso(
+  menu: Menu,
+  recetaPrincipalNombre: string,
+  semanaInicio: string,
+  semanaFin: string
+): Promise<Result<Plan, AppError>> {
+  const result = await crearPlan({
+    idPlan: generarIdPlan(),
+    semanaInicio,
+    semanaFin,
+    tipoSeleccion: "menu",
+    tipoPlan: "En proceso",
+    idSeleccion: menu.idMenu,
+    nombreSeleccion: menu.nombreMenu,
+    recetaPrincipal: recetaPrincipalNombre,
+    estado: "Elegida",
+    fechaPrevistaComida: null,
+    cantidadPersonas: 4,
+    listaComprasId: null,
+    notas: "",
+    origen: null,
+    asignaciones: ["juanpablo"],
+  });
+  if (result.ok) {
+    sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
+      if (!r.ok) console.error("[sync] sumarMenuComoEnProceso — sincronizarListaDesdeFirestore falló:", r.error);
     });
   }
   return result;
