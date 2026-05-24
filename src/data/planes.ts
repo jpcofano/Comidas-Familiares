@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, Menu, Receta, MiembroId, MemberId, EstadoPlan } from "../types/models";
+import type { Plan, Historial, Receta, MiembroId, MemberId } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -170,30 +170,22 @@ export async function marcarCocinada(
 export async function marcarComponenteCocinado(
   idPlan: string,
   idReceta: string
-): Promise<Result<{ nuevoEstado: EstadoPlan }, AppError>> {
+): Promise<Result<void, AppError>> {
   try {
     const planRef = doc(db, "planes", idPlan);
     const planSnap = await getDoc(planRef);
     if (!planSnap.exists()) return err("plan-not-found", "El plan no existe.");
     const plan = planSnap.data() as Plan;
 
-    const menuRef = doc(db, "menus", plan.idSeleccion);
-    const menuSnap = await getDoc(menuRef);
-    if (!menuSnap.exists()) return err("menu-not-found", "El menú no existe.");
-    const menu = menuSnap.data() as Menu;
-
     const prevCocinados = plan.componentesCocinados ?? [];
     const nuevosCocinados = prevCocinados.includes(idReceta)
       ? prevCocinados
       : [...prevCocinados, idReceta];
 
-    // Si no hay obligatorios, todos los obligatorios están cocinados vacuamente
-    const obligatorios = menu.componentes.filter((c) => c.obligatorio).map((c) => c.idReceta);
-    const todosObligatoriosCocinados = obligatorios.every((id) => nuevosCocinados.includes(id));
-    const nuevoEstado: EstadoPlan = todosObligatoriosCocinados ? "Cocinada" : "Cocinando";
-
+    // Siempre "Cocinando" — el paso a "Cocinada" lo hace el usuario explícitamente
+    // con "Finalizar menú" en SeleccionarComponenteMenu (E3.5.1).
     await updateDoc(planRef, {
-      estado: nuevoEstado,
+      estado: "Cocinando",
       componentesCocinados: nuevosCocinados,
     });
 
@@ -202,10 +194,29 @@ export async function marcarComponenteCocinado(
       if (!r.ok) console.error("[limpieza] marcarComponenteCocinado:", r.error);
     }
 
-    return ok({ nuevoEstado });
+    return ok(undefined);
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo marcar el componente como cocinado.";
     return err("marcar-componente-failed", msg, e);
+  }
+}
+
+export async function desmarcarComponenteCocinado(
+  idPlan: string,
+  idReceta: string
+): Promise<Result<void, AppError>> {
+  try {
+    const ref = doc(db, "planes", idPlan);
+    const snap = await getDoc(ref);
+    if (!snap.exists()) return err("plan-not-found", "El plan no existe.");
+    const plan = snap.data() as Plan;
+    const nuevosCocinados = (plan.componentesCocinados ?? []).filter((id) => id !== idReceta);
+    await updateDoc(ref, { componentesCocinados: nuevosCocinados });
+    // Los aportes de este componente ya fueron limpiados de la lista y no se restauran.
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo desmarcar el componente.";
+    return err("firestore-error", msg, e);
   }
 }
 

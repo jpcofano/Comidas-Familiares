@@ -28,6 +28,7 @@ export function CocinarRoute() {
   const [plan, setPlan] = useState<Plan | null>(null);
   const [loading, setLoading] = useState(true);
   const [finalizando, setFinalizando] = useState(false);
+  const [confirmarFinalizar, setConfirmarFinalizar] = useState(false);
 
   const { state, toggleTachado, setModoVista, setPasoActual, iniciarTimer, cancelarTimer, clearAll } =
     useCocinarState(sessionKey);
@@ -56,6 +57,7 @@ export function CocinarRoute() {
 
   async function finalizar() {
     setFinalizando(true);
+    setConfirmarFinalizar(false);
     clearAll();
 
     if (modo === "libre") {
@@ -81,17 +83,16 @@ export function CocinarRoute() {
 
   function handleSiguiente() {
     if (!pasoActualObj) return;
-    toggleTachado(pasoActualObj.nroPaso);
-
-    const nextPaso = pasosOrdenados.find(
-      (p) => p.nroPaso > pasoActualObj.nroPaso && !tachados.has(p.nroPaso)
-    );
-
-    if (!nextPaso) {
-      finalizar();
-    } else {
-      setPasoActual(nextPaso.nroPaso);
+    // Tachar el paso actual si no está tachado; no finaliza automáticamente
+    if (!tachados.has(pasoActualObj.nroPaso)) {
+      toggleTachado(pasoActualObj.nroPaso);
     }
+    const postTachados = new Set([...state.pasosTachados, pasoActualObj.nroPaso]);
+    const nextPaso = pasosOrdenados.find(
+      (p) => p.nroPaso > pasoActualObj.nroPaso && !postTachados.has(p.nroPaso)
+    );
+    if (nextPaso) setPasoActual(nextPaso.nroPaso);
+    // Si no hay next: queda en el paso actual (tachado), JP aprieta "Finalizar" explícito
   }
 
   function handleAnterior() {
@@ -192,6 +193,7 @@ export function CocinarRoute() {
               paso={pasoActualObj}
               tachado={tachados.has(pasoActualObj.nroPaso)}
               esActual
+              onToggleTachado={() => toggleTachado(pasoActualObj.nroPaso)}
               onIniciarTimer={(durMs) => iniciarTimer(pasoActualObj.nroPaso, durMs)}
               onCancelarTimer={() => cancelarTimer(pasoActualObj.nroPaso)}
               timerActivo={state.timersActivos[pasoActualObj.nroPaso]}
@@ -199,8 +201,11 @@ export function CocinarRoute() {
           </div>
         )}
 
+        {/* PasoCard con toggle para desmarcar en modo guiada */}
+        {/* (onToggleTachado ya pasado arriba en el bloque PasoCard) */}
+
         {/* Navegación */}
-        <div style={{ display: "flex", gap: "var(--space-3)", marginBottom: hasTimers ? 64 : 0 }}>
+        <div style={{ display: "flex", gap: "var(--space-3)" }}>
           <button
             className="btn btn-secondary"
             onClick={handleAnterior}
@@ -215,8 +220,44 @@ export function CocinarRoute() {
             disabled={finalizando}
             style={{ flex: 1, fontSize: "var(--fs-sm)" }}
           >
-            {finalizando ? "…" : idx === total - 1 ? "Terminar ✓" : "Siguiente →"}
+            Siguiente →
           </button>
+        </div>
+
+        {/* Botón finalizar explícito */}
+        <div style={{ marginTop: "var(--space-3)", marginBottom: hasTimers ? 64 : 0 }}>
+          {confirmarFinalizar ? (
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-primary"
+                onClick={finalizar}
+                disabled={finalizando}
+                style={{ flex: 1, fontSize: "var(--fs-sm)" }}
+              >
+                {finalizando ? "…" : "Sí, finalizar"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => setConfirmarFinalizar(false)}
+                style={{ flex: 1, fontSize: "var(--fs-sm)" }}
+              >
+                Cancelar
+              </button>
+            </div>
+          ) : (
+            <button
+              className="btn btn-secondary"
+              onClick={() => setConfirmarFinalizar(true)}
+              disabled={finalizando}
+              style={{ width: "100%", fontSize: "var(--fs-sm)" }}
+            >
+              {modo === "libre"
+                ? "Salir"
+                : plan?.tipoSeleccion === "menu"
+                ? "Componente listo ✓"
+                : "Finalizar cocción"}
+            </button>
+          )}
         </div>
 
         <TimerBar timers={state.timersActivos} pasos={timerBarPasos} onCancelar={cancelarTimer} />
@@ -225,8 +266,6 @@ export function CocinarRoute() {
   }
 
   // ── Modo scroll ──────────────────────────────────────────────────────────────
-  const todosComp = completados === total;
-
   return (
     <>
       {/* Header */}
@@ -255,16 +294,40 @@ export function CocinarRoute() {
         <p className="meta" style={{ margin: 0 }}>
           {completados}/{total} pasos completados
         </p>
-        {todosComp && (
-          <button
-            className="btn btn-primary"
-            onClick={finalizar}
-            disabled={finalizando}
-            style={{ marginTop: "var(--space-3)", width: "100%" }}
-          >
-            {finalizando ? "…" : "✓ Terminé de cocinar"}
-          </button>
-        )}
+        <div style={{ marginTop: "var(--space-3)" }}>
+          {confirmarFinalizar ? (
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-primary"
+                onClick={finalizar}
+                disabled={finalizando}
+                style={{ flex: 1, fontSize: "var(--fs-sm)" }}
+              >
+                {finalizando ? "…" : "Sí, finalizar"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => setConfirmarFinalizar(false)}
+                style={{ flex: 1, fontSize: "var(--fs-sm)" }}
+              >
+                Cancelar
+              </button>
+            </div>
+          ) : (
+            <button
+              className="btn btn-secondary"
+              onClick={() => setConfirmarFinalizar(true)}
+              disabled={finalizando}
+              style={{ width: "100%", fontSize: "var(--fs-sm)" }}
+            >
+              {modo === "libre"
+                ? "Salir"
+                : plan?.tipoSeleccion === "menu"
+                ? "Componente listo ✓"
+                : "Finalizar cocción"}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Banner riesgo general — siempre visible en scroll */}

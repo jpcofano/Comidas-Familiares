@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import { getPlan } from "../data/planes";
+import { getPlan, marcarCocinada, desmarcarComponenteCocinado } from "../data/planes";
 import { getMenu } from "../data/menus";
 import { getReceta } from "../data/recetas";
 import type { Plan, Menu, Receta } from "../types/models";
@@ -14,6 +14,7 @@ export function SeleccionarComponenteMenuRoute() {
   const [menu, setMenu] = useState<Menu | null>(null);
   const [recetasMap, setRecetasMap] = useState<Map<string, Receta>>(new Map());
   const [loading, setLoading] = useState(true);
+  const [finalizando, setFinalizando] = useState(false);
 
   useEffect(() => {
     if (!idPlan) return;
@@ -58,6 +59,24 @@ export function SeleccionarComponenteMenuRoute() {
     navigate(`/planes/${idPlan}/cocinar/${idReceta}`);
   }
 
+  async function handleFinalizarMenu() {
+    if (!idPlan) return;
+    setFinalizando(true);
+    await marcarCocinada(idPlan);
+    navigate("/");
+  }
+
+  async function handleDesmarcar(idReceta: string) {
+    if (!idPlan || !plan) return;
+    const r = await desmarcarComponenteCocinado(idPlan, idReceta);
+    if (r.ok) {
+      setPlan({
+        ...plan,
+        componentesCocinados: (plan.componentesCocinados ?? []).filter((id) => id !== idReceta),
+      });
+    }
+  }
+
   function renderComponente(c: NonNullable<typeof menu>["componentes"][number], opcional: boolean) {
     const r = recetasMap.get(c.idReceta);
     const nombre = r?.nombre ?? c.idReceta;
@@ -79,7 +98,15 @@ export function SeleccionarComponenteMenuRoute() {
           </p>
           {opcional && <span className="meta">Opcional</span>}
         </div>
-        {!hecho && (
+        {hecho ? (
+          <button
+            className="btn btn-ghost"
+            onClick={() => handleDesmarcar(c.idReceta)}
+            style={{ fontSize: "var(--fs-xs)", flexShrink: 0, color: "var(--muted)" }}
+          >
+            Desmarcar
+          </button>
+        ) : (
           <button
             className={opcional ? "btn btn-secondary" : "btn btn-primary"}
             onClick={() => irACocinar(c.idReceta)}
@@ -114,21 +141,22 @@ export function SeleccionarComponenteMenuRoute() {
           {obligCocinados}/{obligatorios.length} obligatorios cocinados
         </p>
 
-        {/* Menú completo */}
+        {/* Finalizar menú — visible solo cuando todos los obligatorios están cocinados */}
         {menuCompleto && (
           <div style={{
             marginTop: "var(--space-3)", padding: "var(--space-3)",
             background: "var(--ok-bg)", borderRadius: "var(--radius-md)",
           }}>
-            <p style={{ margin: 0, color: "var(--ok-text)", fontWeight: "var(--fw-semibold)" }}>
-              ✓ Menú completo cocinado
+            <p style={{ margin: "0 0 var(--space-2)", color: "var(--ok-text)", fontWeight: "var(--fw-semibold)" }}>
+              ✓ Todos los obligatorios cocinados
             </p>
             <button
-              className="btn btn-secondary"
-              onClick={() => navigate("/")}
-              style={{ marginTop: "var(--space-2)", fontSize: "var(--fs-sm)" }}
+              className="btn btn-primary"
+              onClick={handleFinalizarMenu}
+              disabled={finalizando}
+              style={{ width: "100%", fontSize: "var(--fs-sm)" }}
             >
-              Volver al inicio
+              {finalizando ? "…" : "Finalizar menú"}
             </button>
           </div>
         )}
