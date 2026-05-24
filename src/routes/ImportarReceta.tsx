@@ -9,6 +9,7 @@ import {
 } from "../data/ingredientes";
 import { proximoIdReceta, crearReceta } from "../data/recetas";
 import { normalizeText } from "../lib/canonical";
+import { normalizarUnidad } from "../lib/unidades";
 
 // ─── Tipos locales ────────────────────────────────────────────────────────────
 
@@ -173,7 +174,7 @@ export function ImportarRecetaRoute() {
           sinonimos: canon !== texNorm && texNorm ? [texNorm] : [],
           categoria: fila.decision.categoria,
           seccionDefault: fila.raw.seccion,
-          unidadesHabituales: fila.raw.unidad ? [fila.raw.unidad] : [],
+          unidadesHabituales: normalizarUnidad(fila.raw.unidad) ? [normalizarUnidad(fila.raw.unidad)!] : [],
           ambiguo: false,
           origen: "import",
         });
@@ -184,6 +185,9 @@ export function ImportarRecetaRoute() {
       // 3. Construir ingredientes resueltos
       const ingredientes = filas.map((fila, i) => {
         const idIngrediente = fila.decision.tipo === "nuevo" ? idsNuevos[i]! : fila.decision.idIngrediente;
+        // normalizarUnidad returns null for "a gusto" (empty/unrecognized) — omit the key in that case.
+        // Unrecognized units emit console.warn; recipe is still saved with unidad omitted.
+        const unidadNorm = normalizarUnidad(fila.raw.unidad);
         return {
           idIngrediente,
           textoOriginal: fila.raw.textoOriginal,
@@ -193,7 +197,7 @@ export function ImportarRecetaRoute() {
           cantidad: fila.raw.cantidadMin ?? undefined,
           cantidadMin: fila.raw.cantidadMin ?? undefined,
           cantidadMax: fila.raw.cantidadMax ?? undefined,
-          unidad: fila.raw.unidad,
+          ...(unidadNorm != null ? { unidad: unidadNorm } : {}),
           opcional: fila.raw.opcional,
           ...(fila.raw.notas ? { notas: fila.raw.notas } : {}),
         };
