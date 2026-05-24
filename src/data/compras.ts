@@ -19,6 +19,7 @@ import type { ListaCompras, ItemCompra, AporteCompra, Ingrediente, Plan, Receta,
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { getCatalogo } from "./ingredientes";
+import { normalizarUnidad } from "../lib/unidades";
 
 const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista", "Cocinando"] as const;
 
@@ -87,8 +88,8 @@ function agruparPorIdIngrediente(
 
   for (const { plan, receta } of planesConReceta) {
     for (const ing of receta.ingredientes) {
-      const unidad = ing.unidad ?? "";
-      const clave = `${ing.idIngrediente}|${unidad}`;
+      const unidadCanonica = normalizarUnidad(ing.unidad);
+      const clave = `${ing.idIngrediente}__${unidadCanonica ?? "agusto"}`;
       const cat = catalogo.get(ing.idIngrediente);
       if (!cat) continue;
 
@@ -101,7 +102,7 @@ function agruparPorIdIngrediente(
         textoOriginal: ing.textoOriginal,
         tipoAporte: "receta",
         cantidad: cantidadNum,
-        unidad,
+        unidad: unidadCanonica ?? "",
       };
 
       if (acc.has(clave)) {
@@ -118,7 +119,7 @@ function agruparPorIdIngrediente(
           categoria: ing.categoriaOverride || cat.categoria,
           cantidadTotal: cantidadNum,
           cantidadLabel: "",
-          unidad,
+          unidad: unidadCanonica ?? "",
           opcional: ing.opcional !== false,
           yaTengo: false,
           aportes: [aporte],
@@ -128,10 +129,13 @@ function agruparPorIdIngrediente(
     }
   }
 
-  // Preservar yaTengo desde sincronización anterior
+  // Preservar yaTengo desde sincronización anterior.
+  // Normalizar ambos lados para que "cda" y "cdas" en listas viejas no pierdan el tilde.
   for (const old of itemsAnteriores) {
+    const canonOld = normalizarUnidad(old.unidad) ?? "agusto";
     for (const it of acc.values()) {
-      if (it.idIngrediente === old.idIngrediente && it.unidad === old.unidad) {
+      const canonNew = normalizarUnidad(it.unidad) ?? "agusto";
+      if (it.idIngrediente === old.idIngrediente && canonNew === canonOld) {
         it.yaTengo = old.yaTengo;
         break;
       }
@@ -308,6 +312,10 @@ export async function sincronizarListaDesdeFirestore(
       if (Object.keys(updates).length > 0) batch.update(planRef, updates);
     }
 
+    // Tras reconstruir los ítems, evaluar si algún plan puede avanzar a "Compra lista"
+    // (los ítems preservan yaTengo de la sync anterior; "Elegida" se trata como "Compra pendiente").
+    evaluarEstadosPlanesEnBatch(nuevosItems, planes, batch);
+
     await batch.commit();
     return ok(undefined);
   } catch (e) {
@@ -316,7 +324,34 @@ export async function sincronizarListaDesdeFirestore(
   }
 }
 
+// Evalúa si los planes deben avanzar a "Compra lista" o retroceder a "Compra pendiente"
+// según el estado yaTengo de los ítems. Agrega los updates al batch.
+// Trata "Elegida" como "Compra pendiente" para cubrir el caso en que la sync
+// avanza el estado en el mismo batch.
+function evaluarEstadosPlanesEnBatch(
+  items: ItemCompra[],
+  planes: Plan[],
+  batch: ReturnType<typeof writeBatch>
+): void {
+  for (const plan of planes) {
+    const estadoEfectivo = plan.estado === "Elegida" ? "Compra pendiente" : plan.estado;
+    if (estadoEfectivo !== "Compra pendiente" && estadoEfectivo !== "Compra lista") continue;
+    const itemsDelPlan = items.filter((it) =>
+      it.aportes.some((a) => a.idPlan === plan.idPlan)
+    );
+    const n = itemsDelPlan.length;
+    if (n === 0) continue;
+    const k = itemsDelPlan.filter((it) => it.yaTengo).length;
+    if (n === k && estadoEfectivo === "Compra pendiente") {
+      batch.update(doc(db, "planes", plan.idPlan), { estado: "Compra lista" });
+    } else if (k < n && estadoEfectivo === "Compra lista") {
+      batch.update(doc(db, "planes", plan.idPlan), { estado: "Compra pendiente" });
+    }
+  }
+}
+
 // Toggle yaTengo + actualiza resumen denormalizado del doc raíz (§2.5).
+// Post-toggle evalúa si algún plan debe avanzar a "Compra lista" o retroceder a "Compra pendiente".
 export async function toggleItemYaTengo(
   idLista: string,
   itemId: string,
@@ -324,17 +359,90 @@ export async function toggleItemYaTengo(
 ): Promise<Result<void, AppError>> {
   try {
     const delta = nuevoYaTengo ? 1 : -1;
+
+    const [itemsActuales, listaSnap] = await Promise.all([
+      getItemsLista(idLista),
+      getDoc(doc(db, "compras", idLista)),
+    ]);
+
+    const itemsVirtuales = itemsActuales.map((it) =>
+      it.id === itemId ? { ...it, yaTengo: nuevoYaTengo } : it
+    );
+
     const batch = writeBatch(db);
     batch.update(doc(db, "compras", idLista, "items", itemId), { yaTengo: nuevoYaTengo });
     batch.update(doc(db, "compras", idLista), {
       totalYaTengo: increment(delta),
       totalPendientes: increment(-delta),
     });
+
+    if (listaSnap.exists()) {
+      const { semanaInicio } = listaSnap.data() as ListaCompras;
+      const planesSnap = await getDocs(
+        query(
+          collection(db, "planes"),
+          where("semanaInicio", "==", semanaInicio),
+          where("estado", "in", ["Compra pendiente", "Compra lista"])
+        )
+      );
+      evaluarEstadosPlanesEnBatch(itemsVirtuales, planesSnap.docs.map((d) => d.data() as Plan), batch);
+    }
+
     await batch.commit();
     return ok(undefined);
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el ítem.";
     return err("item-toggle-failed", msg, e);
+  }
+}
+
+// Remueve los aportes de un plan (o de una receta específica dentro de ese plan) de todos los
+// ítems de la lista. Elimina los ítems que queden sin aportes y recalcula los totales del doc raíz.
+export async function limpiarAportesDelPlan(
+  idLista: string,
+  idPlan: string,
+  soloIdReceta?: string
+): Promise<Result<void, AppError>> {
+  try {
+    const items = await getItemsLista(idLista);
+    if (items.length === 0) return ok(undefined);
+
+    const batch = writeBatch(db);
+    const itemsRestantes: ItemCompra[] = [];
+
+    for (const item of items) {
+      const aportesFiltrados = item.aportes.filter((a) => {
+        if (a.idPlan !== idPlan) return true;
+        if (soloIdReceta && a.idReceta !== soloIdReceta) return true;
+        return false;
+      });
+
+      const itemRef = doc(db, "compras", idLista, "items", item.id);
+      if (aportesFiltrados.length === 0) {
+        batch.delete(itemRef);
+      } else {
+        const cantidadTotal = aportesFiltrados.reduce((sum, a) => sum + a.cantidad, 0);
+        const cantidadLabel = cantidadTotal > 0
+          ? `${cantidadTotal} ${item.unidad}`.trim()
+          : "a gusto";
+        batch.update(itemRef, { aportes: aportesFiltrados, cantidadTotal, cantidadLabel });
+        itemsRestantes.push({ ...item, aportes: aportesFiltrados });
+      }
+    }
+
+    const totalItems = itemsRestantes.length;
+    const totalYaTengo = itemsRestantes.filter((i) => i.yaTengo).length;
+    batch.update(doc(db, "compras", idLista), {
+      totalItems,
+      totalYaTengo,
+      totalPendientes: totalItems - totalYaTengo,
+    });
+
+    await batch.commit();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo limpiar la lista de compras.";
+    return err("limpieza-aportes-failed", msg, e);
   }
 }
 

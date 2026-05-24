@@ -81,7 +81,7 @@ function PlanCard({
   plan, menu, featured, isEspecial, busy, confirming,
   onCocinar, onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onVerDetalle,
 }: PlanCardProps) {
-  const canCocinar = ["Compra lista", "Cocinando"].includes(plan.estado);
+  const canCocinar = ["Compra pendiente", "Compra lista", "Cocinando"].includes(plan.estado);
 
   // Progreso de menú en estado Cocinando
   const cocinados = plan.componentesCocinados?.length ?? 0;

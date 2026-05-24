@@ -20,7 +20,7 @@ import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { calcularPromedio, calcularResultadoTextual, proximoIdHistorial } from "../lib/voto";
-import { sincronizarListaDesdeFirestore } from "./compras";
+import { sincronizarListaDesdeFirestore, limpiarAportesDelPlan } from "./compras";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 
@@ -136,25 +136,28 @@ export async function marcarCocinada(
 ): Promise<Result<void, AppError>> {
   try {
     const ref = doc(db, "planes", idPlan);
+    const snap = await getDoc(ref);
+    if (!snap.exists()) return err("plan-not-found", "El plan no existe.");
+    const plan = snap.data() as Plan;
+
     const updates: Record<string, unknown> = { estado: "Cocinada" };
     if (opciones?.resetComponentes) updates.componentesCocinados = [];
     await updateDoc(ref, updates);
 
-    if (opciones?.cocinarExtras) {
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        const plan = snap.data() as Plan;
-        if (plan.tipoPlan === "Especial") {
-          const extrasSnap = await getDocs(
-            query(
-              collection(db, "planes"),
-              where("origen", "==", `extra:${idPlan}`),
-              where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista"])
-            )
-          );
-          await Promise.all(extrasSnap.docs.map((d) => updateDoc(d.ref, { estado: "Cocinada" })));
-        }
-      }
+    if (plan.listaComprasId) {
+      const r = await limpiarAportesDelPlan(plan.listaComprasId, idPlan);
+      if (!r.ok) console.error("[limpieza] marcarCocinada:", r.error);
+    }
+
+    if (opciones?.cocinarExtras && plan.tipoPlan === "Especial") {
+      const extrasSnap = await getDocs(
+        query(
+          collection(db, "planes"),
+          where("origen", "==", `extra:${idPlan}`),
+          where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista"])
+        )
+      );
+      await Promise.all(extrasSnap.docs.map((d) => updateDoc(d.ref, { estado: "Cocinada" })));
     }
 
     return ok(undefined);
@@ -193,6 +196,11 @@ export async function marcarComponenteCocinado(
       estado: nuevoEstado,
       componentesCocinados: nuevosCocinados,
     });
+
+    if (plan.listaComprasId) {
+      const r = await limpiarAportesDelPlan(plan.listaComprasId, idPlan, idReceta);
+      if (!r.ok) console.error("[limpieza] marcarComponenteCocinado:", r.error);
+    }
 
     return ok({ nuevoEstado });
   } catch (e) {
