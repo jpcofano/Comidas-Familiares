@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.6 (E3.7: pantalla de historial — Etapa 3 completa)
+> **Versión**: 1.5.7 (E3.4.7: normalización de unidades en el importador de recetas)
 > **Fecha**: 2026-05-24
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -144,6 +144,18 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 4. **Eliminación de `voteAndCloseIfComplete`** (`src/data/planes.ts`): función creada en E2.2 como prototipo del flujo multi-miembro. Reemplazada en E3.6 por `guardarEvaluacionJP`. Eliminada en E3.7 como limpieza (código muerto — ningún componente la importaba). El flujo E4.2 usará la misma mecánica de transacción que `guardarEvaluacionJP`, no resucitará `voteAndCloseIfComplete`.
 
 5. **Etapa 3 completa**: con E3.7, todas las pantallas de la Etapa 3 están implementadas: Home JP, Biblioteca (recetas + menús), Detalle receta, Detalle menú, Importar receta, Importar menú, Compras, Cocinar (guiada + scroll), Evaluar, Historial, Detalle historial.
+
+### 1.2.undecies Cambios en v1.5.7 (E3.4.7 — normalización de unidades en el importador)
+
+1. **`normalizarUnidad()` aplicada en el importador** (`src/routes/ImportarReceta.tsx`): el importador de recetas TXT ahora pasa todas las unidades por `normalizarUnidad()` antes de escribirlas en Firestore. Afecta dos puntos del paso 3 (guardado):
+   - `IngredienteEnReceta.unidad`: si `normalizarUnidad(raw.unidad)` devuelve `null` (unidad vacía, "a gusto" o no reconocida), la clave `unidad` se **omite** del doc (spread condicional). Si devuelve string canónico, se escribe ese valor. Idéntico al criterio de las recetas seed tras E3.4.5.
+   - `unidadesHabituales` del nuevo ingrediente de catálogo: también normalizado. Si devuelve `null`, se escribe array vacío.
+
+2. **`textoOriginal` no se toca**: el campo sigue siendo la línea cruda que escribió JP. Solo el campo `unidad` (que va a Firestore) se normaliza.
+
+3. **Unidad no reconocida → `null` + `console.warn`**: si JP escribe en el TXT una unidad que `normalizarUnidad` no reconoce, la función emite `console.warn` y devuelve `null`. La receta se importa igual, con esa unidad omitida (tratada como "a gusto"). El warn es la señal para ampliar la tabla de mappings en `src/lib/unidades.ts`.
+
+4. **Cierre de deuda técnica**: a partir de E3.4.7 el importador no reintroduce unidades crudas en Firestore. Cualquier receta importada desde ahora agrupa correctamente con otras recetas de la misma lista de compras.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
