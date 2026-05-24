@@ -13,6 +13,7 @@ import { DetalleMenuRoute } from "./routes/DetalleMenu";
 import { ImportarMenuRoute } from "./routes/ImportarMenu";
 import { ComprasRoute } from "./routes/Compras";
 import { HistorialRoute } from "./routes/Historial";
+import { HistorialDetalleRoute } from "./routes/HistorialDetalle";
 import { VotoRoute } from "./routes/Voto";
 import { NotFoundRoute } from "./routes/NotFound";
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/menus/:id" element={<DetalleMenuRoute />} />
           <Route path="/compras" element={<ComprasRoute />} />
           <Route path="/historial" element={<HistorialRoute />} />
+          <Route path="/historial/:idHist" element={<HistorialDetalleRoute />} />
           <Route path="/voto/:idPlan" element={<VotoRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>

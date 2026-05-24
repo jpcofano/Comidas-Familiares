@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, Receta, Menu, MiembroId, MemberId, DatosCocinero } from "../types/models";
+import type { Plan, Historial, Receta, Menu, MiembroId, DatosCocinero } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -393,15 +393,7 @@ export async function sumarMenuComoEnProceso(
   return result;
 }
 
-// ─── Voto + cierre transaccional (§3.7) ──────────────────────────────────────
-
-export interface VoteOutcome {
-  planActualizado: Plan;
-  cerrado: boolean;
-  promedio?: number;
-  resultado?: string;
-  idHistorial?: string;
-}
+// ─── Evaluación por JP (E3.6) ─────────────────────────────────────────────────
 
 class TransactionAbort extends Error {
   code: string;
@@ -410,131 +402,6 @@ class TransactionAbort extends Error {
     this.code = code;
   }
 }
-
-export async function voteAndCloseIfComplete(
-  idPlan: string,
-  miembroId: MemberId,
-  puntaje: number,
-  comentario: string
-): Promise<Result<VoteOutcome, AppError>> {
-  if (puntaje < 1 || puntaje > 10) {
-    return err("invalid-score", "El puntaje debe estar entre 1 y 10.");
-  }
-
-  try {
-    const result = await runTransaction(db, async (tx) => {
-      const planRef = doc(db, "planes", idPlan);
-      const planSnap = await tx.get(planRef);
-
-      if (!planSnap.exists()) {
-        throw new TransactionAbort("plan-not-found", "El plan no existe.");
-      }
-
-      const plan = planSnap.data() as Plan;
-
-      if (plan.estado !== "Cocinada") {
-        throw new TransactionAbort(
-          "plan-not-cookable",
-          `No se puede votar un plan en estado "${plan.estado}". Tiene que estar Cocinada.`
-        );
-      }
-
-      const nuevosVotos: Plan["votos"] = {
-        ...(plan.votos ?? {}),
-        [miembroId]: puntaje,
-      } as Plan["votos"];
-
-      const nuevosComentarios: Plan["comentariosPlan"] = {
-        ...(plan.comentariosPlan ?? {}),
-        [miembroId]: comentario,
-      } as Plan["comentariosPlan"];
-
-      tx.update(planRef, {
-        [`votos.${miembroId}`]: puntaje,
-        [`comentariosPlan.${miembroId}`]: comentario,
-      });
-
-      const votosCompletos = (MIEMBRO_IDS as readonly MiembroId[]).every(
-        (mid) => typeof nuevosVotos[mid] === "number"
-      );
-
-      if (!votosCompletos) {
-        return {
-          planActualizado: { ...plan, votos: nuevosVotos, comentariosPlan: nuevosComentarios },
-          cerrado: false,
-        } as VoteOutcome;
-      }
-
-      // Todos votaron — cerrar evaluación
-      const promedio = calcularPromedio(nuevosVotos);
-      const resultado = calcularResultadoTextual(promedio);
-      const fechaHoy = new Date().toISOString().slice(0, 10);
-      const idHistorial = proximoIdHistorial();
-      const historialRef = doc(db, "historial", idHistorial);
-
-      const historialDoc: Historial = {
-        idHist: idHistorial,
-        fechaRealizada: fechaHoy,
-        fechaRealizadaTimestamp: Timestamp.now(),
-        idPlan: plan.idPlan,
-        idReceta: plan.tipoSeleccion === "receta" ? plan.idSeleccion : "",
-        idMenu: plan.tipoSeleccion === "menu" ? plan.idSeleccion : "",
-        receta: plan.nombreSeleccion,
-        tipoSeleccion: plan.tipoSeleccion,
-        idSeleccion: plan.idSeleccion,
-        nombreSeleccion: plan.nombreSeleccion,
-        semanaInicio: plan.semanaInicio,
-        ocasion: plan.datosCocinero?.ocasion ?? "",
-        calificaciones: nuevosVotos as Record<MiembroId, number>,
-        comentarios: nuevosComentarios,
-        promedio,
-        resultado: resultado as Historial["resultado"],
-        repetir: plan.datosCocinero?.repetir ?? "",
-        costoRealAprox: plan.datosCocinero?.costoRealAprox ?? "",
-        dificultadReal: plan.datosCocinero?.dificultadReal ?? "",
-        queSalioBien: plan.datosCocinero?.queSalioBien ?? "",
-        queCambiaria: plan.datosCocinero?.queCambiaria ?? "",
-        notasFamiliares: plan.datosCocinero?.notasFamiliares ?? "",
-      };
-
-      tx.set(historialRef, historialDoc);
-      tx.update(planRef, { estado: "Evaluada" });
-
-      // TODO v1.4: decidir qué hacer para planes de menú (no se actualizan
-      // contadores en el menú ni en sus componentes por ahora).
-      if (plan.tipoSeleccion === "receta") {
-        const recetaRef = doc(db, "recetas", plan.idSeleccion);
-        tx.update(recetaRef, {
-          vecesCocinada: increment(1),
-          ultimaEvaluacion: Timestamp.now(),
-          ultimoPuntaje: promedio,
-        });
-      }
-
-      return {
-        planActualizado: {
-          ...plan,
-          votos: nuevosVotos,
-          comentariosPlan: nuevosComentarios,
-          estado: "Evaluada",
-        },
-        cerrado: true,
-        promedio,
-        resultado,
-        idHistorial,
-      } as VoteOutcome;
-    });
-
-    return ok(result);
-  } catch (e) {
-    if (e instanceof TransactionAbort) {
-      return err(e.code, e.message, e);
-    }
-    return err("vote-transaction-failed", "No se pudo registrar el voto. Probá de nuevo.", e);
-  }
-}
-
-// ─── Evaluación por JP (E3.6) ─────────────────────────────────────────────────
 // Cierra el plan inmediatamente al confirmar JP. El cierre al 4º voto (E4.2)
 // monta encima la misma mecánica de transacción con distinta condición de cierre.
 
