@@ -12,6 +12,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { normalizeText } from "../src/lib/canonical";
 import { parseDificultad, parseCosto, parseTime } from "../src/lib/parsers";
+import { CATEGORIAS_INGREDIENTE, ROLES_NUTRICIONALES, ORDEN_GONDOLA } from "../src/lib/catalogo";
 
 const DRY_RUN = process.argv.includes("--dry-run");
 const SERVICE_ACCOUNT_PATH = resolve("scripts/service-account.json");
@@ -102,6 +103,59 @@ async function batchWrite(
   }
 }
 
+// ─── Validación ───────────────────────────────────────────────────────────────
+
+const SET_CATEGORIAS = new Set<string>(CATEGORIAS_INGREDIENTE);
+const SET_ROLES = new Set<string>(ROLES_NUTRICIONALES);
+const SET_GONDOLA = new Set<string>(ORDEN_GONDOLA);
+
+function validarIngredientes(raw: Record<string, unknown>[]): void {
+  const errores: string[] = [];
+  for (const r of raw) {
+    const id = String(r["idIngrediente"] ?? "");
+    const cat = String(r["categoria"] ?? "");
+    const gondola = String(r["seccionGondola"] ?? "");
+    const roles = r["rolNutricional"];
+
+    if (!SET_CATEGORIAS.has(cat)) errores.push(`${id}: categoria inválida "${cat}"`);
+    if (!SET_GONDOLA.has(gondola)) errores.push(`${id}: seccionGondola inválida "${gondola}"`);
+    if (!Array.isArray(roles)) {
+      errores.push(`${id}: rolNutricional no es array`);
+    } else {
+      for (const rol of roles as unknown[]) {
+        if (!SET_ROLES.has(String(rol))) errores.push(`${id}: rolNutricional inválido "${rol}"`);
+      }
+    }
+  }
+  if (errores.length > 0) {
+    console.error("\nERROR DE VALIDACIÓN — ingredientes:");
+    errores.forEach((e) => console.error("  " + e));
+    process.exit(1);
+  }
+  console.log(`  ✓ validación de dimensiones OK (${raw.length} ingredientes)`);
+}
+
+function validarReferenciasRecetas(
+  recetas: Record<string, unknown>[],
+  idsCatalogo: Set<string>
+): void {
+  const huerfanos: string[] = [];
+  for (const r of recetas) {
+    const idReceta = String(r["idReceta"] ?? "");
+    const ings = (r["ingredientes"] as unknown[] ?? []) as Record<string, unknown>[];
+    for (const ing of ings) {
+      const idIng = String(ing["idIngrediente"] ?? "");
+      if (!idsCatalogo.has(idIng)) huerfanos.push(`${idReceta} → ${idIng}`);
+    }
+  }
+  if (huerfanos.length > 0) {
+    console.error("\nERROR — referencias huérfanas en recetas:");
+    huerfanos.forEach((h) => console.error("  " + h));
+    process.exit(1);
+  }
+  console.log(`  ✓ todas las referencias de idIngrediente en recetas resueltas`);
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -116,9 +170,17 @@ async function main() {
   await wipeCollection("planes");
   await wipeCollection("historial");
 
-  // ── Load ingredientes ────────────────────────────────────────────────────────
-  console.log("\n2. Cargando ingredientes...");
+  // ── Validación pre-carga ────────────────────────────────────────────────────
+  console.log("\n2. Validando seeds...");
   const rawIngredientes = readJson("catalogo_ingredientes.json") as Record<string, unknown>[];
+  validarIngredientes(rawIngredientes);
+  const idsCatalogo = new Set(rawIngredientes.map((r) => String(r["idIngrediente"] ?? "")));
+  const rawRecetas = readJson("recetas.json") as Record<string, unknown>[];
+  validarReferenciasRecetas(rawRecetas, idsCatalogo);
+
+  // ── Load ingredientes ────────────────────────────────────────────────────────
+  console.log("\n3. Cargando ingredientes...");
+  // Strip categoriaOverride from recipe ingredients if present (legacy field — removed in E3.4.8)
   const ingredientesItems = rawIngredientes.map((r) => ({
     id: r["idIngrediente"] as string,
     data: r as Record<string, unknown>,
@@ -127,8 +189,8 @@ async function main() {
   console.log(`  ✓ ${ingredientesItems.length} ingredientes`);
 
   // ── Load recetas ─────────────────────────────────────────────────────────────
-  console.log("\n3. Cargando recetas...");
-  const rawRecetas = readJson("recetas.json") as Record<string, unknown>[];
+  console.log("\n4. Cargando recetas...");
+  // rawRecetas already loaded in validation step above
 
   const recetasItems = rawRecetas.map((r) => {
     const nombre = String(r["nombre"] ?? "");
@@ -182,7 +244,7 @@ async function main() {
         if (i["seccion"]) out["seccion"] = i["seccion"];
         if (i["cantidad"] != null) out["cantidad"] = i["cantidad"];
         if (i["unidad"]) out["unidad"] = i["unidad"];
-        if (i["categoriaOverride"]) out["categoriaOverride"] = i["categoriaOverride"];
+        // categoriaOverride eliminated in E3.4.8 — not written even if present in JSON
         out["opcional"] = Boolean(i["opcional"] ?? false);
         if (i["notas"]) out["notas"] = i["notas"];
         if (Array.isArray(i["alternativas"]) && (i["alternativas"] as unknown[]).length > 0) {
@@ -226,7 +288,7 @@ async function main() {
   console.log(`  ✓ ${recetasItems.length} recetas`);
 
   // ── Load menús ────────────────────────────────────────────────────────────────
-  console.log("\n4. Cargando menús...");
+  console.log("\n5. Cargando menús...");
   const rawMenus = readJson("menus.json") as Record<string, unknown>[];
   const menusItems = rawMenus.map((m) => ({
     id: m["idMenu"] as string,
@@ -249,9 +311,25 @@ async function main() {
   await batchWrite("menus", menusItems);
   console.log(`  ✓ ${menusItems.length} menús`);
 
+  // ── Diccionarios ─────────────────────────────────────────────────────────────
+  console.log("\n6. Actualizando /config/diccionarios...");
+  if (!DRY_RUN) {
+    await db.doc("config/diccionarios").set(
+      {
+        categoriasIngrediente: [...CATEGORIAS_INGREDIENTE],
+        rolesNutricionales: [...ROLES_NUTRICIONALES],
+        seccionesGondola: [...ORDEN_GONDOLA],
+      },
+      { merge: true }
+    );
+    console.log("  ✓ diccionarios actualizados");
+  } else {
+    console.log("  (dry-run — no se escribe)");
+  }
+
   // ── Verificación ──────────────────────────────────────────────────────────────
   if (!DRY_RUN) {
-    console.log("\n5. Verificación...");
+    console.log("\n7. Verificación...");
     const [ingSnap, recSnap, menuSnap] = await Promise.all([
       db.collection("ingredientes").get(),
       db.collection("recetas").get(),
