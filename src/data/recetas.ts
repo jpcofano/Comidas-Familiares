@@ -95,3 +95,13 @@ export async function buscarRecetasPorNombre(nombre: string): Promise<Receta[]> 
   const snap = await getDocs(collection(db, "recetas"));
   return snap.docs.map(d => d.data() as Receta).filter(r => r.nombreCanonico === nc);
 }
+
+export async function proximoIdReceta(): Promise<string> {
+  const snap = await getDocs(collection(db, "recetas"));
+  const nums = snap.docs
+    .map(d => d.id)
+    .filter(id => /^REC-\d{4}$/.test(id))
+    .map(id => parseInt(id.slice(4), 10));
+  const max = nums.length > 0 ? Math.max(...nums) : 0;
+  return `REC-${String(max + 1).padStart(4, "0")}`;
+}
