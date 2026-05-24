@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.7 (E3.4.7: normalización de unidades en el importador de recetas)
+> **Versión**: 1.5.8 (E3.4.8: catálogo rediseñado — 3 dimensiones + re-seed)
 > **Fecha**: 2026-05-24
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -157,6 +157,29 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 4. **Cierre de deuda técnica**: a partir de E3.4.7 el importador no reintroduce unidades crudas en Firestore. Cualquier receta importada desde ahora agrupa correctamente con otras recetas de la misma lista de compras.
 
+### 1.2.duodecies Cambios en v1.5.8 (E3.4.8 — catálogo rediseñado, 3 dimensiones)
+
+1. **Modelo `Ingrediente` rediseñado** (`src/types/models.ts`):
+   - `seccionDefault` eliminado — campo viejo que mezclaba la sección de receta con la sección de góndola.
+   - `rolNutricional: string[]` — nuevo campo. Set de roles nutricionales del ingrediente ("Proteina", "Hidrato", "Grasa", "Fibra/Vegetal", "Azucar/Dulce", "Neutro"). Puede ser vacío (`[]`).
+   - `seccionGondola: string` — nuevo campo. Sección del supermercado donde se compra el ingrediente. 9 valores canónicos (ver `src/lib/catalogo.ts`).
+   - `categoriaOverride` eliminado de `IngredienteEnReceta` — la sección de góndola viene siempre del catálogo, no de la receta.
+
+2. **Catálogo: 194 → 177 ingredientes**. Limpieza de duplicados y entradas "basura" (ingredientes nunca usados o mal cargados). Los IDs se renumeraron de ING-0001 a ING-0177. Todas las referencias en las 78 recetas se remapearon a los nuevos IDs. La renumeración es parte intencional del re-seed (`scripts/reseed-ingredientes.ts`), no una migración incremental.
+
+3. **Tres listas canónicas** en `src/lib/catalogo.ts`:
+   - `CATEGORIAS_INGREDIENTE` — 17 valores (qué ES el ingrediente): Verdura, Fruta, Carne, Pescado y marisco, Huevo, Lacteo, Fiambre y embutido, Cereal y derivado, Legumbre, Semilla y fruto seco, Hierba y especia, Condimento y aderezo, Aceite y grasa, Endulzante, Caldo y fondo, Despensa varios, Utensilio.
+   - `ROLES_NUTRICIONALES` — 6 valores (qué APORTA): Proteina, Hidrato, Grasa, Fibra/Vegetal, Azucar/Dulce, Neutro. `Neutro` es excluyente.
+   - `ORDEN_GONDOLA` — 9 secciones (DÓNDE se compra, en orden de recorrido del súper): Verduleria, Carniceria, Pescaderia, Fiambreria, Lacteos y frescos, Almacen / secos, Panaderia, Bazar / otros, Despensa / otros. Mismo array que ordena la lista de compras en la pantalla.
+
+4. **Lista de compras agrupa por `seccionGondola`** (`src/data/compras.ts`, `src/routes/Compras.tsx`): `ItemCompra.categoria` renombrado a `seccionGondola`. El campo se popula desde `catalogo.seccionGondola` (no de la receta). La vista "Por categoría" renombrada a "Por góndola", ordena las secciones según `ORDEN_GONDOLA` (Verdulería primero, Despensa al final) — no alfabéticamente.
+
+5. **Script de re-seed con validación** (`scripts/reseed-ingredientes.ts`): antes de escribir, valida que cada ingrediente tenga `categoria`, `seccionGondola` y `rolNutricional[]` con valores dentro de las listas canónicas. Valida que cada `idIngrediente` en recetas exista en el catálogo. Si hay un valor fuera de lista o referencia huérfana, aborta con error. Actualiza `/config/diccionarios` con las tres nuevas listas al final del seed.
+
+6. **Ingredientes importados vía TXT** (`src/routes/ImportarReceta.tsx`): los nuevos ingredientes creados por el importador reciben `seccionGondola: "Despensa / otros"`, `rolNutricional: []`, `ambiguo: true` como valores por defecto. JP los completa en `/biblioteca/catalogo` (nueva pantalla `CatalogoIngredientesRoute`), que los lista y permite editar las tres dimensiones; al guardar, `ambiguo: false`.
+
+7. **Edge case `Utensilio`**: el palito de brochette (`ING-???`) tiene `categoria: "Utensilio"` y `seccionGondola: "Bazar / otros"`. No es comestible — la lista de compras no filtra por comestibilidad, lo muestra en su sección igual que cualquier otro ítem.
+
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
 1. **Realtime nativo** en planes activos y compras vía `onSnapshot`. Cuando María tilda "Ya tengo" desde su celu, JP lo ve al toque sin refrescar. El cambio de estado de un plan (Elegida → Compra pendiente → Cocinada) se propaga en vivo. Esto reemplaza el "refresh manual" que aplicaba en v1.2.
@@ -177,7 +200,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 | Entidad | Cantidad | Origen |
 |---|---|---|
 | Recetas | 78 | `CS_SEED_RECETAS_COMPLETAS` |
-| Ingredientes (filas) | ~1,180 | `CS_SEED_INGREDIENTES_COMPLETOS` |
+| Ingredientes (filas) | 177 (renumerados ING-0001–ING-0177 en E3.4.8; eran ~194 antes de limpieza) | `scripts/seed-data/catalogo_ingredientes.json` |
 | Pasos (filas) | ~800 | `CS_SEED_PASOS_COMPLETOS` |
 | Menús | 5 | `CS_SEED_MENUS_COMPLETOS` |
 | Menu items (filas) | ~21 | `CS_SEED_MENU_ITEMS_COMPLETOS` |
@@ -525,7 +548,7 @@ componentesCocinados?: string[]   // array de idReceta ya cocinados; solo existe
   id: "auto-id",                           // string — se setea igual al doc ID al crear
   idIngrediente: "ING-0042",              // referencia al catálogo /ingredientes
   nombrePreferido: "Cebolla",             // snapshot del catálogo al momento de la sync
-  categoria: "Verduras",                  // del catálogo (o categoriaOverride de la receta)
+  seccionGondola: "Verduleria",           // del catálogo (seccionGondola) — 9 valores canónicos
   cantidadTotal: 3,                       // suma de aportes
   cantidadLabel: "3 u",                   // "${cantidadTotal} ${unidad}".trim() o "a gusto"
   unidad: "u",                            // unidad canónica
@@ -684,9 +707,14 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
     finales: ["Evaluada"]
   },
 
-  // Secciones de ingredientes (orden de display):
-  seccionesIngredientes: ["Principal", "Base de sabor", "Líquido de cocción",
-                          "Condimentos", "Cocción", "Guarnición baja en hidratos", "Opcional familia"],
+  // Catálogo de ingredientes — tres dimensiones (E3.4.8):
+  categoriasIngrediente: ["Verdura", "Fruta", "Carne", "Pescado y marisco", "Huevo", "Lacteo",
+                           "Fiambre y embutido", "Cereal y derivado", "Legumbre", "Semilla y fruto seco",
+                           "Hierba y especia", "Condimento y aderezo", "Aceite y grasa", "Endulzante",
+                           "Caldo y fondo", "Despensa varios", "Utensilio"],
+  rolesNutricionales: ["Proteina", "Hidrato", "Grasa", "Fibra/Vegetal", "Azucar/Dulce", "Neutro"],
+  seccionesGondola: ["Verduleria", "Carniceria", "Pescaderia", "Fiambreria", "Lacteos y frescos",
+                     "Almacen / secos", "Panaderia", "Bazar / otros", "Despensa / otros"],
 
   // Unidades canónicas (claves para sumabilidad) — actualizado en E3.4.5 (2026-05-23):
   unidadesCanonicas: ["g", "kg", "ml", "l", "unidad", "cda", "cdita", "taza", "pizca",
@@ -788,6 +816,44 @@ Mismo lugar, "Add field" a `miembros` con un nuevo memberId (ej: `abuela`) y su 
 **Múltiples mails, mismo miembro:** si María se loguea hoy con Gmail y mañana con Accenture, Firebase Auth le da **dos UIDs distintos** → se crean dos docs en `/users/{uid}` distintos, pero ambos con `memberId: "maria"`. En consecuencia, el sistema la trata como la misma persona en planes, votos, historial — porque toda la lógica de negocio usa `memberId`, no `uid`.
 
 
+
+---
+
+### 2.10 `/ingredientes/{idIngrediente}` — Catálogo de ingredientes
+
+**Shape (177 docs tras E3.4.8; IDs ING-0001 a ING-0177):**
+
+```typescript
+{
+  idIngrediente: "ING-0001",           // doc ID, ING-XXXX (4 dígitos)
+  canonico: "abadejo",                 // normalizeText(nombrePreferido) — clave anti-dup
+  nombrePreferido: "Abadejo",          // nombre canónico de display
+
+  sinonimos: ["bacalao fresco"],        // array de strings normalizados (puede ser vacío)
+
+  // Tres dimensiones del catálogo rediseñado (E3.4.8):
+  categoria: "Pescado y marisco",      // qué ES — 17 valores (ver CATEGORIAS_INGREDIENTE)
+  rolNutricional: ["Proteina"],        // qué APORTA — set, 6 valores, puede ser []
+  seccionGondola: "Pescaderia",        // DÓNDE se compra — 9 valores (ver ORDEN_GONDOLA)
+
+  unidadesHabituales: ["g"],           // unidades típicas de este ingrediente (normalizado)
+  vecesUsado: 1,                       // contador incremental al usar en receta
+  ambiguo: false,                      // true = ingresado por importador, dimensiones pendientes
+
+  origen: "seed",                      // "seed" | "import" | "manual"
+  fechaCreacion?: Timestamp,
+  ultimaModificacion?: Timestamp
+}
+```
+
+**Campos eliminados en E3.4.8:**
+- `seccionDefault` — mezclaba sección de receta con sección de góndola. Reemplazado por `seccionGondola`.
+- `categoriaOverride` en `IngredienteEnReceta` — la sección de góndola viene siempre del catálogo.
+
+**`ambiguo: true` — flujo de completado:**
+Los ingredientes creados por el importador de recetas TXT reciben `ambiguo: true` con valores de fallback (`seccionGondola: "Despensa / otros"`, `rolNutricional: []`). JP los revisa en `/biblioteca/catalogo` (`CatalogoIngredientesRoute`): edita las tres dimensiones y guarda → `ambiguo: false`.
+
+**Nota `Utensilio`:** el palito de brochette tiene `categoria: "Utensilio"`, `seccionGondola: "Bazar / otros"`. No es comestible — la lista de compras no filtra por comestibilidad y lo muestra en su sección como cualquier ítem.
 
 ---
 
