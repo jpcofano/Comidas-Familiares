@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.9 (E3.4.9: matcher con sugerencias y aprendizaje de sinónimos — §9.6 resuelto)
+> **Versión**: 1.6.0 (cierre Etapa 3 — changelog E3.4.6 retroactivo + §5 completo + deuda técnica registrada)
 > **Fecha**: 2026-05-24
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -22,6 +22,7 @@
 7. [Plan de prompts para Claude Code](#7-plan-de-prompts-para-claude-code)
 8. [Claude Design: cuándo y qué pedirle](#8-claude-design-cuándo-y-qué-pedirle)
 9. [Apéndice: futuro](#9-apéndice-futuro)
+10. [Deuda técnica pendiente](#10-deuda-técnica-pendiente--post-etapa-3)
 
 ---
 
@@ -99,6 +100,19 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 5. **Casos de sal/pimienta con doble unidad**: algunos ingredientes (Sal fina, Pimienta) tienen aportes con `unidad: ""` (a gusto) en algunas recetas y con `"pizca"` o `"cdita"` en otras. Esto genera **dos ítems separados en la lista de compras** — uno "a gusto" y uno con medida. Esto es **correcto y esperado**: no forzar la fusión porque son medidas genuinamente distintas.
 
+### 1.2.sexies-bis E3.4.6 — importador de recetas TXT (sin bump de versión formal en el MAPEO)
+
+> Nota: E3.4.6 fue implementado entre v1.5.2 (E3.4.5) y v1.5.3 (E3.5.1) sin generar su propio bump de versión en el MAPEO. Esta entrada se agrega retroactivamente en v1.6.0 como parte del cierre documental de la Etapa 3.
+
+1. **Pantalla `/biblioteca/importar`** (`src/routes/ImportarReceta.tsx`): importador de recetas en formato TXT. Acceso exclusivo JP (redirige a `/biblioteca` si el usuario no es `juanpablo`). Flujo de 3 pasos:
+   - **Paso 1 — parsear TXT**: textarea con el formato `#RECETA` / `#INGREDIENTES` / `#PASOS`. Botón "Parsear" invoca `parseRecetaTxt()` y carga el catálogo vía `getCatalogo()`.
+   - **Paso 2 — resolver ingredientes**: por cada ingrediente tipeado, el matcher devuelve una decisión (`exacto` / `candidatos` / `nuevo`). JP confirma o ajusta cada fila antes de guardar.
+   - **Paso 3 — guardar**: crea ingredientes nuevos con `crearIngrediente()`, llama `agregarSinonimo()` para los candidatos elegidos, crea la receta con `crearReceta()`.
+
+2. **Matcher original** (`src/lib/matcherIngredientes.ts`): tipo de resultado `"exacto" | "candidatos" | "nuevo"`. Los candidatos usaban similitud por trigramas con umbral 0.4, top 4 ordenados por similitud. Reemplazado en E3.4.9 por el algoritmo de 4 pasos con tipo `"sugerencias"`.
+
+3. **Funciones del catálogo** (`src/data/ingredientes.ts`): `getCatalogo()` (cache en memoria), `crearIngrediente()`, `proximoIdIngrediente()`, `agregarSinonimo()` (usa `arrayUnion`, invalida cache). Estas 4 funciones nacen en E3.4.6 y son extendidas en E3.4.8 con `buildNuevoIngredienteDoc`, `getIngredientesAmbiguos`, `actualizarIngrediente`.
+
 ### 1.2.septies Cambios en v1.5.3 (E3.5.1 — finalización explícita y pasos destildables)
 
 1. **Botón "Finalizar" explícito**: la pantalla de cocinar (`src/routes/Cocinar.tsx`) ya no finaliza automáticamente al llegar al último paso. El botón "Finalizar cocción" / "Componente listo ✓" / "Salir" siempre está visible al pie; requiere confirmación inline antes de ejecutar.
@@ -143,7 +157,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 4. **Eliminación de `voteAndCloseIfComplete`** (`src/data/planes.ts`): función creada en E2.2 como prototipo del flujo multi-miembro. Reemplazada en E3.6 por `guardarEvaluacionJP`. Eliminada en E3.7 como limpieza (código muerto — ningún componente la importaba). El flujo E4.2 usará la misma mecánica de transacción que `guardarEvaluacionJP`, no resucitará `voteAndCloseIfComplete`.
 
-5. **Etapa 3 completa**: con E3.7, todas las pantallas de la Etapa 3 están implementadas: Home JP, Biblioteca (recetas + menús), Detalle receta, Detalle menú, Importar receta, Importar menú, Compras, Cocinar (guiada + scroll), Evaluar, Historial, Detalle historial.
+5. **Etapa 3 completa (ciclo principal)**: con E3.7 quedan implementadas las pantallas del ciclo principal: Home JP, Biblioteca (recetas + menús), Detalle receta, Detalle menú, Importar receta, Importar menú, Compras, Cocinar (guiada + scroll), Evaluar, Historial, Detalle historial. Las sub-etapas E3.4.7–E3.4.9 completaron la cadena de importación y catálogo; E3.4.8 agregó `/biblioteca/catalogo` (resolución de ingredientes ambiguos). **Cierre formal de Etapa 3: v1.6.0.**
 
 ### 1.2.undecies Cambios en v1.5.7 (E3.4.7 — normalización de unidades en el importador)
 
@@ -1198,6 +1212,7 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 | `menuImportar` | `/menus/importar` | ✅ | ❌ | ✅ E2.5 |
 | `componentes menú` | `/planes/:idPlan/componentes` | ✅ | ❌ | ✅ E3.5 |
 | `compras` | `/compras` | ✅ | ✅ | ✅ E3.4 |
+| `catálogo de ingredientes` | `/biblioteca/catalogo` | ✅ | ❌ | ✅ E3.4.8 |
 | `voto` / `evaluar` | `/voto/:idPlan` | ✅ | pendiente E4.2 | ✅ E3.6 |
 | `historial` | `/historial` | ✅ | ✅ | ✅ E3.7 |
 | `historial detalle` | `/historial/:idHist` | ✅ | ✅ | ✅ E3.7 |
@@ -1610,6 +1625,41 @@ Una vez que la familia use Firebase con confianza por 4-6 semanas, deprecamos el
 - Read-only en el Sheet.
 - Reemplazar `Index.html` con un mensaje "Esta versión está retirada, andá a https://comida-familiar.web.app".
 - Mantener el spreadsheet como respaldo histórico, sin acceso de escritura.
+
+---
+
+## 10. Deuda técnica pendiente — post Etapa 3
+
+Ítems conocidos que no se abordaron en Etapa 3. Deben resolverse o decidirse explícitamente antes de Etapa 4-5. No es una lista de bugs bloqueantes — la app funciona — sino de cosas que van a morder si se ignoran.
+
+### 10.1 Filtros de Biblioteca — posiblemente desactualizados tras E3.4.8
+
+Los filtros del listado de recetas en `/biblioteca` probablemente leen enums hardcodeados o desde `src/types/models.ts`, en vez de leer desde `/config/diccionarios`. El rediseño de E3.4.8 cambió el shape del diccionario: eliminó `seccionesIngredientes`, agregó `categoriasIngrediente`, `rolesNutricionales`, `seccionesGondola`. Si algún filtro consumía `seccionesIngredientes` o un valor viejo, está roto silenciosamente.
+
+**Acción pendiente:** revisar `src/routes/Biblioteca.tsx` y confirmar que los filtros de categoría y tipo siguen funcionando contra el catálogo post-E3.4.8.
+
+### 10.2 Deuda de UI en el importador
+
+1. **Contraste botones de sugerencia (E3.4.9)**: los botones no seleccionados muestran la categoría del ingrediente en `color: #888` — bajo contraste en pantallas con brillo reducido. Evaluar ajustar a `#555` o `#666`.
+
+2. **Pluralización de unidades**: la lista de compras muestra `"3 u"` en lugar de `"3 unidades"`. El campo `cantidadLabel` usa la abreviatura canónica (`"u"`, `"cda"`, etc). Decidir si se expanden las abreviaturas al mostrar, o si las abreviaturas son el formato final.
+
+3. **"A gusto" en vez de cantidad sin unidad**: cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos.
+
+### 10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9
+
+El doc `ING-0178` con `nombrePreferido: "Arroz"` y `ambiguo: true` fue creado por el importador antes de que E3.4.9 resolviera el loop de sugerencias. No se borra automáticamente. Dos opciones:
+
+- **Opción A**: eliminar en Firebase Console. Verificar primero que no haya referencias activas en recetas, planes o listas de compras (buscar `ING-0178` en las colecciones).
+- **Opción B**: completar sus dimensiones en `/biblioteca/catalogo` y mantenerlo si "Arroz" genérico tiene algún uso válido.
+
+Una vez aprendido "arroz" como sinónimo de "Arroz largo fino" vía E3.4.9, el matcher lo resuelve como `exacto` contra ese ingrediente — el genérico `ING-0178` queda inactivo para el importador pero sigue ocupando espacio en el catálogo.
+
+### 10.4 Recetas de prueba del importador — pendiente de limpiar
+
+Durante el testing de E3.4.7, E3.4.8 y E3.4.9 se crearon recetas de prueba en el rango `REC-15xx` (ej. "Pollo de prueba E3.4.7" y similares). Pendiente identificar cuáles son de prueba y eliminarlas de Firestore.
+
+**Precaución:** verificar que no estén referenciadas en planes activos o entradas de historial antes de borrar.
 
 ---
 
