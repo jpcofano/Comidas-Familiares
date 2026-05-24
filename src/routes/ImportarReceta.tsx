@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { parseRecetaTxt, type ParsedReceta, type ParsedIngredienteRaw } from "../import/parseReceta";
-import { matchIngrediente, type ResultadoMatch, type MatchConSimilitud } from "../lib/matcherIngredientes";
+import { matchIngrediente, type ResultadoMatch } from "../lib/matcherIngredientes";
 import {
   getCatalogo, crearIngrediente, buildNuevoIngredienteDoc, agregarSinonimo,
   invalidateCatalogCache, proximoIdIngrediente,
@@ -15,7 +15,7 @@ import { normalizarUnidad } from "../lib/unidades";
 
 type DecisionIngrediente =
   | { tipo: "exacto"; idIngrediente: string; nombrePreferido: string }
-  | { tipo: "candidato"; idIngrediente: string; nombrePreferido: string }
+  | { tipo: "sugerencia"; idIngrediente: string; nombrePreferido: string }
   | { tipo: "nuevo"; nombre: string; categoria: string };
 
 interface FilaIngrediente {
@@ -79,7 +79,7 @@ const badge = (color: string, bg: string) => ({
 });
 
 const BADGE_EXACTO  = badge("#1b5e20", "#e8f5e9");
-const BADGE_CANDID  = badge("#6d4c00", "#fff8e1");
+const BADGE_SUGER   = badge("#6d4c00", "#fff8e1");
 const BADGE_NUEVO   = badge("#424242", "#eeeeee");
 
 // ─── Componente principal ─────────────────────────────────────────────────────
@@ -120,9 +120,9 @@ export function ImportarRecetaRoute() {
         let decision: DecisionIngrediente;
         if (match.tipo === "exacto") {
           decision = { tipo: "exacto", idIngrediente: match.ingrediente.idIngrediente, nombrePreferido: match.ingrediente.nombrePreferido };
-        } else if (match.tipo === "candidatos") {
-          const best = match.candidatos[0].ingrediente;
-          decision = { tipo: "candidato", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
+        } else if (match.tipo === "sugerencias") {
+          const best = match.sugerencias[0].ingrediente;
+          decision = { tipo: "sugerencia", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
         } else {
           decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" };
         }
@@ -151,9 +151,9 @@ export function ImportarRecetaRoute() {
     try {
       invalidateCatalogCache();
 
-      // 1. agregarSinonimo para candidatos elegidos
+      // 1. agregarSinonimo para sugerencias elegidas por JP
       for (const fila of filas) {
-        if (fila.decision.tipo === "candidato") {
+        if (fila.decision.tipo === "sugerencia") {
           const r = await agregarSinonimo(fila.decision.idIngrediente, normalizeText(fila.raw.textoOriginal));
           if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }
         }
@@ -421,6 +421,7 @@ function FilaRow({
   categorias: string[];
   onChange: (idx: number, d: DecisionIngrediente) => void;
 }) {
+  const [verMas, setVerMas] = useState(false);
   const { raw, match, decision } = fila;
 
   const titulo = raw.preparacion
@@ -428,31 +429,14 @@ function FilaRow({
     : raw.textoOriginal;
   const unidadLabel = [raw.cantidadLabel, raw.unidad].filter(Boolean).join(" ");
 
-  function handleCandidatoSelect(e: React.ChangeEvent<HTMLSelectElement>) {
-    const val = e.target.value;
-    if (val === "__nuevo__") {
-      onChange(idx, { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" });
-    } else {
-      const cands = (match.tipo === "candidatos" ? match.candidatos : []) as MatchConSimilitud[];
-      const ing = cands.find(c => c.ingrediente.idIngrediente === val)?.ingrediente;
-      if (ing) onChange(idx, { tipo: "candidato", idIngrediente: ing.idIngrediente, nombrePreferido: ing.nombrePreferido });
-    }
-  }
-
-  const currentCandidatoId = decision.tipo === "candidato" ? decision.idIngrediente
-    : decision.tipo === "nuevo" && match.tipo === "candidatos" ? "__nuevo__"
-    : null;
-
   return (
     <div style={{ padding: "0.6rem 0.75rem", border: "1px solid #e0e0e0", borderRadius: "6px", background: "#fafafa" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
         <span style={{ fontWeight: 500, fontSize: "0.88rem" }}>{titulo}</span>
         {unidadLabel && <span className="meta">{unidadLabel}</span>}
-
-        {decision.tipo === "exacto" && <span style={BADGE_EXACTO}>✓ Exacto</span>}
-        {decision.tipo === "candidato" && <span style={BADGE_CANDID}>⚠ Candidatos</span>}
-        {decision.tipo === "nuevo" && match.tipo !== "candidatos" && <span style={BADGE_NUEVO}>+ Nuevo</span>}
-        {decision.tipo === "nuevo" && match.tipo === "candidatos" && <span style={BADGE_NUEVO}>+ Nuevo</span>}
+        {decision.tipo === "exacto"    && <span style={BADGE_EXACTO}>✓ Exacto</span>}
+        {decision.tipo === "sugerencia" && <span style={BADGE_SUGER}>⚠ Sugerencias</span>}
+        {decision.tipo === "nuevo"     && <span style={BADGE_NUEVO}>+ Nuevo</span>}
       </div>
 
       {decision.tipo === "exacto" && (
@@ -461,24 +445,78 @@ function FilaRow({
         </p>
       )}
 
-      {match.tipo === "candidatos" && (
-        <div style={{ marginTop: "0.35rem" }}>
-          <select
-            value={currentCandidatoId ?? "__nuevo__"}
-            onChange={handleCandidatoSelect}
-            style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+      {match.tipo === "sugerencias" && (
+        <div style={{ marginTop: "0.35rem", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+          {(verMas ? match.sugerencias : match.sugerencias.slice(0, 3)).map(s => {
+            const ing = s.ingrediente;
+            const sel = decision.tipo === "sugerencia" && decision.idIngrediente === ing.idIngrediente;
+            return (
+              <button
+                key={ing.idIngrediente}
+                onClick={() => onChange(idx, { tipo: "sugerencia", idIngrediente: ing.idIngrediente, nombrePreferido: ing.nombrePreferido })}
+                style={{
+                  textAlign: "left", padding: "0.3rem 0.6rem",
+                  border: `1px solid ${sel ? "#1976d2" : "#ccc"}`,
+                  borderRadius: "4px", background: sel ? "#e3f2fd" : "#fff",
+                  cursor: "pointer", fontSize: "0.82rem", fontFamily: "inherit",
+                }}
+              >
+                <strong>{ing.nombrePreferido}</strong>
+                <span style={{ color: "#888", marginLeft: "0.5rem", fontWeight: 400 }}>{ing.categoria}</span>
+              </button>
+            );
+          })}
+
+          {!verMas && match.sugerencias.length > 3 && (
+            <button
+              onClick={() => setVerMas(true)}
+              style={{
+                textAlign: "left", background: "none", border: "none",
+                color: "var(--color-primary)", cursor: "pointer",
+                fontSize: "0.8rem", padding: "0.1rem 0.6rem", fontFamily: "inherit",
+              }}
+            >
+              ver más ({match.sugerencias.length - 3} más)
+            </button>
+          )}
+
+          <button
+            onClick={() => onChange(idx, { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" })}
+            style={{
+              textAlign: "left", padding: "0.3rem 0.6rem",
+              border: decision.tipo === "nuevo" ? "1px solid #424242" : "1px dashed #aaa",
+              borderRadius: "4px",
+              background: decision.tipo === "nuevo" ? "#f5f5f5" : "transparent",
+              cursor: "pointer", fontSize: "0.82rem", color: "#555", fontFamily: "inherit",
+            }}
           >
-            {match.candidatos.map(c => (
-              <option key={c.ingrediente.idIngrediente} value={c.ingrediente.idIngrediente}>
-                {c.ingrediente.nombrePreferido} ({Math.round(c.similitud * 100)}%)
-              </option>
-            ))}
-            <option value="__nuevo__">Nuevo ingrediente…</option>
-          </select>
+            + Crear nuevo ingrediente
+          </button>
+
+          {decision.tipo === "nuevo" && (
+            <div style={{ paddingLeft: "0.6rem", borderLeft: "2px solid #ccc", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+              <input
+                type="text"
+                value={decision.nombre}
+                onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
+                placeholder="Nombre en catálogo"
+                style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
+              />
+              {categorias.length > 0 && (
+                <select
+                  value={decision.categoria}
+                  onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
+                  style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+                >
+                  {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                </select>
+              )}
+            </div>
+          )}
         </div>
       )}
 
-      {decision.tipo === "nuevo" && (
+      {match.tipo !== "sugerencias" && decision.tipo === "nuevo" && (
         <div style={{ marginTop: "0.35rem", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
           <input
             type="text"
