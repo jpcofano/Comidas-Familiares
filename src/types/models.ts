@@ -202,6 +202,7 @@ export interface Menu {
 
   componentes: ComponenteMenu[];
 
+  vecesCocinada?: number;
   fechaCreacion?: FirestoreTimestamp;
   ultimaModificacion?: FirestoreTimestamp;
 }

@@ -15,7 +15,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { Plan, Historial, Receta, MiembroId, MemberId } from "../types/models";
+import type { Plan, Historial, Receta, MiembroId, MemberId, DatosCocinero } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
@@ -462,5 +462,108 @@ export async function voteAndCloseIfComplete(
       return err(e.code, e.message, e);
     }
     return err("vote-transaction-failed", "No se pudo registrar el voto. Probá de nuevo.", e);
+  }
+}
+
+// ─── Evaluación por JP (E3.6) ─────────────────────────────────────────────────
+// Cierra el plan inmediatamente al confirmar JP. El cierre al 4º voto (E4.2)
+// monta encima la misma mecánica de transacción con distinta condición de cierre.
+
+export async function guardarEvaluacionJP(
+  idPlan: string,
+  evaluacion: {
+    puntaje: number;
+    comentario: string;
+    datosCocinero: DatosCocinero;
+    puntajesComponentes?: Record<string, number>;
+  }
+): Promise<Result<{ promedio: number; resultado: string }, AppError>> {
+  const { puntaje, comentario, datosCocinero, puntajesComponentes } = evaluacion;
+
+  if (puntaje < 1 || puntaje > 10) {
+    return err("invalid-score", "El puntaje debe estar entre 1 y 10.");
+  }
+
+  try {
+    const result = await runTransaction(db, async (tx) => {
+      const planRef = doc(db, "planes", idPlan);
+      const planSnap = await tx.get(planRef);
+      if (!planSnap.exists()) throw new TransactionAbort("plan-not-found", "El plan no existe.");
+
+      const plan = planSnap.data() as Plan;
+      if (plan.estado !== "Cocinada") {
+        throw new TransactionAbort(
+          "plan-not-cocinada",
+          `Solo se puede evaluar un plan en estado "Cocinada". Este está en "${plan.estado}".`
+        );
+      }
+
+      const nuevosVotos = { ...(plan.votos ?? {}), juanpablo: puntaje } as Plan["votos"];
+      const nuevosComentarios = { ...(plan.comentariosPlan ?? {}), juanpablo: comentario } as Plan["comentariosPlan"];
+
+      // promedio sobre votos no nulos — correcto con 1 votante y seguirá correcto con 4 (E4.2)
+      const promedio = calcularPromedio(nuevosVotos);
+      const resultado = calcularResultadoTextual(promedio);
+      const fechaHoy = new Date().toISOString().slice(0, 10);
+      const idHistorial = proximoIdHistorial();
+
+      const historialDoc: Historial = {
+        idHist: idHistorial,
+        fechaRealizada: fechaHoy,
+        fechaRealizadaTimestamp: Timestamp.now(),
+        idPlan: plan.idPlan,
+        idReceta: plan.tipoSeleccion === "receta" ? plan.idSeleccion : "",
+        idMenu:   plan.tipoSeleccion === "menu"   ? plan.idSeleccion : "",
+        receta: plan.nombreSeleccion,
+        tipoSeleccion: plan.tipoSeleccion,
+        idSeleccion: plan.idSeleccion,
+        nombreSeleccion: plan.nombreSeleccion,
+        semanaInicio: plan.semanaInicio,
+        ocasion: datosCocinero.ocasion ?? "",
+        calificaciones: nuevosVotos as Record<MiembroId, number>,
+        comentarios: nuevosComentarios,
+        promedio,
+        resultado: resultado as Historial["resultado"],
+        repetir: datosCocinero.repetir ?? "",
+        costoRealAprox: datosCocinero.costoRealAprox ?? "",
+        dificultadReal: datosCocinero.dificultadReal ?? "",
+        queSalioBien: datosCocinero.queSalioBien ?? "",
+        queCambiaria: datosCocinero.queCambiaria ?? "",
+        notasFamiliares: datosCocinero.notasFamiliares ?? "",
+      };
+
+      tx.set(doc(db, "historial", idHistorial), historialDoc);
+      tx.update(planRef, {
+        "votos.juanpablo": puntaje,
+        "comentariosPlan.juanpablo": comentario,
+        datosCocinero,
+        estado: "Evaluada",
+      });
+
+      if (plan.tipoSeleccion === "receta") {
+        tx.update(doc(db, "recetas", plan.idSeleccion), {
+          vecesCocinada: increment(1),
+          ultimaEvaluacion: Timestamp.now(),
+          ultimoPuntaje: promedio,
+        });
+      } else {
+        tx.update(doc(db, "menus", plan.idSeleccion), { vecesCocinada: increment(1) });
+        for (const idReceta of (plan.componentesCocinados ?? [])) {
+          const extra: Record<string, unknown> = { vecesCocinada: increment(1) };
+          if (puntajesComponentes?.[idReceta] != null) {
+            extra.ultimoPuntaje = puntajesComponentes[idReceta];
+            extra.ultimaEvaluacion = Timestamp.now();
+          }
+          tx.update(doc(db, "recetas", idReceta), extra);
+        }
+      }
+
+      return { promedio, resultado };
+    });
+
+    return ok(result);
+  } catch (e) {
+    if (e instanceof TransactionAbort) return err(e.code, e.message, e);
+    return err("firestore-error", "Error al guardar la evaluación. Probá de nuevo.", e);
   }
 }
