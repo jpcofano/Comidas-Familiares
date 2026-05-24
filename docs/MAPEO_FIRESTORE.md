@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.2 (E3.4.5: normalización de unidades en recetas, catálogo y lista de compras)
+> **Versión**: 1.5.4 (E3.6: flujo de evaluación JP + historial + vecesCocinada)
 > **Fecha**: 2026-05-23
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -98,6 +98,30 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
    - **0 unidades no reconocidas** después de la migración.
 
 5. **Casos de sal/pimienta con doble unidad**: algunos ingredientes (Sal fina, Pimienta) tienen aportes con `unidad: ""` (a gusto) en algunas recetas y con `"pizca"` o `"cdita"` en otras. Esto genera **dos ítems separados en la lista de compras** — uno "a gusto" y uno con medida. Esto es **correcto y esperado**: no forzar la fusión porque son medidas genuinamente distintas.
+
+### 1.2.septies Cambios en v1.5.3 (E3.5.1 — finalización explícita y pasos destildables)
+
+1. **Botón "Finalizar" explícito**: la pantalla de cocinar (`src/routes/Cocinar.tsx`) ya no finaliza automáticamente al llegar al último paso. El botón "Finalizar cocción" / "Componente listo ✓" / "Salir" siempre está visible al pie; requiere confirmación inline antes de ejecutar.
+
+2. **Pasos destildables en modo guiada**: en modo guiada, el `PasoCard` recibe `onToggleTachado` y permite desmarcar un paso ya tachado. Antes el toggle solo funcionaba en modo scroll.
+
+3. **Plan-menú: paso a "Cocinada" explícito**: `marcarComponenteCocinado` ya **no** avanza el plan a `"Cocinada"` automáticamente al cocinar todos los obligatorios. Siempre setea `estado: "Cocinando"`. El paso a `"Cocinada"` requiere que JP presione el botón "Finalizar menú" en la pantalla de componentes (`src/routes/SeleccionarComponenteMenu.tsx`), que llama a `marcarCocinada`.
+
+4. **Botón "Desmarcar" por componente**: en `SeleccionarComponenteMenu`, cada componente ya cocinado ofrece un botón "Desmarcar" que llama a `desmarcarComponenteCocinado(idPlan, idReceta)` — nueva función en `src/data/planes.ts`. Remueve el idReceta de `componentesCocinados[]`. Los aportes de compras ya limpiados no se restauran.
+
+### 1.2.octies Cambios en v1.5.4 (E3.6 — evaluación JP, historial, vecesCocinada)
+
+1. **Pantalla de evaluación** (`src/routes/Voto.tsx`): reemplaza el stub anterior. JP ingresa puntaje 1-10 (5+5 botones), comentario libre y los `datosCocinero`. Para plan-menú, sección colapsable "Calificar componentes (opcional)" permite asignar puntaje a cada receta en `componentesCocinados`. Confirmación inline antes de guardar.
+
+2. **`guardarEvaluacionJP`** (`src/data/planes.ts`): transacción Firestore que:
+   - Valida `plan.estado === "Cocinada"` (aborta con error claro si no).
+   - Escribe `votos.juanpablo`, `comentariosPlan.juanpablo`, `datosCocinero`, `estado: "Evaluada"` en el plan.
+   - Crea doc en `/historial/{HIST-YYYYMMDDHHmmss-XXXX}` con snapshot completo + `calificaciones`, `promedio`, `resultado`.
+   - Incrementa `vecesCocinada` en la receta (plan-receta) o en el menú + cada receta en `componentesCocinados` (plan-menú). **TODO `vecesCocinada` plan-menú: resuelto.**
+
+3. **Promedio sobre votos no nulos** (ver §3.4): con un solo votante (JP en E3.6), `promedio = puntaje de JP`. La fórmula no cambia cuando E4.2 traiga los 4 votos — el promedio sobre no-nulos es correcto en ambos casos.
+
+4. **Estado terminal `"Evaluada"`** (§3.7): en E3.6, el cierre lo dispara JP al confirmar la evaluación. En E4.2 el cierre será al 4º voto. La mecánica de transacción es idéntica; solo cambia la condición de cierre. El shape de `votos` y `comentariosPlan` nace multi-miembro desde E3.6 — no hay migración en E4.2.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -438,7 +462,7 @@ async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
 componentesCocinados?: string[]   // array de idReceta ya cocinados; solo existe en plan-menú
 ```
 
-**Auto-transición de estado (v1.5.1):** la transición `Compra pendiente → Compra lista` no es manual — la dispara `toggleItemYaTengo` al tildar el último ítem de ese plan. Si JP destilda un ítem, el plan retrocede a `Compra pendiente`. La transición contraria (`Compra lista → Cocinada`) sigue siendo manual (botón "Marcar Cocinada" o flujo de cocinar).
+**Auto-transición de estado (v1.5.1):** la transición `Compra pendiente → Compra lista` no es manual — la dispara `toggleItemYaTengo` al tildar el último ítem de ese plan. Si JP destilda un ítem, el plan retrocede a `Compra pendiente`. La transición contraria (`Compra lista → Cocinada`) es explícita: para plan-receta, botón "Finalizar cocción" en la pantalla de cocinar; para plan-menú, botón "Finalizar menú" en `SeleccionarComponenteMenu` (v1.5.3). `marcarComponenteCocinado` avanza el plan solo a `"Cocinando"`, nunca a `"Cocinada"`.
 
 ---
 
@@ -791,7 +815,7 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 | > 0 | Malísimo |
 | 0 / vacío | (vacío) |
 
-`promedio` se calcula como `Math.round(((v1+v2+v3+v4)/4) * 10) / 10` (1 decimal).
+`promedio` se calcula sobre los **votos no nulos** presentes: `Math.round((suma_votos_no_nulos / cantidad_votos_no_nulos) * 10) / 10` (1 decimal). Con un solo votante (JP en E3.6) da el puntaje directo. Con los 4 votantes (E4.2) da el promedio de 4. La fórmula no cambia entre etapas.
 
 ### 3.5 Validaciones del importador
 
@@ -889,19 +913,26 @@ orden | tipo        | idReceta_o_nombre        | obligatorio | notas
 - No votar un plan en estado distinto de `Cocinada`.
 - No modificar asignaciones de plan `Evaluada`.
 
-### 3.7 Atomicidad del voto + cierre automático
+### 3.7 Atomicidad del voto + cierre
 
-El voto + cierre se hace en **una sola transacción** del cliente Firestore. Pasos dentro de `runTransaction`:
+El voto + cierre se hace en **una sola transacción** del cliente Firestore (`runTransaction`). La mecánica es idéntica en E3.6 y E4.2; solo cambia la **condición de cierre**:
+
+- **E3.6 (implementado)**: JP vota y cierra en el mismo acto. El plan pasa a `"Evaluada"` cuando JP confirma. Los otros 3 miembros no votaron aún — sus `votos.*` quedan `null` y sus `comentariosPlan.*` quedan `""`. Esto es correcto y esperado.
+- **E4.2 (pendiente)**: cualquier miembro puede votar. El cierre se dispara al completarse el 4º voto no nulo. La misma transacción, distinta condición.
+
+**Pasos dentro de `runTransaction` (E3.6 / `guardarEvaluacionJP`):**
 
 1. `tx.get(planRef)` → leer estado actual.
-2. Validar `plan.estado === "Cocinada"` (sino, abortar).
-3. `tx.update(planRef, { 'votos.<miembro>': puntaje, 'comentariosPlan.<miembro>': comentario })`.
-4. Releer votos actualizados (locally, post-merge).
-5. Si los 4 votos están completos:
-   - Calcular promedio + resultado.
-   - `tx.set(historialRef, {…snapshot del plan + cálculos})`.
-   - `tx.update(planRef, { estado: "Evaluada" })`.
-   - `tx.update(recetaRef, { vecesCocinada: increment(1), ultimaEvaluacion: <fecha>, ultimoPuntaje: promedio })` — solo si `tipoSeleccion === "receta"`.
+2. Validar `plan.estado === "Cocinada"` (si no, `throw new TransactionAbort(...)` con mensaje claro).
+3. Calcular `nuevosVotos = { ...plan.votos, juanpablo: puntaje }`.
+4. Calcular `promedio` (sobre votos no nulos, ver §3.4) y `resultado` (ver tabla §3.4).
+5. `tx.set(historialRef, { …snapshot del plan, calificaciones, comentarios, promedio, resultado, … })`.
+6. `tx.update(planRef, { 'votos.juanpablo': puntaje, 'comentariosPlan.juanpablo': comentario, datosCocinero, estado: "Evaluada" })`.
+7. Incrementar `vecesCocinada`:
+   - Plan-receta: `tx.update(recetaRef, { vecesCocinada: increment(1), ultimaEvaluacion: serverTimestamp(), ultimoPuntaje: promedio })`.
+   - Plan-menú: `tx.update(menuRef, { vecesCocinada: increment(1) })` + por cada `idReceta` en `plan.componentesCocinados`: `tx.update(recetaRef, { vecesCocinada: increment(1), ...(puntajesComponentes[id] ? { ultimoPuntaje: puntajesComponentes[id] } : {}) })`.
+
+El uso de `increment(1)` es seguro ante reintento de transacción — Firestore aplica el incremento una sola vez por commit.
 
 Si la transacción aborta (por concurrencia), Firestore reintenta automáticamente con el estado refrescado.
 
