@@ -35,6 +35,30 @@ export async function proximoIdIngrediente(): Promise<string> {
   return `ING-${String(max + 1).padStart(4, "0")}`;
 }
 
+// Pure function — builds the doc shape for a new ingredient created via the importer.
+// Exported for testing; any change to the schema must be reflected in the test.
+export function buildNuevoIngredienteDoc(opts: {
+  id: string;
+  nombre: string;
+  canon: string;
+  texNorm: string;
+  categoria: string;
+  unidadNorm: string | null;
+}): Omit<Ingrediente, "fechaCreacion" | "ultimaModificacion" | "vecesUsado"> {
+  return {
+    idIngrediente: opts.id,
+    canonico: opts.canon,
+    nombrePreferido: opts.nombre,
+    sinonimos: opts.canon !== opts.texNorm && opts.texNorm ? [opts.texNorm] : [],
+    categoria: opts.categoria,
+    rolNutricional: [],
+    seccionGondola: "Despensa / otros",
+    unidadesHabituales: opts.unidadNorm ? [opts.unidadNorm] : [],
+    ambiguo: true,
+    origen: "import",
+  };
+}
+
 export async function crearIngrediente(
   ing: Omit<Ingrediente, "fechaCreacion" | "ultimaModificacion" | "vecesUsado">
 ): Promise<Result<Ingrediente, AppError>> {

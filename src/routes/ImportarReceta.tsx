@@ -4,7 +4,7 @@ import { useAuth } from "../auth/useAuth";
 import { parseRecetaTxt, type ParsedReceta, type ParsedIngredienteRaw } from "../import/parseReceta";
 import { matchIngrediente, type ResultadoMatch, type MatchConSimilitud } from "../lib/matcherIngredientes";
 import {
-  getCatalogo, crearIngrediente, agregarSinonimo,
+  getCatalogo, crearIngrediente, buildNuevoIngredienteDoc, agregarSinonimo,
   invalidateCatalogCache, proximoIdIngrediente,
 } from "../data/ingredientes";
 import { proximoIdReceta, crearReceta } from "../data/recetas";
@@ -124,7 +124,7 @@ export function ImportarRecetaRoute() {
           const best = match.candidatos[0].ingrediente;
           decision = { tipo: "candidato", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
         } else {
-          decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: cats[0] ?? "" };
+          decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" };
         }
         return { raw, match, decision };
       });
@@ -167,20 +167,14 @@ export function ImportarRecetaRoute() {
         const id = await proximoIdIngrediente();
         const canon = normalizeText(fila.decision.nombre);
         const texNorm = normalizeText(fila.raw.textoOriginal);
-        // New ingredients created via importer get fallback values; JP completes them
-        // in /biblioteca/catalogo (Catálogo de ingredientes) before the flag clears.
-        const r = await crearIngrediente({
-          idIngrediente: id,
-          canonico: canon,
-          nombrePreferido: fila.decision.nombre,
-          sinonimos: canon !== texNorm && texNorm ? [texNorm] : [],
+        const r = await crearIngrediente(buildNuevoIngredienteDoc({
+          id,
+          nombre: fila.decision.nombre,
+          canon,
+          texNorm,
           categoria: fila.decision.categoria,
-          rolNutricional: [],
-          seccionGondola: "Despensa / otros",
-          unidadesHabituales: normalizarUnidad(fila.raw.unidad) ? [normalizarUnidad(fila.raw.unidad)!] : [],
-          ambiguo: true,
-          origen: "import",
-        });
+          unidadNorm: normalizarUnidad(fila.raw.unidad),
+        }));
         if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }
         idsNuevos[i] = id;
       }
@@ -437,7 +431,7 @@ function FilaRow({
   function handleCandidatoSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     const val = e.target.value;
     if (val === "__nuevo__") {
-      onChange(idx, { tipo: "nuevo", nombre: raw.textoOriginal, categoria: categorias[0] ?? "" });
+      onChange(idx, { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" });
     } else {
       const cands = (match.tipo === "candidatos" ? match.candidatos : []) as MatchConSimilitud[];
       const ing = cands.find(c => c.ingrediente.idIngrediente === val)?.ingrediente;
