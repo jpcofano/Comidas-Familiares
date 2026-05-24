@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.5.8 (E3.4.8: catálogo rediseñado — 3 dimensiones + re-seed)
+> **Versión**: 1.5.9 (E3.4.9: matcher con sugerencias y aprendizaje de sinónimos — §9.6 resuelto)
 > **Fecha**: 2026-05-24
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -179,6 +179,23 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 6. **Ingredientes importados vía TXT** (`src/routes/ImportarReceta.tsx`): los nuevos ingredientes creados por el importador reciben `seccionGondola: "Despensa / otros"`, `rolNutricional: []`, `ambiguo: true` como valores por defecto. JP los completa en `/biblioteca/catalogo` (nueva pantalla `CatalogoIngredientesRoute`), que los lista y permite editar las tres dimensiones; al guardar, `ambiguo: false`.
 
 7. **Edge case `Utensilio`**: el palito de brochette (`ING-???`) tiene `categoria: "Utensilio"` y `seccionGondola: "Bazar / otros"`. No es comestible — la lista de compras no filtra por comestibilidad, lo muestra en su sección igual que cualquier otro ítem.
+
+### 1.2.terdecies Cambios en v1.5.9 (E3.4.9 — matcher con sugerencias y aprendizaje de sinónimos)
+
+1. **Matcher rediseñado** (`src/lib/matcherIngredientes.ts`): algoritmo de 4 pasos. Resultado: `exacto | sugerencias | nuevo` (el anterior `"candidatos"` con similitud queda reemplazado).
+   - **Paso 1 — exacto**: normalizar texto. Buscar contra `canonico` y cada `sinonimos[]`. Si hay → `exacto`, resuelto sin intervención.
+   - **Paso 2 — prefijo de palabra**: tokenizar el texto en palabras. Un ingrediente es sugerencia si su `canonico` normalizado **o algún sinónimo normalizado** empieza con `"palabra "` o es igual a `"palabra"`. Distingue variantes reales ("arroz largo fino" para "arroz") de coincidencias espurias ("galletas de arroz"). El prefijo corre sobre los sinónimos también, lo que hace el matcher más robusto a medida que aprende.
+   - **Paso 3 — fuzzy como respaldo**: trigramas con umbral 0.4, cubre typos ("arros" → variantes de arroz). Se suman sin duplicar con el Paso 2. Ambos pasos corren siempre.
+   - **Paso 4 — ordenar**: unir Paso 2 + Paso 3, ordenar por `vecesUsado` descendente, desempate alfabético. La UI muestra top 3 + "ver más".
+
+2. **Importador con loop humano** (`src/routes/ImportarReceta.tsx`): paso 2 rediseñado para `sugerencias`:
+   - Si el matcher devuelve `exacto` → badge verde "✓ Exacto", resuelto.
+   - Si devuelve `sugerencias` → botones seleccionables (top 3 visible, "ver más (N más)" despliega el resto). La opción "Crear nuevo ingrediente" siempre disponible al pie — JP puede insistir en crear uno nuevo aunque haya sugerencias.
+   - Si devuelve `nuevo` → formulario de alta (nombre + categoría) como antes.
+
+3. **Aprendizaje de sinónimos** — §9.6 cerrado: cuando JP elige una sugerencia, `agregarSinonimo(idElegido, textoTipeado)` se llama antes del guardado de la receta. El término normalizado se agrega a `sinonimos[]` del ingrediente elegido vía `arrayUnion` (idempotente). La próxima importación de ese término lo resuelve como `exacto` en el Paso 1 — sin volver a mostrar sugerencias.
+
+4. **Edge case ING-0178 "Arroz"**: ingrediente genérico `ambiguo: true` creado antes de esta etapa. No se borra automáticamente — JP puede limpiarlo manualmente en Firebase Console o via `/biblioteca/catalogo`. Una vez aprendido "arroz" como sinónimo de "Arroz largo fino", el Paso 1 resuelve ese término directamente y el genérico queda como residuo inactivo.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -1567,8 +1584,8 @@ Subir foto del libro de cocina → Vision API → TXT estructurado → mismo flu
 ### 9.5 Sugerencias inteligentes
 "Esta semana no comieron pollo, te recomendamos..." / "Hace 6 semanas que no hacen pescado". Requiere queries más complejas y posiblemente un endpoint con lógica server-side.
 
-### 9.6 Diccionario de sinónimos de ingredientes extendido
-Hoy: lista manual corta. Futuro: panel de admin para que JP agregue sinónimos cuando detecta duplicados. O LLM clasificando ingredientes automáticamente.
+### 9.6 Diccionario de sinónimos de ingredientes extendido ✓ (resuelto en v1.5.9 — E3.4.9)
+El matcher aprende sinónimos automáticamente cuando JP elige una sugerencia en el importador. El término tipeado se agrega a `sinonimos[]` del ingrediente elegido; la próxima importación lo resuelve como `exacto` sin intervención. Panel de admin para sinónimos manuales sigue siendo futuro opcional; el loop humano de §9.6 está implementado.
 
 ### 9.7 Costos reales tracking
 Hoy: `costoReal` es texto libre del cocinero. Futuro: form con precio por ingrediente, total calculado, evolución temporal del costo de la familia.
