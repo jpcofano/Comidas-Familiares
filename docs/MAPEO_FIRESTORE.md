@@ -4,8 +4,8 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.3 (realtime nativo en planes activos + compras, offline persistence del SDK)
-> **Fecha**: 2026-05-21
+> **Versión**: 1.5.2 (E3.4.5: normalización de unidades en recetas, catálogo y lista de compras)
+> **Fecha**: 2026-05-23
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -70,6 +70,34 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 6. **Migración de seeds**: el script de seeding del Etapa 2 (`PROMPT_E2.4`) aplica el mapeo automático componente → tipo real basado en el rol del componente en el menú. Si alguna receta se "lee raro" como receta independiente, se ajusta manualmente más tarde (no bloqueante).
 
+
+### 1.2.quinquies Cambios en v1.5.1 (E3.4.4 — auto-transición de estado y limpieza de compras)
+
+1. **Auto-transición "Compra pendiente" → "Compra lista"**: cuando JP tilda el último ítem pendiente del plan en la lista de compras, el plan avanza automáticamente de estado. Si JP destilda algún ítem, el plan retrocede a "Compra pendiente". La lógica vive en `toggleItemYaTengo` (`src/data/compras.ts`) y también se dispara en `sincronizarListaDesdeFirestore` al reconstruir la lista.
+
+2. **Helper reutilizable `evaluarEstadosPlanesEnBatch`**: la evaluación de estados está extraída en una función no exportada del módulo `compras.ts`, llamada por tanto `toggleItemYaTengo` como por `sincronizarListaDesdeFirestore`. Trata "Elegida" como "Compra pendiente" para cubrir el caso en que la sync avanza el estado en el mismo batch.
+
+3. **Botón "Cocinar" disponible desde "Compra pendiente"**: el botón ya no requiere que el plan esté en "Compra lista". Aparece desde "Compra pendiente", "Compra lista" y "Cocinando". El estado es informativo, no un gate de acceso.
+
+4. **Limpieza al cocinar** (`limpiarAportesDelPlan` en `src/data/compras.ts`): al marcar un plan como "Cocinada" (o al cocinar un componente de un plan-menú), se remueven los aportes de ese plan de todos los ítems de la lista. Los ítems que quedan sin aportes se borran. Los que tienen aportes de otros planes se recalculan (`cantidadTotal`, `cantidadLabel`). Los contadores del doc raíz de la lista se actualizan. Todo en un batch atómico.
+
+5. **Limpieza granular para plan-menú**: `limpiarAportesDelPlan(idLista, idPlan, soloIdReceta?)` acepta un tercer argumento opcional. Cuando se llama desde `marcarComponenteCocinado`, se pasa el `idReceta` del componente cocinado, limpiando solo sus aportes sin tocar los de componentes aún no cocinados.
+
+### 1.2.sexies Cambios en v1.5.2 (E3.4.5 — normalización de unidades)
+
+1. **`normalizarUnidad()` en `src/lib/unidades.ts`**: función pura que convierte cualquier unidad cruda a su forma canónica (singular, minúscula). Mappings: `"cdas"→"cda"`, `"cditas"→"cdita"`, `"dientes"→"diente"`, `"tazas"→"taza"`, etc. Devuelve `null` para medidas "a gusto" (`"cantidad necesaria"`, `""`, `null`). Emite `console.warn` para entradas no reconocidas (señal de que la tabla necesita ampliarse).
+
+2. **Clave de agrupado normalizada en `sincronizarListaDesdeFirestore`** (`src/data/compras.ts`): antes se usaba `"${idIngrediente}|${unidad}"` con la unidad cruda de la receta. Ahora se usa `"${idIngrediente}__${normalizarUnidad(unidad) ?? 'agusto'}"`. Esto resolvía el bug de ING-0004 (Aceite de oliva) apareciendo como dos ítems separados porque sus recetas usaban `"cda"` y `"cdas"`.
+
+3. **Comparación de `yaTengo` normalizada** (`toggleItemYaTengo`): la preservación de la marca "ya tengo" al re-sincronizar también compara las unidades en forma canónica (`normalizarUnidad(old.unidad)` vs `normalizarUnidad(it.unidad)`), evitando que una re-sync borre marcas que JP ya había hecho.
+
+4. **Migración de datos** (`scripts/migrar-unidades.ts`, corrida el 2026-05-23):
+   - 73 recetas: campo `ingredientes[].unidad` normalizado (ej. `"cdas"→"cda"`, `"dientes"→"diente"`). Solo se tocó `unidad`; `textoOriginal`, `cantidad` y todos los demás campos no se modificaron.
+   - 80 ingredientes de catálogo: `unidadesHabituales` deduplicado y normalizado.
+   - `/config/diccionarios.unidadesCanonicas` actualizado a la lista canónica actual (ver §2.7).
+   - **0 unidades no reconocidas** después de la migración.
+
+5. **Casos de sal/pimienta con doble unidad**: algunos ingredientes (Sal fina, Pimienta) tienen aportes con `unidad: ""` (a gusto) en algunas recetas y con `"pizca"` o `"cdita"` en otras. Esto genera **dos ítems separados en la lista de compras** — uno "a gusto" y uno con medida. Esto es **correcto y esperado**: no forzar la fusión porque son medidas genuinamente distintas.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -203,7 +231,7 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
       cantidadLabel: "1,2 a 1,5",    // string display original
       cantidadMin: 1.2,              // number derivado
       cantidadMax: 1.5,              // number derivado
-      unidad: "kg",                  // enum normalizado (ver UNIDADES_CANONICAS abajo)
+      unidad: "kg",                  // forma canónica según normalizarUnidad() — ver §2.7 y src/lib/unidades.ts
       categoria: "Carne",            // texto libre
       opcional: false,               // boolean
       notas: "Mejor si tiene algo de grasa, no extremadamente magra"
@@ -236,6 +264,7 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
 - `cantidadMin === cantidadMax` cuando es valor fijo (no rango).
 - `tiempoActivoMin === null` si el parsing falla (el campo display sigue mostrándose).
 - **`ingredientes[].ingredienteCanonico`** es la innovación crítica: permite sumar "Cebolla" + "cebollas" + "Cebolla blanca" en la lista de compras si tienen la misma unidad. Reglas de canonicalización en §6.1.
+- **`ingredientes[].unidad` es siempre canónica** a partir de la migración E3.4.5 (2026-05-23). El campo almacena la salida de `normalizarUnidad()` — singular, minúscula, sin plurales (`"cda"` no `"cdas"`, `"diente"` no `"dientes"`). El valor `null` se guarda omitiendo la clave (Firestore Admin rechaza `undefined`); significa "a gusto". `textoOriginal` sigue siendo el string crudo de la receta.
 
 ---
 
@@ -397,10 +426,19 @@ async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
 |---|---|---|
 | `idPlan`, `semanaInicio`, `semanaFin`, `tipoSeleccion`, `tipoPlan`, `idSeleccion`, `nombreSeleccion`, `recetaPrincipal`, `fechaEleccion`, `cantidadPersonas`, `asignaciones` | Al crear (elegirRecetaSemana/elegirMenuSemana) | JP o miembro |
 | `estado` | Empieza en `"Elegida"`, transiciona | Eventos del sistema |
-| `listaComprasId` | Cuando se sincroniza la lista | `sincronizarListaSemana` |
+| `listaComprasId` | Cuando se sincroniza la lista | `sincronizarListaDesdeFirestore` |
 | `origen` | Solo en Especial extra: `"extra:<idPadre>"` | `agregarExtraAEspecial` |
+| `componentesCocinados` | Solo en plan-menú, al cocinar componentes | `marcarComponenteCocinado` |
 | `votos`, `comentariosPlan` | Cuando algún miembro vota | `guardarVoto` |
 | `datosCocinero` | Solo JP, al evaluar | `guardarVoto` (si miembro === juanpablo) |
+
+**Campo adicional en plan-menú (v1.5.1):**
+
+```typescript
+componentesCocinados?: string[]   // array de idReceta ya cocinados; solo existe en plan-menú
+```
+
+**Auto-transición de estado (v1.5.1):** la transición `Compra pendiente → Compra lista` no es manual — la dispara `toggleItemYaTengo` al tildar el último ítem de ese plan. Si JP destilda un ítem, el plan retrocede a `Compra pendiente`. La transición contraria (`Compra lista → Cocinada`) sigue siendo manual (botón "Marcar Cocinada" o flujo de cocinar).
 
 ---
 
@@ -413,62 +451,77 @@ async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
   idLista: "LST-SEM-20260518-180000",
   fechaGeneracion: Timestamp,
   semanaInicio: "2026-05-18",
-  // Resumen calculado en cada update (denormalizado para mostrar contador rápido):
-  resumen: {
-    totalItems: 47,
-    totalYaTengo: 12,
-    totalPendientes: 35
-  }
+  // Contadores denormalizados (top-level, no anidados en "resumen"):
+  totalItems: 47,
+  totalYaTengo: 12,
+  totalPendientes: 35
 }
 ```
+
+> **Nota v1.5.1:** el campo `resumen` que figuraba en versiones anteriores del MAPEO no existe en producción. Los contadores son campos top-level (`totalItems`, `totalYaTengo`, `totalPendientes`). Se actualizan en cada `toggleItemYaTengo`, cada sync, y cada `limpiarAportesDelPlan`.
 
 **Subcollection `compras/{idLista}/items/{itemId}`:**
 
 ```typescript
 {
-  itemId: "auto-id",                       // doc ID (auto-generado por Firestore)
-  ingrediente: "Cebolla",
-  ingredienteCanonico: "cebolla",          // clave de agrupación
-  cantidadTotal: 3,                        // suma cuando se pueden sumar
-  cantidadLabel: "3 unidades",             // string display
-  unidad: "unidades",                      // enum UNIDADES_CANONICAS
-  categoria: "Verdura",                    // heredada del primer ingrediente que la trajo
-  opcional: false,                         // true si TODOS los aportes son opcionales
+  id: "auto-id",                           // string — se setea igual al doc ID al crear
+  idIngrediente: "ING-0042",              // referencia al catálogo /ingredientes
+  nombrePreferido: "Cebolla",             // snapshot del catálogo al momento de la sync
+  categoria: "Verduras",                  // del catálogo (o categoriaOverride de la receta)
+  cantidadTotal: 3,                       // suma de aportes
+  cantidadLabel: "3 u",                   // "${cantidadTotal} ${unidad}".trim() o "a gusto"
+  unidad: "u",                            // unidad canónica
+  opcional: false,                        // false si AL MENOS UN aporte es opcional=false
 
-  yaTengo: false,                          // toggle del usuario
+  yaTengo: false,                         // toggle del usuario
 
   // Trazabilidad — qué recetas/planes contribuyeron a este item:
   aportes: [
     {
       idPlan: "PLAN-20260518-...",
-      idReceta: "REC-0001",
+      idReceta: "REC-0001",              // siempre poblado (nunca vacío ni undefined)
       nombreReceta: "Bondiola braseada al Malbec",
+      textoOriginal: "2 cebollas grandes",  // texto tal cual está en la receta
+      tipoAporte: "receta",              // "receta" | "alternativa"
       cantidad: 2,
-      unidad: "unidades",
-      tipoOrigen: "receta"                 // "receta" | "menu"
+      unidad: "u"
     },
     {
       idPlan: "PLAN-20260518-...",
       idReceta: "REC-0201",
       nombreReceta: "Berenjenas grilladas con criolla y oliva",
+      textoOriginal: "1 cebolla",
+      tipoAporte: "receta",
       cantidad: 1,
-      unidad: "unidades",
-      tipoOrigen: "receta"
+      unidad: "u"
     }
   ],
 
-  // Notas combinadas (las de los ingredientes que se sumaron):
-  notas: "Cortadas grandes | Para la criolla"
+  notas: "Cortadas grandes | Para la criolla"  // notas combinadas de las recetas
 }
 ```
+
+**Limpieza al cocinar (v1.5.1):**
+
+`limpiarAportesDelPlan(idLista, idPlan, soloIdReceta?)` en `src/data/compras.ts`:
+- Remueve los aportes donde `aporte.idPlan === idPlan` (y opcionalmente `aporte.idReceta === soloIdReceta`).
+- Si el ítem queda sin aportes → se elimina.
+- Si quedan aportes → se recalcula `cantidadTotal` y `cantidadLabel`.
+- Los contadores del doc raíz se recalculan y actualizan.
+- Todo en un batch atómico.
+
+Se llama desde `marcarCocinada` (limpieza total del plan) y desde `marcarComponenteCocinado` (limpieza por componente de menú).
 
 **Cómo funciona la sumabilidad:**
 
 1. Al sincronizar, para cada plan activo, se levantan sus ingredientes.
 2. Cada ingrediente se canonicaliza: `ingredienteCanonico = normalize(ingrediente)`.
-3. Si ya existe un item con misma `(ingredienteCanonico, unidad)` en la lista, **se acumula** en `cantidadTotal` y se agrega un nuevo aporte a `aportes`.
-4. Si no existe o tiene unidad distinta, se crea un nuevo item.
-5. `cantidadLabel` se regenera: `${cantidadTotal} ${unidad}`.
+3. La unidad se normaliza: `unidadCanonica = normalizarUnidad(ing.unidad)` (ver `src/lib/unidades.ts`).
+4. La **clave de agrupado** es `"${idIngrediente}__${unidadCanonica ?? 'agusto'}"`. Si ya existe un item con esa clave, **se acumula** en `cantidadTotal` y se agrega un nuevo aporte a `aportes`.
+5. Si no existe, se crea un nuevo item. El campo `unidad` del item almacena `unidadCanonica ?? ""`.
+6. `cantidadLabel` se regenera: `${cantidadTotal} ${unidad}`.
+
+> **Post E3.4.5:** tanto la clave de agrupado como la comparación de preservación de `yaTengo` usan `normalizarUnidad()`. Esto resuelve el bug donde `"cda"` y `"cdas"` (misma unidad, distinto string) generaban dos ítems para el mismo ingrediente.
 
 **Vista del usuario:**
 
@@ -575,9 +628,11 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
   seccionesIngredientes: ["Principal", "Base de sabor", "Líquido de cocción",
                           "Condimentos", "Cocción", "Guarnición baja en hidratos", "Opcional familia"],
 
-  // Unidades canónicas (claves para sumabilidad):
-  unidadesCanonicas: ["g", "kg", "ml", "l", "unidad", "unidades",
-                      "cda", "cdta", "taza", "pizca", "gusto"],
+  // Unidades canónicas (claves para sumabilidad) — actualizado en E3.4.5 (2026-05-23):
+  unidadesCanonicas: ["g", "kg", "ml", "l", "unidad", "cda", "cdita", "taza", "pizca",
+                      "punado", "diente", "rama", "ramita", "grande", "lata", "bife", "feta", "hoja", "atado"],
+  // Tabla completa de normalizaciones en src/lib/unidades.ts.
+  // null (ausencia de la clave "unidad") = "a gusto".
 
   // Versión del diccionario (para invalidación de cache cliente):
   version: 1,
@@ -684,25 +739,28 @@ Mismo lugar, "Add field" a `miembros` con un nuevo memberId (ej: `abuela`) y su 
 [CREACIÓN]
    │
    ▼
-Elegida ──────────► Compra pendiente ──► Compra lista ──► Cocinada ──► Evaluada
-                    (al crear lista)     (botón manual)   (botón JP    (4to voto
-                                                          o miembro)    o JP solo)
-                                                                            │
-[DESCARTAR] permitido solo en estados activos                                ▼
-   │                                                                    [FINAL]
+Elegida ──────────► Compra pendiente ◄──► Compra lista ──► Cocinada ──► Evaluada
+                    (al crear lista)      (auto: todos      (botón JP    (4to voto
+                                          los ítems         o miembro)    o JP solo)
+                                          yaTengo=true)                       │
+                                                                          [FINAL]
+[DESCARTAR] permitido solo en estados activos
+   │
    ▼
-[BORRADO de la fila]
+[BORRADO del doc]
 ```
 
-**Invariantes:**
+**Invariantes (v1.5.1):**
 
-1. **No hay retroceso de estado.** Una vez `Cocinada`, no vuelve a `Compra lista`.
+1. **No hay retroceso de estado** desde `Cocinada`. Una vez `Cocinada`, no vuelve a `Compra lista`.
 2. **`Evaluada` es terminal.** No se puede editar nada del plan en `Evaluada`.
 3. **Descartar = borrar el doc.** No existe estado `Descartada`.
 4. **Cascada al descartar Especial:** se borran todos sus `Especial extra` activos.
 5. **`Cocinada` con extras:** al marcar Especial como `Cocinada`, modal pregunta si también marcar extras activos.
-6. **Sincronización auto-avance:** al crear/sincronizar la lista, todo plan `Elegida` pasa a `Compra pendiente` (no baja estados superiores).
-7. **`Cocinada` retira de la lista:** los ingredientes del plan cocinado se borran de la lista de compras.
+6. **Sincronización auto-avance:** al crear/sincronizar la lista, todo plan `Elegida` pasa a `Compra pendiente`. Si los ítems ya tenían `yaTengo: true` preservados de syncs anteriores, el plan puede avanzar directamente a `Compra lista` en el mismo batch. La sync nunca baja estados superiores.
+7. **Auto-transición `Compra pendiente` ↔ `Compra lista` (v1.5.1):** al tildar el último ítem del plan (`yaTengo: true`), el plan avanza automáticamente a `Compra lista` dentro del mismo batch. Si JP destilda cualquier ítem, el plan retrocede automáticamente a `Compra pendiente`. La lógica está en `evaluarEstadosPlanesEnBatch` (no exportada), llamada desde `toggleItemYaTengo` y `sincronizarListaDesdeFirestore`.
+8. **Botón "Cocinar" no bloqueante (v1.5.1):** el botón aparece desde `Compra pendiente` (no requiere `Compra lista`). El estado es informativo, no un gate de acceso al flujo de cocinar.
+9. **`Cocinada` limpia la lista (v1.5.1):** al marcar un plan como `Cocinada`, `limpiarAportesDelPlan` remueve todos los aportes de ese plan de la lista de compras. Los ítems sin aportes restantes se borran. Para plan-menú: la limpieza es granular por componente — cada `marcarComponenteCocinado` limpia solo los aportes de esa receta.
 
 ### 3.2 Reglas anti-duplicado de planes
 
@@ -1173,7 +1231,9 @@ function canonicalizar(ingrediente: string): string {
 }
 ```
 
-**Regla de unidades:** si `unidad` difiere, NO sumamos. "1 cebolla" + "200g cebolla" → dos renglones.
+**Normalización de unidades (v1.5.2):** antes de comparar, la unidad cruda se normaliza con `normalizarUnidad()` (`src/lib/unidades.ts`). Así, `"cda"` y `"cdas"` son la misma clave de agrupado. Si la unidad normalizada es `null` (a gusto), la clave es `"${idIngrediente}__agusto"`. La tabla de normalizaciones vive en `src/lib/unidades.ts`; para agregar una variante nueva, extender `TABLA` ahí.
+
+**Regla de unidades:** si `normalizarUnidad(unidad)` difiere entre aportes, NO sumamos. "1 cebolla (a gusto)" + "200g cebolla" → dos renglones.
 
 **Conflicto de categoría:** si dos recetas categorizan el mismo ingrediente distinto ("Verdura" vs "Almacén"), elegimos la primera no vacía. Pendiente: panel de admin para editar.
 
