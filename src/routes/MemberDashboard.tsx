@@ -34,8 +34,12 @@ function EstadoBadge({ estado }: { estado: string }) {
 }
 
 function PlanRow({ plan }: { plan: Plan }) {
-  const esReceta = plan.tipoSeleccion === "receta";
-  const inner = (
+  const canCocinar = ["Compra pendiente", "Compra lista", "Cocinando"].includes(plan.estado);
+  const cocinarHref = plan.tipoSeleccion === "menu"
+    ? `/planes/${plan.idPlan}/componentes`
+    : `/planes/${plan.idPlan}/cocinar/${plan.idSeleccion}`;
+
+  return (
     <div style={{
       display: "flex",
       justifyContent: "space-between",
@@ -50,14 +54,18 @@ function PlanRow({ plan }: { plan: Plan }) {
         </p>
         <p className="meta" style={{ margin: 0 }}>{plan.tipoPlan}</p>
       </div>
-      <EstadoBadge estado={plan.estado} />
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", flexShrink: 0 }}>
+        <EstadoBadge estado={plan.estado} />
+        {canCocinar && (
+          <Link to={cocinarHref}>
+            <button className="btn btn-primary" style={{ fontSize: "var(--fs-sm)" }}>
+              {plan.estado === "Cocinando" ? "Continuar" : "Cocinar"}
+            </button>
+          </Link>
+        )}
+      </div>
     </div>
   );
-
-  if (esReceta) {
-    return <Link to={`/recetas/${plan.idSeleccion}`} style={{ textDecoration: "none", display: "block" }}>{inner}</Link>;
-  }
-  return <div>{inner}</div>;
 }
 
 function PendienteRow({ plan }: { plan: Plan }) {
