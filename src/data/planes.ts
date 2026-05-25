@@ -492,8 +492,8 @@ function _cerrarEvaluacion(
   return { promedio, resultado };
 }
 
-// Voto de cualquier miembro. Si completa todos los votos de plan.asignaciones,
-// cierra automáticamente. La condición lee de asignaciones (no hardcodea "4").
+// Voto de cualquier miembro (siempre los 4, independiente de asignaciones).
+// Si todos los MIEMBRO_IDS votaron, cierra automáticamente.
 export async function voteAndCloseIfComplete(
   idPlan: string,
   miembroId: MiembroId,
@@ -521,10 +521,6 @@ export async function voteAndCloseIfComplete(
             : `El plan no está en estado Cocinada (está en "${plan.estado}").`
         );
       }
-      if (!plan.asignaciones.includes(miembroId)) {
-        throw new TransactionAbort("not-assigned", "No estás asignado a este plan.");
-      }
-
       const votosFinales: Plan["votos"] = { ...plan.votos, [miembroId]: puntaje };
       const comentariosFinales: Plan["comentariosPlan"] = { ...plan.comentariosPlan, [miembroId]: comentario };
       // datosCocinero es exclusivo de JP; si JP votó primero y luego cierra otro miembro, se conserva el existente.
@@ -532,9 +528,8 @@ export async function voteAndCloseIfComplete(
         ? datosCocinero
         : plan.datosCocinero;
 
-      const votantesCompletos = plan.asignaciones.every(
-        (id) => votosFinales[id as MiembroId] != null
-      );
+      // Cierre cuando TODOS los 4 miembros votaron (independiente de quién cocina).
+      const votantesCompletos = MIEMBRO_IDS.every((id) => votosFinales[id] != null);
 
       if (votantesCompletos) {
         const { promedio, resultado } = _cerrarEvaluacion(

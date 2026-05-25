@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
-import { subscribeToPlanesActivosMiembro } from "../data/planes";
+import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
 import { getSemanaActual } from "../lib/fechas";
 import type { Plan, Historial, MiembroId } from "../types/models";
@@ -130,9 +130,8 @@ export function MemberDashboard() {
   const nombre   = state.status === "authenticated" ? state.user.nombre   : "";
 
   useEffect(() => {
-    if (!memberId) return;
-    return subscribeToPlanesActivosMiembro(semana, memberId, setPlanes);
-  }, [semana, memberId]);
+    return subscribeToPlanesActivos(semana, setPlanes);
+  }, [semana]);
 
   useEffect(() => {
     getHistorialReciente().then((r) => {
@@ -143,6 +142,9 @@ export function MemberDashboard() {
 
   if (!memberId) return null;
 
+  // "Mi semana" = planes donde este miembro cocina (asignaciones)
+  const misPlanes = planes.filter((p) => p.asignaciones.includes(memberId as MiembroId));
+  // "Pendientes" = cualquier plan Cocinada donde este miembro no votó todavía (votan los 4)
   const pendientes = planes.filter(
     (p) => p.estado === "Cocinada" && !p.votos?.[memberId as MiembroId]
   );
@@ -159,10 +161,10 @@ export function MemberDashboard() {
       {/* Mis planes de la semana */}
       <div className="card">
         <h3 style={{ margin: "0 0 var(--space-2)" }}>Mi semana</h3>
-        {planes.length === 0 ? (
+        {misPlanes.length === 0 ? (
           <p className="meta">No hay planes activos esta semana.</p>
         ) : (
-          planes.map((p) => <PlanRow key={p.idPlan} plan={p} />)
+          misPlanes.map((p) => <PlanRow key={p.idPlan} plan={p} />)
         )}
       </div>
 

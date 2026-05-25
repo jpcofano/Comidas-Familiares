@@ -7,6 +7,7 @@ import { getDiccionarios } from "../data/diccionarios";
 import { getReceta } from "../data/recetas";
 import { calcularPromedio, calcularResultadoTextual } from "../lib/voto";
 import type { Plan, DatosCocinero, Dificultad, Receta, MiembroId } from "../types/models";
+import { MIEMBRO_IDS } from "../types/models";
 
 const NOMBRES: Record<string, string> = {
   juanpablo: "Juan Pablo",
@@ -59,8 +60,8 @@ function VotoProgress({ plan }: { plan: Plan }) {
       <p style={{ margin: "0 0 var(--space-2)", fontWeight: "var(--fw-medium)", fontSize: "var(--fs-sm)" }}>
         Votos recibidos
       </p>
-      {plan.asignaciones.map((id) => {
-        const yaVoto = plan.votos?.[id as MiembroId] != null;
+      {MIEMBRO_IDS.map((id) => {
+        const yaVoto = plan.votos?.[id] != null;
         return (
           <div key={id} style={{
             display: "flex", justifyContent: "space-between", alignItems: "center",
