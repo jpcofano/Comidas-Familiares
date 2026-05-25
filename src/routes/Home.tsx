@@ -84,25 +84,14 @@ function PlanCard({
   const [asigLocal, setAsigLocal] = useState<string[]>(() => [...plan.asignaciones]);
   const [guardandoAsig, setGuardandoAsig] = useState(false);
   const [errorAsig, setErrorAsig] = useState<string | null>(null);
-  const [showConfirmAsig, setShowConfirmAsig] = useState(false);
 
   useEffect(() => {
     if (!asigEditing) setAsigLocal([...plan.asignaciones]); // eslint-disable-line react-hooks/set-state-in-effect
   }, [plan.asignaciones, asigEditing]);
 
-  const removidosConVoto = plan.asignaciones.filter(
-    (id) => !asigLocal.includes(id) && plan.votos?.[id as MiembroId] != null
-  );
-
-  function handleClickGuardarAsig() {
-    if (removidosConVoto.length > 0) { setShowConfirmAsig(true); return; }
-    void doGuardarAsig();
-  }
-
   async function doGuardarAsig() {
     setGuardandoAsig(true);
     setErrorAsig(null);
-    setShowConfirmAsig(false);
     const r = await actualizarAsignaciones(plan.idPlan, asigLocal as MiembroId[]);
     setGuardandoAsig(false);
     if (r.ok) {
@@ -221,111 +210,83 @@ function PlanCard({
         </div>
       )}
 
-      {/* Asignaciones — solo JP, solo planes no evaluados */}
-      {isJP && plan.estado !== "Evaluada" && (
-        <div style={{ marginTop: "var(--space-3)", paddingTop: "var(--space-3)", borderTop: "1px solid var(--border)" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>Quién come este plato</p>
-            {!asigEditing && (
-              <button
-                className="btn btn-ghost"
-                onClick={() => { setAsigLocal([...plan.asignaciones]); setAsigEditing(true); setErrorAsig(null); setShowConfirmAsig(false); }}
-                style={{ fontSize: "var(--fs-xs)" }}
-              >
-                Editar
-              </button>
-            )}
-          </div>
-
-          {!asigEditing && (
-            <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--text)" }}>
-              {plan.asignaciones.map((id) => NOMBRES[id] ?? id).join(", ")}
-            </p>
-          )}
-
-          {asigEditing && (
-            <>
-              <div style={{ marginTop: "var(--space-2)" }}>
-                {MIEMBRO_IDS.map((id) => (
-                  <div key={id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", padding: "var(--space-1) 0" }}>
-                    <input
-                      type="checkbox"
-                      id={`asig-${plan.idPlan}-${id}`}
-                      checked={asigLocal.includes(id)}
-                      onChange={(e) => {
-                        setAsigLocal((prev) =>
-                          e.target.checked ? [...prev, id] : prev.filter((x) => x !== id)
-                        );
-                        setShowConfirmAsig(false);
-                      }}
-                      disabled={guardandoAsig}
-                    />
-                    <label htmlFor={`asig-${plan.idPlan}-${id}`} style={{ fontSize: "var(--fs-sm)", cursor: "pointer" }}>
-                      {NOMBRES[id]}
-                    </label>
-                  </div>
-                ))}
-              </div>
-
-              {asigLocal.length === 0 && (
-                <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
-                  Tiene que comerlo al menos una persona.
-                </p>
-              )}
-
-              {errorAsig && (
-                <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
-                  {errorAsig}
-                </p>
-              )}
-
-              {showConfirmAsig && (
-                <div style={{
-                  marginTop: "var(--space-2)", padding: "var(--space-2)",
-                  background: "var(--warn-bg)", borderRadius: "var(--radius-sm)",
-                  border: "1px solid var(--warn-text)",
-                }}>
-                  <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-                    {removidosConVoto.map((id) => NOMBRES[id] ?? id).join(", ")}
-                    {removidosConVoto.length === 1 ? " ya votó" : " ya votaron"} este plan.
-                    {" "}Si {removidosConVoto.length === 1 ? "lo sacás, su voto" : "los sacás, sus votos"} se{" "}
-                    {removidosConVoto.length === 1 ? "va a borrar" : "van a borrar"}. ¿Confirmás?
-                  </p>
-                  <div style={{ display: "flex", gap: "var(--space-2)" }}>
-                    <button className="btn btn-primary" onClick={() => void doGuardarAsig()} disabled={guardandoAsig} style={{ flex: 1, fontSize: "var(--fs-xs)" }}>
-                      {guardandoAsig ? "Guardando…" : "Sí, guardar"}
-                    </button>
-                    <button className="btn btn-secondary" onClick={() => setShowConfirmAsig(false)} disabled={guardandoAsig} style={{ flex: 1, fontSize: "var(--fs-xs)" }}>
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {!showConfirmAsig && (
-                <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)" }}>
-                  <button
-                    className="btn btn-primary"
-                    onClick={handleClickGuardarAsig}
-                    disabled={asigLocal.length === 0 || guardandoAsig}
-                    style={{ flex: 1, fontSize: "var(--fs-xs)" }}
-                  >
-                    {guardandoAsig ? "Guardando…" : "Guardar"}
-                  </button>
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => { setAsigEditing(false); setErrorAsig(null); setShowConfirmAsig(false); }}
-                    disabled={guardandoAsig}
-                    style={{ flex: 1, fontSize: "var(--fs-xs)" }}
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              )}
-            </>
+      {/* Cocineros del plato — lectura siempre visible; edición solo JP en estados activos */}
+      <div style={{ marginTop: "var(--space-3)", paddingTop: "var(--space-3)", borderTop: "1px solid var(--border)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>Quiénes cocinan este plato</p>
+          {isJP && plan.estado !== "Evaluada" && !asigEditing && (
+            <button
+              className="btn btn-ghost"
+              onClick={() => { setAsigLocal([...plan.asignaciones]); setAsigEditing(true); setErrorAsig(null); }}
+              style={{ fontSize: "var(--fs-xs)" }}
+            >
+              Editar
+            </button>
           )}
         </div>
-      )}
+
+        {!asigEditing && (
+          <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--text)" }}>
+            {plan.asignaciones.map((id) => NOMBRES[id] ?? id).join(", ")}
+          </p>
+        )}
+
+        {asigEditing && (
+          <>
+            <div style={{ marginTop: "var(--space-2)" }}>
+              {MIEMBRO_IDS.map((id) => (
+                <div key={id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", padding: "var(--space-1) 0" }}>
+                  <input
+                    type="checkbox"
+                    id={`asig-${plan.idPlan}-${id}`}
+                    checked={asigLocal.includes(id)}
+                    onChange={(e) => {
+                      setAsigLocal((prev) =>
+                        e.target.checked ? [...prev, id] : prev.filter((x) => x !== id)
+                      );
+                    }}
+                    disabled={guardandoAsig}
+                  />
+                  <label htmlFor={`asig-${plan.idPlan}-${id}`} style={{ fontSize: "var(--fs-sm)", cursor: "pointer" }}>
+                    {NOMBRES[id]}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {asigLocal.length === 0 && (
+              <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
+                Tiene que cocinarlo al menos una persona.
+              </p>
+            )}
+
+            {errorAsig && (
+              <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
+                {errorAsig}
+              </p>
+            )}
+
+            <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)" }}>
+              <button
+                className="btn btn-primary"
+                onClick={() => void doGuardarAsig()}
+                disabled={asigLocal.length === 0 || guardandoAsig}
+                style={{ flex: 1, fontSize: "var(--fs-xs)" }}
+              >
+                {guardandoAsig ? "Guardando…" : "Guardar"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => { setAsigEditing(false); setErrorAsig(null); }}
+                disabled={guardandoAsig}
+                style={{ flex: 1, fontSize: "var(--fs-xs)" }}
+              >
+                Cancelar
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

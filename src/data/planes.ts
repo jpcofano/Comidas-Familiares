@@ -13,7 +13,6 @@ import {
   Timestamp,
   increment,
   runTransaction,
-  deleteField,
   type Transaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
@@ -588,14 +587,7 @@ export async function actualizarAsignaciones(
         );
       }
 
-      const desasignados = plan.asignaciones.filter((id) => !nuevasAsignaciones.includes(id));
-      const update: Record<string, unknown> = { asignaciones: nuevasAsignaciones };
-      for (const id of desasignados) {
-        update[`votos.${id}`] = deleteField();
-        update[`comentariosPlan.${id}`] = deleteField();
-      }
-
-      tx.update(planRef, update);
+      tx.update(planRef, { asignaciones: nuevasAsignaciones });
     });
 
     return ok(undefined);
