@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.1 (E4.1 — dashboard de miembro + asignaciones por defecto los 4 miembros)
+> **Versión**: 1.6.2 (E4.2 — voto distribuido + cierre automático y forzado de evaluación)
 > **Fecha**: 2026-05-25
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -211,6 +211,34 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 4. **Edge case ING-0178 "Arroz"**: ingrediente genérico `ambiguo: true` creado antes de esta etapa. No se borra automáticamente — JP puede limpiarlo manualmente en Firebase Console o via `/biblioteca/catalogo`. Una vez aprendido "arroz" como sinónimo de "Arroz largo fino", el Paso 1 resuelve ese término directamente y el genérico queda como residuo inactivo.
 
+### 1.2.quaterdecies Cambios en v1.6.1 (E4.1 — dashboard de miembro)
+
+1. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): pantalla de inicio para miembros no-JP. Secciones: saludo + semana, "Mi semana" (planes activos donde el miembro está en `asignaciones`, tiempo real), "Pendientes de evaluar" (planes `Cocinada` donde `votos[memberId]` es nulo), "Mi historial" (últimas 15 entradas de historial con mi puntaje).
+
+2. **`subscribeToPlanesActivosMiembro`** (`src/data/planes.ts`): query realtime con triple filtro `semanaInicio == X AND estado IN activos AND asignaciones ARRAY_CONTAINS miembroId`. Requiere índice compuesto §5.3 (ya desplegado).
+
+3. **`asignaciones` default = los 4 miembros**: todas las funciones de creación de planes (`elegirComoEspecial`, `sumarComoExtra`, `sumarComoEnProceso`, `elegirMenuComoEspecial`, `sumarMenuComoEnProceso`) pasan `asignaciones: [...MIEMBRO_IDS]`. Antes era `["juanpablo"]`. Backfill en planes activos via `scripts/backfill-asignaciones.ts`.
+
+4. **`BottomNav` ramificado**: JP ve Inicio/Biblioteca/Compras/Historial; miembro ve Mi semana/Compras/Pendientes/Historial.
+
+5. **Ruta `/pendientes`** (`src/routes/Pendientes.tsx`): redirige a `/` si el usuario es JP.
+
+6. **Guarda `JPOnly`** en `src/App.tsx`: envuelve rutas exclusivas JP (`/menus/:id`). Redirige a `/` si el usuario no es `juanpablo`.
+
+### 1.2.quindecies Cambios en v1.6.2 (E4.2 — voto distribuido)
+
+1. **Voto distribuido**: los 4 miembros (JP incluido) votan en la misma pantalla `/voto/:idPlan`. Un voto = puntaje 1-10 + comentario. El plan cierra automáticamente cuando todos los miembros en `plan.asignaciones` tienen voto no nulo — **la condición lee de `asignaciones`, no hardcodea "4"**.
+
+2. **`voteAndCloseIfComplete`** (`src/data/planes.ts`): función unificada para el voto de cualquier miembro. `runTransaction` única que: (a) valida `estado === "Cocinada"`, (b) valida que `miembroId ∈ plan.asignaciones`, (c) escribe el voto con dot-notation (`votos.${miembroId}`), (d) si todos los `asignaciones` ya votaron → llama al helper de cierre `_cerrarEvaluacion`. Si JP vota primero, `datosCocinero` se persiste aunque el plan todavía no cierre.
+
+3. **`forzarCierreEvaluacion`** (`src/data/planes.ts`): cierre forzado solo para JP. `runTransaction` que llama a `_cerrarEvaluacion` con los votos presentes, sin exigir completitud.
+
+4. **`_cerrarEvaluacion`** (helper interno de `planes.ts`): calcula `promedio` sobre votos no nulos, calcula `resultado` textual, escribe doc en `/historial`, actualiza `plan.estado = "Evaluada"`, incrementa `vecesCocinada` en recetas/menús. Compartido por `voteAndCloseIfComplete` y `forzarCierreEvaluacion`.
+
+5. **`guardarEvaluacionJP` eliminada**: absorbida por `voteAndCloseIfComplete`. No hay wrapper de compatibilidad — ningún componente la importaba fuera de `Voto.tsx`.
+
+6. **`Voto.tsx` reescrito** (`src/routes/Voto.tsx`): detecta el votante via `useAuth`. Precar­ga voto existente (editable mientras el plan esté `Cocinada`). Muestra `VotoProgress` (quién votó / quién falta, sin exponer puntajes ajenos). Solo JP ve `datosCocinero`, "Calificar componentes" y el botón "Cerrar evaluación ahora" (con confirmación inline que indica cuántos votos hay y cuántos faltan). Plan `Evaluada` → vista read-only con promedio, resultado y puntajes por miembro.
+
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
 1. **Realtime nativo** en planes activos y compras vía `onSnapshot`. Cuando María tilda "Ya tengo" desde su celu, JP lo ve al toque sin refrescar. El cambio de estado de un plan (Elegida → Compra pendiente → Cocinada) se propaga en vivo. Esto reemplaza el "refresh manual" que aplicaba en v1.2.
@@ -223,7 +251,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 5. **Manejo de errores diferenciado**: reads tiran excepciones (capturadas por error boundary genérico); writes devuelven `Result<T, Error>` para feedback explícito al usuario.
 
-6. **`runTransaction` del voto**: se creó en E2.2 como prototipo bajo el nombre `voteAndCloseIfComplete`. Fue reemplazado en E3.6 por `guardarEvaluacionJP` (flujo JP-first, ver §1.2.octies y §3.7) y eliminado en E3.7 como código muerto. El flujo multi-miembro (E4.2) monta sobre `guardarEvaluacionJP`, no sobre el prototipo.
+6. **`runTransaction` del voto**: se creó en E2.2 como prototipo bajo el nombre `voteAndCloseIfComplete`. Fue reemplazado en E3.6 por `guardarEvaluacionJP` (flujo JP-first) y eliminado en E3.7 como código muerto. En E4.2 se reimplementó `voteAndCloseIfComplete` con voto distribuido completo (ver §3.7 y §1.2.quindecies). `guardarEvaluacionJP` fue eliminada.
 
 
 ### 1.3 Volumen de seeds a migrar
@@ -1048,26 +1076,39 @@ orden | tipo        | idReceta_o_nombre        | obligatorio | notas
 
 ### 3.7 Atomicidad del voto + cierre
 
-El voto + cierre se hace en **una sola transacción** del cliente Firestore (`runTransaction`). La mecánica es idéntica en E3.6 y E4.2; solo cambia la **condición de cierre**:
+El voto + cierre se hace en **una sola transacción** del cliente Firestore (`runTransaction`). Implementado en E4.2 como `voteAndCloseIfComplete` + helper interno `_cerrarEvaluacion`.
 
-- **E3.6 (implementado)**: JP vota y cierra en el mismo acto. El plan pasa a `"Evaluada"` cuando JP confirma. Los otros 3 miembros no votaron aún — sus `votos.*` quedan `null` y sus `comentariosPlan.*` quedan `""`. Esto es correcto y esperado.
-- **E4.2 (pendiente)**: cualquier miembro puede votar. El cierre se dispara al completarse el 4º voto no nulo. La misma transacción, distinta condición.
+**Funciones (`src/data/planes.ts`):**
 
-**Pasos dentro de `runTransaction` (E3.6 / `guardarEvaluacionJP`):**
+- **`voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario, datosCocinero?, puntajesComponentes?)`**: voto de cualquier miembro. Si al agregar el voto todos los miembros de `plan.asignaciones` tienen voto no nulo → cierra automáticamente llamando a `_cerrarEvaluacion`. La condición lee de `plan.asignaciones` — no hardcodea "4".
+- **`forzarCierreEvaluacion(idPlan)`**: solo para JP. Cierra con los votos presentes, sin exigir completitud.
+- **`_cerrarEvaluacion(tx, planRef, plan, votos, comentarios, datosCocinero, puntajesComponentes?)`**: helper interno compartido. Calcula promedio/resultado, escribe historial, actualiza estado, incrementa `vecesCocinada`.
+
+**Pasos dentro de `runTransaction` (`voteAndCloseIfComplete`):**
 
 1. `tx.get(planRef)` → leer estado actual.
 2. Validar `plan.estado === "Cocinada"` (si no, `throw new TransactionAbort(...)` con mensaje claro).
-3. Calcular `nuevosVotos = { ...plan.votos, juanpablo: puntaje }`.
-4. Calcular `promedio` (sobre votos no nulos, ver §3.4) y `resultado` (ver tabla §3.4).
-5. `tx.set(historialRef, { …snapshot del plan, calificaciones, comentarios, promedio, resultado, … })`.
-6. `tx.update(planRef, { 'votos.juanpablo': puntaje, 'comentariosPlan.juanpablo': comentario, datosCocinero, estado: "Evaluada" })`.
-7. Incrementar `vecesCocinada`:
-   - Plan-receta: `tx.update(recetaRef, { vecesCocinada: increment(1), ultimaEvaluacion: serverTimestamp(), ultimoPuntaje: promedio })`.
+3. Validar que `miembroId ∈ plan.asignaciones` (protege para cuando E4.3 permita subconjuntos).
+4. Calcular `votosFinales = { ...plan.votos, [miembroId]: puntaje }`.
+5. Si `miembroId === "juanpablo"` y vino `datosCocinero`: guardarlo. Si no, conservar `plan.datosCocinero` existente.
+6. `votantesCompletos = plan.asignaciones.every(id => votosFinales[id] != null)`.
+7a. Si `votantesCompletos` → llamar `_cerrarEvaluacion` dentro de la misma tx → retornar `{ cerrado: true, promedio, resultado }`.
+7b. Si no → `tx.update(planRef, { 'votos.${miembroId}': puntaje, 'comentariosPlan.${miembroId}': comentario, … })` → retornar `{ cerrado: false }`.
+
+**Pasos dentro de `_cerrarEvaluacion`:**
+
+1. Calcular `promedio` (sobre votos no nulos, ver §3.4) y `resultado` (ver tabla §3.4).
+2. `tx.set(historialRef, { …snapshot del plan, calificaciones, comentarios, promedio, resultado, … })`.
+3. `tx.update(planRef, { estado: "Evaluada", votos: votosFinales, comentariosPlan: comentariosFinales, … })`.
+4. Incrementar `vecesCocinada`:
+   - Plan-receta: `tx.update(recetaRef, { vecesCocinada: increment(1), ultimaEvaluacion: Timestamp.now(), ultimoPuntaje: promedio })`.
    - Plan-menú: `tx.update(menuRef, { vecesCocinada: increment(1) })` + por cada `idReceta` en `plan.componentesCocinados`: `tx.update(recetaRef, { vecesCocinada: increment(1), ...(puntajesComponentes[id] ? { ultimoPuntaje: puntajesComponentes[id] } : {}) })`.
 
 El uso de `increment(1)` es seguro ante reintento de transacción — Firestore aplica el incremento una sola vez por commit.
 
 Si la transacción aborta (por concurrencia), Firestore reintenta automáticamente con el estado refrescado.
+
+**Nota sobre `guardarEvaluacionJP`**: existió en E3.6/E3.7. Eliminada en E4.2 — su lógica fue absorbida por `voteAndCloseIfComplete`.
 
 ### 3.8 Cálculo de campos derivados del menú (Modelo M, nuevo en v1.2)
 
@@ -1213,7 +1254,7 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 | `componentes menú` | `/planes/:idPlan/componentes` | ✅ | ❌ | ✅ E3.5 |
 | `compras` | `/compras` | ✅ | ✅ | ✅ E3.4 |
 | `catálogo de ingredientes` | `/biblioteca/catalogo` | ✅ | ❌ | ✅ E3.4.8 |
-| `voto` / `evaluar` | `/voto/:idPlan` | ✅ | pendiente E4.2 | ✅ E3.6 |
+| `voto` / `evaluar` | `/voto/:idPlan` | ✅ | ✅ E4.2 | ✅ E3.6 |
 | `historial` | `/historial` | ✅ | ✅ | ✅ E3.7 |
 | `historial detalle` | `/historial/:idHist` | ✅ | ✅ | ✅ E3.7 |
 | `dashboard miembro` | `/` (modo miembro) | ✅ | ✅ | ✅ E4.1 |
@@ -1499,7 +1540,7 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 ### 7.4 Etapa 4 — Modo miembro
 
 - **`PROMPT_E4.1_dashboard_miembro.md`**: vista cuando el login es de un miembro no-JP. Mis planes, pendientes, compras filtradas, mi historial.
-- **`PROMPT_E4.2_voto_miembro.md`**: pantalla de voto individual con `runTransaction` (ver §3.7). Cierre automático al 4to voto.
+- **`PROMPT_E4.2_voto_miembro.md`** ✅ **CERRADO**: voto distribuido, cierre automático al completar `plan.asignaciones`, cierre forzado JP. `voteAndCloseIfComplete` + `forzarCierreEvaluacion` + `_cerrarEvaluacion`. `Voto.tsx` reescrito con `VotoProgress`, precar­ga de voto, secciones JP-only. Ver §3.7 y §1.2.quindecies.
 - **`PROMPT_E4.3_asignaciones.md`**: UI para reasignar planes (multi-select de miembros).
 
 ### 7.5 Etapa 5 — Importador
