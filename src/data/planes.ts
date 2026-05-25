@@ -13,6 +13,7 @@ import {
   Timestamp,
   increment,
   runTransaction,
+  type Transaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import type { Plan, Historial, Receta, Menu, MiembroId, DatosCocinero } from "../types/models";
@@ -410,7 +411,7 @@ export async function sumarMenuComoEnProceso(
   return result;
 }
 
-// ─── Evaluación por JP (E3.6) ─────────────────────────────────────────────────
+// ─── Evaluación distribuida (E4.2) ────────────────────────────────────────────
 
 class TransactionAbort extends Error {
   code: string;
@@ -419,20 +420,88 @@ class TransactionAbort extends Error {
     this.code = code;
   }
 }
-// Cierra el plan inmediatamente al confirmar JP. El cierre al 4º voto (E4.2)
-// monta encima la misma mecánica de transacción con distinta condición de cierre.
 
-export async function guardarEvaluacionJP(
-  idPlan: string,
-  evaluacion: {
-    puntaje: number;
-    comentario: string;
-    datosCocinero: DatosCocinero;
-    puntajesComponentes?: Record<string, number>;
+// Cierra el plan dentro de una transacción en curso.
+// Reutilizado por voteAndCloseIfComplete (cierre automático al último voto)
+// y por forzarCierreEvaluacion (cierre manual de JP).
+function _cerrarEvaluacion(
+  tx: Transaction,
+  planRef: ReturnType<typeof doc>,
+  plan: Plan,
+  votosFinales: Plan["votos"],
+  comentariosFinales: Plan["comentariosPlan"],
+  datosCocineroFinal: DatosCocinero | null,
+  puntajesComponentes?: Record<string, number>
+): { promedio: number; resultado: string } {
+  const promedio = calcularPromedio(votosFinales);
+  const resultado = calcularResultadoTextual(promedio);
+  const fechaHoy = new Date().toISOString().slice(0, 10);
+  const idHistorial = proximoIdHistorial();
+
+  const historialDoc: Historial = {
+    idHist: idHistorial,
+    fechaRealizada: fechaHoy,
+    fechaRealizadaTimestamp: Timestamp.now(),
+    idPlan: plan.idPlan,
+    idReceta: plan.tipoSeleccion === "receta" ? plan.idSeleccion : "",
+    idMenu:   plan.tipoSeleccion === "menu"   ? plan.idSeleccion : "",
+    receta: plan.nombreSeleccion,
+    tipoSeleccion: plan.tipoSeleccion,
+    idSeleccion: plan.idSeleccion,
+    nombreSeleccion: plan.nombreSeleccion,
+    semanaInicio: plan.semanaInicio,
+    ocasion: datosCocineroFinal?.ocasion ?? "",
+    calificaciones: votosFinales as Record<MiembroId, number>,
+    comentarios: comentariosFinales,
+    promedio,
+    resultado: resultado as Historial["resultado"],
+    repetir: datosCocineroFinal?.repetir ?? "",
+    costoRealAprox: datosCocineroFinal?.costoRealAprox ?? "",
+    dificultadReal: datosCocineroFinal?.dificultadReal ?? "",
+    queSalioBien: datosCocineroFinal?.queSalioBien ?? "",
+    queCambiaria: datosCocineroFinal?.queCambiaria ?? "",
+    notasFamiliares: datosCocineroFinal?.notasFamiliares ?? "",
+  };
+
+  tx.set(doc(db, "historial", idHistorial), historialDoc);
+  tx.update(planRef, {
+    estado: "Evaluada",
+    votos: votosFinales,
+    comentariosPlan: comentariosFinales,
+    ...(datosCocineroFinal != null ? { datosCocinero: datosCocineroFinal } : {}),
+  });
+
+  if (plan.tipoSeleccion === "receta") {
+    tx.update(doc(db, "recetas", plan.idSeleccion), {
+      vecesCocinada: increment(1),
+      ultimaEvaluacion: Timestamp.now(),
+      ultimoPuntaje: promedio,
+    });
+  } else {
+    tx.update(doc(db, "menus", plan.idSeleccion), { vecesCocinada: increment(1) });
+    for (const idReceta of (plan.componentesCocinados ?? [])) {
+      const extra: Record<string, unknown> = { vecesCocinada: increment(1) };
+      if (puntajesComponentes?.[idReceta] != null) {
+        extra.ultimoPuntaje = puntajesComponentes[idReceta];
+        extra.ultimaEvaluacion = Timestamp.now();
+      }
+      tx.update(doc(db, "recetas", idReceta), extra);
+    }
   }
-): Promise<Result<{ promedio: number; resultado: string }, AppError>> {
-  const { puntaje, comentario, datosCocinero, puntajesComponentes } = evaluacion;
 
+  return { promedio, resultado };
+}
+
+// Voto de cualquier miembro. Si completa todos los votos de plan.asignaciones,
+// cierra automáticamente. La condición lee de asignaciones (no hardcodea "4").
+export async function voteAndCloseIfComplete(
+  idPlan: string,
+  miembroId: MiembroId,
+  puntaje: number,
+  comentario: string,
+  datosCocinero?: DatosCocinero,
+  puntajesComponentes?: Record<string, number>
+): Promise<Result<{ cerrado: boolean; promedio?: number; resultado?: string }, AppError>> {
   if (puntaje < 1 || puntaje > 10) {
     return err("invalid-score", "El puntaje debe estar entre 1 y 10.");
   }
@@ -447,76 +516,76 @@ export async function guardarEvaluacionJP(
       if (plan.estado !== "Cocinada") {
         throw new TransactionAbort(
           "plan-not-cocinada",
-          `Solo se puede evaluar un plan en estado "Cocinada". Este está en "${plan.estado}".`
+          plan.estado === "Evaluada"
+            ? "Este plan ya fue evaluado."
+            : `El plan no está en estado Cocinada (está en "${plan.estado}").`
         );
       }
-
-      const nuevosVotos = { ...(plan.votos ?? {}), juanpablo: puntaje } as Plan["votos"];
-      const nuevosComentarios = { ...(plan.comentariosPlan ?? {}), juanpablo: comentario } as Plan["comentariosPlan"];
-
-      // promedio sobre votos no nulos — correcto con 1 votante y seguirá correcto con 4 (E4.2)
-      const promedio = calcularPromedio(nuevosVotos);
-      const resultado = calcularResultadoTextual(promedio);
-      const fechaHoy = new Date().toISOString().slice(0, 10);
-      const idHistorial = proximoIdHistorial();
-
-      const historialDoc: Historial = {
-        idHist: idHistorial,
-        fechaRealizada: fechaHoy,
-        fechaRealizadaTimestamp: Timestamp.now(),
-        idPlan: plan.idPlan,
-        idReceta: plan.tipoSeleccion === "receta" ? plan.idSeleccion : "",
-        idMenu:   plan.tipoSeleccion === "menu"   ? plan.idSeleccion : "",
-        receta: plan.nombreSeleccion,
-        tipoSeleccion: plan.tipoSeleccion,
-        idSeleccion: plan.idSeleccion,
-        nombreSeleccion: plan.nombreSeleccion,
-        semanaInicio: plan.semanaInicio,
-        ocasion: datosCocinero.ocasion ?? "",
-        calificaciones: nuevosVotos as Record<MiembroId, number>,
-        comentarios: nuevosComentarios,
-        promedio,
-        resultado: resultado as Historial["resultado"],
-        repetir: datosCocinero.repetir ?? "",
-        costoRealAprox: datosCocinero.costoRealAprox ?? "",
-        dificultadReal: datosCocinero.dificultadReal ?? "",
-        queSalioBien: datosCocinero.queSalioBien ?? "",
-        queCambiaria: datosCocinero.queCambiaria ?? "",
-        notasFamiliares: datosCocinero.notasFamiliares ?? "",
-      };
-
-      tx.set(doc(db, "historial", idHistorial), historialDoc);
-      tx.update(planRef, {
-        "votos.juanpablo": puntaje,
-        "comentariosPlan.juanpablo": comentario,
-        datosCocinero,
-        estado: "Evaluada",
-      });
-
-      if (plan.tipoSeleccion === "receta") {
-        tx.update(doc(db, "recetas", plan.idSeleccion), {
-          vecesCocinada: increment(1),
-          ultimaEvaluacion: Timestamp.now(),
-          ultimoPuntaje: promedio,
-        });
-      } else {
-        tx.update(doc(db, "menus", plan.idSeleccion), { vecesCocinada: increment(1) });
-        for (const idReceta of (plan.componentesCocinados ?? [])) {
-          const extra: Record<string, unknown> = { vecesCocinada: increment(1) };
-          if (puntajesComponentes?.[idReceta] != null) {
-            extra.ultimoPuntaje = puntajesComponentes[idReceta];
-            extra.ultimaEvaluacion = Timestamp.now();
-          }
-          tx.update(doc(db, "recetas", idReceta), extra);
-        }
+      if (!plan.asignaciones.includes(miembroId)) {
+        throw new TransactionAbort("not-assigned", "No estás asignado a este plan.");
       }
 
-      return { promedio, resultado };
+      const votosFinales: Plan["votos"] = { ...plan.votos, [miembroId]: puntaje };
+      const comentariosFinales: Plan["comentariosPlan"] = { ...plan.comentariosPlan, [miembroId]: comentario };
+      // datosCocinero es exclusivo de JP; si JP votó primero y luego cierra otro miembro, se conserva el existente.
+      const datosCocineroFinal = miembroId === "juanpablo" && datosCocinero
+        ? datosCocinero
+        : plan.datosCocinero;
+
+      const votantesCompletos = plan.asignaciones.every(
+        (id) => votosFinales[id as MiembroId] != null
+      );
+
+      if (votantesCompletos) {
+        const { promedio, resultado } = _cerrarEvaluacion(
+          tx, planRef, plan, votosFinales, comentariosFinales, datosCocineroFinal, puntajesComponentes
+        );
+        return { cerrado: true, promedio, resultado };
+      }
+
+      // Cierre parcial: registrar solo el voto del miembro
+      const update: Record<string, unknown> = {
+        [`votos.${miembroId}`]: puntaje,
+        [`comentariosPlan.${miembroId}`]: comentario,
+      };
+      if (miembroId === "juanpablo" && datosCocinero) update.datosCocinero = datosCocinero;
+      tx.update(planRef, update);
+      return { cerrado: false };
     });
 
     return ok(result);
   } catch (e) {
     if (e instanceof TransactionAbort) return err(e.code, e.message, e);
-    return err("firestore-error", "Error al guardar la evaluación. Probá de nuevo.", e);
+    return err("firestore-error", "Error al guardar el voto. Probá de nuevo.", e);
+  }
+}
+
+// Solo para JP: cierra el plan con los votos que haya en ese momento.
+export async function forzarCierreEvaluacion(
+  idPlan: string
+): Promise<Result<{ promedio: number; resultado: string }, AppError>> {
+  try {
+    const result = await runTransaction(db, async (tx) => {
+      const planRef = doc(db, "planes", idPlan);
+      const planSnap = await tx.get(planRef);
+      if (!planSnap.exists()) throw new TransactionAbort("plan-not-found", "El plan no existe.");
+
+      const plan = planSnap.data() as Plan;
+      if (plan.estado !== "Cocinada") {
+        throw new TransactionAbort(
+          "plan-not-cocinada",
+          plan.estado === "Evaluada"
+            ? "Este plan ya fue evaluado."
+            : `El plan no está en estado Cocinada (está en "${plan.estado}").`
+        );
+      }
+
+      return _cerrarEvaluacion(tx, planRef, plan, plan.votos, plan.comentariosPlan, plan.datosCocinero);
+    });
+
+    return ok(result);
+  } catch (e) {
+    if (e instanceof TransactionAbort) return err(e.code, e.message, e);
+    return err("firestore-error", "Error al cerrar la evaluación. Probá de nuevo.", e);
   }
 }
