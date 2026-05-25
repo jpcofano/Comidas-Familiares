@@ -271,7 +271,7 @@ export async function elegirComoEspecial(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: [...MIEMBRO_IDS],
+    asignaciones: ["juanpablo"],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -302,7 +302,7 @@ export async function sumarComoExtra(
     listaComprasId: null,
     notas: "",
     origen: `extra:${especial.idPlan}`,
-    asignaciones: [...MIEMBRO_IDS],
+    asignaciones: ["juanpablo"],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -332,7 +332,7 @@ export async function sumarComoEnProceso(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: [...MIEMBRO_IDS],
+    asignaciones: ["juanpablo"],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -370,7 +370,7 @@ export async function elegirMenuComoEspecial(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: [...MIEMBRO_IDS],
+    asignaciones: ["juanpablo"],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -401,7 +401,7 @@ export async function sumarMenuComoEnProceso(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: [...MIEMBRO_IDS],
+    asignaciones: ["juanpablo"],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
