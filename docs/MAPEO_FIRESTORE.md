@@ -4,8 +4,8 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.0 (cierre Etapa 3 — changelog E3.4.6 retroactivo + §5 completo + deuda técnica registrada)
-> **Fecha**: 2026-05-24
+> **Versión**: 1.6.1 (E4.1 — dashboard de miembro + asignaciones por defecto los 4 miembros)
+> **Fecha**: 2026-05-25
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -501,7 +501,7 @@ async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
   notas: "",
   origen: "extra:PLAN-20260518-1716240000000" | null,   // para Especial extra: ID del padre
 
-  asignaciones: ["juanpablo"],             // array de miembro IDs (default ["juanpablo"])
+  asignaciones: ["juanpablo","maria","sofia","federico"], // default = los 4 (E4.1). Subconjunto posible en E4.3.
 
   // Votos como map (en lugar de 4 columnas):
   votos: {
@@ -1216,8 +1216,8 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 | `voto` / `evaluar` | `/voto/:idPlan` | ✅ | pendiente E4.2 | ✅ E3.6 |
 | `historial` | `/historial` | ✅ | ✅ | ✅ E3.7 |
 | `historial detalle` | `/historial/:idHist` | ✅ | ✅ | ✅ E3.7 |
-| `dashboard miembro` | `/` (modo miembro) | — | ❌ | pendiente E4.1 |
-| `pendientes` | `/pendientes` | ❌ | ❌ | pendiente E4.1 |
+| `dashboard miembro` | `/` (modo miembro) | ✅ | ✅ | ✅ E4.1 |
+| `pendientes` | `/pendientes` | ✅ | ✅ | ✅ E4.1 |
 
 ### 5.2 Queries por pantalla
 
