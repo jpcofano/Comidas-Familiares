@@ -7,7 +7,7 @@ import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/
 import { getSemanaActual } from "../lib/fechas";
 import { agruparPorReceta } from "../lib/compras";
 import { ORDEN_GONDOLA } from "../lib/catalogo";
-import type { ListaCompras, ItemCompra, Plan } from "../types/models";
+import type { ListaCompras, ItemCompra, Plan, MiembroId } from "../types/models";
 
 type ModoVista = "gondola" | "receta";
 type Filtro = "todo" | "pendientes" | "yaTengo";
@@ -142,7 +142,8 @@ function GrupoSeccion({
 
 export function ComprasRoute() {
   const { state } = useAuth();
-  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+  const memberId = state.status === "authenticated" ? state.user.memberId as MiembroId : null;
+  const isJP = memberId === "juanpablo";
 
   const semanaInicio = useMemo(() => getSemanaActual(), []);
 
@@ -191,12 +192,21 @@ export function ComprasRoute() {
     });
   }
 
+  // Para miembros no-JP: solo items de sus planes asignados (filtra por idPlan en aportes)
+  const itemsVisibles = useMemo(() => {
+    if (isJP || !memberId) return items;
+    const misPlanIds = new Set(
+      planes.filter((p) => p.asignaciones.includes(memberId)).map((p) => p.idPlan)
+    );
+    return items.filter((i) => i.aportes.some((a) => misPlanIds.has(a.idPlan)));
+  }, [items, planes, memberId, isJP]);
+
   // Aplicar filtro
   const itemsFiltrados = useMemo(() => {
-    if (filtro === "pendientes") return items.filter((i) => !i.yaTengo);
-    if (filtro === "yaTengo") return items.filter((i) => i.yaTengo);
-    return items;
-  }, [items, filtro]);
+    if (filtro === "pendientes") return itemsVisibles.filter((i) => !i.yaTengo);
+    if (filtro === "yaTengo") return itemsVisibles.filter((i) => i.yaTengo);
+    return itemsVisibles;
+  }, [itemsVisibles, filtro]);
 
   // Agrupar por sección de góndola, en el orden canónico de ORDEN_GONDOLA
   const porGondola = useMemo(() => {
@@ -225,8 +235,8 @@ export function ComprasRoute() {
     return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "es"));
   }, [itemsFiltrados]);
 
-  const pendientes = items.filter((i) => !i.yaTengo).length;
-  const yaTengoCount = items.filter((i) => i.yaTengo).length;
+  const pendientes = itemsVisibles.filter((i) => !i.yaTengo).length;
+  const yaTengoCount = itemsVisibles.filter((i) => i.yaTengo).length;
   const hasPlanes = planes.length > 0;
 
   // missingItems del doc raíz (campo extra, no tipado)
