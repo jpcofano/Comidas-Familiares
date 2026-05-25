@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.3 (E4.3 — UI de asignaciones + cierre Etapa 4)
+> **Versión**: 1.6.4 (E4.3 — UI de cocineros del plato, cierre Etapa 4)
 > **Fecha**: 2026-05-25
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -239,15 +239,15 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 6. **`Voto.tsx` reescrito** (`src/routes/Voto.tsx`): detecta el votante via `useAuth`. Precar­ga voto existente (editable mientras el plan esté `Cocinada`). Muestra `VotoProgress` (quién votó / quién falta, sin exponer puntajes ajenos). Solo JP ve `datosCocinero`, "Calificar componentes" y el botón "Cerrar evaluación ahora" (con confirmación inline que indica cuántos votos hay y cuántos faltan). Plan `Evaluada` → vista read-only con promedio, resultado y puntajes por miembro.
 
-### 1.2.sedecies Cambios en v1.6.3 (E4.3 — UI de asignaciones, cierre Etapa 4)
+### 1.2.sedecies Cambios en v1.6.3–v1.6.4 (E4.3 — cocineros del plato, cierre Etapa 4)
 
-1. **`actualizarAsignaciones(idPlan, nuevasAsignaciones)`** (`src/data/planes.ts`): `runTransaction` que (a) valida `estado !== "Evaluada"`, (b) valida `nuevasAsignaciones.length >= 1` y que cada id ∈ `MIEMBRO_IDS`, (c) por cada miembro desasignado que estaba en `plan.asignaciones`: `deleteField()` en `votos.<id>` y `comentariosPlan.<id>`, (d) escribe `asignaciones: nuevasAsignaciones`. Devuelve `Result<void, AppError>`.
+**Semántica de `asignaciones`:** el campo significa **quiénes cocinan** el plato (1 a 4 personas). El voto lo siguen haciendo los 4 miembros siempre (E4.2); cocinar y votar son independientes.
 
-2. **Control en `PlanCard`** (`src/routes/Home.tsx`): sección "Quién come este plato" visible solo si `isJP && plan.estado !== "Evaluada"`. En modo lectura: lista de nombres. En modo edición: checkboxes con los 4 miembros precargados desde `plan.asignaciones`; botón "Guardar" deshabilitado si no hay ninguno tildado; si algún miembro desasignado ya votó, confirmación inline antes de guardar. La sección se actualiza reactivamente via `onSnapshot` (no requiere recarga).
+1. **`actualizarAsignaciones(idPlan, nuevosCocineros)`** (`src/data/planes.ts`): `runTransaction` que (a) valida `estado !== "Evaluada"`, (b) valida `nuevosCocineros.length >= 1` y que cada id ∈ `MIEMBRO_IDS`, (c) escribe solo `{ asignaciones: nuevosCocineros }`. **No toca `votos` ni `comentariosPlan`** — el voto es independiente del cocinero. Devuelve `Result<void, AppError>`.
 
-3. **`asignaciones` como condición de cierre activa**: ahora que JP puede reducir el subconjunto, `voteAndCloseIfComplete` cierra al completarse los votos de exactamente ese subconjunto (E4.2 ya lo implementaba; E4.3 lo hace efectivo).
+2. **Control en `PlanCard`** (`src/routes/Home.tsx`): sección "Quiénes cocinan este plato" siempre visible (lectura). Botón "Editar" solo si `isJP && plan.estado !== "Evaluada"`. Modo edición: checkboxes con los 4 miembros precargados; "Guardar" deshabilitado si ninguno tildado ("Tiene que cocinarlo al menos una persona"). Sin confirmación de votos (el voto no se toca). Se actualiza reactivamente via `onSnapshot`.
 
-4. **Etapa 4 completa**: E4.1 (dashboard) + E4.2 (voto distribuido) + E4.3 (asignaciones) cubren el flujo multi-miembro de punta a punta.
+3. **Etapa 4 completa**: E4.1 (dashboard de miembro) + E4.2 (voto distribuido) + E4.3 (cocineros del plato) cubren el flujo multi-miembro de punta a punta.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -1082,8 +1082,8 @@ orden | tipo        | idReceta_o_nombre        | obligatorio | notas
 - No eliminar receta en plan activo de la semana actual.
 - No elegir como Especial una receta con `tipoItem` distinto de `"Receta principal"` (ver §3.3).
 - No votar un plan en estado distinto de `Cocinada`.
-- No modificar asignaciones de plan `Evaluada` (validado en `actualizarAsignaciones` con `TransactionAbort`).
-- Al desasignar a un miembro que ya votó, limpiar su `votos.<id>` y `comentariosPlan.<id>` con `deleteField()` en la misma transacción.
+- No modificar asignaciones (cocineros) de un plan `Evaluada` (validado en `actualizarAsignaciones` con `TransactionAbort`).
+- Desasignar a un cocinero **no toca su voto** — el voto lo hacen los 4 miembros siempre (E4.2).
 
 ### 3.7 Atomicidad del voto + cierre
 
@@ -1552,7 +1552,7 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 
 - **`PROMPT_E4.1_dashboard_miembro.md`** ✅ **CERRADO**: dashboard de miembro, `subscribeToPlanesActivosMiembro`, `asignaciones` default los 4, `BottomNav` ramificado. Ver §1.2.quaterdecies.
 - **`PROMPT_E4.2_voto_miembro.md`** ✅ **CERRADO**: voto distribuido, cierre automático al completar `plan.asignaciones`, cierre forzado JP. `voteAndCloseIfComplete` + `forzarCierreEvaluacion` + `_cerrarEvaluacion`. `Voto.tsx` reescrito con `VotoProgress`, precarga de voto, secciones JP-only. Ver §3.7 y §1.2.quindecies.
-- **`PROMPT_E4.3_asignaciones.md`** ✅ **CERRADO**: `actualizarAsignaciones` con limpieza de votos de desasignados, control en `PlanCard` visible solo para JP. Etapa 4 completa. Ver §1.2.sedecies.
+- **`PROMPT_E4.3_cocineros.md`** ✅ **CERRADO**: `actualizarAsignaciones` (solo escribe `asignaciones`, no toca votos), sección "Quiénes cocinan este plato" en `PlanCard` (lectura siempre visible; edición JP en planes activos). Etapa 4 completa. Ver §1.2.sedecies.
 
 ### 7.5 Etapa 5 — Importador
 
