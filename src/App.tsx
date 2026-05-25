@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./auth/useAuth";
 import { LoginScreen } from "./auth/LoginScreen";
 import { UnauthorizedScreen } from "./auth/UnauthorizedScreen";
@@ -16,7 +16,16 @@ import { ComprasRoute } from "./routes/Compras";
 import { HistorialRoute } from "./routes/Historial";
 import { HistorialDetalleRoute } from "./routes/HistorialDetalle";
 import { VotoRoute } from "./routes/Voto";
+import { PendientesRoute } from "./routes/Pendientes";
 import { NotFoundRoute } from "./routes/NotFound";
+
+function JPOnly({ children }: { children: React.ReactNode }) {
+  const { state } = useAuth();
+  if (state.status === "authenticated" && state.user.memberId !== "juanpablo") {
+    return <Navigate to="/" replace />;
+  }
+  return <>{children}</>;
+}
 
 function App() {
   const { state } = useAuth();
@@ -44,7 +53,8 @@ function App() {
           <Route path="/planes/:idPlan/cocinar/:idReceta" element={<CocinarRoute />} />
           <Route path="/planes/:idPlan/componentes" element={<SeleccionarComponenteMenuRoute />} />
           <Route path="/menus/importar" element={<ImportarMenuRoute />} />
-          <Route path="/menus/:id" element={<DetalleMenuRoute />} />
+          <Route path="/menus/:id" element={<JPOnly><DetalleMenuRoute /></JPOnly>} />
+          <Route path="/pendientes" element={<PendientesRoute />} />
           <Route path="/compras" element={<ComprasRoute />} />
           <Route path="/historial" element={<HistorialRoute />} />
           <Route path="/historial/:idHist" element={<HistorialDetalleRoute />} />

@@ -55,6 +55,23 @@ export function subscribeToPlanesActivos(
   });
 }
 
+// Usa el índice compuesto semanaInicio + estado + asignaciones (ARRAY_CONTAINS) de §5.3.
+export function subscribeToPlanesActivosMiembro(
+  semanaInicio: string,
+  miembroId: string,
+  callback: (planes: Plan[]) => void
+): () => void {
+  const q = query(
+    collection(db, "planes"),
+    where("semanaInicio", "==", semanaInicio),
+    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"]),
+    where("asignaciones", "array-contains", miembroId)
+  );
+  return onSnapshot(q, (snap) => {
+    callback(snap.docs.map((d) => d.data() as Plan));
+  });
+}
+
 // ─── Writes ───────────────────────────────────────────────────────────────────
 
 export async function crearPlan(
@@ -253,7 +270,7 @@ export async function elegirComoEspecial(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: ["juanpablo"],
+    asignaciones: [...MIEMBRO_IDS],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -284,7 +301,7 @@ export async function sumarComoExtra(
     listaComprasId: null,
     notas: "",
     origen: `extra:${especial.idPlan}`,
-    asignaciones: ["juanpablo"],
+    asignaciones: [...MIEMBRO_IDS],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -314,7 +331,7 @@ export async function sumarComoEnProceso(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: ["juanpablo"],
+    asignaciones: [...MIEMBRO_IDS],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -352,7 +369,7 @@ export async function elegirMenuComoEspecial(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: ["juanpablo"],
+    asignaciones: [...MIEMBRO_IDS],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {
@@ -383,7 +400,7 @@ export async function sumarMenuComoEnProceso(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: ["juanpablo"],
+    asignaciones: [...MIEMBRO_IDS],
   });
   if (result.ok) {
     sincronizarListaDesdeFirestore(semanaInicio).then((r) => {

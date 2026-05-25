@@ -7,6 +7,7 @@ import { getSemanaActual } from "../lib/fechas";
 import { separarPlanes } from "../lib/home";
 import type { Plan, ListaCompras, Menu } from "../types/models";
 import { getMenu } from "../data/menus";
+import { MemberDashboard } from "./MemberDashboard";
 
 // ─── Public route ─────────────────────────────────────────────────────────────
 
@@ -14,18 +15,7 @@ export function HomeRoute() {
   const { state } = useAuth();
   const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
 
-  if (!isJP) {
-    return (
-      <div className="card">
-        <h2>Inicio</h2>
-        <p>Esta sección llega en Etapa 3.</p>
-        <p className="meta">
-          Va a mostrar: la Especial activa de la semana, extras, planes En proceso,
-          resumen de compras, y accesos rápidos.
-        </p>
-      </div>
-    );
-  }
+  if (!isJP) return <MemberDashboard />;
 
   return <HomeJP />;
 }

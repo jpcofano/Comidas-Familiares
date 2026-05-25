@@ -1,14 +1,26 @@
 import { NavLink } from "react-router-dom";
-import { Home, BookOpen, ShoppingBag, History } from "lucide-react";
+import { Home, BookOpen, ShoppingBag, History, Clock } from "lucide-react";
+import { useAuth } from "../auth/useAuth";
 
-const items = [
+const jpItems = [
   { to: "/",           label: "Inicio",     Icon: Home },
   { to: "/biblioteca", label: "Biblioteca", Icon: BookOpen },
   { to: "/compras",    label: "Compras",    Icon: ShoppingBag },
   { to: "/historial",  label: "Historial",  Icon: History },
 ];
 
+const memberItems = [
+  { to: "/",           label: "Mi semana",  Icon: Home },
+  { to: "/compras",    label: "Compras",    Icon: ShoppingBag },
+  { to: "/pendientes", label: "Pendientes", Icon: Clock },
+  { to: "/historial",  label: "Historial",  Icon: History },
+];
+
 export function BottomNav() {
+  const { state } = useAuth();
+  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+  const items = isJP ? jpItems : memberItems;
+
   return (
     <nav className="bottom-nav" aria-label="Navegación principal">
       {items.map(({ to, label, Icon }) => (
