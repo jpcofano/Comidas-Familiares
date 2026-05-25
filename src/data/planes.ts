@@ -13,6 +13,7 @@ import {
   Timestamp,
   increment,
   runTransaction,
+  deleteField,
   type Transaction,
 } from "firebase/firestore";
 import { db } from "../firebase";
@@ -557,6 +558,50 @@ export async function voteAndCloseIfComplete(
   } catch (e) {
     if (e instanceof TransactionAbort) return err(e.code, e.message, e);
     return err("firestore-error", "Error al guardar el voto. Probá de nuevo.", e);
+  }
+}
+
+// Edita quiénes están asignados al plan. Limpia votos de los desasignados con deleteField().
+// La restricción "solo JP puede llamar esto" se enforcea en la UI, no en las rules (§D5 E4.3).
+export async function actualizarAsignaciones(
+  idPlan: string,
+  nuevasAsignaciones: MiembroId[]
+): Promise<Result<void, AppError>> {
+  if (nuevasAsignaciones.length === 0) {
+    return err("empty-asignaciones", "Tiene que comerlo al menos una persona.");
+  }
+  if (!nuevasAsignaciones.every((id) => (MIEMBRO_IDS as readonly string[]).includes(id))) {
+    return err("invalid-miembro", "ID de miembro inválido.");
+  }
+
+  try {
+    await runTransaction(db, async (tx) => {
+      const planRef = doc(db, "planes", idPlan);
+      const planSnap = await tx.get(planRef);
+      if (!planSnap.exists()) throw new TransactionAbort("plan-not-found", "El plan no existe.");
+
+      const plan = planSnap.data() as Plan;
+      if (plan.estado === "Evaluada") {
+        throw new TransactionAbort(
+          "plan-evaluada",
+          "No se pueden cambiar las asignaciones de un plan ya evaluado."
+        );
+      }
+
+      const desasignados = plan.asignaciones.filter((id) => !nuevasAsignaciones.includes(id));
+      const update: Record<string, unknown> = { asignaciones: nuevasAsignaciones };
+      for (const id of desasignados) {
+        update[`votos.${id}`] = deleteField();
+        update[`comentariosPlan.${id}`] = deleteField();
+      }
+
+      tx.update(planRef, update);
+    });
+
+    return ok(undefined);
+  } catch (e) {
+    if (e instanceof TransactionAbort) return err(e.code, e.message, e);
+    return err("firestore-error", "Error al actualizar las asignaciones. Probá de nuevo.", e);
   }
 }
 
