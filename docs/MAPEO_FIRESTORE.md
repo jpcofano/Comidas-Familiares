@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.4 (E4.3 — UI de cocineros del plato, cierre Etapa 4)
+> **Versión**: 1.6.5 (E4.2.1 — voto siempre de los 4 miembros)
 > **Fecha**: 2026-05-25
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -248,6 +248,18 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 2. **Control en `PlanCard`** (`src/routes/Home.tsx`): sección "Quiénes cocinan este plato" siempre visible (lectura). Botón "Editar" solo si `isJP && plan.estado !== "Evaluada"`. Modo edición: checkboxes con los 4 miembros precargados; "Guardar" deshabilitado si ninguno tildado ("Tiene que cocinarlo al menos una persona"). Sin confirmación de votos (el voto no se toca). Se actualiza reactivamente via `onSnapshot`.
 
 3. **Etapa 4 completa**: E4.1 (dashboard de miembro) + E4.2 (voto distribuido) + E4.3 (cocineros del plato) cubren el flujo multi-miembro de punta a punta.
+
+### 1.2.septies Cambios en v1.6.5 (E4.2.1 — voto siempre de los 4 miembros)
+
+**Problema corregido**: `voteAndCloseIfComplete` cerraba el plan cuando todos los miembros de `plan.asignaciones` (cocineros) habían votado, en lugar de cuando los 4 miembros siempre habían votado. Asignaciones y votantes son conceptos independientes desde E4.3.
+
+1. **`voteAndCloseIfComplete`** (`src/data/planes.ts`): condición de cierre cambiada de `plan.asignaciones.every(...)` → `MIEMBRO_IDS.every(id => votosFinales[id] != null)`. **Siempre votan los 4**, independiente de quién cocina.
+
+2. **Validación eliminada**: se quitó la validación `!plan.asignaciones.includes(miembroId)` que bloqueaba votar a miembros no cocineros. Cualquier miembro puede votar cualquier plan `Cocinada`.
+
+3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
+
+4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -1091,7 +1103,7 @@ El voto + cierre se hace en **una sola transacción** del cliente Firestore (`ru
 
 **Funciones (`src/data/planes.ts`):**
 
-- **`voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario, datosCocinero?, puntajesComponentes?)`**: voto de cualquier miembro. Si al agregar el voto todos los miembros de `plan.asignaciones` tienen voto no nulo → cierra automáticamente llamando a `_cerrarEvaluacion`. La condición lee de `plan.asignaciones` — no hardcodea "4".
+- **`voteAndCloseIfComplete(idPlan, miembroId, puntaje, comentario, datosCocinero?, puntajesComponentes?)`**: voto de cualquier miembro (siempre los 4, independiente de asignaciones). Si al agregar el voto **todos los `MIEMBRO_IDS`** tienen voto no nulo → cierra automáticamente llamando a `_cerrarEvaluacion`. (Corrección E4.2.1: antes usaba `plan.asignaciones.every`; ahora usa `MIEMBRO_IDS.every`.)
 - **`forzarCierreEvaluacion(idPlan)`**: solo para JP. Cierra con los votos presentes, sin exigir completitud.
 - **`_cerrarEvaluacion(tx, planRef, plan, votos, comentarios, datosCocinero, puntajesComponentes?)`**: helper interno compartido. Calcula promedio/resultado, escribe historial, actualiza estado, incrementa `vecesCocinada`.
 
@@ -1099,12 +1111,11 @@ El voto + cierre se hace en **una sola transacción** del cliente Firestore (`ru
 
 1. `tx.get(planRef)` → leer estado actual.
 2. Validar `plan.estado === "Cocinada"` (si no, `throw new TransactionAbort(...)` con mensaje claro).
-3. Validar que `miembroId ∈ plan.asignaciones` (protege para cuando E4.3 permita subconjuntos).
-4. Calcular `votosFinales = { ...plan.votos, [miembroId]: puntaje }`.
-5. Si `miembroId === "juanpablo"` y vino `datosCocinero`: guardarlo. Si no, conservar `plan.datosCocinero` existente.
-6. `votantesCompletos = plan.asignaciones.every(id => votosFinales[id] != null)`.
-7a. Si `votantesCompletos` → llamar `_cerrarEvaluacion` dentro de la misma tx → retornar `{ cerrado: true, promedio, resultado }`.
-7b. Si no → `tx.update(planRef, { 'votos.${miembroId}': puntaje, 'comentariosPlan.${miembroId}': comentario, … })` → retornar `{ cerrado: false }`.
+3. Calcular `votosFinales = { ...plan.votos, [miembroId]: puntaje }`.
+4. Si `miembroId === "juanpablo"` y vino `datosCocinero`: guardarlo. Si no, conservar `plan.datosCocinero` existente.
+5. `votantesCompletos = MIEMBRO_IDS.every(id => votosFinales[id] != null)` — **siempre los 4, independiente de `asignaciones`**.
+6a. Si `votantesCompletos` → llamar `_cerrarEvaluacion` dentro de la misma tx → retornar `{ cerrado: true, promedio, resultado }`.
+6b. Si no → `tx.update(planRef, { 'votos.${miembroId}': puntaje, 'comentariosPlan.${miembroId}': comentario, … })` → retornar `{ cerrado: false }`.
 
 **Pasos dentro de `_cerrarEvaluacion`:**
 
@@ -1548,11 +1559,12 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 - **`PROMPT_E3.7_menus.md`**: listado de menús + detalle + selección como plan.
 - **`PROMPT_E3.8_historial.md`**: últimas 30 globales + historial por receta.
 
-### 7.4 Etapa 4 — Modo miembro ✅ COMPLETA (v1.6.3)
+### 7.4 Etapa 4 — Modo miembro ✅ COMPLETA (v1.6.5)
 
 - **`PROMPT_E4.1_dashboard_miembro.md`** ✅ **CERRADO**: dashboard de miembro, `subscribeToPlanesActivosMiembro`, `asignaciones` default los 4, `BottomNav` ramificado. Ver §1.2.quaterdecies.
 - **`PROMPT_E4.2_voto_miembro.md`** ✅ **CERRADO**: voto distribuido, cierre automático al completar `plan.asignaciones`, cierre forzado JP. `voteAndCloseIfComplete` + `forzarCierreEvaluacion` + `_cerrarEvaluacion`. `Voto.tsx` reescrito con `VotoProgress`, precarga de voto, secciones JP-only. Ver §3.7 y §1.2.quindecies.
 - **`PROMPT_E4.3_cocineros.md`** ✅ **CERRADO**: `actualizarAsignaciones` (solo escribe `asignaciones`, no toca votos), sección "Quiénes cocinan este plato" en `PlanCard` (lectura siempre visible; edición JP en planes activos). Etapa 4 completa. Ver §1.2.sedecies.
+- **E4.2.1 fix** ✅ **CERRADO**: corregida condición de cierre en `voteAndCloseIfComplete` (`MIEMBRO_IDS.every` en lugar de `plan.asignaciones.every`). `VotoProgress` muestra los 4 siempre. `MemberDashboard` usa `subscribeToPlanesActivos` + filtro client-side: "Mi semana" por `asignaciones`, "Pendientes" sobre todos los planes. Ver §1.2.septies.
 
 ### 7.5 Etapa 5 — Importador
 
