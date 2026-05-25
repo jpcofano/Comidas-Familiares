@@ -26,8 +26,12 @@ export const TIPOS_ITEM = [
 export type TipoItem = typeof TIPOS_ITEM[number];
 
 export const PROTEINAS = [
-  "Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado",
-  "Mariscos", "Huevos", "Legumbres", "Mixta", "Vegetariana",
+  // Proteína animal
+  "Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado", "Mariscos", "Huevos", "Fiambre",
+  // Proteína vegetal
+  "Legumbres", "Semillas", "Frutos secos",
+  // Meta-valores
+  "Mixta", "Vegetariana",
 ] as const;
 export type Proteina = typeof PROTEINAS[number];
 
