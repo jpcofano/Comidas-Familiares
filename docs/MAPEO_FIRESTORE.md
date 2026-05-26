@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.9 (E5.3 — deuda UI importador parcial)
+> **Versión**: 1.7.0 (E6.1 — PWA instalable)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -260,6 +260,20 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.unvicies Cambios en v1.7.0 (E6.1 — PWA instalable)
+
+1. **PWA instalable** — la app puede instalarse en Android (Chrome) e iOS (Safari "Agregar a pantalla de inicio") y abre en modo standalone (sin barra de URL) con el ícono marrón de marca.
+
+2. **`public/manifest.json`** — ya estaba en el repo (generado por JP). Campo `theme_color: "#8a4a2f"`, `background_color: "#fdfaf6"`, 8 íconos en `public/icons/` (16, 32, 48, 180, 192×2, 512×2 — any + maskable). No se tocó.
+
+3. **Service worker — `vite-plugin-pwa` v1.x** (`vite.config.ts`): generado con Workbox vía `generateSW`. `manifest: false` → usa el `public/manifest.json` existente, sin duplicarlo. `registerType: 'autoUpdate'` → el SW se actualiza en background; próxima apertura recibe la versión nueva. Precachea el shell estático (JS/CSS/HTML/íconos). `navigateFallback: 'index.html'` → la app abre offline aunque no haya red. `navigateFallbackDenylist: [/^\/__\//]` → excluye rutas de Firebase Auth redirect.
+
+4. **La persistencia offline de Firestore sigue intacta** — el SW no intercepta peticiones a `firestore.googleapis.com` (cross-origin sin configuración explícita). El SDK sigue manejando su propio cache (enableIndexedDbPersistence, §6.4).
+
+5. **`index.html`**: reemplazó `favicon.svg` por los links PNG (16/32/48 + apple-touch-icon), `<link rel="manifest">`, `<meta name="theme-color">`, metas iOS standalone. `public/favicon.svg` eliminado.
+
+6. **Color de marca corregido en §8**: el color vigente es **`#8a4a2f`** (marrón cálido). El `#8a4a2f` que aparecía en §8 era el color del design system original de Apps Script — quedó desactualizado cuando JP eligió la paleta final. Corregido.
 
 ### 1.2.vicies Cambios en v1.6.8 (E5.2 — canonización de proteínas)
 
@@ -1628,8 +1642,8 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 
 ### 7.6 Etapa 6 — PWA pulida
 
-- **`PROMPT_E6.1_pwa_manifest.md`**: manifest.json + íconos + service worker con offline básico para shell + assets.
-- **`PROMPT_E6.2_push_notifications.md`**: Firebase Cloud Messaging para "JP te asignó la Especial" o "Pendiente de voto" (requiere Blaze para mensajes desde el server; alternativa: cliente-a-cliente vía Firestore listener).
+- **`PROMPT_E6.1_pwa_instalable.md`** ✅ **CERRADO**: manifest.json + 8 íconos PNG ya en `public/`. Service worker generado con `vite-plugin-pwa` (Workbox). App instalable, shell offline, actualizaciones automáticas. Ver §1.2.unvicies.
+- **`PROMPT_E6.2_push_notifications.md`** ⏳ pendiente: Firebase Cloud Messaging para "JP te asignó la Especial" o "Pendiente de voto" (requiere Blaze para mensajes desde el server; alternativa: cliente-a-cliente vía Firestore listener).
 
 ### 7.7 Etapa 7 — Features nuevos (D.3 y más)
 
@@ -1642,13 +1656,13 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 
 ### 8.1 Cuándo NO usarlo
 
-**Etapas 1–4** son trabajo de **portado**, no de diseño. El design system ya está definido en `Styles.html` (tokens CSS, primary `#74324a`, cards sin sombra, bottom nav fijo, etc). Necesitamos que la UI nueva se vea **igual** a la actual, no diferente. Para eso, Claude Code reproduce HTML/CSS existente. Claude Design no suma valor.
+**Etapas 1–4** son trabajo de **portado**, no de diseño. El design system ya está definido en `Styles.html` (tokens CSS, primary `#8a4a2f`, cards sin sombra, bottom nav fijo, etc). Necesitamos que la UI nueva se vea **igual** a la actual, no diferente. Para eso, Claude Code reproduce HTML/CSS existente. Claude Design no suma valor.
 
 ### 8.2 Cuándo SÍ usarlo
 
 **Etapa 6 (PWA pulida) — para branding:**
-- "Diseñá un set de íconos (192px, 512px, splash screen) para una app de planificación familiar de comidas. Tonos: primary `#74324a`, surface `#f9fafb`. Estilo: cálido, no infantil, con un guiño a comida casera pero moderno. Variantes: maskable y not-maskable."
-- "Diseñá una splash screen para iOS PWA, fondo `#74324a`, logo centrado, texto 'Comida Familiar'."
+- "Diseñá un set de íconos (192px, 512px, splash screen) para una app de planificación familiar de comidas. Tonos: primary `#8a4a2f`, surface `#f9fafb`. Estilo: cálido, no infantil, con un guiño a comida casera pero moderno. Variantes: maskable y not-maskable."
+- "Diseñá una splash screen para iOS PWA, fondo `#8a4a2f`, logo centrado, texto 'Comida Familiar'."
 
 **Etapa 7 (D.3 dashboard historial) — para diseño desde cero:**
 - "Diseñá un dashboard de historial de evaluaciones de recetas familiares. Datos: nombre de receta, promedio (1-10), cantidad de votos, fecha. Filtros: por miembro (4 personas), por proteína, por escenario, por rango de fecha. Vistas: cards de las 5 mejor calificadas + gráfico de líneas de evolución temporal + tabla expandible. Mobile first (375px). Mismo design system que adjunto en el bundle."
