@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.7 (E5.1 — botón Copiar prompt para LLM, cierre Etapa 5)
+> **Versión**: 1.6.8 (E5.2 — canonización de proteínas)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -260,6 +260,23 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.vicies Cambios en v1.6.8 (E5.2 — canonización de proteínas)
+
+**Problema**: la lista `proteinaPrincipal` estaba desincronizada en cuatro lugares. `models.ts` tenía 13 valores (la fuente de verdad), pero `/config/diccionarios.proteinas`, el seed del importador y 4 recetas en Firestore usaban solo 10 (faltaban `Fiambre`, `Semillas`, `Frutos secos` — agregados en E3.4.8 sin propagar).
+
+1. **F1+F2 — 4 recetas corregidas** (`scripts/fix-proteinas-recetas.ts`): tres recetas con proteínas compuestas (`"Pollo y Vacuna"`, `"Huevos y semillas"`, `"Huevos y Pescado"`) actualizadas a `"Mixta"`; una receta con `"Frutas"` actualizada a `"Vegetariana"`. La receta `"Frutas"` era `REC-1409` ("Crema helada de frutilla y coco sin leche").
+
+2. **F3 — `/config/diccionarios.proteinas` → 13 valores** (`scripts/fix-diccionarios-proteinas.ts`): el array `proteinas` del doc `/config/diccionarios` reemplazado por los 13 valores canónicos en el orden de `models.ts`. Idempotente.
+
+3. **F4 — seed del importador corregido** (`scripts/seed-config-importador.ts`, línea 45): la línea del prompt modelo que lista `proteinaPrincipal` actualizada de 10 a 13 valores. **JP debe re-correr el seed** después de borrar (o la app nunca va a recibir el prompt actualizado, porque el seed es idempotente y no sobreescribe). Ver instrucción en §7.5.
+
+4. **`scripts/seed-data/recetas.json` actualizado** con los mismos 4 fixes para mantener el seed local en sintonía con Firestore.
+
+5. **Lista de 13 proteínas canónicas** (fuente de verdad: `src/types/models.ts → PROTEINAS`):
+   `Vacuna, Cerdo, Pollo, Cordero, Pescado, Mariscos, Huevos, Fiambre, Legumbres, Semillas, Frutos secos, Mixta, Vegetariana`.
+
+6. **Auditoría D6 — 19 recetas `"Vegetariana"`** (propuesta sin write, ver E5.2.1): de las 19 recetas con `proteinaPrincipal: "Vegetariana"` (18 originales + REC-1409 migrada), 3 candidatas a re-clasificar: REC-0401 → `"Semillas"`, REC-0204 → `"Frutos secos"`, REC-1407 → `"Frutos secos"`, REC-1507 → `"Huevos"`. El resto queda `"Vegetariana"`. JP revisa la tabla en E5.2.1.
 
 ### 1.2.undevicies Cambios en v1.6.7 (E5.1 — botón Copiar prompt para LLM, cierre Etapa 5)
 
@@ -794,7 +811,8 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
   tiposItem: ["Receta principal", "Entrada", "Guarnición", "Postre",
               "Panificado", "Snack", "Desayuno", "Conserva", "Hidrato opcional"],
   proteinas: ["Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado",
-              "Mariscos", "Huevos", "Legumbres", "Mixta", "Vegetariana"],
+              "Mariscos", "Huevos", "Fiambre", "Legumbres", "Semillas",
+              "Frutos secos", "Mixta", "Vegetariana"],
   escenarios: ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"],
   climaPlato: ["Liviano", "Medio", "Potente"],
   pensadaPara: ["Especial", "Semana", "Cualquiera"],
