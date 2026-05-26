@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
+import { useAuth } from "../auth/useAuth";
 import { getPlan, marcarCocinada, desmarcarComponenteCocinado } from "../data/planes";
 import { getMenu } from "../data/menus";
 import { getReceta } from "../data/recetas";
@@ -9,6 +10,9 @@ import type { Plan, Menu, Receta } from "../types/models";
 export function SeleccionarComponenteMenuRoute() {
   const { idPlan } = useParams<{ idPlan: string }>();
   const navigate = useNavigate();
+  const { state: authState } = useAuth();
+  const memberId = authState.status === "authenticated" ? authState.user.memberId : "";
+  const isJP = memberId === "juanpablo";
 
   const [plan, setPlan] = useState<Plan | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
@@ -47,6 +51,10 @@ export function SeleccionarComponenteMenuRoute() {
         </button>
       </div>
     );
+  }
+  // Guard: solo JP o miembro asignado puede cocinar este menú
+  if (!isJP && !(plan.asignaciones as string[])?.includes(memberId)) {
+    return <Navigate to="/" replace />;
   }
 
   const cocinados = new Set(plan.componentesCocinados ?? []);

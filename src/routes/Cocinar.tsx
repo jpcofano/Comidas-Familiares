@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
+import { useAuth } from "../auth/useAuth";
 import { getReceta } from "../data/recetas";
 import { getPlan, marcarCocinada, marcarComponenteCocinado } from "../data/planes";
 import { useCocinarState } from "../hooks/useCocinarState";
@@ -24,6 +25,10 @@ export function CocinarRoute() {
   const sessionKey = idPlan ? `plan:${idPlan}:${idReceta}` : `libre:${idReceta}`;
 
   const navigate = useNavigate();
+  const { state: authState } = useAuth();
+  const memberId = authState.status === "authenticated" ? authState.user.memberId : "";
+  const isJP = memberId === "juanpablo";
+
   const [receta, setReceta] = useState<Receta | null>(null);
   const [plan, setPlan] = useState<Plan | null>(null);
   const [loading, setLoading] = useState(true);
@@ -117,6 +122,10 @@ export function CocinarRoute() {
   }
   if (!receta) {
     return <div className="card"><p style={{ color: "var(--err-text)" }}>Receta no encontrada.</p></div>;
+  }
+  // Guard: en modo plan, solo JP o miembro asignado puede cocinar
+  if (modo === "plan" && plan && !isJP && !(plan.asignaciones as string[])?.includes(memberId)) {
+    return <Navigate to="/" replace />;
   }
 
   const timerBarPasos = pasosOrdenados.map((p) => ({ nroPaso: p.nroPaso, titulo: p.titulo }));
