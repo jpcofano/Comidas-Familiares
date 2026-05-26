@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.6 (E4.4 — guard de cocinar por asignaciones)
+> **Versión**: 1.6.7 (E5.1 — botón Copiar prompt para LLM, cierre Etapa 5)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -260,6 +260,20 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.undevicies Cambios en v1.6.7 (E5.1 — botón Copiar prompt para LLM, cierre Etapa 5)
+
+**Contexto**: el importador de recetas TXT ya existía desde E3.4.6/7/9. La única pieza pendiente de §7.5 era el botón "Copiar prompt para LLM". E5.1 la completa. **La Etapa 5 queda cerrada.**
+
+1. **`/config/importador`** — nuevo doc Firestore: campo `promptLLM` (string) con el prompt modelo que JP copia para pegarle a un LLM externo junto con una receta en prosa. El LLM devuelve el TXT con el formato exacto que el parser del importador entiende. Sembrado con `scripts/seed-config-importador.ts` (idempotente — no sobreescribe si el campo ya existe). JP puede editar el campo desde la consola de Firebase sin tocar código.
+
+2. **`getPromptLLM()`** (`src/data/config.ts`): lee `/config/importador.promptLLM` con cache en memoria. Mismo patrón que `getDiccionarios()`. Devuelve string vacío si el doc no existe, sin romper la pantalla.
+
+3. **Botón "Copiar prompt para LLM"** (`src/routes/ImportarReceta.tsx`, `RenderPaso1`): visible en el paso 1 si el prompt fue cargado. Copia al portapapeles con `navigator.clipboard.writeText`. Feedback visual "Copiado ✓" por 2.5 s. Incluye nota de advertencia: el prompt está acoplado al formato del parser — editarlo mal puede hacer fallar las importaciones.
+
+4. **C4 — edición del prompt desde la app**: no implementado. JP edita el campo `promptLLM` directamente desde la consola de Firebase. Deuda anotada en §10.
+
+5. **Deuda `security.rules`**: el doc `/config/importador` está cubierto por la regla `match /config/{docId}` existente (read = familia; write = owner = JP). Sin cambios en las rules.
 
 ### 1.2.duodevicies Cambios en v1.6.6 (E4.4 — guard de cocinar por asignaciones)
 
@@ -1583,9 +1597,16 @@ Cada prompt es un archivo en `docs/prompts/` listo para pegar a Claude Code en l
 - **`PROMPT_E4.3_cocineros.md`** ✅ **CERRADO**: `actualizarAsignaciones` (solo escribe `asignaciones`, no toca votos), sección "Quiénes cocinan este plato" en `PlanCard` (lectura siempre visible; edición JP en planes activos). Etapa 4 completa. Ver §1.2.sedecies.
 - **E4.2.1 fix** ✅ **CERRADO**: corregida condición de cierre en `voteAndCloseIfComplete` (`MIEMBRO_IDS.every` en lugar de `plan.asignaciones.every`). `VotoProgress` muestra los 4 siempre. `MemberDashboard` usa `subscribeToPlanesActivos` + filtro client-side: "Mi semana" por `asignaciones`, "Pendientes" sobre todos los planes. Ver §1.2.septies.
 
-### 7.5 Etapa 5 — Importador
+### 7.5 Etapa 5 — Importador ✅ CERRADA (E5.1)
 
-- **`PROMPT_E5.1_importador.md`**: pantalla con textarea + botón "Copiar prompt para LLM" + "Importar". Replica el parseo, validación y anti-dup del Apps Script. Resumen de creadas / duplicadas / fallidas. El prompt modelo vive en `/config` o se genera client-side.
+El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendiente de §7.5 era el botón "Copiar prompt para LLM", implementado en E5.1.
+
+- **`PROMPT_E3.4.6`** ✅ importador TXT completo: parseo, matcher, anti-dup, 3 pasos.
+- **`PROMPT_E3.4.7`** ✅ normalización de unidades en el importador.
+- **`PROMPT_E3.4.9`** ✅ matcher con sugerencias y aprendizaje de sinónimos.
+- **`PROMPT_E5.1_copiar_prompt_llm.md`** ✅ **CERRADO**: botón "Copiar prompt para LLM" en paso 1 del importador. Prompt modelo en `/config/importador.promptLLM` (editable por JP desde Firebase Console). Ver §1.2.undevicies.
+
+**Pendiente de §7.5 original**: edición del prompt desde la app (C4 no implementado en E5.1 — JP edita desde consola Firebase; ver §10).
 
 ### 7.6 Etapa 6 — PWA pulida
 
