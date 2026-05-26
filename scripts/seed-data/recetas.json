@@ -29,7 +29,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0033",
+        "idIngrediente": "ING-0031",
         "textoOriginal": "Bondiola de cerdo entera",
         "seccion": "Principal",
         "cantidad": "1,2 a 1,5",
@@ -39,7 +39,7 @@
         "notas": "Mejor si tiene algo de grasa, no extremadamente magra"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebollas",
         "seccion": "Base de sabor",
         "cantidad": 2,
@@ -49,7 +49,7 @@
         "notas": "Cortadas grandes"
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahorias",
         "seccion": "Base de sabor",
         "cantidad": 2,
@@ -59,7 +59,7 @@
         "notas": "En rodajas gruesas"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Base de sabor",
         "cantidad": 4,
@@ -69,7 +69,7 @@
         "notas": "Aplastados o picados"
       },
       {
-        "idIngrediente": "ING-0186",
+        "idIngrediente": "ING-0169",
         "textoOriginal": "Vino Malbec",
         "seccion": "Líquido de cocción",
         "cantidad": 500,
@@ -79,7 +79,7 @@
         "notas": "No hace falta que sea caro, pero si tomable"
       },
       {
-        "idIngrediente": "ING-0036",
+        "idIngrediente": "ING-0034",
         "textoOriginal": "Caldo de carne o verduras",
         "seccion": "Líquido de cocción",
         "cantidad": "400 a 500",
@@ -94,7 +94,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0094",
+        "idIngrediente": "ING-0089",
         "textoOriginal": "Laurel",
         "seccion": "Condimentos",
         "cantidad": 2,
@@ -103,7 +103,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero o tomillo",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -113,12 +113,12 @@
         "notas": "Usar poco para no tapar la carne",
         "alternativas": [
           {
-            "idIngrediente": "ING-0177"
+            "idIngrediente": "ING-0162"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -128,7 +128,7 @@
         "notas": "Aporta profundidad a la salsa"
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -137,12 +137,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0138"
+            "idIngrediente": "ING-0129"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -152,7 +152,7 @@
         "notas": "Para sellar"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -160,7 +160,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -168,7 +168,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0062",
+        "idIngrediente": "ING-0059",
         "textoOriginal": "Coliflor",
         "seccion": "Guarnicion baja en hidratos",
         "cantidad": 1,
@@ -178,7 +178,7 @@
         "notas": "Para puré de coliflor"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo asado o salteado",
         "preparacion": "asado",
         "seccion": "Guarnicion baja en hidratos",
@@ -194,7 +194,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0115",
+        "idIngrediente": "ING-0109",
         "textoOriginal": "Nuez moscada",
         "seccion": "Guarnicion baja en hidratos",
         "cantidad": "Pizca",
@@ -202,7 +202,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas o batatas",
         "seccion": "Opcional familia",
         "cantidad": "800 a 1000",
@@ -212,7 +212,7 @@
         "notas": "Para quienes quieran hidrato aparte",
         "alternativas": [
           {
-            "idIngrediente": "ING-0027"
+            "idIngrediente": "ING-0025"
           }
         ]
       }
@@ -321,7 +321,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0093",
+        "idIngrediente": "ING-0088",
         "textoOriginal": "Langostinos limpios",
         "preparacion": "limpios",
         "seccion": "Principal",
@@ -332,7 +332,7 @@
         "notas": "Crudos o cocidos; ajustar tiempo segun tipo"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Base de sabor",
         "cantidad": 4,
@@ -342,7 +342,7 @@
         "notas": "Laminado fino"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 4,
@@ -352,7 +352,7 @@
         "notas": "Reemplaza manteca"
       },
       {
-        "idIngrediente": "ING-0010",
+        "idIngrediente": "ING-0009",
         "textoOriginal": "Aji molido o peperoncino",
         "seccion": "Condimentos",
         "cantidad": "Pizca",
@@ -361,12 +361,12 @@
         "notas": "Opcional, usar poco",
         "alternativas": [
           {
-            "idIngrediente": "ING-0131"
+            "idIngrediente": "ING-0124"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil fresco",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -376,7 +376,7 @@
         "notas": "Picado al final"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -386,7 +386,7 @@
         "notas": "Ralladura y jugo al final"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -394,7 +394,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -402,7 +402,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0122",
+        "idIngrediente": "ING-0115",
         "textoOriginal": "Pan de campo o baguette",
         "seccion": "Opcional familia",
         "cantidad": 1,
@@ -412,7 +412,7 @@
         "notas": "Solo para quienes quieran mojar la salsa",
         "alternativas": [
           {
-            "idIngrediente": "ING-0025"
+            "idIngrediente": "ING-0023"
           }
         ]
       }
@@ -494,7 +494,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0105",
+        "idIngrediente": "ING-0099",
         "textoOriginal": "Pescado blanco firme",
         "seccion": "Pescados y mariscos",
         "cantidad": 600,
@@ -503,15 +503,15 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0002"
+            "idIngrediente": "ING-0001"
           },
           {
-            "idIngrediente": "ING-0097"
+            "idIngrediente": "ING-0092"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0035",
+        "idIngrediente": "ING-0033",
         "textoOriginal": "Calamares limpios",
         "seccion": "Pescados y mariscos",
         "cantidad": 300,
@@ -521,7 +521,7 @@
         "notas": "En anillos o trozos"
       },
       {
-        "idIngrediente": "ING-0103",
+        "idIngrediente": "ING-0097",
         "textoOriginal": "Mejillones",
         "seccion": "Pescados y mariscos",
         "cantidad": 500,
@@ -531,7 +531,7 @@
         "notas": "Pueden ser congelados limpios"
       },
       {
-        "idIngrediente": "ING-0093",
+        "idIngrediente": "ING-0088",
         "textoOriginal": "Langostinos",
         "seccion": "Pescados y mariscos",
         "cantidad": 400,
@@ -541,7 +541,7 @@
         "notas": "Agregar al final para que no se pasen"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Base de sabor",
         "cantidad": 1,
@@ -551,7 +551,7 @@
         "notas": "Picada chica"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo",
         "seccion": "Base de sabor",
         "cantidad": 1,
@@ -561,7 +561,7 @@
         "notas": "En cubos chicos"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Base de sabor",
         "cantidad": 3,
@@ -571,7 +571,7 @@
         "notas": "Picado"
       },
       {
-        "idIngrediente": "ING-0175",
+        "idIngrediente": "ING-0160",
         "textoOriginal": "Tomate triturado",
         "seccion": "Base de sabor",
         "cantidad": 400,
@@ -580,12 +580,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0127"
+            "idIngrediente": "ING-0120"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0185",
+        "idIngrediente": "ING-0168",
         "textoOriginal": "Vino blanco seco",
         "seccion": "Líquido de cocción",
         "cantidad": 250,
@@ -595,7 +595,7 @@
         "notas": "Evaporar alcohol antes de sumar caldo"
       },
       {
-        "idIngrediente": "ING-0037",
+        "idIngrediente": "ING-0035",
         "textoOriginal": "Caldo de pescado o verduras",
         "seccion": "Líquido de cocción",
         "cantidad": 500,
@@ -610,7 +610,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -619,12 +619,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0138"
+            "idIngrediente": "ING-0129"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0023",
+        "idIngrediente": "ING-0021",
         "textoOriginal": "Azafran o curcuma",
         "seccion": "Condimentos",
         "cantidad": "Pizca",
@@ -633,12 +633,12 @@
         "notas": "Para color y aroma",
         "alternativas": [
           {
-            "idIngrediente": "ING-0068"
+            "idIngrediente": "ING-0063"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -647,7 +647,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil fresco",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -657,7 +657,7 @@
         "notas": "Al servir"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -665,7 +665,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -673,7 +673,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0020",
+        "idIngrediente": "ING-0018",
         "textoOriginal": "Arroz blanco o pan",
         "seccion": "Opcional familia",
         "cantidad": "A gusto",
@@ -682,7 +682,7 @@
         "notas": "Aparte, no mezclado en la zarzuela",
         "alternativas": [
           {
-            "idIngrediente": "ING-0121"
+            "idIngrediente": "ING-0114"
           }
         ]
       }
@@ -790,7 +790,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0020",
+        "idIngrediente": "ING-0018",
         "textoOriginal": "Arroz blanco largo fino",
         "seccion": "Arroz",
         "cantidad": 1.5,
@@ -800,7 +800,7 @@
         "notas": "Solo si se decide servir arroz"
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Arroz",
         "cantidad": 3,
@@ -810,7 +810,7 @@
         "notas": "Usar relacion segun arroz"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -818,7 +818,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -828,7 +828,7 @@
         "notas": "Opcional"
       },
       {
-        "idIngrediente": "ING-0122",
+        "idIngrediente": "ING-0115",
         "textoOriginal": "Pan de campo o baguette",
         "seccion": "Opción pan",
         "cantidad": 1,
@@ -838,7 +838,7 @@
         "notas": "Alternativa al arroz",
         "alternativas": [
           {
-            "idIngrediente": "ING-0025"
+            "idIngrediente": "ING-0023"
           }
         ]
       }
@@ -910,7 +910,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0135",
+        "idIngrediente": "ING-0126",
         "textoOriginal": "Peras firmes o manzanas",
         "seccion": "Fruta",
         "cantidad": 4,
@@ -920,12 +920,12 @@
         "notas": "Elegir una variante para simplificar",
         "alternativas": [
           {
-            "idIngrediente": "ING-0100"
+            "idIngrediente": "ING-0095"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0187",
+        "idIngrediente": "ING-0170",
         "textoOriginal": "Vino tinto",
         "seccion": "Líquido",
         "cantidad": 300,
@@ -935,7 +935,7 @@
         "notas": "Para versión peras al vino"
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Aromas",
         "cantidad": 1,
@@ -944,7 +944,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0059",
+        "idIngrediente": "ING-0056",
         "textoOriginal": "Clavo de olor",
         "seccion": "Aromas",
         "cantidad": 2,
@@ -954,7 +954,7 @@
         "notas": "Usar poco"
       },
       {
-        "idIngrediente": "ING-0112",
+        "idIngrediente": "ING-0106",
         "textoOriginal": "Naranja",
         "seccion": "Aromas",
         "cantidad": 1,
@@ -964,7 +964,7 @@
         "notas": "Cascara y algo de jugo"
       },
       {
-        "idIngrediente": "ING-0024",
+        "idIngrediente": "ING-0022",
         "textoOriginal": "Azúcar mascabo o edulcorante apto",
         "seccion": "Dulzor",
         "cantidad": "1 a 2",
@@ -974,12 +974,12 @@
         "notas": "Se puede reducir o evitar",
         "alternativas": [
           {
-            "idIngrediente": "ING-0071"
+            "idIngrediente": "ING-0066"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces o almendras",
         "seccion": "Terminacion",
         "cantidad": 50,
@@ -989,7 +989,7 @@
         "notas": "Para textura",
         "alternativas": [
           {
-            "idIngrediente": "ING-0015"
+            "idIngrediente": "ING-0014"
           }
         ]
       }
@@ -1070,7 +1070,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0030",
+        "idIngrediente": "ING-0028",
         "textoOriginal": "Berenjenas",
         "seccion": "Principal",
         "cantidad": 2,
@@ -1080,7 +1080,7 @@
         "notas": "Cortar en laminas o rodajas"
       },
       {
-        "idIngrediente": "ING-0174",
+        "idIngrediente": "ING-0159",
         "textoOriginal": "Tomate",
         "seccion": "Criolla",
         "cantidad": 2,
@@ -1090,7 +1090,7 @@
         "notas": "En cubos chicos"
       },
       {
-        "idIngrediente": "ING-0047",
+        "idIngrediente": "ING-0045",
         "textoOriginal": "Cebolla morada",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -1100,7 +1100,7 @@
         "notas": "Picada chica"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo",
         "seccion": "Criolla",
         "cantidad": 0.5,
@@ -1110,7 +1110,7 @@
         "notas": "Picado chico"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil fresco",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -1119,7 +1119,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Aderezo",
         "cantidad": 4,
@@ -1129,7 +1129,7 @@
         "notas": "Buena oliva mejora mucho"
       },
       {
-        "idIngrediente": "ING-0184",
+        "idIngrediente": "ING-0167",
         "textoOriginal": "Vinagre o limón",
         "seccion": "Aderezo",
         "cantidad": 2,
@@ -1139,12 +1139,12 @@
         "notas": "Para levantar la criolla",
         "alternativas": [
           {
-            "idIngrediente": "ING-0098"
+            "idIngrediente": "ING-0093"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1152,7 +1152,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1236,7 +1236,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0062",
+        "idIngrediente": "ING-0059",
         "textoOriginal": "Coliflor",
         "seccion": "Principal",
         "cantidad": 1,
@@ -1246,7 +1246,7 @@
         "notas": "Separar en flores"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -1256,7 +1256,7 @@
         "notas": "Asado o salteado"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Textura",
         "cantidad": 2,
@@ -1266,7 +1266,7 @@
         "notas": "Da sensacion cremosa sin lácteos"
       },
       {
-        "idIngrediente": "ING-0115",
+        "idIngrediente": "ING-0109",
         "textoOriginal": "Nuez moscada",
         "seccion": "Condimentos",
         "cantidad": "Pizca",
@@ -1274,7 +1274,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1282,7 +1282,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1290,7 +1290,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil o ciboulette",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -1300,7 +1300,7 @@
         "notas": "Opcional para servir",
         "alternativas": [
           {
-            "idIngrediente": "ING-0056"
+            "idIngrediente": "ING-0053"
           }
         ]
       }
@@ -1381,7 +1381,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas",
         "seccion": "Principal",
         "cantidad": 1,
@@ -1391,7 +1391,7 @@
         "notas": "Para familia/adolescentes"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -1400,7 +1400,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -1409,12 +1409,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0138"
+            "idIngrediente": "ING-0129"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0013",
+        "idIngrediente": "ING-0012",
         "textoOriginal": "Ajo en polvo",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -1423,7 +1423,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -1432,7 +1432,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1440,7 +1440,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1524,7 +1524,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0101",
+        "idIngrediente": "ING-0096",
         "textoOriginal": "Manzanas",
         "seccion": "Principal",
         "cantidad": 4,
@@ -1533,12 +1533,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0100"
+            "idIngrediente": "ING-0095"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces",
         "seccion": "Relleno",
         "cantidad": 80,
@@ -1548,7 +1548,7 @@
         "notas": "Picadas gruesas"
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Aromas",
         "cantidad": 1,
@@ -1557,7 +1557,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0107",
+        "idIngrediente": "ING-0101",
         "textoOriginal": "Miel, azúcar mascabo o edulcorante apto",
         "seccion": "Dulzor",
         "cantidad": "1 a 2",
@@ -1567,12 +1567,12 @@
         "notas": "Puede omitirse",
         "alternativas": [
           {
-            "idIngrediente": "ING-0071"
+            "idIngrediente": "ING-0066"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua o vino blanco",
         "seccion": "Líquido",
         "cantidad": 100,
@@ -1582,12 +1582,12 @@
         "notas": "Para que no se sequen",
         "alternativas": [
           {
-            "idIngrediente": "ING-0185"
+            "idIngrediente": "ING-0168"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0154",
+        "idIngrediente": "ING-0144",
         "textoOriginal": "Ralladura de limón o naranja",
         "seccion": "Terminacion",
         "cantidad": "Pizca",
@@ -1595,7 +1595,7 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0112"
+            "idIngrediente": "ING-0106"
           }
         ]
       }
@@ -1677,7 +1677,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0093",
+        "idIngrediente": "ING-0088",
         "textoOriginal": "Langostinos limpios",
         "preparacion": "limpios",
         "seccion": "Principal",
@@ -1688,7 +1688,7 @@
         "notas": "Grandes, para pinchos"
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Vegetales",
         "cantidad": 1,
@@ -1698,7 +1698,7 @@
         "notas": "En medias lunas gruesas"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo o amarillo",
         "seccion": "Vegetales",
         "cantidad": 1,
@@ -1713,7 +1713,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0047",
+        "idIngrediente": "ING-0045",
         "textoOriginal": "Cebolla morada",
         "seccion": "Vegetales",
         "cantidad": 1,
@@ -1723,7 +1723,7 @@
         "notas": "En gajos"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Marinada",
         "cantidad": 3,
@@ -1732,7 +1732,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Marinada",
         "cantidad": 1,
@@ -1742,7 +1742,7 @@
         "notas": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Marinada",
         "cantidad": 1,
@@ -1752,7 +1752,7 @@
         "notas": "Rallado"
       },
       {
-        "idIngrediente": "ING-0137",
+        "idIngrediente": "ING-0128",
         "textoOriginal": "Pimentón o especias grill",
         "seccion": "Condimentos",
         "cantidad": "1",
@@ -1761,12 +1761,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0076"
+            "idIngrediente": "ING-0071"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1774,7 +1774,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1782,7 +1782,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0147",
+        "idIngrediente": "ING-0138",
         "textoOriginal": "Provoleta",
         "seccion": "Opcional familia",
         "cantidad": 1,
@@ -1870,7 +1870,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0116",
+        "idIngrediente": "ING-0110",
         "textoOriginal": "Ojo de bife",
         "seccion": "Principal",
         "cantidad": 4,
@@ -1880,7 +1880,7 @@
         "notas": "Ideal 300 g aprox por adulto, ajustar por comensales"
       },
       {
-        "idIngrediente": "ING-0049",
+        "idIngrediente": "ING-0047",
         "textoOriginal": "Hongos frescos",
         "seccion": "Salsa",
         "cantidad": 300,
@@ -1889,12 +1889,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0146"
+            "idIngrediente": "ING-0137"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla o echalote",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -1904,12 +1904,12 @@
         "notas": "Picada muy chica",
         "alternativas": [
           {
-            "idIngrediente": "ING-0070"
+            "idIngrediente": "ING-0065"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -1919,7 +1919,7 @@
         "notas": "Picado"
       },
       {
-        "idIngrediente": "ING-0185",
+        "idIngrediente": "ING-0168",
         "textoOriginal": "Vino blanco o tinto",
         "seccion": "Salsa",
         "cantidad": 150,
@@ -1934,7 +1934,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0036",
+        "idIngrediente": "ING-0034",
         "textoOriginal": "Caldo de carne",
         "seccion": "Salsa",
         "cantidad": 250,
@@ -1944,7 +1944,7 @@
         "notas": "Sin lácteos"
       },
       {
-        "idIngrediente": "ING-0110",
+        "idIngrediente": "ING-0104",
         "textoOriginal": "Mostaza Dijon o común",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -1959,7 +1959,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -1968,7 +1968,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0177",
+        "idIngrediente": "ING-0162",
         "textoOriginal": "Tomillo",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -1977,7 +1977,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0162",
+        "idIngrediente": "ING-0151",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1985,7 +1985,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -1993,7 +1993,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas aplastadas o rústicas",
         "preparacion": "aplastadas",
         "seccion": "Opcional familia",
@@ -2102,7 +2102,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahorias",
         "seccion": "Vegetales",
         "cantidad": 3,
@@ -2112,7 +2112,7 @@
         "notas": "En bastones"
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Vegetales",
         "cantidad": 2,
@@ -2122,7 +2122,7 @@
         "notas": "En laminas gruesas"
       },
       {
-        "idIngrediente": "ING-0075",
+        "idIngrediente": "ING-0070",
         "textoOriginal": "Espárragos o chauchas",
         "seccion": "Vegetales",
         "cantidad": 1,
@@ -2132,12 +2132,12 @@
         "notas": "Según disponibilidad",
         "alternativas": [
           {
-            "idIngrediente": "ING-0051"
+            "idIngrediente": "ING-0048"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -2146,7 +2146,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0013",
+        "idIngrediente": "ING-0012",
         "textoOriginal": "Ajo en polvo o ajo fresco",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -2155,12 +2155,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0012"
+            "idIngrediente": "ING-0011"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -2168,7 +2168,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -2176,7 +2176,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 0.5,
@@ -2262,7 +2262,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas chicas",
         "preparacion": "chicas",
         "seccion": "Principal",
@@ -2273,7 +2273,7 @@
         "notas": "Ideal papines o papas medianas"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 4,
@@ -2283,7 +2283,7 @@
         "notas": "Para dorar"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Condimentos",
         "cantidad": 2,
@@ -2293,7 +2293,7 @@
         "notas": "Entero aplastado o picado"
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -2302,7 +2302,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0162",
+        "idIngrediente": "ING-0151",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -2310,7 +2310,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -2394,7 +2394,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0133",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepinos",
         "seccion": "Principal",
         "cantidad": 2,
@@ -2404,7 +2404,7 @@
         "notas": "Ideal tipo japones o bien firmes"
       },
       {
-        "idIngrediente": "ING-0163",
+        "idIngrediente": "ING-0152",
         "textoOriginal": "Salsa de soja",
         "seccion": "Aderezo",
         "cantidad": 3,
@@ -2414,7 +2414,7 @@
         "notas": "Preferir baja en sodio si hay"
       },
       {
-        "idIngrediente": "ING-0182",
+        "idIngrediente": "ING-0165",
         "textoOriginal": "Vinagre de arroz o limón",
         "seccion": "Aderezo",
         "cantidad": 2,
@@ -2423,12 +2423,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0098"
+            "idIngrediente": "ING-0093"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0006",
+        "idIngrediente": "ING-0005",
         "textoOriginal": "Aceite de sésamo",
         "seccion": "Aderezo",
         "cantidad": 1,
@@ -2438,7 +2438,7 @@
         "notas": "Muy aromatico; usar poco"
       },
       {
-        "idIngrediente": "ING-0169",
+        "idIngrediente": "ING-0156",
         "textoOriginal": "Semillas de sésamo",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -2448,7 +2448,7 @@
         "notas": "Tostar si se puede"
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre fresco",
         "seccion": "Aromas",
         "cantidad": 1,
@@ -2458,7 +2458,7 @@
         "notas": "Rallado"
       },
       {
-        "idIngrediente": "ING-0011",
+        "idIngrediente": "ING-0010",
         "textoOriginal": "Aji picante",
         "seccion": "Condimentos",
         "cantidad": "Pizca",
@@ -2545,7 +2545,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0157",
+        "idIngrediente": "ING-0147",
         "textoOriginal": "Ribs de cerdo",
         "seccion": "Principal",
         "cantidad": 1.5,
@@ -2555,7 +2555,7 @@
         "notas": "Tira o costillar; pedir para horno"
       },
       {
-        "idIngrediente": "ING-0163",
+        "idIngrediente": "ING-0152",
         "textoOriginal": "Salsa de soja",
         "seccion": "Laqueado",
         "cantidad": 120,
@@ -2564,7 +2564,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre fresco",
         "seccion": "Laqueado",
         "cantidad": 1,
@@ -2574,7 +2574,7 @@
         "notas": "Rallado"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Laqueado",
         "cantidad": 3,
@@ -2584,7 +2584,7 @@
         "notas": "Picado o rallado"
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel o edulcorante apto",
         "seccion": "Laqueado",
         "cantidad": 2,
@@ -2594,12 +2594,12 @@
         "notas": "Reducir si se quiere menos azúcar",
         "alternativas": [
           {
-            "idIngrediente": "ING-0071"
+            "idIngrediente": "ING-0066"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0182",
+        "idIngrediente": "ING-0165",
         "textoOriginal": "Vinagre de arroz o manzana",
         "seccion": "Laqueado",
         "cantidad": 2,
@@ -2609,12 +2609,12 @@
         "notas": "Equilibra el dulce",
         "alternativas": [
           {
-            "idIngrediente": "ING-0100"
+            "idIngrediente": "ING-0095"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0006",
+        "idIngrediente": "ING-0005",
         "textoOriginal": "Aceite de sésamo",
         "seccion": "Laqueado",
         "cantidad": 1,
@@ -2624,7 +2624,7 @@
         "notas": "Opcional"
       },
       {
-        "idIngrediente": "ING-0010",
+        "idIngrediente": "ING-0009",
         "textoOriginal": "Aji molido o sriracha",
         "seccion": "Laqueado",
         "cantidad": 1,
@@ -2634,12 +2634,12 @@
         "notas": "Opcional",
         "alternativas": [
           {
-            "idIngrediente": "ING-0171"
+            "idIngrediente": "ING-0157"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0036",
+        "idIngrediente": "ING-0034",
         "textoOriginal": "Agua o caldo",
         "seccion": "Cocción",
         "cantidad": 150,
@@ -2649,12 +2649,12 @@
         "notas": "Para horneado tapado",
         "alternativas": [
           {
-            "idIngrediente": "ING-0009"
+            "idIngrediente": "ING-0008"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0180",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Verdeo",
         "seccion": "Terminacion",
         "cantidad": 2,
@@ -2664,7 +2664,7 @@
         "notas": "Al servir"
       },
       {
-        "idIngrediente": "ING-0169",
+        "idIngrediente": "ING-0156",
         "textoOriginal": "Semillas de sésamo",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -2673,7 +2673,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0019",
+        "idIngrediente": "ING-0017",
         "textoOriginal": "Arroz jazmín",
         "seccion": "Opcional familia",
         "cantidad": 1.5,
@@ -2777,7 +2777,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0156",
+        "idIngrediente": "ING-0146",
         "textoOriginal": "Repollo blanco o colorado",
         "seccion": "Principal",
         "cantidad": 0.5,
@@ -2792,7 +2792,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahoria",
         "seccion": "Principal",
         "cantidad": 1,
@@ -2802,7 +2802,7 @@
         "notas": "Rallada"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Principal",
         "cantidad": 2,
@@ -2811,7 +2811,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0163",
+        "idIngrediente": "ING-0152",
         "textoOriginal": "Salsa de soja",
         "seccion": "Aderezo",
         "cantidad": 2,
@@ -2820,7 +2820,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0182",
+        "idIngrediente": "ING-0165",
         "textoOriginal": "Vinagre de arroz o limón",
         "seccion": "Aderezo",
         "cantidad": 2,
@@ -2829,12 +2829,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0098"
+            "idIngrediente": "ING-0093"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0006",
+        "idIngrediente": "ING-0005",
         "textoOriginal": "Aceite de sésamo",
         "seccion": "Aderezo",
         "cantidad": 1,
@@ -2843,7 +2843,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre fresco",
         "seccion": "Aderezo",
         "cantidad": 1,
@@ -2853,7 +2853,7 @@
         "notas": "Rallado"
       },
       {
-        "idIngrediente": "ING-0169",
+        "idIngrediente": "ING-0156",
         "textoOriginal": "Semillas de sésamo o mani",
         "seccion": "Terminacion",
         "cantidad": 2,
@@ -2863,7 +2863,7 @@
         "notas": "Mani solo si gusta",
         "alternativas": [
           {
-            "idIngrediente": "ING-0099"
+            "idIngrediente": "ING-0094"
           }
         ]
       }
@@ -2944,7 +2944,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0019",
+        "idIngrediente": "ING-0017",
         "textoOriginal": "Arroz jazmín",
         "seccion": "Principal",
         "cantidad": 1.5,
@@ -2954,7 +2954,7 @@
         "notas": "Solo para familia o invitados"
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Cocción",
         "cantidad": 2.25,
@@ -2964,7 +2964,7 @@
         "notas": "Ajustar segun marca"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -2972,7 +2972,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre o cascara de limón",
         "seccion": "Aroma",
         "cantidad": "Pizca",
@@ -2981,7 +2981,7 @@
         "notas": "Opcional",
         "alternativas": [
           {
-            "idIngrediente": "ING-0044"
+            "idIngrediente": "ING-0042"
           }
         ]
       }
@@ -3054,7 +3054,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0083",
+        "idIngrediente": "ING-0078",
         "textoOriginal": "Garbanzos cocidos",
         "seccion": "Hummus",
         "cantidad": 400,
@@ -3063,12 +3063,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0084"
+            "idIngrediente": "ING-0079"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0172",
+        "idIngrediente": "ING-0158",
         "textoOriginal": "Tahini",
         "seccion": "Hummus",
         "cantidad": 2,
@@ -3078,7 +3078,7 @@
         "notas": "Puede reducirse"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Hummus",
         "cantidad": 1,
@@ -3088,7 +3088,7 @@
         "notas": "Jugo"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Hummus",
         "cantidad": 1,
@@ -3098,7 +3098,7 @@
         "notas": "Usar poco"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Hummus",
         "cantidad": 3,
@@ -3107,7 +3107,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0064",
+        "idIngrediente": "ING-0060",
         "textoOriginal": "Comino",
         "seccion": "Condimentos",
         "cantidad": 0.5,
@@ -3116,7 +3116,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3124,7 +3124,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3132,7 +3132,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahoria",
         "seccion": "Bastones",
         "cantidad": 2,
@@ -3142,7 +3142,7 @@
         "notas": "En bastones"
       },
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Bastones",
         "cantidad": 1,
@@ -3152,7 +3152,7 @@
         "notas": "En bastones"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón",
         "seccion": "Bastones",
         "cantidad": 1,
@@ -3162,7 +3162,7 @@
         "notas": "En tiras"
       },
       {
-        "idIngrediente": "ING-0124",
+        "idIngrediente": "ING-0117",
         "textoOriginal": "Pan pita",
         "seccion": "Opcional familia",
         "cantidad": 4,
@@ -3249,7 +3249,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0111",
+        "idIngrediente": "ING-0105",
         "textoOriginal": "Muslos o pata muslo de pollo",
         "seccion": "Principal",
         "cantidad": 1.2,
@@ -3259,12 +3259,12 @@
         "notas": "Con o sin piel",
         "alternativas": [
           {
-            "idIngrediente": "ING-0129"
+            "idIngrediente": "ING-0122"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Base de sabor",
         "cantidad": 2,
@@ -3274,7 +3274,7 @@
         "notas": "En pluma"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Base de sabor",
         "cantidad": 3,
@@ -3284,7 +3284,7 @@
         "notas": "Picado"
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre fresco",
         "seccion": "Base de sabor",
         "cantidad": 1,
@@ -3294,7 +3294,7 @@
         "notas": "Rallado"
       },
       {
-        "idIngrediente": "ING-0064",
+        "idIngrediente": "ING-0060",
         "textoOriginal": "Comino",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3303,7 +3303,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0066",
+        "idIngrediente": "ING-0061",
         "textoOriginal": "Coriandro o curry suave",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3312,12 +3312,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0069"
+            "idIngrediente": "ING-0064"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Condimentos",
         "cantidad": "Pizca",
@@ -3326,7 +3326,7 @@
         "notas": "Muy poca"
       },
       {
-        "idIngrediente": "ING-0038",
+        "idIngrediente": "ING-0036",
         "textoOriginal": "Caldo de pollo o verduras",
         "seccion": "Líquido",
         "cantidad": 400,
@@ -3341,7 +3341,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0008",
+        "idIngrediente": "ING-0007",
         "textoOriginal": "Aceitunas verdes",
         "seccion": "Terminacion",
         "cantidad": 120,
@@ -3351,7 +3351,7 @@
         "notas": "Descarozadas"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -3361,7 +3361,7 @@
         "notas": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -3370,7 +3370,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3378,7 +3378,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3386,7 +3386,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil o cilantro",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -3396,12 +3396,12 @@
         "notas": "Al servir",
         "alternativas": [
           {
-            "idIngrediente": "ING-0057"
+            "idIngrediente": "ING-0054"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0067",
+        "idIngrediente": "ING-0062",
         "textoOriginal": "Cous cous",
         "seccion": "Opcional familia",
         "cantidad": 1.5,
@@ -3505,7 +3505,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0062",
+        "idIngrediente": "ING-0059",
         "textoOriginal": "Coliflor",
         "seccion": "Principal",
         "cantidad": 1,
@@ -3515,7 +3515,7 @@
         "notas": "En flores medianas"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -3524,7 +3524,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0064",
+        "idIngrediente": "ING-0060",
         "textoOriginal": "Comino",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3533,7 +3533,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3542,12 +3542,12 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0138"
+            "idIngrediente": "ING-0129"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0068",
+        "idIngrediente": "ING-0063",
         "textoOriginal": "Curcuma",
         "seccion": "Condimentos",
         "cantidad": 0.5,
@@ -3557,7 +3557,7 @@
         "notas": "Para color"
       },
       {
-        "idIngrediente": "ING-0013",
+        "idIngrediente": "ING-0012",
         "textoOriginal": "Ajo en polvo",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3566,7 +3566,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3574,7 +3574,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3582,7 +3582,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 0.5,
@@ -3592,7 +3592,7 @@
         "notas": "Al salir del horno"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil o cilantro",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -3601,7 +3601,7 @@
         "opcional": false,
         "alternativas": [
           {
-            "idIngrediente": "ING-0057"
+            "idIngrediente": "ING-0054"
           }
         ]
       }
@@ -3682,7 +3682,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0067",
+        "idIngrediente": "ING-0062",
         "textoOriginal": "Cous cous",
         "seccion": "Principal",
         "cantidad": 1.5,
@@ -3692,7 +3692,7 @@
         "notas": "Solo para familia o invitados"
       },
       {
-        "idIngrediente": "ING-0039",
+        "idIngrediente": "ING-0037",
         "textoOriginal": "Agua o caldo caliente",
         "preparacion": "caliente",
         "seccion": "Hidratacion",
@@ -3703,12 +3703,12 @@
         "notas": "Misma proporcion que cous cous, ajustar marca",
         "alternativas": [
           {
-            "idIngrediente": "ING-0009"
+            "idIngrediente": "ING-0008"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Materia grasa",
         "cantidad": 1,
@@ -3717,7 +3717,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3725,7 +3725,7 @@
         "opcional": false
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil o menta",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -3735,12 +3735,12 @@
         "notas": "Opcional",
         "alternativas": [
           {
-            "idIngrediente": "ING-0104"
+            "idIngrediente": "ING-0098"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0154",
+        "idIngrediente": "ING-0144",
         "textoOriginal": "Ralladura de limón",
         "seccion": "Terminacion",
         "cantidad": "Pizca",
@@ -3826,7 +3826,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0142",
+        "idIngrediente": "ING-0133",
         "textoOriginal": "Pollo deshuesado",
         "seccion": "Principal",
         "cantidad": 800,
@@ -3835,7 +3835,7 @@
         "opcional": "Pechuga o pata muslo"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -3844,7 +3844,7 @@
         "opcional": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Sabor",
         "cantidad": 3,
@@ -3853,7 +3853,7 @@
         "opcional": "Picado o laminado"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -3862,7 +3862,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3871,7 +3871,7 @@
         "opcional": "Seco o fresco"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3880,7 +3880,7 @@
         "opcional": "Opcional"
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -3889,7 +3889,7 @@
         "opcional": "Muy poca"
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -3898,7 +3898,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0020",
+        "idIngrediente": "ING-0018",
         "textoOriginal": "Arroz blanco cocido",
         "preparacion": "cocido",
         "seccion": "Hidrato opcional",
@@ -3908,7 +3908,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -3916,7 +3916,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4002,7 +4002,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0032",
+        "idIngrediente": "ING-0030",
         "textoOriginal": "Bifecitos de cuadril",
         "seccion": "Principal",
         "cantidad": 800,
@@ -4011,7 +4011,7 @@
         "opcional": "También nalga o bola de lomo"
       },
       {
-        "idIngrediente": "ING-0047",
+        "idIngrediente": "ING-0045",
         "textoOriginal": "Cebolla morada",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -4020,7 +4020,7 @@
         "opcional": "Picada chica"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -4029,7 +4029,7 @@
         "opcional": "Picado chico"
       },
       {
-        "idIngrediente": "ING-0174",
+        "idIngrediente": "ING-0159",
         "textoOriginal": "Tomate",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -4038,7 +4038,7 @@
         "opcional": "Sin semillas"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil",
         "seccion": "Criolla",
         "cantidad": 2,
@@ -4047,7 +4047,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Criolla",
         "cantidad": 3,
@@ -4056,7 +4056,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0184",
+        "idIngrediente": "ING-0167",
         "textoOriginal": "Vinagre",
         "seccion": "Criolla",
         "cantidad": 1,
@@ -4065,7 +4065,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -4074,7 +4074,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papa",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -4083,7 +4083,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4091,7 +4091,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4177,7 +4177,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0048",
+        "idIngrediente": "ING-0046",
         "textoOriginal": "Cerdo en tiras",
         "seccion": "Principal",
         "cantidad": 800,
@@ -4186,7 +4186,7 @@
         "opcional": "Carré, bondiola magra o solomillo"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -4195,7 +4195,7 @@
         "opcional": "Separar blanco y verde"
       },
       {
-        "idIngrediente": "ING-0101",
+        "idIngrediente": "ING-0096",
         "textoOriginal": "Manzana verde",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -4204,7 +4204,7 @@
         "opcional": "En cubos chicos"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Salsa",
         "cantidad": 2,
@@ -4213,7 +4213,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -4222,7 +4222,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -4231,7 +4231,7 @@
         "opcional": "Muy poca"
       },
       {
-        "idIngrediente": "ING-0036",
+        "idIngrediente": "ING-0034",
         "textoOriginal": "Agua o caldo",
         "seccion": "Salsa",
         "cantidad": 50,
@@ -4240,12 +4240,12 @@
         "opcional": "Sin lácteos",
         "alternativas": [
           {
-            "idIngrediente": "ING-0009"
+            "idIngrediente": "ING-0008"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0018",
+        "idIngrediente": "ING-0016",
         "textoOriginal": "Arroz cocido",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -4254,7 +4254,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4262,7 +4262,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4357,7 +4357,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0079",
+        "idIngrediente": "ING-0074",
         "textoOriginal": "Filetes de merluza",
         "seccion": "Principal",
         "cantidad": 800,
@@ -4366,7 +4366,7 @@
         "opcional": "Frescos o descongelados"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -4375,7 +4375,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón dulce",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -4384,7 +4384,7 @@
         "opcional": "Puede ser ahumado"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -4393,7 +4393,7 @@
         "opcional": "Jugo y gajos"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -4402,7 +4402,7 @@
         "opcional": "Picado fino"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -4411,7 +4411,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0096",
+        "idIngrediente": "ING-0091",
         "textoOriginal": "Lechuga o rúcula",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -4420,12 +4420,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0159"
+            "idIngrediente": "ING-0149"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas",
         "seccion": "Hidrato opcional",
         "cantidad": 2,
@@ -4434,7 +4434,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4442,7 +4442,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4528,7 +4528,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0041",
+        "idIngrediente": "ING-0039",
         "textoOriginal": "Carne picada especial",
         "preparacion": "especial",
         "seccion": "Principal",
@@ -4538,7 +4538,7 @@
         "opcional": "Roast beef, paleta o picada especial"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Ligado",
         "cantidad": 1,
@@ -4547,7 +4547,7 @@
         "opcional": "Se puede omitir"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -4556,7 +4556,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0137",
+        "idIngrediente": "ING-0128",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -4565,7 +4565,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -4574,7 +4574,7 @@
         "opcional": "En pluma o picada"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -4583,7 +4583,7 @@
         "opcional": "Para saltear"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -4592,7 +4592,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0123",
+        "idIngrediente": "ING-0116",
         "textoOriginal": "Pan de hamburguesa",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -4601,7 +4601,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas",
         "seccion": "Hidrato opcional",
         "cantidad": 2,
@@ -4610,7 +4610,7 @@
         "opcional": "Guarnición aparte"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4618,7 +4618,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4704,7 +4704,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0144",
+        "idIngrediente": "ING-0135",
         "textoOriginal": "Pollo en tiras",
         "seccion": "Principal",
         "cantidad": 800,
@@ -4713,7 +4713,7 @@
         "opcional": "Pechuga o pata muslo"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Base",
         "cantidad": 1,
@@ -4722,7 +4722,7 @@
         "opcional": "Picada"
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahoria",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -4731,7 +4731,7 @@
         "opcional": "En tiras finas"
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -4740,7 +4740,7 @@
         "opcional": "Medias lunas"
       },
       {
-        "idIngrediente": "ING-0069",
+        "idIngrediente": "ING-0064",
         "textoOriginal": "Curry suave",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -4749,7 +4749,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0095",
+        "idIngrediente": "ING-0090",
         "textoOriginal": "Leche de coco",
         "seccion": "Salsa",
         "cantidad": 100,
@@ -4758,7 +4758,7 @@
         "opcional": "Sin lácteos"
       },
       {
-        "idIngrediente": "ING-0038",
+        "idIngrediente": "ING-0036",
         "textoOriginal": "Agua o caldo",
         "seccion": "Salsa",
         "cantidad": 50,
@@ -4767,12 +4767,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0009"
+            "idIngrediente": "ING-0008"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -4781,7 +4781,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0020",
+        "idIngrediente": "ING-0018",
         "textoOriginal": "Arroz blanco cocido",
         "preparacion": "cocido",
         "seccion": "Hidrato opcional",
@@ -4791,7 +4791,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4799,7 +4799,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4885,7 +4885,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0072",
+        "idIngrediente": "ING-0067",
         "textoOriginal": "Entraña",
         "seccion": "Principal",
         "cantidad": 900,
@@ -4894,7 +4894,7 @@
         "opcional": "También vacío fino o arañita"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil",
         "seccion": "Chimichurri",
         "cantidad": 2,
@@ -4903,7 +4903,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Chimichurri",
         "cantidad": 1,
@@ -4912,7 +4912,7 @@
         "opcional": "Muy fino"
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Chimichurri",
         "cantidad": 1,
@@ -4921,7 +4921,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0010",
+        "idIngrediente": "ING-0009",
         "textoOriginal": "Ají molido",
         "seccion": "Chimichurri",
         "cantidad": 1,
@@ -4930,7 +4930,7 @@
         "opcional": "Omitir si no quieren picante"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Chimichurri",
         "cantidad": 3,
@@ -4939,7 +4939,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0184",
+        "idIngrediente": "ING-0167",
         "textoOriginal": "Vinagre",
         "seccion": "Chimichurri",
         "cantidad": 1,
@@ -4948,7 +4948,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -4957,7 +4957,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas",
         "seccion": "Hidrato opcional",
         "cantidad": 2,
@@ -4966,7 +4966,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0162",
+        "idIngrediente": "ING-0151",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -4974,7 +4974,7 @@
         "opcional": "Poca sal"
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal gruesa y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5060,7 +5060,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0041",
+        "idIngrediente": "ING-0039",
         "textoOriginal": "Carne picada",
         "seccion": "Principal",
         "cantidad": 800,
@@ -5069,7 +5069,7 @@
         "opcional": "Picada especial"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Ligado",
         "cantidad": 1,
@@ -5078,7 +5078,7 @@
         "opcional": "Ayuda a ligar"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Base",
         "cantidad": 1,
@@ -5087,7 +5087,7 @@
         "opcional": "Rallada o picada fina"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Base",
         "cantidad": 2,
@@ -5096,7 +5096,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0175",
+        "idIngrediente": "ING-0160",
         "textoOriginal": "Tomate triturado",
         "seccion": "Salsa",
         "cantidad": 500,
@@ -5105,7 +5105,7 @@
         "opcional": "Sin crema"
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -5114,7 +5114,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -5123,7 +5123,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -5132,7 +5132,7 @@
         "opcional": "Salteado"
       },
       {
-        "idIngrediente": "ING-0078",
+        "idIngrediente": "ING-0073",
         "textoOriginal": "Fideos secos",
         "seccion": "Hidrato opcional",
         "cantidad": 250,
@@ -5141,7 +5141,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5149,7 +5149,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5235,7 +5235,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0093",
+        "idIngrediente": "ING-0088",
         "textoOriginal": "Langostinos pelados",
         "preparacion": "pelados",
         "seccion": "Principal",
@@ -5245,7 +5245,7 @@
         "opcional": "Crudos o cocidos"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Sabor",
         "cantidad": 4,
@@ -5254,7 +5254,7 @@
         "opcional": "Laminados"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -5263,7 +5263,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -5272,7 +5272,7 @@
         "opcional": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil",
         "seccion": "Terminacion",
         "cantidad": 2,
@@ -5281,7 +5281,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0010",
+        "idIngrediente": "ING-0009",
         "textoOriginal": "Ají molido",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -5290,7 +5290,7 @@
         "opcional": "Omitir si no quieren picante"
       },
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Ensalada",
         "cantidad": 1,
@@ -5299,7 +5299,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0096",
+        "idIngrediente": "ING-0091",
         "textoOriginal": "Lechuga",
         "seccion": "Ensalada",
         "cantidad": 1,
@@ -5308,7 +5308,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0020",
+        "idIngrediente": "ING-0018",
         "textoOriginal": "Arroz blanco cocido",
         "preparacion": "cocido",
         "seccion": "Hidrato opcional",
@@ -5318,7 +5318,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5326,7 +5326,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5421,7 +5421,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0043",
+        "idIngrediente": "ING-0041",
         "textoOriginal": "Carne vacuna en tiras",
         "seccion": "Principal",
         "cantidad": 800,
@@ -5430,7 +5430,7 @@
         "opcional": "Nalga, bola de lomo o cuadril"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -5439,7 +5439,7 @@
         "opcional": "En tiras"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -5448,7 +5448,7 @@
         "opcional": "En pluma"
       },
       {
-        "idIngrediente": "ING-0012",
+        "idIngrediente": "ING-0011",
         "textoOriginal": "Ajo",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -5457,7 +5457,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0163",
+        "idIngrediente": "ING-0152",
         "textoOriginal": "Salsa de soja",
         "seccion": "Condimentos",
         "cantidad": 2,
@@ -5466,7 +5466,7 @@
         "opcional": "Cuidado con sal"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -5475,7 +5475,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -5484,7 +5484,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0178",
+        "idIngrediente": "ING-0163",
         "textoOriginal": "Tortillas",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -5493,7 +5493,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0018",
+        "idIngrediente": "ING-0016",
         "textoOriginal": "Arroz cocido",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -5502,7 +5502,7 @@
         "opcional": "Alternativa"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5510,7 +5510,7 @@
         "opcional": "Cuidado si se usa soja"
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5596,7 +5596,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0055",
+        "idIngrediente": "ING-0052",
         "textoOriginal": "Churrasquitos de cerdo",
         "seccion": "Principal",
         "cantidad": 800,
@@ -5605,7 +5605,7 @@
         "opcional": "Carré o bondiola fina"
       },
       {
-        "idIngrediente": "ING-0112",
+        "idIngrediente": "ING-0106",
         "textoOriginal": "Naranja",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -5614,7 +5614,7 @@
         "opcional": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0092",
+        "idIngrediente": "ING-0087",
         "textoOriginal": "Jengibre fresco",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -5623,7 +5623,7 @@
         "opcional": "Rallado"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -5632,7 +5632,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel",
         "seccion": "Salsa",
         "cantidad": 1,
@@ -5641,7 +5641,7 @@
         "opcional": "Muy poca"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -5650,7 +5650,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0156",
+        "idIngrediente": "ING-0146",
         "textoOriginal": "Repollo blanco",
         "seccion": "Ensalada",
         "cantidad": 1,
@@ -5659,7 +5659,7 @@
         "opcional": "Para ensalada"
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahoria",
         "seccion": "Ensalada",
         "cantidad": 1,
@@ -5668,7 +5668,7 @@
         "opcional": "Poca"
       },
       {
-        "idIngrediente": "ING-0018",
+        "idIngrediente": "ING-0016",
         "textoOriginal": "Arroz cocido",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -5677,7 +5677,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5685,7 +5685,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5755,7 +5755,7 @@
     "nombre": "Brochettes rápidas de pollo y carne al horno fuerte",
     "estilo": "Familiar variado",
     "dificultad": "Baja",
-    "proteinaPrincipal": "Pollo y Vacuna",
+    "proteinaPrincipal": "Mixta",
     "tecnicaPrincipal": "Horno / plancha",
     "sinLacteos": "Sí",
     "hidratos": "No",
@@ -5780,7 +5780,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0143",
+        "idIngrediente": "ING-0134",
         "textoOriginal": "Pollo en cubos",
         "seccion": "Principal",
         "cantidad": 400,
@@ -5789,7 +5789,7 @@
         "opcional": "Pechuga o pata muslo"
       },
       {
-        "idIngrediente": "ING-0042",
+        "idIngrediente": "ING-0040",
         "textoOriginal": "Carne vacuna en cubos",
         "seccion": "Principal",
         "cantidad": 400,
@@ -5798,7 +5798,7 @@
         "opcional": "Cuadril, nalga o bife"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón rojo",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -5807,7 +5807,7 @@
         "opcional": "En cuadrados"
       },
       {
-        "idIngrediente": "ING-0045",
+        "idIngrediente": "ING-0043",
         "textoOriginal": "Cebolla",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -5816,7 +5816,7 @@
         "opcional": "En cuadrados"
       },
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -5825,7 +5825,7 @@
         "opcional": "Rodajas gruesas"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -5834,7 +5834,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0137",
+        "idIngrediente": "ING-0128",
         "textoOriginal": "Pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -5843,7 +5843,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -5852,7 +5852,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -5861,7 +5861,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0118",
+        "idIngrediente": "ING-0112",
         "textoOriginal": "Palitos de brochette",
         "seccion": "Utensilios",
         "cantidad": 8,
@@ -5870,7 +5870,7 @@
         "opcional": "Remojar si son de madera"
       },
       {
-        "idIngrediente": "ING-0126",
+        "idIngrediente": "ING-0119",
         "textoOriginal": "Papas",
         "seccion": "Hidrato opcional",
         "cantidad": 2,
@@ -5879,7 +5879,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5887,7 +5887,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -5973,7 +5973,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Principal",
         "cantidad": 8,
@@ -5982,7 +5982,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -5991,7 +5991,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0174",
+        "idIngrediente": "ING-0159",
         "textoOriginal": "Tomate",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -6000,7 +6000,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -6009,7 +6009,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil o ciboulette",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -6018,12 +6018,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0056"
+            "idIngrediente": "ING-0053"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0179",
+        "idIngrediente": "ING-0164",
         "textoOriginal": "Tostadas integrales",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6032,7 +6032,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0149",
+        "idIngrediente": "ING-0140",
         "textoOriginal": "Queso crema o yogur natural",
         "seccion": "Lácteo opcional",
         "cantidad": 2,
@@ -6041,12 +6041,12 @@
         "opcional": "Solo para quien tolere",
         "alternativas": [
           {
-            "idIngrediente": "ING-0191"
+            "idIngrediente": "ING-0174"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6054,7 +6054,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6131,7 +6131,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Principal",
         "cantidad": 8,
@@ -6140,7 +6140,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0077",
+        "idIngrediente": "ING-0072",
         "textoOriginal": "Espinaca",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -6149,7 +6149,7 @@
         "opcional": "Bien escurrida"
       },
       {
-        "idIngrediente": "ING-0050",
+        "idIngrediente": "ING-0047",
         "textoOriginal": "Champiñones",
         "seccion": "Relleno",
         "cantidad": 200,
@@ -6158,7 +6158,7 @@
         "opcional": "Fileteados"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -6167,7 +6167,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -6176,7 +6176,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0125",
+        "idIngrediente": "ING-0118",
         "textoOriginal": "Pan tostado",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6185,7 +6185,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0151",
+        "idIngrediente": "ING-0142",
         "textoOriginal": "Queso rallado o fresco",
         "seccion": "Lácteo opcional",
         "cantidad": 40,
@@ -6194,12 +6194,12 @@
         "opcional": "Solo para quien tolere",
         "alternativas": [
           {
-            "idIngrediente": "ING-0080"
+            "idIngrediente": "ING-0075"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6207,7 +6207,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6284,7 +6284,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Principal",
         "cantidad": 8,
@@ -6293,7 +6293,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Acompañamiento",
         "cantidad": 2,
@@ -6302,7 +6302,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0155",
+        "idIngrediente": "ING-0145",
         "textoOriginal": "Rebanadas de pan",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6311,7 +6311,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -6320,7 +6320,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -6329,7 +6329,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0089",
+        "idIngrediente": "ING-0084",
         "textoOriginal": "Hojas verdes",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -6338,7 +6338,7 @@
         "opcional": "Adultos"
       },
       {
-        "idIngrediente": "ING-0152",
+        "idIngrediente": "ING-0143",
         "textoOriginal": "Queso untable",
         "seccion": "Lácteo opcional",
         "cantidad": 3,
@@ -6347,7 +6347,7 @@
         "opcional": "Solo para quien tolere"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6355,7 +6355,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6407,7 +6407,7 @@
     "nombre": "Bowl de yogur opcional con frutas, semillas y base sin lácteos",
     "estilo": "Desayuno frío",
     "dificultad": "Baja",
-    "proteinaPrincipal": "Huevos y semillas",
+    "proteinaPrincipal": "Mixta",
     "tecnicaPrincipal": "Armado",
     "sinLacteos": "Sí",
     "hidratos": "Sí",
@@ -6432,7 +6432,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos duros",
         "preparacion": "duros",
         "seccion": "Proteína",
@@ -6442,7 +6442,7 @@
         "opcional": "Para sumar proteína"
       },
       {
-        "idIngrediente": "ING-0100",
+        "idIngrediente": "ING-0095",
         "textoOriginal": "Manzana o pera",
         "seccion": "Base",
         "cantidad": 2,
@@ -6451,12 +6451,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0134"
+            "idIngrediente": "ING-0126"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0026",
+        "idIngrediente": "ING-0024",
         "textoOriginal": "Banana",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -6465,7 +6465,7 @@
         "opcional": "Más para chicos"
       },
       {
-        "idIngrediente": "ING-0166",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Semillas de chía o lino",
         "seccion": "Base",
         "cantidad": 4,
@@ -6474,12 +6474,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0168"
+            "idIngrediente": "ING-0155"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces o almendras",
         "seccion": "Base",
         "cantidad": 4,
@@ -6488,12 +6488,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0015"
+            "idIngrediente": "ING-0014"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0085",
+        "idIngrediente": "ING-0080",
         "textoOriginal": "Granola",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6502,7 +6502,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0022",
+        "idIngrediente": "ING-0020",
         "textoOriginal": "Avena",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6511,7 +6511,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0191",
+        "idIngrediente": "ING-0174",
         "textoOriginal": "Yogur natural o griego",
         "seccion": "Lácteo opcional",
         "cantidad": 500,
@@ -6520,12 +6520,12 @@
         "opcional": "Solo para quien tolere",
         "alternativas": [
           {
-            "idIngrediente": "ING-0086"
+            "idIngrediente": "ING-0081"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0192",
+        "idIngrediente": "ING-0175",
         "textoOriginal": "Yogur vegetal sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 500,
@@ -6534,7 +6534,7 @@
         "opcional": "Opción sin lácteos"
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6620,7 +6620,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0026",
+        "idIngrediente": "ING-0024",
         "textoOriginal": "Banana",
         "seccion": "Base",
         "cantidad": 4,
@@ -6629,7 +6629,7 @@
         "opcional": "Maduras"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 8,
@@ -6638,7 +6638,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -6647,7 +6647,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -6656,7 +6656,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -6665,7 +6665,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0022",
+        "idIngrediente": "ING-0020",
         "textoOriginal": "Avena",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6674,7 +6674,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel",
         "seccion": "Endulzante opcional",
         "cantidad": 2,
@@ -6683,7 +6683,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces",
         "seccion": "Acompañamiento",
         "cantidad": 4,
@@ -6692,7 +6692,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0191",
+        "idIngrediente": "ING-0174",
         "textoOriginal": "Yogur natural",
         "seccion": "Lácteo opcional",
         "cantidad": 4,
@@ -6770,7 +6770,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 10,
@@ -6779,7 +6779,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0091",
+        "idIngrediente": "ING-0086",
         "textoOriginal": "Jamón cocido natural",
         "seccion": "Relleno",
         "cantidad": 150,
@@ -6788,7 +6788,7 @@
         "opcional": "Verificar ingredientes"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -6797,7 +6797,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -6806,7 +6806,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0077",
+        "idIngrediente": "ING-0072",
         "textoOriginal": "Espinaca",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -6815,7 +6815,7 @@
         "opcional": "Bien escurrida"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -6824,7 +6824,7 @@
         "opcional": "Para molde"
       },
       {
-        "idIngrediente": "ING-0179",
+        "idIngrediente": "ING-0164",
         "textoOriginal": "Tostadas",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -6833,7 +6833,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0150",
+        "idIngrediente": "ING-0141",
         "textoOriginal": "Queso fresco o rallado",
         "seccion": "Lácteo opcional",
         "cantidad": 50,
@@ -6847,7 +6847,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6855,7 +6855,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -6941,7 +6941,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0141",
+        "idIngrediente": "ING-0132",
         "textoOriginal": "Pollo cocido desmenuzado",
         "seccion": "Principal",
         "cantidad": 400,
@@ -6950,7 +6950,7 @@
         "opcional": "Sobras"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 8,
@@ -6959,7 +6959,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0174",
+        "idIngrediente": "ING-0159",
         "textoOriginal": "Tomate",
         "seccion": "Base",
         "cantidad": 1,
@@ -6968,7 +6968,7 @@
         "opcional": "Cubos"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -6977,7 +6977,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -6986,7 +6986,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -6995,7 +6995,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0179",
+        "idIngrediente": "ING-0164",
         "textoOriginal": "Tostadas",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -7004,7 +7004,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0150",
+        "idIngrediente": "ING-0141",
         "textoOriginal": "Queso fresco",
         "seccion": "Lácteo opcional",
         "cantidad": 40,
@@ -7013,7 +7013,7 @@
         "opcional": "Solo para quien tolere"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -7021,7 +7021,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -7098,7 +7098,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos duros",
         "preparacion": "duros",
         "seccion": "Principal",
@@ -7108,7 +7108,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0021",
+        "idIngrediente": "ING-0019",
         "textoOriginal": "Atún al natural",
         "seccion": "Principal",
         "cantidad": 2,
@@ -7117,7 +7117,7 @@
         "opcional": "Escurrido"
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Acompañamiento",
         "cantidad": 2,
@@ -7126,7 +7126,7 @@
         "opcional": "Cubos"
       },
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -7135,7 +7135,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0089",
+        "idIngrediente": "ING-0084",
         "textoOriginal": "Hojas verdes",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -7144,7 +7144,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Aliño",
         "cantidad": 2,
@@ -7153,7 +7153,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -7162,7 +7162,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0082",
+        "idIngrediente": "ING-0077",
         "textoOriginal": "Galletas de arroz",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -7171,7 +7171,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0149",
+        "idIngrediente": "ING-0140",
         "textoOriginal": "Queso crema",
         "seccion": "Lácteo opcional",
         "cantidad": 3,
@@ -7180,7 +7180,7 @@
         "opcional": "Solo para quien tolere"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -7188,7 +7188,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -7274,7 +7274,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0022",
+        "idIngrediente": "ING-0020",
         "textoOriginal": "Avena arrollada",
         "seccion": "Base",
         "cantidad": 2,
@@ -7283,7 +7283,7 @@
         "opcional": "Base"
       },
       {
-        "idIngrediente": "ING-0166",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Semillas de chía",
         "seccion": "Base",
         "cantidad": 2,
@@ -7292,7 +7292,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0029",
+        "idIngrediente": "ING-0027",
         "textoOriginal": "Bebida vegetal sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 500,
@@ -7301,7 +7301,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0100",
+        "idIngrediente": "ING-0095",
         "textoOriginal": "Manzana",
         "seccion": "Fruta",
         "cantidad": 1,
@@ -7310,7 +7310,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -7319,7 +7319,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces o almendras",
         "seccion": "Acompañamiento",
         "cantidad": 4,
@@ -7328,12 +7328,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0015"
+            "idIngrediente": "ING-0014"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0026",
+        "idIngrediente": "ING-0024",
         "textoOriginal": "Banana",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -7342,7 +7342,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0106",
+        "idIngrediente": "ING-0100",
         "textoOriginal": "Miel",
         "seccion": "Endulzante opcional",
         "cantidad": 2,
@@ -7351,7 +7351,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0191",
+        "idIngrediente": "ING-0174",
         "textoOriginal": "Yogur natural",
         "seccion": "Lácteo opcional",
         "cantidad": 300,
@@ -7438,7 +7438,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0166",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Semillas de chía",
         "seccion": "Base",
         "cantidad": 8,
@@ -7447,7 +7447,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0029",
+        "idIngrediente": "ING-0027",
         "textoOriginal": "Bebida vegetal sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 600,
@@ -7456,7 +7456,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0034",
+        "idIngrediente": "ING-0032",
         "textoOriginal": "Cacao amargo",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -7465,7 +7465,7 @@
         "opcional": "Sin azúcar"
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -7474,7 +7474,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Acompañamiento",
         "cantidad": 2,
@@ -7483,7 +7483,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras",
         "seccion": "Acompañamiento",
         "cantidad": 4,
@@ -7492,7 +7492,7 @@
         "opcional": "Picadas"
       },
       {
-        "idIngrediente": "ING-0081",
+        "idIngrediente": "ING-0076",
         "textoOriginal": "Frutillas",
         "seccion": "Acompañamiento",
         "cantidad": 1,
@@ -7501,7 +7501,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0026",
+        "idIngrediente": "ING-0024",
         "textoOriginal": "Banana",
         "seccion": "Hidrato opcional",
         "cantidad": 1,
@@ -7510,7 +7510,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0085",
+        "idIngrediente": "ING-0080",
         "textoOriginal": "Granola",
         "seccion": "Hidrato opcional",
         "cantidad": 4,
@@ -7519,7 +7519,7 @@
         "opcional": "Para chicos"
       },
       {
-        "idIngrediente": "ING-0191",
+        "idIngrediente": "ING-0174",
         "textoOriginal": "Yogur natural",
         "seccion": "Lácteo opcional",
         "cantidad": 300,
@@ -7606,7 +7606,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 4,
@@ -7615,7 +7615,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0149",
+        "idIngrediente": "ING-0140",
         "textoOriginal": "Queso crema",
         "seccion": "Base láctea",
         "cantidad": 300,
@@ -7624,7 +7624,7 @@
         "opcional": "Alto en grasa; usar sin lactosa si se adapta"
       },
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Semillas de lino",
         "seccion": "Semillas",
         "cantidad": 2,
@@ -7633,7 +7633,7 @@
         "opcional": "Mejor molidas"
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 70,
@@ -7642,7 +7642,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -7651,7 +7651,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -7756,7 +7756,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0058",
+        "idIngrediente": "ING-0055",
         "textoOriginal": "Claras de huevo",
         "seccion": "Base",
         "cantidad": 4,
@@ -7765,7 +7765,7 @@
         "opcional": "Batidas a nieve"
       },
       {
-        "idIngrediente": "ING-0189",
+        "idIngrediente": "ING-0172",
         "textoOriginal": "Yemas de huevo",
         "seccion": "Base",
         "cantidad": 4,
@@ -7774,7 +7774,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0190",
+        "idIngrediente": "ING-0173",
         "textoOriginal": "Yogur griego",
         "seccion": "Base láctea",
         "cantidad": 2,
@@ -7783,7 +7783,7 @@
         "opcional": "Puede probarse yogur vegetal"
       },
       {
-        "idIngrediente": "ING-0188",
+        "idIngrediente": "ING-0171",
         "textoOriginal": "Whey protein powder",
         "seccion": "Proteína",
         "cantidad": "1/4",
@@ -7792,7 +7792,7 @@
         "opcional": "Puede probarse proteína vegetal"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -7801,7 +7801,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Erythritol",
         "seccion": "Endulzante",
         "cantidad": 1,
@@ -7810,7 +7810,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": "1/2",
@@ -7819,7 +7819,7 @@
         "opcional": "Ralladura y jugo"
       },
       {
-        "idIngrediente": "ING-0031",
+        "idIngrediente": "ING-0029",
         "textoOriginal": "Bicarbonato de sodio",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -7915,7 +7915,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Semillas de lino molidas",
         "preparacion": "molidas",
         "seccion": "Semillas",
@@ -7925,7 +7925,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Semillas de lino enteras",
         "preparacion": "enteras",
         "seccion": "Semillas",
@@ -7935,7 +7935,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0166",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Semillas de chía",
         "seccion": "Semillas",
         "cantidad": 15,
@@ -7944,7 +7944,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0167",
+        "idIngrediente": "ING-0154",
         "textoOriginal": "Semillas de girasol",
         "seccion": "Semillas",
         "cantidad": 1,
@@ -7953,7 +7953,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Hidratación",
         "cantidad": "Cantidad necesaria",
@@ -7961,7 +7961,7 @@
         "opcional": "Para cubrir"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8075,7 +8075,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado",
         "seccion": "Base",
         "cantidad": 200,
@@ -8084,7 +8084,7 @@
         "opcional": "Sin azúcar"
       },
       {
-        "idIngrediente": "ING-0058",
+        "idIngrediente": "ING-0055",
         "textoOriginal": "Claras de huevo",
         "seccion": "Base",
         "cantidad": 3,
@@ -8093,7 +8093,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras molidas",
         "preparacion": "molidas",
         "seccion": "Base",
@@ -8103,7 +8103,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8112,7 +8112,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0054",
+        "idIngrediente": "ING-0051",
         "textoOriginal": "Chocolate 90%",
         "seccion": "Decoración",
         "cantidad": 40,
@@ -8226,7 +8226,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 5,
@@ -8235,7 +8235,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 150,
@@ -8244,7 +8244,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 25,
@@ -8253,7 +8253,7 @@
         "opcional": "En polvo"
       },
       {
-        "idIngrediente": "ING-0088",
+        "idIngrediente": "ING-0083",
         "textoOriginal": "Harina de coco",
         "seccion": "Secos",
         "cantidad": 2,
@@ -8262,7 +8262,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 2,
@@ -8271,7 +8271,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8280,7 +8280,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -8289,7 +8289,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua tibia",
         "preparacion": "tibia",
         "seccion": "Hidratación",
@@ -8299,7 +8299,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0183",
+        "idIngrediente": "ING-0166",
         "textoOriginal": "Vinagre de manzana",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8413,7 +8413,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 4,
@@ -8422,7 +8422,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Lino molido",
         "preparacion": "molido",
         "seccion": "Semillas",
@@ -8432,7 +8432,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0052",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Chía",
         "seccion": "Semillas",
         "cantidad": 30,
@@ -8441,7 +8441,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 40,
@@ -8450,7 +8450,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 1,
@@ -8459,7 +8459,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -8468,7 +8468,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8477,7 +8477,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -8486,7 +8486,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua tibia",
         "preparacion": "tibia",
         "seccion": "Hidratación",
@@ -8592,7 +8592,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 4,
@@ -8601,7 +8601,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 120,
@@ -8610,7 +8610,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0088",
+        "idIngrediente": "ING-0083",
         "textoOriginal": "Harina de coco",
         "seccion": "Secos",
         "cantidad": 25,
@@ -8619,7 +8619,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 1,
@@ -8628,7 +8628,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 2,
@@ -8637,7 +8637,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal fina",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8646,7 +8646,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 3,
@@ -8655,7 +8655,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua tibia",
         "preparacion": "tibia",
         "seccion": "Hidratación",
@@ -8665,7 +8665,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8674,7 +8674,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0162",
+        "idIngrediente": "ING-0151",
         "textoOriginal": "Sal gruesa",
         "seccion": "Terminacion",
         "cantidad": 1,
@@ -8683,7 +8683,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0007",
+        "idIngrediente": "ING-0006",
         "textoOriginal": "Aceitunas",
         "seccion": "Terminacion",
         "cantidad": 8,
@@ -8797,7 +8797,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Lino molido",
         "preparacion": "molido",
         "seccion": "Semillas",
@@ -8807,7 +8807,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0167",
+        "idIngrediente": "ING-0154",
         "textoOriginal": "Semillas de girasol",
         "seccion": "Semillas",
         "cantidad": 40,
@@ -8816,7 +8816,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0170",
+        "idIngrediente": "ING-0156",
         "textoOriginal": "Sésamo",
         "seccion": "Semillas",
         "cantidad": 30,
@@ -8825,7 +8825,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0052",
+        "idIngrediente": "ING-0049",
         "textoOriginal": "Chía",
         "seccion": "Semillas",
         "cantidad": 20,
@@ -8834,7 +8834,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8843,7 +8843,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -8852,7 +8852,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -8861,7 +8861,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Hidratación",
         "cantidad": 180,
@@ -8975,7 +8975,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 100,
@@ -8984,7 +8984,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0170",
+        "idIngrediente": "ING-0156",
         "textoOriginal": "Sésamo",
         "seccion": "Semillas",
         "cantidad": 40,
@@ -8993,7 +8993,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Lino molido",
         "preparacion": "molido",
         "seccion": "Semillas",
@@ -9003,7 +9003,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 1,
@@ -9012,7 +9012,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9021,7 +9021,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -9030,7 +9030,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -9039,7 +9039,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Base",
         "cantidad": 1,
@@ -9048,7 +9048,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero o pimentón",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9057,7 +9057,7 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0137"
+            "idIngrediente": "ING-0128"
           }
         ]
       }
@@ -9158,7 +9158,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0128",
+        "idIngrediente": "ING-0121",
         "textoOriginal": "Pasta de maní sin azúcar",
         "seccion": "Base",
         "cantidad": 160,
@@ -9167,7 +9167,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Base",
         "cantidad": 1,
@@ -9176,7 +9176,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 40,
@@ -9185,7 +9185,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -9194,7 +9194,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9203,7 +9203,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9212,7 +9212,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 0.5,
@@ -9221,7 +9221,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0053",
+        "idIngrediente": "ING-0050",
         "textoOriginal": "Chocolate 85% o 90%",
         "seccion": "Terminacion",
         "cantidad": 30,
@@ -9322,7 +9322,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 100,
@@ -9331,7 +9331,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Secos",
         "cantidad": 30,
@@ -9340,7 +9340,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0034",
+        "idIngrediente": "ING-0032",
         "textoOriginal": "Cacao amargo",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -9349,7 +9349,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Base",
         "cantidad": 1,
@@ -9358,7 +9358,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco o neutro",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -9367,12 +9367,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0113"
+            "idIngrediente": "ING-0107"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -9381,7 +9381,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9390,7 +9390,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9399,7 +9399,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 0.5,
@@ -9408,7 +9408,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0053",
+        "idIngrediente": "ING-0050",
         "textoOriginal": "Chocolate 85% o 90%",
         "seccion": "Terminacion",
         "cantidad": 30,
@@ -9518,7 +9518,7 @@
     "pensadaPara": "Especial",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 160,
@@ -9527,7 +9527,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras picadas",
         "preparacion": "picadas",
         "seccion": "Terminacion",
@@ -9537,7 +9537,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 2,
@@ -9546,7 +9546,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -9555,7 +9555,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -9564,7 +9564,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9573,7 +9573,7 @@
         "opcional": "Ralladura"
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9582,7 +9582,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9696,7 +9696,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 140,
@@ -9705,7 +9705,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0088",
+        "idIngrediente": "ING-0083",
         "textoOriginal": "Harina de coco",
         "seccion": "Secos",
         "cantidad": 20,
@@ -9714,7 +9714,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 2,
@@ -9723,7 +9723,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -9732,7 +9732,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -9741,7 +9741,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0158",
+        "idIngrediente": "ING-0148",
         "textoOriginal": "Romero",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9750,7 +9750,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9759,7 +9759,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0007",
+        "idIngrediente": "ING-0006",
         "textoOriginal": "Aceitunas",
         "seccion": "Terminacion",
         "cantidad": 8,
@@ -9768,7 +9768,7 @@
         "opcional": "Picadas y escurridas"
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Hidratación",
         "cantidad": 2,
@@ -9873,7 +9873,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Base",
         "cantidad": 120,
@@ -9882,7 +9882,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 2,
@@ -9891,7 +9891,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 2,
@@ -9900,7 +9900,7 @@
         "opcional": "Mejora textura"
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -9909,7 +9909,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9918,7 +9918,7 @@
         "opcional": "Ralladura"
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -9927,7 +9927,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -9936,7 +9936,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 0.5,
@@ -10041,7 +10041,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 100,
@@ -10050,7 +10050,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0148",
+        "idIngrediente": "ING-0139",
         "textoOriginal": "Psyllium",
         "seccion": "Estructura",
         "cantidad": 20,
@@ -10059,7 +10059,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Base",
         "cantidad": 1,
@@ -10068,7 +10068,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -10077,7 +10077,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10086,7 +10086,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 0.5,
@@ -10095,7 +10095,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua tibia",
         "preparacion": "tibia",
         "seccion": "Hidratación",
@@ -10105,7 +10105,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0117",
+        "idIngrediente": "ING-0111",
         "textoOriginal": "Orégano",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10210,7 +10210,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 120,
@@ -10219,7 +10219,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0034",
+        "idIngrediente": "ING-0032",
         "textoOriginal": "Cacao amargo",
         "seccion": "Sabor",
         "cantidad": 3,
@@ -10228,7 +10228,7 @@
         "opcional": "Sin azúcar"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 3,
@@ -10237,7 +10237,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco o neutro",
         "seccion": "Materia grasa",
         "cantidad": 3,
@@ -10246,12 +10246,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0113"
+            "idIngrediente": "ING-0107"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 3,
@@ -10260,7 +10260,7 @@
         "opcional": "Ajustar a gusto"
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -10269,7 +10269,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0053",
+        "idIngrediente": "ING-0050",
         "textoOriginal": "Chocolate 85% o 90%",
         "seccion": "Terminación",
         "cantidad": 40,
@@ -10283,7 +10283,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10379,7 +10379,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0102",
+        "idIngrediente": "ING-0096",
         "textoOriginal": "Manzanas verdes",
         "seccion": "Fruta",
         "cantidad": 2,
@@ -10388,7 +10388,7 @@
         "opcional": "En cubos"
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -10397,7 +10397,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -10406,7 +10406,7 @@
         "opcional": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Cubierta",
         "cantidad": 80,
@@ -10415,7 +10415,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces picadas",
         "preparacion": "picadas",
         "seccion": "Cubierta",
@@ -10425,7 +10425,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Cubierta",
         "cantidad": 30,
@@ -10434,7 +10434,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco o neutro",
         "seccion": "Materia grasa",
         "cantidad": 2,
@@ -10443,12 +10443,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0113"
+            "idIngrediente": "ING-0107"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -10544,7 +10544,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 5,
@@ -10553,7 +10553,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0028",
+        "idIngrediente": "ING-0026",
         "textoOriginal": "Bebida de coco sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 400,
@@ -10562,7 +10562,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 3,
@@ -10571,7 +10571,7 @@
         "opcional": "Ajustar"
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -10580,7 +10580,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -10589,7 +10589,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10598,7 +10598,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua caliente",
         "preparacion": "caliente",
         "seccion": "Baño María",
@@ -10695,7 +10695,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0128",
+        "idIngrediente": "ING-0121",
         "textoOriginal": "Pasta de maní sin azúcar",
         "seccion": "Base",
         "cantidad": 120,
@@ -10704,7 +10704,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Base",
         "cantidad": 60,
@@ -10713,7 +10713,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0034",
+        "idIngrediente": "ING-0032",
         "textoOriginal": "Cacao amargo",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -10722,7 +10722,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -10731,7 +10731,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco",
         "seccion": "Materia grasa",
         "cantidad": 1,
@@ -10740,7 +10740,7 @@
         "opcional": "Ayuda a unir"
       },
       {
-        "idIngrediente": "ING-0060",
+        "idIngrediente": "ING-0057",
         "textoOriginal": "Coco rallado extra",
         "seccion": "Terminación",
         "cantidad": 2,
@@ -10749,7 +10749,7 @@
         "opcional": "Para rebozar"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10836,7 +10836,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 140,
@@ -10845,7 +10845,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 3,
@@ -10854,7 +10854,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0005",
+        "idIngrediente": "ING-0004",
         "textoOriginal": "Aceite de oliva suave o neutro",
         "seccion": "Materia grasa",
         "cantidad": 3,
@@ -10863,12 +10863,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0113"
+            "idIngrediente": "ING-0107"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -10877,7 +10877,7 @@
         "opcional": "Ralladura y jugo"
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 1,
@@ -10886,7 +10886,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 3,
@@ -10895,7 +10895,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -10904,7 +10904,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras fileteadas",
         "preparacion": "fileteadas",
         "seccion": "Terminación",
@@ -11001,7 +11001,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0120",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Paltas maduras",
         "seccion": "Base",
         "cantidad": 2,
@@ -11010,7 +11010,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0034",
+        "idIngrediente": "ING-0032",
         "textoOriginal": "Cacao amargo",
         "seccion": "Sabor",
         "cantidad": 3,
@@ -11019,7 +11019,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0028",
+        "idIngrediente": "ING-0026",
         "textoOriginal": "Bebida de coco o almendra sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 80,
@@ -11028,12 +11028,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0014"
+            "idIngrediente": "ING-0013"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 3,
@@ -11042,7 +11042,7 @@
         "opcional": "Ajustar"
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11051,7 +11051,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11060,7 +11060,7 @@
         "opcional": "Jugo, ayuda a equilibrar"
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras picadas",
         "preparacion": "picadas",
         "seccion": "Terminación",
@@ -11139,7 +11139,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0135",
+        "idIngrediente": "ING-0126",
         "textoOriginal": "Peras firmes",
         "seccion": "Fruta",
         "cantidad": 4,
@@ -11148,7 +11148,7 @@
         "opcional": "Cortadas al medio"
       },
       {
-        "idIngrediente": "ING-0040",
+        "idIngrediente": "ING-0038",
         "textoOriginal": "Canela",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11157,7 +11157,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11166,7 +11166,7 @@
         "opcional": "Jugo y ralladura"
       },
       {
-        "idIngrediente": "ING-0114",
+        "idIngrediente": "ING-0108",
         "textoOriginal": "Nueces picadas",
         "preparacion": "picadas",
         "seccion": "Terminación",
@@ -11176,7 +11176,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco o neutro",
         "seccion": "Materia grasa",
         "cantidad": 1,
@@ -11185,12 +11185,12 @@
         "opcional": "",
         "alternativas": [
           {
-            "idIngrediente": "ING-0113"
+            "idIngrediente": "ING-0107"
           }
         ]
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 1,
@@ -11199,7 +11199,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0009",
+        "idIngrediente": "ING-0008",
         "textoOriginal": "Agua",
         "seccion": "Hidratación",
         "cantidad": 2,
@@ -11286,7 +11286,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Base",
         "cantidad": 100,
@@ -11295,7 +11295,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 2,
@@ -11304,7 +11304,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Secos",
         "cantidad": 40,
@@ -11313,7 +11313,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -11322,7 +11322,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0074",
+        "idIngrediente": "ING-0069",
         "textoOriginal": "Esencia de vainilla",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11331,7 +11331,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0054",
+        "idIngrediente": "ING-0051",
         "textoOriginal": "Chocolate 90%",
         "seccion": "Terminación",
         "cantidad": 40,
@@ -11340,7 +11340,7 @@
         "opcional": "Verificar sin leche"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11349,7 +11349,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0145",
+        "idIngrediente": "ING-0136",
         "textoOriginal": "Polvo de hornear",
         "seccion": "Repostería",
         "cantidad": 0.5,
@@ -11420,7 +11420,7 @@
     "nombre": "Crema helada de frutilla y coco sin leche",
     "estilo": "Postre frío",
     "dificultad": "Baja",
-    "proteinaPrincipal": "Frutas",
+    "proteinaPrincipal": "Vegetariana",
     "tecnicaPrincipal": "Procesado / freezer",
     "sinLacteos": "Sí",
     "hidratos": "No",
@@ -11445,7 +11445,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0081",
+        "idIngrediente": "ING-0076",
         "textoOriginal": "Frutillas",
         "seccion": "Fruta",
         "cantidad": 400,
@@ -11454,7 +11454,7 @@
         "opcional": "Frescas o congeladas"
       },
       {
-        "idIngrediente": "ING-0028",
+        "idIngrediente": "ING-0026",
         "textoOriginal": "Bebida de coco sin azúcar",
         "seccion": "Base sin lácteos",
         "cantidad": 250,
@@ -11463,7 +11463,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -11472,7 +11472,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -11481,7 +11481,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Terminación",
         "cantidad": 2,
@@ -11490,7 +11490,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras picadas",
         "preparacion": "picadas",
         "seccion": "Terminación",
@@ -11578,7 +11578,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0128",
+        "idIngrediente": "ING-0121",
         "textoOriginal": "Pasta de maní sin azúcar",
         "seccion": "Base",
         "cantidad": 150,
@@ -11587,7 +11587,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Base",
         "cantidad": 60,
@@ -11596,7 +11596,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Base",
         "cantidad": 50,
@@ -11605,7 +11605,7 @@
         "opcional": "Ayuda a compactar"
       },
       {
-        "idIngrediente": "ING-0073",
+        "idIngrediente": "ING-0068",
         "textoOriginal": "Eritritol",
         "seccion": "Endulzante",
         "cantidad": 2,
@@ -11614,7 +11614,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0003",
+        "idIngrediente": "ING-0002",
         "textoOriginal": "Aceite de coco",
         "seccion": "Materia grasa",
         "cantidad": 1,
@@ -11623,7 +11623,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0053",
+        "idIngrediente": "ING-0050",
         "textoOriginal": "Chocolate 85% o 90%",
         "seccion": "Cobertura",
         "cantidad": 80,
@@ -11637,7 +11637,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11724,7 +11724,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0194",
+        "idIngrediente": "ING-0177",
         "textoOriginal": "Zucchini",
         "seccion": "Base",
         "cantidad": 3,
@@ -11733,7 +11733,7 @@
         "opcional": "En rodajas finas"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -11742,7 +11742,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11751,7 +11751,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón dulce",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11760,7 +11760,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0013",
+        "idIngrediente": "ING-0012",
         "textoOriginal": "Ajo en polvo",
         "seccion": "Condimentos",
         "cantidad": 0.5,
@@ -11769,7 +11769,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Dip",
         "cantidad": 1,
@@ -11865,7 +11865,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras",
         "seccion": "Base",
         "cantidad": 200,
@@ -11874,7 +11874,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -11883,7 +11883,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón dulce",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11892,7 +11892,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0064",
+        "idIngrediente": "ING-0060",
         "textoOriginal": "Comino",
         "seccion": "Condimentos",
         "cantidad": 0.5,
@@ -11901,7 +11901,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11910,7 +11910,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Pimienta",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -11963,7 +11963,7 @@
     "nombre": "Huevos rellenos de atún y oliva sin mayonesa láctea",
     "estilo": "Snack proteico",
     "dificultad": "Baja",
-    "proteinaPrincipal": "Huevos y Pescado",
+    "proteinaPrincipal": "Mixta",
     "tecnicaPrincipal": "Hervido / armado",
     "sinLacteos": "Sí",
     "hidratos": "No",
@@ -11988,7 +11988,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 8,
@@ -11997,7 +11997,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0021",
+        "idIngrediente": "ING-0019",
         "textoOriginal": "Atún al natural",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -12006,7 +12006,7 @@
         "opcional": "Escurrido"
       },
       {
-        "idIngrediente": "ING-0007",
+        "idIngrediente": "ING-0006",
         "textoOriginal": "Aceitunas",
         "seccion": "Relleno",
         "cantidad": 8,
@@ -12015,7 +12015,7 @@
         "opcional": "Picadas"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -12024,7 +12024,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -12033,7 +12033,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -12042,7 +12042,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12050,7 +12050,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12136,7 +12136,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -12145,7 +12145,7 @@
         "opcional": "En bastones"
       },
       {
-        "idIngrediente": "ING-0193",
+        "idIngrediente": "ING-0176",
         "textoOriginal": "Zanahoria",
         "seccion": "Verduras",
         "cantidad": 1,
@@ -12154,7 +12154,7 @@
         "opcional": "Moderada"
       },
       {
-        "idIngrediente": "ING-0017",
+        "idIngrediente": "ING-0015",
         "textoOriginal": "Apio",
         "seccion": "Verduras",
         "cantidad": 2,
@@ -12163,7 +12163,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Dip",
         "cantidad": 2,
@@ -12172,7 +12172,7 @@
         "opcional": "Madura"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Dip",
         "cantidad": 1,
@@ -12181,7 +12181,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Dip",
         "cantidad": 1,
@@ -12190,7 +12190,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12198,7 +12198,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12275,7 +12275,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevos",
         "seccion": "Base",
         "cantidad": 8,
@@ -12284,7 +12284,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0077",
+        "idIngrediente": "ING-0072",
         "textoOriginal": "Espinaca",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -12293,7 +12293,7 @@
         "opcional": "Bien escurrida"
       },
       {
-        "idIngrediente": "ING-0108",
+        "idIngrediente": "ING-0102",
         "textoOriginal": "Morrón",
         "seccion": "Relleno",
         "cantidad": 0.5,
@@ -12302,7 +12302,7 @@
         "opcional": "Picado"
       },
       {
-        "idIngrediente": "ING-0046",
+        "idIngrediente": "ING-0044",
         "textoOriginal": "Cebolla de verdeo",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -12311,7 +12311,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 1,
@@ -12320,7 +12320,7 @@
         "opcional": "Para molde"
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12328,7 +12328,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12423,7 +12423,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0141",
+        "idIngrediente": "ING-0132",
         "textoOriginal": "Pollo cocido desmenuzado",
         "seccion": "Base",
         "cantidad": 350,
@@ -12432,7 +12432,7 @@
         "opcional": "Sobras"
       },
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Base",
         "cantidad": 1,
@@ -12441,7 +12441,7 @@
         "opcional": "Rodajas gruesas"
       },
       {
-        "idIngrediente": "ING-0109",
+        "idIngrediente": "ING-0103",
         "textoOriginal": "Mostaza",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -12450,7 +12450,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -12459,7 +12459,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Aliño",
         "cantidad": 1,
@@ -12468,7 +12468,7 @@
         "opcional": "Jugo"
       },
       {
-        "idIngrediente": "ING-0136",
+        "idIngrediente": "ING-0127",
         "textoOriginal": "Perejil",
         "seccion": "Terminación",
         "cantidad": 1,
@@ -12477,7 +12477,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12485,7 +12485,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12562,7 +12562,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0030",
+        "idIngrediente": "ING-0028",
         "textoOriginal": "Berenjenas",
         "seccion": "Base",
         "cantidad": 2,
@@ -12571,7 +12571,7 @@
         "opcional": "En bastones"
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Rebozado",
         "cantidad": 70,
@@ -12580,7 +12580,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Base",
         "cantidad": 1,
@@ -12589,7 +12589,7 @@
         "opcional": "Para adherir"
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -12598,7 +12598,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón dulce",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -12607,7 +12607,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12615,7 +12615,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12710,7 +12710,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0091",
+        "idIngrediente": "ING-0086",
         "textoOriginal": "Jamón cocido natural",
         "seccion": "Base",
         "cantidad": 8,
@@ -12719,7 +12719,7 @@
         "opcional": "Verificar sin lácteos"
       },
       {
-        "idIngrediente": "ING-0119",
+        "idIngrediente": "ING-0113",
         "textoOriginal": "Palta",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -12728,7 +12728,7 @@
         "opcional": "En tiras"
       },
       {
-        "idIngrediente": "ING-0132",
+        "idIngrediente": "ING-0125",
         "textoOriginal": "Pepino",
         "seccion": "Relleno",
         "cantidad": 1,
@@ -12737,7 +12737,7 @@
         "opcional": "En bastones"
       },
       {
-        "idIngrediente": "ING-0098",
+        "idIngrediente": "ING-0093",
         "textoOriginal": "Limón",
         "seccion": "Sabor",
         "cantidad": 1,
@@ -12746,7 +12746,7 @@
         "opcional": "Jugo para la palta"
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Pimienta",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -12755,7 +12755,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0176",
+        "idIngrediente": "ING-0161",
         "textoOriginal": "Tomates cherry",
         "seccion": "Acompañamiento",
         "cantidad": 8,
@@ -12833,7 +12833,7 @@
     "pensadaPara": "Semana",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0130",
+        "idIngrediente": "ING-0123",
         "textoOriginal": "Pechuga de pollo",
         "seccion": "Base",
         "cantidad": 600,
@@ -12842,7 +12842,7 @@
         "opcional": "En bocados"
       },
       {
-        "idIngrediente": "ING-0090",
+        "idIngrediente": "ING-0085",
         "textoOriginal": "Huevo",
         "seccion": "Rebozado",
         "cantidad": 2,
@@ -12851,7 +12851,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0087",
+        "idIngrediente": "ING-0082",
         "textoOriginal": "Harina de almendra",
         "seccion": "Rebozado",
         "cantidad": 100,
@@ -12860,7 +12860,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0168",
+        "idIngrediente": "ING-0155",
         "textoOriginal": "Lino molido",
         "preparacion": "molido",
         "seccion": "Rebozado",
@@ -12870,7 +12870,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0139",
+        "idIngrediente": "ING-0130",
         "textoOriginal": "Pimentón dulce",
         "seccion": "Condimentos",
         "cantidad": 1,
@@ -12879,7 +12879,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0013",
+        "idIngrediente": "ING-0012",
         "textoOriginal": "Ajo en polvo",
         "seccion": "Condimentos",
         "cantidad": 0.5,
@@ -12888,7 +12888,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0004",
+        "idIngrediente": "ING-0003",
         "textoOriginal": "Aceite de oliva",
         "seccion": "Cocción",
         "cantidad": 2,
@@ -12897,7 +12897,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -12905,7 +12905,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0140",
+        "idIngrediente": "ING-0131",
         "textoOriginal": "Sal y pimienta",
         "seccion": "Condimentos",
         "cantidad": "A gusto",
@@ -13000,7 +13000,7 @@
     "pensadaPara": "Cualquiera",
     "ingredientes": [
       {
-        "idIngrediente": "ING-0167",
+        "idIngrediente": "ING-0154",
         "textoOriginal": "Semillas de girasol",
         "seccion": "Base",
         "cantidad": 60,
@@ -13009,7 +13009,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0165",
+        "idIngrediente": "ING-0153",
         "textoOriginal": "Semillas de calabaza",
         "seccion": "Base",
         "cantidad": 60,
@@ -13018,7 +13018,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0015",
+        "idIngrediente": "ING-0014",
         "textoOriginal": "Almendras picadas",
         "preparacion": "picadas",
         "seccion": "Base",
@@ -13028,7 +13028,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0053",
+        "idIngrediente": "ING-0050",
         "textoOriginal": "Chocolate 85% o 90%",
         "seccion": "Cobertura",
         "cantidad": 100,
@@ -13042,7 +13042,7 @@
         ]
       },
       {
-        "idIngrediente": "ING-0061",
+        "idIngrediente": "ING-0058",
         "textoOriginal": "Coco rallado sin azúcar",
         "seccion": "Sabor",
         "cantidad": 2,
@@ -13051,7 +13051,7 @@
         "opcional": ""
       },
       {
-        "idIngrediente": "ING-0161",
+        "idIngrediente": "ING-0150",
         "textoOriginal": "Sal",
         "seccion": "Condimentos",
         "cantidad": 1,
