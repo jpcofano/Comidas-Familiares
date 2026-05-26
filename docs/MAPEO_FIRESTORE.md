@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.8 (E5.2 — canonización de proteínas)
+> **Versión**: 1.6.9 (E5.3 — deuda UI importador parcial)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -1760,11 +1760,11 @@ Los filtros del listado de recetas en `/biblioteca` probablemente leen enums har
 
 ### 10.2 Deuda de UI en el importador
 
-1. **Contraste botones de sugerencia (E3.4.9)**: los botones no seleccionados muestran la categoría del ingrediente en `color: #888` — bajo contraste en pantallas con brillo reducido. Evaluar ajustar a `#555` o `#666`.
+1. ~~**Contraste botones de sugerencia (E3.4.9)**~~ ✅ **Resuelto en E5.3**: `color: #888` → `var(--muted-strong)` (`#4a3f37`).
 
-2. **Pluralización de unidades**: la lista de compras muestra `"3 u"` en lugar de `"3 unidades"`. El campo `cantidadLabel` usa la abreviatura canónica (`"u"`, `"cda"`, etc). Decidir si se expanden las abreviaturas al mostrar, o si las abreviaturas son el formato final.
+2. ~~**Pluralización de unidades**~~ ✅ **Resuelto en E5.3**: `formatearCantidadUnidad` / `pluralizarUnidad` en `src/lib/unidades.ts`. Aplicado en Compras, DetalleReceta e ImportarReceta. El dato almacenado (unidad canónica singular) no se tocó.
 
-3. **"A gusto" en vez de cantidad sin unidad**: cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos.
+3. **"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.
 
 ### 10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9
 
