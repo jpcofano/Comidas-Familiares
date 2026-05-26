@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.7.2 (E7.1 — campo fecha en el plan)
+> **Versión**: 1.7.3 (LIMPIEZA — §10.3/§10.4 cerrados: ING-0178 eliminado, REC-15xx verificadas)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -1806,20 +1806,34 @@ Los filtros del listado de recetas en `/biblioteca` probablemente leen enums har
 
 3. **"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.
 
-### 10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9
+### ~~10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9~~ ✅ CERRADO (v1.7.3)
 
-El doc `ING-0178` con `nombrePreferido: "Arroz"` y `ambiguo: true` fue creado por el importador antes de que E3.4.9 resolviera el loop de sugerencias. No se borra automáticamente. Dos opciones:
+~~El doc `ING-0178` con `nombrePreferido: "Arroz"` y `ambiguo: true` fue creado por el importador antes de que E3.4.9 resolviera el loop de sugerencias.~~
 
-- **Opción A**: eliminar en Firebase Console. Verificar primero que no haya referencias activas en recetas, planes o listas de compras (buscar `ING-0178` en las colecciones).
-- **Opción B**: completar sus dimensiones en `/biblioteca/catalogo` y mantenerlo si "Arroz" genérico tiene algún uso válido.
+**Resuelto:** JP eliminó el documento `ING-0178` desde la consola de Firebase, habiendo verificado previamente que no tenía referencias activas. Verificación independiente realizada en v1.7.3: `ING-0178` no existe en `scripts/seed-data/catalogo_ingredientes.json` (0 resultados), y ninguna receta del seed lo referencia (0 ocurrencias del string `ING-0178` en `recetas.json`). El ítem está cerrado — no hay residuo en ninguna colección conocida.
 
-Una vez aprendido "arroz" como sinónimo de "Arroz largo fino" vía E3.4.9, el matcher lo resuelve como `exacto` contra ese ingrediente — el genérico `ING-0178` queda inactivo para el importador pero sigue ocupando espacio en el catálogo.
+### ~~10.4 Recetas de prueba del importador — pendiente de limpiar~~ ✅ CERRADO (v1.7.3)
 
-### 10.4 Recetas de prueba del importador — pendiente de limpiar
+~~Durante el testing de E3.4.7, E3.4.8 y E3.4.9 se crearon recetas de prueba en el rango `REC-15xx` (ej. "Pollo de prueba E3.4.7" y similares). Pendiente identificar cuáles son de prueba y eliminarlas de Firestore.~~
 
-Durante el testing de E3.4.7, E3.4.8 y E3.4.9 se crearon recetas de prueba en el rango `REC-15xx` (ej. "Pollo de prueba E3.4.7" y similares). Pendiente identificar cuáles son de prueba y eliminarlas de Firestore.
+**Resuelto:** La suposición original era incorrecta. Verificación en v1.7.3 del rango completo `REC-15xx` (10 recetas): todas son recetas reales de tipo Snack con nombres de dominio válidos. La receta "Pollo de prueba E3.4.7" mencionada como ejemplo **no existe** en el seed ni en el catálogo. No hay nada que borrar.
 
-**Precaución:** verificar que no estén referenciadas en planes activos o entradas de historial antes de borrar.
+Inventario completo del rango verificado:
+
+| idReceta | nombreCanonico | tipoItem | proteinaPrincipal |
+|---|---|---|---|
+| REC-1501 | Chips de zucchini | Snack | Vegetariana |
+| REC-1502 | Almendras especiadas | Snack | Frutos secos |
+| REC-1503 | Huevos rellenos de atún | Snack | Huevos |
+| REC-1504 | Bastones crocantes | Snack | Vegetariana |
+| REC-1505 | Mini muffins de huevo | Snack | Huevos |
+| REC-1506 | Bocaditos de pollo | Snack | Pollo |
+| REC-1507 | Berenjenas crocantes | Snack | Huevos |
+| REC-1508 | Rollitos de jamón | Snack | Fiambre |
+| REC-1509 | Nuggets keto de pollo | Snack | Pollo |
+| REC-1510 | Pepitas de semillas y chocolate | Snack | Semillas |
+
+Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 
 ---
 
