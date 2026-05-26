@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { parseRecetaTxt, type ParsedReceta, type ParsedIngredienteRaw } from "../import/parseReceta";
@@ -8,6 +8,7 @@ import {
   invalidateCatalogCache, proximoIdIngrediente,
 } from "../data/ingredientes";
 import { proximoIdReceta, crearReceta } from "../data/recetas";
+import { getPromptLLM } from "../data/config";
 import { normalizeText } from "../lib/canonical";
 import { normalizarUnidad } from "../lib/unidades";
 
@@ -95,9 +96,22 @@ export function ImportarRecetaRoute() {
   const [categorias, setCategorias]         = useState<string[]>([]);
   const [cargandoCat, setCargandoCat]       = useState(false);
   const [guardado, setGuardado]             = useState<GuardadoState | null>(null);
+  const [promptLLM, setPromptLLM]           = useState("");
+  const [copiado, setCopiado]               = useState(false);
+
+  useEffect(() => {
+    getPromptLLM().then(setPromptLLM);
+  }, []);
 
   if (state.status !== "authenticated" || state.user.memberId !== "juanpablo") {
     return <Navigate to="/biblioteca" replace />;
+  }
+
+  async function handleCopiarPrompt() {
+    if (!promptLLM) return;
+    await navigator.clipboard.writeText(promptLLM);
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 2500);
   }
 
   // ─── Paso 1 → 2: parsear TXT + cargar catálogo ──────────────────────────
@@ -277,6 +291,9 @@ export function ImportarRecetaRoute() {
           onParsear={handleParsear}
           parseErrors={parseErrors}
           cargando={cargandoCat}
+          tienePrompt={!!promptLLM}
+          copiado={copiado}
+          onCopiarPrompt={handleCopiarPrompt}
         />
       )}
 
@@ -306,15 +323,51 @@ export function ImportarRecetaRoute() {
 
 function RenderPaso1({
   txt, onTxtChange, onParsear, parseErrors, cargando,
+  tienePrompt, copiado, onCopiarPrompt,
 }: {
   txt: string;
   onTxtChange: (v: string) => void;
   onParsear: () => void;
   parseErrors: string[];
   cargando: boolean;
+  tienePrompt: boolean;
+  copiado: boolean;
+  onCopiarPrompt: () => void;
 }) {
   return (
     <>
+      {/* Sección: copiar prompt para LLM */}
+      {tienePrompt && (
+        <div style={{
+          marginBottom: "1rem", padding: "0.75rem 1rem",
+          background: "var(--surface-alt, #f5f5f5)", borderRadius: "6px",
+          border: "1px solid var(--border, #e0e0e0)",
+        }}>
+          <p style={{ margin: "0 0 0.4rem", fontSize: "0.85rem", fontWeight: 600, color: "var(--text-strong, #222)" }}>
+            Copiar prompt para LLM
+          </p>
+          <p style={{ margin: "0 0 0.6rem", fontSize: "0.78rem", color: "var(--muted, #666)" }}>
+            Copiá este prompt, pegáselo a tu IA junto con la receta en texto libre, y traé el resultado acá.
+          </p>
+          <button
+            onClick={onCopiarPrompt}
+            style={{
+              padding: "0.35rem 0.9rem", fontSize: "0.82rem", fontWeight: 600,
+              border: "1px solid var(--primary, #1976d2)",
+              borderRadius: "4px", cursor: "pointer",
+              background: copiado ? "var(--ok-bg, #e8f5e9)" : "var(--surface, #fff)",
+              color: copiado ? "var(--ok-text, #2e7d32)" : "var(--primary, #1976d2)",
+              transition: "all 0.15s",
+            }}
+          >
+            {copiado ? "Copiado ✓" : "Copiar prompt"}
+          </button>
+          <p style={{ margin: "0.5rem 0 0", fontSize: "0.72rem", color: "var(--muted, #888)" }}>
+            Nota: el prompt está acoplado al formato exacto que este importador entiende. Si lo editás en Firestore y cambiás la estructura, el LLM puede devolver un TXT que el parser no reconozca.
+          </p>
+        </div>
+      )}
+
       <p className="meta" style={{ marginBottom: "0.75rem" }}>
         Pegá el TXT con el formato <code>#RECETA</code> / <code>#INGREDIENTES</code> / <code>#PASOS</code>.
       </p>
