@@ -4,8 +4,8 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.6.5 (E4.2.1 — voto siempre de los 4 miembros)
-> **Fecha**: 2026-05-25
+> **Versión**: 1.6.6 (E4.4 — guard de cocinar por asignaciones)
+> **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -260,6 +260,22 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.duodevicies Cambios en v1.6.6 (E4.4 — guard de cocinar por asignaciones)
+
+**Problema resuelto**: las rutas de cocinar no tenían guard de acceso. Un miembro no asignado a un plan podía navegar directamente a `/planes/:idPlan/cocinar/:idReceta` o `/planes/:idPlan/componentes` y ejecutar `marcarCocinada`. Ahora el acceso está controlado por `plan.asignaciones`, consistente con el dashboard (E4.1) y la lista de compras (E4.2).
+
+1. **Guard en `CocinarRoute`** (`src/routes/Cocinar.tsx`): en modo plan (cuando la URL tiene `idPlan`), después de cargar el plan, se verifica que el usuario sea JP **o** su `memberId` esté en `plan.asignaciones`. Si no cumple → `<Navigate to="/" replace />`. En modo libre (`/recetas/:id/cocinar`) el guard no aplica — no hay plan ni escritura en Firestore al finalizar.
+
+2. **Guard en `SeleccionarComponenteMenuRoute`** (`src/routes/SeleccionarComponenteMenu.tsx`): mismo check después de cargar el plan. Cubre el botón "Finalizar menú" (que llama a `marcarCocinada`).
+
+3. **Reutilización de la carga del plan**: ambas pantallas ya cargaban el plan con `getPlan(idPlan)`. El guard usa esa carga — no hay lectura extra a Firestore.
+
+4. **"Marcar Cocinada" cubierta**: las llamadas a `marcarCocinada` en ambas pantallas quedan protegidas por el guard que precede al render. No se necesita control adicional.
+
+5. **`/voto/:idPlan` no tocado**: la ruta de voto sigue abierta a los 4 miembros siempre (E4.2). El guard de cocinar no la roza.
+
+6. **Deuda anotada (no implementada)**: un enforcement real de estas restricciones iría en `firestore.rules` — hoy la barrera vive solo en cliente, consistente con el resto de la app (ver §3.6).
 
 ### 1.2.ter Cambios en v1.3 (realtime + offline)
 
@@ -1268,12 +1284,13 @@ El lenguaje de Firestore Security Rules es restringido — no es JavaScript. Las
 | `home` | `/` | ✅ | stub | ✅ E3.1 |
 | `recetas` (biblioteca) | `/biblioteca` | ✅ | ❌ | ✅ E3.2 |
 | `detalle receta` | `/recetas/:id` | ✅ | ✅ | ✅ E3.3 |
-| `cocinar` | `/recetas/:id/cocinar` o `/planes/:idPlan/cocinar/:idReceta` | ✅ | ✅ | ✅ E3.5 |
+| `cocinar (libre)` | `/recetas/:id/cocinar` | ✅ | ✅ | ✅ E3.5 |
+| `cocinar (plan)` | `/planes/:idPlan/cocinar/:idReceta` | ✅ | ✅ solo asignados (E4.4) | ✅ E3.5 |
 | `importar receta` | `/biblioteca/importar` | ✅ | ❌ | ✅ E3.4.6 |
 | `menus` (biblioteca tab) | `/biblioteca?tab=menus` | ✅ | ❌ | ✅ E3.2 |
 | `menuDetalle` | `/menus/:id` | ✅ | ❌ | ✅ v1.5.5 |
 | `menuImportar` | `/menus/importar` | ✅ | ❌ | ✅ E2.5 |
-| `componentes menú` | `/planes/:idPlan/componentes` | ✅ | ❌ | ✅ E3.5 |
+| `componentes menú` | `/planes/:idPlan/componentes` | ✅ | ✅ solo asignados (E4.4) | ✅ E3.5 |
 | `compras` | `/compras` | ✅ | ✅ | ✅ E3.4 |
 | `catálogo de ingredientes` | `/biblioteca/catalogo` | ✅ | ❌ | ✅ E3.4.8 |
 | `voto` / `evaluar` | `/voto/:idPlan` | ✅ | ✅ E4.2 | ✅ E3.6 |
