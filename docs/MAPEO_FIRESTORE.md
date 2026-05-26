@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.7.0 (E6.1 — PWA instalable)
+> **Versión**: 1.7.1 (E6.1.1 — splash iOS + E6.2 en espera)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -260,6 +260,14 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.duovicies Cambios en v1.7.1 (E6.1.1 — splash iOS + E6.2 en espera)
+
+1. **Splash screens de iOS activadas** (`index.html`): 9 etiquetas `<link rel="apple-touch-startup-image">` con `media` queries, una por resolución de iPhone. Dimensiones de cada PNG verificadas contra las especificaciones del dispositivo — todas coinciden. Cubre modelos 8/7/SE hasta 15 Pro Max y 16 estándar/Plus. **Sin cobertura**: iPhone 16 Pro (402×874 @3x) y 16 Pro Max (440×956 @3x) — caen al `background_color: #fdfaf6` del manifest.
+
+2. **`public/splash/splash-square-{1024,2048}.png`** — huérfanos: no referenciados en manifest ni en `index.html`. Son assets que la herramienta de generación produjo de más (1024 = tamaño App Store icon; 2048 = master de alta resolución). JP decide si borrarlos.
+
+3. **E6.2 — push notifications**: en espera de decisión de JP. Ver §7.6.
 
 ### 1.2.unvicies Cambios en v1.7.0 (E6.1 — PWA instalable)
 
@@ -1643,7 +1651,8 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 ### 7.6 Etapa 6 — PWA pulida
 
 - **`PROMPT_E6.1_pwa_instalable.md`** ✅ **CERRADO**: manifest.json + 8 íconos PNG ya en `public/`. Service worker generado con `vite-plugin-pwa` (Workbox). App instalable, shell offline, actualizaciones automáticas. Ver §1.2.unvicies.
-- **`PROMPT_E6.2_push_notifications.md`** ⏳ pendiente: Firebase Cloud Messaging para "JP te asignó la Especial" o "Pendiente de voto" (requiere Blaze para mensajes desde el server; alternativa: cliente-a-cliente vía Firestore listener).
+- **`PROMPT_E6.1.1_splash_ios.md`** ✅ **CERRADO**: 9 splash screens de iPhone activadas en `index.html`. Ver §1.2.duovicies.
+- **`PROMPT_E6.2_push_notifications.md`** ⏳ **EN ESPERA — decisión pendiente de JP**: Firebase Cloud Messaging (requiere plan Blaze de Firebase, de pago) vs. alternativa cliente-a-cliente vía Firestore listener (gratuita, más limitada — no llega si la app está cerrada). JP decide cuál usar antes de que se escriba el prompt.
 
 ### 7.7 Etapa 7 — Features nuevos (D.3 y más)
 
