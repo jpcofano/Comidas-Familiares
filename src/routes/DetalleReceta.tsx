@@ -7,6 +7,7 @@ import { subscribeToPlanesActivos } from "../data/planes";
 import { elegirComoEspecial, sumarComoExtra, sumarComoEnProceso } from "../data/planes";
 import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
+import { pluralizarUnidad } from "../lib/unidades";
 import type { Receta, Plan } from "../types/models";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
@@ -328,7 +329,8 @@ export function DetalleRecetaRoute() {
                     }}>
                       <span>{ing.textoOriginal}{ing.opcional ? " (opcional)" : ""}</span>
                       <span style={{ color: "var(--muted-strong)", flexShrink: 0, marginLeft: "var(--space-3)" }}>
-                        {ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "")} {ing.unidad ?? ""}
+                        {ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "")}{" "}
+                        {pluralizarUnidad(ing.unidad ?? "", ing.cantidadMax ?? ing.cantidadMin ?? 1)}
                       </span>
                     </li>
                   ))}

@@ -7,6 +7,7 @@ import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/
 import { getSemanaActual } from "../lib/fechas";
 import { agruparPorReceta } from "../lib/compras";
 import { ORDEN_GONDOLA } from "../lib/catalogo";
+import { formatearCantidadUnidad } from "../lib/unidades";
 import type { ListaCompras, ItemCompra, Plan, MiembroId } from "../types/models";
 
 type ModoVista = "gondola" | "receta";
@@ -59,7 +60,9 @@ function ItemRow({
           </span>
           {item.cantidadLabel && (
             <span className="meta" style={{ marginLeft: "var(--space-2)" }}>
-              {item.cantidadLabel}
+              {item.cantidadTotal > 0
+                ? formatearCantidadUnidad(item.cantidadTotal, item.unidad)
+                : item.cantidadLabel}
             </span>
           )}
         </div>
@@ -87,7 +90,7 @@ function ItemRow({
           {item.aportes.map((a, i) => (
             <p key={i} className="meta" style={{ margin: "2px 0" }}>
               {a.tipoAporte === "alternativa" ? "↳" : "·"} {a.textoOriginal}
-              {a.cantidad > 0 ? ` (${a.cantidad} ${a.unidad})` : ""} — {a.nombreReceta}
+              {a.cantidad > 0 ? ` (${formatearCantidadUnidad(a.cantidad, a.unidad)})` : ""} — {a.nombreReceta}
               {a.tipoAporte === "alternativa" && a.alternativaCon?.length
                 ? ` · alt: ${a.alternativaCon.join(", ")}` : ""}
             </p>

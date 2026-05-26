@@ -69,6 +69,41 @@ const TABLA: Record<string, string | null> = {
   "cdita/diente":       null,
 };
 
+// ─── Display helpers ──────────────────────────────────────────────────────────
+
+// Unidades canónicas que pluralizan al mostrar (cantidad > 1).
+// Las métricas científicas (g, kg, ml, l) no se listan aquí → se devuelven tal cual.
+const PLURALES: Record<string, string> = {
+  cda:    "cdas",
+  cdita:  "cditas",
+  unidad: "unidades",
+  taza:   "tazas",
+  diente: "dientes",
+  rama:   "ramas",
+  ramita: "ramitas",
+  grande: "grandes",
+  lata:   "latas",
+  bife:   "bifes",
+  feta:   "fetas",
+  hoja:   "hojas",
+  pizca:  "pizcas",
+  punado: "punados",
+  atado:  "atados",
+};
+
+/** Devuelve la forma (singular o plural) de una unidad canónica para mostrar. */
+export function pluralizarUnidad(unidad: string, cantidad: number): string {
+  if (!unidad) return "";
+  if (cantidad <= 1) return unidad;
+  return PLURALES[unidad] ?? unidad;
+}
+
+/** Formatea cantidad + unidad para mostrar (sin tocar el dato almacenado). */
+export function formatearCantidadUnidad(cantidad: number, unidad: string): string {
+  const u = pluralizarUnidad(unidad, cantidad);
+  return u ? `${cantidad} ${u}` : String(cantidad);
+}
+
 export function normalizarUnidad(raw: string | null | undefined): string | null {
   if (raw == null || raw === "") return null;
   const norm = raw.toLowerCase().trim();

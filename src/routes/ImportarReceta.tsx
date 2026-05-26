@@ -10,7 +10,7 @@ import {
 import { proximoIdReceta, crearReceta } from "../data/recetas";
 import { getPromptLLM } from "../data/config";
 import { normalizeText } from "../lib/canonical";
-import { normalizarUnidad } from "../lib/unidades";
+import { normalizarUnidad, pluralizarUnidad } from "../lib/unidades";
 
 // ─── Tipos locales ────────────────────────────────────────────────────────────
 
@@ -480,7 +480,10 @@ function FilaRow({
   const titulo = raw.preparacion
     ? `${raw.textoOriginal} (${raw.preparacion})`
     : raw.textoOriginal;
-  const unidadLabel = [raw.cantidadLabel, raw.unidad].filter(Boolean).join(" ");
+  const unidadLabel = [
+    raw.cantidadLabel,
+    raw.unidad ? pluralizarUnidad(raw.unidad, raw.cantidadMin ?? 1) : undefined,
+  ].filter(Boolean).join(" ");
 
   return (
     <div style={{ padding: "0.6rem 0.75rem", border: "1px solid #e0e0e0", borderRadius: "6px", background: "#fafafa" }}>
@@ -515,7 +518,7 @@ function FilaRow({
                 }}
               >
                 <strong>{ing.nombrePreferido}</strong>
-                <span style={{ color: "#888", marginLeft: "0.5rem", fontWeight: 400 }}>{ing.categoria}</span>
+                <span style={{ color: "var(--muted-strong)", marginLeft: "0.5rem", fontWeight: 400 }}>{ing.categoria}</span>
               </button>
             );
           })}
