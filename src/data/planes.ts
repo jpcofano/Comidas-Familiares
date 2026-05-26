@@ -6,6 +6,7 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
+  deleteField,
   onSnapshot,
   query,
   where,
@@ -21,6 +22,7 @@ import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { calcularPromedio, calcularResultadoTextual, proximoIdHistorial } from "../lib/voto";
+import { getSemanaFin } from "../lib/fechas";
 import { sincronizarListaDesdeFirestore, limpiarAportesDelPlan } from "./compras";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
@@ -619,5 +621,41 @@ export async function forzarCierreEvaluacion(
   } catch (e) {
     if (e instanceof TransactionAbort) return err(e.code, e.message, e);
     return err("firestore-error", "Error al cerrar la evaluación. Probá de nuevo.", e);
+  }
+}
+
+// ─── E7.1 — Fecha del plan ─────────────────────────────────────────────────────
+
+/**
+ * Asigna o quita el día de un plan.
+ * @param fecha  "YYYY-MM-DD" dentro de la semana del plan, o null para quitar el día.
+ */
+export async function asignarFechaPlan(
+  idPlan: string,
+  fecha: string | null,
+): Promise<Result<void, AppError>> {
+  try {
+    const planRef = doc(db, "planes", idPlan);
+    const snap = await getDoc(planRef);
+    if (!snap.exists()) return err("plan-not-found", `Plan ${idPlan} no encontrado.`);
+
+    if (fecha !== null) {
+      const plan = snap.data() as Plan;
+      const semanaFin = getSemanaFin(plan.semanaInicio);
+      if (fecha < plan.semanaInicio || fecha > semanaFin) {
+        return err(
+          "fecha-fuera-de-semana",
+          `La fecha ${fecha} no pertenece a la semana del plan (${plan.semanaInicio} – ${semanaFin}).`,
+        );
+      }
+      await updateDoc(planRef, { fecha });
+    } else {
+      await updateDoc(planRef, { fecha: deleteField() });
+    }
+
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo asignar la fecha al plan.";
+    return err("firestore-error", msg, e);
   }
 }

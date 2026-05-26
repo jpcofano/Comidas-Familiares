@@ -4,7 +4,7 @@
 >
 > Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.7.1 (E6.1.1 — splash iOS + E6.2 en espera)
+> **Versión**: 1.7.2 (E7.1 — campo fecha en el plan)
 > **Fecha**: 2026-05-26
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -260,6 +260,16 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 3. **`VotoProgress`** (`src/routes/Voto.tsx`): la lista de votantes se muestra sobre `MIEMBRO_IDS` (siempre los 4), no sobre `plan.asignaciones`.
 
 4. **`MemberDashboard`** (`src/routes/MemberDashboard.tsx`): cambiado de `subscribeToPlanesActivosMiembro` (filtra por `asignaciones array-contains`) a `subscribeToPlanesActivos` (todos los planes activos). "Mi semana" filtra client-side por `asignaciones.includes(memberId)` (quién cocina). "Pendientes de evaluar" filtra por `estado === "Cocinada" && !votos[memberId]` sobre **todos** los planes — cualquier miembro ve los planes que le falta evaluar, aunque no los cocine.
+
+### 1.2.tervicies Cambios en v1.7.2 (E7.1 — campo fecha en el plan)
+
+1. **Campo `fecha?: string`** agregado al tipo `Plan` (`src/types/models.ts`). Formato `"YYYY-MM-DD"`, consistente con `semanaInicio` y `semanaFin`. Opcional (`?`) — los planes existentes sin el campo son válidos ("sin día asignado").
+
+2. **`asignarFechaPlan(idPlan, fecha)`** (`src/data/planes.ts`): función nueva. Valida que la fecha caiga dentro de `semanaInicio..getSemanaFin(semanaInicio)`. Pasar `null` borra el campo (`deleteField()`). Devuelve `Result<void, AppError>`. No toca ningún otro campo del plan. Las 5 funciones de creación no se modificaron — un plan nace sin día.
+
+3. **UI de asignación pendiente**: el selector de día y el `WeekStrip` que lo muestran llegan con el rediseño de Home (handoff v2, prompt aparte). E7.1 solo prepara el dato.
+
+4. **Migración**: no-op. Los planes existentes sin `fecha` son válidos; ninguna pantalla asume que el campo existe.
 
 ### 1.2.duovicies Cambios en v1.7.1 (E6.1.1 — splash iOS + E6.2 en espera)
 
@@ -667,7 +677,14 @@ async function deriveMenuMetadata(menu: Menu): Promise<MenuDerived> {
 
 ```typescript
 componentesCocinados?: string[]   // array de idReceta ya cocinados; solo existe en plan-menú
+fecha?: string                    // "YYYY-MM-DD" — día asignado al plan (E7.1); opcional
+                                  // debe caer dentro de semanaInicio..semanaFin
+                                  // varios planes pueden compartir día (sin unicidad)
+                                  // planes viejos sin el campo son válidos ("sin día")
+                                  // UI de asignación llega con el rediseño de Home
 ```
+
+**`asignarFechaPlan(idPlan, fecha)` (E7.1, `src/data/planes.ts`):** actualiza solo el campo `fecha`. Valida que la fecha caiga dentro de la semana del plan. Pasar `null` borra el campo con `deleteField()`. No valida unicidad de día.
 
 **Auto-transición de estado (v1.5.1):** la transición `Compra pendiente → Compra lista` no es manual — la dispara `toggleItemYaTengo` al tildar el último ítem de ese plan. Si JP destilda un ítem, el plan retrocede a `Compra pendiente`. La transición contraria (`Compra lista → Cocinada`) es explícita: para plan-receta, botón "Finalizar cocción" en la pantalla de cocinar; para plan-menú, botón "Finalizar menú" en `SeleccionarComponenteMenu` (v1.5.3). `marcarComponenteCocinado` avanza el plan solo a `"Cocinando"`, nunca a `"Cocinada"`.
 

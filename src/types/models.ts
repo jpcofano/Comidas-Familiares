@@ -254,6 +254,7 @@ export interface Plan {
   comentariosPlan: Record<MiembroId, string>;
   datosCocinero: DatosCocinero | null;
   componentesCocinados?: string[];
+  fecha?: string;               // "YYYY-MM-DD" — día asignado (opcional, dentro de semanaInicio..semanaFin)
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────
