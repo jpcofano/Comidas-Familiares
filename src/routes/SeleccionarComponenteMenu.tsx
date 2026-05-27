@@ -93,7 +93,7 @@ export function SeleccionarComponenteMenuRoute() {
     return (
       <div key={c.idReceta} style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "var(--space-3) 0", borderBottom: "1px solid var(--line)",
+        padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)",
         gap: "var(--space-3)", opacity: opcional ? 0.75 : 1,
       }}>
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -174,7 +174,7 @@ export function SeleccionarComponenteMenuRoute() {
       {obligatorios.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
           <p style={{
-            fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)", textTransform: "uppercase",
+            fontSize: "var(--fs-xs)", fontWeight: "var(--fw-semibold)", textTransform: "uppercase",
             letterSpacing: ".05em", color: "var(--muted)", margin: "0 0 var(--space-1)",
           }}>
             Obligatorios
@@ -187,7 +187,7 @@ export function SeleccionarComponenteMenuRoute() {
       {opcionales.length > 0 && (
         <div className="card">
           <p style={{
-            fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)", textTransform: "uppercase",
+            fontSize: "var(--fs-xs)", fontWeight: "var(--fw-semibold)", textTransform: "uppercase",
             letterSpacing: ".05em", color: "var(--muted)", margin: "0 0 var(--space-1)",
           }}>
             Opcionales

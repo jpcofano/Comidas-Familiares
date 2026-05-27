@@ -25,7 +25,7 @@ function Toast({ msg, onDone }: { msg: ToastMsg; onDone: () => void }) {
       background: msg.ok ? "var(--ok-bg)" : "var(--err-bg)",
       color: msg.ok ? "var(--ok-text)" : "var(--err-text)",
       padding: "10px 20px", borderRadius: "var(--radius-md)",
-      boxShadow: "0 4px 12px rgba(0,0,0,.18)", fontSize: "var(--fs-sm)",
+      boxShadow: "var(--shadow-toast)", fontSize: "var(--fs-sm)",
       zIndex: 9999, maxWidth: "90vw", textAlign: "center",
     }}>
       {msg.text}
@@ -219,7 +219,7 @@ export function DetalleMenuRoute() {
       </div>
 
       {/* Metadata del menú */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+      <div style={{ background: "var(--surface-strong)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "14px 18px", marginBottom: "var(--space-3)" }}>
         <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap", marginBottom: "var(--space-2)" }}>
           <span style={{
             fontSize: "var(--fs-xs)", padding: "2px 8px",
@@ -277,7 +277,7 @@ export function DetalleMenuRoute() {
       </div>
 
       {/* Componentes */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+      <div style={{ background: "var(--surface-strong)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "14px 18px", marginBottom: "var(--space-3)" }}>
         <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
           Componentes ({menu.componentes.length})
         </p>
@@ -334,7 +334,7 @@ export function DetalleMenuRoute() {
 
       {/* Notas adicionales */}
       {(menu.notas || menu.notasOcasion || menu.paraJuanPablo || menu.paraFamilia) && (
-        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+        <div style={{ background: "var(--surface-strong)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "14px 18px", marginBottom: "var(--space-3)" }}>
           {menu.paraJuanPablo && (
             <p style={{ fontSize: "var(--fs-sm)", margin: "0 0 var(--space-2)" }}>
               <span style={{ color: "var(--muted)", fontSize: "var(--fs-xs)" }}>Para JP: </span>
@@ -364,7 +364,7 @@ export function DetalleMenuRoute() {
 
       {/* Acciones JP */}
       {isJP && (
-        <div className="card" style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+        <div style={{ background: "var(--surface-strong)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "14px 18px", display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
           <ActionBtn
             label="Elegir como Especial"
             puede={elegEspecial.puede}
