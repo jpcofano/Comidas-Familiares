@@ -3,11 +3,10 @@
 
 import { GondolaChip } from "./GondolaChip";
 import { IngredienteChip } from "./IngredienteChip";
-import type { Seccion } from "../lib/gondolas";
 import type { ItemCompra } from "../types/models";
 
 interface GondolaCardV2Props {
-  seccion: Seccion;
+  seccion: string;
   items: ItemCompra[];
   onToggle: (itemId: string) => void;
 }

@@ -47,3 +47,58 @@ export const ORDEN_GONDOLA = [
 export type CategoriaIngrediente = typeof CATEGORIAS_INGREDIENTE[number];
 export type RolNutricional = typeof ROLES_NUTRICIONALES[number];
 export type SeccionGondola = typeof ORDEN_GONDOLA[number];
+
+// ─── Secciones de góndola con metadata visual ─────────────────────────────────
+
+export interface SeccionMeta {
+  color: string;  // oklch para mantener armonía con el brand
+  letra: string;  // 1 char para el chip
+}
+
+export const SECCIONES_META: Record<string, SeccionMeta> = {
+  'Verdulería':   { color: 'oklch(0.62 0.07 130)', letra: 'V' },
+  'Carnicería':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Lácteos':      { color: 'oklch(0.78 0.04 90)',  letra: 'L' },
+  'Almacén':      { color: 'oklch(0.62 0.08 60)',  letra: 'A' },
+  'Panadería':    { color: 'oklch(0.65 0.07 50)',  letra: 'P' },
+  // Raw Firestore values (mapeados igual para uso directo)
+  'Verduleria':   { color: 'oklch(0.62 0.07 130)', letra: 'V' },
+  'Carniceria':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Pescaderia':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Fiambreria':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Lacteos y frescos': { color: 'oklch(0.78 0.04 90)', letra: 'L' },
+  'Almacen / secos':   { color: 'oklch(0.62 0.08 60)', letra: 'A' },
+  'Panaderia':    { color: 'oklch(0.65 0.07 50)',  letra: 'P' },
+  'Bazar / otros':     { color: 'oklch(0.62 0.08 60)', letra: 'A' },
+  'Despensa / otros':  { color: 'var(--muted)',         letra: '·' },
+};
+
+export function getSeccionMeta(seccion: string): SeccionMeta {
+  return SECCIONES_META[seccion] ?? SECCIONES_META['Despensa / otros'];
+}
+
+/**
+ * Agrupa items por sección de góndola en orden canónico de ORDEN_GONDOLA.
+ * El campo de sección lo configurás vos vía el getter.
+ * Útil para Compras (item.seccionGondola) y para Receta (ing.seccion).
+ */
+export function groupByGondola<T>(
+  items: T[],
+  getSeccion: (item: T) => string,
+): Array<{ seccion: string; items: T[] }> {
+  const map = new Map<string, T[]>();
+  for (const it of items) {
+    const sec = getSeccion(it) || 'Despensa / otros';
+    if (!map.has(sec)) map.set(sec, []);
+    map.get(sec)!.push(it);
+  }
+  const out: Array<{ seccion: string; items: T[] }> = [];
+  for (const sec of ORDEN_GONDOLA) {
+    if (map.has(sec)) out.push({ seccion: sec, items: map.get(sec)! });
+  }
+  // No reconocidas al final
+  for (const [sec, secItems] of map) {
+    if (!ORDEN_GONDOLA.includes(sec as SeccionGondola)) out.push({ seccion: sec, items: secItems });
+  }
+  return out;
+}

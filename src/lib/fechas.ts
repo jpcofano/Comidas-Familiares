@@ -1,3 +1,15 @@
+const MES_CORTO = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'] as const;
+
+/** Input: "2026-05-26" (lunes). Output: "26 may – 1 jun" */
+export function formatearRangoSemana(semanaInicio: string): string {
+  const lunes = new Date(semanaInicio + "T12:00:00");
+  const domingo = new Date(lunes);
+  domingo.setDate(lunes.getDate() + 6);
+  const d1 = lunes.getDate(), m1 = MES_CORTO[lunes.getMonth()];
+  const d2 = domingo.getDate(), m2 = MES_CORTO[domingo.getMonth()];
+  return m1 === m2 ? `${d1} – ${d2} ${m1}` : `${d1} ${m1} – ${d2} ${m2}`;
+}
+
 export function getSemanaActual(): string {
   return getLunesLocal(new Date());
 }

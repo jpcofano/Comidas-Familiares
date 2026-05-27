@@ -345,10 +345,10 @@ export function PlanCard({
           </p>
           <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-2)" }}>
             <button
-              className="btn btn-primary"
+              className="btn btn-danger"
               onClick={handleDescartar}
               disabled={busy}
-              style={{ fontSize: "var(--fs-sm)", background: "var(--accent)", flex: 1 }}
+              style={{ fontSize: "var(--fs-sm)", flex: 1 }}
             >
               {busy ? "…" : "Confirmar"}
             </button>

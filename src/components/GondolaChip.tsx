@@ -1,14 +1,14 @@
 // src/components/GondolaChip.tsx — chip cuadrado con letra y color de sección
 
-import { SECCIONES, type Seccion } from "../lib/gondolas";
+import { getSeccionMeta } from "../lib/catalogo";
 
 interface GondolaChipProps {
-  seccion: Seccion;
-  size?: 18 | 22 | 26;
+  seccion: string;
+  size?: 16 | 18 | 20 | 22 | 26;
 }
 
 export function GondolaChip({ seccion, size = 22 }: GondolaChipProps) {
-  const meta = SECCIONES[seccion];
+  const meta = getSeccionMeta(seccion);
   return (
     <span
       aria-label={seccion}

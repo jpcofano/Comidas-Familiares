@@ -37,6 +37,12 @@ design-system/
 2. **Implementación.** Abrí `IMPLEMENTATION-v2.md` y pegale el contenido a Claude Code en una sesión abierta en el repo. Hace todo el trabajo.
 3. **QA.** Abrí los prototipos en `prototypes/<screen>/index.html` para comparar el resultado contra la referencia visual.
 
+## Estado del repo @ 4267df1 (último pull)
+
+✅ **Hecho:** Bloque 0 brand install (PlatoMark + LoginScreen + Header chip + PWA + tokens limpios). Componentes v2 extraídos del Home (WeekStrip, PlanCard, MemberAvatar, CompraProgress).
+
+🚧 **Pendiente:** 4 micro-fixes (`lang="es-AR"`, peso 600 de Inter, comentario stale, dup `public/splash/`). Y las pantallas grandes: Compras v2, Cocinar refactor, Home WeekStrip tweaks, Detalle de receta rewrite, Historial rewrite. Todo está en `IMPLEMENTATION-v2.md`.
+
 ## Decisiones cerradas en esta sesión
 
 - **Lista de compras** → variante C (recetas envueltas con chips). Por receta = default, por góndola = vista alterna. **Dentro de cada receta**, ingredientes agrupados por góndola en orden canónico (Verdulería → Carnicería → Lácteos → Almacén → Panadería).
@@ -48,11 +54,4 @@ design-system/
 
 ## Pendientes pre-v2 (de auditoría anterior)
 
-Ver `handoff/AUDIT.md`. Resumen P0:
-- Favicon sigue siendo el rayo morado de Vite.
-- `src/index.css` + `src/App.css` son scaffold de Vite y están pisando los tokens.
-- `--fw-semibold: 600` no existe en tokens (usado en Cocinar.tsx).
-- No hay PWA assets (manifest, icons, splashes).
-- LoginScreen sigue con `<ChefHat>`, no existe `src/brand/PlatoMark.tsx`.
-
-El prompt `IMPLEMENTATION-v2.md` los incluye al principio porque sin esos arreglos lo nuevo se va a ver morado.
+Ver `handoff/AUDIT.md`. **La mayor parte ya está aplicada en `4267df1`.** Lo que queda son micro-fixes que cubre el primer bloque de `IMPLEMENTATION-v2.md`.

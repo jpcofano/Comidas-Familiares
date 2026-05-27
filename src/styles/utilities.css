@@ -91,6 +91,15 @@
   background: var(--surface-alt);
 }
 
+.btn-danger {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+
 /* ============================================
    Meta text
    ============================================ */

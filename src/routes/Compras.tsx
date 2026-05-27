@@ -10,7 +10,7 @@ import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
 import { getSemanaActual } from "../lib/fechas";
-import { groupByGondola } from "../lib/gondolas";
+import { groupByGondola } from "../lib/catalogo";
 import { ProgressRing } from "../components/ProgressRing";
 import { RecetaCardV2 } from "../components/RecetaCardV2";
 import { GondolaCardV2 } from "../components/GondolaCardV2";
@@ -90,7 +90,7 @@ export function ComprasRoute() {
 
   // Vista por góndola: todos los items agrupados
   const porGondola = useMemo(
-    () => groupByGondola(itemsVisibles),
+    () => groupByGondola(itemsVisibles, (it) => it.seccionGondola),
     [itemsVisibles]
   );
 

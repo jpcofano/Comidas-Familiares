@@ -2,10 +2,9 @@
 // Chip 18px + nombre en uppercase 11px muted.
 
 import { GondolaChip } from "./GondolaChip";
-import type { Seccion } from "../lib/gondolas";
 
 interface IngredienteSubheaderProps {
-  seccion: Seccion;
+  seccion: string;
 }
 
 export function IngredienteSubheader({ seccion }: IngredienteSubheaderProps) {

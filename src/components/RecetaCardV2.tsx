@@ -2,7 +2,7 @@
 // Day badge izquierda · título + porciones + avatares · stamp "✓ Lista" cuando completa
 // Color band izquierdo por día · barrita de progreso al fondo.
 
-import { groupByGondola } from "../lib/gondolas";
+import { groupByGondola } from "../lib/catalogo";
 import { IngredienteSubheader } from "./IngredienteSubheader";
 import { IngredienteChip } from "./IngredienteChip";
 import { AvatarStack } from "./MemberAvatar";
@@ -29,7 +29,7 @@ interface RecetaCardV2Props {
 export function RecetaCardV2({ plan, items, onToggle }: RecetaCardV2Props) {
   const done = items.length > 0 && items.every((i) => i.yaTengo);
   const completedCount = items.filter((i) => i.yaTengo).length;
-  const grupos = groupByGondola(items);
+  const grupos = groupByGondola(items, (it) => it.seccionGondola);
 
   // Day badge info
   const fecha = plan.fecha ?? plan.fechaPrevistaComida;

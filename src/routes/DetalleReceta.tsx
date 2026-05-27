@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getReceta } from "../data/recetas";
@@ -7,7 +7,13 @@ import { subscribeToPlanesActivos } from "../data/planes";
 import { elegirComoEspecial, sumarComoExtra, sumarComoEnProceso } from "../data/planes";
 import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
-import { pluralizarUnidad } from "../lib/unidades";
+import { RecetaHero } from "../components/receta/RecetaHero";
+import { MetaCards } from "../components/receta/MetaCards";
+import { RecetaPill } from "../components/receta/RecetaPill";
+import { IngredientesPorGondola } from "../components/receta/IngredientesPorGondola";
+import { PasosPreview } from "../components/receta/PasosPreview";
+import { AccionesPlan } from "../components/receta/AccionesPlan";
+import { CocinarSticky } from "../components/receta/CocinarSticky";
 import type { Receta, Plan } from "../types/models";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
@@ -37,9 +43,7 @@ function Toast({ msg, onDone }: { msg: ToastMsg; onDone: () => void }) {
 // ─── Confirmación ─────────────────────────────────────────────────────────────
 
 function ConfirmDialog({
-  mensaje,
-  onConfirmar,
-  onCancelar,
+  mensaje, onConfirmar, onCancelar,
 }: {
   mensaje: string;
   onConfirmar: () => void;
@@ -62,51 +66,18 @@ function ConfirmDialog({
   );
 }
 
-// ─── Chip de dato ──────────────────────────────────────────────────────────────
+// ─── SectionTitle ─────────────────────────────────────────────────────────────
 
-function Chip({ label }: { label: string }) {
+function SectionTitle({ children }: { children: string }) {
   return (
-    <span style={{
-      fontSize: "var(--fs-xs)", padding: "2px 9px",
-      borderRadius: "var(--radius-full)", background: "var(--surface-alt)",
-      color: "var(--muted-strong)", whiteSpace: "nowrap",
+    <h2 style={{
+      fontSize: "var(--fs-base)",
+      fontWeight: "var(--fw-semibold)" as unknown as number,
+      color: "var(--text-strong)",
+      margin: "0 0 var(--space-3)",
     }}>
-      {label}
-    </span>
-  );
-}
-
-// ─── Botón de acción ──────────────────────────────────────────────────────────
-
-function ActionBtn({
-  label,
-  disabled,
-  razon,
-  loading,
-  onClick,
-}: {
-  label: string;
-  disabled: boolean;
-  razon?: string;
-  loading: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <div style={{ marginBottom: "var(--space-2)" }}>
-      <button
-        className={`btn ${disabled ? "btn-secondary" : "btn-primary"}`}
-        disabled={disabled || loading}
-        onClick={onClick}
-        style={{ width: "100%", opacity: disabled ? 0.6 : 1 }}
-      >
-        {loading ? "…" : label}
-      </button>
-      {disabled && razon && (
-        <p className="meta" style={{ marginTop: "var(--space-1)", fontSize: "var(--fs-xs)" }}>
-          {razon}
-        </p>
-      )}
-    </div>
+      {children}
+    </h2>
   );
 }
 
@@ -130,7 +101,7 @@ export function DetalleRecetaRoute() {
   const [confirm, setConfirm] = useState<{ mensaje: string; accion: () => void } | null>(null);
   const [loadingAccion, setLoadingAccion] = useState<"especial" | "extra" | "enproceso" | null>(null);
 
-  // Carga la receta (1 query)
+  // Carga la receta
   useEffect(() => {
     if (!idReceta) return;
     getReceta(idReceta)
@@ -142,7 +113,7 @@ export function DetalleRecetaRoute() {
       .finally(() => setLoadingReceta(false));
   }, [idReceta]);
 
-  // Suscripción a planes activos de la semana (realtime)
+  // Suscripción a planes activos (solo JP)
   useEffect(() => {
     if (!isJP) return;
     const unsub = subscribeToPlanesActivos(semanaInicio, setPlanesActivos);
@@ -159,7 +130,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon, especialExistente } = evaluarEspecial(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede elegir como Especial.", false); return; }
-
     if (especialExistente) {
       setConfirm({
         mensaje: `Ya hay una Especial esta semana: "${especialExistente.nombreSeleccion}". ¿Reemplazarla? Se descartarán también sus extras.`,
@@ -184,7 +154,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon } = evaluarExtra(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede agregar como extra.", false); return; }
-
     setLoadingAccion("extra");
     const especial = planesActivos.find(p => p.tipoPlan === "Especial")!;
     const result = await sumarComoExtra(receta, especial, semanaInicio, semanaFin);
@@ -197,7 +166,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon } = evaluarEnProceso(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede agregar como En proceso.", false); return; }
-
     setLoadingAccion("enproceso");
     const result = await sumarComoEnProceso(receta, semanaInicio, semanaFin);
     setLoadingAccion(null);
@@ -208,11 +176,7 @@ export function DetalleRecetaRoute() {
   // ── Render ──────────────────────────────────────────────────────────────────
 
   if (loadingReceta) {
-    return (
-      <div className="card">
-        <p className="meta">Cargando receta…</p>
-      </div>
-    );
+    return <div className="card"><p className="meta">Cargando receta…</p></div>;
   }
 
   if (errorReceta || !receta) {
@@ -230,10 +194,18 @@ export function DetalleRecetaRoute() {
   const elegExtra = evaluarExtra(receta, planesActivos);
   const elegEnProceso = evaluarEnProceso(receta, planesActivos);
 
+  // Padding extra abajo si hay sticky bottom (solo JP)
+  const bottomPad = isJP ? 100 : 0;
+
   return (
-    <>
-      {/* Cabecera con volver */}
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
+    <div style={{ paddingBottom: bottomPad }}>
+      {/* 1. Header con volver + chip tipo */}
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "var(--space-2)",
+        marginBottom: "var(--space-3)",
+      }}>
         <button
           className="btn btn-ghost"
           onClick={() => navigate(-1)}
@@ -245,234 +217,108 @@ export function DetalleRecetaRoute() {
         <span className="meta">{receta.tipoItem}</span>
       </div>
 
-      {/* Ficha principal */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+      {/* 2. Hero */}
+      <RecetaHero imagenUrl={receta.imagenUrl} nombre={receta.nombre} />
+
+      {/* 3. Título + porQueEspecial */}
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <h1 style={{
-          fontSize: "var(--fs-lg)", fontWeight: "var(--fw-semibold)",
-          color: "var(--text-strong)", marginBottom: "var(--space-3)",
-          lineHeight: 1.3,
+          fontSize: 24,
+          fontWeight: 700,
+          color: "var(--text-strong)",
+          lineHeight: 1.2,
+          letterSpacing: "-0.02em",
+          margin: "0 0 var(--space-2)",
         }}>
           {receta.nombre}
         </h1>
-
-        {/* Chips de datos clave */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
-          <Chip label={receta.proteinaPrincipal} />
-          <Chip label={receta.dificultad} />
-          <Chip label={receta.costoEstimado} />
-          {receta.tiempoActivoLabel && <Chip label={`Activo: ${receta.tiempoActivoLabel}`} />}
-          {receta.tiempoTotalLabel && <Chip label={`Total: ${receta.tiempoTotalLabel}`} />}
-          {receta.porcionesLabel && <Chip label={`${receta.porcionesLabel} porciones`} />}
-          <Chip label={receta.escenarioUso} />
-          {receta.estilo && <Chip label={receta.estilo} />}
-          {receta.tecnicaPrincipal && <Chip label={receta.tecnicaPrincipal} />}
-        </div>
-
-        {/* Flags dietéticos */}
-        {(receta.sinLacteos || !receta.hidratos || receta.aptoNocheDeADos === "Sí") && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
-            {receta.sinLacteos && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--ok-bg)", color: "var(--ok-text)" }}>
-                Sin lácteos
-              </span>
-            )}
-            {!receta.hidratos && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--info-bg)", color: "var(--info-text)" }}>
-                Sin hidratos
-              </span>
-            )}
-            {receta.aptoNocheDeADos === "Sí" && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--surface-alt)", color: "var(--muted-strong)" }}>
-                Noche de a dos ✓
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Notas especiales */}
         {receta.porQueEspecial && (
-          <p style={{ fontSize: "var(--fs-sm)", color: "var(--muted-strong)", fontStyle: "italic", marginBottom: "var(--space-2)" }}>
+          <p style={{
+            fontSize: "var(--fs-sm)",
+            color: "var(--muted-strong)",
+            fontStyle: "italic",
+            margin: 0,
+          }}>
             {receta.porQueEspecial}
           </p>
         )}
-        {receta.notas && (
-          <p className="meta" style={{ marginBottom: 0 }}>{receta.notas}</p>
-        )}
       </div>
 
-      {/* Ingredientes */}
+      {/* 4. MetaCards */}
+      <MetaCards
+        tiempoTotalLabel={receta.tiempoTotalLabel}
+        tiempoActivoLabel={receta.tiempoActivoLabel}
+        porcionesLabel={receta.porcionesLabel}
+        dificultad={receta.dificultad}
+      />
+
+      {/* 5. Pills */}
+      <div style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "var(--space-2)",
+        marginBottom: "var(--space-5)",
+      }}>
+        {receta.proteinaPrincipal && (
+          <RecetaPill label={receta.proteinaPrincipal} variant="accent" />
+        )}
+        {receta.escenarioUso && <RecetaPill label={receta.escenarioUso} />}
+        {receta.estilo && <RecetaPill label={receta.estilo} />}
+        {receta.tecnicaPrincipal && <RecetaPill label={receta.tecnicaPrincipal} />}
+        {receta.costoEstimado && <RecetaPill label={`Costo ${receta.costoEstimado}`} />}
+        {receta.sinLacteos && <RecetaPill label="Sin lácteos" variant="ok" />}
+        {!receta.hidratos && <RecetaPill label="Sin hidratos" variant="info" />}
+        {receta.aptoNocheDeADos === "Sí" && <RecetaPill label="Noche de a dos ✓" variant="info" />}
+      </div>
+
+      {/* 6. Ingredientes */}
       {receta.ingredientes.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", marginBottom: "var(--space-3)" }}>
-            Ingredientes
-          </h2>
-          {(() => {
-            const secciones = new Map<string, typeof receta.ingredientes>();
-            for (const ing of receta.ingredientes) {
-              const sec = ing.seccion ?? "";
-              if (!secciones.has(sec)) secciones.set(sec, []);
-              secciones.get(sec)!.push(ing);
-            }
-            return Array.from(secciones.entries()).map(([sec, ings]) => (
-              <div key={sec} style={{ marginBottom: sec ? "var(--space-3)" : 0 }}>
-                {sec && (
-                  <p style={{ fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)", textTransform: "uppercase", letterSpacing: ".05em", color: "var(--muted)", marginBottom: "var(--space-2)" }}>
-                    {sec}
-                  </p>
-                )}
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {ings.map((ing, idx) => (
-                    <li key={idx} style={{
-                      display: "flex", justifyContent: "space-between",
-                      padding: "5px 0", borderBottom: "1px solid var(--line)",
-                      fontSize: "var(--fs-sm)", color: ing.opcional ? "var(--muted)" : "var(--text)",
-                    }}>
-                      <span>{ing.textoOriginal}{ing.opcional ? " (opcional)" : ""}</span>
-                      <span style={{ color: "var(--muted-strong)", flexShrink: 0, marginLeft: "var(--space-3)" }}>
-                        {ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "")}{" "}
-                        {pluralizarUnidad(ing.unidad ?? "", ing.cantidadMax ?? ing.cantidadMin ?? 1)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ));
-          })()}
+          <SectionTitle>Ingredientes</SectionTitle>
+          <IngredientesPorGondola ingredientes={receta.ingredientes} />
         </div>
       )}
 
-      {/* Pasos */}
+      {/* 7. Preparación */}
       {receta.pasos.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
-            <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: 0 }}>
-              Preparación
-            </h2>
-            {isJP && (
-              <Link
-                to={`/recetas/${idReceta}/cocinar`}
-                className="btn btn-primary"
-                style={{ fontSize: "var(--fs-xs)", textDecoration: "none" }}
-              >
-                Cocinar
-              </Link>
-            )}
-          </div>
-
-          {/* Banner riesgos a nivel receta */}
-          {receta.riesgos && (
-            <div style={{
-              marginBottom: "var(--space-3)", padding: "var(--space-3)",
-              background: "var(--warn-bg)", borderRadius: "var(--radius-sm)",
-            }}>
-              <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-                ⚠ {receta.riesgos}
-              </p>
-            </div>
-          )}
-
-          <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {[...receta.pasos].sort((a, b) => a.nroPaso - b.nroPaso).map((paso) => (
-              <li key={paso.nroPaso} style={{ marginBottom: "var(--space-4)" }}>
-                <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "flex-start" }}>
-                  <span style={{
-                    flexShrink: 0, width: 24, height: 24, borderRadius: "50%",
-                    background: "var(--primary)", color: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "var(--fs-xs)", fontWeight: "var(--fw-semibold)",
-                  }}>
-                    {paso.nroPaso}
-                  </span>
-                  <div style={{ flex: 1 }}>
-                    {paso.titulo && (
-                      <p style={{ fontWeight: "var(--fw-medium)", color: "var(--text-strong)", marginBottom: "var(--space-1)", fontSize: "var(--fs-sm)" }}>
-                        {paso.titulo}
-                      </p>
-                    )}
-                    <p style={{ fontSize: "var(--fs-sm)", color: "var(--text)", lineHeight: 1.55, margin: 0 }}>
-                      {paso.detalle}
-                    </p>
-                    {paso.tiempoEstimadoLabel && (
-                      <p className="meta" style={{ marginTop: "var(--space-1)" }}>{paso.tiempoEstimadoLabel}</p>
-                    )}
-                    {paso.puntoClave && (
-                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--ok-bg)", borderRadius: "var(--radius-sm)" }}>
-                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--ok-text)" }}>
-                          ✓ Clave: {paso.puntoClave}
-                        </p>
-                      </div>
-                    )}
-                    {paso.errorComun && (
-                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--warn-bg)", borderRadius: "var(--radius-sm)" }}>
-                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-                          ⚠ Riesgo: {paso.errorComun}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          {/* Acciones JP — al pie de la preparación */}
-          {isJP && (
-            <div style={{
-              marginTop: "var(--space-4)",
-              borderTop: "1px solid var(--border-subtle)",
-              paddingTop: "var(--space-4)",
-            }}>
-              <ActionBtn
-                label="Elegir como Especial"
-                disabled={!elegEspecial.puede}
-                razon={elegEspecial.razon}
-                loading={loadingAccion === "especial"}
-                onClick={handleEspecial}
-              />
-              <ActionBtn
-                label="Sumar como Especial extra"
-                disabled={!elegExtra.puede}
-                razon={elegExtra.razon}
-                loading={loadingAccion === "extra"}
-                onClick={handleExtra}
-              />
-              <ActionBtn
-                label="Sumar como En proceso"
-                disabled={!elegEnProceso.puede}
-                razon={elegEnProceso.razon}
-                loading={loadingAccion === "enproceso"}
-                onClick={handleEnProceso}
-              />
-            </div>
-          )}
+          <SectionTitle>Preparación</SectionTitle>
+          <PasosPreview pasos={receta.pasos} riesgos={receta.riesgos} />
         </div>
       )}
 
-      {/* Acciones JP cuando no hay pasos */}
-      {isJP && receta.pasos.length === 0 && (
-        <div className="card" style={{ marginBottom: "var(--space-5)" }}>
-          <ActionBtn
-            label="Elegir como Especial"
-            disabled={!elegEspecial.puede}
-            razon={elegEspecial.razon}
-            loading={loadingAccion === "especial"}
-            onClick={handleEspecial}
-          />
-          <ActionBtn
-            label="Sumar como Especial extra"
-            disabled={!elegExtra.puede}
-            razon={elegExtra.razon}
-            loading={loadingAccion === "extra"}
-            onClick={handleExtra}
-          />
-          <ActionBtn
-            label="Sumar como En proceso"
-            disabled={!elegEnProceso.puede}
-            razon={elegEnProceso.razon}
-            loading={loadingAccion === "enproceso"}
-            onClick={handleEnProceso}
-          />
+      {/* 8. Tip del cocinero */}
+      {receta.notas && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          <SectionTitle>Tip del cocinero</SectionTitle>
+          <p style={{
+            fontSize: "var(--fs-sm)",
+            color: "var(--muted-strong)",
+            fontStyle: "italic",
+            margin: 0,
+            lineHeight: 1.55,
+          }}>
+            {receta.notas}
+          </p>
         </div>
+      )}
+
+      {/* 9. Acciones JP */}
+      {isJP && (
+        <AccionesPlan
+          elegEspecial={elegEspecial}
+          elegExtra={elegExtra}
+          elegEnProceso={elegEnProceso}
+          loadingAccion={loadingAccion}
+          onEspecial={() => void handleEspecial()}
+          onExtra={() => void handleExtra()}
+          onEnProceso={() => void handleEnProceso()}
+        />
+      )}
+
+      {/* 10. Sticky bottom Cocinar (solo JP) */}
+      {isJP && (
+        <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
       )}
 
       {/* Modal de confirmación */}
@@ -486,6 +332,6 @@ export function DetalleRecetaRoute() {
 
       {/* Toast */}
       {toast && <Toast msg={toast} onDone={() => setToast(null)} />}
-    </>
+    </div>
   );
 }

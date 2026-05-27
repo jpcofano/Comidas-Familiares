@@ -1,40 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { getHistorialReciente } from "../data/historial";
 import { normalizeText } from "../lib/canonical";
+import { SummaryMetrics } from "../components/historial/SummaryMetrics";
+import { FilterChips } from "../components/historial/FilterChips";
+import { MonthGroup } from "../components/historial/MonthGroup";
+import { EmptyState } from "../components/historial/EmptyState";
 import type { Historial } from "../types/models";
+import type { FiltroId } from "../components/historial/FilterChips";
 
-// ─── Badge de resultado ───────────────────────────────────────────────────────
+// ─── Lógica de filtros ────────────────────────────────────────────────────────
 
-function ResultadoBadge({ resultado }: { resultado: string }) {
-  const colors: Record<string, { bg: string; color: string }> = {
-    "Excelente":  { bg: "var(--ok-bg)",      color: "var(--ok-text)" },
-    "Muy bueno":  { bg: "var(--ok-bg)",      color: "var(--ok-text)" },
-    "Bueno":      { bg: "var(--info-bg)",    color: "var(--info-text)" },
-    "Regular":    { bg: "var(--warn-bg)",    color: "var(--warn-text)" },
-    "Malísimo":   { bg: "var(--err-bg)",     color: "var(--err-text)" },
-  };
-  const s = colors[resultado] ?? { bg: "var(--surface-alt)", color: "var(--muted)" };
-  return (
-    <span style={{
-      fontSize: "var(--fs-xs)", padding: "2px 8px",
-      borderRadius: "var(--radius-full)",
-      background: s.bg, color: s.color,
-      whiteSpace: "nowrap", flexShrink: 0,
-    }}>
-      {resultado}
-    </span>
-  );
-}
+const FILTROS: Record<FiltroId, (e: Historial) => boolean> = {
+  todos: () => true,
+  top:   (e) => e.resultado === "Excelente" || e.resultado === "Muy bueno",
+  ok:    (e) => e.promedio >= 3.5,
+  mal:   (e) => e.resultado === "Regular" || e.resultado === "Malísimo",
+};
 
 // ─── Ruta ─────────────────────────────────────────────────────────────────────
 
 export function HistorialRoute() {
   const navigate = useNavigate();
+
   const [entries, setEntries] = useState<Historial[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busqueda, setBusqueda] = useState("");
+  const [filtro, setFiltro] = useState<FiltroId>("todos");
 
   useEffect(() => {
     getHistorialReciente().then((r) => {
@@ -44,62 +37,86 @@ export function HistorialRoute() {
     });
   }, []);
 
-  const filtradas = busqueda.trim()
-    ? entries.filter((e) => {
-        const q = normalizeText(busqueda);
-        return normalizeText(e.nombreSeleccion).includes(q) || normalizeText(e.receta).includes(q);
-      })
-    : entries;
+  // Filtro primero, búsqueda después
+  const filtradas = useMemo(() => {
+    let result = entries.filter(FILTROS[filtro]);
+    if (busqueda.trim()) {
+      const q = normalizeText(busqueda);
+      result = result.filter((e) =>
+        normalizeText(e.nombreSeleccion).includes(q) ||
+        normalizeText(e.receta).includes(q) ||
+        normalizeText(e.queSalioBien ?? "").includes(q)
+      );
+    }
+    return result;
+  }, [entries, filtro, busqueda]);
+
+  // Agrupar por mes "YYYY-MM"
+  const porMes = useMemo(() => {
+    const map = new Map<string, Historial[]>();
+    for (const entry of filtradas) {
+      const key = entry.fechaRealizada.slice(0, 7);
+      if (!map.has(key)) map.set(key, []);
+      map.get(key)!.push(entry);
+    }
+    // Orden descendente por mes (más reciente primero)
+    return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]));
+  }, [filtradas]);
 
   if (loading) return <div className="card"><p className="meta">Cargando historial…</p></div>;
   if (error) return <div className="card"><p style={{ color: "var(--err-text)" }}>{error}</p></div>;
 
+  // Determinar contexto para EmptyState
+  const emptyContext = entries.length === 0
+    ? "sin-entries"
+    : busqueda.trim()
+      ? "sin-matches-busqueda"
+      : "sin-matches-filtro";
+
   return (
     <>
+      {/* Header + métricas */}
       <div className="card" style={{ marginBottom: "var(--space-3)" }}>
         <h2 style={{ margin: "0 0 var(--space-3)", color: "var(--text-strong)" }}>Historial</h2>
+
+        {/* Summary metrics (sobre total, no filtradas) */}
+        <SummaryMetrics entries={entries} />
+
+        {/* Filtros */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <FilterChips activo={filtro} onChange={setFiltro} />
+        </div>
+
+        {/* Buscador */}
         <input
           type="search"
           placeholder="Buscar por nombre…"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           style={{
-            width: "100%", padding: "8px 12px",
-            borderRadius: "var(--radius-md)", border: "1px solid var(--border)",
-            fontSize: "var(--fs-sm)", background: "var(--surface-strong)",
-            color: "var(--text)", boxSizing: "border-box",
+            width: "100%",
+            padding: "8px 12px",
+            borderRadius: "var(--radius-md)",
+            border: "1px solid var(--border)",
+            fontSize: "var(--fs-sm)",
+            background: "var(--surface-strong)",
+            color: "var(--text)",
+            boxSizing: "border-box",
           }}
         />
       </div>
 
+      {/* Lista o empty state */}
       {filtradas.length === 0 ? (
-        <div className="card" style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
-          <p className="meta">
-            {entries.length === 0
-              ? "Todavía no hay platos evaluados."
-              : "Ningún resultado para esa búsqueda."}
-          </p>
-        </div>
+        <EmptyState context={emptyContext} />
       ) : (
-        filtradas.map((entry) => (
-          <div
-            key={entry.idHist}
-            className="card card-interactive"
-            onClick={() => navigate(`/historial/${entry.idHist}`)}
-            style={{ marginBottom: "var(--space-2)", cursor: "pointer" }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-2)" }}>
-              <p style={{ fontWeight: "var(--fw-medium)", color: "var(--text-strong)", margin: 0, flex: 1, minWidth: 0 }}>
-                {entry.nombreSeleccion}
-              </p>
-              {entry.resultado && <ResultadoBadge resultado={entry.resultado} />}
-            </div>
-            <div style={{ display: "flex", gap: "var(--space-4)", marginTop: "var(--space-1)", flexWrap: "wrap" }}>
-              <span className="meta">{entry.fechaRealizada}</span>
-              <span className="meta">Promedio: {entry.promedio}</span>
-              {entry.ocasion && <span className="meta">{entry.ocasion}</span>}
-            </div>
-          </div>
+        porMes.map(([mesKey, mesEntries]) => (
+          <MonthGroup
+            key={mesKey}
+            mesKey={mesKey}
+            entries={mesEntries}
+            onClickEntry={(entry) => navigate(`/historial/${entry.idHist}`)}
+          />
         ))
       )}
     </>
