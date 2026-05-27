@@ -287,15 +287,8 @@ function HomeJP() {
         <p className="meta" style={{ marginBottom: "var(--space-2)" }}>Herramientas JP</p>
         <Link
           to="/menus/importar"
-          style={{
-            display: "inline-block",
-            padding: "0.4rem 0.9rem",
-            background: "var(--primary)",
-            color: "#fff",
-            borderRadius: "6px",
-            fontSize: "0.875rem",
-            textDecoration: "none",
-          }}
+          className="btn btn-primary"
+          style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
         >
           + Importar menú
         </Link>

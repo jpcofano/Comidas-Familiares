@@ -280,7 +280,7 @@ export function PlanCard({
               className="btn btn-primary"
               onClick={handleDescartar}
               disabled={busy}
-              style={{ fontSize: "var(--fs-sm)", background: "var(--err-text)", flex: 1 }}
+              style={{ fontSize: "var(--fs-sm)", background: "var(--accent)", flex: 1 }}
             >
               {busy ? "…" : "Confirmar"}
             </button>
