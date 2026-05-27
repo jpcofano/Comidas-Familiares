@@ -4,6 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { getHistorialPorId } from "../data/historial";
 import { MIEMBRO_IDS } from "../types/models";
 import type { Historial, MiembroId } from "../types/models";
+import { MemberAvatar } from "../components/MemberAvatar";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -75,10 +76,6 @@ export function HistorialDetalleRoute() {
     );
   }
 
-  const tieneComentarios = MIEMBRO_IDS.some(
-    (mid) => entry.comentarios?.[mid as MiembroId]
-  );
-
   return (
     <>
       {/* Cabecera */}
@@ -95,89 +92,96 @@ export function HistorialDetalleRoute() {
         </h2>
       </div>
 
-      {/* Resumen */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
-          <div>
-            <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 2px" }}>{entry.fechaRealizada}</p>
-            {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
-          </div>
-          <div style={{ textAlign: "right" }}>
-            <p style={{ fontSize: "var(--fs-2xl, 2rem)", fontWeight: "var(--fw-bold)", color: "var(--text-strong)", margin: "0 0 4px", lineHeight: 1 }}>
-              {entry.promedio}
-            </p>
-            {entry.resultado && <ResultadoBadge resultado={entry.resultado} />}
-          </div>
+      {/* Hero score */}
+      <div className="card" style={{ marginBottom: "var(--space-3)", textAlign: "center", padding: "var(--space-6) var(--space-4)" }}>
+        <div style={{ marginBottom: "var(--space-2)", lineHeight: 1 }}>
+          <span style={{ fontSize: 36, fontWeight: "var(--fw-bold)", color: "var(--primary)" }}>
+            {entry.promedio}
+          </span>
+          <span style={{ fontSize: 18, color: "var(--muted)", marginLeft: 4 }}> / 10</span>
         </div>
-
-        {/* Link a receta o menú */}
-        {entry.tipoSeleccion === "receta" && entry.idReceta && (
-          <Link to={`/recetas/${entry.idReceta}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
-            Ver receta →
-          </Link>
+        {entry.resultado && (
+          <div style={{ marginBottom: "var(--space-3)" }}>
+            <ResultadoBadge resultado={entry.resultado} />
+          </div>
         )}
-        {entry.tipoSeleccion === "menu" && entry.idMenu && (
-          <Link to={`/menus/${entry.idMenu}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
-            Ver menú →
-          </Link>
-        )}
+        <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 2px" }}>{entry.fechaRealizada}</p>
+        {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
       </div>
+
+      {/* Ver receta / menú */}
+      {((entry.tipoSeleccion === "receta" && entry.idReceta) ||
+        (entry.tipoSeleccion === "menu" && entry.idMenu)) && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          {entry.tipoSeleccion === "receta" && entry.idReceta && (
+            <Link to={`/recetas/${entry.idReceta}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
+              Ver receta →
+            </Link>
+          )}
+          {entry.tipoSeleccion === "menu" && entry.idMenu && (
+            <Link to={`/menus/${entry.idMenu}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
+              Ver menú →
+            </Link>
+          )}
+        </div>
+      )}
 
       {/* Calificaciones */}
       <div className="card" style={{ marginBottom: "var(--space-3)" }}>
         <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
           Calificaciones
         </p>
-        {MIEMBRO_IDS.map((mid) => {
+        {MIEMBRO_IDS.map((mid, idx) => {
           const nota = entry.calificaciones?.[mid as MiembroId];
+          const comentario = entry.comentarios?.[mid as MiembroId];
+          const isLast = idx === MIEMBRO_IDS.length - 1;
           return (
             <div
               key={mid}
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-2)" }}
+              style={{
+                paddingBottom: "var(--space-2)",
+                marginBottom: "var(--space-2)",
+                borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
+              }}
             >
-              <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>
-                {NOMBRE_MIEMBRO[mid as MiembroId]}
-              </span>
-              <span style={{
-                fontSize: "var(--fs-sm)",
-                fontWeight: nota != null ? "var(--fw-semibold)" : "var(--fw-regular)",
-                color: nota != null ? "var(--text-strong)" : "var(--muted)",
-              }}>
-                {/* null = sin voto (E3.6 solo JP vota; E4.2 traerá los 4) */}
-                {nota != null ? nota : "Sin voto"}
-              </span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+                  <MemberAvatar name={NOMBRE_MIEMBRO[mid as MiembroId]} size={24} />
+                  <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>
+                    {NOMBRE_MIEMBRO[mid as MiembroId]}
+                  </span>
+                </div>
+                <span style={{
+                  fontSize: "var(--fs-sm)",
+                  fontWeight: nota != null ? "var(--fw-semibold)" : "var(--fw-regular)",
+                  color: nota != null ? "var(--text-strong)" : "var(--muted)",
+                }}>
+                  {nota != null ? nota : "Sin voto"}
+                </span>
+              </div>
+              {comentario && (
+                <p style={{
+                  margin: "var(--space-1) 0 0",
+                  paddingLeft: 30,
+                  fontSize: "var(--fs-xs)",
+                  color: "var(--muted)",
+                  fontStyle: "italic",
+                  lineHeight: "var(--lh-base)",
+                }}>
+                  {comentario}
+                </p>
+              )}
             </div>
           );
         })}
       </div>
 
-      {/* Comentarios */}
-      {tieneComentarios && (
-        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
-            Comentarios
-          </p>
-          {MIEMBRO_IDS.map((mid) => {
-            const comentario = entry.comentarios?.[mid as MiembroId];
-            if (!comentario) return null;
-            return (
-              <div key={mid} style={{ marginBottom: "var(--space-2)" }}>
-                <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
-                  {NOMBRE_MIEMBRO[mid as MiembroId]}:{" "}
-                </span>
-                <span style={{ fontSize: "var(--fs-sm)" }}>{comentario}</span>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Datos del cocinero */}
+      {/* Notas del cocinero */}
       {(entry.repetir || entry.costoRealAprox || entry.dificultadReal ||
         entry.queSalioBien || entry.queCambiaria || entry.notasFamiliares) && (
         <div className="card">
           <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
-            Datos del cocinero
+            Notas del cocinero
           </p>
           <Campo label="¿Repetir?" valor={entry.repetir || undefined} />
           <Campo label="Costo real" valor={entry.costoRealAprox || undefined} />
