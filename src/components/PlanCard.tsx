@@ -49,8 +49,9 @@ export interface PlanCardProps {
   onCocinar?: () => void;
   onVerReceta: () => void;
   onMarkCocinada?: () => void;
-  onDescartar?: () => void;   // llamado DESPUÉS de confirmar
+  onDescartar?: () => void;        // llamado DESPUÉS de confirmar
   onEvaluar?: () => void;
+  confirmDescartarMsg?: string;
 }
 
 // ─── PlanCard ─────────────────────────────────────────────────────────────────
@@ -59,6 +60,7 @@ export function PlanCard({
   plan, menu, featured, isJP, busy,
   proteina, tiempoLabel, dificultad, contexto,
   onCocinar, onVerReceta, onMarkCocinada, onDescartar, onEvaluar,
+  confirmDescartarMsg,
 }: PlanCardProps) {
   const canCocinar = (["Compra pendiente", "Compra lista", "Cocinando"] as const)
     .includes(plan.estado as "Compra pendiente" | "Compra lista" | "Cocinando");
@@ -276,7 +278,7 @@ export function PlanCard({
           padding: "var(--space-3) var(--space-4)",
         }}>
           <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--warn-text)" }}>
-            ¿Descartar este plan?
+            {confirmDescartarMsg ?? "¿Descartar este plan?"}
           </p>
           <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-2)" }}>
             <button

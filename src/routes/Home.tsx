@@ -1,54 +1,33 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
-import { subscribeToPlanesActivos, marcarCocinada, descartarPlan, actualizarAsignaciones } from "../data/planes";
+import { subscribeToPlanesActivos, marcarCocinada, descartarPlan } from "../data/planes";
 import { getListaById } from "../data/compras";
+import { getRecetasByIds } from "../data/recetas";
+import { getMenu } from "../data/menus";
 import { getSemanaActual } from "../lib/fechas";
 import { separarPlanes } from "../lib/home";
-import type { Plan, ListaCompras, Menu, MiembroId } from "../types/models";
-import { MIEMBRO_IDS } from "../types/models";
-import { getMenu } from "../data/menus";
-
-const NOMBRES: Record<string, string> = {
-  juanpablo: "Juan Pablo", maria: "María", sofia: "Sofía", federico: "Federico",
-};
+import { WeekStrip } from "../components/WeekStrip";
+import { PlanCard } from "../components/PlanCard";
+import { CompraProgress } from "../components/CompraProgress";
+import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
 import { MemberDashboard } from "./MemberDashboard";
 
-// ─── Public route ─────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
-export function HomeRoute() {
-  const { state } = useAuth();
-  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+const DAYS_ES = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
 
-  if (!isJP) return <MemberDashboard />;
-
-  return <HomeJP />;
+function getContexto(plan: Plan): string {
+  const dateStr = plan.fecha ?? plan.fechaPrevistaComida;
+  if (!dateStr) return "Especial de la semana";
+  const d = new Date(dateStr + "T12:00:00");
+  return `Especial · ${DAYS_ES[d.getDay()]}`;
 }
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
-function EstadoBadge({ estado }: { estado: string }) {
-  const styles: Record<string, { bg: string; color: string }> = {
-    "Elegida":          { bg: "var(--surface-alt)",  color: "var(--muted)" },
-    "Compra pendiente": { bg: "var(--warn-bg)",       color: "var(--warn-text)" },
-    "Compra lista":     { bg: "var(--info-bg)",       color: "var(--info-text)" },
-    "Cocinando":        { bg: "var(--primary)",       color: "#fff" },
-    "Cocinada":         { bg: "var(--ok-bg)",         color: "var(--ok-text)" },
-  };
-  const s = styles[estado] ?? styles["Elegida"];
-  return (
-    <span style={{
-      display: "inline-block",
-      padding: "2px 10px",
-      borderRadius: "var(--radius-full)",
-      fontSize: "var(--fs-xs)",
-      fontWeight: "var(--fw-medium)",
-      background: s.bg,
-      color: s.color,
-    }}>
-      {estado}
-    </span>
-  );
+function fechaToWeekIdx(dateStr: string): number | null {
+  const d = new Date(dateStr + "T12:00:00");
+  const day = d.getDay(); // 0=Sun...6=Sat
+  return day === 0 ? 6 : day - 1; // 0=Mon...6=Sun
 }
 
 function detallePath(plan: Plan): string {
@@ -56,239 +35,27 @@ function detallePath(plan: Plan): string {
   return `/recetas/${plan.idSeleccion}`;
 }
 
-interface PlanCardProps {
-  plan: Plan;
-  menu?: Menu | null;
-  featured?: boolean;
-  isEspecial?: boolean;
-  isJP?: boolean;
-  busy: boolean;
-  confirming: boolean;
-  onCocinar: () => void;
-  onMarcarCocinada: () => void;
-  onAskDiscard: () => void;
-  onCancelDiscard: () => void;
-  onDescartar: () => void;
-  onEvaluar: () => void;
-  onVerDetalle: () => void;
+// ─── Section label ────────────────────────────────────────────────────────────
+
+function SectionLabel({ children }: { children: string }) {
+  return (
+    <p style={{
+      fontSize: 11, fontWeight: 600, color: "var(--muted)",
+      textTransform: "uppercase", letterSpacing: ".06em",
+      margin: "4px 0 8px",
+    }}>
+      {children}
+    </p>
+  );
 }
 
-function PlanCard({
-  plan, menu, featured, isEspecial, isJP, busy, confirming,
-  onCocinar, onMarcarCocinada, onAskDiscard, onCancelDiscard, onDescartar, onEvaluar, onVerDetalle,
-}: PlanCardProps) {
-  const canCocinar = ["Compra pendiente", "Compra lista", "Cocinando"].includes(plan.estado);
+// ─── Public route ─────────────────────────────────────────────────────────────
 
-  // ── Asignaciones (solo JP, solo planes no evaluados) ────────────────────────
-  const [asigEditing, setAsigEditing] = useState(false);
-  const [asigLocal, setAsigLocal] = useState<string[]>(() => [...plan.asignaciones]);
-  const [guardandoAsig, setGuardandoAsig] = useState(false);
-  const [errorAsig, setErrorAsig] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!asigEditing) setAsigLocal([...plan.asignaciones]); // eslint-disable-line react-hooks/set-state-in-effect
-  }, [plan.asignaciones, asigEditing]);
-
-  async function doGuardarAsig() {
-    setGuardandoAsig(true);
-    setErrorAsig(null);
-    const r = await actualizarAsignaciones(plan.idPlan, asigLocal as MiembroId[]);
-    setGuardandoAsig(false);
-    if (r.ok) {
-      setAsigEditing(false);
-    } else {
-      setErrorAsig(r.error.message);
-    }
-  }
-
-  // Progreso de menú en estado Cocinando
-  const cocinados = plan.componentesCocinados?.length ?? 0;
-  const obligatorios = menu?.componentes.filter((c) => c.obligatorio).length ?? 0;
-
-  return (
-    <div style={{
-      border: featured ? "2px solid var(--primary)" : "1px solid var(--border)",
-      borderRadius: featured ? "var(--radius-lg)" : "var(--radius-md)",
-      padding: featured ? "var(--space-4)" : "var(--space-3) var(--space-4)",
-      background: "var(--surface-strong)",
-      marginBottom: "var(--space-3)",
-    }}>
-      {featured && (
-        <p style={{
-          fontSize: "var(--fs-xs)",
-          fontWeight: "var(--fw-bold)",
-          color: "var(--primary)",
-          textTransform: "uppercase",
-          letterSpacing: "0.07em",
-          marginBottom: "var(--space-2)",
-        }}>
-          Especial de la semana
-        </p>
-      )}
-
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-2)" }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{
-            fontWeight: "var(--fw-medium)",
-            fontSize: featured ? "var(--fs-md)" : "var(--fs-base)",
-            color: "var(--text-strong)",
-            margin: 0,
-          }}>
-            {plan.nombreSeleccion}
-          </p>
-          {plan.estado === "Cocinando" && plan.tipoSeleccion === "menu" && obligatorios > 0 && (
-            <p className="meta" style={{ margin: "2px 0 0" }}>
-              {cocinados}/{obligatorios} cocinados
-            </p>
-          )}
-        </div>
-        <EstadoBadge estado={plan.estado} />
-      </div>
-
-      <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)", flexWrap: "wrap", alignItems: "center" }}>
-        {canCocinar && (
-          <button className="btn btn-primary" onClick={onCocinar} disabled={busy} style={{ fontSize: "var(--fs-sm)" }}>
-            {busy ? "…" : plan.estado === "Cocinando" ? "Continuar cocinando" : "Cocinar"}
-          </button>
-        )}
-        {canCocinar && (
-          <button
-            className="btn btn-secondary"
-            onClick={onMarcarCocinada}
-            disabled={busy}
-            style={{ fontSize: "var(--fs-xs)", padding: "4px 10px" }}
-          >
-            Marcar Cocinada
-          </button>
-        )}
-        {plan.estado === "Cocinada" && (
-          <button className="btn btn-secondary" onClick={onEvaluar} style={{ fontSize: "var(--fs-sm)" }}>
-            Ir a evaluar
-          </button>
-        )}
-        <button className="btn btn-secondary" onClick={onVerDetalle} style={{ fontSize: "var(--fs-sm)" }}>
-          Ver receta
-        </button>
-        {!confirming && (
-          <button
-            className="btn btn-ghost"
-            onClick={onAskDiscard}
-            disabled={busy}
-            style={{ fontSize: "var(--fs-sm)", color: "var(--err-text)", marginLeft: "auto" }}
-          >
-            Descartar
-          </button>
-        )}
-      </div>
-
-      {confirming && (
-        <div style={{
-          marginTop: "var(--space-3)",
-          padding: "var(--space-3)",
-          background: "var(--warn-bg)",
-          borderRadius: "var(--radius-sm)",
-          border: "1px solid var(--warn-line)",
-        }}>
-          <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--warn-text)" }}>
-            {isEspecial
-              ? "¿Descartar la Especial? También se van a descartar sus extras."
-              : "¿Descartar este plan?"}
-          </p>
-          <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-2)" }}>
-            <button
-              className="btn btn-primary"
-              onClick={onDescartar}
-              disabled={busy}
-              style={{ fontSize: "var(--fs-sm)", background: "var(--err-text)" }}
-            >
-              {busy ? "…" : "Confirmar descarte"}
-            </button>
-            <button className="btn btn-secondary" onClick={onCancelDiscard} style={{ fontSize: "var(--fs-sm)" }}>
-              Cancelar
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Cocineros del plato — lectura siempre visible; edición solo JP en estados activos */}
-      <div style={{ marginTop: "var(--space-3)", paddingTop: "var(--space-3)", borderTop: "1px solid var(--border)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>Quiénes cocinan este plato</p>
-          {isJP && plan.estado !== "Evaluada" && !asigEditing && (
-            <button
-              className="btn btn-ghost"
-              onClick={() => { setAsigLocal([...plan.asignaciones]); setAsigEditing(true); setErrorAsig(null); }}
-              style={{ fontSize: "var(--fs-xs)" }}
-            >
-              Editar
-            </button>
-          )}
-        </div>
-
-        {!asigEditing && (
-          <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--text)" }}>
-            {plan.asignaciones.map((id) => NOMBRES[id] ?? id).join(", ")}
-          </p>
-        )}
-
-        {asigEditing && (
-          <>
-            <div style={{ marginTop: "var(--space-2)" }}>
-              {MIEMBRO_IDS.map((id) => (
-                <div key={id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", padding: "var(--space-1) 0" }}>
-                  <input
-                    type="checkbox"
-                    id={`asig-${plan.idPlan}-${id}`}
-                    checked={asigLocal.includes(id)}
-                    onChange={(e) => {
-                      setAsigLocal((prev) =>
-                        e.target.checked ? [...prev, id] : prev.filter((x) => x !== id)
-                      );
-                    }}
-                    disabled={guardandoAsig}
-                  />
-                  <label htmlFor={`asig-${plan.idPlan}-${id}`} style={{ fontSize: "var(--fs-sm)", cursor: "pointer" }}>
-                    {NOMBRES[id]}
-                  </label>
-                </div>
-              ))}
-            </div>
-
-            {asigLocal.length === 0 && (
-              <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
-                Tiene que cocinarlo al menos una persona.
-              </p>
-            )}
-
-            {errorAsig && (
-              <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
-                {errorAsig}
-              </p>
-            )}
-
-            <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-3)" }}>
-              <button
-                className="btn btn-primary"
-                onClick={() => void doGuardarAsig()}
-                disabled={asigLocal.length === 0 || guardandoAsig}
-                style={{ flex: 1, fontSize: "var(--fs-xs)" }}
-              >
-                {guardandoAsig ? "Guardando…" : "Guardar"}
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => { setAsigEditing(false); setErrorAsig(null); }}
-                disabled={guardandoAsig}
-                style={{ flex: 1, fontSize: "var(--fs-xs)" }}
-              >
-                Cancelar
-              </button>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
+export function HomeRoute() {
+  const { state } = useAuth();
+  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+  if (!isJP) return <MemberDashboard />;
+  return <HomeJP />;
 }
 
 // ─── JP home ──────────────────────────────────────────────────────────────────
@@ -299,11 +66,12 @@ function HomeJP() {
   const [loading, setLoading] = useState(true);
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [menusMap, setMenusMap] = useState<Map<string, Menu>>(new Map());
-  const [confirmDiscard, setConfirmDiscard] = useState<string | null>(null);
+  const [recetasMap, setRecetasMap] = useState<Map<string, Receta>>(new Map());
   const [busy, setBusy] = useState<string | null>(null);
 
   const semana = useMemo(() => getSemanaActual(), []);
 
+  // Suscripción a planes activos
   useEffect(() => {
     return subscribeToPlanesActivos(semana, (p) => {
       setPlanes(p);
@@ -311,13 +79,14 @@ function HomeJP() {
     });
   }, [semana]);
 
+  // Cargar lista de compras
   useEffect(() => {
-    const listaId = planes.find(p => p.listaComprasId != null)?.listaComprasId ?? null;
+    const listaId = planes.find((p) => p.listaComprasId != null)?.listaComprasId ?? null;
     if (!listaId) { setLista(null); return; }
     getListaById(listaId).then(setLista);
   }, [planes]);
 
-  // Cargar menús de planes tipo menú para mostrar progreso
+  // Cargar menús de planes tipo menú
   useEffect(() => {
     const menuPlanes = planes.filter((p) => p.tipoSeleccion === "menu");
     Promise.all(menuPlanes.map((p) => getMenu(p.idSeleccion))).then((menus) => {
@@ -327,7 +96,33 @@ function HomeJP() {
     });
   }, [planes]);
 
+  // Cargar recetas para metadata de PlanCard
+  useEffect(() => {
+    const ids = planes.filter((p) => p.tipoSeleccion === "receta").map((p) => p.idSeleccion);
+    if (ids.length === 0) return;
+    getRecetasByIds(ids).then((recetas) => {
+      const map = new Map<string, Receta>();
+      recetas.forEach((r) => { if (r) map.set(r.idReceta, r); });
+      setRecetasMap(map);
+    });
+  }, [planes]);
+
   const { especial, extras, enProceso } = useMemo(() => separarPlanes(planes), [planes]);
+
+  // Días marcados en el WeekStrip
+  const marked = useMemo(() => {
+    const indices = new Set<number>();
+    planes.forEach((p) => {
+      const dateStr = p.fecha ?? p.fechaPrevistaComida;
+      if (dateStr) {
+        const idx = fechaToWeekIdx(dateStr);
+        if (idx !== null) indices.add(idx);
+      }
+    });
+    return [...indices];
+  }, [planes]);
+
+  // ── Handlers ────────────────────────────────────────────────────────────────
 
   function handleCocinar(plan: Plan) {
     if (plan.tipoSeleccion === "menu") {
@@ -347,8 +142,22 @@ function HomeJP() {
     setBusy(idPlan);
     await descartarPlan(idPlan);
     setBusy(null);
-    setConfirmDiscard(null);
   }
+
+  // ── Helpers de PlanCard props ────────────────────────────────────────────────
+
+  function recetaProps(plan: Plan) {
+    if (plan.tipoSeleccion !== "receta") return {};
+    const r = recetasMap.get(plan.idSeleccion);
+    if (!r) return {};
+    return {
+      proteina: r.proteinaPrincipal,
+      tiempoLabel: r.tiempoActivoLabel,
+      dificultad: r.dificultad,
+    };
+  }
+
+  // ── Render ───────────────────────────────────────────────────────────────────
 
   if (loading) {
     return (
@@ -358,14 +167,15 @@ function HomeJP() {
     );
   }
 
-  const hasPlanes = especial || extras.length > 0 || enProceso.length > 0;
+  const hasPlanes = especial !== null || extras.length > 0 || enProceso.length > 0;
 
   return (
-    <div className="card" style={{ paddingBottom: "var(--space-6)" }}>
-      {/* Fix 2.1: color explícito para el título de sección */}
-      <h2 style={{ marginBottom: "var(--space-4)", color: "var(--text-strong)" }}>Esta semana</h2>
+    <div className="card" style={{ paddingBottom: "var(--space-6)", display: "flex", flexDirection: "column", gap: 0 }}>
 
-      {/* ── Sin planes ────────────────────────────────────────────────── */}
+      {/* ── WeekStrip ────────────────────────────────────────────────────── */}
+      <WeekStrip semanaInicio={semana} marked={marked} />
+
+      {/* ── Sin planes ───────────────────────────────────────────────────── */}
       {!hasPlanes && (
         <div style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
           <p className="meta" style={{ marginBottom: "var(--space-4)" }}>
@@ -381,27 +191,26 @@ function HomeJP() {
         </div>
       )}
 
-      {/* ── Especial + extras anidados (Fix 2.2) ──────────────────────── */}
+      {/* ── Especial + extras ────────────────────────────────────────────── */}
       {especial && (
         <section style={{ marginBottom: "var(--space-2)" }}>
           <PlanCard
             plan={especial}
             menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
             featured
-            isEspecial
             isJP
             busy={busy === especial.idPlan}
-            confirming={confirmDiscard === especial.idPlan}
+            contexto={getContexto(especial)}
+            confirmDescartarMsg="¿Descartar la Especial? También se van a descartar sus extras."
             onCocinar={() => handleCocinar(especial)}
-            onMarcarCocinada={() => handleMarcarCocinada(especial)}
-            onAskDiscard={() => setConfirmDiscard(especial.idPlan)}
-            onCancelDiscard={() => setConfirmDiscard(null)}
+            onVerReceta={() => navigate(detallePath(especial))}
+            onMarkCocinada={() => handleMarcarCocinada(especial)}
             onDescartar={() => handleDescartar(especial.idPlan)}
             onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
-            onVerDetalle={() => navigate(detallePath(especial))}
+            {...recetaProps(especial)}
           />
 
-          {/* Extras anidados bajo el Especial con línea lateral */}
+          {/* Extras */}
           <div style={{
             marginLeft: "var(--space-5)",
             paddingLeft: "var(--space-4)",
@@ -409,24 +218,20 @@ function HomeJP() {
           }}>
             {extras.length > 0 && (
               <>
-                <p className="meta" style={{ fontSize: "var(--fs-xs)", margin: "var(--space-1) 0 var(--space-2)" }}>
-                  Extras
-                </p>
-                {extras.map(p => (
+                <SectionLabel>Extras</SectionLabel>
+                {extras.map((p) => (
                   <PlanCard
                     key={p.idPlan}
                     plan={p}
                     menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
                     isJP
                     busy={busy === p.idPlan}
-                    confirming={confirmDiscard === p.idPlan}
                     onCocinar={() => handleCocinar(p)}
-                    onMarcarCocinada={() => handleMarcarCocinada(p)}
-                    onAskDiscard={() => setConfirmDiscard(p.idPlan)}
-                    onCancelDiscard={() => setConfirmDiscard(null)}
+                    onVerReceta={() => navigate(detallePath(p))}
+                    onMarkCocinada={() => handleMarcarCocinada(p)}
                     onDescartar={() => handleDescartar(p.idPlan)}
                     onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-                    onVerDetalle={() => navigate(detallePath(p))}
+                    {...recetaProps(p)}
                   />
                 ))}
               </>
@@ -434,7 +239,11 @@ function HomeJP() {
             <button
               className="btn btn-ghost"
               onClick={() => navigate("/biblioteca")}
-              style={{ fontSize: "var(--fs-sm)", marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)", marginBottom: "var(--space-2)" }}
+              style={{
+                fontSize: "var(--fs-sm)",
+                marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)",
+                marginBottom: "var(--space-2)",
+              }}
             >
               + Sumar extra
             </button>
@@ -442,75 +251,38 @@ function HomeJP() {
         </section>
       )}
 
-      {/* ── En proceso ────────────────────────────────────────────────── */}
+      {/* ── En proceso ───────────────────────────────────────────────────── */}
       {enProceso.length > 0 && (
         <section style={{ marginTop: "var(--space-4)" }}>
-          <p className="meta" style={{ marginBottom: "var(--space-2)" }}>En proceso</p>
-          {enProceso.map(p => (
+          <SectionLabel>En proceso</SectionLabel>
+          {enProceso.map((p) => (
             <PlanCard
               key={p.idPlan}
               plan={p}
               menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
               isJP
               busy={busy === p.idPlan}
-              confirming={confirmDiscard === p.idPlan}
               onCocinar={() => handleCocinar(p)}
-              onMarcarCocinada={() => handleMarcarCocinada(p)}
-              onAskDiscard={() => setConfirmDiscard(p.idPlan)}
-              onCancelDiscard={() => setConfirmDiscard(null)}
+              onVerReceta={() => navigate(detallePath(p))}
+              onMarkCocinada={() => handleMarcarCocinada(p)}
               onDescartar={() => handleDescartar(p.idPlan)}
               onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-              onVerDetalle={() => navigate(detallePath(p))}
+              {...recetaProps(p)}
             />
           ))}
         </section>
       )}
 
-      {/* ── Sumar en proceso ──────────────────────────────────────────── */}
-      {!enProceso.length && hasPlanes && (
-        <div style={{ marginTop: "var(--space-3)" }}>
-          <button
-            className="btn btn-secondary"
-            onClick={() => navigate("/biblioteca")}
-            style={{ fontSize: "var(--fs-sm)" }}
-          >
-            + Sumar en proceso
-          </button>
-        </div>
-      )}
-
-      {/* ── Compras ───────────────────────────────────────────────────── */}
+      {/* ── Lista de compras ─────────────────────────────────────────────── */}
       {hasPlanes && (
-        <section style={{
-          marginTop: "var(--space-5)",
-          padding: "var(--space-3) var(--space-4)",
-          background: "var(--surface-alt)",
-          borderRadius: "var(--radius-md)",
-          border: "1px solid var(--border-subtle)",
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p className="meta" style={{ margin: 0 }}>Lista de compras</p>
-            {lista && (
-              <Link to="/compras" style={{ fontSize: "var(--fs-xs)", color: "var(--primary)" }}>
-                Ver todo →
-              </Link>
-            )}
-          </div>
-          {lista ? (
-            <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--text)" }}>
-              <strong>{(lista.totalItems ?? 0) - (lista.totalYaTengo ?? 0)}</strong> pendientes
-              {" · "}
-              <strong>{lista.totalYaTengo ?? 0}</strong> ya tengo
-            </p>
-          ) : (
-            <p style={{ margin: "var(--space-1) 0 0", fontSize: "var(--fs-sm)", color: "var(--muted)" }}>
-              Sin lista de compras todavía.
-            </p>
-          )}
-        </section>
+        <CompraProgress
+          pendientes={(lista?.totalItems ?? 0) - (lista?.totalYaTengo ?? 0)}
+          yaTengo={lista?.totalYaTengo ?? 0}
+          onClick={() => navigate("/compras")}
+        />
       )}
 
-      {/* ── Herramientas JP ───────────────────────────────────────────── */}
+      {/* ── Herramientas JP ──────────────────────────────────────────────── */}
       <div style={{ marginTop: "var(--space-6)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--border)" }}>
         <p className="meta" style={{ marginBottom: "var(--space-2)" }}>Herramientas JP</p>
         <Link
