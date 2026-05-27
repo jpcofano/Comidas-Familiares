@@ -414,16 +414,43 @@ export function DetalleRecetaRoute() {
               </li>
             ))}
           </ol>
+
+          {/* Acciones JP — al pie de la preparación */}
+          {isJP && (
+            <div style={{
+              marginTop: "var(--space-4)",
+              borderTop: "1px solid var(--border-subtle)",
+              paddingTop: "var(--space-4)",
+            }}>
+              <ActionBtn
+                label="Elegir como Especial"
+                disabled={!elegEspecial.puede}
+                razon={elegEspecial.razon}
+                loading={loadingAccion === "especial"}
+                onClick={handleEspecial}
+              />
+              <ActionBtn
+                label="Sumar como Especial extra"
+                disabled={!elegExtra.puede}
+                razon={elegExtra.razon}
+                loading={loadingAccion === "extra"}
+                onClick={handleExtra}
+              />
+              <ActionBtn
+                label="Sumar como En proceso"
+                disabled={!elegEnProceso.puede}
+                razon={elegEnProceso.razon}
+                loading={loadingAccion === "enproceso"}
+                onClick={handleEnProceso}
+              />
+            </div>
+          )}
         </div>
       )}
 
-      {/* Acciones JP — solo JP ve los botones */}
-      {isJP && (
+      {/* Acciones JP cuando no hay pasos */}
+      {isJP && receta.pasos.length === 0 && (
         <div className="card" style={{ marginBottom: "var(--space-5)" }}>
-          <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", marginBottom: "var(--space-3)" }}>
-            Agregar al plan de la semana
-          </h2>
-
           <ActionBtn
             label="Elegir como Especial"
             disabled={!elegEspecial.puede}
