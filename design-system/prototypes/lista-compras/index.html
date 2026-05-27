@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lista de Compras — vista grande</title>
+
+<link rel="stylesheet" href="../colors_and_type.css">
+
+<style>
+  html, body, #root { height: 100%; margin: 0; }
+  body {
+    background: #d8d3cc;
+    background-image:
+      radial-gradient(circle at 20% 30%, oklch(0.92 0.02 70) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, oklch(0.88 0.03 30) 0%, transparent 55%),
+      linear-gradient(180deg, #e6e1d8 0%, #d8d3cc 100%);
+    overflow: hidden;
+  }
+  #root {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  /* Top bar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 5;
+  }
+  .topbar h1 {
+    font: 600 14px/1.2 var(--font-sans);
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    padding: 3px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 12px;
+  }
+  .tab {
+    padding: 7px 14px;
+    font: 600 13px/1.2 var(--font-sans);
+    color: var(--muted);
+    border: none;
+    background: transparent;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 160ms ease;
+    white-space: nowrap;
+  }
+  .tab.active {
+    background: var(--surface-strong);
+    color: var(--text-strong);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .tab .blurb {
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 4px;
+    font-size: 12px;
+  }
+  .tab.active .blurb { color: var(--text); }
+
+  .meta-right {
+    display: flex; align-items: center; gap: 16px;
+    font: 500 12px/1.2 var(--font-sans);
+    color: var(--muted);
+  }
+  .meta-right b { color: var(--text); font-weight: 600; }
+  .reset {
+    padding: 5px 10px;
+    font: 500 12px/1.2 var(--font-sans);
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .reset:hover { background: var(--surface-alt); color: var(--text); }
+
+  /* Stage holds the iPhone, centers it, slight scale-up on big screens */
+  .stage {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .stage-inner {
+    transform-origin: center;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="compras-data.js"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="compras-variant-a.jsx"></script>
+<script type="text/babel" src="compras-variant-b.jsx"></script>
+<script type="text/babel" src="compras-variant-c.jsx"></script>
+
+<script type="text/babel">
+const TABS = [
+  { k: 'A', name: 'A · Jerarquía',  blurb: '+ bucket único', Variant: () => window.VariantA },
+  { k: 'B', name: 'B · Pasillos',   blurb: 'one-handed',     Variant: () => window.VariantB },
+  { k: 'C', name: 'C · Recetas',    blurb: 'envueltas',      Variant: () => window.VariantC },
+];
+
+function FullScreen() {
+  // Persist selection across reloads
+  const [tab, setTab] = React.useState(() => localStorage.getItem('cf-tab') || 'A');
+  React.useEffect(() => { localStorage.setItem('cf-tab', tab); }, [tab]);
+
+  // Per-variant state (so switching tabs doesn't reset the marking)
+  const [stateA, setStateA] = React.useState(window.ITEMS_INICIALES);
+  const [stateB, setStateB] = React.useState(window.ITEMS_INICIALES);
+  const [stateC, setStateC] = React.useState(window.ITEMS_INICIALES);
+  const states  = { A: stateA, B: stateB, C: stateC };
+  const setters = { A: setStateA, B: setStateB, C: setStateC };
+
+  const items   = states[tab];
+  const setItems = setters[tab];
+  const total   = items.length;
+  const done    = items.filter(i => i.yaTengo).length;
+
+  function onToggle(id) {
+    setItems((prev) => prev.map((i) => i.id === id ? { ...i, yaTengo: !i.yaTengo } : i));
+  }
+  function reset() {
+    setItems(window.ITEMS_INICIALES);
+  }
+
+  // Auto-scale phone to fit available stage height
+  const stageRef = React.useRef(null);
+  const [scale, setScale] = React.useState(1);
+  React.useLayoutEffect(() => {
+    function fit() {
+      if (!stageRef.current) return;
+      const r = stageRef.current.getBoundingClientRect();
+      // iPhone is 402×868; need ~ 32px padding around
+      const sy = (r.height - 40) / 868;
+      const sx = (r.width  - 40) / 402;
+      setScale(Math.min(sy, sx, 1.25)); // cap at 1.25x for huge screens
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
+
+  const Variant = TABS.find(t => t.k === tab).Variant();
+
+  return (
+    <>
+      <div className="topbar">
+        <h1>Lista de compras · {window.RECETAS.length} comidas</h1>
+
+        <div className="tabs">
+          {TABS.map(t => (
+            <button key={t.k} className={`tab ${tab === t.k ? 'active' : ''}`} onClick={() => setTab(t.k)}>
+              {t.name}<span className="blurb"> · {t.blurb}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="meta-right">
+          <span><b>{done}</b> / {total} marcados</span>
+          <button className="reset" onClick={reset}>Reiniciar</button>
+        </div>
+      </div>
+
+      <div className="stage" ref={stageRef}>
+        <div className="stage-inner" style={{ transform: `scale(${scale})` }}>
+          <window.IOSDevice width={402} height={868}>
+            <Variant items={items} onToggle={onToggle} />
+          </window.IOSDevice>
+        </div>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<FullScreen />);
+</script>
+</body>
+</html>

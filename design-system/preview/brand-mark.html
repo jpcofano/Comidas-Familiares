@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Brand mark">
+<head>
+<meta charset="utf-8">
+<title>Brand · Comida Familiar</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); }
+  .row { display: flex; align-items: center; gap: 28px; }
+  .mark-wrap { width: 96px; height: 96px; border-radius: 50%; background: var(--primary-soft); display: grid; place-items: center; flex-shrink: 0; }
+  .mark-wrap svg { color: var(--primary); }
+  .logotype { font-family: var(--font-sans); font-size: 28px; font-weight: 700; color: var(--primary); letter-spacing: -0.012em; line-height: 1; }
+  .tag { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .swatches { display: flex; gap: 8px; margin-top: 14px; }
+  .sw { width: 28px; height: 28px; border-radius: 6px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="mark-wrap">
+      <!-- F · Plato con vapor — hero variant (organic steam) -->
+      <svg width="64" height="64" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M36 28 C 42 24, 34 16, 36 10" stroke-width="4.4" opacity="0.55"/>
+        <path d="M48 26 C 40 20, 56 14, 48 6"  stroke-width="5.6" opacity="0.95"/>
+        <path d="M60 28 C 54 24, 62 16, 60 10" stroke-width="4.4" opacity="0.65"/>
+        <circle cx="48" cy="50" r="19" stroke-width="6"/>
+        <circle cx="48" cy="50" r="9" fill="currentColor" stroke="none"/>
+        <path d="M38 88h20" stroke-width="6"/>
+        <path d="M88 40v20" stroke-width="6"/>
+        <path d="M8  40v20" stroke-width="6"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logotype">Comida Familiar</div>
+      <div class="tag">Planificación semanal para la familia Cofano</div>
+      <div class="swatches">
+        <div class="sw" style="background: var(--primary)"></div>
+        <div class="sw" style="background: var(--accent)"></div>
+        <div class="sw" style="background: var(--surface-alt); border:1px solid var(--border)"></div>
+        <div class="sw" style="background: var(--surface-strong); border:1px solid var(--border)"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

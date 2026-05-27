@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Logomark 03 variations">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comida Familiar · Logomark 03 — variaciones</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../colors_and_type.css">
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); }
+    body { padding: 40px 32px 64px; max-width: 1280px; margin: 0 auto; }
+    .page-h {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 28px;
+    }
+    .page-h h1 { font-size: 26px; margin: 0; color: var(--text-strong); letter-spacing: -0.015em; }
+    .page-h .meta-h { text-align: right; }
+    .page-h .meta-h .crumb { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+    .page-h p { font-size: 13px; color: var(--muted); margin: 0; max-width: 360px; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 22px 20px;
+      display: grid; grid-template-columns: 96px 1fr; gap: 22px; align-items: start;
+    }
+    .card-icons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .icon-big {
+      width: 96px; height: 96px; border-radius: 22px; background: var(--primary);
+      display: grid; place-items: center; color: var(--surface-strong);
+      box-shadow: 0 2px 8px rgba(138,74,47,.15);
+    }
+    .icon-fav {
+      width: 32px; height: 32px; border-radius: 8px; background: var(--primary-soft);
+      display: grid; place-items: center; color: var(--primary);
+    }
+
+    .card-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    .lockup {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface); border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+    .lockup-mark {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--primary-soft); color: var(--primary);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .lockup-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .lockup-text .wm { font-size: 18px; font-weight: 700; color: var(--primary); letter-spacing: -0.015em; }
+    .lockup-text .tag { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    .meta { display: flex; align-items: baseline; gap: 8px; }
+    .meta .num { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .meta .name { font-size: 14px; font-weight: 600; color: var(--text-strong); }
+    .rationale { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; text-wrap: pretty; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .kw {
+      font-size: 10px; font-weight: 500; color: var(--muted);
+      padding: 2px 8px; border-radius: 9999px;
+      background: var(--surface-alt); border: 1px solid var(--border-subtle);
+    }
+
+    .baseline {
+      margin-bottom: 24px; padding: 18px 22px;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      display: flex; align-items: center; gap: 22px;
+    }
+    .baseline .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .baseline .icon-old {
+      width: 64px; height: 64px; border-radius: 16px; background: var(--primary); color: var(--surface-strong);
+      display: grid; place-items: center;
+    }
+    .baseline p { font-size: 12.5px; color: var(--muted); margin: 0; flex: 1; line-height: 1.5; }
+
+    .footer-note {
+      margin-top: 32px; padding: 16px 18px;
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: 12px; font-size: 12.5px; color: var(--muted); line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-h">
+    <div>
+      <h1>Logomark — Mesa familiar</h1>
+    </div>
+    <div class="meta-h">
+      <div class="crumb">Iteración · sobre 03</div>
+      <p>6 maneras distintas de resolver "plato central + 4 comensales". Mismo concepto, otra ejecución.</p>
+    </div>
+  </header>
+
+  <!-- ── Baseline: lo que NO funcionó ────────────────────────────────────── -->
+  <div class="baseline">
+    <span class="label">Original (03)</span>
+    <div class="icon-old">
+      <svg width="44" height="44" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="9" stroke="currentColor" stroke-width="2.5" fill="none"/>
+        <circle cx="28" cy="28" r="3" fill="currentColor"/>
+        <circle cx="28" cy="9"  r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+        <circle cx="47" cy="28" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+        <circle cx="28" cy="47" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+        <circle cx="9"  cy="28" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+    <p>El centro pesa poco, los platos chicos quedan flotando sin tensión. Lee más a "diagrama de red" que a mesa familiar.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ───────── A — Sólido tipográfico ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Center plate: filled big disc with cream-ring inset -->
+            <circle cx="28" cy="28" r="11" fill="currentColor"/>
+            <circle cx="28" cy="28" r="6" fill="var(--primary)"/>
+            <!-- 4 small filled dots -->
+            <circle cx="28" cy="7"  r="3.2" fill="currentColor"/>
+            <circle cx="49" cy="28" r="3.2" fill="currentColor"/>
+            <circle cx="28" cy="49" r="3.2" fill="currentColor"/>
+            <circle cx="7"  cy="28" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="11" fill="currentColor"/>
+            <circle cx="28" cy="28" r="6" fill="var(--primary-soft)"/>
+            <circle cx="28" cy="7"  r="3.5" fill="currentColor"/>
+            <circle cx="49" cy="28" r="3.5" fill="currentColor"/>
+            <circle cx="28" cy="49" r="3.5" fill="currentColor"/>
+            <circle cx="7"  cy="28" r="3.5" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">A</span><span class="name">Sólido tipográfico</span></div>
+        <p class="rationale">Todo en peso pleno. El plato central es un disco con anillo invertido (lee como plato hondo); los chicos son puntos macizos. Lee a 16px sin perder densidad.</p>
+        <div class="keywords"><span class="kw">sólido</span><span class="kw">denso</span><span class="kw">favicon-friendly</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="11" fill="currentColor"/>
+              <circle cx="28" cy="28" r="6" fill="var(--primary-soft)"/>
+              <circle cx="28" cy="7"  r="3.5" fill="currentColor"/>
+              <circle cx="49" cy="28" r="3.5" fill="currentColor"/>
+              <circle cx="28" cy="49" r="3.5" fill="currentColor"/>
+              <circle cx="7"  cy="28" r="3.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────── B — Con mantel radial ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-linecap="round">
+            <!-- Faint radial lines (table runner / placemat) -->
+            <g stroke-width="1.5" opacity="0.5">
+              <line x1="28" y1="14" x2="28" y2="20"/>
+              <line x1="42" y1="28" x2="36" y2="28"/>
+              <line x1="28" y1="42" x2="28" y2="36"/>
+              <line x1="14" y1="28" x2="20" y2="28"/>
+            </g>
+            <!-- Center plate -->
+            <circle cx="28" cy="28" r="8" fill="currentColor"/>
+            <!-- 4 outer plates - filled ovals (more "plate" feel from above) -->
+            <ellipse cx="28" cy="9"  rx="5" ry="3" fill="currentColor"/>
+            <ellipse cx="47" cy="28" rx="3" ry="5" fill="currentColor"/>
+            <ellipse cx="28" cy="47" rx="5" ry="3" fill="currentColor"/>
+            <ellipse cx="9"  cy="28" rx="3" ry="5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="8" fill="currentColor"/>
+            <ellipse cx="28" cy="9"  rx="5.5" ry="3.5" fill="currentColor"/>
+            <ellipse cx="47" cy="28" rx="3.5" ry="5.5" fill="currentColor"/>
+            <ellipse cx="28" cy="47" rx="5.5" ry="3.5" fill="currentColor"/>
+            <ellipse cx="9"  cy="28" rx="3.5" ry="5.5" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">B</span><span class="name">Mantel radial</span></div>
+        <p class="rationale">Platos chicos son óvalos (perspectiva de cada lugar en la mesa). Líneas radiales sutiles unen los 4 servicios al centro — el mantel se vuelve estructura.</p>
+        <div class="keywords"><span class="kw">narrativo</span><span class="kw">perspectiva</span><span class="kw">ordenado</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="8" fill="currentColor"/>
+              <ellipse cx="28" cy="9"  rx="5.5" ry="3.5" fill="currentColor"/>
+              <ellipse cx="47" cy="28" rx="3.5" ry="5.5" fill="currentColor"/>
+              <ellipse cx="28" cy="47" rx="5.5" ry="3.5" fill="currentColor"/>
+              <ellipse cx="9"  cy="28" rx="3.5" ry="5.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────── C — Pétalos íntimos ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Center plate (small, the chicos dominate) -->
+            <circle cx="28" cy="28" r="5" fill="currentColor"/>
+            <!-- 4 big plates almost touching - they ARE the mark -->
+            <circle cx="28" cy="14" r="6.5" stroke="currentColor" stroke-width="3" fill="none"/>
+            <circle cx="42" cy="28" r="6.5" stroke="currentColor" stroke-width="3" fill="none"/>
+            <circle cx="28" cy="42" r="6.5" stroke="currentColor" stroke-width="3" fill="none"/>
+            <circle cx="14" cy="28" r="6.5" stroke="currentColor" stroke-width="3" fill="none"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="5" fill="currentColor"/>
+            <circle cx="28" cy="14" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+            <circle cx="42" cy="28" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+            <circle cx="28" cy="42" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+            <circle cx="14" cy="28" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">C</span><span class="name">Pétalos íntimos</span></div>
+        <p class="rationale">Inversión jerárquica: los 4 comensales son grandes y casi se tocan; el "centro" es chico y de servicio. La familia ES el plato. Sale como flor.</p>
+        <div class="keywords"><span class="kw">flor</span><span class="kw">íntimo</span><span class="kw">jerarquía invertida</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="5" fill="currentColor"/>
+              <circle cx="28" cy="14" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+              <circle cx="42" cy="28" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+              <circle cx="28" cy="42" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+              <circle cx="14" cy="28" r="6.5" stroke="currentColor" stroke-width="5" fill="none"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────── D — Bowl + 4 cucharas ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Center bowl: filled hemisphere -->
+            <path d="M16 26a12 12 0 0 0 24 0z" fill="currentColor"/>
+            <line x1="14" y1="26" x2="42" y2="26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- 4 spoons radiating - each is a stem + small oval -->
+            <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none">
+              <!-- top spoon (handle up) -->
+              <line x1="28" y1="20" x2="28" y2="8"/>
+              <!-- bottom spoon (handle down) -->
+              <line x1="28" y1="38" x2="28" y2="50"/>
+              <!-- left spoon -->
+              <line x1="18" y1="32" x2="8"  y2="42"/>
+              <!-- right spoon -->
+              <line x1="38" y1="32" x2="48" y2="42"/>
+            </g>
+            <ellipse cx="28" cy="6"  rx="3" ry="2" fill="currentColor"/>
+            <ellipse cx="28" cy="52" rx="3" ry="2" fill="currentColor"/>
+            <ellipse cx="6"  cy="44" rx="3" ry="2" fill="currentColor" transform="rotate(-45 6 44)"/>
+            <ellipse cx="50" cy="44" rx="3" ry="2" fill="currentColor" transform="rotate(45 50 44)"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <path d="M14 24a14 14 0 0 0 28 0z" fill="currentColor"/>
+            <line x1="12" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <line x1="28" y1="20" x2="28" y2="6"/>
+              <line x1="18" y1="32" x2="8"  y2="42"/>
+              <line x1="38" y1="32" x2="48" y2="42"/>
+              <line x1="28" y1="40" x2="28" y2="50"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">D</span><span class="name">Bowl + 4 cucharas</span></div>
+        <p class="rationale">Reformula el concepto: en vez de "cada uno con su plato", "todos meten cuchara en la misma olla". Acto de compartir, más activo. Más cocina, menos restaurante.</p>
+        <div class="keywords"><span class="kw">compartir</span><span class="kw">activo</span><span class="kw">cocina</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <path d="M14 24a14 14 0 0 0 28 0z" fill="currentColor"/>
+              <line x1="12" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+              <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                <line x1="28" y1="20" x2="28" y2="6"/>
+                <line x1="18" y1="32" x2="8"  y2="42"/>
+                <line x1="38" y1="32" x2="48" y2="42"/>
+                <line x1="28" y1="40" x2="28" y2="50"/>
+              </g>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────── E — Negative space ring ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Outer thick ring with 4 cutouts where seats are -->
+            <mask id="cuts-big">
+              <rect width="56" height="56" fill="white"/>
+              <circle cx="28" cy="8"  r="5" fill="black"/>
+              <circle cx="48" cy="28" r="5" fill="black"/>
+              <circle cx="28" cy="48" r="5" fill="black"/>
+              <circle cx="8"  cy="28" r="5" fill="black"/>
+            </mask>
+            <circle cx="28" cy="28" r="20" fill="none" stroke="currentColor" stroke-width="5" mask="url(#cuts-big)"/>
+            <!-- Center: filled center plate -->
+            <circle cx="28" cy="28" r="7" fill="currentColor"/>
+            <!-- 4 small filled dots in the cutouts -->
+            <circle cx="28" cy="8"  r="3" fill="currentColor"/>
+            <circle cx="48" cy="28" r="3" fill="currentColor"/>
+            <circle cx="28" cy="48" r="3" fill="currentColor"/>
+            <circle cx="8"  cy="28" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <mask id="cuts-fav">
+              <rect width="56" height="56" fill="white"/>
+              <circle cx="28" cy="8"  r="6" fill="black"/>
+              <circle cx="48" cy="28" r="6" fill="black"/>
+              <circle cx="28" cy="48" r="6" fill="black"/>
+              <circle cx="8"  cy="28" r="6" fill="black"/>
+            </mask>
+            <circle cx="28" cy="28" r="20" fill="none" stroke="currentColor" stroke-width="8" mask="url(#cuts-fav)"/>
+            <circle cx="28" cy="28" r="7" fill="currentColor"/>
+            <circle cx="28" cy="8"  r="4" fill="currentColor"/>
+            <circle cx="48" cy="28" r="4" fill="currentColor"/>
+            <circle cx="28" cy="48" r="4" fill="currentColor"/>
+            <circle cx="8"  cy="28" r="4" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">E</span><span class="name">Mesa con borde</span></div>
+        <p class="rationale">La mesa redonda finalmente existe — anillo grueso con 4 muescas donde se sienta cada uno, y el plato grande al medio. Más "estructura" que las otras.</p>
+        <div class="keywords"><span class="kw">arquitectónico</span><span class="kw">mesa real</span><span class="kw">peso visual</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <mask id="cuts-lock">
+                <rect width="56" height="56" fill="white"/>
+                <circle cx="28" cy="8"  r="6" fill="black"/>
+                <circle cx="48" cy="28" r="6" fill="black"/>
+                <circle cx="28" cy="48" r="6" fill="black"/>
+                <circle cx="8"  cy="28" r="6" fill="black"/>
+              </mask>
+              <circle cx="28" cy="28" r="20" fill="none" stroke="currentColor" stroke-width="8" mask="url(#cuts-lock)"/>
+              <circle cx="28" cy="28" r="7" fill="currentColor"/>
+              <circle cx="28" cy="8"  r="4" fill="currentColor"/>
+              <circle cx="48" cy="28" r="4" fill="currentColor"/>
+              <circle cx="28" cy="48" r="4" fill="currentColor"/>
+              <circle cx="8"  cy="28" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────── F — Plato con vapor + 4 lugares ───────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Steam wisps above center -->
+            <g stroke-width="2" fill="none" opacity="0.85">
+              <path d="M24 8c1.5 1.5-1.5 3 0 4.5"/>
+              <path d="M28 6c1.5 1.5-1.5 3 0 4.5"/>
+              <path d="M32 8c1.5 1.5-1.5 3 0 4.5"/>
+            </g>
+            <!-- Center plate with food: outer ring + filled inner -->
+            <circle cx="28" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="28" cy="28" r="7" fill="currentColor"/>
+            <!-- 4 small "lugares" — short arc segments at the rim positions -->
+            <g stroke-width="3" fill="none">
+              <path d="M22 50h12"/>
+              <path d="M22 6h12" opacity="0"/>
+              <path d="M50 22v12"/>
+              <path d="M6 22v12"/>
+            </g>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="28" cy="28" r="12" fill="none" stroke="currentColor" stroke-width="4"/>
+            <circle cx="28" cy="28" r="6" fill="currentColor"/>
+            <g stroke-width="5" fill="none">
+              <path d="M21 50h14"/>
+              <path d="M50 21v14"/>
+              <path d="M6 21v14"/>
+              <path d="M21 6h14"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">F</span><span class="name">Plato con vapor</span></div>
+        <p class="rationale">El centro deja de ser punto y pasa a ser plato caliente, con vapor saliendo. Los 4 "lugares" se vuelven trazos cortos (manteles individuales). Menos diagrama, más comida.</p>
+        <div class="keywords"><span class="kw">caliente</span><span class="kw">comida</span><span class="kw">menos abstracto</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="28" cy="28" r="12" fill="none" stroke="currentColor" stroke-width="4"/>
+              <circle cx="28" cy="28" r="6" fill="currentColor"/>
+              <g stroke-width="5" fill="none">
+                <path d="M21 50h14"/>
+                <path d="M50 21v14"/>
+                <path d="M6 21v14"/>
+                <path d="M21 6h14"/>
+              </g>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <strong>Lo que cambia entre las seis:</strong>
+    <strong>A</strong> da peso al centro (más "marca");
+    <strong>B</strong> resuelve los chicos como óvalos (más mesa);
+    <strong>C</strong> invierte la jerarquía (la familia es protagonista);
+    <strong>D</strong> reformula a "compartir cuchara" (el más distintivo conceptualmente);
+    <strong>E</strong> dibuja la mesa real con anillo (la única donde se ve la mesa);
+    <strong>F</strong> agrega vapor + manteles (más sensorial).
+    Decime la letra y aplico al UI Kit + favicon + app icon + PWA assets.
+  </div>
+</body>
+</html>

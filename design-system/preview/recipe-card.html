@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Recipe card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 20px; cursor: pointer;
+    transition: border-color 120ms ease;
+  }
+  .card.hover { border-color: var(--line); }
+  .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .title { font-weight: 500; color: var(--text-strong); margin: 0; flex: 1; font-size: 14px; }
+  .tag { font-size: 12px; padding: 2px 8px; border-radius: 9999px; background: var(--surface-alt); color: var(--muted-strong); white-space: nowrap; }
+  .meta-row { display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .badges { display: flex; gap: 8px; margin-top: 8px; }
+  .chip { font-size: 12px; padding: 1px 7px; border-radius: 9999px; }
+</style></head>
+<body>
+  <div class="card">
+    <div class="head">
+      <p class="title">Langostinos al ajillo</p>
+      <span class="tag">Receta principal</span>
+    </div>
+    <div class="meta-row">
+      <span>Mariscos</span>
+      <span>25 min</span>
+      <span>Baja</span>
+    </div>
+    <div class="badges">
+      <span class="chip" style="background:var(--ok-bg); color:var(--ok-text)">Sin lácteos</span>
+      <span class="chip" style="background:var(--info-bg); color:var(--info-text)">Sin hidratos</span>
+    </div>
+  </div>
+</body></html>

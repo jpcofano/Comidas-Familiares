@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Empty states">
+<head>
+<meta charset="utf-8">
+<title>Empty states</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .panel h3 { margin: 0 0 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .panel .ctx { font-size: 11px; color: var(--muted); margin: 0 0 12px; }
+  .stage { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 24px 16px; text-align: center; min-height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; }
+  .stage p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .stage .btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--primary); color: #fff; border: 0; border-radius: 10px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; }
+  .stage .btn-link { color: var(--primary); font-size: 13px; font-weight: 500; text-decoration: none; }
+  .stage--inline { background: transparent; border: 0; padding: 12px 4px; text-align: left; align-items: flex-start; min-height: 0; }
+</style>
+</head>
+<body>
+  <div class="grid">
+
+    <div class="panel">
+      <h3>Home · Sin planes esta semana</h3>
+      <p class="ctx">JP sin Especial ni extras elegidos · ofrece CTA</p>
+      <div class="stage">
+        <p>Todavía no hay comidas elegidas para esta semana.</p>
+        <button class="btn-primary">Ver recetas</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Biblioteca · Sin matches</h3>
+      <p class="ctx">Filtros activos pero no hay resultados · sin CTA, sólo voz</p>
+      <div class="stage">
+        <p>Ninguna receta coincide con los filtros.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Biblioteca · Sin menús</h3>
+      <p class="ctx">Estado virgen · CTA texto-link sutil</p>
+      <div class="stage">
+        <p>No hay menús todavía.</p>
+        <a class="btn-link" href="#">Importar menú →</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Member · Sin pendientes</h3>
+      <p class="ctx">Empty state inline dentro de una sección · sin chrome</p>
+      <div class="stage stage--inline">
+        <p>No hay platos esperando tu nota.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Member · Sin historial</h3>
+      <p class="ctx">Igual al anterior · siempre inline para sección</p>
+      <div class="stage stage--inline">
+        <p>Todavía no evaluaste ningún plato.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Historial · Sin resultados</h3>
+      <p class="ctx">Filtro de búsqueda vacío · voz consistente con Biblioteca</p>
+      <div class="stage">
+        <p>Ningún resultado para ese filtro.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

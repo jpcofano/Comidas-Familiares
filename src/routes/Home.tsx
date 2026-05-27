@@ -10,8 +10,21 @@ import { separarPlanes } from "../lib/home";
 import { WeekStrip } from "../components/WeekStrip";
 import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
+import { SemanaBadge } from "../components/SemanaBadge";
 import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
 import { MemberDashboard } from "./MemberDashboard";
+
+// ─── Helper: formatea rango de semana "26 may – 1 jun" ───────────────────────
+
+const MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+function getSemanaRango(semanaInicio: string): string {
+  const lunes = new Date(semanaInicio + "T12:00:00");
+  const domingo = new Date(lunes);
+  domingo.setDate(lunes.getDate() + 6);
+  const fmt = (d: Date) => `${d.getDate()} ${MESES_ES[d.getMonth()]}`;
+  return `${fmt(lunes)} – ${fmt(domingo)}`;
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -109,6 +122,8 @@ function HomeJP() {
 
   const { especial, extras, enProceso } = useMemo(() => separarPlanes(planes), [planes]);
 
+  const semanaRango = useMemo(() => getSemanaRango(semana), [semana]);
+
   // Días marcados en el WeekStrip
   const marked = useMemo(() => {
     const indices = new Set<number>();
@@ -171,6 +186,30 @@ function HomeJP() {
 
   return (
     <div className="card" style={{ paddingBottom: "var(--space-6)", display: "flex", flexDirection: "column", gap: 0 }}>
+
+      {/* ── Kicker + título + badge de semana ──────────────────────────── */}
+      <div style={{ marginBottom: "var(--space-3)" }}>
+        <p style={{
+          fontSize: 11, fontWeight: 600, color: "var(--muted)",
+          textTransform: "uppercase", letterSpacing: ".06em",
+          marginBottom: 4,
+        }}>
+          Esta semana
+        </p>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
+          <h1 style={{
+            fontSize: 20,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}>
+            {planes.length === 0
+              ? "Sin comidas planeadas"
+              : `${planes.length} ${planes.length === 1 ? "comida planeada" : "comidas planeadas"}`}
+          </h1>
+          <SemanaBadge rango={semanaRango} />
+        </div>
+      </div>
 
       {/* ── WeekStrip ────────────────────────────────────────────────────── */}
       <WeekStrip semanaInicio={semana} marked={marked} />

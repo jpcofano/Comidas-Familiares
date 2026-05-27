@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Shopping row</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { margin: 0; padding: 16px; background: var(--bg); font-family: var(--font-sans); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; }
+  .aisle { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 8px; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .check { width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--border); background: transparent; flex-shrink: 0; display:grid; place-items:center; cursor:pointer; padding:0; }
+  .check.on { background: var(--ok-bg); border-color: var(--ok-text); color: var(--ok-text); font-size: 13px; line-height: 1; }
+  .name { font-size: 13px; color: var(--text); flex: 1; }
+  .qty { font-size: 13px; color: var(--muted); margin-left: 8px; }
+  .row.done .name { text-decoration: line-through; opacity: .6; }
+  .chev { background: none; border: none; padding: 2px; color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+  .chev svg { width: 15px; height: 15px; }
+</style></head>
+<body>
+  <div class="card">
+    <div class="aisle">Verdulería</div>
+    <div class="row">
+      <button class="check"></button>
+      <span class="name">Cebolla morada</span>
+      <span class="qty">2 u</span>
+      <button class="chev"><i data-lucide="chevron-right"></i></button>
+    </div>
+    <div class="row done">
+      <button class="check on">✓</button>
+      <span class="name">Tomate perita</span>
+      <span class="qty">500 g</span>
+    </div>
+    <div class="row">
+      <button class="check"></button>
+      <span class="name">Cilantro</span>
+      <span class="qty">1 atado</span>
+    </div>
+  </div>
+  <script>lucide.createIcons();</script>
+</body></html>

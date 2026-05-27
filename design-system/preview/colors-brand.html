@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Brand · Colors</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-strong); }
+  .chip { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; border: 1px solid var(--border-subtle); }
+  .label { font-size: 13px; color: var(--text-strong); font-weight: 500; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .name { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="row">
+      <div class="chip" style="background: #8a4a2f"></div>
+      <div>
+        <div class="label">Primary</div>
+        <div class="hex">#8a4a2f · --primary</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="chip" style="background: #6e3a23"></div>
+      <div>
+        <div class="label">Primary strong</div>
+        <div class="hex">#6e3a23 · hover</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="chip" style="background: #f2e7df"></div>
+      <div>
+        <div class="label">Primary soft</div>
+        <div class="hex">10% wash · --primary-soft</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="chip" style="background: #74324a"></div>
+      <div>
+        <div class="label">Accent · bordó</div>
+        <div class="hex">#74324a · restringido</div>
+      </div>
+    </div>
+  </div>
+</body></html>

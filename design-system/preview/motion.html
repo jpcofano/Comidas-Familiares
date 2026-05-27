@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Motion">
+<head>
+<meta charset="utf-8">
+<title>Motion specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); color: var(--text); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .panel h3 { margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .panel .ctx { font-size: 11px; color: var(--muted); margin: 0 0 14px; }
+
+  /* Reusable demo button — actual transitions live here */
+  .demo-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 16px; border-radius: 10px;
+    background: var(--primary); color: #fff; border: 0;
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    transition: background 120ms ease, transform 120ms ease;
+  }
+  .demo-btn:hover  { background: var(--primary-strong); }
+  .demo-btn:active { transform: scale(0.97); }
+
+  .demo-btn--secondary { background: var(--surface-strong); color: var(--text); border: 1px solid var(--line); }
+  .demo-btn--secondary:hover { background: var(--surface-alt); }
+
+  .demo-row { display: flex; gap: 10px; align-items: center; }
+
+  /* Interactive card with hover border darken */
+  .demo-card {
+    padding: 14px 16px; border: 1px solid var(--border); border-radius: 14px;
+    background: var(--surface);
+    transition: border-color 120ms ease, transform 120ms ease;
+    cursor: pointer;
+  }
+  .demo-card:hover  { border-color: var(--line); }
+  .demo-card:active { transform: scale(0.995); }
+  .demo-card .title { font-size: 14px; font-weight: 600; color: var(--text-strong); margin: 0 0 4px; }
+  .demo-card .meta  { font-size: 12px; color: var(--muted); margin: 0; }
+
+  /* Tokens display */
+  .tokens { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .tk { display: flex; align-items: center; gap: 10px; font-size: 12px; }
+  .tk code { font-family: var(--font-mono); font-size: 11px; background: var(--surface-alt); padding: 2px 6px; border-radius: 4px; color: var(--text); }
+  .tk .tag { color: var(--muted); font-size: 11px; }
+
+  /* Animated bar to visualize the durations */
+  .bar { height: 8px; background: var(--surface-alt); border-radius: 9999px; overflow: hidden; flex: 1; }
+  .bar > i { display: block; height: 100%; width: 0; background: var(--primary); border-radius: 9999px; }
+  .bar.t-fast > i { animation: fill 120ms ease forwards; }
+  .bar.t-base > i { animation: fill 180ms ease forwards; }
+  .bar.t-long > i { animation: fill 240ms ease forwards; }
+  @keyframes fill { to { width: 100%; } }
+</style>
+</head>
+<body>
+
+  <div class="grid">
+
+    <div class="panel">
+      <h3>Hover &amp; press</h3>
+      <p class="ctx">Hover: <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">--t-fast 120ms ease</code> en background/border. Press: <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">transform: scale(0.97)</code>.</p>
+      <div class="demo-row">
+        <button class="demo-btn">Cocinar</button>
+        <button class="demo-btn demo-btn--secondary">Ver receta</button>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin:14px 0 0">Pasá el mouse y clickeá. Press shrink se cancela en disabled.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Interactive card</h3>
+      <p class="ctx">Cards <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">.card-interactive</code> oscurecen el borde en hover (<code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">--border → --line</code>) y shrinkan suave en press (<code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">scale(0.995)</code>).</p>
+      <div class="demo-card">
+        <p class="title">Bondiola braseada al Malbec</p>
+        <p class="meta">Cerdo · 3 h · Media-alta</p>
+      </div>
+    </div>
+
+    <div class="panel" style="grid-column: 1 / -1">
+      <h3>Duraciones · visualización</h3>
+      <p class="ctx">Refresh la página para ver las tres barras llenarse en sus duraciones reales.</p>
+
+      <div class="tokens">
+        <div class="tk">
+          <code>--t-fast</code>
+          <div class="bar t-fast"><i></i></div>
+          <span class="tag">120ms · hover, button bg, focus ring</span>
+        </div>
+        <div class="tk">
+          <code>--t-base</code>
+          <div class="bar t-base"><i></i></div>
+          <span class="tag">180ms · border-color, content fades, modal scrim</span>
+        </div>
+        <div class="tk">
+          <code>(opacity)</code>
+          <div class="bar t-long"><i></i></div>
+          <span class="tag">240ms · pulse de skeletons, progress bar fill</span>
+        </div>
+      </div>
+
+      <p style="font-size:11px;color:var(--muted);margin:14px 0 0;line-height:1.5">
+        Solo se transitan: <strong>background, color, border-color, transform, box-shadow</strong>. <em>No</em> hay spring physics, bounces, ni animaciones de entrada. La app aparece instantánea.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

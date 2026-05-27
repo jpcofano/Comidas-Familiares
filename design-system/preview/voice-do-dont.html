@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Voice do/don't">
+<head>
+<meta charset="utf-8">
+<title>Voice · do / don't</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); color: var(--text); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
+  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .panel h3 { margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .panel .ctx { font-size: 11px; color: var(--muted); margin: 0 0 14px; }
+
+  .pair { display: flex; flex-direction: column; gap: 10px; }
+  .row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px; }
+  .row.do  { background: var(--ok-bg); }
+  .row.dont { background: var(--err-bg); opacity: 0.92; }
+  .mark { font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .row.do  .mark { color: var(--ok-text); }
+  .row.dont .mark { color: var(--err-text); }
+  .copy { font-size: 13px; line-height: 1.5; color: var(--text-strong); }
+  .row.dont .copy { color: var(--err-text); text-decoration: line-through; text-decoration-color: var(--err-line, var(--err-text)); text-decoration-thickness: 1px; }
+
+  .note { font-size: 11px; color: var(--muted); margin: 6px 0 0; line-height: 1.5; padding-left: 24px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+
+    <div class="panel">
+      <h3>Empty states</h3>
+      <p class="ctx">Honestos, no apologéticos. Sin emojis, sin "lo sentimos".</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy">Todavía no hay comidas elegidas para esta semana.</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">¡Ups! Parece que aún no tienes ninguna comida planificada 😊</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Confirmaciones</h3>
+      <p class="ctx">Suenan a conversación de casa, no a modal corporativo.</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy">¿Descartar la Especial? También se van a descartar sus extras.</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">¿Estás seguro que deseas eliminar este plan? Esta acción no se puede deshacer.</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Botones de acción</h3>
+      <p class="ctx">Verbos en imperativo, sentence-case, sin preamble.</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy">Cocinar &nbsp;·&nbsp; Marcar Cocinada &nbsp;·&nbsp; + Sumar extra &nbsp;·&nbsp; Ver receta</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">Iniciar Modo Cocina &nbsp;·&nbsp; Marcar como Cocinada &nbsp;·&nbsp; Agregar un Extra &nbsp;·&nbsp; Ver Receta</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Contadores</h3>
+      <p class="ctx">Números en bold inline, label muted, separador <code style="font-family:var(--font-mono);font-size:11px">·</code>.</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy"><strong>5</strong> pendientes · <strong>12</strong> ya tengo · 61%</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">Tienes 5 elementos pendientes y 12 elementos ya conseguidos en tu lista de compras</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Estados / badges</h3>
+      <p class="ctx">Una palabra cuando alcanza. Dos cuando hace falta. Nunca tres.</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy">Elegida · Compra pendiente · Compra lista · Cocinando · Cocinada · Evaluada</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">Ya está seleccionada · Lista de compras pendiente · Compras realizadas · En proceso de cocción</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Errores</h3>
+      <p class="ctx">Explican qué pasó y qué hace falta. No piden disculpas.</p>
+      <div class="pair">
+        <div class="row do">    <span class="mark">✓</span><span class="copy">Tiene que cocinarlo al menos una persona.</span></div>
+        <div class="row dont">  <span class="mark">✕</span><span class="copy">Error: el campo "asignaciones" no puede estar vacío.</span></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

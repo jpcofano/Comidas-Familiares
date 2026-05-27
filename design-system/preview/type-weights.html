@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Type · weights & features</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-sans); }
+  .row { display: flex; align-items: baseline; gap: 18px; padding: 6px 0; font-size: 18px; color: var(--text-strong); }
+  .tok { font-family: var(--font-mono); font-size: 11px; color: var(--muted); width: 130px; flex-shrink: 0; }
+  .feats { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  .feats strong { color: var(--text-strong); font-weight: 500; }
+  .feats code { font-family: var(--font-mono); background: var(--surface-alt); padding: 1px 6px; border-radius: 4px; }
+</style></head>
+<body>
+  <div class="row"><div class="tok">400 regular</div><div style="font-weight:400">Cocinar 1234567890</div></div>
+  <div class="row"><div class="tok">500 medium</div><div style="font-weight:500">Cocinar 1234567890</div></div>
+  <div class="row"><div class="tok">600 semibold</div><div style="font-weight:600">Cocinar 1234567890</div></div>
+  <div class="row"><div class="tok">700 bold</div><div style="font-weight:700">Cocinar 1234567890</div></div>
+  <div class="feats">
+    Inter con stylistic sets activos: <code>cv02</code> alt-1, <code>cv03</code> plain-l, <code>cv04</code> dotted-0, <code>cv11</code> tail-y
+  </div>
+</body></html>

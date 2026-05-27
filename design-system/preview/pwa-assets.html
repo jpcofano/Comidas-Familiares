@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — PWA assets">
+<head>
+<meta charset="utf-8">
+<title>PWA · Icon + Splash</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: stretch; }
+  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .panel h3 { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .icons-row { display: flex; align-items: end; gap: 14px; }
+  .icons-row figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .icons-row figcaption { font-size: 10px; color: var(--muted); }
+  .icons-row img { display: block; border-radius: 22%; box-shadow: 0 1px 3px rgba(31,26,22,.08); }
+  .splash-wrap { display: flex; align-items: center; gap: 14px; }
+  .splash-shot { width: 110px; height: 200px; border-radius: 16px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; }
+  .splash-shot img { width: 100%; height: 100%; object-fit: cover; }
+  .meta-list { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+  .meta-list strong { color: var(--text); font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="panel">
+      <h3>App icon · todos los tamaños</h3>
+      <div class="icons-row">
+        <figure><img src="../assets/pwa/favicon-16.png" width="16" height="16"><figcaption>16</figcaption></figure>
+        <figure><img src="../assets/pwa/favicon-32.png" width="32" height="32"><figcaption>32</figcaption></figure>
+        <figure><img src="../assets/pwa/favicon-48.png" width="48" height="48"><figcaption>48</figcaption></figure>
+        <figure><img src="../assets/pwa/apple-touch-icon.png" width="60" height="60"><figcaption>apple 180</figcaption></figure>
+        <figure><img src="../assets/pwa/icon-192.png" width="72" height="72"><figcaption>any 192</figcaption></figure>
+        <figure><img src="../assets/pwa/icon-maskable-192.png" width="72" height="72" style="border-radius:0"><figcaption>maskable 192</figcaption></figure>
+      </div>
+      <p class="meta-list">
+        <strong>any</strong> = redondeado iOS 22% radius · <strong>maskable</strong> = full-bleed con safe-zone al 80% para Android adaptive icons.
+      </p>
+    </div>
+    <div class="panel">
+      <h3>Splash iOS</h3>
+      <div class="splash-wrap">
+        <div class="splash-shot"><img src="../assets/pwa/splash/splash-iphone-14.png" alt=""></div>
+        <p class="meta-list">
+          Cream `#fdfaf6` full-bleed.<br>
+          Soft circle con plato + vapor al <strong>38%</strong> del alto, wordmark Inter 700 debajo, subtítulo muted.<br>
+          11 archivos, del iPhone 7 al 15 Pro Max.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
