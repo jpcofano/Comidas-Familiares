@@ -132,6 +132,47 @@ export function parseCosto(input: unknown): { label: Costo | ""; orden: number }
 }
 
 /**
+ * Parsea un tiempo estimado de paso a segundos.
+ * Acepta: "20 min", "1 h 15 min", "2 h", "45", "1h30min", "30 mins",
+ *         "1 hora 30 minutos", "1h", "2hs"
+ * Suma: (h|hs|hora|horas) * 3600 + (min|mins|minuto|minutos) * 60
+ * Si solo número sin unidad → asume minutos
+ * Devuelve null si no parseable, vacío, "-", o resultado <= 0
+ */
+export function parseTiempoEstimadoASegundos(input: string | null | undefined): number | null {
+  if (!input) return null;
+  const raw = input.trim();
+  if (!raw || raw === "-") return null;
+
+  const lc = raw.toLowerCase().replace(/(\d),(\d)/g, "$1.$2");
+
+  // "1 h 15 min", "1h30min", "1 hora 30 minutos"
+  const hMinMatch = lc.match(
+    /^(\d+(?:\.\d+)?)\s*(?:h|hs|hrs?|horas?)\.?\s*(\d+(?:\.\d+)?)\s*(?:min|mins?|minutos?|m)?\.?$/
+  );
+  if (hMinMatch) {
+    const total = Number(hMinMatch[1]) * 3600 + Number(hMinMatch[2]) * 60;
+    return total > 0 ? total : null;
+  }
+
+  // "2 h", "1h", "2hs", "1 hora"
+  const hMatch = lc.match(/^(\d+(?:\.\d+)?)\s*(?:h|hs|hrs?|horas?)\.?$/);
+  if (hMatch) {
+    const total = Math.round(Number(hMatch[1]) * 3600);
+    return total > 0 ? total : null;
+  }
+
+  // "20 min", "30 mins", "30 minutos", "45" (solo número → asume minutos)
+  const minMatch = lc.match(/^(\d+(?:\.\d+)?)\s*(?:min|mins?|minutos?|m)?\.?$/);
+  if (minMatch) {
+    const total = Math.round(Number(minMatch[1]) * 60);
+    return total > 0 ? total : null;
+  }
+
+  return null;
+}
+
+/**
  * "Sí" / "No" / "Adaptable" → boolean | null.
  * - "Sí", "si", "yes", "true", "1" → true
  * - "No", "no", "false", "0" → false

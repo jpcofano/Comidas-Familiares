@@ -1,18 +1,21 @@
 import type { Paso } from "../types/models";
 import type { TimerEntry } from "../hooks/useCocinarState";
+import { StepTimer } from "./StepTimer";
 
 interface PasoCardProps {
   paso: Paso;
   tachado: boolean;
   esActual: boolean;
   onToggleTachado?: () => void;
+  // Props de compatibilidad con Cocinar.tsx — ya no se renderizan aquí;
+  // StepTimer reemplaza los botones de timer inline.
   onIniciarTimer?: (durMs: number) => void;
   onCancelarTimer?: () => void;
   timerActivo?: TimerEntry;
 }
 
 export function PasoCard({
-  paso, tachado, esActual, onToggleTachado, onIniciarTimer, onCancelarTimer, timerActivo,
+  paso, tachado, esActual, onToggleTachado,
 }: PasoCardProps) {
   const circleColor = tachado
     ? "var(--muted)"
@@ -35,7 +38,7 @@ export function PasoCard({
         </span>
 
         <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Título + tiempo */}
+          {/* Título + tiempo estimado */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-2)", flexWrap: "wrap" }}>
             {paso.titulo && (
               <p style={{
@@ -51,33 +54,11 @@ export function PasoCard({
             )}
           </div>
 
-          {/* Botón iniciar timer */}
-          {paso.tiempoEstimadoMin != null && paso.tiempoEstimadoMin > 0 && onIniciarTimer && !timerActivo && (
-            <button
-              onClick={() => onIniciarTimer(paso.tiempoEstimadoMin! * 60_000)}
-              style={{
-                marginTop: "var(--space-1)", fontSize: "var(--fs-xs)",
-                padding: "3px 10px", borderRadius: "var(--radius-sm)",
-                background: "var(--surface-alt)", border: "1px solid var(--border)",
-                color: "var(--text)", cursor: "pointer",
-              }}
-            >
-              ⏱ Iniciar timer {paso.tiempoEstimadoMin} min
-            </button>
-          )}
-          {timerActivo && onCancelarTimer && (
-            <button
-              onClick={onCancelarTimer}
-              style={{
-                marginTop: "var(--space-1)", fontSize: "var(--fs-xs)",
-                padding: "3px 10px", borderRadius: "var(--radius-sm)",
-                background: "var(--warn-bg)", border: "none",
-                color: "var(--warn-text)", cursor: "pointer",
-              }}
-            >
-              ⏱ Timer activo — Cancelar
-            </button>
-          )}
+          {/* Contador de tiempo — se autorenderiza si hay tiempo válido */}
+          <StepTimer
+            tiempoEstimadoMin={paso.tiempoEstimadoMin}
+            stepLabel={paso.momento || paso.titulo || "Tu paso terminó"}
+          />
 
           {/* Detalle */}
           <p style={{

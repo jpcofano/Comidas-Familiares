@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { parseNumber, parseTime, parseDificultad, parseCosto, parseSiNo } from "./parsers";
+import { parseNumber, parseTime, parseDificultad, parseCosto, parseSiNo, parseTiempoEstimadoASegundos } from "./parsers";
 
 describe("parseNumber", () => {
   it("punto decimal", () => {
@@ -135,6 +135,60 @@ describe("parseCosto", () => {
 
   it("label correcto para Medio/Alto", () => {
     expect(parseCosto("Medio/Alto").label).toBe("Medio/Alto");
+  });
+});
+
+describe("parseTiempoEstimadoASegundos", () => {
+  it('"20 min" → 1200', () => {
+    expect(parseTiempoEstimadoASegundos("20 min")).toBe(1200);
+  });
+
+  it('"1 h 15 min" → 4500', () => {
+    expect(parseTiempoEstimadoASegundos("1 h 15 min")).toBe(4500);
+  });
+
+  it('"2 h" → 7200', () => {
+    expect(parseTiempoEstimadoASegundos("2 h")).toBe(7200);
+  });
+
+  it('"45" (solo número) → 2700', () => {
+    expect(parseTiempoEstimadoASegundos("45")).toBe(2700);
+  });
+
+  it('"1h30min" → 5400', () => {
+    expect(parseTiempoEstimadoASegundos("1h30min")).toBe(5400);
+  });
+
+  it('"30 mins" → 1800', () => {
+    expect(parseTiempoEstimadoASegundos("30 mins")).toBe(1800);
+  });
+
+  it('"1 hora 30 minutos" → 5400', () => {
+    expect(parseTiempoEstimadoASegundos("1 hora 30 minutos")).toBe(5400);
+  });
+
+  it('string vacío → null', () => {
+    expect(parseTiempoEstimadoASegundos("")).toBeNull();
+  });
+
+  it('null → null', () => {
+    expect(parseTiempoEstimadoASegundos(null)).toBeNull();
+  });
+
+  it('undefined → null', () => {
+    expect(parseTiempoEstimadoASegundos(undefined)).toBeNull();
+  });
+
+  it('"-" → null', () => {
+    expect(parseTiempoEstimadoASegundos("-")).toBeNull();
+  });
+
+  it('"un rato" → null', () => {
+    expect(parseTiempoEstimadoASegundos("un rato")).toBeNull();
+  });
+
+  it('"0 min" → null', () => {
+    expect(parseTiempoEstimadoASegundos("0 min")).toBeNull();
   });
 });
 

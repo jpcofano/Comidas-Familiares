@@ -195,10 +195,11 @@ export function CocinarRoute() {
           </div>
         )}
 
-        {/* PasoCard */}
+        {/* PasoCard — key asegura remount al cambiar paso (limpia StepTimer) */}
         {pasoActualObj && (
           <div className="card" style={{ marginBottom: "var(--space-3)" }}>
             <PasoCard
+              key={pasoActualObj.nroPaso}
               paso={pasoActualObj}
               tachado={tachados.has(pasoActualObj.nroPaso)}
               esActual
