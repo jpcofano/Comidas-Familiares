@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { LogOut } from "lucide-react";
+import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "../auth/useAuth";
 import "./Header.css";
 
@@ -30,7 +31,17 @@ export function Header() {
   return (
     <header className="app-header" ref={headerRef}>
       <div className="header-inner">
-        <h1 className="header-title">Comida Familiar</h1>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+          <span aria-hidden style={{
+            width: 28, height: 28, borderRadius: "50%",
+            background: "var(--primary-soft)", color: "var(--primary)",
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            flexShrink: 0,
+          }}>
+            <PlatoMark size={16} variant="simple" strokeWidth={1.6} />
+          </span>
+          <h1 className="header-title">Comida Familiar</h1>
+        </div>
         <button
           className="avatar-button"
           onClick={() => setMenuOpen((v) => !v)}

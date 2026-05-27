@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChefHat } from "lucide-react";
+import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "./useAuth";
 import "./auth.css";
 
@@ -24,7 +24,7 @@ export function LoginScreen() {
     <div className="login-screen">
       <div className="login-card">
         <div className="login-icon" aria-hidden="true">
-          <ChefHat size={36} strokeWidth={1.5} />
+          <PlatoMark size={40} variant="vapor" strokeWidth={1.6} />
         </div>
         <h1>Comida Familiar</h1>
         <p className="meta">
