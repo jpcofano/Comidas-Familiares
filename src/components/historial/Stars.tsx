@@ -1,16 +1,23 @@
 // src/components/historial/Stars.tsx — estrellas visuales
+// `scale` es la escala original del `value`. Si no se pasa, se asume igual a `max`
+// (retrocompatibilidad). Pasar `scale={10}` para valores 0–10 representados en 5 estrellas.
 
 interface StarsProps {
   value: number;
   max?: number;
+  scale?: number;
 }
 
-export function Stars({ value, max = 5 }: StarsProps) {
+export function Stars({ value, max = 5, scale }: StarsProps) {
+  const normalized = scale ? (value / scale) * max : value;
   return (
-    <span style={{ display: "inline-flex", gap: 1, alignItems: "center" }} aria-label={`${value.toFixed(1)} de ${max}`}>
+    <span
+      style={{ display: "inline-flex", gap: 1, alignItems: "center" }}
+      aria-label={`${value.toFixed(1)} de ${scale ?? max}`}
+    >
       {Array.from({ length: max }, (_, i) => {
-        const full = i + 1 <= value;
-        const half = !full && i + 0.5 <= value;
+        const full = i + 1 <= normalized;
+        const half = !full && i + 0.5 <= normalized;
         return (
           <svg
             key={i}

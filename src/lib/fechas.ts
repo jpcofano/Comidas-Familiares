@@ -28,7 +28,12 @@ function getLunesLocal(d: Date): string {
   return formatLocal(lunes);
 }
 
-function formatLocal(d: Date): string {
+/** Devuelve la fecha de hoy en formato "YYYY-MM-DD" (local time). */
+export function fechaHoy(): string {
+  return formatLocal(new Date());
+}
+
+export function formatLocal(d: Date): string {
   return [
     d.getFullYear(),
     String(d.getMonth() + 1).padStart(2, "0"),

@@ -14,7 +14,7 @@ import type { FiltroId } from "../components/historial/FilterChips";
 const FILTROS: Record<FiltroId, (e: Historial) => boolean> = {
   todos: () => true,
   top:   (e) => e.resultado === "Excelente" || e.resultado === "Muy bueno",
-  ok:    (e) => e.promedio >= 3.5,
+  ok:    (e) => e.resultado === "Excelente" || e.resultado === "Muy bueno" || e.resultado === "Bueno",
   mal:   (e) => e.resultado === "Regular" || e.resultado === "Malísimo",
 };
 

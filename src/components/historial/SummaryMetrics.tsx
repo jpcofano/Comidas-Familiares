@@ -72,7 +72,7 @@ export function SummaryMetrics({ entries }: SummaryMetricsProps) {
         </div>
         {total > 0 && (
           <div style={{ marginTop: 4 }}>
-            <Stars value={promedio} />
+            <Stars value={promedio} scale={10} />
           </div>
         )}
       </MetricCard>

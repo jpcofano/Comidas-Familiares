@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos, marcarCocinada, descartarPlan } from "../data/planes";
 import { getListaById } from "../data/compras";
@@ -124,10 +124,11 @@ function HomeJP() {
 
   const semanaRango = useMemo(() => getSemanaRango(semana), [semana]);
 
-  // Días marcados en el WeekStrip
+  // Días marcados en el WeekStrip — excluir planes ya cocinados
   const marked = useMemo(() => {
     const indices = new Set<number>();
     planes.forEach((p) => {
+      if (p.estado === "Cocinada") return;
       const dateStr = p.fecha ?? p.fechaPrevistaComida;
       if (dateStr) {
         const idx = fechaToWeekIdx(dateStr);
@@ -214,124 +215,117 @@ function HomeJP() {
       {/* ── WeekStrip ────────────────────────────────────────────────────── */}
       <WeekStrip semanaInicio={semana} marked={marked} />
 
-      {/* ── Sin planes ───────────────────────────────────────────────────── */}
-      {!hasPlanes && (
-        <div style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
-          <p className="meta" style={{ marginBottom: "var(--space-4)" }}>
-            Todavía no hay comidas elegidas para esta semana.
-          </p>
-          <Link
-            to="/biblioteca"
-            className="btn btn-primary"
-            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
-          >
-            Ver recetas
-          </Link>
-        </div>
-      )}
-
       {/* ── Especial + extras ────────────────────────────────────────────── */}
-      {especial && (
-        <section style={{ marginBottom: "var(--space-2)" }}>
-          <PlanCard
-            plan={especial}
-            menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
-            featured
-            isJP
-            busy={busy === especial.idPlan}
-            contexto={getContexto(especial)}
-            confirmDescartarMsg="¿Descartar la Especial? También se van a descartar sus extras."
-            onCocinar={() => handleCocinar(especial)}
-            onVerReceta={() => navigate(detallePath(especial))}
-            onMarkCocinada={() => handleMarcarCocinada(especial)}
-            onDescartar={() => handleDescartar(especial.idPlan)}
-            onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
-            {...recetaProps(especial)}
-          />
+      <section style={{ marginBottom: "var(--space-2)" }}>
+        {especial ? (
+          <>
+            <PlanCard
+              plan={especial}
+              menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
+              featured
+              isJP
+              busy={busy === especial.idPlan}
+              contexto={getContexto(especial)}
+              confirmDescartarMsg="¿Descartar la Especial? También se van a descartar sus extras."
+              onCocinar={() => handleCocinar(especial)}
+              onVerReceta={() => navigate(detallePath(especial))}
+              onMarkCocinada={() => handleMarcarCocinada(especial)}
+              onDescartar={() => handleDescartar(especial.idPlan)}
+              onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
+              {...recetaProps(especial)}
+            />
 
-          {/* Extras */}
-          <div style={{
-            marginLeft: "var(--space-5)",
-            paddingLeft: "var(--space-4)",
-            borderLeft: "3px solid var(--line)",
-          }}>
-            {extras.length > 0 && (
-              <>
-                <SectionLabel>Extras</SectionLabel>
-                {extras.map((p) => (
-                  <PlanCard
-                    key={p.idPlan}
-                    plan={p}
-                    menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
-                    isJP
-                    busy={busy === p.idPlan}
-                    onCocinar={() => handleCocinar(p)}
-                    onVerReceta={() => navigate(detallePath(p))}
-                    onMarkCocinada={() => handleMarcarCocinada(p)}
-                    onDescartar={() => handleDescartar(p.idPlan)}
-                    onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-                    {...recetaProps(p)}
-                  />
-                ))}
-              </>
-            )}
+            {/* Extras */}
+            <div style={{
+              marginLeft: "var(--space-5)",
+              paddingLeft: "var(--space-4)",
+              borderLeft: "3px solid var(--line)",
+            }}>
+              {extras.length > 0 && (
+                <>
+                  <SectionLabel>Extras</SectionLabel>
+                  {extras.map((p) => (
+                    <PlanCard
+                      key={p.idPlan}
+                      plan={p}
+                      menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
+                      isJP
+                      busy={busy === p.idPlan}
+                      onCocinar={() => handleCocinar(p)}
+                      onVerReceta={() => navigate(detallePath(p))}
+                      onMarkCocinada={() => handleMarcarCocinada(p)}
+                      onDescartar={() => handleDescartar(p.idPlan)}
+                      onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+                      {...recetaProps(p)}
+                    />
+                  ))}
+                </>
+              )}
+              <button
+                className="btn btn-ghost"
+                onClick={() => navigate("/biblioteca")}
+                style={{
+                  fontSize: "var(--fs-sm)",
+                  marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)",
+                  marginBottom: "var(--space-2)",
+                }}
+              >
+                + Sumar extra
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <SectionLabel>Especial</SectionLabel>
             <button
               className="btn btn-ghost"
               onClick={() => navigate("/biblioteca")}
-              style={{
-                fontSize: "var(--fs-sm)",
-                marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)",
-                marginBottom: "var(--space-2)",
-              }}
+              style={{ fontSize: "var(--fs-sm)" }}
             >
-              + Sumar extra
+              + Elegir como Especial
             </button>
-          </div>
-        </section>
-      )}
+          </>
+        )}
+      </section>
 
-      {/* ── En proceso ───────────────────────────────────────────────────── */}
-      {enProceso.length > 0 && (
-        <section style={{ marginTop: "var(--space-4)" }}>
-          <SectionLabel>En proceso</SectionLabel>
-          {enProceso.map((p) => (
-            <PlanCard
-              key={p.idPlan}
-              plan={p}
-              menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
-              isJP
-              busy={busy === p.idPlan}
-              onCocinar={() => handleCocinar(p)}
-              onVerReceta={() => navigate(detallePath(p))}
-              onMarkCocinada={() => handleMarcarCocinada(p)}
-              onDescartar={() => handleDescartar(p.idPlan)}
-              onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-              {...recetaProps(p)}
-            />
-          ))}
-        </section>
-      )}
+      {/* ── En proceso — siempre visible ─────────────────────────────────── */}
+      <section style={{ marginTop: "var(--space-4)" }}>
+        <SectionLabel>En proceso</SectionLabel>
+        {enProceso.map((p) => (
+          <PlanCard
+            key={p.idPlan}
+            plan={p}
+            menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
+            isJP
+            busy={busy === p.idPlan}
+            onCocinar={() => handleCocinar(p)}
+            onVerReceta={() => navigate(detallePath(p))}
+            onMarkCocinada={() => handleMarcarCocinada(p)}
+            onDescartar={() => handleDescartar(p.idPlan)}
+            onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+            {...recetaProps(p)}
+          />
+        ))}
+        <button
+          className="btn btn-ghost"
+          onClick={() => navigate("/biblioteca")}
+          style={{
+            fontSize: "var(--fs-sm)",
+            marginTop: enProceso.length > 0 ? "var(--space-1)" : "var(--space-2)",
+          }}
+        >
+          + Sumar en proceso
+        </button>
+      </section>
 
-      {/* ── Lista de compras ─────────────────────────────────────────────── */}
-      {hasPlanes && (
+      {/* ── Lista de compras — solo si hay items ─────────────────────────── */}
+      {hasPlanes && lista && (lista.totalItems ?? 0) > 0 && (
         <CompraProgress
-          pendientes={(lista?.totalItems ?? 0) - (lista?.totalYaTengo ?? 0)}
-          yaTengo={lista?.totalYaTengo ?? 0}
+          pendientes={(lista.totalItems ?? 0) - (lista.totalYaTengo ?? 0)}
+          yaTengo={lista.totalYaTengo ?? 0}
           onClick={() => navigate("/compras")}
         />
       )}
-
-      {/* ── Herramientas JP ──────────────────────────────────────────────── */}
-      <div style={{ marginTop: "var(--space-6)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--border)" }}>
-        <p className="meta" style={{ marginBottom: "var(--space-2)" }}>Herramientas JP</p>
-        <Link
-          to="/menus/importar"
-          className="btn btn-primary"
-          style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
-        >
-          + Importar menú
-        </Link>
-      </div>
     </div>
   );
 }

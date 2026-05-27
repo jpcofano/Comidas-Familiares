@@ -7,7 +7,6 @@ import { subscribeToPlanesActivos } from "../data/planes";
 import { elegirComoEspecial, sumarComoExtra, sumarComoEnProceso } from "../data/planes";
 import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
-import { RecetaHero } from "../components/receta/RecetaHero";
 import { MetaCards } from "../components/receta/MetaCards";
 import { RecetaPill } from "../components/receta/RecetaPill";
 import { IngredientesPorGondola } from "../components/receta/IngredientesPorGondola";
@@ -217,10 +216,7 @@ export function DetalleRecetaRoute() {
         <span className="meta">{receta.tipoItem}</span>
       </div>
 
-      {/* 2. Hero */}
-      <RecetaHero imagenUrl={receta.imagenUrl} nombre={receta.nombre} />
-
-      {/* 3. Título + porQueEspecial */}
+      {/* 2. Título + porQueEspecial */}
       <div style={{ marginBottom: "var(--space-4)" }}>
         <h1 style={{
           fontSize: 24,
@@ -244,13 +240,26 @@ export function DetalleRecetaRoute() {
         )}
       </div>
 
-      {/* 4. MetaCards */}
+      {/* 3. MetaCards */}
       <MetaCards
         tiempoTotalLabel={receta.tiempoTotalLabel}
         tiempoActivoLabel={receta.tiempoActivoLabel}
         porcionesLabel={receta.porcionesLabel}
         dificultad={receta.dificultad}
       />
+
+      {/* 4. Acciones JP — plegadas, arriba de las pills */}
+      {isJP && (
+        <AccionesPlan
+          elegEspecial={elegEspecial}
+          elegExtra={elegExtra}
+          elegEnProceso={elegEnProceso}
+          loadingAccion={loadingAccion}
+          onEspecial={() => void handleEspecial()}
+          onExtra={() => void handleExtra()}
+          onEnProceso={() => void handleEnProceso()}
+        />
+      )}
 
       {/* 5. Pills */}
       <div style={{
@@ -303,20 +312,7 @@ export function DetalleRecetaRoute() {
         </div>
       )}
 
-      {/* 9. Acciones JP */}
-      {isJP && (
-        <AccionesPlan
-          elegEspecial={elegEspecial}
-          elegExtra={elegExtra}
-          elegEnProceso={elegEnProceso}
-          loadingAccion={loadingAccion}
-          onEspecial={() => void handleEspecial()}
-          onExtra={() => void handleExtra()}
-          onEnProceso={() => void handleEnProceso()}
-        />
-      )}
-
-      {/* 10. Sticky bottom Cocinar (solo JP) */}
+      {/* 9. Sticky bottom Cocinar (solo JP) */}
       {isJP && (
         <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
       )}

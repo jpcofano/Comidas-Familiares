@@ -104,7 +104,7 @@ export function HistorialCard({ entry, onClick }: HistorialCardProps) {
           gap: 6,
           marginBottom: entry.queSalioBien ? 4 : 0,
         }}>
-          <Stars value={entry.promedio} />
+          <Stars value={entry.promedio} scale={10} />
           <span style={{ fontSize: 12, color: "var(--muted)", fontVariantNumeric: "tabular-nums" }}>
             {entry.promedio.toFixed(1)}
           </span>
