@@ -138,7 +138,7 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
       intervalRef.current = null;
     }
     setStatus("idle");
-    setRemainingSeconds(totalSegundos);
+    setRemainingSeconds(totalSegundos!); // non-null: gateado por el early return de arriba
   }
 
   async function handleActivarAvisos() {
