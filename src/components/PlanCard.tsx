@@ -133,8 +133,12 @@ export function PlanCard({
   async function handleQuitarDia() {
     setBusyLocal(true);
     try {
-      await asignarFechaPlan(plan.idPlan, null);
-      setDateEditing(false);
+      const result = await asignarFechaPlan(plan.idPlan, null);
+      if (result.ok) {
+        setDateEditing(false);
+      } else {
+        console.error(result.error);
+      }
     } finally {
       setBusyLocal(false);
     }
