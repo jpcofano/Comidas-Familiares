@@ -24,6 +24,8 @@ design-system/
 │   ├── lista-compras/                · 3 variantes — elegida: Variant C
 │   ├── cocinar/                      · flow guiada + scroll compartiendo chrome
 │   ├── home/                         · week strip + semana badge
+│   ├── detalle-receta/               · hero + meta + ingredientes por góndola + acciones plegables
+│   ├── historial/                    · summary + filtros + cards rich + agrupado por mes
 │   └── _shared/                      · ios-frame + design-canvas (starters)
 └── handoff/
     └── AUDIT.md                      ← auditoría del repo actual (P0/P1/P2)
@@ -40,6 +42,8 @@ design-system/
 - **Lista de compras** → variante C (recetas envueltas con chips). Por receta = default, por góndola = vista alterna. **Dentro de cada receta**, ingredientes agrupados por góndola en orden canónico (Verdulería → Carnicería → Lácteos → Almacén → Panadería).
 - **Cocinar** → modos Guiada y Ver todos comparten chrome (header sticky con bars + bottom sticky con botón Siguiente preview-título). Timer en vivo embebido (countdown mm:ss, pausar/reanudar, vibrate + Notification al terminar). Bloques Clave (verde) / Riesgo (amarillo) / Notas (italic muted) reciben datos del paso.
 - **Home** → "SEMANA / 26 may – 1 jun" arriba a la derecha (sin número de semana). Icono de plato en lugar de dot en días con comida. Título "3 comidas planeadas" en una sola línea.
+- **Detalle de receta** → hero photo placeholder + 3 meta cards (Total / Porciones / Dificultad) + tags row + ingredientes agrupados por góndola (consistente con Lista de Compras) + pasos preview (3 + expand) + tip + acciones JP plegables (collapse, no 3 botones gigantes apilados) + sticky bottom Cocinar.
+- **Historial** → 3 summary cards (Total / Promedio + stars / Top) + búsqueda + filtros chips (Todos / ★ Top / Para repetir / No repetir) + cards con fecha rich, mini-stars del promedio, badge de resultado, nota inline como blockquote, agrupado por mes con headers sticky.
 - **Tokens** → `colors_and_type.css` v1.0 (cocina cálida, primary #8a4a2f, accent #74324a). Dark mode "cocina apagada" disponible para `prefers-color-scheme: dark`.
 
 ## Pendientes pre-v2 (de auditoría anterior)

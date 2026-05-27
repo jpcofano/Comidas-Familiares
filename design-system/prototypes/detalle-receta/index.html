@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detalle de receta — v2</title>
+
+<link rel="stylesheet" href="../colors_and_type.css">
+
+<style>
+  html, body, #root { height: 100%; margin: 0; }
+  body { background: linear-gradient(180deg, #e6e1d8 0%, #d8d3cc 100%); overflow: hidden; }
+  #root { display: grid; grid-template-rows: auto 1fr; }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 5;
+  }
+  .topbar h1 { font: 600 14px/1.2 var(--font-sans); color: var(--text); margin: 0; }
+  .topbar .blurb { font: 500 12px/1.2 var(--font-sans); color: var(--muted); margin-left: 6px; }
+  .stage { position: relative; overflow: hidden; display: grid; place-items: center; }
+  .stage-inner { transform-origin: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="detalle-data.js"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="detalle-receta.jsx"></script>
+
+<script type="text/babel">
+function App() {
+  const stageRef = React.useRef(null);
+  const [scale, setScale] = React.useState(1);
+  React.useLayoutEffect(() => {
+    function fit() {
+      if (!stageRef.current) return;
+      const r = stageRef.current.getBoundingClientRect();
+      const sy = (r.height - 40) / 868;
+      const sx = (r.width - 40) / 402;
+      setScale(Math.min(sy, sx, 1.25));
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
+
+  return (
+    <>
+      <div className="topbar">
+        <h1>
+          Detalle de receta — v2
+          <span className="blurb">· hero + meta · ingredientes agrupados por góndola · pasos preview · acciones plegables</span>
+        </h1>
+      </div>
+      <div className="stage" ref={stageRef}>
+        <div className="stage-inner" style={{ transform: `scale(${scale})` }}>
+          <window.IOSDevice width={402} height={868}>
+            <window.DetalleReceta
+              receta={window.RECETA_DETALLE}
+              isJP={true}
+              onBack={() => alert('Volver a Biblioteca')}
+              onCocinar={() => alert('Abrir Cocinar')}
+            />
+          </window.IOSDevice>
+        </div>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
