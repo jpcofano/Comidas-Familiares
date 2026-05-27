@@ -166,7 +166,11 @@ export function PlanCard({
             marginTop: 12, paddingTop: 10,
             borderTop: "1px solid var(--border-subtle)",
           }}>
-            <AvatarStack names={cocineroNombres} size={22} />
+            <AvatarStack
+              names={cocineroNombres}
+              size={22}
+              onClick={isJP && plan.estado !== "Evaluada" ? () => setAsigEditing(true) : undefined}
+            />
             <span style={{ fontSize: 13, color: "var(--muted)" }}>
               {cocineroNombres.join(", ")}
             </span>
@@ -228,15 +232,6 @@ export function PlanCard({
           background: "var(--surface-strong)",
           display: "flex", flexDirection: "column",
         }}>
-          {isJP && plan.estado !== "Evaluada" && (
-            <button
-              className="btn btn-ghost"
-              onClick={() => setAsigEditing(true)}
-              style={{ textAlign: "left", padding: "10px 18px", fontSize: "var(--fs-sm)", borderRadius: 0 }}
-            >
-              Editar asignaciones
-            </button>
-          )}
           {onMarkCocinada && canCocinar && (
             <button
               className="btn btn-ghost"

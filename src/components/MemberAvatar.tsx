@@ -57,13 +57,28 @@ interface AvatarStackProps {
   names: string[];
   size?: number;
   max?: number;
+  onClick?: () => void;
 }
 
-export function AvatarStack({ names, size = 22, max = 4 }: AvatarStackProps) {
+export function AvatarStack({ names, size = 22, max = 4, onClick }: AvatarStackProps) {
   const shown = names.slice(0, max);
   const overflow = names.length - shown.length;
   return (
-    <span style={{ display: "inline-flex", alignItems: "center" }}>
+    <span
+      style={{
+        display: "inline-flex", alignItems: "center",
+        cursor: onClick ? "pointer" : "default",
+        borderRadius: "var(--radius-sm)",
+        outline: "none",
+      }}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      aria-label={onClick ? "Editar quiénes cocinan este plato" : undefined}
+      onClick={onClick}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } } : undefined}
+      onFocus={onClick ? (e) => { e.currentTarget.style.boxShadow = "var(--shadow-focus)"; } : undefined}
+      onBlur={onClick ? (e) => { e.currentTarget.style.boxShadow = "none"; } : undefined}
+    >
       {shown.map((n, i) => (
         <span key={n + i} style={{
           marginLeft: i === 0 ? 0 : -6,
