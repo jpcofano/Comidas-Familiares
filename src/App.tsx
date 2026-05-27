@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./auth/useAuth";
-import { SkeletonHeader } from "./components/skeletons/SkeletonHeader";
 import { LoginScreen } from "./auth/LoginScreen";
 import { UnauthorizedScreen } from "./auth/UnauthorizedScreen";
 import { AppShell } from "./layout/AppShell";
@@ -32,7 +31,7 @@ function App() {
   const { state } = useAuth();
 
   if (state.status === "loading") {
-    return <div className="loading-screen"><div style={{ width: "min(320px, 90vw)" }}><SkeletonHeader /></div></div>;
+    return <div className="loading-screen">Cargando…</div>;
   }
   if (state.status === "unauthenticated") {
     return <LoginScreen />;
