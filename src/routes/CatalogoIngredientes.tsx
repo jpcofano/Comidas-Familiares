@@ -73,7 +73,7 @@ function EditorIngrediente({
       {/* Sección de góndola */}
       <div style={{ marginBottom: "var(--space-3)" }}>
         <label style={{ display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)" }}>
-          Sección de góndola (DÓNDE se compra)
+          Sección de góndola (dónde se compra)
         </label>
         <select
           value={seccionGondola}
@@ -89,7 +89,7 @@ function EditorIngrediente({
       {/* Roles nutricionales */}
       <div style={{ marginBottom: "var(--space-3)" }}>
         <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-1)" }}>
-          Rol nutricional (qué APORTA — puede ser varios, o ninguno)
+          Rol nutricional (qué aporta — puede ser varios, o ninguno)
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)" }}>
           {ROLES_NUTRICIONALES.map((rol) => (
