@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
@@ -190,7 +191,7 @@ export function MemberDashboard() {
       <div className="card">
         <h3 style={{ margin: "0 0 var(--space-2)" }}>Mi historial</h3>
         {loadingHistorial ? (
-          <p className="meta">Cargando…</p>
+          <SkeletonList count={3} />
         ) : historial.length === 0 ? (
           <p className="meta">Todavía no hay evaluaciones registradas.</p>
         ) : (

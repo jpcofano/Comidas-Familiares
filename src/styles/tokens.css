@@ -167,3 +167,16 @@ textarea:focus-visible {
   outline: none;
   box-shadow: var(--shadow-focus);
 }
+
+/* ── Skeleton loaders ─────────────────────────────────────────────────── */
+@keyframes pulse-bg {
+  0%, 100% { background-color: var(--surface-alt); }
+  50%       { background-color: var(--border); }
+}
+.sk {
+  background: var(--surface-alt);
+  border-radius: 6px;
+  animation: pulse-bg 1.6s ease-in-out infinite;
+}
+.sk-circle { border-radius: 50%; }
+.sk-row:last-child { border-bottom: none; }

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { ChevronLeft } from "lucide-react";
 import { getHistorialPorId } from "../data/historial";
 import { MIEMBRO_IDS } from "../types/models";
@@ -63,7 +65,7 @@ export function HistorialDetalleRoute() {
     });
   }, [idHist]);
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   if (error || !entry) {
     return (
       <div className="card">

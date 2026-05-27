@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { getPlan, voteAndCloseIfComplete, forzarCierreEvaluacion } from "../data/planes";
 import { getDiccionarios } from "../data/diccionarios";
 import { getReceta } from "../data/recetas";
@@ -259,7 +261,7 @@ export function VotoRoute() {
 
   // ── Guards ────────────────────────────────────────────────────────────────
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
 
   if (!plan) {
     return (

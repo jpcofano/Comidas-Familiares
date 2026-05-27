@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { getIngredientesAmbiguos, actualizarIngrediente } from "../data/ingredientes";
 import { CATEGORIAS_INGREDIENTE, ROLES_NUTRICIONALES, ORDEN_GONDOLA } from "../lib/catalogo";
 import type { Ingrediente } from "../types/models";
@@ -166,7 +167,7 @@ export function CatalogoIngredientesRoute() {
         </h2>
       </div>
 
-      {loading && <div className="card"><p className="meta">Cargando…</p></div>}
+      {loading && <div className="card"><SkeletonList count={3} /></div>}
 
       {error && (
         <div className="card">

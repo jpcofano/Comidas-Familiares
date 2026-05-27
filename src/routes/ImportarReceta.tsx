@@ -391,7 +391,7 @@ function RenderPaso1({
           onClick={onParsear}
           disabled={cargando || !txt.trim()}
         >
-          {cargando ? "Cargando catálogo…" : "Parsear"}
+          {cargando ? "…" : "Parsear"}
         </button>
         {txt && !cargando && (
           <button className="btn-secondary" onClick={() => onTxtChange("")}>Limpiar</button>

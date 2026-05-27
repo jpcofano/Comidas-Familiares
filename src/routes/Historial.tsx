@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getHistorialReciente } from "../data/historial";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { normalizeText } from "../lib/canonical";
 import type { Historial } from "../types/models";
 
@@ -51,7 +52,7 @@ export function HistorialRoute() {
       })
     : entries;
 
-  if (loading) return <div className="card"><p className="meta">Cargando historial…</p></div>;
+  if (loading) return <div className="card"><SkeletonList count={5} /></div>;
   if (error) return <div className="card"><p style={{ color: "var(--err-text)" }}>{error}</p></div>;
 
   return (

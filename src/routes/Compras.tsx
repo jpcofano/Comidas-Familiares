@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
 import { getSemanaActual } from "../lib/fechas";
@@ -246,7 +248,7 @@ export function ComprasRoute() {
   const missingItems = (lista as (ListaCompras & { missingItems?: string[] }) | null)?.missingItems ?? [];
 
   if (loadingPlanes) {
-    return <div className="card"><p className="meta">Cargando…</p></div>;
+    return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   }
 
   const grupos = modoVista === "gondola" ? porGondola : porReceta;

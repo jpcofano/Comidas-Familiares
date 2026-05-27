@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { getMenu, computeMenuDerived } from "../data/menus";
 import { getRecetasByIds } from "../data/recetas";
 import { subscribeToPlanesActivos, elegirMenuComoEspecial, sumarMenuComoEnProceso } from "../data/planes";
@@ -187,7 +189,7 @@ export function DetalleMenuRoute() {
     else showToast(result.error.message, false);
   }
 
-  if (loading) return <div className="card"><p className="meta">Cargando menú…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   if (loadError || !menu) {
     return (
       <div className="card">

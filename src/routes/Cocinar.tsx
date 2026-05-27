@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 import { getReceta } from "../data/recetas";
 import { getPlan, marcarCocinada, marcarComponenteCocinado } from "../data/planes";
 import { useCocinarState } from "../hooks/useCocinarState";
@@ -118,7 +119,7 @@ export function CocinarRoute() {
   }
 
   if (loading) {
-    return <div className="card"><p className="meta">Cargando…</p></div>;
+    return <div className="card"><SkeletonHeader /></div>;
   }
   if (!receta) {
     return <div className="card"><p style={{ color: "var(--err-text)" }}>Receta no encontrada.</p></div>;

@@ -8,6 +8,7 @@ import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/fil
 import type { FiltrosReceta } from "../lib/filtros";
 import type { Receta, Menu, MenuDerived } from "../types/models";
 import { TIPOS_ITEM, PROTEINAS } from "../types/models";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -173,7 +174,7 @@ function TabRecetas() {
     minWidth: 0,
   };
 
-  if (loading) return <p className="meta" style={{ padding: "var(--space-4) 0" }}>Cargando recetas…</p>;
+  if (loading) return <SkeletonList count={5} />;
   if (error) return <p style={{ color: "var(--err-text)", padding: "var(--space-4) 0" }}>{error}</p>;
 
   return (
@@ -281,7 +282,7 @@ function TabMenus() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p className="meta" style={{ padding: "var(--space-4) 0" }}>Cargando menús…</p>;
+  if (loading) return <SkeletonList count={5} />;
   if (error) return <p style={{ color: "var(--err-text)", padding: "var(--space-4) 0" }}>{error}</p>;
 
   if (menus.length === 0) {

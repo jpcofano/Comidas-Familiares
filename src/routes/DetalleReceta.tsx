@@ -9,6 +9,8 @@ import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibil
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
 import { pluralizarUnidad } from "../lib/unidades";
 import type { Receta, Plan } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonRow } from "../components/skeletons/SkeletonRow";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
@@ -210,7 +212,12 @@ export function DetalleRecetaRoute() {
   if (loadingReceta) {
     return (
       <div className="card">
-        <p className="meta">Cargando receta…</p>
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-3)" }}>
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+        </div>
       </div>
     );
   }

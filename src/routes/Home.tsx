@@ -12,6 +12,8 @@ import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
 import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
 import { MemberDashboard } from "./MemberDashboard";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonPlanCard } from "../components/skeletons/SkeletonPlanCard";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -162,7 +164,11 @@ function HomeJP() {
   if (loading) {
     return (
       <div className="card">
-        <p className="meta">Cargando…</p>
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-4)" }}>
+          <SkeletonPlanCard />
+          <SkeletonPlanCard />
+        </div>
       </div>
     );
   }

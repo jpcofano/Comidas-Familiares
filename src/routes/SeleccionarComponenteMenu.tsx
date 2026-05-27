@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getPlan, marcarCocinada, desmarcarComponenteCocinado } from "../data/planes";
@@ -41,7 +42,7 @@ export function SeleccionarComponenteMenuRoute() {
     });
   }, [idPlan]);
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /></div>;
   if (!plan || !menu) {
     return (
       <div className="card">
