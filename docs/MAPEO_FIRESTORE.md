@@ -1,10 +1,10 @@
 # MAPEO_FIRESTORE — Comida Familiar
 
-> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional completo en v1.8.1 (Etapas 0–7 cerradas, incluyendo E7.7 distribución/onboarding). Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
+> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional completo en v1.8.1 (Etapas 0–7 cerradas). v1.8.2 agrega foto del plato en el detalle del historial. Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.1 (CIERRE TOTAL — app completa para uso familiar; E7.7 distribución/onboarding cerrado; push, dashboard avanzado y opcionales postergados sin urgencia)
+> **Versión**: 1.8.2 (foto del plato en detalle del historial — E7.8; base64 en subdoc media, sin Cloud Storage, plan Spark)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -899,6 +899,21 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
 **Por qué guardamos snapshots:**
 - `receta` y `nombreSeleccion` se duplican porque si se borra la receta en el futuro, el historial sigue siendo legible.
 
+**Foto del plato (v1.8.2 — E7.8):** la foto **no** vive en este doc. Vive en el sub-doc
+`/historial/{idHist}/media/foto` para que `getHistorialReciente` (query de 30 entradas)
+no descargue decenas de MB de base64. Solo `HistorialDetalle` hace un `getDoc` extra.
+
+Shape del sub-doc:
+```typescript
+{
+  dataUrl: string,        // "data:image/jpeg;base64,..." — foto comprimida en cliente
+  contentType: "image/jpeg",
+  byMemberId: string,     // memberId de quien la subió
+  updatedAt: Timestamp    // serverTimestamp()
+}
+```
+Doc id fijo `"foto"`. Una sola foto por entrada; subir otra la reemplaza con `setDoc`.
+
 ---
 
 ### 2.7 `/config/diccionarios` — Doc único de valores cerrados
@@ -1769,6 +1784,11 @@ en su scope necesario.
   del PlatoMark). Botón "Instalar app" en `LoginScreen` para Android (captar
   `beforeinstallprompt`, mostrar mientras esté disponible). iOS sigue con su flujo manual
   "Agregar a pantalla de inicio".
+- **`PROMPT_E7.8_foto_plato_historial.md`** ✅ **CERRADO (v1.8.2)**: foto del plato en el
+  detalle del historial. Sub-doc `/historial/{idHist}/media/foto` con `dataUrl` (base64
+  JPEG). Compresión en cliente (`comprimirImagen`: lado largo 1440px, calidad 0.82 con
+  presupuesto ≤900 KB, fallback a 1080px). UI: sección "Foto del plato" con add/cambiar/
+  quitar, input `capture="environment"`. Cualquier miembro puede subir. Plan Spark, $0.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -1953,6 +1973,18 @@ previene el mini-infobar nativo y expone `canInstall` + `promptInstall`. Botón
 "Instalar app" (`btn-secondary`) visible en `LoginScreen` solo cuando `canInstall=true`
 (Android/Chrome instalable, no standalone). En iOS y Firefox el evento nunca llega —
 botón no aparece. Validación real: post-deploy en Android.
+
+### 10.7 Foto del plato en el detalle del historial — E7.8 ✅ CERRADO (v1.8.2)
+
+Sub-doc `/historial/{idHist}/media/foto` con `{ dataUrl (base64 JPEG), contentType,
+byMemberId, updatedAt }`. Foto comprimida en cliente (`src/lib/comprimirImagen.ts`):
+lado largo 1440px, calidad 0.82 con presupuesto ≤900 KB y fallback a 1080px. NO va en
+el doc principal de historial para no inflar `getHistorialReciente` (la lista no la lee;
+solo `HistorialDetalle` hace un `getDoc` extra). Capa de datos: `getFotoHistorial` /
+`setFotoHistorial` / `deleteFotoHistorial` en `src/data/historial.ts` (read tira,
+writes `Result`). UI: sección "Foto del plato" en `HistorialDetalle` con add/cambiar/quitar,
+input `capture="environment"`. Cualquier miembro puede subirla. Reglas: subcollection
+`media` hereda `isFamilyMember()`. Plan Spark, sin Cloud Storage, $0.
 
 ---
 
