@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.2 (foto del plato en detalle del historial — E7.8; base64 en subdoc media, sin Cloud Storage, plan Spark)
+> **Versión**: 1.8.3 (E7.7.1 — metas OG completas para preview grande en WhatsApp/Telegram)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -1965,6 +1965,11 @@ Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 1200×630 px (41 KB) con fondo `#fdfaf6`, ícono `icon-512.png` centrado-izquierda y
 texto "Comida Familiar" generado con System.Drawing (Segoe UI). URLs absolutas a
 `https://comida-familiar.web.app/`. Validación real (WhatsApp / opengraph.xyz): post-deploy.
+
+**Ajuste v1.8.3 (E7.7.1):** WhatsApp mostraba preview chico (thumbnail cuadrado) porque
+faltaban `og:image:secure_url`, `og:image:type` y `og:image:alt`. Agregadas las 3 metas
+(+ `twitter:image:alt`) para forzar el banner grande. `og:image:width`/`height` ya
+existían. `twitter:card summary_large_image` ya existía.
 
 ### ~~10.6 Botón "Instalar app" en Android desde el login~~ ✅ CERRADO (v1.8.1 — E7.7, commit `26f49c8`)
 
