@@ -1,11 +1,11 @@
 # MAPEO_FIRESTORE — Comida Familiar
 
-> Documento maestro de migración de Apps Script + Google Sheets a Firebase + React + Vite.
+> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional cerrado en v1.8.0 (Etapas 0–7 salvo E7.7 distribución/onboarding, pendiente). Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
 >
-> Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
+> Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.7.3 (LIMPIEZA — §10.3/§10.4 cerrados: ING-0178 eliminado, REC-15xx verificadas)
-> **Fecha**: 2026-05-26
+> **Versión**: 1.8.0 (CIERRE — app completa para uso familiar; queda E7.7 distribución/onboarding pendiente; push, dashboard avanzado y opcionales postergados sin urgencia)
+> **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -52,6 +52,57 @@
 - 10 pantallas principales del front (home, recetas, detalle, importar, menus, menuDetalle, compras, cocinar, resultado, historial) + dashboard miembro + voto miembro.
 - Importador TXT (todas las validaciones y reglas anti-duplicado).
 - Diccionarios editables (`Tipos de ítem`, `Proteínas`, `Escenarios`, `Clima del plato`, `Pensada para`, `Tipos de plan`, `Miembros`, `Ocasiones`).
+
+### 1.2.cierre Cambios en v1.8.0 (cierre del scope)
+
+La app entra en uso real de la familia con todo el ciclo cubierto: planificación, compras,
+cocinar, voto, evaluación, historial, importador. Esta versión declara el cierre formal
+del scope inicial.
+
+1. **Etapas 0–6 cerradas.** Auth, modelo de datos, security rules, seeds, importador,
+   funcionalidad core JP, modo miembro, importador desde frontend, PWA instalable + splash iOS.
+
+2. **Etapa 7 cerrada en su scope necesario:**
+   - E7.1 — campo `fecha` en el plan ✅
+   - E7.2 — design system v1 (PlatoMark, PWA assets, componentes nuevos) ✅
+   - E7.3 — contador real de pasos en Cocinar ✅
+   - E7.4 — rediseño v2 (Compras, Cocinar, Detalle receta, Home tweaks) ✅
+   - E7.5 — fixes de auditoría (CTAs Home + marcar cocinada con fecha futura + detalle
+     receta sin foto + acciones JP arriba) ✅
+   - E7.6 — pulidos del detalle de receta + acciones JP visibles (cinco cosméticos
+     + sacar el acordeón de acciones, volver a botones directos con ocultar los no
+     elegibles) ✅
+   - E7.7 — distribución y onboarding (Open Graph para WhatsApp + botón Instalar app
+     en Android desde el login) ⏳ pendiente — ver §10.5 y §10.6
+
+3. **E6.2 push notifications — postergada sin urgencia.** No es necesaria para el uso
+   actual de la familia. Cuando se retome, ver `PROMPT_DOCS_mapeo_e62_en_espera.md` para
+   la decisión Camino A (Blaze + Cloud Function) vs Camino B (in-app sobre realtime).
+
+4. **§9.1 dashboard de historial avanzado (D.3) — postergado sin urgencia.** La pantalla
+   de historial actual (E3.7) cubre lo que la familia usa hoy: lista con filtros, métricas,
+   detalle. El dashboard con gráficos y comparación miembro-vs-familia entra cuando
+   aparezca necesidad real.
+
+5. **Apps Script viejo — cerrado.** JP retiró el acceso de escritura. El spreadsheet
+   queda como respaldo histórico read-only. La app Firebase es la única fuente de verdad
+   para la familia. Ver §9.12.
+
+6. **Apéndice §9 restante** (§9.2, §9.5, §9.7, §9.8, §9.10, §9.11) — futuro opcional sin
+   compromiso de fecha. Se reactiva si aparece necesidad real.
+
+7. **Deuda técnica §10 restante:**
+   - §10.1 — filtros de Biblioteca post-E3.4.8: pendiente verificación.
+   - §10.2.3 — display "a gusto" para unidad null: pospuesto por JP (no bloqueante).
+   - §10.5 — Open Graph / Twitter Card para preview al compartir el link (WhatsApp,
+     Telegram, iMessage). No implementado: `index.html` no tiene metas `og:*`. Cuando
+     se comparte el link, no aparece logo ni descripción. Asset de preview a generar
+     (1200×630) + metas a sumar. **E7.7.**
+   - §10.6 — Botón "Instalar app" en `LoginScreen` para Android. Hoy el navegador
+     muestra su propio prompt de instalación si quiere; no hay control en la app. Captar
+     `beforeinstallprompt` y exponer un botón explícito en el login mientras el evento
+     esté disponible. iOS queda fuera (Safari requiere "Agregar a pantalla de inicio"
+     manual). **E7.7.**
 
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
@@ -1669,12 +1720,49 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 
 - **`PROMPT_E6.1_pwa_instalable.md`** ✅ **CERRADO**: manifest.json + 8 íconos PNG ya en `public/`. Service worker generado con `vite-plugin-pwa` (Workbox). App instalable, shell offline, actualizaciones automáticas. Ver §1.2.unvicies.
 - **`PROMPT_E6.1.1_splash_ios.md`** ✅ **CERRADO**: 9 splash screens de iPhone activadas en `index.html`. Ver §1.2.duovicies.
-- **`PROMPT_E6.2_push_notifications.md`** ⏳ **EN ESPERA — decisión pendiente de JP**: Firebase Cloud Messaging (requiere plan Blaze de Firebase, de pago) vs. alternativa cliente-a-cliente vía Firestore listener (gratuita, más limitada — no llega si la app está cerrada). JP decide cuál usar antes de que se escriba el prompt.
+- **`PROMPT_E6.2_push_notifications.md`** 🅿️ **POSTERGADO sin urgencia** (decisión JP en v1.8.0). La familia no necesita push para el uso actual. Cuando se retome, ver `PROMPT_DOCS_mapeo_e62_en_espera.md` para los dos caminos posibles (A: Cloud Function + Blaze; B: in-app sobre realtime). FCM es gratis en ambos planes; lo que define la decisión es si se aceptan los términos del plan Blaze para activar Cloud Functions.
 
-### 7.7 Etapa 7 — Features nuevos (D.3 y más)
+### 7.7 Etapa 7 — Features post-cierre de Etapas 1–6
 
-- **`PROMPT_E7.1_dashboard_historial.md`**: D.3 con filtros y gráficos.
-- Otros prompts según prioridad familiar.
+Etapa 7 acumula todo lo que se hizo después del cierre funcional inicial. Cerrada en v1.8.0
+en su scope necesario.
+
+- **`PROMPT_E7.1_campo_fecha_plan.md`** ✅ **CERRADO**: campo `fecha?: string` en el plan +
+  `asignarFechaPlan(idPlan, fecha)` con validación de rango contra `semanaInicio..semanaFin`.
+  Sin UI — la UI llegó con E7.4. Ver §1.2.tervicies.
+- **`PROMPT_E7.2_design_v1.md`** ✅ **CERRADO**: integración del Design System v1.0
+  (logomark `PlatoMark`, PWA assets, componentes `WeekStrip`, `MemberAvatar`, `PlanCard`,
+  `CompraProgress`, rediseño Home v2 + screens de menú).
+- **`PROMPT_E7.3_contador_pasos.md`** ✅ **CERRADO**: contador real de pasos en Cocinar
+  con parser de tiempos libres + `StepTimer` reusable.
+- **`PROMPT_E7.4_design_v2.md`** ✅ **CERRADO**: rediseño v2 de Lista de Compras
+  (variante C — recetas envueltas), Cocinar (flow guiado/scroll con cursor "acá vas",
+  LiveTimer con notificaciones), Detalle de receta (hero + meta + ingredientes agrupados
+  + pasos preview + acciones JP plegables), Home (SemanaBadge, WeekStrip con Plate icon).
+- **`PROMPT_E7.5_home_ctas_fix_cocinada_detalle_arriba.md`** ✅ **CERRADO**: CTAs en el Home
+  (Elegir como Especial siempre cuando no hay; En proceso siempre; quitado el botón
+  Importar menú); `marcarCocinada` actualiza `fecha` a hoy y el WeekStrip excluye estado
+  `Cocinada`; `<CompraProgress>` se oculta con `totalItems === 0`; detalle de receta sin
+  placeholder de foto y con `AccionesPlan` reposicionado entre MetaCards y pills.
+- **`PROMPT_E7.6_pulido_detalle_receta.md`** ✅ **CERRADO**: cinco pulidos cosméticos del
+  detalle de receta (MetaCards sin borde + sub "X min activo"; borde solo entre items en
+  ingredientes; tiempo del paso en línea con título; banner riesgos con borde + estructura
+  ícono+texto; sticky bottom Cocinar con `position: sticky` + gradient fade) **+ cambio
+  funcional en `AccionesPlan`**: sacar el acordeón, mostrar los tres botones directamente,
+  ocultar los no elegibles (regla: `puede: false` → no renderizar). Conserva el flujo de
+  confirmación de reemplazo cuando hay Especial elegida.
+- **`PROMPT_E7.7_distribucion_onboarding.md`** ⏳ **PENDIENTE**: Open Graph + Twitter Card
+  en `index.html` para que el preview al compartir el link de la app por WhatsApp /
+  Telegram / iMessage muestre logo y descripción. Asset de preview (1200×630, derivado
+  del PlatoMark). Botón "Instalar app" en `LoginScreen` para Android (captar
+  `beforeinstallprompt`, mostrar mientras esté disponible). iOS sigue con su flujo manual
+  "Agregar a pantalla de inicio".
+
+**Postergados sin urgencia (v1.8.0):**
+
+- **Dashboard de historial avanzado (D.3 / §9.1)** — la pantalla actual de historial
+  cubre el uso real. Cuando se retome, requiere primero pasada por Claude Design (§8.2).
+- **Otros features del Apéndice §9** — sin compromiso de fecha.
 
 ---
 
@@ -1746,6 +1834,9 @@ Cosas planteadas pero **fuera de scope** para Etapas 0-6:
 ### 9.1 D.3 — Dashboard de historial avanzado (Etapa 7)
 Filtros, gráficos, comparaciones miembro vs. familia. Ver §8.2.
 
+**Estado en v1.8.0:** postergado sin urgencia. La pantalla de historial actual (E3.7)
+cubre el uso real de la familia. Se reactiva si aparece necesidad concreta.
+
 ### 9.2 Multi-semana
 Hoy: una sola semana activa (la actual). Futuro: planificación de la próxima semana, hover sobre las próximas 4 semanas en home.
 
@@ -1780,17 +1871,18 @@ Botón "Exportar todo a JSON" para snapshot offline. Útil si en el futuro quere
 Hoy: cualquier miembro en `/config/familia.miembros` tiene acceso completo (read/write a todas las recetas, planes, etc).
 Futuro: agregar un campo `scope` a la metadata del miembro (ej: `scope: "guest"`) y ajustar las Security Rules para que un guest pueda leer recetas pero no votar ni elegir planes. Útil si quisieras invitar a un suegro a ver el menú del finde sin que pueda romper el sistema.
 
-### 9.12 Cierre del Apps Script
-Una vez que la familia use Firebase con confianza por 4-6 semanas, deprecamos el Apps Script. Acciones:
-- Read-only en el Sheet.
-- Reemplazar `Index.html` con un mensaje "Esta versión está retirada, andá a https://comida-familiar.web.app".
-- Mantener el spreadsheet como respaldo histórico, sin acceso de escritura.
+### 9.12 Cierre del Apps Script ✅ HECHO (v1.8.0)
+
+JP retiró el acceso de escritura al spreadsheet original. El Apps Script viejo queda
+deprecado. El spreadsheet permanece como respaldo histórico read-only. La app Firebase
+en `https://comida-familiar.web.app` es la única fuente de verdad para la familia.
 
 ---
 
-## 10. Deuda técnica pendiente — post Etapa 3
+## 10. Deuda técnica pendiente — vivos en v1.8.0
 
-Ítems conocidos que no se abordaron en Etapa 3. Deben resolverse o decidirse explícitamente antes de Etapa 4-5. No es una lista de bugs bloqueantes — la app funciona — sino de cosas que van a morder si se ignoran.
+Ítems abiertos que no bloquean el uso de la app pero conviene resolver cuando aparezca
+ventana. No son bugs, son cosas que se notan al usar la app un tiempo.
 
 ### 10.1 Filtros de Biblioteca — posiblemente desactualizados tras E3.4.8
 
@@ -1835,10 +1927,30 @@ Inventario completo del rango verificado:
 
 Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 
+### 10.5 Open Graph / Twitter Card para compartir el link — E7.7
+
+`index.html` no tiene metas `og:*` ni `twitter:*`. Al compartir el link de la app por
+WhatsApp / Telegram / iMessage, el preview sale sin logo ni descripción (solo la URL
+pelada). Falta: generar un asset de preview 1200×630 (derivado del PlatoMark + nombre)
+y sumar las metas Open Graph + Twitter Card apuntando a él. Resuelto en E7.7.
+
+### 10.6 Botón "Instalar app" en Android desde el login — E7.7
+
+No hay control de instalación en la app. El navegador puede mostrar su propio prompt,
+pero JP quiere un botón explícito. Falta: captar `beforeinstallprompt` en un handler
+global, guardarlo, y exponer un botón "Instalar app" en `LoginScreen` mientras el
+evento esté disponible (se oculta una vez instalada o si el navegador no lo soporta).
+iOS queda fuera del alcance (Safari no dispara `beforeinstallprompt`; sigue con
+"Agregar a pantalla de inicio" manual, ya cubierto por el splash de E6.1.1). Resuelto
+en E7.7.
+
 ---
 
 ## Cierre
 
-Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome en el trabajo concreto y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
+Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-Próximo paso: cerrar Etapa 0 con commit + push y arrancar Etapa 1 desde `PROMPT_E1.0_bootstrap_config.md`.
+**Estado en v1.8.0:** ciclo funcional cerrado para uso familiar. Queda pendiente E7.7
+(distribución/onboarding: Open Graph + botón Instalar Android), que no bloquea el uso pero
+mejora cómo se comparte e instala la app. Lo demás postergado (push, D.3, opcionales §9.*)
+se reactiva caso por caso cuando aparezca demanda concreta.
