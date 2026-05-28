@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "./useAuth";
+import { useInstallPrompt } from "../lib/useInstallPrompt";
 import "./auth.css";
 
 export function LoginScreen() {
   const { signIn } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const { canInstall, promptInstall } = useInstallPrompt();
 
   async function handleSignIn() {
     setBusy(true);
@@ -40,6 +42,16 @@ export function LoginScreen() {
         </button>
         {error && (
           <p className="login-error">{error}</p>
+        )}
+        {canInstall && (
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={promptInstall}
+            style={{ marginTop: "var(--space-3)", width: "100%" }}
+          >
+            Instalar app
+          </button>
         )}
       </div>
     </div>
