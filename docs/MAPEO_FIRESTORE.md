@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.4 (E7.10 — reversión Bug 2 de E7.9 + badge de agregación en Compras)
+> **Versión**: 1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -142,6 +142,25 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E7.11 Cambios en v1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt)
+
+Tres correcciones sobre v1.8.4 en `/biblioteca/importar`.
+
+1. **Bug 1 — Multi-receta.** `parseRecetaTxt` (`src/import/parseReceta.ts`) pasa de devolver una sola receta a devolver un **array**. El TXT puede contener N bloques `#RECETA`; cada uno se parsea de forma independiente. Si un bloque falla validación, se agrega a `fallidas` sin abortar el lote. `ParseRecetaResult` es ahora `{ ok: true; recetas: ParsedReceta[]; fallidas: ParsedFallida[] } | { ok: false; errors: string[] }`. La numeración de `nroPaso` reinicia en 1 dentro de cada receta (no es global).
+
+2. **Bug 2 — Split de alternativas (`X o Y`).** Cuando la columna `ingrediente` contiene ` o ` (espacio-o-espacio), el parser divide en dos `ParsedIngredienteRaw` separados. Ambas filas quedan marcadas con el mismo `grupoAlternativa` (string interno) y `opcional: true`. El split es automático en el parseo; JP resuelve el matcheo de cada alternativa por separado en el paso 2 (como cualquier ingrediente). El vínculo en Firestore se arma en `handleGuardar`: la primera alternativa (cabeza) recibe `alternativas: [{ idIngrediente: idB }]`; la segunda no apunta de vuelta. Campo `alternativas?: Array<{ idIngrediente: string }>` ya existía en `IngredienteEnReceta`; no se modificó el modelo.
+
+3. **Bug 3 (nueva funcionalidad) — Subir archivo `.txt`.** El paso 1 del importador ahora acepta upload de archivo `.txt` además del textarea. El contenido se lee en cliente con `FileReader.readAsText(file, 'utf-8')` y se vuelca en el mismo estado `txt` — no hay segundo code path de parseo. El textarea muestra el contenido para revisión. Upload 100% en cliente, sin Firebase Storage.
+
+**Flujo de UI actualizado:**
+- Paso 1: textarea + botón "Subir archivo .txt". Muestra nombre del archivo cargado.
+- Paso 2: "N recetas detectadas, X ingredientes únicos". El matcher corre sobre el conjunto deduplicado de ingredientes de todas las recetas; la decisión de JP se aplica a todas las que usen ese ingrediente. Si algún bloque falló parseo, se lista con el motivo.
+- Paso 3: reporte estructurado — Creadas / Duplicadas / Fallidas, con links a las recetas creadas.
+
+**Anti-dup diferenciados:**
+- *Dedup de matcheo (paso 2)*: un mismo ingrediente canónico se resuelve una sola vez aunque aparezca en N recetas.
+- *Anti-dup dentro de receta (§3.5)*: si una receta lista el mismo ingrediente con la misma unidad dos veces, se colapsa a una fila. Este dedup opera **por receta**, no globalmente.
 
 ### 1.2.E7.10 Cambios en v1.8.4 (E7.10 — reversión Bug 2 de E7.9 + badge de agregación)
 
@@ -1231,6 +1250,8 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 
 ### 3.5 Validaciones del importador
 
+**Multi-receta (desde E7.11):** el TXT puede contener N bloques `#RECETA`. Cada bloque se valida de forma independiente. Los bloques que fallan no abortan el lote — pasan a `fallidas` con el motivo (nombre de campo y valor inválido). El importador procede con los bloques válidos.
+
 **Campos obligatorios en `#RECETA`:**
 - `nombre`, `tipoItem`, `proteinaPrincipal`, `escenarioUso`, `porciones`, `dificultad`, `sinLacteos`, `hidratos`.
 - Al menos uno entre `tiempoTotal` y `tiempoEstimado`.
@@ -1248,11 +1269,13 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 
 **Validación de tablas:**
 - `#INGREDIENTES`: ≥ 1 ingrediente con `ingrediente` no vacío.
-- `#PASOS`: ≥ 1 paso, números numéricos y sin duplicados.
+- `#PASOS`: ≥ 1 paso, números numéricos. La numeración reinicia en 1 por receta (no es global entre bloques).
+
+**Split de alternativas (desde E7.11):** si la columna `ingrediente` contiene ` o ` (espacio-o-espacio), el parser divide automáticamente en dos filas. Ambas quedan marcadas con el mismo `grupoAlternativa` interno y `opcional: true`. En Firestore la cabeza (primera alternativa) recibe `alternativas: [{ idIngrediente: idB }]`; la segunda no apunta de vuelta. Aplica en todas las secciones (incluyendo utensilios/descartables).
 
 **Anti-duplicado:**
-- Receta: no crear si existe `idReceta` o `nombreCanonico` ya cargado.
-- Ingrediente dentro de receta: no duplicar `(ingredienteCanonico, unidad, categoria)`.
+- Receta: no crear si existe `nombreCanonico` ya cargado (verificado antes de llamar a `crearReceta`). Una receta duplicada no bloquea las demás del lote.
+- Ingrediente dentro de receta: no duplicar `(normalizeText(textoOriginal), unidad)` — opera por receta, no globalmente entre recetas del lote.
 - Paso: no duplicar `(idReceta, orden)`.
 
 **Auto-derivación:**

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
-import { parseRecetaTxt, type ParsedReceta, type ParsedIngredienteRaw } from "../import/parseReceta";
+import { parseRecetaTxt, type ParsedReceta, type ParsedIngredienteRaw, type ParsedFallida } from "../import/parseReceta";
 import { matchIngrediente, type ResultadoMatch } from "../lib/matcherIngredientes";
 import {
   getCatalogo, crearIngrediente, buildNuevoIngredienteDoc, agregarSinonimo,
   invalidateCatalogCache, proximoIdIngrediente,
 } from "../data/ingredientes";
-import { proximoIdReceta, crearReceta } from "../data/recetas";
+import { proximoIdReceta, crearReceta, buscarRecetasPorNombre } from "../data/recetas";
 import { getPromptLLM } from "../data/config";
 import { normalizeText } from "../lib/canonical";
 import { normalizarUnidad, pluralizarUnidad } from "../lib/unidades";
@@ -26,8 +26,8 @@ interface FilaIngrediente {
 }
 
 type GuardadoState =
-  | { fase: "guardando" }
-  | { fase: "exito"; idReceta: string; nombre: string }
+  | { fase: "guardando"; progreso: number; total: number }
+  | { fase: "exito"; creadas: Array<{ idReceta: string; nombre: string }>; duplicadas: Array<{ nombre: string; razon: string }>; fallidas: Array<{ nombre: string; errores: string[] }> }
   | { fase: "error"; mensaje: string };
 
 // ─── Placeholder ──────────────────────────────────────────────────────────────
@@ -88,16 +88,18 @@ const BADGE_NUEVO   = badge("#424242", "#eeeeee");
 export function ImportarRecetaRoute() {
   const { state } = useAuth();
 
-  const [txt, setTxt]                       = useState("");
-  const [paso, setPaso]                     = useState<1 | 2 | 3>(1);
-  const [parseErrors, setParseErrors]       = useState<string[]>([]);
-  const [recetaParsed, setRecetaParsed]     = useState<ParsedReceta | null>(null);
-  const [filas, setFilas]                   = useState<FilaIngrediente[]>([]);
-  const [categorias, setCategorias]         = useState<string[]>([]);
-  const [cargandoCat, setCargandoCat]       = useState(false);
-  const [guardado, setGuardado]             = useState<GuardadoState | null>(null);
-  const [promptLLM, setPromptLLM]           = useState("");
-  const [copiado, setCopiado]               = useState(false);
+  const [txt, setTxt]                           = useState("");
+  const [paso, setPaso]                         = useState<1 | 2 | 3>(1);
+  const [parseErrors, setParseErrors]           = useState<string[]>([]);
+  const [recetasParsed, setRecetasParsed]       = useState<ParsedReceta[]>([]);
+  const [fallidasParseo, setFallidasParseo]     = useState<ParsedFallida[]>([]);
+  const [filas, setFilas]                       = useState<FilaIngrediente[]>([]);
+  const [categorias, setCategorias]             = useState<string[]>([]);
+  const [cargandoCat, setCargandoCat]           = useState(false);
+  const [guardado, setGuardado]                 = useState<GuardadoState | null>(null);
+  const [promptLLM, setPromptLLM]               = useState("");
+  const [copiado, setCopiado]                   = useState(false);
+  const [archivoNombre, setArchivoNombre]       = useState<string | null>(null);
 
   useEffect(() => {
     getPromptLLM().then(setPromptLLM);
@@ -119,32 +121,52 @@ export function ImportarRecetaRoute() {
   async function handleParsear() {
     setParseErrors([]);
     const result = parseRecetaTxt(txt);
+
     if (!result.ok) {
       setParseErrors(result.errors);
       return;
     }
+
+    const { recetas, fallidas } = result;
+
+    if (recetas.length === 0) {
+      const msgs = ["No se encontraron recetas válidas en el texto."];
+      for (const f of fallidas) {
+        msgs.push(`${f.nombre}: ${f.errores.join("; ")}`);
+      }
+      setParseErrors(msgs);
+      return;
+    }
+
     setCargandoCat(true);
     try {
       const catalogo = await getCatalogo();
       const cats = [...new Set([...catalogo.values()].map(i => i.categoria).filter(Boolean))].sort();
       setCategorias(cats);
 
-      const newFilas: FilaIngrediente[] = result.receta.ingredientesRaw.map(raw => {
-        const match = matchIngrediente(raw.textoOriginal, catalogo);
-        let decision: DecisionIngrediente;
-        if (match.tipo === "exacto") {
-          decision = { tipo: "exacto", idIngrediente: match.ingrediente.idIngrediente, nombrePreferido: match.ingrediente.nombrePreferido };
-        } else if (match.tipo === "sugerencias") {
-          const best = match.sugerencias[0].ingrediente;
-          decision = { tipo: "sugerencia", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
-        } else {
-          decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" };
+      // Matcheo deduplicado: un mismo ingrediente (por canon) se resuelve UNA vez
+      const filasMap = new Map<string, FilaIngrediente>();
+      for (const receta of recetas) {
+        for (const raw of receta.ingredientesRaw) {
+          const canonKey = normalizeText(raw.textoOriginal);
+          if (filasMap.has(canonKey)) continue;
+          const match = matchIngrediente(raw.textoOriginal, catalogo);
+          let decision: DecisionIngrediente;
+          if (match.tipo === "exacto") {
+            decision = { tipo: "exacto", idIngrediente: match.ingrediente.idIngrediente, nombrePreferido: match.ingrediente.nombrePreferido };
+          } else if (match.tipo === "sugerencias") {
+            const best = match.sugerencias[0].ingrediente;
+            decision = { tipo: "sugerencia", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
+          } else {
+            decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" };
+          }
+          filasMap.set(canonKey, { raw, match, decision });
         }
-        return { raw, match, decision };
-      });
+      }
 
-      setRecetaParsed(result.receta);
-      setFilas(newFilas);
+      setRecetasParsed(recetas);
+      setFallidasParseo(fallidas);
+      setFilas([...filasMap.values()]);
       setPaso(2);
     } finally {
       setCargandoCat(false);
@@ -155,29 +177,40 @@ export function ImportarRecetaRoute() {
     setFilas(prev => prev.map((f, i) => i === idx ? { ...f, decision } : f));
   }
 
-  // ─── Paso 2 → 3: guardar todo ───────────────────────────────────────────
+  // ─── Paso 2 → 3: guardar todas las recetas ──────────────────────────────
 
   async function handleGuardar() {
-    if (!recetaParsed) return;
+    if (recetasParsed.length === 0) return;
     setPaso(3);
-    setGuardado({ fase: "guardando" });
+    setGuardado({ fase: "guardando", progreso: 0, total: recetasParsed.length });
+
+    const creadas: Array<{ idReceta: string; nombre: string }> = [];
+    const duplicadas: Array<{ nombre: string; razon: string }> = [];
+    const fallidasGuardado: Array<{ nombre: string; errores: string[] }> = [];
 
     try {
       invalidateCatalogCache();
 
-      // 1. agregarSinonimo para sugerencias elegidas por JP
+      // ── 1. Operaciones de ingredientes (una vez, deduplicadas) ──────────
+
+      // canon → idIngrediente resuelto
+      const resolvedIds = new Map<string, string>();
+
+      // Sinónimos para sugerencias elegidas
       for (const fila of filas) {
         if (fila.decision.tipo === "sugerencia") {
           const r = await agregarSinonimo(fila.decision.idIngrediente, normalizeText(fila.raw.textoOriginal));
           if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }
         }
+        if (fila.decision.tipo !== "nuevo") {
+          resolvedIds.set(normalizeText(fila.raw.textoOriginal), fila.decision.idIngrediente);
+        }
       }
 
-      // 2. crearIngrediente para nuevos
-      const idsNuevos: (string | null)[] = filas.map(() => null);
-      for (let i = 0; i < filas.length; i++) {
-        const fila = filas[i];
+      // Crear ingredientes nuevos
+      for (const fila of filas) {
         if (fila.decision.tipo !== "nuevo") continue;
+        const canonKey = normalizeText(fila.raw.textoOriginal);
         const id = await proximoIdIngrediente();
         const canon = normalizeText(fila.decision.nombre);
         const texNorm = normalizeText(fila.raw.textoOriginal);
@@ -190,88 +223,150 @@ export function ImportarRecetaRoute() {
           unidadNorm: normalizarUnidad(fila.raw.unidad),
         }));
         if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }
-        idsNuevos[i] = id;
+        resolvedIds.set(canonKey, id);
       }
 
-      // 3. Construir ingredientes resueltos
-      const ingredientes = filas.map((fila, i) => {
-        const idIngrediente = fila.decision.tipo === "nuevo" ? idsNuevos[i]! : fila.decision.idIngrediente;
-        // normalizarUnidad returns null for "a gusto" (empty/unrecognized) — omit the key in that case.
-        // Unrecognized units emit console.warn; recipe is still saved with unidad omitted.
-        const unidadNorm = normalizarUnidad(fila.raw.unidad);
-        return {
-          idIngrediente,
-          textoOriginal: fila.raw.textoOriginal,
-          ...(fila.raw.preparacion ? { preparacion: fila.raw.preparacion } : {}),
-          seccion: fila.raw.seccion,
-          cantidadLabel: fila.raw.cantidadLabel,
-          cantidad: fila.raw.cantidadMin ?? undefined,
-          cantidadMin: fila.raw.cantidadMin ?? undefined,
-          cantidadMax: fila.raw.cantidadMax ?? undefined,
-          ...(unidadNorm != null ? { unidad: unidadNorm } : {}),
-          opcional: fila.raw.opcional,
-          ...(fila.raw.notas ? { notas: fila.raw.notas } : {}),
-        };
+      // ── 2. Crear recetas una por una ─────────────────────────────────────
+
+      for (let ri = 0; ri < recetasParsed.length; ri++) {
+        const receta = recetasParsed[ri];
+        setGuardado({ fase: "guardando", progreso: ri, total: recetasParsed.length });
+
+        // Mapa de grupos de alternativas para esta receta
+        const altGroups = new Map<string, ParsedIngredienteRaw[]>();
+        for (const raw of receta.ingredientesRaw) {
+          if (raw.grupoAlternativa) {
+            const arr = altGroups.get(raw.grupoAlternativa) ?? [];
+            arr.push(raw);
+            altGroups.set(raw.grupoAlternativa, arr);
+          }
+        }
+
+        // Construir ingredientes resueltos con anti-dup y vínculo alternativas
+        const seenDedup = new Set<string>();
+        const ingredientes: Array<Record<string, unknown>> = [];
+
+        for (const raw of receta.ingredientesRaw) {
+          const canonKey = normalizeText(raw.textoOriginal);
+          const idIngrediente = resolvedIds.get(canonKey);
+          if (!idIngrediente) continue;
+
+          const unidadNorm = normalizarUnidad(raw.unidad);
+          const dedupKey = `${idIngrediente}|${unidadNorm ?? ""}`;
+          if (seenDedup.has(dedupKey)) continue;
+          seenDedup.add(dedupKey);
+
+          // Alternativas: vínculo unidireccional cabeza → alternativa
+          let alternativas: Array<{ idIngrediente: string }> | undefined;
+          if (raw.grupoAlternativa) {
+            const group = altGroups.get(raw.grupoAlternativa)!;
+            if (group[0] === raw && group[1]) {
+              const idB = resolvedIds.get(normalizeText(group[1].textoOriginal));
+              if (idB) alternativas = [{ idIngrediente: idB }];
+            }
+          }
+
+          ingredientes.push({
+            idIngrediente,
+            textoOriginal: raw.textoOriginal,
+            ...(raw.preparacion ? { preparacion: raw.preparacion } : {}),
+            seccion: raw.seccion,
+            cantidadLabel: raw.cantidadLabel,
+            cantidad: raw.cantidadMin ?? undefined,
+            cantidadMin: raw.cantidadMin ?? undefined,
+            cantidadMax: raw.cantidadMax ?? undefined,
+            ...(unidadNorm != null ? { unidad: unidadNorm } : {}),
+            opcional: raw.opcional,
+            ...(raw.notas ? { notas: raw.notas } : {}),
+            ...(alternativas ? { alternativas } : {}),
+          });
+        }
+
+        // Construir pasos
+        const pasos = receta.pasos.map(p => ({
+          nroPaso: p.nroPaso,
+          titulo: p.titulo,
+          detalle: p.detalle,
+          tiempoEstimadoLabel: p.tiempoEstimadoLabel,
+          tiempoEstimadoMin: p.tiempoEstimadoMin,
+          ...(p.puntoClave ? { puntoClave: p.puntoClave } : {}),
+          ...(p.errorComun ? { errorComun: p.errorComun } : {}),
+          ...(p.notas ? { notas: p.notas } : {}),
+        }));
+
+        // Anti-dup por nombreCanonico antes de crear
+        const existing = await buscarRecetasPorNombre(receta.nombre);
+        if (existing.length > 0) {
+          duplicadas.push({ nombre: receta.nombre, razon: `Ya existe "${existing[0].nombre}" (${existing[0].idReceta}).` });
+          setGuardado({ fase: "guardando", progreso: ri + 1, total: recetasParsed.length });
+          continue;
+        }
+
+        const idReceta = await proximoIdReceta();
+        const r = await crearReceta({
+          idReceta,
+          nombre: receta.nombre,
+          nombreCanonico: receta.nombreCanonico,
+          tipoItem: receta.tipoItem,
+          proteinaPrincipal: receta.proteinaPrincipal,
+          estilo: "",
+          tecnicaPrincipal: "",
+          escenarioUso: receta.escenarioUso,
+          ...(receta.climaDelPlato ? { climaDelPlato: receta.climaDelPlato } : {}),
+          pensadaPara: receta.pensadaPara,
+          sinLacteos: receta.sinLacteos,
+          hidratos: receta.hidratos,
+          aptoNocheDeADos: receta.aptoNocheDeADos,
+          paraJuanPablo: receta.paraJuanPablo,
+          paraFamilia: receta.paraFamilia,
+          tiempoActivoLabel: receta.tiempoActivoLabel,
+          tiempoActivoMin: receta.tiempoActivoMin,
+          tiempoTotalLabel: receta.tiempoTotalLabel,
+          tiempoTotalMin: receta.tiempoTotalMin,
+          dificultad: receta.dificultad,
+          dificultadOrden: receta.dificultadOrden,
+          porcionesLabel: receta.porcionesLabel,
+          porcionesMin: receta.porcionesMin,
+          porcionesMax: receta.porcionesMax,
+          costoEstimado: receta.costoEstimado,
+          costoOrden: receta.costoOrden,
+          ...(receta.hidratoOpcional ? { hidratoOpcional: receta.hidratoOpcional } : {}),
+          ...(receta.notas ? { notas: receta.notas } : {}),
+          fuente: receta.fuente,
+          ingredientes: ingredientes as Parameters<typeof crearReceta>[0]["ingredientes"],
+          pasos,
+        } as Parameters<typeof crearReceta>[0]);
+
+        if (!r.ok) {
+          if (r.error.code === "recipe-already-exists") {
+            duplicadas.push({ nombre: receta.nombre, razon: r.error.message });
+          } else {
+            fallidasGuardado.push({ nombre: receta.nombre, errores: [r.error.message] });
+          }
+        } else {
+          creadas.push({ idReceta, nombre: receta.nombre });
+        }
+
+        setGuardado({ fase: "guardando", progreso: ri + 1, total: recetasParsed.length });
+      }
+
+      setGuardado({
+        fase: "exito",
+        creadas,
+        duplicadas,
+        fallidas: [
+          ...fallidasParseo.map(f => ({ nombre: f.nombre, errores: f.errores })),
+          ...fallidasGuardado,
+        ],
       });
-
-      // 4. Construir pasos
-      const pasos = recetaParsed.pasos.map(p => ({
-        nroPaso: p.nroPaso,
-        titulo: p.titulo,
-        detalle: p.detalle,
-        tiempoEstimadoLabel: p.tiempoEstimadoLabel,
-        tiempoEstimadoMin: p.tiempoEstimadoMin,
-        ...(p.puntoClave ? { puntoClave: p.puntoClave } : {}),
-        ...(p.errorComun ? { errorComun: p.errorComun } : {}),
-        ...(p.notas ? { notas: p.notas } : {}),
-      }));
-
-      // 5. Obtener ID y crear receta
-      const idReceta = await proximoIdReceta();
-      const r = await crearReceta({
-        idReceta,
-        nombre: recetaParsed.nombre,
-        nombreCanonico: recetaParsed.nombreCanonico,
-        tipoItem: recetaParsed.tipoItem,
-        proteinaPrincipal: recetaParsed.proteinaPrincipal,
-        estilo: "",
-        tecnicaPrincipal: "",
-        escenarioUso: recetaParsed.escenarioUso,
-        ...(recetaParsed.climaDelPlato ? { climaDelPlato: recetaParsed.climaDelPlato } : {}),
-        pensadaPara: recetaParsed.pensadaPara,
-        sinLacteos: recetaParsed.sinLacteos,
-        hidratos: recetaParsed.hidratos,
-        aptoNocheDeADos: recetaParsed.aptoNocheDeADos,
-        paraJuanPablo: recetaParsed.paraJuanPablo,
-        paraFamilia: recetaParsed.paraFamilia,
-        tiempoActivoLabel: recetaParsed.tiempoActivoLabel,
-        tiempoActivoMin: recetaParsed.tiempoActivoMin,
-        tiempoTotalLabel: recetaParsed.tiempoTotalLabel,
-        tiempoTotalMin: recetaParsed.tiempoTotalMin,
-        dificultad: recetaParsed.dificultad,
-        dificultadOrden: recetaParsed.dificultadOrden,
-        porcionesLabel: recetaParsed.porcionesLabel,
-        porcionesMin: recetaParsed.porcionesMin,
-        porcionesMax: recetaParsed.porcionesMax,
-        costoEstimado: recetaParsed.costoEstimado,
-        costoOrden: recetaParsed.costoOrden,
-        ...(recetaParsed.hidratoOpcional ? { hidratoOpcional: recetaParsed.hidratoOpcional } : {}),
-        ...(recetaParsed.notas ? { notas: recetaParsed.notas } : {}),
-        fuente: recetaParsed.fuente,
-        ingredientes,
-        pasos,
-      } as Parameters<typeof crearReceta>[0]);
-
-      if (!r.ok) { setGuardado({ fase: "error", mensaje: r.error.message }); return; }
-      setGuardado({ fase: "exito", idReceta, nombre: recetaParsed.nombre });
-    } catch (e) {
+    } catch {
       setGuardado({ fase: "error", mensaje: "Error inesperado al guardar." });
     }
   }
 
   function resetAll() {
-    setTxt(""); setParseErrors([]); setRecetaParsed(null);
-    setFilas([]); setGuardado(null); setPaso(1);
+    setTxt(""); setParseErrors([]); setRecetasParsed([]); setFallidasParseo([]);
+    setFilas([]); setGuardado(null); setPaso(1); setArchivoNombre(null);
   }
 
   // ─── Render ──────────────────────────────────────────────────────────────
@@ -287,19 +382,22 @@ export function ImportarRecetaRoute() {
       {paso === 1 && (
         <RenderPaso1
           txt={txt}
-          onTxtChange={setTxt}
+          onTxtChange={v => { setTxt(v); if (!v) setArchivoNombre(null); }}
           onParsear={handleParsear}
           parseErrors={parseErrors}
           cargando={cargandoCat}
           tienePrompt={!!promptLLM}
           copiado={copiado}
           onCopiarPrompt={handleCopiarPrompt}
+          archivoNombre={archivoNombre}
+          onArchivoNombre={setArchivoNombre}
         />
       )}
 
-      {paso === 2 && recetaParsed && (
+      {paso === 2 && recetasParsed.length > 0 && (
         <RenderPaso2
-          receta={recetaParsed}
+          recetas={recetasParsed}
+          fallidasParseo={fallidasParseo}
           filas={filas}
           categorias={categorias}
           onDecisionChange={updateDecision}
@@ -324,6 +422,7 @@ export function ImportarRecetaRoute() {
 function RenderPaso1({
   txt, onTxtChange, onParsear, parseErrors, cargando,
   tienePrompt, copiado, onCopiarPrompt,
+  archivoNombre, onArchivoNombre,
 }: {
   txt: string;
   onTxtChange: (v: string) => void;
@@ -333,7 +432,34 @@ function RenderPaso1({
   tienePrompt: boolean;
   copiado: boolean;
   onCopiarPrompt: () => void;
+  archivoNombre: string | null;
+  onArchivoNombre: (nombre: string | null) => void;
 }) {
+  const [fileError, setFileError] = useState<string | null>(null);
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFileError(null);
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = evt => {
+      const content = evt.target?.result as string;
+      if (!content || !content.trim()) {
+        setFileError("El archivo está vacío.");
+        onArchivoNombre(null);
+        return;
+      }
+      onTxtChange(content);
+      onArchivoNombre(file.name);
+    };
+    reader.onerror = () => {
+      setFileError("No se pudo leer el archivo.");
+      onArchivoNombre(null);
+    };
+    reader.readAsText(file, "utf-8");
+    e.target.value = "";
+  }
+
   return (
     <>
       {/* Sección: copiar prompt para LLM */}
@@ -368,9 +494,35 @@ function RenderPaso1({
         </div>
       )}
 
-      <p className="meta" style={{ marginBottom: "0.75rem" }}>
-        Pegá el TXT con el formato <code>#RECETA</code> / <code>#INGREDIENTES</code> / <code>#PASOS</code>.
+      <p className="meta" style={{ marginBottom: "0.5rem" }}>
+        Pegá el TXT o subí un archivo <code>.txt</code> con formato <code>#RECETA</code> / <code>#INGREDIENTES</code> / <code>#PASOS</code>. Podés incluir múltiples recetas en el mismo archivo.
       </p>
+
+      {/* Subir archivo */}
+      <div style={{ marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+        <label style={{
+          display: "inline-block", padding: "0.35rem 0.9rem", fontSize: "0.82rem", fontWeight: 600,
+          border: "1px solid var(--primary, #1976d2)", borderRadius: "4px", cursor: "pointer",
+          background: "var(--surface, #fff)", color: "var(--primary, #1976d2)", userSelect: "none",
+        }}>
+          Subir archivo .txt
+          <input
+            type="file"
+            accept=".txt,text/plain"
+            onChange={handleFileChange}
+            disabled={cargando}
+            style={{ display: "none" }}
+          />
+        </label>
+        {archivoNombre && (
+          <span style={{ fontSize: "0.8rem", color: "var(--muted, #666)" }}>
+            Cargado: <strong>{archivoNombre}</strong>
+          </span>
+        )}
+        {fileError && (
+          <span style={{ fontSize: "0.8rem", color: "#c62828" }}>{fileError}</span>
+        )}
+      </div>
 
       <textarea
         value={txt}
@@ -394,7 +546,7 @@ function RenderPaso1({
           {cargando ? "Cargando catálogo…" : "Parsear"}
         </button>
         {txt && !cargando && (
-          <button className="btn-secondary" onClick={() => onTxtChange("")}>Limpiar</button>
+          <button className="btn-secondary" onClick={() => { onTxtChange(""); onArchivoNombre(null); setFileError(null); }}>Limpiar</button>
         )}
       </div>
 
@@ -413,9 +565,10 @@ function RenderPaso1({
 // ─── Paso 2 ───────────────────────────────────────────────────────────────────
 
 function RenderPaso2({
-  receta, filas, categorias, onDecisionChange, onGuardar, onVolver,
+  recetas, fallidasParseo, filas, categorias, onDecisionChange, onGuardar, onVolver,
 }: {
-  receta: ParsedReceta;
+  recetas: ParsedReceta[];
+  fallidasParseo: ParsedFallida[];
   filas: FilaIngrediente[];
   categorias: string[];
   onDecisionChange: (idx: number, d: DecisionIngrediente) => void;
@@ -423,18 +576,33 @@ function RenderPaso2({
   onVolver: () => void;
 }) {
   const pendientes = filas.filter(f => f.decision.tipo === "nuevo" && !f.decision.nombre.trim()).length;
+  const totalPasos = recetas.reduce((s, r) => s + r.pasos.length, 0);
 
   return (
     <>
       <div style={{ marginBottom: "0.75rem" }}>
-        <p style={{ margin: 0, fontWeight: 600 }}>{receta.nombre}</p>
-        <p className="meta" style={{ margin: "0.2rem 0 0" }}>
-          {receta.ingredientesRaw.length} ingredientes · {receta.pasos.length} pasos
+        <p style={{ margin: 0, fontWeight: 600 }}>
+          {recetas.length === 1 ? recetas[0].nombre : `${recetas.length} recetas detectadas`}
         </p>
+        <p className="meta" style={{ margin: "0.2rem 0 0" }}>
+          {filas.length} ingredientes únicos · {totalPasos} pasos totales
+        </p>
+        {fallidasParseo.length > 0 && (
+          <div style={{ marginTop: "0.5rem", padding: "0.5rem 0.75rem", background: "#fff8e1", borderRadius: "6px", borderLeft: "4px solid #f9a825" }}>
+            <strong style={{ fontSize: "0.82rem" }}>
+              {fallidasParseo.length === 1 ? "1 receta no pudo parsearse" : `${fallidasParseo.length} recetas no pudieron parsearse`}:
+            </strong>
+            <ul style={{ margin: "0.25rem 0 0", paddingLeft: "1.25rem", fontSize: "0.78rem" }}>
+              {fallidasParseo.map((f, i) => (
+                <li key={i}><strong>{f.nombre}:</strong> {f.errores.join("; ")}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <p className="meta" style={{ marginBottom: "0.5rem" }}>
-        Revisá cómo se resolvió cada ingrediente contra el catálogo.
+        Revisá cómo se resolvió cada ingrediente contra el catálogo. Las decisiones se aplican a todas las recetas que usen ese ingrediente.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.25rem" }}>
@@ -457,7 +625,7 @@ function RenderPaso2({
           disabled={pendientes > 0}
           title={pendientes > 0 ? "Completá los nombres de los ingredientes nuevos" : undefined}
         >
-          Confirmar y guardar
+          {recetas.length === 1 ? "Confirmar y guardar" : `Confirmar y guardar ${recetas.length} recetas`}
         </button>
       </div>
     </>
@@ -490,6 +658,9 @@ function FilaRow({
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
         <span style={{ fontWeight: 500, fontSize: "0.88rem" }}>{titulo}</span>
         {unidadLabel && <span className="meta">{unidadLabel}</span>}
+        {raw.grupoAlternativa && (
+          <span style={badge("#5c35a0", "#ede7f6")}>alternativa</span>
+        )}
         {decision.tipo === "exacto"    && <span style={BADGE_EXACTO}>✓ Exacto</span>}
         {decision.tipo === "sugerencia" && <span style={BADGE_SUGER}>⚠ Sugerencias</span>}
         {decision.tipo === "nuevo"     && <span style={BADGE_NUEVO}>+ Nuevo</span>}
@@ -608,31 +779,71 @@ function RenderPaso3({
   if (guardado.fase === "guardando") {
     return (
       <div style={{ padding: "2rem 0", textAlign: "center", color: "#666" }}>
-        Guardando receta…
+        Guardando recetas… ({guardado.progreso} / {guardado.total})
       </div>
     );
   }
 
   if (guardado.fase === "exito") {
+    const { creadas, duplicadas, fallidas } = guardado;
     return (
-      <div style={{ padding: "0.75rem 1rem", background: "#e8f5e9", borderRadius: "6px", borderLeft: "4px solid #2e7d32" }}>
-        <strong>Receta creada</strong>
-        <p style={{ margin: "0.35rem 0 0" }}>
-          <strong>{guardado.idReceta}</strong> — "{guardado.nombre}"
-        </p>
-        <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.75rem" }}>
-          <Link
-            to={`/recetas/${guardado.idReceta}`}
-            style={{ fontSize: "0.875rem", color: "var(--color-primary)", textDecoration: "underline" }}
-          >
-            Ver receta
-          </Link>
-          <button className="btn-secondary" onClick={onImportarOtra}>Importar otra</button>
-        </div>
+      <div>
+        {creadas.length > 0 && (
+          <div style={{ padding: "0.75rem 1rem", background: "#e8f5e9", borderRadius: "6px", borderLeft: "4px solid #2e7d32", marginBottom: "0.75rem" }}>
+            <strong>{creadas.length === 1 ? "1 receta creada" : `${creadas.length} recetas creadas`}</strong>
+            <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
+              {creadas.map(c => (
+                <li key={c.idReceta} style={{ marginBottom: "0.15rem" }}>
+                  <Link
+                    to={`/recetas/${c.idReceta}`}
+                    style={{ color: "var(--color-primary)", textDecoration: "underline", fontSize: "0.875rem" }}
+                  >
+                    {c.idReceta} — {c.nombre}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {duplicadas.length > 0 && (
+          <div style={{ padding: "0.75rem 1rem", background: "#fff8e1", borderRadius: "6px", borderLeft: "4px solid #f9a825", marginBottom: "0.75rem" }}>
+            <strong>{duplicadas.length === 1 ? "1 duplicada" : `${duplicadas.length} duplicadas`}</strong>
+            <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
+              {duplicadas.map((d, i) => (
+                <li key={i} style={{ marginBottom: "0.15rem", fontSize: "0.85rem" }}>
+                  <strong>{d.nombre}:</strong> {d.razon}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {fallidas.length > 0 && (
+          <div style={{ padding: "0.75rem 1rem", background: "#fdecea", borderRadius: "6px", borderLeft: "4px solid #c62828", marginBottom: "0.75rem" }}>
+            <strong>{fallidas.length === 1 ? "1 fallida" : `${fallidas.length} fallidas`}</strong>
+            <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
+              {fallidas.map((f, i) => (
+                <li key={i} style={{ marginBottom: "0.15rem", fontSize: "0.85rem" }}>
+                  <strong>{f.nombre}:</strong> {f.errores.join("; ")}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {creadas.length === 0 && duplicadas.length === 0 && fallidas.length === 0 && (
+          <p style={{ color: "#666" }}>No se procesaron recetas.</p>
+        )}
+
+        <button className="btn-secondary" style={{ marginTop: "0.5rem" }} onClick={onImportarOtra}>
+          Importar más
+        </button>
       </div>
     );
   }
 
+  // fase === "error"
   return (
     <div style={{ padding: "0.75rem 1rem", background: "#fdecea", borderRadius: "6px", borderLeft: "4px solid #c62828" }}>
       <strong>Error al guardar</strong>

@@ -20,6 +20,7 @@ export interface ParsedIngredienteRaw {
   unidad: string;
   opcional: boolean;
   notas: string;
+  grupoAlternativa?: string; // dos filas con el mismo valor son alternativas; la primera es la "cabeza"
 }
 
 export interface ParsedPasoRaw {
@@ -64,8 +65,13 @@ export interface ParsedReceta {
   pasos: ParsedPasoRaw[];
 }
 
+export interface ParsedFallida {
+  nombre: string;
+  errores: string[];
+}
+
 export type ParseRecetaResult =
-  | { ok: true; receta: ParsedReceta }
+  | { ok: true; recetas: ParsedReceta[]; fallidas: ParsedFallida[] }
   | { ok: false; errors: string[] };
 
 // ─── Helpers internos ─────────────────────────────────────────────────────────
@@ -83,24 +89,28 @@ function derivarPensadaPara(tiempoTotalMin: number | null, dificultad: Dificulta
   return "Cualquiera";
 }
 
-// ─── Parser principal ─────────────────────────────────────────────────────────
+// ─── Parser de un bloque individual ──────────────────────────────────────────
 
-export function parseRecetaTxt(txt: string): ParseRecetaResult {
+function parseBloqueReceta(
+  bloqueContent: string,
+  bloqueIdx: number,
+  grupoBaseCounter: { value: number },
+): { ok: true; receta: ParsedReceta } | { ok: false; nombre: string; errores: string[] } {
   const errors: string[] = [];
+  const etiqueta = `Bloque ${bloqueIdx + 1}`;
 
-  const recetaIdx = txt.indexOf("#RECETA");
-  const ingIdx = txt.indexOf("#INGREDIENTES");
-  const pasosIdx = txt.indexOf("#PASOS");
+  const ingLocalIdx = bloqueContent.indexOf("#INGREDIENTES");
+  const pasosLocalIdx = bloqueContent.indexOf("#PASOS");
 
-  if (recetaIdx === -1) return { ok: false, errors: ["Falta el marcador #RECETA."] };
-  if (ingIdx === -1) return { ok: false, errors: ["Falta el marcador #INGREDIENTES."] };
-  if (pasosIdx === -1) return { ok: false, errors: ["Falta el marcador #PASOS."] };
+  if (ingLocalIdx === -1) return { ok: false, nombre: etiqueta, errores: [`${etiqueta}: falta #INGREDIENTES.`] };
+  if (pasosLocalIdx === -1) return { ok: false, nombre: etiqueta, errores: [`${etiqueta}: falta #PASOS.`] };
+  if (pasosLocalIdx < ingLocalIdx) return { ok: false, nombre: etiqueta, errores: [`${etiqueta}: #PASOS aparece antes que #INGREDIENTES.`] };
 
-  const recetaBlock = txt.slice(recetaIdx + "#RECETA".length, ingIdx);
-  const ingBlock = txt.slice(ingIdx + "#INGREDIENTES".length, pasosIdx);
-  const pasosBlock = txt.slice(pasosIdx + "#PASOS".length);
+  const recetaBlock = bloqueContent.slice(0, ingLocalIdx);
+  const ingBlock = bloqueContent.slice(ingLocalIdx + "#INGREDIENTES".length, pasosLocalIdx);
+  const pasosBlock = bloqueContent.slice(pasosLocalIdx + "#PASOS".length);
 
-  // ─── Key-value del bloque #RECETA ─────────────────────────────────────────
+  // ─── Key-value del bloque #RECETA ───────────────────────────────────────
 
   const kv: Record<string, string> = {};
   for (const line of recetaBlock.split("\n")) {
@@ -112,32 +122,33 @@ export function parseRecetaTxt(txt: string): ParseRecetaResult {
   }
 
   const nombre = kv["nombre"] ?? "";
-  if (!nombre) errors.push("Falta el campo 'nombre'.");
+  const nombreDisplay = nombre || etiqueta;
+  if (!nombre) errors.push(`${nombreDisplay}: falta el campo 'nombre'.`);
 
   const tipoItem: TipoItem = matchEnum(kv["tipoItem"] ?? "", TIPOS_ITEM) ?? "Receta principal";
 
   const proteinaPrincipal = matchEnum(kv["proteinaPrincipal"] ?? "", PROTEINAS);
   if (!proteinaPrincipal) {
-    errors.push(`Campo 'proteinaPrincipal' inválido: "${kv["proteinaPrincipal"] ?? ""}". Valores: ${PROTEINAS.join(", ")}.`);
+    errors.push(`${nombreDisplay}: 'proteinaPrincipal' inválido: "${kv["proteinaPrincipal"] ?? ""}". Valores: ${PROTEINAS.join(", ")}.`);
   }
 
   const escenarioUso = matchEnum(kv["escenarioUso"] ?? "", ESCENARIOS);
   if (!escenarioUso) {
-    errors.push(`Campo 'escenarioUso' inválido: "${kv["escenarioUso"] ?? ""}". Valores: ${ESCENARIOS.join(", ")}.`);
+    errors.push(`${nombreDisplay}: 'escenarioUso' inválido: "${kv["escenarioUso"] ?? ""}". Valores: ${ESCENARIOS.join(", ")}.`);
   }
 
   const climaDelPlato = matchEnum(kv["climaDelPlato"] ?? "", CLIMAS_PLATO) ?? undefined;
 
   const difResult = parseDificultad(kv["dificultad"] ?? "");
   if (!difResult.label) {
-    errors.push(`Campo 'dificultad' inválido: "${kv["dificultad"] ?? ""}". Valores: Baja, Media, Media-alta, Alta.`);
+    errors.push(`${nombreDisplay}: 'dificultad' inválido: "${kv["dificultad"] ?? ""}". Valores: Baja, Media, Media-alta, Alta.`);
   }
   const dificultad = (difResult.label || "Baja") as Dificultad;
   const dificultadOrden = difResult.orden || 1;
 
   const costoResult = parseCosto(kv["costoEstimado"] ?? "");
   if (!costoResult.label) {
-    errors.push(`Campo 'costoEstimado' inválido: "${kv["costoEstimado"] ?? ""}". Valores: Bajo, Medio, Medio/Alto, Alto.`);
+    errors.push(`${nombreDisplay}: 'costoEstimado' inválido: "${kv["costoEstimado"] ?? ""}". Valores: Bajo, Medio, Medio/Alto, Alto.`);
   }
   const costoEstimado = (costoResult.label || "Medio") as Costo;
   const costoOrden = costoResult.orden || 2;
@@ -174,7 +185,7 @@ export function parseRecetaTxt(txt: string): ParseRecetaResult {
   const notas = kv["notas"] || undefined;
   const fuente = kv["fuente"] || "ChatGPT";
 
-  // ─── Bloque #INGREDIENTES ─────────────────────────────────────────────────
+  // ─── Bloque #INGREDIENTES ──────────────────────────────────────────────
 
   const ingDataLines = ingBlock
     .split("\n")
@@ -189,24 +200,43 @@ export function parseRecetaTxt(txt: string): ParseRecetaResult {
     if (!ingrediente) continue;
 
     const cantResult = parseNumber(cantidadStr);
-    ingredientesRaw.push({
+    const baseProps = {
       seccion: seccion || "Principal",
-      textoOriginal: ingrediente,
       ...(preparacion ? { preparacion } : {}),
       cantidadLabel: cantidadStr,
       cantidadMin: cantResult?.min ?? cantResult?.value ?? null,
       cantidadMax: cantResult?.max ?? cantResult?.value ?? null,
       unidad: unidad || "",
-      opcional: parseSiNo(opcionalStr) === true,
       notas: notasIng,
-    });
+    };
+
+    // Split alternativas: "X o Y" → dos filas vinculadas por grupoAlternativa
+    if (ingrediente.includes(" o ")) {
+      const oIdx = ingrediente.indexOf(" o ");
+      const partA = ingrediente.slice(0, oIdx).trim();
+      const partB = ingrediente.slice(oIdx + 3).trim();
+      const grupoKey = `g${grupoBaseCounter.value++}`;
+      ingredientesRaw.push({ ...baseProps, textoOriginal: partA, opcional: true, grupoAlternativa: grupoKey });
+      ingredientesRaw.push({ ...baseProps, textoOriginal: partB, opcional: true, grupoAlternativa: grupoKey });
+    } else {
+      ingredientesRaw.push({ ...baseProps, textoOriginal: ingrediente, opcional: parseSiNo(opcionalStr) === true });
+    }
   }
 
-  if (ingredientesRaw.length === 0 && errors.length === 0) {
-    errors.push("El bloque #INGREDIENTES no tiene filas válidas.");
+  // Anti-dup dentro del bloque: (normalizeText(textoOriginal), unidad) — §3.5
+  const seenInBlock = new Set<string>();
+  const ingredientesDedupados = ingredientesRaw.filter(raw => {
+    const key = `${normalizeText(raw.textoOriginal)}|${raw.unidad}`;
+    if (seenInBlock.has(key)) return false;
+    seenInBlock.add(key);
+    return true;
+  });
+
+  if (ingredientesDedupados.length === 0 && errors.length === 0) {
+    errors.push(`${nombreDisplay}: el bloque #INGREDIENTES no tiene filas válidas.`);
   }
 
-  // ─── Bloque #PASOS ────────────────────────────────────────────────────────
+  // ─── Bloque #PASOS ─────────────────────────────────────────────────────
 
   const pasosDataLines = pasosBlock
     .split("\n")
@@ -234,10 +264,12 @@ export function parseRecetaTxt(txt: string): ParseRecetaResult {
   }
 
   if (pasos.length === 0 && errors.length === 0) {
-    errors.push("El bloque #PASOS no tiene filas válidas.");
+    errors.push(`${nombreDisplay}: el bloque #PASOS no tiene filas válidas.`);
   }
 
-  if (errors.length > 0) return { ok: false, errors };
+  if (errors.length > 0) {
+    return { ok: false, nombre: nombreDisplay, errores: errors };
+  }
 
   return {
     ok: true,
@@ -268,8 +300,40 @@ export function parseRecetaTxt(txt: string): ParseRecetaResult {
       ...(hidratoOpcional ? { hidratoOpcional } : {}),
       ...(notas ? { notas } : {}),
       fuente,
-      ingredientesRaw,
+      ingredientesRaw: ingredientesDedupados,
       pasos,
     },
   };
+}
+
+// ─── Parser principal (multi-receta) ─────────────────────────────────────────
+
+export function parseRecetaTxt(txt: string): ParseRecetaResult {
+  // Normalizar saltos de línea
+  const normalized = txt.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  // Dividir por #RECETA al inicio de línea
+  const segmentos = normalized.split(/^#RECETA\b/m);
+  // El primer segmento es el texto anterior al primer #RECETA (vacío o preamble)
+  const bloques = segmentos.slice(1).filter(s => s.trim() !== "");
+
+  if (bloques.length === 0) {
+    return { ok: false, errors: ["No se encontró ningún bloque #RECETA en el texto."] };
+  }
+
+  const recetas: ParsedReceta[] = [];
+  const fallidas: ParsedFallida[] = [];
+  // Contador compartido para grupoAlternativa único entre todos los bloques
+  const grupoCounter = { value: 0 };
+
+  for (let i = 0; i < bloques.length; i++) {
+    const result = parseBloqueReceta(bloques[i], i, grupoCounter);
+    if (result.ok) {
+      recetas.push(result.receta);
+    } else {
+      fallidas.push({ nombre: result.nombre, errores: result.errores });
+    }
+  }
+
+  return { ok: true, recetas, fallidas };
 }
