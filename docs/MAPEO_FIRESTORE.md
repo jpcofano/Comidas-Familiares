@@ -97,6 +97,25 @@ del scope inicial.
    - §10.5 — Open Graph + Twitter Card ✅ CERRADO en v1.8.1 (E7.7).
    - §10.6 — Botón "Instalar app" en Android ✅ CERRADO en v1.8.1 (E7.7).
 
+### 1.2.e77 Cambios en v1.8.1 (E7.7 cerrado)
+
+E7.7 distribución/onboarding ejecutado y deployado. Cierra el último pendiente del ciclo.
+
+1. **Open Graph + Twitter Card** (commit `23e7ef3`). Al compartir el link de la app por
+   WhatsApp / Telegram / iMessage, el preview muestra logo + nombre + descripción.
+   `public/og-image.png` (1200×630). Metas con URLs absolutas a producción en `index.html`.
+
+2. **Botón "Instalar app" (Android)** (commit `26f49c8`). `useInstallPrompt` captura
+   `beforeinstallprompt`; `LoginScreen` muestra un botón secundario "Instalar app" solo
+   cuando la PWA es instalable y no corre ya en standalone. iOS sigue con "Agregar a
+   pantalla de inicio" manual (Safari no dispara el evento), ya cubierto por el splash
+   de E6.1.1.
+
+3. **§10.5 y §10.6 cerradas.**
+
+Con E7.7 cerrado, el ciclo funcional de la app está completo. Lo que sigue es opcional
+(Apéndice §9) o postergado sin urgencia (push E6.2, dashboard D.3).
+
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
 Después de revisar el modelo de Apps Script, se detectó duplicación entre `/recetas` y `/menus` (campos paralelos: tiempos, dificultad, restricciones, etc.). El menú actual es un híbrido raro: tabla propia con campos de receta + un array de "componentes" que ya apuntan a recetas reales marcadas con `tipoItem: "Componente"`.
@@ -1920,14 +1939,14 @@ Inventario completo del rango verificado:
 
 Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 
-### 10.5 Open Graph / Twitter Card para compartir el link — E7.7 ✅ CERRADO (v1.8.1)
+### ~~10.5 Open Graph / Twitter Card para compartir el link~~ ✅ CERRADO (v1.8.1 — E7.7, commit `23e7ef3`)
 
 `index.html` ahora tiene metas `og:*` y `twitter:*` completas. Asset `public/og-image.png`
 1200×630 px (41 KB) con fondo `#fdfaf6`, ícono `icon-512.png` centrado-izquierda y
 texto "Comida Familiar" generado con System.Drawing (Segoe UI). URLs absolutas a
 `https://comida-familiar.web.app/`. Validación real (WhatsApp / opengraph.xyz): post-deploy.
 
-### 10.6 Botón "Instalar app" en Android desde el login — E7.7 ✅ CERRADO (v1.8.1)
+### ~~10.6 Botón "Instalar app" en Android desde el login~~ ✅ CERRADO (v1.8.1 — E7.7, commit `26f49c8`)
 
 Hook `useInstallPrompt` (`src/lib/useInstallPrompt.ts`) captura `beforeinstallprompt`,
 previene el mini-infobar nativo y expone `canInstall` + `promptInstall`. Botón
@@ -1941,8 +1960,8 @@ botón no aparece. Validación real: post-deploy en Android.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.1:** ciclo funcional y de distribución cerrado. Etapas 0–7 completas
-incluyendo E7.7 (Open Graph + botón Instalar Android). La app se comparte con preview
-en WhatsApp/Telegram, es instalable desde el login en Android, y corre offline como PWA.
-Lo demás postergado (push E6.2, D.3, opcionales §9.*) se reactiva caso por caso cuando
-aparezca demanda concreta.
+**Estado en v1.8.1:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. Las próximas
+modificaciones serán mejoras puntuales según necesidad real, no etapas planificadas. Lo
+postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso cuando
+aparezca demanda concreta. Deuda técnica viva: §10.1 (verificar filtros Biblioteca) y
+§10.2.3 ("a gusto" para unidad null) — ninguna bloquea el uso.
