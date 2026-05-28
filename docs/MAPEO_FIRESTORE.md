@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.3 (E7.9 — Compras filtrada por miembro confirmada + redundancia Pendientes resuelta; E7.7.1 metas OG)
+> **Versión**: 1.8.4 (E7.10 — reversión Bug 2 de E7.9 + badge de agregación en Compras)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -142,6 +142,29 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E7.10 Cambios en v1.8.4 (E7.10 — reversión Bug 2 de E7.9 + badge de agregación)
+
+Dos correcciones puntuales sobre v1.8.3.
+
+1. **Reversión de E7.9 #3 y #4.** La Decisión 2 de E7.9 era "sacar el botón Pendientes
+   del BottomNav y dejar todo en la home"; se había aplicado al revés (sacaron la
+   sección de la home, mantuvieron la pestaña). E7.10 corrige:
+   - `MemberDashboard.tsx`: restaurada la sección "Pendientes de evaluar" (fuente
+     `subscribeToPlanesActivos` + filtro client `estado === "Cocinada" && !votos[memberId]`).
+   - `BottomNav` (modo miembro): eliminada la pestaña "Pendientes". Queda con
+     Mi semana / Compras / Historial.
+   - `src/routes/Pendientes.tsx`: archivo eliminado.
+   - Router: ruta `/pendientes` reemplazada por `<Navigate to="/" replace />` para
+     bookmarks viejos.
+   - `subscribeToPlanesActivosMiembro` sigue eliminada (estaba bien sacarla en E7.9).
+
+2. **Badge de agregación en Compras.** Cuando un `ItemCompra` agrega aportes de más
+   de una receta única, se muestra un badge inline `+N recetas` al lado de la cantidad
+   (`N = new Set(aportes.map(a => a.idReceta)).size`). Si `N === 1`, sin badge. Aplica
+   para JP y miembros por igual. NO se implementa vista expandida con desglose por
+   receta — decisión consciente para mantener la UI simple. La trazabilidad en
+   `aportes[]` se conserva en el dato, no se expone en UI.
 
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
@@ -861,10 +884,15 @@ Se llama desde `marcarCocinada` (limpieza total del plan) y desde `marcarCompone
 
 > **Post E3.4.5:** tanto la clave de agrupado como la comparación de preservación de `yaTengo` usan `normalizarUnidad()`. Esto resuelve el bug donde `"cda"` y `"cdas"` (misma unidad, distinto string) generaban dos ítems para el mismo ingrediente.
 
-**Vista del usuario:**
+**Vista del usuario (E7.10):**
 
-- Vista resumida (default): un solo renglón "Cebolla — 3 unidades" con badge "+2 recetas".
-- Vista expandida (al tap): "Cebolla — 3 unidades:" + sublistado de aportes ("• 2 para Bondiola" / "• 1 para Berenjenas").
+- Renglón único "Cebolla — 3 unidades" con badge `+N recetas` cuando el ítem agrega
+  aportes de más de una receta (`new Set(aportes.map(a => a.idReceta)).size > 1`).
+  Si viene de una sola receta, sin badge.
+- **No hay vista expandida**: el desglose por receta ("• 2 para Bondiola" / "• 1 para
+  Berenjenas") queda fuera de scope por decisión de JP en E7.10. La trazabilidad en
+  `aportes[]` se conserva en el dato (limpieza al cocinar y otras operaciones la siguen
+  usando), pero no se expone en UI.
 
 Esto es **una mejora real sobre Apps Script** (ver §6.1).
 

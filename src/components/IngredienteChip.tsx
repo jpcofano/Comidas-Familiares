@@ -15,6 +15,8 @@ export function IngredienteChip({ item, onToggle }: IngredienteChipProps) {
   const cantidadStr = item.cantidadTotal > 0
     ? formatearCantidadUnidad(item.cantidadTotal, item.unidad)
     : item.cantidadLabel;
+  const recetasUnicas = new Set(item.aportes.map((a) => a.idReceta)).size;
+  const esAgregado = recetasUnicas > 1;
 
   return (
     <button
@@ -70,6 +72,23 @@ export function IngredienteChip({ item, onToggle }: IngredienteChipProps) {
           whiteSpace: 'nowrap',
         }}>
           · {cantidadStr}
+        </span>
+      )}
+
+      {/* Badge de agregación */}
+      {esAgregado && (
+        <span style={{
+          fontSize: 10.5,
+          fontWeight: 600,
+          color: done ? 'var(--ok-text)' : 'var(--muted)',
+          background: done ? 'transparent' : 'var(--surface)',
+          border: `1px solid ${done ? 'var(--ok-line)' : 'var(--border)'}`,
+          borderRadius: 999,
+          padding: '1px 5px',
+          whiteSpace: 'nowrap',
+          lineHeight: 1.4,
+        }}>
+          +{recetasUnicas} recetas
         </span>
       )}
     </button>

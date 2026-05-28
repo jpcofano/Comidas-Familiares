@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, BookOpen, ShoppingBag, History, Clock } from "lucide-react";
+import { Home, BookOpen, ShoppingBag, History } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 
 const jpItems = [
@@ -12,7 +12,6 @@ const jpItems = [
 const memberItems = [
   { to: "/",           label: "Mi semana",  Icon: Home },
   { to: "/compras",    label: "Compras",    Icon: ShoppingBag },
-  { to: "/pendientes", label: "Pendientes", Icon: Clock },
   { to: "/historial",  label: "Historial",  Icon: History },
 ];
 
