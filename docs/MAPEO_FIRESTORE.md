@@ -1,10 +1,10 @@
 # MAPEO_FIRESTORE — Comida Familiar
 
-> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional cerrado en v1.8.0 (Etapas 0–7 salvo E7.7 distribución/onboarding, pendiente). Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
+> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional completo en v1.8.1 (Etapas 0–7 cerradas, incluyendo E7.7 distribución/onboarding). Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.0 (CIERRE — app completa para uso familiar; queda E7.7 distribución/onboarding pendiente; push, dashboard avanzado y opcionales postergados sin urgencia)
+> **Versión**: 1.8.1 (CIERRE TOTAL — app completa para uso familiar; E7.7 distribución/onboarding cerrado; push, dashboard avanzado y opcionales postergados sin urgencia)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -73,7 +73,7 @@ del scope inicial.
      + sacar el acordeón de acciones, volver a botones directos con ocultar los no
      elegibles) ✅
    - E7.7 — distribución y onboarding (Open Graph para WhatsApp + botón Instalar app
-     en Android desde el login) ⏳ pendiente — ver §10.5 y §10.6
+     en Android desde el login) ✅ cerrado en v1.8.1 — ver §10.5 y §10.6
 
 3. **E6.2 push notifications — postergada sin urgencia.** No es necesaria para el uso
    actual de la familia. Cuando se retome, ver `PROMPT_DOCS_mapeo_e62_en_espera.md` para
@@ -94,15 +94,8 @@ del scope inicial.
 7. **Deuda técnica §10 restante:**
    - §10.1 — filtros de Biblioteca post-E3.4.8: pendiente verificación.
    - §10.2.3 — display "a gusto" para unidad null: pospuesto por JP (no bloqueante).
-   - §10.5 — Open Graph / Twitter Card para preview al compartir el link (WhatsApp,
-     Telegram, iMessage). No implementado: `index.html` no tiene metas `og:*`. Cuando
-     se comparte el link, no aparece logo ni descripción. Asset de preview a generar
-     (1200×630) + metas a sumar. **E7.7.**
-   - §10.6 — Botón "Instalar app" en `LoginScreen` para Android. Hoy el navegador
-     muestra su propio prompt de instalación si quiere; no hay control en la app. Captar
-     `beforeinstallprompt` y exponer un botón explícito en el login mientras el evento
-     esté disponible. iOS queda fuera (Safari requiere "Agregar a pantalla de inicio"
-     manual). **E7.7.**
+   - §10.5 — Open Graph + Twitter Card ✅ CERRADO en v1.8.1 (E7.7).
+   - §10.6 — Botón "Instalar app" en Android ✅ CERRADO en v1.8.1 (E7.7).
 
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
@@ -1751,7 +1744,7 @@ en su scope necesario.
   funcional en `AccionesPlan`**: sacar el acordeón, mostrar los tres botones directamente,
   ocultar los no elegibles (regla: `puede: false` → no renderizar). Conserva el flujo de
   confirmación de reemplazo cuando hay Especial elegida.
-- **`PROMPT_E7.7_distribucion_onboarding.md`** ⏳ **PENDIENTE**: Open Graph + Twitter Card
+- **`PROMPT_E7.7_distribucion_onboarding.md`** ✅ **CERRADO (v1.8.1)**: Open Graph + Twitter Card
   en `index.html` para que el preview al compartir el link de la app por WhatsApp /
   Telegram / iMessage muestre logo y descripción. Asset de preview (1200×630, derivado
   del PlatoMark). Botón "Instalar app" en `LoginScreen` para Android (captar
@@ -1927,22 +1920,20 @@ Inventario completo del rango verificado:
 
 Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 
-### 10.5 Open Graph / Twitter Card para compartir el link — E7.7
+### 10.5 Open Graph / Twitter Card para compartir el link — E7.7 ✅ CERRADO (v1.8.1)
 
-`index.html` no tiene metas `og:*` ni `twitter:*`. Al compartir el link de la app por
-WhatsApp / Telegram / iMessage, el preview sale sin logo ni descripción (solo la URL
-pelada). Falta: generar un asset de preview 1200×630 (derivado del PlatoMark + nombre)
-y sumar las metas Open Graph + Twitter Card apuntando a él. Resuelto en E7.7.
+`index.html` ahora tiene metas `og:*` y `twitter:*` completas. Asset `public/og-image.png`
+1200×630 px (41 KB) con fondo `#fdfaf6`, ícono `icon-512.png` centrado-izquierda y
+texto "Comida Familiar" generado con System.Drawing (Segoe UI). URLs absolutas a
+`https://comida-familiar.web.app/`. Validación real (WhatsApp / opengraph.xyz): post-deploy.
 
-### 10.6 Botón "Instalar app" en Android desde el login — E7.7
+### 10.6 Botón "Instalar app" en Android desde el login — E7.7 ✅ CERRADO (v1.8.1)
 
-No hay control de instalación en la app. El navegador puede mostrar su propio prompt,
-pero JP quiere un botón explícito. Falta: captar `beforeinstallprompt` en un handler
-global, guardarlo, y exponer un botón "Instalar app" en `LoginScreen` mientras el
-evento esté disponible (se oculta una vez instalada o si el navegador no lo soporta).
-iOS queda fuera del alcance (Safari no dispara `beforeinstallprompt`; sigue con
-"Agregar a pantalla de inicio" manual, ya cubierto por el splash de E6.1.1). Resuelto
-en E7.7.
+Hook `useInstallPrompt` (`src/lib/useInstallPrompt.ts`) captura `beforeinstallprompt`,
+previene el mini-infobar nativo y expone `canInstall` + `promptInstall`. Botón
+"Instalar app" (`btn-secondary`) visible en `LoginScreen` solo cuando `canInstall=true`
+(Android/Chrome instalable, no standalone). En iOS y Firefox el evento nunca llega —
+botón no aparece. Validación real: post-deploy en Android.
 
 ---
 
@@ -1950,7 +1941,8 @@ en E7.7.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.0:** ciclo funcional cerrado para uso familiar. Queda pendiente E7.7
-(distribución/onboarding: Open Graph + botón Instalar Android), que no bloquea el uso pero
-mejora cómo se comparte e instala la app. Lo demás postergado (push, D.3, opcionales §9.*)
-se reactiva caso por caso cuando aparezca demanda concreta.
+**Estado en v1.8.1:** ciclo funcional y de distribución cerrado. Etapas 0–7 completas
+incluyendo E7.7 (Open Graph + botón Instalar Android). La app se comparte con preview
+en WhatsApp/Telegram, es instalable desde el login en Android, y corre offline como PWA.
+Lo demás postergado (push E6.2, D.3, opcionales §9.*) se reactiva caso por caso cuando
+aparezca demanda concreta.
