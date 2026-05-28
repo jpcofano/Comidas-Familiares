@@ -55,8 +55,8 @@ export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaP
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    padding: "6px 0",
-                    borderBottom: "1px solid var(--line)",
+                    padding: "8px 0",
+                    borderTop: idx === 0 ? "none" : "1px solid var(--border-subtle)",
                     fontSize: "var(--fs-sm)",
                     color: ing.opcional ? "var(--muted)" : "var(--text)",
                   }}

@@ -22,11 +22,21 @@ export function PasosPreview({ pasos, riesgos }: PasosPreviewProps) {
         <div style={{
           padding: "10px 12px",
           background: "var(--warn-bg)",
-          borderRadius: "var(--radius-sm)",
+          border: "1px solid var(--warn-line)",
+          borderRadius: "var(--radius-md)",
           marginBottom: "var(--space-3)",
+          display: "flex",
+          gap: 8,
+          alignItems: "flex-start",
         }}>
-          <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-            ⚠ {riesgos}
+          <span style={{ fontSize: 14, flexShrink: 0 }}>⚠</span>
+          <p style={{
+            margin: 0,
+            fontSize: "var(--fs-xs)",
+            color: "var(--warn-text)",
+            lineHeight: 1.4,
+          }}>
+            {riesgos}
           </p>
         </div>
       )}
@@ -52,29 +62,32 @@ export function PasosPreview({ pasos, riesgos }: PasosPreviewProps) {
                 {paso.nroPaso}
               </span>
 
-              <div style={{ flex: 1 }}>
-                {paso.titulo && (
-                  <p style={{
-                    fontWeight: "var(--fw-medium)" as unknown as number,
-                    color: "var(--text-strong)",
-                    marginBottom: "var(--space-1)",
-                    fontSize: "var(--fs-sm)",
-                    margin: "0 0 4px",
-                  }}>
-                    {paso.titulo}
-                  </p>
-                )}
-                {paso.tiempoEstimadoLabel && (
-                  <p style={{
-                    fontSize: "var(--fs-xs)",
-                    color: "var(--muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.04em",
-                    margin: "0 0 4px",
-                  }}>
-                    {paso.tiempoEstimadoLabel}
-                  </p>
-                )}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 2 }}>
+                  {paso.titulo && (
+                    <p style={{
+                      margin: 0,
+                      flex: 1,
+                      fontSize: "var(--fs-sm)",
+                      fontWeight: "var(--fw-semibold)" as unknown as number,
+                      color: "var(--text-strong)",
+                      lineHeight: 1.3,
+                    }}>
+                      {paso.titulo}
+                    </p>
+                  )}
+                  {paso.tiempoEstimadoLabel && (
+                    <span style={{
+                      fontSize: 11,
+                      color: "var(--muted)",
+                      fontWeight: 500,
+                      fontVariantNumeric: "tabular-nums",
+                      flexShrink: 0,
+                    }}>
+                      {paso.tiempoEstimadoLabel}
+                    </span>
+                  )}
+                </div>
                 <p style={{
                   fontSize: "var(--fs-sm)",
                   color: "var(--text)",

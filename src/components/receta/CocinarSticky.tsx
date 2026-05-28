@@ -7,16 +7,12 @@ interface CocinarStickyProps {
 export function CocinarSticky({ onClick }: CocinarStickyProps) {
   return (
     <div style={{
-      position: "fixed",
+      position: "sticky",
       bottom: 0,
-      left: "50%",
-      transform: "translateX(-50%)",
-      width: "100%",
-      maxWidth: 480,
-      padding: "12px 16px calc(12px + env(safe-area-inset-bottom, 0px))",
-      background: "var(--surface)",
-      borderTop: "1px solid var(--border)",
-      zIndex: 100,
+      marginTop: "var(--space-7, 28px)",
+      padding: "12px 0 calc(20px + env(safe-area-inset-bottom, 0px))",
+      background: "linear-gradient(180deg, rgba(253,250,246,0) 0%, var(--bg) 35%)",
+      zIndex: 10,
     }}>
       <button
         onClick={onClick}
@@ -26,6 +22,8 @@ export function CocinarSticky({ onClick }: CocinarStickyProps) {
           boxShadow: "0 6px 18px rgba(138, 74, 47, 0.28)",
           fontSize: "var(--fs-base)",
           fontWeight: 600,
+          padding: "15px 16px",
+          borderRadius: "var(--radius-lg)",
         }}
       >
         Empezar a cocinar

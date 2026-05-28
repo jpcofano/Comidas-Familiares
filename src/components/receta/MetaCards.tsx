@@ -14,7 +14,6 @@ function MetaCard({ label, value, sub }: { label: string; value: string; sub?: s
       background: "var(--surface-alt)",
       borderRadius: "var(--radius-md)",
       padding: "10px 12px",
-      border: "1px solid var(--border-subtle)",
       minWidth: 0,
     }}>
       <p style={{
@@ -55,7 +54,7 @@ export function MetaCards({ tiempoTotalLabel, tiempoActivoLabel, porcionesLabel,
       <MetaCard
         label="Total"
         value={tiempoTotalLabel ?? "—"}
-        sub={tiempoActivoLabel ? `Activo: ${tiempoActivoLabel}` : undefined}
+        sub={tiempoActivoLabel ? `${tiempoActivoLabel} activo` : undefined}
       />
       <MetaCard
         label="Porciones"

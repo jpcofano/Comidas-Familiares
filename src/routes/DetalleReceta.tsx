@@ -193,11 +193,8 @@ export function DetalleRecetaRoute() {
   const elegExtra = evaluarExtra(receta, planesActivos);
   const elegEnProceso = evaluarEnProceso(receta, planesActivos);
 
-  // Padding extra abajo si hay sticky bottom (solo JP)
-  const bottomPad = isJP ? 100 : 0;
-
   return (
-    <div style={{ paddingBottom: bottomPad }}>
+    <div>
       {/* 1. Header con volver + chip tipo */}
       <div style={{
         display: "flex",
