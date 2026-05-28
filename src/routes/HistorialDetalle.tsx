@@ -1,7 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import { getHistorialPorId } from "../data/historial";
+import { useAuth } from "../auth/useAuth";
+import {
+  getHistorialPorId,
+  getFotoHistorial,
+  setFotoHistorial,
+  deleteFotoHistorial,
+} from "../data/historial";
+import { comprimirImagen } from "../lib/comprimirImagen";
 import { MIEMBRO_IDS } from "../types/models";
 import type { Historial, MiembroId } from "../types/models";
 import { MemberAvatar } from "../components/MemberAvatar";
@@ -45,15 +52,50 @@ function Campo({ label, valor }: { label: string; valor: string | undefined }) {
   );
 }
 
+function ConfirmDialog({
+  mensaje, textoConfirmar, onConfirmar, onCancelar,
+}: {
+  mensaje: string;
+  textoConfirmar: string;
+  onConfirmar: () => void;
+  onCancelar: () => void;
+}) {
+  return (
+    <div style={{
+      position: "fixed", inset: 0, background: "rgba(0,0,0,.45)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      zIndex: 9998, padding: "var(--space-4)",
+    }}>
+      <div className="card" style={{ maxWidth: 380, width: "100%", margin: 0 }}>
+        <p style={{ marginBottom: "var(--space-4)", lineHeight: 1.5 }}>{mensaje}</p>
+        <div style={{ display: "flex", gap: "var(--space-3)", justifyContent: "flex-end" }}>
+          <button className="btn btn-secondary" onClick={onCancelar}>Cancelar</button>
+          <button className="btn btn-primary" onClick={onConfirmar}>{textoConfirmar}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Ruta ─────────────────────────────────────────────────────────────────────
 
 export function HistorialDetalleRoute() {
   const { idHist } = useParams<{ idHist: string }>();
   const navigate = useNavigate();
+  const { state } = useAuth();
+  const memberId = state.status === "authenticated" ? state.user.memberId : null;
 
   const [entry, setEntry] = useState<Historial | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [fotoUrl, setFotoUrl] = useState<string | null>(null);
+  const [fotoLoading, setFotoLoading] = useState(true);
+  const [subiendoFoto, setSubiendoFoto] = useState(false);
+  const [fotoError, setFotoError] = useState<string | null>(null);
+  const [confirmandoQuitar, setConfirmandoQuitar] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!idHist) return;
@@ -63,6 +105,50 @@ export function HistorialDetalleRoute() {
       setLoading(false);
     });
   }, [idHist]);
+
+  useEffect(() => {
+    if (!idHist) return;
+    setFotoLoading(true);
+    getFotoHistorial(idHist)
+      .then((url) => { setFotoUrl(url); })
+      .catch(() => { /* error de red — no rompe el detalle */ })
+      .finally(() => { setFotoLoading(false); });
+  }, [idHist]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !idHist) return;
+    e.target.value = "";
+
+    setSubiendoFoto(true);
+    setFotoError(null);
+    try {
+      const dataUrl = await comprimirImagen(file);
+      const r = await setFotoHistorial(idHist, dataUrl, memberId ?? "");
+      if (r.ok) {
+        setFotoUrl(dataUrl);
+      } else {
+        setFotoError(r.error.message);
+      }
+    } catch (err) {
+      setFotoError(err instanceof Error ? err.message : "Error al procesar la foto.");
+    } finally {
+      setSubiendoFoto(false);
+    }
+  };
+
+  const handleQuitarFoto = async () => {
+    if (!idHist) return;
+    setConfirmandoQuitar(false);
+    setSubiendoFoto(true);
+    const r = await deleteFotoHistorial(idHist);
+    if (r.ok) {
+      setFotoUrl(null);
+    } else {
+      setFotoError(r.error.message);
+    }
+    setSubiendoFoto(false);
+  };
 
   if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
   if (error || !entry) {
@@ -107,6 +193,73 @@ export function HistorialDetalleRoute() {
         )}
         <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 2px" }}>{entry.fechaRealizada}</p>
         {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
+      </div>
+
+      {/* Foto del plato */}
+      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+        <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
+          Foto del plato
+        </p>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+
+        {fotoLoading ? (
+          <p className="meta" style={{ margin: 0 }}>Cargando foto…</p>
+        ) : fotoUrl ? (
+          <>
+            <img
+              src={fotoUrl}
+              alt="Foto del plato"
+              loading="lazy"
+              style={{
+                width: "100%",
+                borderRadius: "var(--radius-md)",
+                display: "block",
+                marginBottom: "var(--space-3)",
+              }}
+            />
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => fileInputRef.current?.click()}
+                style={{ flex: 1 }}
+              >
+                {subiendoFoto ? "Procesando…" : "Cambiar foto"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => setConfirmandoQuitar(true)}
+                style={{ flex: 1 }}
+              >
+                Quitar foto
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            className="btn btn-secondary"
+            disabled={subiendoFoto}
+            onClick={() => fileInputRef.current?.click()}
+            style={{ width: "100%" }}
+          >
+            {subiendoFoto ? "Procesando…" : "Agregar foto del plato"}
+          </button>
+        )}
+
+        {fotoError && (
+          <p style={{ color: "var(--err-text)", fontSize: "var(--fs-sm)", marginTop: "var(--space-2)", margin: "var(--space-2) 0 0" }}>
+            {fotoError}
+          </p>
+        )}
       </div>
 
       {/* Ver receta / menú */}
@@ -190,6 +343,16 @@ export function HistorialDetalleRoute() {
           <Campo label="Qué cambiaría" valor={entry.queCambiaria || undefined} />
           <Campo label="Notas familiares" valor={entry.notasFamiliares || undefined} />
         </div>
+      )}
+
+      {/* Modal confirmar quitar foto */}
+      {confirmandoQuitar && (
+        <ConfirmDialog
+          mensaje="¿Quitar la foto del plato? Esta acción no se puede deshacer."
+          textoConfirmar="Quitar"
+          onConfirmar={handleQuitarFoto}
+          onCancelar={() => setConfirmandoQuitar(false)}
+        />
       )}
     </>
   );
