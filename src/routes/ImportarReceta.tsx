@@ -11,6 +11,7 @@ import { proximoIdReceta, crearReceta, buscarRecetasPorNombre } from "../data/re
 import { getPromptLLM } from "../data/config";
 import { normalizeText } from "../lib/canonical";
 import { normalizarUnidad, pluralizarUnidad } from "../lib/unidades";
+import type { IngredienteEnReceta } from "../types/models";
 
 // ─── Tipos locales ────────────────────────────────────────────────────────────
 
@@ -244,7 +245,7 @@ export function ImportarRecetaRoute() {
 
         // Construir ingredientes resueltos con anti-dup y vínculo alternativas
         const seenDedup = new Set<string>();
-        const ingredientes: Array<Record<string, unknown>> = [];
+        const ingredientes: IngredienteEnReceta[] = [];
 
         for (const raw of receta.ingredientesRaw) {
           const canonKey = normalizeText(raw.textoOriginal);
@@ -333,7 +334,7 @@ export function ImportarRecetaRoute() {
           ...(receta.hidratoOpcional ? { hidratoOpcional: receta.hidratoOpcional } : {}),
           ...(receta.notas ? { notas: receta.notas } : {}),
           fuente: receta.fuente,
-          ingredientes: ingredientes as Parameters<typeof crearReceta>[0]["ingredientes"],
+          ingredientes,
           pasos,
         } as Parameters<typeof crearReceta>[0]);
 
