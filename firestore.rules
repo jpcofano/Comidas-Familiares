@@ -49,6 +49,9 @@ service cloud.firestore {
 
     match /historial/{id} {
       allow read, write: if isFamilyMember();
+      match /media/{mediaId} {
+        allow read, write: if isFamilyMember();
+      }
     }
 
     match /compras/{id} {
