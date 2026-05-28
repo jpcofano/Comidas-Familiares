@@ -68,27 +68,6 @@ function PlanRow({ plan }: { plan: Plan }) {
   );
 }
 
-function PendienteRow({ plan }: { plan: Plan }) {
-  return (
-    <div style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      gap: "var(--space-2)",
-      padding: "var(--space-3) 0",
-      borderBottom: "1px solid var(--border)",
-    }}>
-      <p style={{ margin: 0, fontWeight: "var(--fw-medium)", color: "var(--text-strong)" }}>
-        {plan.nombreSeleccion}
-      </p>
-      <Link to={`/voto/${plan.idPlan}`}>
-        <button className="btn btn-primary" style={{ fontSize: "var(--fs-sm)" }}>
-          Evaluar
-        </button>
-      </Link>
-    </div>
-  );
-}
 
 function HistorialRow({ entrada, miembroId }: { entrada: Historial; miembroId: MiembroId }) {
   const miPuntaje = entrada.calificaciones?.[miembroId];
@@ -152,10 +131,6 @@ export function MemberDashboard() {
 
   // "Mi semana" = planes donde este miembro cocina (asignaciones)
   const misPlanes = planes.filter((p) => p.asignaciones.includes(memberId as MiembroId));
-  // "Pendientes" = cualquier plan Cocinada donde este miembro no votó todavía (votan los 4)
-  const pendientes = planes.filter(
-    (p) => p.estado === "Cocinada" && !p.votos?.[memberId as MiembroId]
-  );
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
@@ -173,16 +148,6 @@ export function MemberDashboard() {
           <p className="meta">No hay planes activos esta semana.</p>
         ) : (
           misPlanes.map((p) => <PlanRow key={p.idPlan} plan={p} />)
-        )}
-      </div>
-
-      {/* Pendientes de evaluar */}
-      <div className="card">
-        <h3 style={{ margin: "0 0 var(--space-2)" }}>Pendientes de evaluar</h3>
-        {pendientes.length === 0 ? (
-          <p className="meta">No hay planes esperando tu evaluación.</p>
-        ) : (
-          pendientes.map((p) => <PendienteRow key={p.idPlan} plan={p} />)
         )}
       </div>
 

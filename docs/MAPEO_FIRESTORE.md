@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.3 (E7.7.1 — metas OG completas para preview grande en WhatsApp/Telegram)
+> **Versión**: 1.8.3 (E7.9 — Compras filtrada por miembro confirmada + redundancia Pendientes resuelta; E7.7.1 metas OG)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -115,6 +115,33 @@ E7.7 distribución/onboarding ejecutado y deployado. Cierra el último pendiente
 
 Con E7.7 cerrado, el ciclo funcional de la app está completo. Lo que sigue es opcional
 (Apéndice §9) o postergado sin urgencia (push E6.2, dashboard D.3).
+
+### 1.2.E7.9 Cambios en v1.8.3 (E7.9 — Compras filtrada confirmada + redundancia Pendientes)
+
+Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
+
+1. **Bug Compras "ven todas" — causa real y decisión.** El filtro por miembro ya
+   existía y funcionaba; lo que se percibía como "ven todas" era consecuencia natural
+   de la agregación de aportes en `ItemCompra` sobre ingredientes base compartidos.
+   Decisión tomada por JP: mantener cantidad total, no recalcular porción individual.
+   `Compras.tsx` sin cambios. Documentado en §2.5.
+
+2. **Default de `asignaciones` corregido en el doc.** §1.2.quaterdecies #3 declaraba
+   `[...MIEMBRO_IDS]`; el valor real en `src/data/planes.ts` es `["juanpablo"]`.
+   Verificado en producción por JP. Corregido en el doc, no en código.
+
+3. **`MemberDashboard.tsx` — sección "Pendientes de evaluar" eliminada.** Redundante
+   con la pestaña `/pendientes`. La home de miembro queda con saludo+semana, "Mi semana",
+   "Mi historial".
+
+4. **`Pendientes.tsx` — fuente de datos corregida.** Cambia
+   `subscribeToPlanesActivosMiembro` → `subscribeToPlanesActivos` + filtro client
+   `estado === "Cocinada" && !votos[memberId]`. Razón: post-E4.2.1, el voto es
+   independiente de `asignaciones`, así que la fuente filtrada por `asignaciones`
+   perdía planes que el miembro debe votar pero no cocina.
+
+5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
+   consumidores tras el cambio anterior.
 
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
@@ -280,7 +307,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 2. **`subscribeToPlanesActivosMiembro`** (`src/data/planes.ts`): query realtime con triple filtro `semanaInicio == X AND estado IN activos AND asignaciones ARRAY_CONTAINS miembroId`. Requiere índice compuesto §5.3 (ya desplegado).
 
-3. **`asignaciones` default = los 4 miembros**: todas las funciones de creación de planes (`elegirComoEspecial`, `sumarComoExtra`, `sumarComoEnProceso`, `elegirMenuComoEspecial`, `sumarMenuComoEnProceso`) pasan `asignaciones: [...MIEMBRO_IDS]`. Antes era `["juanpablo"]`. Backfill en planes activos via `scripts/backfill-asignaciones.ts`.
+3. **`asignaciones` default = `["juanpablo"]`**: todas las funciones de creación de planes (`elegirComoEspecial`, `sumarComoExtra`, `sumarComoEnProceso`, `elegirMenuComoEspecial`, `sumarMenuComoEnProceso`) pasan `asignaciones: ["juanpablo"]`. JP reasigna explícitamente cuando otro miembro cocina. Nota histórica: una versión intermedia del default fue `[...MIEMBRO_IDS]` (con backfill via `scripts/backfill-asignaciones.ts`), pero se revirtió a `["juanpablo"]` para que el filtro de Compras por miembro tenga sentido — un miembro solo debe ver compras de los planes que efectivamente cocina. La reversión no se documentó en su momento; queda corregida en E7.9.
 
 4. **`BottomNav` ramificado**: JP ve Inicio/Biblioteca/Compras/Historial; miembro ve Mi semana/Compras/Pendientes/Historial.
 
@@ -840,6 +867,15 @@ Se llama desde `marcarCocinada` (limpieza total del plan) y desde `marcarCompone
 - Vista expandida (al tap): "Cebolla — 3 unidades:" + sublistado de aportes ("• 2 para Bondiola" / "• 1 para Berenjenas").
 
 Esto es **una mejora real sobre Apps Script** (ver §6.1).
+
+**Visión por miembro (E7.9):** un miembro no-JP en `/compras` ve solo los ítems donde
+alguno de sus planes asignados aporta (`aportes[].idPlan ∈ misPlanIds`, regla `some`).
+La cantidad mostrada es el `cantidadTotal` del ítem completo — suma de **todos** los
+aportes, incluidos los de planes ajenos. Decisión consciente: la familia compra junta
+y el total es la cantidad real a comprar; recalcular a la porción del miembro generaría
+confusión sobre cuánto comprar. Consecuencia esperada: los ingredientes base compartidos
+(cebolla, aceite, sal, ajo) aparecen para varios miembros simultáneamente, con cantidades
+familiares. Ítems con aportes exclusivamente de planes ajenos al miembro NO aparecen.
 
 ---
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
-import { subscribeToPlanesActivosMiembro } from "../data/planes";
+import { subscribeToPlanesActivos } from "../data/planes";
 import { getSemanaActual } from "../lib/fechas";
 import type { Plan, MiembroId } from "../types/models";
 
@@ -15,7 +15,7 @@ export function PendientesRoute() {
 
   useEffect(() => {
     if (!memberId) return;
-    return subscribeToPlanesActivosMiembro(semana, memberId, setPlanes);
+    return subscribeToPlanesActivos(semana, setPlanes);
   }, [semana, memberId]);
 
   if (isJP) return <Navigate to="/" replace />;
