@@ -1982,9 +1982,13 @@ lado largo 1440px, calidad 0.82 con presupuesto ≤900 KB y fallback a 1080px. N
 el doc principal de historial para no inflar `getHistorialReciente` (la lista no la lee;
 solo `HistorialDetalle` hace un `getDoc` extra). Capa de datos: `getFotoHistorial` /
 `setFotoHistorial` / `deleteFotoHistorial` en `src/data/historial.ts` (read tira,
-writes `Result`). UI: sección "Foto del plato" en `HistorialDetalle` con add/cambiar/quitar,
-input `capture="environment"`. Cualquier miembro puede subirla. Reglas: subcollection
-`media` hereda `isFamilyMember()`. Plan Spark, sin Cloud Storage, $0.
+writes `Result`). UI: sección "Foto del plato" en `HistorialDetalle` con add/cambiar/quitar.
+Cualquier miembro puede subirla. Reglas: subcollection `media` hereda `isFamilyMember()`.
+Plan Spark, sin Cloud Storage, $0.
+
+**Ajuste v1.8.2.1 (E7.8.1):** input sin `capture` (selector nativo muestra cámara + galería
+en todos los SO). Sección "Foto del plato" reubicada al final del detalle: Hero → Ver
+receta → Calificaciones → Foto del plato → Notas del cocinero.
 
 ---
 

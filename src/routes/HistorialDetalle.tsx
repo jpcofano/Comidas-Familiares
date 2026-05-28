@@ -195,73 +195,6 @@ export function HistorialDetalleRoute() {
         {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
       </div>
 
-      {/* Foto del plato */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-        <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
-          Foto del plato
-        </p>
-
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          capture="environment"
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-
-        {fotoLoading ? (
-          <p className="meta" style={{ margin: 0 }}>Cargando foto…</p>
-        ) : fotoUrl ? (
-          <>
-            <img
-              src={fotoUrl}
-              alt="Foto del plato"
-              loading="lazy"
-              style={{
-                width: "100%",
-                borderRadius: "var(--radius-md)",
-                display: "block",
-                marginBottom: "var(--space-3)",
-              }}
-            />
-            <div style={{ display: "flex", gap: "var(--space-2)" }}>
-              <button
-                className="btn btn-secondary"
-                disabled={subiendoFoto}
-                onClick={() => fileInputRef.current?.click()}
-                style={{ flex: 1 }}
-              >
-                {subiendoFoto ? "Procesando…" : "Cambiar foto"}
-              </button>
-              <button
-                className="btn btn-secondary"
-                disabled={subiendoFoto}
-                onClick={() => setConfirmandoQuitar(true)}
-                style={{ flex: 1 }}
-              >
-                Quitar foto
-              </button>
-            </div>
-          </>
-        ) : (
-          <button
-            className="btn btn-secondary"
-            disabled={subiendoFoto}
-            onClick={() => fileInputRef.current?.click()}
-            style={{ width: "100%" }}
-          >
-            {subiendoFoto ? "Procesando…" : "Agregar foto del plato"}
-          </button>
-        )}
-
-        {fotoError && (
-          <p style={{ color: "var(--err-text)", fontSize: "var(--fs-sm)", marginTop: "var(--space-2)", margin: "var(--space-2) 0 0" }}>
-            {fotoError}
-          </p>
-        )}
-      </div>
-
       {/* Ver receta / menú */}
       {((entry.tipoSeleccion === "receta" && entry.idReceta) ||
         (entry.tipoSeleccion === "menu" && entry.idMenu)) && (
@@ -327,6 +260,72 @@ export function HistorialDetalleRoute() {
             </div>
           );
         })}
+      </div>
+
+      {/* Foto del plato */}
+      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+        <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
+          Foto del plato
+        </p>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+
+        {fotoLoading ? (
+          <p className="meta" style={{ margin: 0 }}>Cargando foto…</p>
+        ) : fotoUrl ? (
+          <>
+            <img
+              src={fotoUrl}
+              alt="Foto del plato"
+              loading="lazy"
+              style={{
+                width: "100%",
+                borderRadius: "var(--radius-md)",
+                display: "block",
+                marginBottom: "var(--space-3)",
+              }}
+            />
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => fileInputRef.current?.click()}
+                style={{ flex: 1 }}
+              >
+                {subiendoFoto ? "Procesando…" : "Cambiar foto"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => setConfirmandoQuitar(true)}
+                style={{ flex: 1 }}
+              >
+                Quitar foto
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            className="btn btn-secondary"
+            disabled={subiendoFoto}
+            onClick={() => fileInputRef.current?.click()}
+            style={{ width: "100%" }}
+          >
+            {subiendoFoto ? "Procesando…" : "Agregar foto del plato"}
+          </button>
+        )}
+
+        {fotoError && (
+          <p style={{ color: "var(--err-text)", fontSize: "var(--fs-sm)", marginTop: "var(--space-2)", margin: "var(--space-2) 0 0" }}>
+            {fotoError}
+          </p>
+        )}
       </div>
 
       {/* Notas del cocinero */}
