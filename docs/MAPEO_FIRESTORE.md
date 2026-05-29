@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt)
+> **Versión**: 1.8.6 (E7.12 — Alarma del timer de pasos: repetir hasta detener + más audible)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,7 +143,25 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
 
-### 1.2.E7.11 Cambios en v1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt)
+### 1.2.E7.12 Cambios en v1.8.6 (E7.12 — Alarma del timer de pasos: repetir hasta detener + más audible)
+
+Fix de UX sobre el timer de pasos de la pantalla Cocinar (introducido en E3.5, refinado en E7.3/E7.4). **Problema:** al llegar el countdown a `00:00` se disparaba un único beep corto vía Web Audio que **apenas se escucha** — fácil de perder si JP está cocinando y no mira la pantalla.
+
+**Decisiones zanjadas:**
+
+1. **Alarma repetida, no un beep único.** Al llegar a `00:00`, en vez de un solo pitido, suena un patrón de dos tonos que **se repite** (beep-beep, pausa ~1.2 s, repetir) hasta que se detiene. Más fuerte (mayor `gain`) y con tonos más agudos que cortan mejor en parlante de celular.
+
+2. **Se detiene con un control explícito.** Aparece un botón destacado **"Detener alarma"** al disparar; cortarlo es instantáneo. La alarma también se detiene al avanzar/retroceder de paso, reiniciar el timer o salir de la pantalla.
+
+3. **Auto-corte de seguridad a los 60 s.** Si nadie la corta, se silencia sola a los 60 s (constante configurable) para no quedar sonando si no hay nadie cerca.
+
+4. **AudioContext.** El contexto ya está desbloqueado porque el timer se inicia con un gesto del usuario. Si al disparar está `suspended` (tab en background), se intenta `resume()`; si no se logra, la **notificación del navegador** (que ya existe) queda como respaldo. La Notification **no** se repite — solo el audio in-app se repite.
+
+5. **Cleanup obligatorio.** Se detienen los osciladores y se limpia el `setInterval` en: stop manual, cambio de paso, reinicio del timer, desmontaje del componente y navegación fuera de Cocinar. Sin esto, la alarma queda sonando al salir de la pantalla.
+
+**Qué NO se toca:** la lógica de cuenta de pasos / parser de tiempos (E7.3), estados del plan, Firestore, ni la notificación del navegador (salvo evitar que se repita).
+
+### 1.2.E7.11 Cambios en v1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt) ✅ IMPLEMENTADO
 
 Tres correcciones sobre v1.8.4 en `/biblioteca/importar`.
 
@@ -152,6 +170,8 @@ Tres correcciones sobre v1.8.4 en `/biblioteca/importar`.
 2. **Bug 2 — Split de alternativas (`X o Y`).** Cuando la columna `ingrediente` contiene ` o ` (espacio-o-espacio), el parser divide en dos `ParsedIngredienteRaw` separados. Ambas filas quedan marcadas con el mismo `grupoAlternativa` (string interno) y `opcional: true`. El split es automático en el parseo; JP resuelve el matcheo de cada alternativa por separado en el paso 2 (como cualquier ingrediente). El vínculo en Firestore se arma en `handleGuardar`: la primera alternativa (cabeza) recibe `alternativas: [{ idIngrediente: idB }]`; la segunda no apunta de vuelta. Campo `alternativas?: Array<{ idIngrediente: string }>` ya existía en `IngredienteEnReceta`; no se modificó el modelo.
 
 3. **Bug 3 (nueva funcionalidad) — Subir archivo `.txt`.** El paso 1 del importador ahora acepta upload de archivo `.txt` además del textarea. El contenido se lee en cliente con `FileReader.readAsText(file, 'utf-8')` y se vuelca en el mismo estado `txt` — no hay segundo code path de parseo. El textarea muestra el contenido para revisión. Upload 100% en cliente, sin Firebase Storage.
+
+4. **"A gusto" para unidad `null` (cierra §10.2.3).** Como E7.11 ya abría el parser, se resolvió en la misma pasada la deuda §10.2.3: cuando `unidad` es `null`, el display muestra el texto explícito `"a gusto"` en vez de un número suelto sin contexto. El dato almacenado no cambia (la unidad sigue omitida); el ajuste es solo de presentación (`cantidadLabel`).
 
 **Flujo de UI actualizado:**
 - Paso 1: textarea + botón "Subir archivo .txt". Muestra nombre del archivo cargado.
@@ -1877,6 +1897,17 @@ en su scope necesario.
   presupuesto ≤900 KB, fallback a 1080px). UI: sección "Foto del plato" con add/cambiar/
   quitar, input `capture="environment"`. Cualquier miembro puede subir. Plan Spark, $0.
 
+- **`PROMPT_E7.11_fix_importador.md`** ✅ **CERRADO (v1.8.5)**: fix del importador TXT.
+  Bug 1 — multi-receta: `parseRecetaTxt` devuelve array, split por bloque `#RECETA`, los
+  bloques inválidos van a `fallidas` sin abortar el lote. Bug 2 — split de alternativas
+  (` o `) en dos filas con mismo `grupoAlternativa` + `opcional: true`; cabeza enlaza vía
+  `alternativas[]`. Bug 3 — upload de `.txt` en el paso 1. Además cerró §10.2.3 ("a gusto"
+  para unidad `null`) en la misma pasada del parser. Ver §1.2.E7.11.
+- **`PROMPT_E7.12_alarma_timer.md`** ✅ **(v1.8.6)**: alarma del timer de pasos en Cocinar.
+  Reemplaza el beep único por un patrón de dos tonos que se repite hasta detenerse (botón
+  "Detener alarma"), más fuerte, con auto-corte de seguridad a 60 s y cleanup en cambio de
+  paso / desmontaje. Notification del navegador como respaldo, no se repite. Ver §1.2.E7.12.
+
 **Postergados sin urgencia (v1.8.0):**
 
 - **Dashboard de historial avanzado (D.3 / §9.1)** — la pantalla actual de historial
@@ -2015,7 +2046,7 @@ Los filtros del listado de recetas en `/biblioteca` probablemente leen enums har
 
 2. ~~**Pluralización de unidades**~~ ✅ **Resuelto en E5.3**: `formatearCantidadUnidad` / `pluralizarUnidad` en `src/lib/unidades.ts`. Aplicado en Compras, DetalleReceta e ImportarReceta. El dato almacenado (unidad canónica singular) no se tocó.
 
-3. **"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.
+3. ~~**"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.~~ ✅ **Resuelto en E7.11 (v1.8.5):** se hizo en la misma pasada que abría el parser. `cantidadLabel` muestra `"a gusto"` cuando `unidad` es `null`. El dato almacenado no cambió. Ver §1.2.E7.11 item 4.
 
 ### ~~10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9~~ ✅ CERRADO (v1.7.3)
 
@@ -2088,8 +2119,9 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.1:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. Las próximas
-modificaciones serán mejoras puntuales según necesidad real, no etapas planificadas. Lo
-postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso cuando
-aparezca demanda concreta. Deuda técnica viva: §10.1 (verificar filtros Biblioteca) y
-§10.2.3 ("a gusto" para unidad null) — ninguna bloquea el uso.
+**Estado en v1.8.6:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
+importador) y E7.12 (alarma del timer de pasos) implementados.
+Las próximas modificaciones serán mejoras puntuales según necesidad real, no etapas
+planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por
+caso cuando aparezca demanda concreta. Deuda técnica viva: **§10.1** (verificar filtros
+Biblioteca post-E3.4.8) — única abierta, no bloquea el uso. §10.2.3 cerrada en E7.11.

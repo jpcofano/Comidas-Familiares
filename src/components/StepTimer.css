@@ -47,6 +47,15 @@
   }
 }
 
+/* Botón "Detener alarma" — destaca sobre el fondo verde de done */
+.step-timer-actions .btn-alarm {
+  background: var(--err-bg, #c62828);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  min-width: 10rem;
+}
+
 .step-timer-notif-link {
   display: block;
   margin-top: 0.4rem;

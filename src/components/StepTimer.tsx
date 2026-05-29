@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, type RefObject } from "react";
 import "./StepTimer.css";
+import { iniciarAlarma } from "../lib/alarma";
 
 interface StepTimerProps {
   /** Tiempo en minutos (ya parseado del modelo Paso). Si null/undefined/≤0 → no renderiza. */
@@ -16,38 +17,13 @@ function formatSeconds(s: number): string {
   return `${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
 
-function playDoneBeep(audioContextRef: RefObject<AudioContext | null>) {
+function crearAudioContext(): AudioContext | null {
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx() as AudioContext;
-    audioContextRef.current = ctx;
-
-    const beepAt = (when: number) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.frequency.value = 880;
-      osc.type = "sine";
-      gain.gain.setValueAtTime(0.0001, when);
-      gain.gain.exponentialRampToValueAtTime(0.3, when + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.0001, when + 0.15);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start(when);
-      osc.stop(when + 0.16);
-    };
-
-    const t0 = ctx.currentTime;
-    beepAt(t0);
-    beepAt(t0 + 0.25);
-    beepAt(t0 + 0.5);
-
-    setTimeout(() => {
-      ctx.close().catch(() => {});
-      audioContextRef.current = null;
-    }, 1000);
+    return AudioCtx ? (new AudioCtx() as AudioContext) : null;
   } catch {
-    /* silencio */
+    return null;
   }
 }
 
@@ -76,15 +52,18 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
   // Estado inicial desde la prop — en modo guiada key={paso.nroPaso} en Cocinar.tsx
   // garantiza remount al cambiar de paso, reseteando este estado automáticamente.
   const [remainingSeconds, setRemainingSeconds] = useState(totalSegundos ?? 0);
+  const [alarmaActiva, setAlarmaActiva] = useState(false);
 
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef    = useRef<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const alarmaStopRef  = useRef<(() => void) | null>(null);
 
-  // Cleanup: detiene interval y cierra AudioContext al desmontar o al cambiar la prop.
-  // En modo guiada el remount por key dispara este cleanup automáticamente.
-  // En modo scroll cada PasoCard se desmonta al salir de la pantalla Cocinar.
+  // Cleanup: detiene interval, alarma y cierra AudioContext al desmontar o cambiar la prop.
+  // En modo guiada el remount por key dispara este cleanup automáticamente al cambiar paso.
   useEffect(() => {
     return () => {
+      alarmaStopRef.current?.();
+      alarmaStopRef.current = null;
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -97,6 +76,14 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
   // Si no hay tiempo válido → no renderizar nada (cero espacio ocupado)
   if (totalSegundos === null) return null;
 
+  // ── Helpers ─────────────────────────────────────────────────────────────────
+
+  function detenerAlarma() {
+    alarmaStopRef.current?.();
+    alarmaStopRef.current = null;
+    setAlarmaActiva(false);
+  }
+
   // ── Tick compartido por Iniciar y Reanudar ──────────────────────────────────
   function startInterval() {
     intervalRef.current = window.setInterval(() => {
@@ -105,7 +92,14 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
           clearInterval(intervalRef.current!);
           intervalRef.current = null;
           setStatus("done");
-          playDoneBeep(audioContextRef);
+
+          // Arrancar alarma repetida usando el AudioContext desbloqueado en handleIniciar
+          if (audioContextRef.current) {
+            const stop = iniciarAlarma(audioContextRef.current);
+            alarmaStopRef.current = stop;
+            setAlarmaActiva(true);
+          }
+
           fireNotification(stepLabel);
           return 0;
         }
@@ -115,6 +109,10 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
   }
 
   function handleIniciar() {
+    // Crear el AudioContext aquí — este onClick ES un gesto del usuario, lo desbloquea en iOS
+    if (!audioContextRef.current) {
+      audioContextRef.current = crearAudioContext();
+    }
     setStatus("running");
     startInterval();
   }
@@ -133,6 +131,7 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
   }
 
   function handleReiniciar() {
+    detenerAlarma();
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -185,9 +184,16 @@ export function StepTimer({ tiempoEstimadoMin, stepLabel }: StepTimerProps) {
           </>
         )}
         {status === "done" && (
-          <button className="btn btn-ghost" onClick={handleReiniciar}>
-            Reiniciar
-          </button>
+          <>
+            {alarmaActiva && (
+              <button className="btn btn-alarm" onClick={detenerAlarma}>
+                Detener alarma
+              </button>
+            )}
+            <button className="btn btn-ghost" onClick={handleReiniciar}>
+              Reiniciar
+            </button>
+          </>
         )}
       </div>
 
