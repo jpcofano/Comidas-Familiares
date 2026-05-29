@@ -55,12 +55,10 @@
   font-weight: var(--fw-medium);
   color: var(--text);
   font-size: var(--fs-base);
-}
-
-@media (max-width: 419px) {
-  .username {
-    display: none;
-  }
+  max-width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .user-menu {

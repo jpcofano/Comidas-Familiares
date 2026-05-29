@@ -12,6 +12,7 @@ import { comprimirImagen } from "../lib/comprimirImagen";
 import { MIEMBRO_IDS } from "../types/models";
 import type { Historial, MiembroId } from "../types/models";
 import { MemberAvatar } from "../components/MemberAvatar";
+import { ResultadoBadge } from "../components/ResultadoBadge";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -21,26 +22,6 @@ const NOMBRE_MIEMBRO: Record<MiembroId, string> = {
   sofia: "Sofía",
   federico: "Federico",
 };
-
-function ResultadoBadge({ resultado }: { resultado: string }) {
-  const colors: Record<string, { bg: string; color: string }> = {
-    "Excelente": { bg: "var(--ok-bg)",   color: "var(--ok-text)" },
-    "Muy bueno": { bg: "var(--ok-bg)",   color: "var(--ok-text)" },
-    "Bueno":     { bg: "var(--info-bg)", color: "var(--info-text)" },
-    "Regular":   { bg: "var(--warn-bg)", color: "var(--warn-text)" },
-    "Malísimo":  { bg: "var(--err-bg)",  color: "var(--err-text)" },
-  };
-  const s = colors[resultado] ?? { bg: "var(--surface-alt)", color: "var(--muted)" };
-  return (
-    <span style={{
-      display: "inline-block", padding: "4px 14px",
-      borderRadius: "var(--radius-full)", fontSize: "var(--fs-sm)",
-      fontWeight: "var(--fw-medium)", background: s.bg, color: s.color,
-    }}>
-      {resultado}
-    </span>
-  );
-}
 
 function Campo({ label, valor }: { label: string; valor: string | undefined }) {
   if (!valor) return null;

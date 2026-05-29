@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { actualizarAsignaciones, asignarFechaPlan } from "../data/planes";
 import { AvatarStack } from "./MemberAvatar";
+import { EstadoBadge } from "./EstadoBadge";
 import type { Plan, Menu, MiembroId, EstadoPlan } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 
@@ -16,30 +17,6 @@ const LETRA_DIA: Record<number, string> = { 0: "D", 1: "L", 2: "M", 3: "X", 4: "
 function formatChipDia(fecha: string): string {
   const d = new Date(fecha + "T12:00:00");
   return `${DAYS_ES[d.getDay()]} ${d.getDate()}`;
-}
-
-// ─── EstadoBadge ─────────────────────────────────────────────────────────────
-
-function EstadoBadge({ estado }: { estado: EstadoPlan | string }) {
-  const styles: Record<string, { bg: string; color: string }> = {
-    "Elegida":          { bg: "var(--surface-alt)",  color: "var(--muted)" },
-    "Compra pendiente": { bg: "var(--warn-bg)",       color: "var(--warn-text)" },
-    "Compra lista":     { bg: "var(--info-bg)",       color: "var(--info-text)" },
-    "Cocinando":        { bg: "var(--primary)",       color: "#fff" },
-    "Cocinada":         { bg: "var(--ok-bg)",         color: "var(--ok-text)" },
-    "Evaluada":         { bg: "var(--surface-alt)",   color: "var(--muted-strong)" },
-  };
-  const s = styles[estado] ?? styles["Elegida"];
-  return (
-    <span style={{
-      display: "inline-block", padding: "2px 10px",
-      borderRadius: "var(--radius-full)",
-      fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)" as unknown as number,
-      background: s.bg, color: s.color, flexShrink: 0,
-    }}>
-      {estado}
-    </span>
-  );
 }
 
 // ─── Props ────────────────────────────────────────────────────────────────────

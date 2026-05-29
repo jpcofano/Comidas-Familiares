@@ -5,33 +5,7 @@ import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
 import { getSemanaActual } from "../lib/fechas";
 import type { Plan, Historial, MiembroId } from "../types/models";
-
-// ─── Sub-componentes ──────────────────────────────────────────────────────────
-
-function EstadoBadge({ estado }: { estado: string }) {
-  const styles: Record<string, { bg: string; color: string }> = {
-    "Elegida":          { bg: "var(--surface-alt)",  color: "var(--muted)" },
-    "Compra pendiente": { bg: "var(--warn-bg)",       color: "var(--warn-text)" },
-    "Compra lista":     { bg: "var(--info-bg)",       color: "var(--info-text)" },
-    "Cocinando":        { bg: "var(--primary)",       color: "#fff" },
-    "Cocinada":         { bg: "var(--ok-bg)",         color: "var(--ok-text)" },
-  };
-  const s = styles[estado] ?? styles["Elegida"];
-  return (
-    <span style={{
-      display: "inline-block",
-      padding: "2px 10px",
-      borderRadius: "var(--radius-full)",
-      fontSize: "var(--fs-xs)",
-      fontWeight: "var(--fw-medium)",
-      background: s.bg,
-      color: s.color,
-      whiteSpace: "nowrap",
-    }}>
-      {estado}
-    </span>
-  );
-}
+import { EstadoBadge } from "../components/EstadoBadge";
 
 function PlanRow({ plan }: { plan: Plan }) {
   const canCocinar = ["Compra pendiente", "Compra lista", "Cocinando"].includes(plan.estado);
