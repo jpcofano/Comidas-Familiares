@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type RefObject } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./StepTimer.css";
 import { iniciarAlarma } from "../lib/alarma";
 

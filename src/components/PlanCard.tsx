@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { actualizarAsignaciones, asignarFechaPlan } from "../data/planes";
 import { AvatarStack } from "./MemberAvatar";
 import { EstadoBadge } from "./EstadoBadge";
-import type { Plan, Menu, MiembroId, EstadoPlan } from "../types/models";
+import type { Plan, Menu, MiembroId } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 
 const NOMBRES: Record<string, string> = {
