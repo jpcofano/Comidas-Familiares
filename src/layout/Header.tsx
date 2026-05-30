@@ -1,13 +1,21 @@
 import { useState, useEffect, useRef } from "react";
-import { LogOut } from "lucide-react";
+import { LogOut, Moon, Sun } from "lucide-react";
 import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "../auth/useAuth";
+import { getInitialTheme, applyTheme, type Theme } from "../lib/theme";
 import "./Header.css";
 
 export function Header() {
   const { state, signOut } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const headerRef = useRef<HTMLElement>(null);
+
+  function toggleTheme() {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    setTheme(next);
+  }
 
   // Click outside cierra el menú.
   useEffect(() => {
@@ -42,6 +50,19 @@ export function Header() {
           </span>
           <h1 className="header-title">Comida Familiar</h1>
         </div>
+        <button
+          onClick={toggleTheme}
+          aria-label={theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
+          style={{
+            width: 32, height: 32, borderRadius: "50%",
+            border: "none", background: "transparent",
+            color: "var(--muted-strong)",
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer", flexShrink: 0,
+          }}
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
         <button
           className="avatar-button"
           onClick={() => setMenuOpen((v) => !v)}

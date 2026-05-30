@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.9 (E8.1 — pulido de diseño: Home comidas, WeekStrip puntos, header logo, badge por votar)
+> **Versión**: 1.9.0 (E8.2 — dark mode "Cocina nocturna": tokens + toggle header con persistencia)
 > **Fecha**: 2026-05-30
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,22 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.2 Cambios en v1.9.0 (E8.2 — Dark mode "Cocina nocturna")
+
+Dark mode completo implementado como **reescritura de tokens** sobre `[data-theme="dark"]` en `src/styles/tokens.css`. Los componentes ya usaban `var(--token)` en todos sus estilos, por lo que el cambio de tema se propaga sin tocar markup. **Reemplaza** la propuesta vieja del handoff del DS (que era `prefers-color-scheme` automático): la decisión de producto es **toggle manual, default = light**.
+
+**Decisiones zanjadas:**
+
+1. **Solo tokens.** El bloque `[data-theme="dark"]` sobreescribe los 40+ tokens de color de `:root`: fondos (`--bg`, `--surface`, `--surface-strong`, `--surface-alt`), texto (`--text`, `--text-strong`, `--muted`, `--muted-strong`), bordes, primary cálido (`#e08a63`), accent, semánticos ok/err/warn/info, sombras y `color-scheme: dark`. No hay CSS por-componente nuevo.
+
+2. **`--member-*` en dark.** Los colores de avatar en `:root` son versiones oscuras (`#8a4a2f`, `#74324a`, etc.) que quedarían sin contraste sobre fondos oscuros. Se añadió override en el bloque dark con las variantes claras equivalentes: `--member-juanpablo: #e08a63` (= `--primary` dark), `--member-maria: #d18aa3`, `--member-sofia: #aeb9d6`, `--member-federico: #a8d6a8`.
+
+3. **Toggle en el header.** Botón circular (32×32 px) a la izquierda del avatar, sin borde, fondo transparente. Ícono `Moon` (lucide) en light → muestra que al presionar va a dark; `Sun` en dark → vuelve a light. `aria-label` dinámico. Estado local `theme` inicializado con `getInitialTheme()` (lee `localStorage["cf-theme"]`).
+
+4. **Helper `src/lib/theme.ts`.** Exporta `getInitialTheme(): Theme` y `applyTheme(t: Theme)`. `applyTheme` setea/quita el atributo `data-theme` en `<html>` y persiste en `localStorage`. La función es pura (sin imports de React), reutilizable desde cualquier lugar.
+
+5. **Sin flash al recargar.** Script inline en `index.html` (antes del bundle) lee `localStorage["cf-theme"]` y aplica `data-theme="dark"` si corresponde, antes de que React monte. Elimina el flash de light en usuarios que tenían dark guardado.
 
 ### 1.2.E8.1 Cambios en v1.8.9 (E8.1 — Pulido de diseño)
 
@@ -1973,6 +1989,12 @@ en su scope necesario.
   ciclo de diseño. Home "N comidas" (sin "planeadas"); WeekStrip plato relleno primary en
   todos los días con comida; header logo 28→38 px / PlatoMark 16→23; badge pill "N por
   votar" en saludo del dashboard de miembro. Ver §1.2.E8.1.
+- **`PROMPT_E8.2_dark_mode.md`** ✅ **CERRADO (v1.9.0)**: dark mode "Cocina nocturna". Bloque
+  `[data-theme="dark"]` en `tokens.css` (reescritura completa de tokens de color, incluido
+  override `--member-*` para contraste). Helper `src/lib/theme.ts` (get/apply + persistencia
+  `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
+  Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
+  Ver §1.2.E8.2.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -2218,8 +2240,8 @@ Mapa backlog → prompts de implementación de Etapa 8:
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.9:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1 cierra
-el primer lote de micro-ajustes visuales del ciclo de diseño post-E7.13. Lo postergado
+**Estado en v1.9.0:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1–E8.2
+del ciclo de diseño post-E7.13 implementados: pulido visual y dark mode completo. Lo postergado
 (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso cuando aparezca
 demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en E7.11; §10.1 cerrada por
 verificación en E7.13.
