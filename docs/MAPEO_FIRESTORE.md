@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.6 (E7.12 — Alarma del timer de pasos: repetir hasta detener + más audible)
+> **Versión**: 1.8.7 (E7.13 — Dimensión `cocina` en recetas: enum opcional + diccionario + importador + filtro)
 > **Fecha**: 2026-05-28
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -142,6 +142,30 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E7.13 Cambios en v1.8.7 (E7.13 — Dimensión `cocina` en recetas)
+
+Nueva dimensión de clasificación para recetas: **tipo de cocina / origen** (Italiana, China, Argentina, etc.). Calca el patrón de `climaDelPlato` / `pensadaPara`: **enum opcional** validado contra `/config/diccionarios`. No todas las recetas la tienen (campo opcional).
+
+**Decisiones zanjadas:**
+
+1. **Nombre del campo: `cocina`** (no "origen"). Lo que clasifica es la cocina/estilo del plato, no necesariamente el país de procedencia. No se pisa con el campo `estilo` (texto libre, ej. "Argentino gourmet") ni con `tecnicaPrincipal` (texto libre): `cocina` es enum cerrado para **filtrar**; `estilo` queda como matiz libre. Va en el bloque "Clasificación" del doc de receta.
+
+2. **Opcional.** `cocina?: string`. Si la receta no la tiene, la clave se **omite** del doc (no se guarda `""` ni `null`). En UI se omite la fila cuando falta.
+
+3. **Lista de 15 cocinas**, definida en `models.ts` como `COCINAS` (`as const`) → tipo `Cocina = typeof COCINAS[number]`:
+   `["Argentina", "Italiana", "Española", "Francesa", "Mediterránea", "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana", "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra"]`.
+   `"Otra"` como catch-all al final. **`models.ts` es la fuente de verdad** (no la Console). Para agregar/cambiar una cocina: editar `models.ts` + re-correr el script de sync — mismo flujo controlado con que se arregló `proteinaPrincipal` en E5.2. La copia en `/config/diccionarios.cocinas` se mantiene sincronizada por script y existe **solo** para la validación runtime del importador.
+
+4. **Fuente de verdad = `src/types/models.ts`** (lección de E5.2: `proteinaPrincipal` se había desincronizado en 4 lugares). `cocina` debe quedar consistente en los **4 puntos**: (a) tipo en `models.ts` (`COCINAS` + `Cocina`, y agregar el slot `cocinas: Cocina[]` a la interfaz `DiccionariosConfig`, que hoy no lo tiene), (b) `/config/diccionarios.cocinas`, (c) prompt modelo del importador (`/config/importador.promptLLM`), (d) validación del parser.
+
+5. **Importador.** El parser acepta `cocina:` en el `#RECETA` (opcional). Validación **estricta si viene** (distinto a `climaDelPlato`, que silencia el error): `matchEnum(cocina, COCINAS)` → si falla, `errors.push(...)` → el bloque va a `fallidas` (consistente con multi-receta de E7.11). Ausente → clave omitida (`...(cocina ? { cocina } : {})`), sin default. El prompt modelo del LLM lista el campo como opcional con los valores válidos. ⚠️ El seed (`scripts/seed-config-importador.ts`) **no sobreescribe** si `promptLLM` ya existe; para actualizarlo se agrega un flag **`--force`**, y JP debe re-correr el seed **con `--force`** (si no, la app sigue mandando el prompt viejo sin `cocina`).
+
+6. **Recetas existentes (78) no se migran automáticamente.** No hay pantalla de edición de recetas en la app (solo `/biblioteca/catalogo` para ingredientes). `cocina` se completa en las recetas viejas **desde la consola de Firebase** (manual) o vía un futuro editor; los nuevos imports la traen. No se intenta inferir la cocina automáticamente (no es confiable). Las recetas sin `cocina` aparecen como "sin clasificar" y caen fuera de cualquier filtro por cocina.
+
+7. **Filtro en Biblioteca + cierre de §10.1.** Se agrega `cocina` como faceta de filtro en `/biblioteca`. El diagnóstico de Code confirmó que las facetas existentes (`tipoItem`, `proteina`) leen de `models.ts` (`TIPOS_ITEM`, `PROTEINAS`), están sincronizadas y **funcionan** → eso **cierra §10.1 por verificación** (los filtros no estaban rotos). Por consistencia, la faceta `cocina` también **lee `COCINAS` de `models.ts`** (no de Firestore): sin fetch async, sin divergencia. Recetas sin `cocina` no matchean ningún valor del filtro de cocina.
+
+**Display.** El diagnóstico de Code aclaró que `climaDelPlato` / `pensadaPara` **no** aparecen hoy en las pills de `DetalleReceta` (las pills actuales son: proteína, escenario, estilo, técnica, costo, sin lácteos, sin hidratos, apto noche de a dos). `cocina` se agrega como **pill nueva** (`{receta.cocina && <RecetaPill label={receta.cocina} />}`), omitida si falta. No se replica un display inexistente.
 
 ### 1.2.E7.12 Cambios en v1.8.6 (E7.12 — Alarma del timer de pasos: repetir hasta detener + más audible)
 
@@ -567,6 +591,7 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
   escenarioUso: "Cena Especial",   // enum del diccionario "Escenarios"
   climaDelPlato: "Potente",        // enum "Clima del plato"
   pensadaPara: "Especial",         // enum "Pensada para" — auto-derivable
+  cocina: "Italiana",              // enum "Cocinas" (opcional, E7.13) — omitir clave si falta
 
   // Apto / restricciones
   sinLacteos: true,                // boolean (en sheet era "Sí"/"No")
@@ -1036,6 +1061,9 @@ Doc id fijo `"foto"`. Una sola foto por entrada; subir otra la reemplaza con `se
   escenarios: ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"],
   climaPlato: ["Liviano", "Medio", "Potente"],
   pensadaPara: ["Especial", "Semana", "Cualquiera"],
+  cocinas: ["Argentina", "Italiana", "Española", "Francesa", "Mediterránea",
+            "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana",
+            "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra"],  // E7.13, opcional en receta
   tiposPlan: ["Especial", "Especial extra", "En proceso"],
   ocasiones: ["Cena familiar", "Con invitados", "Cumpleaños", "Celebración", "Otra"],
   aptoNocheDeADos: ["Sí", "No", "Adaptable"],
@@ -1282,6 +1310,7 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 - `escenarioUso` ∈ `diccionarios.escenarios`
 - `climaDelPlato` ∈ `diccionarios.climaPlato` (si viene)
 - `pensadaPara` ∈ `diccionarios.pensadaPara` (si viene)
+- `cocina` ∈ `COCINAS` (validación estricta **si viene** — opcional, E7.13). Si no está en la lista, el bloque va a `fallidas`. Ausente → clave omitida, sin default. (El parser valida runtime contra `diccionarios.cocinas`, copia sincronizada de `COCINAS`.)
 
 **Validación de booleanos:**
 - `sinLacteos`, `hidratos`: solo "Sí" o "No".
@@ -1903,10 +1932,17 @@ en su scope necesario.
   (` o `) en dos filas con mismo `grupoAlternativa` + `opcional: true`; cabeza enlaza vía
   `alternativas[]`. Bug 3 — upload de `.txt` en el paso 1. Además cerró §10.2.3 ("a gusto"
   para unidad `null`) en la misma pasada del parser. Ver §1.2.E7.11.
-- **`PROMPT_E7.12_alarma_timer.md`** ✅ **(v1.8.6)**: alarma del timer de pasos en Cocinar.
-  Reemplaza el beep único por un patrón de dos tonos que se repite hasta detenerse (botón
-  "Detener alarma"), más fuerte, con auto-corte de seguridad a 60 s y cleanup en cambio de
-  paso / desmontaje. Notification del navegador como respaldo, no se repite. Ver §1.2.E7.12.
+- **`PROMPT_E7.12_alarma_timer.md`** 🛠 **EN IMPLEMENTACIÓN (v1.8.6)**: alarma del timer
+  de pasos en Cocinar. Reemplaza el beep único por un patrón de dos tonos que se repite
+  hasta detenerse (botón "Detener alarma"), más fuerte, con auto-corte de seguridad a 60 s
+  y cleanup en cambio de paso / desmontaje. Notification del navegador como respaldo, no se
+  repite. Ver §1.2.E7.12.
+- **`PROMPT_E7.13_cocina_dimension.md`** 🛠 **EN IMPLEMENTACIÓN (v1.8.7)**: nueva dimensión
+  `cocina` (enum opcional) en recetas. Tipo en `models.ts` + `diccionarios.cocinas` (15
+  valores) + prompt del importador + validación del parser (4 puntos sincronizados, lección
+  E5.2) + display en DetalleReceta + filtro en Biblioteca (que de paso cierra §10.1). Recetas
+  existentes se completan desde Firebase Console (no hay editor de recetas; sin backfill
+  automático). Ver §1.2.E7.13.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -2038,7 +2074,7 @@ ventana. No son bugs, son cosas que se notan al usar la app un tiempo.
 
 Los filtros del listado de recetas en `/biblioteca` probablemente leen enums hardcodeados o desde `src/types/models.ts`, en vez de leer desde `/config/diccionarios`. El rediseño de E3.4.8 cambió el shape del diccionario: eliminó `seccionesIngredientes`, agregó `categoriasIngrediente`, `rolesNutricionales`, `seccionesGondola`. Si algún filtro consumía `seccionesIngredientes` o un valor viejo, está roto silenciosamente.
 
-**Acción pendiente:** revisar `src/routes/Biblioteca.tsx` y confirmar que los filtros de categoría y tipo siguen funcionando contra el catálogo post-E3.4.8.
+**Acción pendiente:** revisar `src/routes/Biblioteca.tsx` y confirmar que los filtros de categoría y tipo siguen funcionando contra el catálogo post-E3.4.8. **✅ CERRADO en E7.13 (v1.8.7) por verificación:** el diagnóstico D4 de E7.13 confirmó que las facetas `tipoItem` y `proteina` leen de `models.ts` (`TIPOS_ITEM`, `PROTEINAS`), están sincronizadas con Firestore y funcionan; no estaban rotas. La faceta nueva `cocina` sigue el mismo patrón (lee `COCINAS` de `models.ts`).
 
 ### 10.2 Deuda de UI en el importador
 
@@ -2119,9 +2155,9 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.6:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
-importador) y E7.12 (alarma del timer de pasos) implementados.
-Las próximas modificaciones serán mejoras puntuales según necesidad real, no etapas
-planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por
-caso cuando aparezca demanda concreta. Deuda técnica viva: **§10.1** (verificar filtros
-Biblioteca post-E3.4.8) — única abierta, no bloquea el uso. §10.2.3 cerrada en E7.11.
+**Estado en v1.8.7:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
+importador + "a gusto") implementado; E7.12 (alarma del timer) y E7.13 (dimensión `cocina`)
+en implementación. Las próximas modificaciones serán mejoras puntuales según necesidad real,
+no etapas planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva
+caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en
+E7.11; §10.1 cerrada por verificación en E7.13.

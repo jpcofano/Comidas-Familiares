@@ -2,10 +2,10 @@ import { normalizeText } from "../lib/canonical";
 import { parseTime, parseDificultad, parseCosto, parseSiNo, parseNumber } from "../lib/parsers";
 import type {
   TipoItem, Proteina, Escenario, ClimaPlato, PensadaPara,
-  AptoNocheDeADos, Dificultad, Costo,
+  AptoNocheDeADos, Dificultad, Costo, Cocina,
 } from "../types/models";
 import {
-  TIPOS_ITEM, PROTEINAS, ESCENARIOS, CLIMAS_PLATO, PENSADA_PARA, APTO_NOCHE_DE_A_DOS,
+  TIPOS_ITEM, PROTEINAS, ESCENARIOS, CLIMAS_PLATO, PENSADA_PARA, APTO_NOCHE_DE_A_DOS, COCINAS,
 } from "../types/models";
 
 // ─── Tipos exportados ─────────────────────────────────────────────────────────
@@ -42,6 +42,7 @@ export interface ParsedReceta {
   escenarioUso: Escenario;
   climaDelPlato?: ClimaPlato;
   pensadaPara: PensadaPara;
+  cocina?: Cocina;
   sinLacteos: boolean;
   hidratos: boolean;
   aptoNocheDeADos: AptoNocheDeADos;
@@ -138,6 +139,14 @@ function parseBloqueReceta(
   }
 
   const climaDelPlato = matchEnum(kv["climaDelPlato"] ?? "", CLIMAS_PLATO) ?? undefined;
+
+  const cocinaRaw = kv["cocina"];
+  const cocina = cocinaRaw !== undefined && cocinaRaw !== ""
+    ? matchEnum(cocinaRaw, COCINAS)
+    : undefined;
+  if (cocinaRaw !== undefined && cocinaRaw !== "" && !cocina) {
+    errors.push(`${nombreDisplay}: 'cocina' inválido: "${cocinaRaw}". Valores: ${COCINAS.join(", ")}.`);
+  }
 
   const difResult = parseDificultad(kv["dificultad"] ?? "");
   if (!difResult.label) {
@@ -281,6 +290,7 @@ function parseBloqueReceta(
       escenarioUso: escenarioUso!,
       ...(climaDelPlato ? { climaDelPlato } : {}),
       pensadaPara,
+      ...(cocina ? { cocina } : {}),
       sinLacteos,
       hidratos,
       aptoNocheDeADos,

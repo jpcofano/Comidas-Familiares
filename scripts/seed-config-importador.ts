@@ -12,6 +12,7 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
 const DRY_RUN = process.argv.includes("--dry-run");
+const FORCE = process.argv.includes("--force");
 const SERVICE_ACCOUNT_PATH = resolve("scripts/service-account.json");
 
 if (!existsSync(SERVICE_ACCOUNT_PATH)) {
@@ -56,6 +57,7 @@ paraJuanPablo: [Sí o No]
 paraFamilia: [Sí o No]
 climaDelPlato: [uno de exactamente: Liviano, Medio, Potente]
 pensadaPara: [uno de exactamente: Especial, Semana, Cualquiera]
+cocina: [OPCIONAL — uno de exactamente: Argentina, Italiana, Española, Francesa, Mediterránea, China, Japonesa, Coreana, Tailandesa, India, Mexicana, Peruana, Árabe / Medio Oriente, Estadounidense, Otra — omitir si no aplica o no está claro]
 hidratoOpcional: [si aplica: hidrato para servir aparte, ej: Arroz blanco — si no aplica, omitir esta línea]
 notas: [notas generales — si no hay, omitir esta línea]
 fuente: ChatGPT
@@ -119,10 +121,14 @@ async function main() {
   if (snap.exists) {
     const existing = snap.data()?.promptLLM as string | undefined;
     if (existing && existing.trim().length > 0) {
-      console.log("✓ /config/importador ya existe con promptLLM — no se sobreescribe.");
-      console.log(`  (${existing.length} caracteres)`);
-      if (DRY_RUN) console.log("[DRY RUN] Sin cambios.");
-      return;
+      if (!FORCE) {
+        console.log("✓ /config/importador ya existe con promptLLM — no se sobreescribe.");
+        console.log(`  (${existing.length} caracteres)`);
+        console.log("  Usá --force para sobreescribir (ej: tras agregar nuevos campos al prompt).");
+        if (DRY_RUN) console.log("[DRY RUN] Sin cambios.");
+        return;
+      }
+      console.log("⚡ --force activo: sobreescribiendo promptLLM existente.");
     }
   }
 

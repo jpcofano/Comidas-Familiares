@@ -275,6 +275,7 @@ export function DetalleRecetaRoute() {
         {receta.sinLacteos && <RecetaPill label="Sin lácteos" variant="ok" />}
         {!receta.hidratos && <RecetaPill label="Sin hidratos" variant="info" />}
         {receta.aptoNocheDeADos === "Sí" && <RecetaPill label="Noche de a dos ✓" variant="info" />}
+        {receta.cocina && <RecetaPill label={receta.cocina} />}
       </div>
 
       {/* 6. Ingredientes */}

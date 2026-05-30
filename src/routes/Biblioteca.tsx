@@ -7,7 +7,7 @@ import { getMenus, deriveMenuMetadata } from "../data/menus";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta } from "../lib/filtros";
 import type { Receta, Menu, MenuDerived } from "../types/models";
-import { TIPOS_ITEM, PROTEINAS } from "../types/models";
+import { TIPOS_ITEM, PROTEINAS, COCINAS } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -215,6 +215,17 @@ function TabRecetas() {
         >
           <option value="">Todas las proteínas</option>
           {PROTEINAS.map(p => <option key={p} value={p}>{p}</option>)}
+        </select>
+      </div>
+
+      <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-2)" }}>
+        <select
+          value={filtros.cocina}
+          onChange={e => setFiltros(f => ({ ...f, cocina: e.target.value }))}
+          style={selectStyle}
+        >
+          <option value="">Todas las cocinas</option>
+          {COCINAS.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
       </div>
 

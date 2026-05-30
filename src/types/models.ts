@@ -44,6 +44,13 @@ export type ClimaPlato = typeof CLIMAS_PLATO[number];
 export const PENSADA_PARA = ["Especial", "Semana", "Cualquiera"] as const;
 export type PensadaPara = typeof PENSADA_PARA[number];
 
+export const COCINAS = [
+  "Argentina", "Italiana", "Española", "Francesa", "Mediterránea",
+  "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana",
+  "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra",
+] as const;
+export type Cocina = typeof COCINAS[number];
+
 export const DIFICULTADES = ["Baja", "Media", "Media-alta", "Alta"] as const;
 export type Dificultad = typeof DIFICULTADES[number];
 
@@ -132,6 +139,7 @@ export interface Receta {
   escenarioUso: Escenario;
   climaDelPlato?: ClimaPlato;
   pensadaPara: PensadaPara;
+  cocina?: Cocina;
 
   sinLacteos: boolean;
   hidratos: boolean;
@@ -343,6 +351,7 @@ export interface DiccionariosConfig {
   escenarios: Escenario[];
   climaPlato: ClimaPlato[];
   pensadaPara: PensadaPara[];
+  cocinas: Cocina[];
   tiposPlan: TipoPlan[];
   ocasiones: Ocasion[];
   aptoNocheDeADos: AptoNocheDeADos[];
