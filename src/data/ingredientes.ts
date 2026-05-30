@@ -1,5 +1,5 @@
 import {
-  collection, doc, getDoc, getDocs, setDoc, updateDoc, arrayUnion, serverTimestamp, query, where,
+  collection, doc, getDoc, getDocs, setDoc, updateDoc, deleteDoc, arrayUnion, serverTimestamp, query, where,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import type { Ingrediente } from "../types/models";
@@ -91,7 +91,7 @@ export async function getIngredientesAmbiguos(): Promise<Result<Ingrediente[], A
 
 export async function actualizarIngrediente(
   idIngrediente: string,
-  cambios: Partial<Pick<Ingrediente, "categoria" | "rolNutricional" | "seccionGondola" | "ambiguo">>
+  cambios: Partial<Pick<Ingrediente, "nombrePreferido" | "categoria" | "rolNutricional" | "seccionGondola" | "ambiguo">>
 ): Promise<Result<void, AppError>> {
   try {
     await updateDoc(doc(db, "ingredientes", idIngrediente), {
@@ -103,6 +103,19 @@ export async function actualizarIngrediente(
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el ingrediente.";
     return err("ingrediente-update-failed", msg, e);
+  }
+}
+
+export async function eliminarIngrediente(
+  idIngrediente: string
+): Promise<Result<void, AppError>> {
+  try {
+    await deleteDoc(doc(db, "ingredientes", idIngrediente));
+    invalidateCatalogCache();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo eliminar el ingrediente.";
+    return err("ingrediente-delete-failed", msg, e);
   }
 }
 

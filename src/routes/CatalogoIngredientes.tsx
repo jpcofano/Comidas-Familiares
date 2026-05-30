@@ -1,126 +1,306 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Pencil, X } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
-import { getIngredientesAmbiguos, actualizarIngrediente } from "../data/ingredientes";
-import { CATEGORIAS_INGREDIENTE, ROLES_NUTRICIONALES, ORDEN_GONDOLA } from "../lib/catalogo";
+import {
+  getCatalogo,
+  actualizarIngrediente,
+  crearIngrediente,
+  eliminarIngrediente,
+  proximoIdIngrediente,
+} from "../data/ingredientes";
+import { normalizeText } from "../lib/canonical";
+import {
+  CATEGORIAS_INGREDIENTE,
+  ROLES_NUTRICIONALES,
+  ORDEN_GONDOLA,
+  getSeccionMeta,
+  groupByGondola,
+} from "../lib/catalogo";
 import type { Ingrediente } from "../types/models";
 
-// ─── Editor de un ingrediente ambiguo ────────────────────────────────────────
+// ─── Gondola letter badge ─────────────────────────────────────────────────────
 
-function EditorIngrediente({
-  ing,
-  onGuardado,
-}: {
-  ing: Ingrediente;
-  onGuardado: (id: string) => void;
-}) {
-  const [categoria, setCategoria] = useState(ing.categoria);
-  const [roles, setRoles] = useState<string[]>(ing.rolNutricional ?? []);
-  const [seccionGondola, setSeccionGondola] = useState(ing.seccionGondola || "Despensa / otros");
+function GondolaBadge({ seccion }: { seccion: string }) {
+  const meta = getSeccionMeta(seccion);
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", justifyContent: "center",
+      width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
+      background: meta.color, color: "#fff",
+      fontSize: 11, fontWeight: 700,
+    }}>
+      {meta.letra}
+    </span>
+  );
+}
+
+// ─── Row ──────────────────────────────────────────────────────────────────────
+
+function IngredienteRow({ ing, onClick }: { ing: Ingrediente; onClick: () => void }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        display: "flex", alignItems: "center", gap: "var(--space-2)",
+        padding: "var(--space-3) 0", borderBottom: "1px solid var(--border)",
+        cursor: "pointer",
+      }}
+    >
+      <GondolaBadge seccion={ing.seccionGondola} />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p style={{
+          margin: 0, fontWeight: "var(--fw-medium)", color: "var(--text-strong)",
+          fontSize: "var(--fs-sm)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>
+          {ing.nombrePreferido}
+        </p>
+        <p style={{
+          margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)",
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>
+          {ing.categoria}{ing.rolNutricional?.length ? " · " + ing.rolNutricional.join(", ") : ""}
+        </p>
+      </div>
+      <Pencil size={14} style={{ color: "var(--muted)", flexShrink: 0 }} aria-hidden />
+    </div>
+  );
+}
+
+// ─── Bottom-sheet editor ──────────────────────────────────────────────────────
+
+interface SheetProps {
+  ingToEdit: Ingrediente | null;  // null = create new
+  onClose: () => void;
+  onSaved: (msg: string) => void;
+  onDeleted: () => void;
+}
+
+function IngredienteSheet({ ingToEdit, onClose, onSaved, onDeleted }: SheetProps) {
+  const isNew = ingToEdit === null;
+
+  const [nombre, setNombre] = useState(ingToEdit?.nombrePreferido ?? "");
+  const [categoria, setCategoria] = useState(ingToEdit?.categoria ?? CATEGORIAS_INGREDIENTE[0]);
+  const [seccion, setSeccion] = useState(ingToEdit?.seccionGondola ?? "Despensa / otros");
+  const [roles, setRoles] = useState<string[]>(ingToEdit?.rolNutricional ?? []);
   const [guardando, setGuardando] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [confirmEliminar, setConfirmEliminar] = useState(false);
+  const [eliminando, setEliminando] = useState(false);
 
   function toggleRol(rol: string) {
-    setRoles((prev) =>
-      prev.includes(rol) ? prev.filter((r) => r !== rol) : [...prev, rol]
-    );
+    setRoles((prev) => prev.includes(rol) ? prev.filter((r) => r !== rol) : [...prev, rol]);
   }
 
   async function handleGuardar() {
+    const trimmed = nombre.trim();
+    if (!trimmed) { setError("El nombre es obligatorio."); return; }
     setGuardando(true);
     setError(null);
-    const r = await actualizarIngrediente(ing.idIngrediente, {
-      categoria,
-      rolNutricional: roles,
-      seccionGondola,
-      ambiguo: false,
-    });
-    setGuardando(false);
-    if (r.ok) {
-      onGuardado(ing.idIngrediente);
+
+    let result;
+    if (isNew) {
+      const id = await proximoIdIngrediente();
+      result = await crearIngrediente({
+        idIngrediente: id,
+        canonico: normalizeText(trimmed),
+        nombrePreferido: trimmed,
+        sinonimos: [],
+        categoria,
+        rolNutricional: roles,
+        seccionGondola: seccion,
+        unidadesHabituales: [],
+        ambiguo: false,
+        origen: "manual",
+      });
     } else {
-      setError(r.error.message);
+      result = await actualizarIngrediente(ingToEdit!.idIngrediente, {
+        nombrePreferido: trimmed,
+        categoria,
+        rolNutricional: roles,
+        seccionGondola: seccion,
+        ambiguo: false,
+      });
+    }
+
+    if (result.ok) {
+      onSaved(isNew ? "Ingrediente creado." : "Guardado.");
+    } else {
+      setGuardando(false);
+      setError(result.error.message);
     }
   }
 
+  async function handleEliminar() {
+    setEliminando(true);
+    const r = await eliminarIngrediente(ingToEdit!.idIngrediente);
+    if (r.ok) {
+      onDeleted();
+    } else {
+      setEliminando(false);
+      setError(r.error.message);
+      setConfirmEliminar(false);
+    }
+  }
+
+  const vecesUsado = ingToEdit?.vecesUsado ?? 0;
+
+  const fieldStyle: React.CSSProperties = {
+    width: "100%", padding: "7px 10px", fontSize: "var(--fs-sm)",
+    borderRadius: "var(--radius-sm)", border: "1px solid var(--border)",
+    background: "var(--surface-strong)", color: "var(--text)",
+    fontFamily: "inherit",
+  };
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)",
+  };
+
   return (
-    <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-      <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-1)" }}>
-        {ing.nombrePreferido}
-      </p>
-      <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-3)" }}>
-        {ing.idIngrediente} · importado como "{ing.canonico}"
-      </p>
-
-      {/* Categoría */}
-      <div style={{ marginBottom: "var(--space-3)" }}>
-        <label style={{ display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)" }}>
-          Categoría (qué ES)
-        </label>
-        <select
-          value={categoria}
-          onChange={(e) => setCategoria(e.target.value)}
-          style={{ width: "100%", padding: "6px 8px", fontSize: "var(--fs-sm)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)", background: "var(--surface)", color: "var(--text)" }}
-        >
-          {CATEGORIAS_INGREDIENTE.map((cat) => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Sección de góndola */}
-      <div style={{ marginBottom: "var(--space-3)" }}>
-        <label style={{ display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)" }}>
-          Sección de góndola (DÓNDE se compra)
-        </label>
-        <select
-          value={seccionGondola}
-          onChange={(e) => setSeccionGondola(e.target.value)}
-          style={{ width: "100%", padding: "6px 8px", fontSize: "var(--fs-sm)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)", background: "var(--surface)", color: "var(--text)" }}
-        >
-          {ORDEN_GONDOLA.map((sec) => (
-            <option key={sec} value={sec}>{sec}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Roles nutricionales */}
-      <div style={{ marginBottom: "var(--space-3)" }}>
-        <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-1)" }}>
-          Rol nutricional (qué APORTA — puede ser varios, o ninguno)
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)" }}>
-          {ROLES_NUTRICIONALES.map((rol) => (
-            <button
-              key={rol}
-              onClick={() => toggleRol(rol)}
-              style={{
-                padding: "4px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
-                border: "1px solid var(--border)", cursor: "pointer",
-                background: roles.includes(rol) ? "var(--primary)" : "var(--surface-strong)",
-                color: roles.includes(rol) ? "#fff" : "var(--text)",
-              }}
-            >
-              {rol}
-            </button>
-          ))}
+    <>
+      {/* Scrim */}
+      <div
+        onClick={onClose}
+        style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 100 }}
+      />
+      {/* Sheet */}
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 101,
+        maxHeight: "90dvh", overflowY: "auto",
+        background: "var(--surface)",
+        borderRadius: "16px 16px 0 0",
+        padding: "20px 20px calc(20px + env(safe-area-inset-bottom))",
+      }}>
+        {/* Header del sheet */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-4)" }}>
+          <h3 style={{ margin: 0, color: "var(--text-strong)" }}>
+            {isNew ? "Nuevo ingrediente" : ingToEdit!.nombrePreferido}
+          </h3>
+          <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", padding: 4, display: "flex" }}>
+            <X size={20} />
+          </button>
         </div>
+
+        {/* Metadata */}
+        {!isNew && (
+          <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-3)" }}>
+            {ingToEdit!.idIngrediente}
+            {vecesUsado > 0
+              ? ` · Usado en ${vecesUsado} receta${vecesUsado !== 1 ? "s" : ""}`
+              : " · Sin recetas que lo usen"}
+          </p>
+        )}
+
+        {/* Nombre */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Nombre</label>
+          <input
+            type="text"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            style={fieldStyle}
+          />
+        </div>
+
+        {/* Categoría */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Categoría (qué ES)</label>
+          <select value={categoria} onChange={(e) => setCategoria(e.target.value)} style={fieldStyle}>
+            {CATEGORIAS_INGREDIENTE.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
+
+        {/* Sección de góndola */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Sección de góndola (DÓNDE se compra)</label>
+          <select value={seccion} onChange={(e) => setSeccion(e.target.value)} style={fieldStyle}>
+            {ORDEN_GONDOLA.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+        </div>
+
+        {/* Roles nutricionales */}
+        <div style={{ marginBottom: "var(--space-4)" }}>
+          <p style={{ ...labelStyle, marginBottom: "var(--space-1)" }}>Rol nutricional (qué APORTA)</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)" }}>
+            {ROLES_NUTRICIONALES.map((rol) => (
+              <button
+                key={rol}
+                onClick={() => toggleRol(rol)}
+                style={{
+                  padding: "4px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                  border: "1px solid var(--border)", cursor: "pointer", fontFamily: "inherit",
+                  background: roles.includes(rol) ? "var(--primary)" : "var(--surface-strong)",
+                  color: roles.includes(rol) ? "var(--on-primary)" : "var(--text)",
+                }}
+              >
+                {rol}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {error && (
+          <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>
+            {error}
+          </p>
+        )}
+
+        <button
+          className="btn btn-primary"
+          onClick={handleGuardar}
+          disabled={guardando}
+          style={{ width: "100%", marginBottom: "var(--space-3)" }}
+        >
+          {guardando ? "Guardando…" : isNew ? "Crear ingrediente" : "Guardar cambios"}
+        </button>
+
+        {/* Eliminar (solo edición) */}
+        {!isNew && !confirmEliminar && (
+          <button
+            onClick={() => setConfirmEliminar(true)}
+            style={{
+              width: "100%", padding: "10px", background: "none", fontFamily: "inherit",
+              border: "1px solid var(--err-line)", borderRadius: "var(--radius-sm)",
+              color: "var(--err-text)", fontSize: "var(--fs-sm)", cursor: "pointer",
+            }}
+          >
+            Eliminar ingrediente
+          </button>
+        )}
+
+        {/* Confirmación de eliminación */}
+        {!isNew && confirmEliminar && (
+          <div style={{
+            padding: "var(--space-3)", background: "var(--err-bg)",
+            borderRadius: "var(--radius-sm)", border: "1px solid var(--err-line)",
+          }}>
+            {vecesUsado > 0 && (
+              <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--err-text)" }}>
+                ⚠ Está en {vecesUsado} receta{vecesUsado !== 1 ? "s" : ""}. Eliminarlo no actualizará esas recetas.
+              </p>
+            )}
+            <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-sm)", color: "var(--err-text)", fontWeight: "var(--fw-medium)" }}>
+              ¿Confirmar eliminación?
+            </p>
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button className="btn btn-ghost" onClick={() => setConfirmEliminar(false)} style={{ flex: 1 }}>
+                Cancelar
+              </button>
+              <button
+                onClick={handleEliminar}
+                disabled={eliminando}
+                style={{
+                  flex: 1, padding: "10px", background: "var(--err-text)", border: "none",
+                  borderRadius: "var(--radius-sm)", color: "#fff", fontSize: "var(--fs-sm)",
+                  cursor: "pointer", fontFamily: "inherit",
+                }}
+              >
+                {eliminando ? "Eliminando…" : "Eliminar"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-
-      {error && (
-        <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>{error}</p>
-      )}
-
-      <button
-        className="btn btn-primary"
-        onClick={handleGuardar}
-        disabled={guardando}
-        style={{ width: "100%" }}
-      >
-        {guardando ? "Guardando…" : "Completar ingrediente"}
-      </button>
-    </div>
+    </>
   );
 }
 
@@ -130,30 +310,74 @@ export function CatalogoIngredientesRoute() {
   const { state } = useAuth();
   const navigate = useNavigate();
 
-  const [ingredientes, setIngredientes] = useState<Ingrediente[]>([]);
+  const [catalogo, setCatalogo] = useState<Ingrediente[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [filterGondola, setFilterGondola] = useState<string | null>(null);
+  const [sheet, setSheet] = useState<{ ing: Ingrediente | null } | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
+
+  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
 
   useEffect(() => {
-    getIngredientesAmbiguos().then((r) => {
-      if (r.ok) setIngredientes(r.value);
-      else setError(r.error.message);
-      setLoading(false);
-    });
-  }, []);
+    if (!isJP) return;
+    getCatalogo()
+      .then((map) => {
+        setCatalogo([...map.values()].sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es")));
+        setLoading(false);
+      })
+      .catch((e: unknown) => {
+        setLoadError(e instanceof Error ? e.message : "Error al cargar el catálogo.");
+        setLoading(false);
+      });
+  }, [isJP]);
 
-  if (state.status !== "authenticated" || state.user.memberId !== "juanpablo") {
+  if (!isJP) {
     navigate("/biblioteca", { replace: true });
     return null;
   }
 
-  function handleGuardado(id: string) {
-    setIngredientes((prev) => prev.filter((i) => i.idIngrediente !== id));
+  function showToast(msg: string) {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2500);
   }
+
+  function refreshCatalogo() {
+    getCatalogo()
+      .then((map) => {
+        setCatalogo([...map.values()].sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es")));
+      })
+      .catch(() => {});
+  }
+
+  function handleSaved(msg: string) {
+    setSheet(null);
+    showToast(msg);
+    refreshCatalogo();
+  }
+
+  function handleDeleted() {
+    setSheet(null);
+    showToast("Ingrediente eliminado.");
+    refreshCatalogo();
+  }
+
+  const ambiguos = catalogo.filter((i) => i.ambiguo);
+  const completos = catalogo.filter((i) => !i.ambiguo);
+
+  const lc = search.toLowerCase();
+  const filtered = completos.filter(
+    (ing) =>
+      (!lc || ing.nombrePreferido.toLowerCase().includes(lc)) &&
+      (!filterGondola || ing.seccionGondola === filterGondola),
+  );
+  const grouped = groupByGondola(filtered, (i) => i.seccionGondola);
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
         <button
           className="btn btn-ghost"
           onClick={() => navigate(-1)}
@@ -161,37 +385,147 @@ export function CatalogoIngredientesRoute() {
         >
           <ChevronLeft size={20} />
         </button>
-        <h2 style={{ margin: 0, fontSize: "var(--fs-lg)", color: "var(--text-strong)" }}>
-          Catálogo — Completar ingredientes
-        </h2>
+        <div style={{ flex: 1 }}>
+          <h2 style={{ margin: 0, fontSize: "var(--fs-lg)", color: "var(--text-strong)" }}>Ingredientes</h2>
+          {!loading && (
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+              {catalogo.length} en el catálogo · ordenados por góndola
+            </p>
+          )}
+        </div>
+        <button
+          className="btn btn-primary"
+          style={{ fontSize: "var(--fs-sm)", flexShrink: 0 }}
+          onClick={() => setSheet({ ing: null })}
+        >
+          + Nuevo
+        </button>
       </div>
 
       {loading && <div className="card"><p className="meta">Cargando…</p></div>}
+      {loadError && <div className="card"><p style={{ color: "var(--err-text)" }}>{loadError}</p></div>}
 
-      {error && (
-        <div className="card">
-          <p style={{ color: "var(--err-text)" }}>{error}</p>
-        </div>
+      {!loading && !loadError && (
+        <>
+          {/* Por completar */}
+          {ambiguos.length > 0 && (
+            <div className="card" style={{ marginBottom: "var(--space-3)", borderLeft: "3px solid var(--warn-line)" }}>
+              <p style={{ margin: "0 0 var(--space-2)", fontWeight: "var(--fw-semibold)", color: "var(--warn-text)", fontSize: "var(--fs-sm)" }}>
+                Por completar · {ambiguos.length}
+              </p>
+              {ambiguos.map((ing) => (
+                <IngredienteRow key={ing.idIngrediente} ing={ing} onClick={() => setSheet({ ing })} />
+              ))}
+            </div>
+          )}
+
+          {/* Buscador + filtro por góndola */}
+          <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+            <input
+              type="search"
+              placeholder="Buscar ingrediente…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{
+                width: "100%", padding: "7px 10px", fontSize: "var(--fs-sm)",
+                borderRadius: "var(--radius-sm)", border: "1px solid var(--border)",
+                background: "var(--surface-strong)", color: "var(--text)",
+                fontFamily: "inherit", marginBottom: "var(--space-2)",
+              }}
+            />
+            <div style={{ display: "flex", gap: "var(--space-1)", overflowX: "auto", paddingBottom: 2 }}>
+              <button
+                onClick={() => setFilterGondola(null)}
+                style={{
+                  flexShrink: 0, padding: "4px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                  border: "1px solid var(--border)", cursor: "pointer", fontFamily: "inherit",
+                  background: filterGondola === null ? "var(--primary)" : "var(--surface-strong)",
+                  color: filterGondola === null ? "var(--on-primary)" : "var(--text)",
+                }}
+              >
+                Todas
+              </button>
+              {ORDEN_GONDOLA.map((sec) => {
+                const active = filterGondola === sec;
+                const meta = getSeccionMeta(sec);
+                return (
+                  <button
+                    key={sec}
+                    onClick={() => setFilterGondola(active ? null : sec)}
+                    style={{
+                      flexShrink: 0, display: "inline-flex", alignItems: "center", gap: 4,
+                      padding: "4px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                      border: "1px solid var(--border)", cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                      background: active ? "var(--primary)" : "var(--surface-strong)",
+                      color: active ? "var(--on-primary)" : "var(--text)",
+                    }}
+                  >
+                    <span style={{
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      width: 16, height: 16, borderRadius: "50%",
+                      background: active ? "rgba(255,255,255,0.3)" : meta.color,
+                      color: "#fff", fontSize: 9, fontWeight: 700, flexShrink: 0,
+                    }}>
+                      {meta.letra}
+                    </span>
+                    {sec}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {filtered.length === 0 && completos.length > 0 && (
+            <div className="card">
+              <p className="meta">
+                Sin resultados{search ? ` para "${search}"` : ""}{filterGondola ? ` en ${filterGondola}` : ""}.
+              </p>
+            </div>
+          )}
+
+          {/* Lista agrupada */}
+          {grouped.map(({ seccion, items }) => (
+            <div key={seccion} className="card" style={{ marginBottom: "var(--space-3)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-2)" }}>
+                <GondolaBadge seccion={seccion} />
+                <p style={{ margin: 0, fontWeight: "var(--fw-semibold)", fontSize: "var(--fs-sm)", color: "var(--text-strong)" }}>
+                  {seccion}
+                </p>
+                <span style={{ marginLeft: "auto", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+                  {items.length}
+                </span>
+              </div>
+              {items.map((ing) => (
+                <IngredienteRow key={ing.idIngrediente} ing={ing} onClick={() => setSheet({ ing })} />
+              ))}
+            </div>
+          ))}
+        </>
       )}
 
-      {!loading && !error && ingredientes.length === 0 && (
-        <div className="card">
-          <p className="meta">No hay ingredientes pendientes de completar.</p>
-        </div>
+      {/* Bottom-sheet */}
+      {sheet !== null && (
+        <IngredienteSheet
+          key={sheet.ing?.idIngrediente ?? "nuevo"}
+          ingToEdit={sheet.ing}
+          onClose={() => setSheet(null)}
+          onSaved={handleSaved}
+          onDeleted={handleDeleted}
+        />
       )}
 
-      {!loading && ingredientes.length > 0 && (
-        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <p style={{ fontSize: "var(--fs-sm)", color: "var(--text)", margin: 0 }}>
-            {ingredientes.length} ingrediente{ingredientes.length !== 1 ? "s" : ""} importado{ingredientes.length !== 1 ? "s" : ""} con valores por defecto.
-            Completá la categoría, la sección de góndola y los roles nutricionales de cada uno.
-          </p>
+      {/* Toast */}
+      {toast && (
+        <div style={{
+          position: "fixed", bottom: "var(--space-8)", left: "50%", transform: "translateX(-50%)",
+          background: "var(--surface-strong)", border: "1px solid var(--border)",
+          borderRadius: "var(--radius-md)", padding: "8px 16px",
+          fontSize: "var(--fs-sm)", color: "var(--text-strong)",
+          zIndex: 200, boxShadow: "var(--shadow-toast)", whiteSpace: "nowrap",
+        }}>
+          {toast}
         </div>
       )}
-
-      {ingredientes.map((ing) => (
-        <EditorIngrediente key={ing.idIngrediente} ing={ing} onGuardado={handleGuardado} />
-      ))}
     </>
   );
 }

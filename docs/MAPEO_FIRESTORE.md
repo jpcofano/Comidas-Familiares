@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.0 (E8.2 — dark mode "Cocina nocturna": tokens + toggle header con persistencia)
+> **Versión**: 1.9.1 (E8.3 — catálogo de ingredientes editable: editar/crear/eliminar)
 > **Fecha**: 2026-05-30
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,30 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.3 Cambios en v1.9.1 (E8.3 — Catálogo de ingredientes editable)
+
+`/biblioteca/catalogo` (`CatalogoIngredientes.tsx`) reescrito: de solo resolver ambiguos a catálogo completo navegable y editable. Solo-JP (guard existente).
+
+**Alcance:**
+
+1. **Ver todo el catálogo** agrupado por góndola (orden `ORDEN_GONDOLA`). Buscador por nombre + chips de filtro por góndola (scroll horizontal). Cada fila muestra badge de letra, nombre, categoría y roles; tap abre el editor. Conteo por sección.
+
+2. **Sección "Por completar"** (ambiguos) diferenciada con borde warn y badge "por completar" — funciona igual que antes pero a través del mismo bottom-sheet editor.
+
+3. **Editor en bottom-sheet** (modal anclado al pie, `position: fixed`, scrim). Campos: nombre, categoría, sección de góndola, roles nutricionales (toggles). `key` por `idIngrediente` (o `"nuevo"`) para reinicializar el form al cambiar de ingrediente. Cerrar: scrim o botón ×.
+
+4. **Alta**: botón "+ Nuevo" en el header. El sheet en modo create genera el id con `proximoIdIngrediente()`, construye el doc con `origen: "manual"`, `ambiguo: false`, `canonico` via `normalizeText`.
+
+5. **Baja** (solo en edición): botón "Eliminar ingrediente". Muestra `vecesUsado` en el sheet. Si `vecesUsado > 0`, la confirmación advierte "Está en N recetas. Eliminarlo no actualizará esas recetas." Un paso adicional de confirmación en ambos casos antes de ejecutar.
+
+6. **`eliminarIngrediente(id)`** (nuevo en `src/data/ingredientes.ts`): `deleteDoc` + `invalidateCatalogCache()` + patrón `Result`.
+
+7. **`actualizarIngrediente`** — tipo de `cambios` ampliado para incluir `nombrePreferido` (antes solo `categoria | rolNutricional | seccionGondola | ambiguo`).
+
+8. **Firestore rules**: `allow write: if isOwner()` en `/ingredientes/{id}` ya cubre `create | update | delete`. Sin cambios.
+
+9. **Recarga optimizada**: después de cualquier mutación exitosa, el cache se invalida en la función de datos y se relanza `getCatalogo()` para refrescar la lista local.
 
 ### 1.2.E8.2 Cambios en v1.9.0 (E8.2 — Dark mode "Cocina nocturna")
 
@@ -1995,6 +2019,12 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.3_catalogo_editable.md`** ✅ **CERRADO (v1.9.1)**: catálogo de ingredientes
+  editable. `CatalogoIngredientes.tsx` reescrito: ver todo + buscador + filtro góndola +
+  lista agrupada + bottom-sheet editor para editar/crear/eliminar (baja segura con aviso de
+  vecesUsado). `eliminarIngrediente` en `ingredientes.ts`. `actualizarIngrediente` ampliado
+  con `nombrePreferido`. Rules sin cambio (`allow write` ya cubre delete). Cierra §11 Lote 8.1.
+  Ver §1.2.E8.3.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -2212,8 +2242,9 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 Cierra el gap de §1.2.E7.13 pto 6 ("no hay edición de recetas en la app; `cocina` se completa
 desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
-- **8.1 Editor de ingredientes completo** (editar cualquiera / alta / baja en `/biblioteca/
-  catalogo`, no solo ambiguos). → **se implementa en el prompt E8.3.**
+- **8.1 Editor de ingredientes completo** ✅ **HECHO (v1.9.1 — E8.3)** — editar cualquiera /
+  alta / baja en `/biblioteca/catalogo`, no solo ambiguos. Bottom-sheet editor + buscador +
+  filtro por góndola + eliminación segura.
 - **8.2 Editor de receta en la app** — al menos la clasificación (`cocina` y bloque
   Clasificación) para migrar las 78 recetas viejas sin la consola de Firebase. Backlog.
 - **8.3 Ingrediente → recetas que lo usan.** Hacer navegable "usado en N recetas": del
@@ -2240,8 +2271,8 @@ Mapa backlog → prompts de implementación de Etapa 8:
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.0:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1–E8.2
-del ciclo de diseño post-E7.13 implementados: pulido visual y dark mode completo. Lo postergado
-(push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso cuando aparezca
-demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en E7.11; §10.1 cerrada por
-verificación en E7.13.
+**Estado en v1.9.1:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1–E8.3
+del ciclo de diseño post-E7.13 implementados: pulido visual, dark mode y catálogo editable
+(§11 Lote 8.1 cerrado). Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva
+caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en
+E7.11; §10.1 cerrada por verificación en E7.13.
