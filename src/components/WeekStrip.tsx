@@ -104,7 +104,9 @@ export function WeekStrip({ semanaInicio, marked = [] }: WeekStripProps) {
               {d.n}
             </span>
             {hasMeal ? (
-              <Plate filled={isToday} size={12} />
+              <span style={{ color: "var(--primary)" }}>
+                <Plate filled={hasMeal} size={12} />
+              </span>
             ) : (
               <div style={{ height: 12 }} />
             )}

@@ -205,8 +205,8 @@ function HomeJP() {
             textOverflow: "ellipsis",
           }}>
             {planes.length === 0
-              ? "Sin comidas planeadas"
-              : `${planes.length} ${planes.length === 1 ? "comida planeada" : "comidas planeadas"}`}
+              ? "Sin comidas"
+              : `${planes.length} ${planes.length === 1 ? "comida" : "comidas"}`}
           </h1>
           <SemanaBadge rango={semanaRango} />
         </div>

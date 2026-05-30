@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
@@ -103,6 +103,7 @@ function HistorialRow({ entrada, miembroId }: { entrada: Historial; miembroId: M
 
 export function MemberDashboard() {
   const { state } = useAuth();
+  const navigate = useNavigate();
   const semana = getSemanaActual();
   const [planes, setPlanes] = useState<Plan[]>([]);
   const [historial, setHistorial] = useState<Historial[]>([]);
@@ -136,7 +137,27 @@ export function MemberDashboard() {
 
       {/* Saludo */}
       <div className="card">
-        <h2 style={{ margin: "0 0 var(--space-1)" }}>Hola, {nombre}</h2>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-2)", marginBottom: "var(--space-1)" }}>
+          <h2 style={{ margin: 0 }}>Hola, {nombre}</h2>
+          {pendientes.length > 0 && (
+            <button
+              onClick={() => navigate(`/voto/${pendientes[0].idPlan}`)}
+              style={{
+                flexShrink: 0,
+                background: "var(--warn-bg)",
+                border: "1px solid var(--warn-line)",
+                color: "var(--warn-text)",
+                borderRadius: 999,
+                padding: "3px 10px",
+                fontSize: "var(--fs-xs)",
+                fontWeight: "var(--fw-medium)",
+                cursor: "pointer",
+              }}
+            >
+              {pendientes.length} por votar
+            </button>
+          )}
+        </div>
         <p className="meta" style={{ margin: 0 }}>Semana del {semana}</p>
       </div>
 

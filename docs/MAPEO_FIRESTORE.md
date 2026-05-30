@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.8 (E8.0 — setup Etapa 8: WORKFLOW.md + backlog §11 Lote 8)
+> **Versión**: 1.8.9 (E8.1 — pulido de diseño: Home comidas, WeekStrip puntos, header logo, badge por votar)
 > **Fecha**: 2026-05-30
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,28 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.1 Cambios en v1.8.9 (E8.1 — Pulido de diseño)
+
+Micro-ajustes visuales del ciclo de diseño post-E7.13. Sin cambios de modelo ni lógica.
+
+1. **Home — resumen sin "planeadas".** `"Sin comidas planeadas"` → `"Sin comidas"`;
+   `"N comidas planeadas"` → `"N comidas"`. Texto más limpio.
+
+2. **WeekStrip — todos los días con comida usan el plato relleno primary.** Antes,
+   solo `isToday` mostraba `<Plate filled>` en `var(--primary)`; otros días con comida
+   mostraban outlined (`fill=false`) en `var(--muted)`. Cambio: `filled={hasMeal}` (en vez
+   de `filled={isToday}`) y el plato se envuelve en `<span style={{ color: "var(--primary)" }}>`,
+   forzando `currentColor = --primary` en todos los días con comida. El fondo
+   `--primary-soft` y el número en negrita siguen marcando solo el día de hoy.
+
+3. **Header — logo más grande.** El círculo contenedor pasa de `28×28` a `38×38` px;
+   `<PlatoMark size={16}>` → `size={23}`. El logomark resulta notablemente más visible.
+
+4. **Dashboard de miembro — badge "N por votar".** En el saludo (`Hola, {nombre}`) se
+   agrega a la derecha un chip pill `"N por votar"` (fondo `--warn-bg`, borde `--warn-line`,
+   texto `--warn-text`) visible solo cuando `pendientes.length > 0`. Al tocarlo navega
+   directo al primer plan pendiente (`/voto/:idPlan`).
 
 ### 1.2.E7.13 Cambios en v1.8.7 (E7.13 — Dimensión `cocina` en recetas)
 
@@ -1947,6 +1969,10 @@ en su scope necesario.
 - **`PROMPT_E8.0_setup.md`** ✅ **CERRADO (v1.8.8)**: setup de Etapa 8. `docs/WORKFLOW.md`
   (fuentes de verdad, ciclo, convenciones, definición de terminado, anti-drift) + backlog
   §11 Lote 8 (edición en la app y catálogo). Solo-docs, sin cambios de código.
+- **`PROMPT_E8.1_pulido_diseño.md`** ✅ **CERRADO (v1.8.9)**: micro-ajustes visuales del
+  ciclo de diseño. Home "N comidas" (sin "planeadas"); WeekStrip plato relleno primary en
+  todos los días con comida; header logo 28→38 px / PlatoMark 16→23; badge pill "N por
+  votar" en saludo del dashboard de miembro. Ver §1.2.E8.1.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -2192,10 +2218,8 @@ Mapa backlog → prompts de implementación de Etapa 8:
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.8:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
-importador + "a gusto"), E7.12 (alarma del timer) y E7.13 (dimensión `cocina`) implementados
-y cerrados. E8.0 (setup Etapa 8): `docs/WORKFLOW.md` creado y backlog §11 Lote 8 registrado.
-Las próximas modificaciones serán mejoras puntuales según necesidad real, no etapas
-planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por
-caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en E7.11;
-§10.1 cerrada por verificación en E7.13.
+**Estado en v1.8.9:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1 cierra
+el primer lote de micro-ajustes visuales del ciclo de diseño post-E7.13. Lo postergado
+(push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso cuando aparezca
+demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en E7.11; §10.1 cerrada por
+verificación en E7.13.

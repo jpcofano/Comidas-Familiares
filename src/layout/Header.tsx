@@ -33,12 +33,12 @@ export function Header() {
       <div className="header-inner">
         <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
           <span aria-hidden style={{
-            width: 28, height: 28, borderRadius: "50%",
+            width: 38, height: 38, borderRadius: "50%",
             background: "var(--primary-soft)", color: "var(--primary)",
             display: "inline-flex", alignItems: "center", justifyContent: "center",
             flexShrink: 0,
           }}>
-            <PlatoMark size={16} variant="simple" strokeWidth={1.6} />
+            <PlatoMark size={23} variant="simple" strokeWidth={1.6} />
           </span>
           <h1 className="header-title">Comida Familiar</h1>
         </div>
