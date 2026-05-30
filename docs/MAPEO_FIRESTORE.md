@@ -1937,7 +1937,7 @@ en su scope necesario.
   hasta detenerse (botón "Detener alarma"), más fuerte, con auto-corte de seguridad a 60 s
   y cleanup en cambio de paso / desmontaje. Notification del navegador como respaldo, no se
   repite. Ver §1.2.E7.12.
-- **`PROMPT_E7.13_cocina_dimension.md`** 🛠 **EN IMPLEMENTACIÓN (v1.8.7)**: nueva dimensión
+- **`PROMPT_E7.13_cocina_dimension.md`** ✅ **CERRADO (v1.8.7)**: nueva dimensión
   `cocina` (enum opcional) en recetas. Tipo en `models.ts` + `diccionarios.cocinas` (15
   valores) + prompt del importador + validación del parser (4 puntos sincronizados, lección
   E5.2) + display en DetalleReceta + filtro en Biblioteca (que de paso cierra §10.1). Recetas
@@ -2156,8 +2156,8 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
 **Estado en v1.8.7:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
-importador + "a gusto") implementado; E7.12 (alarma del timer) y E7.13 (dimensión `cocina`)
-en implementación. Las próximas modificaciones serán mejoras puntuales según necesidad real,
+importador + "a gusto"), E7.12 (alarma del timer) y E7.13 (dimensión `cocina`) implementados
+y cerrados. Las próximas modificaciones serán mejoras puntuales según necesidad real,
 no etapas planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva
 caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en
 E7.11; §10.1 cerrada por verificación en E7.13.
