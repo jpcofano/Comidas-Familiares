@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.8.7 (E7.13 — Dimensión `cocina` en recetas: enum opcional + diccionario + importador + filtro)
-> **Fecha**: 2026-05-28
+> **Versión**: 1.8.8 (E8.0 — setup Etapa 8: WORKFLOW.md + backlog §11 Lote 8)
+> **Fecha**: 2026-05-30
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -23,6 +23,7 @@
 8. [Claude Design: cuándo y qué pedirle](#8-claude-design-cuándo-y-qué-pedirle)
 9. [Apéndice: futuro](#9-apéndice-futuro)
 10. [Deuda técnica pendiente](#10-deuda-técnica-pendiente--post-etapa-3)
+11. [Backlog](#11-backlog)
 
 ---
 
@@ -1943,6 +1944,9 @@ en su scope necesario.
   E5.2) + display en DetalleReceta + filtro en Biblioteca (que de paso cierra §10.1). Recetas
   existentes se completan desde Firebase Console (no hay editor de recetas; sin backfill
   automático). Ver §1.2.E7.13.
+- **`PROMPT_E8.0_setup.md`** ✅ **CERRADO (v1.8.8)**: setup de Etapa 8. `docs/WORKFLOW.md`
+  (fuentes de verdad, ciclo, convenciones, definición de terminado, anti-drift) + backlog
+  §11 Lote 8 (edición en la app y catálogo). Solo-docs, sin cambios de código.
 
 **Postergados sin urgencia (v1.8.0):**
 
@@ -2151,13 +2155,47 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 
 ---
 
+## 11. Backlog
+
+Ítems diseñados pero no implementados aún. Organizados por ciclo de diseño (Lote). Cuando un ítem se implementa, se marca ✅ y se referencia el prompt que lo cerró.
+
+### Lote 8 — Edición en la app y catálogo (del ciclo de diseño post-E7.13)
+
+Cierra el gap de §1.2.E7.13 pto 6 ("no hay edición de recetas en la app; `cocina` se completa
+desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
+
+- **8.1 Editor de ingredientes completo** (editar cualquiera / alta / baja en `/biblioteca/
+  catalogo`, no solo ambiguos). → **se implementa en el prompt E8.3.**
+- **8.2 Editor de receta en la app** — al menos la clasificación (`cocina` y bloque
+  Clasificación) para migrar las 78 recetas viejas sin la consola de Firebase. Backlog.
+- **8.3 Ingrediente → recetas que lo usan.** Hacer navegable "usado en N recetas": del
+  ingrediente, listar/abrir las recetas que lo referencian. Versión liviana y directa de 7.2
+  (NO el matcher inverso completo). Backlog.
+- **8.4 Sustituciones / equivalencias** de ingredientes (manteca ↔ aceite), sobre `sinonimos`
+  / `alternativas` + matcher E3.4.9. Backlog.
+- **8.5 Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir fusión
+  en vez de crear ambiguo). Backlog.
+
+Mapa backlog → prompts de implementación de Etapa 8:
+- E8.1 pulido · E8.2 dark mode · E8.3 = ítem 8.1 · E8.4 chips/ toggle de secciones.
+- Ítems 8.2–8.5: sin prompt aún (backlog).
+
+**Postergado sin urgencia:**
+
+- **Dashboard de historial avanzado (D.3 / §9.1)** — ver §7 "Postergados sin urgencia".
+- **Push notifications (E6.2)** — ver §7.6.
+- **Otros features del Apéndice §9** — sin compromiso de fecha.
+
+---
+
 ## Cierre
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.8.7:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
+**Estado en v1.8.8:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E7.11 (fix
 importador + "a gusto"), E7.12 (alarma del timer) y E7.13 (dimensión `cocina`) implementados
-y cerrados. Las próximas modificaciones serán mejoras puntuales según necesidad real,
-no etapas planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva
-caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en
-E7.11; §10.1 cerrada por verificación en E7.13.
+y cerrados. E8.0 (setup Etapa 8): `docs/WORKFLOW.md` creado y backlog §11 Lote 8 registrado.
+Las próximas modificaciones serán mejoras puntuales según necesidad real, no etapas
+planificadas. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por
+caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en E7.11;
+§10.1 cerrada por verificación en E7.13.
