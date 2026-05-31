@@ -2198,10 +2198,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
-- **`PROMPT_E9.1_blindar_prompt_generador.md`** ✅ **CERRADO (v2.0.1)**: prompt LLM con
+- **`PROMPT_E9.0.1_blindar_prompt_generador.md`** ✅ **CERRADO (v2.0.1)**: prompt LLM con
   vocabulario canónico (265 ingredientes por categoría). 3 columnas nuevas en `#INGREDIENTES`
   para clasificar ingredientes nuevos. `esVegetariano` en `#RECETA`. Parser retrocompatible.
-  `categoriaLLM` pre-llena el dropdown en el importador. Ver §1.2.E9.1.
+  `categoriaLLM` pre-llena el dropdown en el importador. Ver §1.2.E9..0.1.
 - **`PROMPT_E9.0_proteinas_jerarquicas_y_diccionario.md`** ✅ **CERRADO (v2.0.0)**:
   proteínas jerárquicas (13 planas → 11 hojas en 5 grupos, `GRUPOS_PROTEINA`); faceta Dieta
   (`esVegetariano`, `esKeto`); diccionario canónico 265 ingredientes + 5 correcciones de
@@ -2231,7 +2231,7 @@ en su scope necesario.
   persistencia. `getSeccionRecetaMeta` + `SECCIONES_RECETA_META` en `catalogo.ts`. Vista por
   góndola usa catálogo cacheado. Chips de letra en componentes de menú (`DetalleMenu.tsx`).
   Sin cambio de modelo de datos. Ver §1.2.E8.4.
-- **`PROMPT_E8.3_catalogo_editable.md`** ✅ **CERRADO (v1.9.1)**: catálogo de ingredientes
+- **`PROMPT_E8.3_catalogo_editable.md`** ✅ **CERRADO (v1.9.0.1)**: catálogo de ingredientes
   editable. `CatalogoIngredientes.tsx` reescrito: ver todo + buscador + filtro góndola +
   lista agrupada + bottom-sheet editor para editar/crear/eliminar (baja segura con aviso de
   vecesUsado). `eliminarIngrediente` en `ingredientes.ts`. `actualizarIngrediente` ampliado
@@ -2311,47 +2311,47 @@ en su scope necesario.
 
 Cosas planteadas pero **fuera de scope** para Etapas 0-6:
 
-### 9.1 D.3 — Dashboard de historial avanzado (Etapa 7)
+### 19.1 D.3 — Dashboard de historial avanzado (Etapa 7)
 Filtros, gráficos, comparaciones miembro vs. familia. Ver §8.2.
 
 **Estado en v1.8.0:** postergado sin urgencia. La pantalla de historial actual (E3.7)
 cubre el uso real de la familia. Se reactiva si aparece necesidad concreta.
 
-### 9.2 Multi-semana
+### 19.2 Multi-semana
 Hoy: una sola semana activa (la actual). Futuro: planificación de la próxima semana, hover sobre las próximas 4 semanas en home.
 
-### 9.3 Notificaciones push contextuales
+### 19.3 Notificaciones push contextuales
 Cloud Functions + FCM. Triggers: "JP te asignó la Especial", "La lista de compras se actualizó", "Pendiente de votar la cena del sábado".
 Requiere Blaze.
 
-### 9.4 Importador con foto / OCR
+### 19.4 Importador con foto / OCR
 Subir foto del libro de cocina → Vision API → TXT estructurado → mismo flujo del importador actual. Requiere Cloud Functions + Vision API (ambas Blaze).
 
-### 9.5 Sugerencias inteligentes
+### 19.5 Sugerencias inteligentes
 "Esta semana no comieron pollo, te recomendamos..." / "Hace 6 semanas que no hacen pescado". Requiere queries más complejas y posiblemente un endpoint con lógica server-side.
 
-### 9.6 Diccionario de sinónimos de ingredientes extendido ✓ (resuelto en v1.5.9 — E3.4.9)
+### 19.6 Diccionario de sinónimos de ingredientes extendido ✓ (resuelto en v1.5.9 — E3.4.9)
 El matcher aprende sinónimos automáticamente cuando JP elige una sugerencia en el importador. El término tipeado se agrega a `sinonimos[]` del ingrediente elegido; la próxima importación lo resuelve como `exacto` sin intervención. Panel de admin para sinónimos manuales sigue siendo futuro opcional; el loop humano de §9.6 está implementado.
 
-### 9.7 Costos reales tracking
+### 19.7 Costos reales tracking
 Hoy: `costoReal` es texto libre del cocinero. Futuro: form con precio por ingrediente, total calculado, evolución temporal del costo de la familia.
 
-### 9.8 Modo "noche de a dos"
+### 19.8 Modo "noche de a dos"
 Filtrar todo lo no-apto, ajustar porciones, ocultar lo de los chicos. Switch global.
 
-### 9.9 Lista de compras compartida en tiempo real ✅ Movida a §6.8 en v1.3
+### 19.9 Lista de compras compartida en tiempo real ✅ Movida a §6.8 en v1.3
 ~~Hoy: cada miembro ve la lista pero las marcas "Ya tengo" se sincronizan al refrescar. Futuro: listener real-time (`onSnapshot`), ver el toggle de María mientras estoy en el super.~~
 
 **Implementado en v1.3** vía `onSnapshot` en `src/data/compras.ts` (`subscribeToItemsLista`) + hook `useCollectionRealtime` (E2.2). Ver §6.8.
 
-### 9.10 Backup / export
+### 19.10 Backup / export
 Botón "Exportar todo a JSON" para snapshot offline. Útil si en el futuro queremos migrar de Firebase.
 
-### 9.11 Invitados con scope limitado
+### 19.11 Invitados con scope limitado
 Hoy: cualquier miembro en `/config/familia.miembros` tiene acceso completo (read/write a todas las recetas, planes, etc).
 Futuro: agregar un campo `scope` a la metadata del miembro (ej: `scope: "guest"`) y ajustar las Security Rules para que un guest pueda leer recetas pero no votar ni elegir planes. Útil si quisieras invitar a un suegro a ver el menú del finde sin que pueda romper el sistema.
 
-### 9.12 Cierre del Apps Script ✅ HECHO (v1.8.0)
+### 19.12 Cierre del Apps Script ✅ HECHO (v1.8.0)
 
 JP retiró el acceso de escritura al spreadsheet original. El Apps Script viejo queda
 deprecado. El spreadsheet permanece como respaldo histórico read-only. La app Firebase
@@ -2471,7 +2471,7 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 **Postergado sin urgencia:**
 
-- **Dashboard de historial avanzado (D.3 / §9.1)** — ver §7 "Postergados sin urgencia".
+- **Dashboard de historial avanzado (D.3 / §119.1)** — ver §7 "Postergados sin urgencia".
 - **Push notifications (E6.2)** — ver §7.6.
 - **Otros features del Apéndice §9** — sin compromiso de fecha.
 
