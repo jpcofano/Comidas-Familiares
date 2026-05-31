@@ -3,12 +3,68 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getReceta } from "../data/recetas";
+import { getCatalogo } from "../data/ingredientes";
 import { getPlan, marcarCocinada, marcarComponenteCocinado } from "../data/planes";
 import { useCocinarState } from "../hooks/useCocinarState";
 import { PasoCard } from "../components/PasoCard";
 import { TimerBar } from "../components/TimerBar";
-import type { Receta, Plan } from "../types/models";
+import { sustitutosDeItem } from "../lib/sustitutos";
+import type { Receta, Plan, Ingrediente, IngredienteEnReceta } from "../types/models";
 import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+
+// ─── Sustitutos a mano ────────────────────────────────────────────────────────
+
+function SustitutosRecap({
+  ingredientes,
+  catalogo,
+}: {
+  ingredientes: IngredienteEnReceta[];
+  catalogo: Map<string, Ingrediente>;
+}) {
+  const [abierto, setAbierto] = useState(false);
+
+  const items = useMemo(
+    () => ingredientes
+      .map(ing => ({ ing, sustitutos: sustitutosDeItem(ing, catalogo) }))
+      .filter(({ sustitutos }) => sustitutos.length > 0),
+    [ingredientes, catalogo],
+  );
+
+  if (items.length === 0) return null;
+
+  return (
+    <div style={{
+      marginBottom: "var(--space-3)",
+      borderRadius: "var(--radius-md)",
+      border: "1px solid var(--border)",
+      overflow: "hidden",
+    }}>
+      <button
+        onClick={() => setAbierto(v => !v)}
+        style={{
+          width: "100%", padding: "var(--space-3)",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          background: "var(--surface-strong)", border: "none",
+          cursor: "pointer", fontFamily: "inherit",
+          fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)",
+        }}
+      >
+        <span>Sustitutos a mano ({items.length})</span>
+        <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)" }}>{abierto ? "▲" : "▼"}</span>
+      </button>
+      {abierto && (
+        <div style={{ padding: "var(--space-3)", borderTop: "1px solid var(--border-subtle)" }}>
+          {items.map(({ ing, sustitutos }) => (
+            <p key={ing.idIngrediente} style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-sm)" }}>
+              <span style={{ color: "var(--text-strong)" }}>{ing.textoOriginal}</span>
+              <span style={{ color: "var(--muted)" }}> — o {sustitutos.map(s => s.nombre).join(" o ")}</span>
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // ─── Modo libre: /recetas/:id/cocinar ────────────────────────────────────────
 // ─── Modo plan:  /planes/:idPlan/cocinar/:idReceta ────────────────────────────
@@ -31,6 +87,7 @@ export function CocinarRoute() {
 
   const [receta, setReceta] = useState<Receta | null>(null);
   const [plan, setPlan] = useState<Plan | null>(null);
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente> | null>(null);
   const [loading, setLoading] = useState(true);
   const [finalizando, setFinalizando] = useState(false);
   const [confirmarFinalizar, setConfirmarFinalizar] = useState(false);
@@ -43,9 +100,11 @@ export function CocinarRoute() {
     Promise.all([
       getReceta(idReceta),
       idPlan ? getPlan(idPlan) : Promise.resolve(null),
-    ]).then(([r, p]) => {
+      getCatalogo(),
+    ]).then(([r, p, cat]) => {
       setReceta(r);
       setPlan(p);
+      setCatalogo(cat);
       setLoading(false);
     });
   }, [idReceta, idPlan]);
@@ -218,6 +277,11 @@ export function CocinarRoute() {
               ⚠ {receta.riesgos}
             </p>
           </div>
+        )}
+
+        {/* Sustitutos a mano — solo paso 1 */}
+        {catalogo && pasoActualObj?.nroPaso === pasosOrdenados[0]?.nroPaso && (
+          <SustitutosRecap ingredientes={receta.ingredientes} catalogo={catalogo} />
         )}
 
         {/* PasoCard — key asegura remount al cambiar paso (limpia StepTimer) */}
@@ -402,6 +466,9 @@ export function CocinarRoute() {
           </p>
         </div>
       )}
+
+      {/* Sustitutos a mano */}
+      {catalogo && <SustitutosRecap ingredientes={receta.ingredientes} catalogo={catalogo} />}
 
       {/* Todos los pasos — con ACÁ VAS pill y borde bordó en el actual */}
       {pasosOrdenados.map((paso) => {

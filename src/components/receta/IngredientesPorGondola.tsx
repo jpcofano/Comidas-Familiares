@@ -8,9 +8,17 @@ import { getCatalogo } from "../../data/ingredientes";
 import { getSeccionRecetaMeta, groupByGondola } from "../../lib/catalogo";
 import { GondolaChip } from "../GondolaChip";
 import { pluralizarUnidad } from "../../lib/unidades";
+import { sustitutosDeItem } from "../../lib/sustitutos";
+import type { Sustituto } from "../../lib/sustitutos";
 import type { IngredienteEnReceta, Ingrediente } from "../../types/models";
 
 const VISTA_KEY = "cf-ingredientes-vista";
+const SUSTITUTOS_KEY = "cf-mostrar-sustitutos";
+
+function getInitialMostrarSustitutos(): boolean {
+  try { return localStorage.getItem(SUSTITUTOS_KEY) !== "false"; } catch {}
+  return true;
+}
 
 function getInitialVista(): "rol" | "gondola" {
   try {
@@ -42,7 +50,14 @@ function SeccionChip({ seccion, size = 20 }: { seccion: string; size?: number })
 
 // ─── Fila de ingrediente ──────────────────────────────────────────────────────
 
-function IngredienteLi({ ing, idx }: { ing: IngredienteEnReceta; idx: number }) {
+function IngredienteLi({
+  ing, idx, sustitutos, mostrarSustitutos,
+}: {
+  ing: IngredienteEnReceta;
+  idx: number;
+  sustitutos: Sustituto[];
+  mostrarSustitutos: boolean;
+}) {
   const cantidadStr = ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "");
   const unidadStr = ing.unidad
     ? pluralizarUnidad(ing.unidad, ing.cantidadMax ?? ing.cantidadMin ?? 1)
@@ -60,6 +75,11 @@ function IngredienteLi({ ing, idx }: { ing: IngredienteEnReceta; idx: number }) 
         {ing.opcional && (
           <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", marginLeft: 4 }}>
             (opcional)
+          </span>
+        )}
+        {mostrarSustitutos && sustitutos.length > 0 && (
+          <span style={{ display: "block", fontSize: "var(--fs-xs)", color: "var(--primary)", marginTop: 2 }}>
+            ⇄ o {sustitutos.map(s => s.nombre).join(" o ")}
           </span>
         )}
       </span>
@@ -99,6 +119,7 @@ interface IngredientesPorGondolaProps {
 export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaProps) {
   const [vista, setVista] = useState<"rol" | "gondola">(getInitialVista);
   const [catalogo, setCatalogo] = useState<Map<string, Ingrediente> | null>(null);
+  const [mostrarSustitutos, setMostrarSustitutos] = useState(getInitialMostrarSustitutos);
 
   useEffect(() => {
     getCatalogo().then(setCatalogo).catch(() => {});
@@ -107,6 +128,16 @@ export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaP
   function switchVista(v: "rol" | "gondola") {
     setVista(v);
     try { localStorage.setItem(VISTA_KEY, v); } catch {}
+  }
+
+  function toggleSustitutos() {
+    const next = !mostrarSustitutos;
+    setMostrarSustitutos(next);
+    try { localStorage.setItem(SUSTITUTOS_KEY, next ? "true" : "false"); } catch {}
+  }
+
+  function getSustitutos(ing: IngredienteEnReceta): Sustituto[] {
+    return catalogo ? sustitutosDeItem(ing, catalogo) : [];
   }
 
   // ── Vista por rol culinario ─────────────────────────────────────────────────
@@ -127,7 +158,13 @@ export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaP
           count={items.length}
         />
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {items.map((ing, idx) => <IngredienteLi key={idx} ing={ing} idx={idx} />)}
+          {items.map((ing, idx) => (
+            <IngredienteLi
+              key={idx} ing={ing} idx={idx}
+              sustitutos={getSustitutos(ing)}
+              mostrarSustitutos={mostrarSustitutos}
+            />
+          ))}
         </ul>
       </div>
     ));
@@ -153,7 +190,13 @@ export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaP
           count={items.length}
         />
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {items.map(({ ing }, idx) => <IngredienteLi key={idx} ing={ing} idx={idx} />)}
+          {items.map(({ ing }, idx) => (
+            <IngredienteLi
+              key={idx} ing={ing} idx={idx}
+              sustitutos={getSustitutos(ing)}
+              mostrarSustitutos={mostrarSustitutos}
+            />
+          ))}
         </ul>
       </div>
     ));
@@ -161,24 +204,40 @@ export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaP
 
   return (
     <div>
-      {/* Toggle */}
-      <div style={{ display: "flex", gap: "var(--space-1)", marginBottom: "var(--space-3)" }}>
-        {(["rol", "gondola"] as const).map((v) => (
+      {/* Toggles */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
+        <div style={{ display: "flex", gap: "var(--space-1)" }}>
+          {(["rol", "gondola"] as const).map((v) => (
+            <button
+              key={v}
+              onClick={() => switchVista(v)}
+              style={{
+                padding: "3px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                border: `1px solid ${vista === v ? "var(--primary)" : "var(--border)"}`,
+                cursor: "pointer", fontFamily: "inherit",
+                background: vista === v ? "var(--primary-soft)" : "transparent",
+                color: vista === v ? "var(--primary)" : "var(--muted)",
+                fontWeight: vista === v ? "var(--fw-semibold)" : "var(--fw-regular)",
+              }}
+            >
+              {v === "rol" ? "Por rol" : "Por góndola"}
+            </button>
+          ))}
+        </div>
+        {catalogo && (
           <button
-            key={v}
-            onClick={() => switchVista(v)}
+            onClick={toggleSustitutos}
             style={{
               padding: "3px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
-              border: `1px solid ${vista === v ? "var(--primary)" : "var(--border)"}`,
+              border: `1px solid ${mostrarSustitutos ? "var(--primary)" : "var(--border)"}`,
               cursor: "pointer", fontFamily: "inherit",
-              background: vista === v ? "var(--primary-soft)" : "transparent",
-              color: vista === v ? "var(--primary)" : "var(--muted)",
-              fontWeight: vista === v ? "var(--fw-semibold)" : "var(--fw-regular)",
+              background: mostrarSustitutos ? "var(--primary-soft)" : "transparent",
+              color: mostrarSustitutos ? "var(--primary)" : "var(--muted)",
             }}
           >
-            {v === "rol" ? "Por rol" : "Por góndola"}
+            Sustitutos
           </button>
-        ))}
+        )}
       </div>
 
       {vista === "rol" ? renderPorRol() : renderPorGondola()}

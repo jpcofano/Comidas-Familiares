@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.0.2 (E9.2 — fix regresión Historial: recablear SummaryMetrics/FilterChips/MonthGroup)
+> **Versión**: 2.0.3 (E9.4 — sustitución al cocinar: "o {sustituto}" en detalle + recap en paso a paso)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,20 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.4 Cambios en v2.0.3 (E9.4 — Sustitución al cocinar)
+
+Muestra sustitutos de ingredientes en el **detalle de receta** y los agrupa en un **recap colapsable en el paso a paso**. Usa las dos fuentes que ya existían: `alternativas` (propias de la receta, del importador) y `equivalencias` del catálogo (E8.7). Sin cambios de modelo.
+
+**Decisiones:**
+
+1. **Helper puro `src/lib/sustitutos.ts`:** `sustitutosDeItem(item, catalogoById)` → `Sustituto[]` (`{ idIngrediente, nombre, fuente: "receta"|"catalogo" }`). Match por `idIngrediente` (no por nombre). Fuente receta primero, luego catálogo. Dedup por id (el primero en aparecer gana, fuente receta tiene prioridad).
+
+2. **Detalle de receta (`IngredientesPorGondola`):** línea secundaria `⇄ o {X} o {Y}` en `--primary` debajo del nombre del ingrediente. Toggle "Sustitutos" (ON por defecto, persistido en `localStorage["cf-mostrar-sustitutos"]`). Solo aparece cuando el catálogo ya cargó.
+
+3. **Paso a paso (`Cocinar`):** tira colapsable "Sustitutos a mano (N)" sobre el riesgo/pasos; lista `{ingrediente} — o {X}` de todos los ítems con al menos un sustituto. Collapsable (default cerrado). En modo guiada aparece solo en el paso 1; en modo scroll, siempre arriba. Catálogo cargado junto con la receta en el mismo `Promise.all` (ya cacheado).
+
+4. **No se toca la cantidad/unidad de sustitutos** — solo el nombre. Sustituir cantidades queda para E9.5+.
 
 ### 1.2.E9.2 Cambios en v2.0.2 (E9.2 — Fix regresión Historial)
 
@@ -2213,6 +2227,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.4_sustitucion_al_cocinar.md`** ✅ **CERRADO (v2.0.3)**: sustitutos al cocinar.
+  Helper `sustitutosDeItem` (match por ID, fuentes receta + catálogo, dedup). Línea "o X"
+  en `IngredientesPorGondola` + toggle persistido. Recap colapsable en `Cocinar`. 6 tests verdes.
+  Ver §1.2.E9.4.
 - **`PROMPT_E9.2_fix_historial.md`** ✅ **CERRADO (v2.0.2)**: fix regresión — `Historial.tsx`
   simplificado por commit `11ff3df` recableado con SummaryMetrics + FilterChips + MonthGroup +
   HistorialCard + EmptyState. Filtros: `top` por resultado, `ok`/`mal` por `repetir`. Skeleton
@@ -2474,6 +2492,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.4 — Sustitución al cocinar** ✅ **HECHO (v2.0.3)** — helper puro `sustitutosDeItem` (alternativas receta + equivalencias catálogo, dedup por id); línea "o X" en detalle con toggle persistido; recap colapsable en paso a paso. 6 tests. Ver §1.2.E9.4.
 
 ### Lote 8 — Edición en la app y catálogo (del ciclo de diseño post-E7.13)
 
@@ -2507,6 +2526,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.0.2:** E9.0–E9.2 implementados. Fix de regresión Historial cerrado (E9.2). **Pendiente (producción):**
+**Estado en v2.0.3:** E9.0–E9.2 y E9.4 implementados (E9.3 pendiente). **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.
