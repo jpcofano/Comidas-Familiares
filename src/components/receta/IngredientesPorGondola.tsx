@@ -1,88 +1,187 @@
 // src/components/receta/IngredientesPorGondola.tsx
-// Agrupa los ingredientes de la receta por sección de góndola.
-// OJO: acá el campo es `seccion` (de Receta), NO `seccionGondola` (de ItemCompra).
+// Vista de ingredientes de receta con toggle "Por rol" / "Por góndola".
+// - Por rol (default): agrupa por ing.seccion (sección culinaria del importador).
+// - Por góndola: agrupa por seccionGondola del catálogo (lookup async, cacheado).
 
-import { groupByGondola } from "../../lib/catalogo";
+import { useState, useEffect } from "react";
+import { getCatalogo } from "../../data/ingredientes";
+import { getSeccionRecetaMeta, groupByGondola } from "../../lib/catalogo";
 import { GondolaChip } from "../GondolaChip";
 import { pluralizarUnidad } from "../../lib/unidades";
-import type { IngredienteEnReceta } from "../../types/models";
+import type { IngredienteEnReceta, Ingrediente } from "../../types/models";
+
+const VISTA_KEY = "cf-ingredientes-vista";
+
+function getInitialVista(): "rol" | "gondola" {
+  try {
+    if (localStorage.getItem(VISTA_KEY) === "gondola") return "gondola";
+  } catch {}
+  return "rol";
+}
+
+// ─── Chip de sección culinaria ────────────────────────────────────────────────
+
+function SeccionChip({ seccion, size = 20 }: { seccion: string; size?: number }) {
+  const meta = getSeccionRecetaMeta(seccion);
+  return (
+    <span
+      aria-label={seccion}
+      style={{
+        width: size, height: size,
+        borderRadius: size <= 18 ? 5 : 7,
+        background: meta.color, color: "#fff",
+        fontSize: size * 0.55, fontWeight: 700, lineHeight: 1,
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
+      {meta.letra}
+    </span>
+  );
+}
+
+// ─── Fila de ingrediente ──────────────────────────────────────────────────────
+
+function IngredienteLi({ ing, idx }: { ing: IngredienteEnReceta; idx: number }) {
+  const cantidadStr = ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "");
+  const unidadStr = ing.unidad
+    ? pluralizarUnidad(ing.unidad, ing.cantidadMax ?? ing.cantidadMin ?? 1)
+    : "";
+  return (
+    <li style={{
+      display: "flex", justifyContent: "space-between",
+      padding: "8px 0",
+      borderTop: idx === 0 ? "none" : "1px solid var(--border-subtle)",
+      fontSize: "var(--fs-sm)",
+      color: ing.opcional ? "var(--muted)" : "var(--text)",
+    }}>
+      <span>
+        {ing.textoOriginal}
+        {ing.opcional && (
+          <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", marginLeft: 4 }}>
+            (opcional)
+          </span>
+        )}
+      </span>
+      <span style={{
+        color: "var(--muted-strong)", flexShrink: 0,
+        marginLeft: "var(--space-3)", fontVariantNumeric: "tabular-nums",
+      }}>
+        {cantidadStr} {unidadStr}
+      </span>
+    </li>
+  );
+}
+
+// ─── Subheader de grupo ───────────────────────────────────────────────────────
+
+function GrupoHeader({ chip, label, count }: { chip: React.ReactNode; label: string; count: number }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: "var(--space-2)" }}>
+      {chip}
+      <span style={{
+        fontSize: 11, fontWeight: 700, letterSpacing: "0.06em",
+        textTransform: "uppercase", color: "var(--muted)",
+      }}>
+        {label}
+      </span>
+      <span style={{ fontSize: 11, color: "var(--muted)", opacity: 0.6 }}>{count}</span>
+    </div>
+  );
+}
+
+// ─── Componente principal ─────────────────────────────────────────────────────
 
 interface IngredientesPorGondolaProps {
   ingredientes: IngredienteEnReceta[];
 }
 
 export function IngredientesPorGondola({ ingredientes }: IngredientesPorGondolaProps) {
-  const grupos = groupByGondola(ingredientes, (ing) => ing.seccion ?? "");
+  const [vista, setVista] = useState<"rol" | "gondola">(getInitialVista);
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente> | null>(null);
+
+  useEffect(() => {
+    getCatalogo().then(setCatalogo).catch(() => {});
+  }, []);
+
+  function switchVista(v: "rol" | "gondola") {
+    setVista(v);
+    try { localStorage.setItem(VISTA_KEY, v); } catch {}
+  }
+
+  // ── Vista por rol culinario ─────────────────────────────────────────────────
+  // Agrupa por ing.seccion en orden de primera aparición.
+
+  function renderPorRol() {
+    const map = new Map<string, IngredienteEnReceta[]>();
+    for (const ing of ingredientes) {
+      const sec = ing.seccion?.trim() || "Principal";
+      if (!map.has(sec)) map.set(sec, []);
+      map.get(sec)!.push(ing);
+    }
+    return [...map.entries()].map(([seccion, items], gi) => (
+      <div key={seccion} style={{ marginTop: gi === 0 ? 0 : "var(--space-4)" }}>
+        <GrupoHeader
+          chip={<SeccionChip seccion={seccion} size={20} />}
+          label={seccion}
+          count={items.length}
+        />
+        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {items.map((ing, idx) => <IngredienteLi key={idx} ing={ing} idx={idx} />)}
+        </ul>
+      </div>
+    ));
+  }
+
+  // ── Vista por góndola ───────────────────────────────────────────────────────
+  // Lookup de seccionGondola desde el catálogo. Fallback a "Por rol" si aún no cargó.
+
+  function renderPorGondola() {
+    if (!catalogo) return renderPorRol();
+
+    const withGondola = ingredientes.map((ing) => ({
+      ing,
+      seccionGondola: catalogo.get(ing.idIngrediente)?.seccionGondola ?? "Otros",
+    }));
+    const grupos = groupByGondola(withGondola, (item) => item.seccionGondola);
+
+    return grupos.map(({ seccion, items }, gi) => (
+      <div key={seccion} style={{ marginTop: gi === 0 ? 0 : "var(--space-4)" }}>
+        <GrupoHeader
+          chip={<GondolaChip seccion={seccion} size={20} />}
+          label={seccion}
+          count={items.length}
+        />
+        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {items.map(({ ing }, idx) => <IngredienteLi key={idx} ing={ing} idx={idx} />)}
+        </ul>
+      </div>
+    ));
+  }
 
   return (
     <div>
-      {grupos.map((g, gi) => (
-        <div key={g.seccion} style={{ marginTop: gi === 0 ? 0 : "var(--space-4)" }}>
-          {/* Subheader de sección */}
-          {g.seccion && (
-            <div style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              marginBottom: "var(--space-2)",
-            }}>
-              <GondolaChip seccion={g.seccion} size={20} />
-              <span style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                color: "var(--muted)",
-              }}>
-                {g.seccion}
-              </span>
-              <span style={{ fontSize: 11, color: "var(--muted)", opacity: 0.6 }}>
-                {g.items.length}
-              </span>
-            </div>
-          )}
+      {/* Toggle */}
+      <div style={{ display: "flex", gap: "var(--space-1)", marginBottom: "var(--space-3)" }}>
+        {(["rol", "gondola"] as const).map((v) => (
+          <button
+            key={v}
+            onClick={() => switchVista(v)}
+            style={{
+              padding: "3px 10px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+              border: `1px solid ${vista === v ? "var(--primary)" : "var(--border)"}`,
+              cursor: "pointer", fontFamily: "inherit",
+              background: vista === v ? "var(--primary-soft)" : "transparent",
+              color: vista === v ? "var(--primary)" : "var(--muted)",
+              fontWeight: vista === v ? "var(--fw-semibold)" : "var(--fw-regular)",
+            }}
+          >
+            {v === "rol" ? "Por rol" : "Por góndola"}
+          </button>
+        ))}
+      </div>
 
-          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {g.items.map((ing, idx) => {
-              const cantidadStr = ing.cantidadLabel
-                ?? (ing.cantidad != null ? String(ing.cantidad) : "");
-              const unidadStr = ing.unidad
-                ? pluralizarUnidad(ing.unidad, ing.cantidadMax ?? ing.cantidadMin ?? 1)
-                : "";
-              return (
-                <li
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "8px 0",
-                    borderTop: idx === 0 ? "none" : "1px solid var(--border-subtle)",
-                    fontSize: "var(--fs-sm)",
-                    color: ing.opcional ? "var(--muted)" : "var(--text)",
-                  }}
-                >
-                  <span>
-                    {ing.textoOriginal}
-                    {ing.opcional && (
-                      <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", marginLeft: 4 }}>
-                        (opcional)
-                      </span>
-                    )}
-                  </span>
-                  <span style={{
-                    color: "var(--muted-strong)",
-                    flexShrink: 0,
-                    marginLeft: "var(--space-3)",
-                    fontVariantNumeric: "tabular-nums",
-                  }}>
-                    {cantidadStr} {unidadStr}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
+      {vista === "rol" ? renderPorRol() : renderPorGondola()}
     </div>
   );
 }

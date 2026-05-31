@@ -4,6 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getMenu, computeMenuDerived } from "../data/menus";
 import { getRecetasByIds } from "../data/recetas";
+import { getSeccionRecetaMeta } from "../lib/catalogo";
 import { subscribeToPlanesActivos, elegirMenuComoEspecial, sumarMenuComoEnProceso } from "../data/planes";
 import { evaluarEspecialMenu, evaluarEnProcesoMenu } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
@@ -296,15 +297,29 @@ export function DetalleMenuRoute() {
                 background: "var(--surface-strong)",
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "var(--space-2)" }}>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <span style={{
-                      fontSize: "var(--fs-xs)", color: "var(--muted)", marginRight: "var(--space-2)",
-                    }}>
-                      {comp.tipo}
-                    </span>
-                    <span style={{ fontSize: "var(--fs-sm)", color: "var(--text-strong)", fontWeight: "var(--fw-medium)" }}>
-                      {receta?.nombre ?? comp.idReceta}
-                    </span>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)", flex: 1, minWidth: 0 }}>
+                    {/* Chip de letra por tipo de componente */}
+                    {(() => {
+                      const meta = getSeccionRecetaMeta(comp.tipo ?? "");
+                      return (
+                        <span aria-label={comp.tipo} style={{
+                          width: 20, height: 20, borderRadius: 5, flexShrink: 0, marginTop: 1,
+                          background: meta.color, color: "#fff",
+                          fontSize: 11, fontWeight: 700, lineHeight: 1,
+                          display: "inline-flex", alignItems: "center", justifyContent: "center",
+                        }}>
+                          {meta.letra}
+                        </span>
+                      );
+                    })()}
+                    <div style={{ minWidth: 0 }}>
+                      <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", display: "block" }}>
+                        {comp.tipo}
+                      </span>
+                      <span style={{ fontSize: "var(--fs-sm)", color: "var(--text-strong)", fontWeight: "var(--fw-medium)" }}>
+                        {receta?.nombre ?? comp.idReceta}
+                      </span>
+                    </div>
                   </div>
                   {!comp.obligatorio && (
                     <span style={{

@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.1 (E8.3 — catálogo de ingredientes editable: editar/crear/eliminar)
+> **Versión**: 1.9.2 (E8.4 — chips de letra por sección de ingrediente + toggle rol/góndola)
 > **Fecha**: 2026-05-30
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,21 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.4 Cambios en v1.9.2 (E8.4 — Chips de letra por sección de ingrediente + toggle rol/góndola)
+
+**Hallazgo y causa raíz**: `IngredientesPorGondola.tsx` usaba `getSeccionMeta()` (que solo conoce góndolas de supermercado) para pintar `ing.seccion` (que es una **sección culinaria**: `"Principal"`, `"Base de sabor"`, etc.). Cualquier sección culinaria caía al fallback `"Despensa / otros"` con letra `·`. Bug arreglado sin cambiar el modelo de datos.
+
+**Decisiones zanjadas:**
+
+1. **`SECCIONES_RECETA_META` en `catalogo.ts`** — mapa separado de `SECCIONES_META` (góndola) para secciones culinarias: `P` Principal, `B` Base de sabor, `L` Líquido de cocción, `S` Salsa, `C` Condimentos/Cocción, `G` Guarnición, `O` Opcional familia. Función `getSeccionRecetaMeta(seccion)` con **fallback a la inicial** del string para secciones libres no listadas (el campo es texto libre del importador — no se valida contra enum cerrado para no romper imports existentes). Sin cambio de modelo de datos.
+
+2. **Toggle "Por rol / Por góndola"** en `IngredientesPorGondola.tsx`:
+   - **"Por rol" (default):** agrupa por `ing.seccion` en orden de primera aparición, cada grupo con chip `SeccionChip` (usa `getSeccionRecetaMeta`) → letras correctas, no `·`.
+   - **"Por góndola":** carga el catálogo (`getCatalogo()`, cacheado) → mapea `ing.idIngrediente` → `seccionGondola`; agrupa con `groupByGondola` + `GondolaChip`. Ingredientes sin match → "Otros". Mientras el catálogo carga, muestra la vista por rol (no bloquea).
+   - Preferencia persiste en `localStorage["cf-ingredientes-vista"]`.
+
+3. **Chips en componentes de menú** (`DetalleMenu.tsx`): cada componente muestra a la izquierda un chip de letra (20×20, `getSeccionRecetaMeta(comp.tipo)`) para consistencia visual con el detalle de receta. `comp.tipo` sigue mostrándose como texto debajo del chip.
 
 ### 1.2.E8.3 Cambios en v1.9.1 (E8.3 — Catálogo de ingredientes editable)
 
@@ -2019,6 +2034,11 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.4_ingredientes_rol_gondola.md`** ✅ **CERRADO (v1.9.2)**: chips de letra en
+  ingredientes de receta (arregla el bug del punto `·`) + toggle "Por rol / Por góndola" con
+  persistencia. `getSeccionRecetaMeta` + `SECCIONES_RECETA_META` en `catalogo.ts`. Vista por
+  góndola usa catálogo cacheado. Chips de letra en componentes de menú (`DetalleMenu.tsx`).
+  Sin cambio de modelo de datos. Ver §1.2.E8.4.
 - **`PROMPT_E8.3_catalogo_editable.md`** ✅ **CERRADO (v1.9.1)**: catálogo de ingredientes
   editable. `CatalogoIngredientes.tsx` reescrito: ver todo + buscador + filtro góndola +
   lista agrupada + bottom-sheet editor para editar/crear/eliminar (baja segura con aviso de
@@ -2271,8 +2291,7 @@ Mapa backlog → prompts de implementación de Etapa 8:
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.1:** ciclo funcional completo. Todas las Etapas 0–7 cerradas. E8.1–E8.3
-del ciclo de diseño post-E7.13 implementados: pulido visual, dark mode y catálogo editable
-(§11 Lote 8.1 cerrado). Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva
-caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva:** §10.2.3 cerrada en
-E7.11; §10.1 cerrada por verificación en E7.13.
+**Estado en v1.9.2:** ciclo funcional completo. Etapa 8 completa (E8.0–E8.4): setup, pulido
+visual, dark mode, catálogo editable (§11 Lote 8.1 cerrado), chips de sección + toggle
+rol/góndola en ingredientes. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se
+reactiva caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva.**

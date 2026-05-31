@@ -77,6 +77,28 @@ export function getSeccionMeta(seccion: string): SeccionMeta {
   return SECCIONES_META[seccion] ?? SECCIONES_META['Despensa / otros'];
 }
 
+// ─── Secciones culinarias (ing.seccion en IngredienteEnReceta) ─────────────────
+// Distinto a SECCIONES_META (que es de góndola de supermercado).
+// Las secciones culinarias vienen del importador como texto libre; por eso el fallback
+// usa la inicial del string en vez de un enum cerrado.
+
+export const SECCIONES_RECETA_META: Record<string, SeccionMeta> = {
+  'Principal':          { color: 'oklch(0.55 0.10 25)',  letra: 'P' },
+  'Base de sabor':      { color: 'oklch(0.62 0.08 60)',  letra: 'B' },
+  'Líquido de cocción': { color: 'oklch(0.60 0.07 200)', letra: 'L' },
+  'Salsa':              { color: 'oklch(0.55 0.12 35)',   letra: 'S' },
+  'Condimentos':        { color: 'oklch(0.62 0.07 130)', letra: 'C' },
+  'Cocción':            { color: 'oklch(0.60 0.08 50)',   letra: 'C' },
+  'Guarnición':         { color: 'oklch(0.65 0.07 140)', letra: 'G' },
+  'Opcional familia':   { color: 'oklch(0.78 0.04 90)',  letra: 'O' },
+};
+
+export function getSeccionRecetaMeta(seccion: string): SeccionMeta {
+  if (SECCIONES_RECETA_META[seccion]) return SECCIONES_RECETA_META[seccion];
+  const letra = seccion.trim().charAt(0).toUpperCase() || '?';
+  return { color: 'var(--muted)', letra };
+}
+
 /**
  * Agrupa items por sección de góndola en orden canónico de ORDEN_GONDOLA.
  * El campo de sección lo configurás vos vía el getter.
