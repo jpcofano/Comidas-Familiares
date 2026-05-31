@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Pencil, X } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
-import { getReceta } from "../data/recetas";
+import { getReceta, actualizarReceta } from "../data/recetas";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { elegirComoEspecial, sumarComoExtra, sumarComoEnProceso } from "../data/planes";
 import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibilidad";
@@ -13,6 +13,10 @@ import { IngredientesPorGondola } from "../components/receta/IngredientesPorGond
 import { PasosPreview } from "../components/receta/PasosPreview";
 import { AccionesPlan } from "../components/receta/AccionesPlan";
 import { CocinarSticky } from "../components/receta/CocinarSticky";
+import {
+  COCINAS, PROTEINAS, ESCENARIOS, DIFICULTADES, COSTOS,
+  APTO_NOCHE_DE_A_DOS, CLIMAS_PLATO, PENSADA_PARA,
+} from "../types/models";
 import type { Receta, Plan } from "../types/models";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
@@ -80,6 +84,150 @@ function SectionTitle({ children }: { children: string }) {
   );
 }
 
+// ─── Bottom-sheet de clasificación ───────────────────────────────────────────
+
+interface ClasificacionSheetProps {
+  receta: Receta;
+  onClose: () => void;
+  onSaved: (patch: Partial<Receta>) => void;
+}
+
+function ClasificacionSheet({ receta, onClose, onSaved }: ClasificacionSheetProps) {
+  const [cocina,           setCocina]           = useState<string>(receta.cocina ?? "");
+  const [proteinaPrincipal,setProteinaPrincipal] = useState<string>(receta.proteinaPrincipal ?? "");
+  const [escenarioUso,     setEscenarioUso]     = useState<string>(receta.escenarioUso ?? "");
+  const [dificultad,       setDificultad]       = useState<string>(receta.dificultad ?? "");
+  const [costoEstimado,    setCostoEstimado]    = useState<string>(receta.costoEstimado ?? "");
+  const [aptoNoche,        setAptoNoche]        = useState<string>(receta.aptoNocheDeADos ?? "No");
+  const [estilo,           setEstilo]           = useState<string>(receta.estilo ?? "");
+  const [sinLacteos,       setSinLacteos]       = useState<boolean>(receta.sinLacteos ?? false);
+  const [hidratos,         setHidratos]         = useState<boolean>(receta.hidratos ?? false);
+  const [climaDelPlato,    setClimaDelPlato]    = useState<string>(receta.climaDelPlato ?? "");
+  const [pensadaPara,      setPensadaPara]      = useState<string>(receta.pensadaPara ?? "");
+  const [tecnica,          setTecnica]          = useState<string>(receta.tecnicaPrincipal ?? "");
+  const [guardando,        setGuardando]        = useState(false);
+  const [error,            setError]            = useState<string | null>(null);
+
+  const fieldStyle: React.CSSProperties = {
+    width: "100%", padding: "7px 10px", fontSize: "var(--fs-sm)",
+    borderRadius: "var(--radius-sm)", border: "1px solid var(--border)",
+    background: "var(--surface-strong)", color: "var(--text)", fontFamily: "inherit",
+  };
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)",
+  };
+
+  async function handleGuardar() {
+    setGuardando(true);
+    setError(null);
+    // Solo incluir strings no-vacíos; booleanos siempre
+    const patch: Partial<Receta> = { sinLacteos, hidratos, aptoNocheDeADos: aptoNoche as Receta["aptoNocheDeADos"] };
+    if (cocina)            patch.cocina            = cocina as Receta["cocina"];
+    if (proteinaPrincipal) patch.proteinaPrincipal = proteinaPrincipal as Receta["proteinaPrincipal"];
+    if (escenarioUso)      patch.escenarioUso      = escenarioUso as Receta["escenarioUso"];
+    if (dificultad)        patch.dificultad        = dificultad as Receta["dificultad"];
+    if (costoEstimado)     patch.costoEstimado     = costoEstimado as Receta["costoEstimado"];
+    if (estilo.trim())     patch.estilo            = estilo.trim();
+    if (climaDelPlato)     patch.climaDelPlato     = climaDelPlato as Receta["climaDelPlato"];
+    if (pensadaPara)       patch.pensadaPara       = pensadaPara as Receta["pensadaPara"];
+    if (tecnica.trim())    patch.tecnicaPrincipal  = tecnica.trim();
+
+    const r = await actualizarReceta(receta.idReceta, patch);
+    if (r.ok) {
+      onSaved(patch);
+    } else {
+      setGuardando(false);
+      setError(r.error.message);
+    }
+  }
+
+  function SelectField({ label, value, onChange, options, placeholder }: {
+    label: string; value: string; onChange: (v: string) => void;
+    options: readonly string[]; placeholder: string;
+  }) {
+    return (
+      <div style={{ marginBottom: "var(--space-3)" }}>
+        <label style={labelStyle}>{label}</label>
+        <select value={value} onChange={e => onChange(e.target.value)} style={fieldStyle}>
+          <option value="">{placeholder}</option>
+          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        </select>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 100 }} />
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 101,
+        maxHeight: "90dvh", overflowY: "auto",
+        background: "var(--surface)", borderRadius: "16px 16px 0 0",
+        padding: "20px 20px calc(20px + env(safe-area-inset-bottom))",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-4)" }}>
+          <h3 style={{ margin: 0 }}>Editar clasificación</h3>
+          <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", display: "flex", padding: 4 }}>
+            <X size={20} />
+          </button>
+        </div>
+
+        <SelectField label="Cocina de origen" value={cocina} onChange={setCocina}
+          options={COCINAS} placeholder="— Sin clasificar —" />
+        <SelectField label="Proteína principal" value={proteinaPrincipal} onChange={setProteinaPrincipal}
+          options={PROTEINAS} placeholder="— Seleccionar —" />
+        <SelectField label="Escenario de uso" value={escenarioUso} onChange={setEscenarioUso}
+          options={ESCENARIOS} placeholder="— Seleccionar —" />
+        <SelectField label="Dificultad" value={dificultad} onChange={setDificultad}
+          options={DIFICULTADES} placeholder="— Seleccionar —" />
+        <SelectField label="Costo estimado" value={costoEstimado} onChange={setCostoEstimado}
+          options={COSTOS} placeholder="— Seleccionar —" />
+        <SelectField label="Apto noche de a dos" value={aptoNoche} onChange={setAptoNoche}
+          options={APTO_NOCHE_DE_A_DOS} placeholder="— Seleccionar —" />
+        <SelectField label="Clima del plato" value={climaDelPlato} onChange={setClimaDelPlato}
+          options={CLIMAS_PLATO} placeholder="— Seleccionar —" />
+        <SelectField label="Pensada para" value={pensadaPara} onChange={setPensadaPara}
+          options={PENSADA_PARA} placeholder="— Seleccionar —" />
+
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Estilo (texto libre)</label>
+          <input type="text" value={estilo} onChange={e => setEstilo(e.target.value)} style={fieldStyle} />
+        </div>
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Técnica principal (texto libre)</label>
+          <input type="text" value={tecnica} onChange={e => setTecnica(e.target.value)} style={fieldStyle} />
+        </div>
+
+        <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-4)" }}>
+          {([
+            { label: "Sin lácteos", value: sinLacteos, set: setSinLacteos },
+            { label: "Con hidratos", value: hidratos,   set: setHidratos },
+          ] as const).map(({ label, value, set }) => (
+            <button
+              key={label}
+              onClick={() => set(!value)}
+              style={{
+                padding: "5px 12px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                border: "1px solid var(--border)", cursor: "pointer", fontFamily: "inherit",
+                background: value ? "var(--primary)" : "var(--surface-strong)",
+                color: value ? "var(--on-primary)" : "var(--text)",
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {error && <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>{error}</p>}
+
+        <button className="btn btn-primary" onClick={handleGuardar} disabled={guardando} style={{ width: "100%" }}>
+          {guardando ? "Guardando…" : "Guardar clasificación"}
+        </button>
+      </div>
+    </>
+  );
+}
+
 // ─── Pantalla principal ───────────────────────────────────────────────────────
 
 export function DetalleRecetaRoute() {
@@ -99,6 +247,7 @@ export function DetalleRecetaRoute() {
   const [toast, setToast] = useState<ToastMsg | null>(null);
   const [confirm, setConfirm] = useState<{ mensaje: string; accion: () => void } | null>(null);
   const [loadingAccion, setLoadingAccion] = useState<"especial" | "extra" | "enproceso" | null>(null);
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   // Carga la receta
   useEffect(() => {
@@ -215,16 +364,32 @@ export function DetalleRecetaRoute() {
 
       {/* 2. Título + porQueEspecial */}
       <div style={{ marginBottom: "var(--space-4)" }}>
-        <h1 style={{
-          fontSize: 24,
-          fontWeight: 700,
-          color: "var(--text-strong)",
-          lineHeight: 1.2,
-          letterSpacing: "-0.02em",
-          margin: "0 0 var(--space-2)",
-        }}>
-          {receta.nombre}
-        </h1>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)" }}>
+          <h1 style={{
+            flex: 1,
+            fontSize: 24,
+            fontWeight: 700,
+            color: "var(--text-strong)",
+            lineHeight: 1.2,
+            letterSpacing: "-0.02em",
+            margin: "0 0 var(--space-2)",
+          }}>
+            {receta.nombre}
+          </h1>
+          {isJP && (
+            <button
+              onClick={() => setSheetOpen(true)}
+              aria-label="Editar clasificación"
+              style={{
+                flexShrink: 0, marginTop: 4,
+                background: "none", border: "none", cursor: "pointer",
+                color: "var(--muted)", padding: 4, display: "flex",
+              }}
+            >
+              <Pencil size={16} />
+            </button>
+          )}
+        </div>
         {receta.porQueEspecial && (
           <p style={{
             fontSize: "var(--fs-sm)",
@@ -275,7 +440,23 @@ export function DetalleRecetaRoute() {
         {receta.sinLacteos && <RecetaPill label="Sin lácteos" variant="ok" />}
         {!receta.hidratos && <RecetaPill label="Sin hidratos" variant="info" />}
         {receta.aptoNocheDeADos === "Sí" && <RecetaPill label="Noche de a dos ✓" variant="info" />}
-        {receta.cocina && <RecetaPill label={receta.cocina} />}
+        {receta.cocina
+          ? <RecetaPill label={receta.cocina} />
+          : isJP && (
+            <button
+              onClick={() => setSheetOpen(true)}
+              style={{
+                display: "inline-flex", alignItems: "center",
+                padding: "3px 10px", borderRadius: "var(--radius-full)",
+                fontSize: "var(--fs-xs)", fontWeight: 600, cursor: "pointer",
+                background: "var(--warn-bg)", color: "var(--warn-text)",
+                border: "1px dashed var(--warn-line)", fontFamily: "inherit",
+              }}
+            >
+              Sin clasificar · completar
+            </button>
+          )
+        }
       </div>
 
       {/* 6. Ingredientes */}
@@ -313,6 +494,20 @@ export function DetalleRecetaRoute() {
       {/* 9. Sticky bottom Cocinar (solo JP) */}
       {isJP && (
         <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
+      )}
+
+      {/* Sheet de clasificación */}
+      {sheetOpen && receta && (
+        <ClasificacionSheet
+          key={receta.idReceta}
+          receta={receta}
+          onClose={() => setSheetOpen(false)}
+          onSaved={(patch) => {
+            setReceta((prev) => prev ? { ...prev, ...patch } : prev);
+            setSheetOpen(false);
+            showToast("Clasificación guardada.", true);
+          }}
+        />
       )}
 
       {/* Modal de confirmación */}

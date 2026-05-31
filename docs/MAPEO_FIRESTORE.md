@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.3 (E8.5 — ingrediente → recetas que lo usan; renumeración §11 a eje único)
+> **Versión**: 1.9.4 (E8.6 — editor de clasificación de receta en la app)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -144,6 +144,27 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
 
+### 1.2.E8.6 Cambios en v1.9.4 (E8.6 — Editor de clasificación de receta en la app)
+
+Cierra el gap de §1.2.E7.13 pto 6: antes, `cocina` y el bloque de clasificación solo podían editarse desde la consola de Firebase. Ahora JP puede hacerlo desde el detalle de la receta en la app, **desbloqueando la migración de las 78 recetas viejas desde el celular**. Alcance acordado: solo el bloque "Clasificación" (nombre, ingredientes y pasos no se editan — eso sería una edición completa, mini-proyecto).
+
+**Decisiones zanjadas:**
+
+1. **Botón lápiz junto al título** — visible solo para JP. Abre el sheet de clasificación.
+
+2. **Chip "Sin clasificar · completar"** — visible solo para JP cuando `!receta.cocina`. Borde punteado con colores `--warn-*`, tappable. Desaparece al guardar `cocina`. Esto hace evidente, receta por receta, cuáles de las 78 antiguas faltan migrar.
+
+3. **Bottom-sheet "Editar clasificación"** — mismo patrón que el editor de ingredientes (E8.3): `position: fixed`, scrim, `maxHeight: 90dvh`, `key` por `idReceta`. Campos con prefill de los valores actuales:
+   - **Selects con enum**: `cocina` (COCINAS, con opción "Sin clasificar"), `proteinaPrincipal`, `escenarioUso`, `dificultad`, `costoEstimado`, `aptoNocheDeADos`, `climaDelPlato`, `pensadaPara`.
+   - **Texto libre**: `estilo`, `tecnicaPrincipal`.
+   - **Toggles**: `sinLacteos`, `hidratos` (= Con hidratos).
+
+4. **Patch selectivo** — solo los campos con valor no-vacío van en el `updateDoc` (los booleanos siempre van). Evita escribir strings vacíos en Firestore para campos opcionales no completados.
+
+5. **Actualización local inmediata** — `onSaved(patch)` mergea el patch sobre el estado local de la receta; las pills se actualizan al instante sin refetch.
+
+6. **Firestore rules** — `/recetas/{id}` ya tiene `allow read, write: if isFamilyMember()`. JP puede `update`. Sin cambios.
+
 ### 1.2.E8.5 Cambios en v1.9.3 (E8.5 — Ingrediente → recetas que lo usan)
 
 Hace navegable el dato `vecesUsado` del catálogo: al abrir un ingrediente en el sheet, se muestra la lista real de recetas que lo referencian por `idIngrediente`, cada una tappable hacia su detalle.
@@ -257,7 +278,7 @@ Nueva dimensión de clasificación para recetas: **tipo de cocina / origen** (It
 
 5. **Importador.** El parser acepta `cocina:` en el `#RECETA` (opcional). Validación **estricta si viene** (distinto a `climaDelPlato`, que silencia el error): `matchEnum(cocina, COCINAS)` → si falla, `errors.push(...)` → el bloque va a `fallidas` (consistente con multi-receta de E7.11). Ausente → clave omitida (`...(cocina ? { cocina } : {})`), sin default. El prompt modelo del LLM lista el campo como opcional con los valores válidos. ⚠️ El seed (`scripts/seed-config-importador.ts`) **no sobreescribe** si `promptLLM` ya existe; para actualizarlo se agrega un flag **`--force`**, y JP debe re-correr el seed **con `--force`** (si no, la app sigue mandando el prompt viejo sin `cocina`).
 
-6. **Recetas existentes (78) no se migran automáticamente.** No hay pantalla de edición de recetas en la app (solo `/biblioteca/catalogo` para ingredientes). `cocina` se completa en las recetas viejas **desde la consola de Firebase** (manual) o vía un futuro editor; los nuevos imports la traen. No se intenta inferir la cocina automáticamente (no es confiable). Las recetas sin `cocina` aparecen como "sin clasificar" y caen fuera de cualquier filtro por cocina.
+6. **Recetas existentes (78) no se migran automáticamente.** `cocina` se completa en las recetas viejas desde el detalle de la receta en la app (**editor de clasificación llegó en E8.6, v1.9.4**): botón lápiz junto al título (solo JP) + chip "Sin clasificar · completar" cuando falta `cocina`. Los nuevos imports la traen desde el parser. No se intenta inferir automáticamente (no es confiable). Las recetas sin `cocina` aparecen como "sin clasificar" y caen fuera de cualquier filtro por cocina.
 
 7. **Filtro en Biblioteca + cierre de §10.1.** Se agrega `cocina` como faceta de filtro en `/biblioteca`. El diagnóstico de Code confirmó que las facetas existentes (`tipoItem`, `proteina`) leen de `models.ts` (`TIPOS_ITEM`, `PROTEINAS`), están sincronizadas y **funcionan** → eso **cierra §10.1 por verificación** (los filtros no estaban rotos). Por consistencia, la faceta `cocina` también **lee `COCINAS` de `models.ts`** (no de Firestore): sin fetch async, sin divergencia. Recetas sin `cocina` no matchean ningún valor del filtro de cocina.
 
@@ -2052,6 +2073,12 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.6_editor_clasificacion_receta.md`** ✅ **CERRADO (v1.9.4)**: editor de
+  clasificación de receta en la app. Botón lápiz (JP) junto al título + chip "Sin clasificar
+  · completar" (warn, punteado) cuando falta `cocina`. Bottom-sheet con selects de todos los
+  enums (cocina, proteína, escenario, dificultad, costo, apto noche, clima, pensada para) +
+  texto libre (estilo, técnica) + toggles (sinLacteos, hidratos). Patch selectivo; actualización
+  local inmediata. Rules sin cambio. Cierra §1.2.E7.13 pto 6. Cierra §11 E8.6. Ver §1.2.E8.6.
 - **`PROMPT_E8.5_ingrediente_recetas.md`** ✅ **CERRADO (v1.9.3)**: ingrediente → recetas que
   lo usan. Índice `Map<idIngrediente, Receta[]>` derivado al cargar el catálogo. Sección "En N
   recetas" en el sheet (lista tappable → navega al detalle y cierra el sheet). Cache en
@@ -2289,8 +2316,9 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
   filtro por góndola + eliminación segura.
 - **E8.5 — Ingrediente → recetas que lo usan** ✅ **HECHO (v1.9.3)** — sección navegable
   "En N recetas" en el sheet del ingrediente; índice derivado por `idIngrediente`.
-- **E8.6 — Editor de receta en la app** — al menos la clasificación (`cocina` y bloque
-  Clasificación) para migrar las 78 recetas viejas sin la consola de Firebase. Backlog.
+- **E8.6 — Editor de clasificación de receta** ✅ **HECHO (v1.9.4)** — bloque Clasificación
+  editable desde el detalle (lápiz + chip "Sin clasificar" para JP). Edición completa de
+  receta (nombre/ingredientes/pasos) sigue siendo posible feature futura.
 - **E8.7 — Sustituciones / equivalencias** de ingredientes (manteca ↔ aceite), sobre
   `sinonimos` / `alternativas` + matcher E3.4.9. Backlog.
 - **E8.8 — Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir
@@ -2308,7 +2336,7 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.3:** E8.5 agrega "ingrediente → recetas que lo usan" (versión liviana de 7.2).
-§11 Lote 8 renumerado a eje único `E8.x`. E8.3 y E8.5 cerrados; E8.6–E8.8 en backlog.
-Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso.
-**Sin deuda técnica viva.**
+**Estado en v1.9.4:** E8.6 cierra el gap de E7.13 pto 6: editor de clasificación de receta
+en la app (lápiz + chip "Sin clasificar"), desbloqueando la migración de las 78 recetas viejas
+desde el celular. E8.3, E8.5 y E8.6 cerrados; E8.7–E8.8 en backlog. Lo postergado (push E6.2,
+dashboard D.3, opcionales §9.*) se reactiva caso por caso. **Sin deuda técnica viva.**
