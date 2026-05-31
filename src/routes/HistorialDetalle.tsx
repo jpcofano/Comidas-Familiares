@@ -15,6 +15,7 @@ import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { MemberAvatar } from "../components/MemberAvatar";
 import { ResultadoBadge } from "../components/ResultadoBadge";
+import { Stars } from "../components/historial/Stars";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -165,9 +166,11 @@ export function HistorialDetalleRoute() {
       <div className="card" style={{ marginBottom: "var(--space-3)", textAlign: "center", padding: "var(--space-6) var(--space-4)" }}>
         <div style={{ marginBottom: "var(--space-2)", lineHeight: 1 }}>
           <span style={{ fontSize: 36, fontWeight: "var(--fw-bold)", color: "var(--primary)" }}>
-            {entry.promedio}
+            {entry.promedio.toFixed(1)}
           </span>
-          <span style={{ fontSize: 18, color: "var(--muted)", marginLeft: 4 }}> / 10</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "var(--space-3)" }}>
+          <Stars value={entry.promedio} scale={10} size={16} />
         </div>
         {entry.resultado && (
           <div style={{ marginBottom: "var(--space-3)" }}>
@@ -220,13 +223,20 @@ export function HistorialDetalleRoute() {
                     {NOMBRE_MIEMBRO[mid as MiembroId]}
                   </span>
                 </div>
-                <span style={{
-                  fontSize: "var(--fs-sm)",
-                  fontWeight: nota != null ? "var(--fw-semibold)" : "var(--fw-regular)",
-                  color: nota != null ? "var(--text-strong)" : "var(--muted)",
-                }}>
-                  {nota != null ? nota : "Sin voto"}
-                </span>
+                {nota != null ? (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    <Stars value={nota} scale={10} size={12} />
+                    <span style={{
+                      fontSize: 18, fontWeight: 700,
+                      color: "var(--text-strong)",
+                      fontVariantNumeric: "tabular-nums",
+                    }}>
+                      {nota}
+                    </span>
+                  </span>
+                ) : (
+                  <span style={{ fontSize: "var(--fs-sm)", color: "var(--muted)" }}>Sin voto</span>
+                )}
               </div>
               {comentario && (
                 <p style={{

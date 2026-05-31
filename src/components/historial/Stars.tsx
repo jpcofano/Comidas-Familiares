@@ -6,9 +6,10 @@ interface StarsProps {
   value: number;
   max?: number;
   scale?: number;
+  size?: number;
 }
 
-export function Stars({ value, max = 5, scale }: StarsProps) {
+export function Stars({ value, max = 5, scale, size = 12 }: StarsProps) {
   const normalized = scale ? (value / scale) * max : value;
   return (
     <span
@@ -21,14 +22,14 @@ export function Stars({ value, max = 5, scale }: StarsProps) {
         return (
           <svg
             key={i}
-            width="12"
-            height="12"
+            width={size}
+            height={size}
             viewBox="0 0 12 12"
             style={{ display: "block" }}
           >
             <polygon
               points="6,1 7.5,4.5 11.5,4.5 8.5,7 9.5,11 6,8.5 2.5,11 3.5,7 0.5,4.5 4.5,4.5"
-              fill="var(--accent)"
+              fill="var(--estrella)"
               opacity={full ? 1 : half ? 0.5 : 0.18}
             />
           </svg>
