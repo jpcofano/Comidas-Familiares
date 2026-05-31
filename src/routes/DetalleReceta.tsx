@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, Pencil, X } from "lucide-react";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonRow } from "../components/skeletons/SkeletonRow";
 import { useAuth } from "../auth/useAuth";
 import { getReceta, actualizarReceta } from "../data/recetas";
 import { subscribeToPlanesActivos } from "../data/planes";
@@ -335,7 +337,15 @@ export function DetalleRecetaRoute() {
   // ── Render ──────────────────────────────────────────────────────────────────
 
   if (loadingReceta) {
-    return <div className="card"><p className="meta">Cargando receta…</p></div>;
+    return (
+      <div className="card">
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-4)" }}>
+          <SkeletonRow />
+          <SkeletonRow />
+        </div>
+      </div>
+    );
   }
 
   if (errorReceta || !receta) {

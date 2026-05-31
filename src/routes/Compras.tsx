@@ -15,6 +15,8 @@ import { ProgressRing } from "../components/ProgressRing";
 import { RecetaCardV2 } from "../components/RecetaCardV2";
 import { GondolaCardV2 } from "../components/GondolaCardV2";
 import type { ListaCompras, ItemCompra, Plan, MiembroId } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 
 type ModoVista = "receta" | "gondola";
 
@@ -100,7 +102,7 @@ export function ComprasRoute() {
     (lista as (ListaCompras & { missingItems?: string[] }) | null)?.missingItems ?? [];
 
   if (loadingPlanes) {
-    return <div className="card"><p className="meta">Cargando…</p></div>;
+    return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   }
 
   return (

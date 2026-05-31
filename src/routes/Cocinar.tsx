@@ -8,6 +8,7 @@ import { useCocinarState } from "../hooks/useCocinarState";
 import { PasoCard } from "../components/PasoCard";
 import { TimerBar } from "../components/TimerBar";
 import type { Receta, Plan } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 
 // ─── Modo libre: /recetas/:id/cocinar ────────────────────────────────────────
 // ─── Modo plan:  /planes/:idPlan/cocinar/:idReceta ────────────────────────────
@@ -124,7 +125,7 @@ export function CocinarRoute() {
   }
 
   if (loading) {
-    return <div className="card"><p className="meta">Cargando…</p></div>;
+    return <div className="card"><SkeletonHeader /></div>;
   }
   if (!receta) {
     return <div className="card"><p style={{ color: "var(--err-text)" }}>Receta no encontrada.</p></div>;

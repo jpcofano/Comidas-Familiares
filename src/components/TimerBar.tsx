@@ -60,7 +60,7 @@ export function TimerBar({ timers, pasos, onCancelar }: TimerBarProps) {
               color: done ? "var(--ok-text)" : "var(--text-strong)",
               minWidth: "3.5ch",
             }}>
-              {done ? "✓ LISTO" : formatMs(remaining)}
+              {done ? "✓ Listo" : formatMs(remaining)}
             </span>
             <button
               onClick={() => onCancelar(nroPaso)}

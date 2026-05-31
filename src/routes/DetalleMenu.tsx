@@ -9,6 +9,8 @@ import { subscribeToPlanesActivos, elegirMenuComoEspecial, sumarMenuComoEnProces
 import { evaluarEspecialMenu, evaluarEnProcesoMenu } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
 import type { Menu, Receta, Plan, MenuDerived } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
@@ -188,7 +190,7 @@ export function DetalleMenuRoute() {
     else showToast(result.error.message, false);
   }
 
-  if (loading) return <div className="card"><p className="meta">Cargando menú…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   if (loadError || !menu) {
     return (
       <div className="card">

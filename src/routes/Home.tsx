@@ -8,6 +8,8 @@ import { getMenu } from "../data/menus";
 import { getSemanaActual } from "../lib/fechas";
 import { separarPlanes } from "../lib/home";
 import { WeekStrip } from "../components/WeekStrip";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonPlanCard } from "../components/skeletons/SkeletonPlanCard";
 import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
 import { SemanaBadge } from "../components/SemanaBadge";
@@ -178,7 +180,11 @@ function HomeJP() {
   if (loading) {
     return (
       <div className="card">
-        <p className="meta">Cargando…</p>
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-5)" }}>
+          <SkeletonPlanCard />
+          <SkeletonPlanCard />
+        </div>
       </div>
     );
   }

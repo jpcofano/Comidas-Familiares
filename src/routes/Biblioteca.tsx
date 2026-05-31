@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
 import { Plus } from "lucide-react";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { getRecetas } from "../data/recetas";
 import { getMenus, deriveMenuMetadata } from "../data/menus";
@@ -173,7 +174,7 @@ function TabRecetas() {
     minWidth: 0,
   };
 
-  if (loading) return <p className="meta" style={{ padding: "var(--space-4) 0" }}>Cargando recetas…</p>;
+  if (loading) return <SkeletonList count={5} />;
   if (error) return <p style={{ color: "var(--err-text)", padding: "var(--space-4) 0" }}>{error}</p>;
 
   return (
@@ -311,7 +312,7 @@ function TabMenus() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p className="meta" style={{ padding: "var(--space-4) 0" }}>Cargando menús…</p>;
+  if (loading) return <SkeletonList count={5} />;
   if (error) return <p style={{ color: "var(--err-text)", padding: "var(--space-4) 0" }}>{error}</p>;
 
   if (menus.length === 0) {

@@ -11,6 +11,8 @@ import {
 import { comprimirImagen } from "../lib/comprimirImagen";
 import { MIEMBRO_IDS } from "../types/models";
 import type { Historial, MiembroId } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { MemberAvatar } from "../components/MemberAvatar";
 import { ResultadoBadge } from "../components/ResultadoBadge";
 
@@ -131,7 +133,7 @@ export function HistorialDetalleRoute() {
     setSubiendoFoto(false);
   };
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   if (error || !entry) {
     return (
       <div className="card">

@@ -6,6 +6,7 @@ import { getPlan, marcarCocinada, desmarcarComponenteCocinado } from "../data/pl
 import { getMenu } from "../data/menus";
 import { getReceta } from "../data/recetas";
 import type { Plan, Menu, Receta } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 
 export function SeleccionarComponenteMenuRoute() {
   const { idPlan } = useParams<{ idPlan: string }>();
@@ -41,7 +42,7 @@ export function SeleccionarComponenteMenuRoute() {
     });
   }, [idPlan]);
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /></div>;
   if (!plan || !menu) {
     return (
       <div className="card">

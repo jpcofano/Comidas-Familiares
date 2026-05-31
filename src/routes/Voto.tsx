@@ -8,6 +8,8 @@ import { getReceta } from "../data/recetas";
 import { calcularPromedio, calcularResultadoTextual } from "../lib/voto";
 import type { Plan, DatosCocinero, Dificultad, Receta, MiembroId } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
 
 const NOMBRES: Record<string, string> = {
   juanpablo: "Juan Pablo",
@@ -259,7 +261,7 @@ export function VotoRoute() {
 
   // ── Guards ────────────────────────────────────────────────────────────────
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
 
   if (!plan) {
     return (
