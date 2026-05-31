@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.1.0 (E9.3 — ¿Qué cocino con lo que tengo? matcher inverso + despensa local)
+> **Versión**: 2.1.1 (E9.5 — Biblioteca: Catálogo de ingredientes como botón antes del listado)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,12 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.5 Cambios en v2.1.1 (E9.5 — Catálogo de ingredientes antes del listado)
+
+Cambio de UX en `src/routes/Biblioteca.tsx`: el acceso al catálogo de ingredientes era un `<Link className="tab-action">Ingredientes</Link>` poco visible dentro de la fila de tabs.
+
+**Cambio:** se elimina esa tab-action y se agrega un botón full-width **"Catálogo de ingredientes"** (ícono Carrot + label + ChevronRight) ubicado entre la fila de tabs y el card de contenido — visible desde ambos tabs (Recetas y Menús). Navega a `/biblioteca/catalogo`. Usa tokens (`--surface-strong`, `--border`, `--primary`, `--muted`). La acción Importar permanece como tab-action en la fila de tabs.
 
 ### 1.2.E9.3 Cambios en v2.1.0 (E9.3 — ¿Qué cocino con lo que tengo?)
 
@@ -2249,6 +2255,9 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.5_pulido_biblioteca_catalogo.md`** ✅ **CERRADO (v2.1.1)**: acceso Catálogo
+  movido de tab-action a botón full-width (Carrot + label + chevron) entre tabs y listado.
+  Visible en ambos tabs. Ver §1.2.E9.5.
 - **`PROMPT_E9.3_que_cocino_con_lo_que_tengo.md`** ✅ **CERRADO (v2.1.0)**: matcher inverso.
   `evaluarCocinables` puro + 8 tests. Básicos de despensa (10 canonicos). `localStorage`.
   Ruta `/que-cocino`: despensa colapsable, faceta Dieta, resultados por bucket. Entrada en Home.
@@ -2518,6 +2527,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.5 — Catálogo de ingredientes antes del listado** ✅ **HECHO (v2.1.1)** — tab-action reemplazada por botón full-width visible siempre. Ver §1.2.E9.5.
 - **E9.3 — ¿Qué cocino con lo que tengo?** ✅ **HECHO (v2.1.0)** — helper `evaluarCocinables` (buckets ahora/cambio/falta1/faltaN, sustitución por equivalencias y alternativas); básicos de despensa; `localStorage["cf-despensa"]`; ruta `/que-cocino` + entrada en Home. 8 tests. Cierra ítem 7.2. Ver §1.2.E9.3.
 - **E9.4 — Sustitución al cocinar** ✅ **HECHO (v2.0.3)** — helper puro `sustitutosDeItem` (alternativas receta + equivalencias catálogo, dedup por id); línea "o X" en detalle con toggle persistido; recap colapsable en paso a paso. 6 tests. Ver §1.2.E9.4.
 
@@ -2553,6 +2563,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.1.0:** E9.0–E9.4 implementados (E9.3 implementado después de E9.4 por orden del cliente). **Pendiente (producción):**
+**Estado en v2.1.1:** E9.0–E9.5 implementados. Lote 9 completo. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

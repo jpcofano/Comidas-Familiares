@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
-import { Plus } from "lucide-react";
+import { Plus, Carrot, ChevronRight } from "lucide-react";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { getRecetas } from "../data/recetas";
@@ -370,10 +370,30 @@ export function BibliotecaRoute() {
             <span>Importar</span>
           </Link>
         )}
-        <Link to="/biblioteca/catalogo" className="tab-action">
-          <span>Ingredientes</span>
-        </Link>
       </div>
+
+      <Link
+        to="/biblioteca/catalogo"
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "var(--space-3) var(--space-4)",
+          marginBottom: "var(--space-2)",
+          borderRadius: "var(--radius-md)",
+          border: "1px solid var(--border)",
+          background: "var(--surface-strong)",
+          color: "var(--text-strong)",
+          textDecoration: "none",
+          gap: "var(--space-3)",
+        }}
+      >
+        <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+          <Carrot size={18} color="var(--primary)" aria-hidden />
+          <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600 }}>
+            Catálogo de ingredientes
+          </span>
+        </span>
+        <ChevronRight size={16} color="var(--muted)" aria-hidden />
+      </Link>
 
       <div className="card">
         {tab === "recetas" ? <TabRecetas /> : <TabMenus />}
