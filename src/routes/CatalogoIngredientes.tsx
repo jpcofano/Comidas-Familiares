@@ -13,6 +13,7 @@ import {
 } from "../data/ingredientes";
 import { getRecetas } from "../data/recetas";
 import { normalizeText } from "../lib/canonical";
+import { detectarDuplicado } from "../lib/detectarDuplicado";
 import {
   CATEGORIAS_INGREDIENTE,
   ROLES_NUTRICIONALES,
@@ -92,6 +93,7 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, catalogo, onClose,
   const [equivIds, setEquivIds] = useState<string[]>(ingToEdit?.equivalencias ?? []);
   const [guardando, setGuardando] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [warningDup, setWarningDup] = useState<Ingrediente | null>(null);
   const [confirmEliminar, setConfirmEliminar] = useState(false);
   const [eliminando, setEliminando] = useState(false);
 
@@ -109,9 +111,20 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, catalogo, onClose,
     setRoles((prev) => prev.includes(rol) ? prev.filter((r) => r !== rol) : [...prev, rol]);
   }
 
-  async function handleGuardar() {
+  async function handleGuardar(skipDupCheck = false) {
     const trimmed = nombre.trim();
     if (!trimmed) { setError("El nombre es obligatorio."); return; }
+
+    // Detección de duplicado antes de crear
+    if (isNew && !skipDupCheck) {
+      const catMap = new Map(catalogo.map((i) => [i.idIngrediente, i]));
+      const dup = detectarDuplicado(trimmed, catMap);
+      if (dup) {
+        setWarningDup(dup);
+        return;
+      }
+    }
+    setWarningDup(null);
     setGuardando(true);
     setError(null);
 
@@ -335,6 +348,40 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, catalogo, onClose,
           </div>
         )}
 
+        {/* Alerta de duplicado */}
+        {isNew && warningDup && (
+          <div style={{
+            padding: "var(--space-3)", marginBottom: "var(--space-3)",
+            background: "var(--warn-bg)", border: "1px solid var(--warn-line)",
+            borderRadius: "var(--radius-sm)",
+          }}>
+            <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-sm)", color: "var(--warn-text)", fontWeight: "var(--fw-medium)" }}>
+              Ya existe <strong>{warningDup.nombrePreferido}</strong> con este nombre.
+              ¿Usar ese ingrediente en su lugar?
+            </p>
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-ghost"
+                onClick={onClose}
+                style={{ flex: 1 }}
+              >
+                Usar existente
+              </button>
+              <button
+                onClick={() => void handleGuardar(true)}
+                style={{
+                  flex: 1, padding: "10px", fontFamily: "inherit",
+                  background: "var(--warn-text)", border: "none",
+                  borderRadius: "var(--radius-sm)", color: "#fff",
+                  fontSize: "var(--fs-sm)", cursor: "pointer",
+                }}
+              >
+                Crear de todas formas
+              </button>
+            </div>
+          </div>
+        )}
+
         {error && (
           <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>
             {error}
@@ -343,7 +390,7 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, catalogo, onClose,
 
         <button
           className="btn btn-primary"
-          onClick={handleGuardar}
+          onClick={() => void handleGuardar()}
           disabled={guardando}
           style={{ width: "100%", marginBottom: "var(--space-3)" }}
         >

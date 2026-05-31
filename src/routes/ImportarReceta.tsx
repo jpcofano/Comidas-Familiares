@@ -7,6 +7,7 @@ import {
   getCatalogo, crearIngrediente, buildNuevoIngredienteDoc, agregarSinonimo,
   invalidateCatalogCache, proximoIdIngrediente,
 } from "../data/ingredientes";
+import { detectarDuplicado } from "../lib/detectarDuplicado";
 import { proximoIdReceta, crearReceta, buscarRecetasPorNombre } from "../data/recetas";
 import { getPromptLLM } from "../data/config";
 import { normalizeText } from "../lib/canonical";
@@ -97,6 +98,7 @@ export function ImportarRecetaRoute() {
   const [filas, setFilas]                       = useState<FilaIngrediente[]>([]);
   const [categorias, setCategorias]             = useState<string[]>([]);
   const [cargandoCat, setCargandoCat]           = useState(false);
+  const [catalogoMap, setCatalogoMap]           = useState<Map<string, import("../types/models").Ingrediente>>(new Map());
   const [guardado, setGuardado]                 = useState<GuardadoState | null>(null);
   const [promptLLM, setPromptLLM]               = useState("");
   const [copiado, setCopiado]                   = useState(false);
@@ -142,6 +144,7 @@ export function ImportarRecetaRoute() {
     setCargandoCat(true);
     try {
       const catalogo = await getCatalogo();
+      setCatalogoMap(catalogo);
       const cats = [...new Set([...catalogo.values()].map(i => i.categoria).filter(Boolean))].sort();
       setCategorias(cats);
 
@@ -401,6 +404,7 @@ export function ImportarRecetaRoute() {
           fallidasParseo={fallidasParseo}
           filas={filas}
           categorias={categorias}
+          catalogoMap={catalogoMap}
           onDecisionChange={updateDecision}
           onGuardar={handleGuardar}
           onVolver={() => { setPaso(1); setParseErrors([]); }}
@@ -566,12 +570,13 @@ function RenderPaso1({
 // ─── Paso 2 ───────────────────────────────────────────────────────────────────
 
 function RenderPaso2({
-  recetas, fallidasParseo, filas, categorias, onDecisionChange, onGuardar, onVolver,
+  recetas, fallidasParseo, filas, categorias, catalogoMap, onDecisionChange, onGuardar, onVolver,
 }: {
   recetas: ParsedReceta[];
   fallidasParseo: ParsedFallida[];
   filas: FilaIngrediente[];
   categorias: string[];
+  catalogoMap: Map<string, import("../types/models").Ingrediente>;
   onDecisionChange: (idx: number, d: DecisionIngrediente) => void;
   onGuardar: () => void;
   onVolver: () => void;
@@ -613,6 +618,7 @@ function RenderPaso2({
             idx={idx}
             fila={fila}
             categorias={categorias}
+            catalogoMap={catalogoMap}
             onChange={onDecisionChange}
           />
         ))}
@@ -633,14 +639,51 @@ function RenderPaso2({
   );
 }
 
+// ─── Badge de duplicado ───────────────────────────────────────────────────────
+
+function BadgeDuplicado({
+  nombre, catalogoMap, idx, onChange,
+}: {
+  nombre: string;
+  catalogoMap: Map<string, import("../types/models").Ingrediente>;
+  idx: number;
+  onChange: (idx: number, d: DecisionIngrediente) => void;
+}) {
+  const dup = detectarDuplicado(nombre, catalogoMap);
+  if (!dup) return null;
+  return (
+    <div style={{
+      marginTop: "0.4rem", padding: "0.4rem 0.6rem",
+      background: "var(--warn-bg)", border: "1px solid var(--warn-line)",
+      borderRadius: "4px", display: "flex", alignItems: "center",
+      gap: "0.5rem", flexWrap: "wrap",
+    }}>
+      <span style={{ fontSize: "0.78rem", color: "var(--warn-text)" }}>
+        ⚠ Posible duplicado de <strong>{dup.nombrePreferido}</strong>
+      </span>
+      <button
+        onClick={() => onChange(idx, { tipo: "sugerencia", idIngrediente: dup.idIngrediente, nombrePreferido: dup.nombrePreferido })}
+        style={{
+          fontSize: "0.78rem", padding: "2px 8px", borderRadius: "4px",
+          background: "var(--warn-text)", color: "#fff", border: "none",
+          cursor: "pointer", fontFamily: "inherit", fontWeight: 600,
+        }}
+      >
+        Usar ese
+      </button>
+    </div>
+  );
+}
+
 // ─── Fila de ingrediente ──────────────────────────────────────────────────────
 
 function FilaRow({
-  idx, fila, categorias, onChange,
+  idx, fila, categorias, catalogoMap, onChange,
 }: {
   idx: number;
   fila: FilaIngrediente;
   categorias: string[];
+  catalogoMap: Map<string, import("../types/models").Ingrediente>;
   onChange: (idx: number, d: DecisionIngrediente) => void;
 }) {
   const [verMas, setVerMas] = useState(false);
@@ -722,46 +765,52 @@ function FilaRow({
           </button>
 
           {decision.tipo === "nuevo" && (
-            <div style={{ paddingLeft: "0.6rem", borderLeft: "2px solid #ccc", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-              <input
-                type="text"
-                value={decision.nombre}
-                onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
-                placeholder="Nombre en catálogo"
-                style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
-              />
-              {categorias.length > 0 && (
-                <select
-                  value={decision.categoria}
-                  onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
-                  style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
-                >
-                  {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                </select>
-              )}
+            <div style={{ paddingLeft: "0.6rem", borderLeft: "2px solid #ccc" }}>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+                <input
+                  type="text"
+                  value={decision.nombre}
+                  onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
+                  placeholder="Nombre en catálogo"
+                  style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
+                />
+                {categorias.length > 0 && (
+                  <select
+                    value={decision.categoria}
+                    onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
+                    style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+                  >
+                    {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                  </select>
+                )}
+              </div>
+              <BadgeDuplicado nombre={decision.nombre} catalogoMap={catalogoMap} idx={idx} onChange={onChange} />
             </div>
           )}
         </div>
       )}
 
       {match.tipo !== "sugerencias" && decision.tipo === "nuevo" && (
-        <div style={{ marginTop: "0.35rem", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-          <input
-            type="text"
-            value={decision.nombre}
-            onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
-            placeholder="Nombre en catálogo"
-            style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
-          />
-          {categorias.length > 0 && (
-            <select
-              value={decision.categoria}
-              onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
-              style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
-            >
-              {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-            </select>
-          )}
+        <div style={{ marginTop: "0.35rem" }}>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+            <input
+              type="text"
+              value={decision.nombre}
+              onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
+              placeholder="Nombre en catálogo"
+              style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
+            />
+            {categorias.length > 0 && (
+              <select
+                value={decision.categoria}
+                onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
+                style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+              >
+                {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+              </select>
+            )}
+          </div>
+          <BadgeDuplicado nombre={decision.nombre} catalogoMap={catalogoMap} idx={idx} onChange={onChange} />
         </div>
       )}
     </div>

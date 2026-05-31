@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.5 (E8.7 — equivalencias de ingredientes: campo + UI + simetría garantizada)
+> **Versión**: 1.9.6 (E8.8 — detección de duplicados al crear ingrediente)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,18 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.8 Cambios en v1.9.6 (E8.8 — Detección de duplicados al crear ingrediente)
+
+Previene la creación de ingredientes duplicados en dos puntos del flujo:
+
+1. **Catálogo editor ("+ Nuevo")** — `handleGuardar` llama `detectarDuplicado(nombre, catMap)` antes de `crearIngrediente`. Si hay colisión y no fue confirmada, muestra un bloque warn inline: "Ya existe **{nombre}**. ¿Usar ese en su lugar?" con dos botones: "Usar existente" (cierra el sheet sin crear) y "Crear de todas formas" (pasa `skipDupCheck = true` como escape consciente).
+
+2. **Importador, paso 2 — filas "nuevo"** — el catálogo se almacena en estado (`catalogoMap`) al cargar en `handleParsear` y se pasa a cada `FilaRow`. El nuevo componente `BadgeDuplicado` calcula `detectarDuplicado(decision.nombre, catalogoMap)` en cada render; si hay colisión, muestra un badge warn "⚠ Posible duplicado de **{nombre}**" + botón "Usar ese" que cambia la decision a `{ tipo: "sugerencia", ... }` (idéntico a elegir una sugerencia del matcher — el sinónimo se agrega en el paso 3 vía `agregarSinonimo`). Si JP ignora el badge y guarda igual, se crea el duplicado como decisión consciente.
+
+3. **Helper puro `src/lib/detectarDuplicado.ts`** — calcula `canon = normalizeText(nombre)` y recorre el catálogo buscando `ing.canonico === canon` o `ing.sinonimos.some(s => normalizeText(s) === canon)`. Sin side-effects. Testeable. 6 tests en `src/lib/detectarDuplicado.test.ts`.
+
+**Fuera de scope:** fusión de dos ingredientes ya existentes (requiere reasignación de IDs en recetas); similitud difusa (solo canonico exacto y sinónimos).
 
 ### 1.2.E8.7 Cambios en v1.9.5 (E8.7 — Equivalencias de ingredientes)
 
@@ -2102,6 +2114,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.8_deteccion_duplicados.md`** ✅ **CERRADO (v1.9.6)**: detección de duplicados.
+  Helper puro `detectarDuplicado(nombre, catMap)` (canonico + sinónimos). Catálogo editor:
+  warning inline + escape consciente "Crear de todas formas". Importer paso 2: `BadgeDuplicado`
+  con botón "Usar ese" → convierte decisión a sugerencia. 6 tests. Ver §1.2.E8.8.
 - **`PROMPT_E8.7_equivalencias.md`** ✅ **CERRADO (v1.9.5)**: equivalencias de ingredientes.
   Campo `equivalencias?: string[]` en `Ingrediente`. Simetría via `writeBatch` en
   `setEquivalencia` / `quitarEquivalencia`. Limpieza de punteros colgados en
@@ -2356,8 +2372,9 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 - **E8.7 — Equivalencias de ingredientes** ✅ **HECHO (v1.9.5)** — campo `equivalencias?`
   en catálogo; relación simétrica vía `writeBatch`; UI en el sheet (chips accent + select);
   limpieza al borrar. Tests de simetría. Ver §1.2.E8.7.
-- **E8.8 — Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir
-  fusión en vez de crear ambiguo). Backlog.
+- **E8.8 — Detección de duplicados al importar** ✅ **HECHO (v1.9.6)** — helper puro
+  `detectarDuplicado` + warning en catálogo editor + badge "⚠ Posible duplicado" en
+  importer paso 2. Ver §1.2.E8.8.
 
 **Postergado sin urgencia:**
 
@@ -2371,6 +2388,5 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.5:** E8.3–E8.7 cerrados. E8.8 (detección de duplicados al importar) en
-backlog. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso.
-**Sin deuda técnica viva.**
+**Estado en v1.9.6:** Etapa 8 completa — E8.0–E8.8 cerrados. Lo postergado (push E6.2,
+dashboard D.3, opcionales §9.*) se reactiva caso por caso. **Sin deuda técnica viva.**
