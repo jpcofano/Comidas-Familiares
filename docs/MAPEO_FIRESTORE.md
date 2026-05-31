@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.0.1 (E9.1 — prompt importador con vocabulario canónico + esVegetariano)
+> **Versión**: 2.0.2 (E9.2 — fix regresión Historial: recablear SummaryMetrics/FilterChips/MonthGroup)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,21 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.2 Cambios en v2.0.2 (E9.2 — Fix regresión Historial)
+
+**Regresión detectada y cerrada.** El commit `11ff3df` ("skeleton loaders en todas las rutas + Historial con tarjetas clickeables") reemplazó `src/routes/Historial.tsx` por una versión simplificada con lista plana y `ResultadoBadge` local, dejando huérfanos los componentes `SummaryMetrics`, `FilterChips`, `MonthGroup`, `HistorialCard` y `EmptyState` que existían en `src/components/historial/` desde commits anteriores.
+
+**Fix:** reescritura de `src/routes/Historial.tsx` cableando los componentes existentes:
+
+1. **`<SummaryMetrics entries={entries} />`** — 3 cards Total / Promedio / Top, sobre el total sin filtrar.
+2. **`<FilterChips activo={filtro} onChange={setFiltro} />`** — chips Todos / ★ Top / Para repetir / No repetir. Lógica: `top` → `resultado ∈ {Excelente, Muy bueno}`; `ok` → `repetir === "Sí"`; `mal` → `repetir === "No"`.
+3. **Agrupación por mes** (`YYYY-MM` de `fechaRealizada`), orden desc. Un `<MonthGroup>` por grupo con header sticky y `HistorialCard` por entrada.
+4. **`<EmptyState context=... />`** contextual: `"sin-entries"` / `"sin-matches-busqueda"` / `"sin-matches-filtro"`.
+5. `SkeletonList` mantenido (parte correcta del mismo commit).
+6. `ResultadoBadge` local eliminado (sin otros consumidores en el archivo).
+
+**Alcance del commit causante:** solo `Historial.tsx` perdió lógica (136 líneas cambiadas). Las demás rutas tocadas (`Home`, `Biblioteca`, `Compras`, `Cocinar`, `DetalleMenu`, `HistorialDetalle`, `MemberDashboard`, `SeleccionarComponenteMenu`, `Voto`) solo agregaron 3-5 líneas de skeleton — contenido real intacto.
 
 ### 1.2.E9.1 Cambios en v2.0.1 (E9.1 — Prompt del importador con vocabulario canónico)
 
@@ -2198,6 +2213,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.2_fix_historial.md`** ✅ **CERRADO (v2.0.2)**: fix regresión — `Historial.tsx`
+  simplificado por commit `11ff3df` recableado con SummaryMetrics + FilterChips + MonthGroup +
+  HistorialCard + EmptyState. Filtros: `top` por resultado, `ok`/`mal` por `repetir`. Skeleton
+  mantenido. Ver §1.2.E9.2.
 - **`PROMPT_E9.0.1_blindar_prompt_generador.md`** ✅ **CERRADO (v2.0.1)**: prompt LLM con
   vocabulario canónico (265 ingredientes por categoría). 3 columnas nuevas en `#INGREDIENTES`
   para clasificar ingredientes nuevos. `esVegetariano` en `#RECETA`. Parser retrocompatible.
@@ -2449,6 +2468,13 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 
 Ítems diseñados pero no implementados aún. Organizados por ciclo de diseño (Lote). Cuando un ítem se implementa, se marca ✅ y se referencia el prompt que lo cerró.
 
+### Lote 9 — Proteínas jerárquicas, vocabulario canónico y fixes (E9.x)
+
+- **E9.0 — Proteínas jerárquicas + faceta Dieta + diccionario canónico** ✅ **HECHO (v2.0.0)** — 13 proteínas planas → 11 hojas en 5 grupos (`GRUPOS_PROTEINA`); `esVegetariano`/`esKeto`; diccionario canónico 265 ingredientes. Ver §1.2.E9.0.
+- **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
+- **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
+- **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+
 ### Lote 8 — Edición en la app y catálogo (del ciclo de diseño post-E7.13)
 
 Cierra el gap de §1.2.E7.13 pto 6 ("no hay edición de recetas en la app; `cocina` se completa
@@ -2481,6 +2507,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.0.1:** E9.0–E9.1 implementados. Scripts de datos ya corridos. **Pendiente:**
+**Estado en v2.0.2:** E9.0–E9.2 implementados. Fix de regresión Historial cerrado (E9.2). **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
---only hosting` (parseReceta.ts cambió). Sin deuda técnica viva en código.
+--only hosting`. Sin deuda técnica viva en código.
