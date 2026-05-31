@@ -9,6 +9,7 @@ import {
   eliminarIngrediente,
   proximoIdIngrediente,
 } from "../data/ingredientes";
+import { getRecetas } from "../data/recetas";
 import { normalizeText } from "../lib/canonical";
 import {
   CATEGORIAS_INGREDIENTE,
@@ -17,7 +18,7 @@ import {
   getSeccionMeta,
   groupByGondola,
 } from "../lib/catalogo";
-import type { Ingrediente } from "../types/models";
+import type { Ingrediente, Receta } from "../types/models";
 
 // ─── Gondola letter badge ─────────────────────────────────────────────────────
 
@@ -71,12 +72,14 @@ function IngredienteRow({ ing, onClick }: { ing: Ingrediente; onClick: () => voi
 
 interface SheetProps {
   ingToEdit: Ingrediente | null;  // null = create new
+  recetasDelIngrediente: Receta[];
   onClose: () => void;
   onSaved: (msg: string) => void;
   onDeleted: () => void;
 }
 
-function IngredienteSheet({ ingToEdit, onClose, onSaved, onDeleted }: SheetProps) {
+function IngredienteSheet({ ingToEdit, recetasDelIngrediente, onClose, onSaved, onDeleted }: SheetProps) {
+  const navigate = useNavigate();
   const isNew = ingToEdit === null;
 
   const [nombre, setNombre] = useState(ingToEdit?.nombrePreferido ?? "");
@@ -238,6 +241,37 @@ function IngredienteSheet({ ingToEdit, onClose, onSaved, onDeleted }: SheetProps
           </div>
         </div>
 
+        {/* En N recetas */}
+        {!isNew && (
+          <div style={{ marginBottom: "var(--space-4)" }}>
+            <p style={{ ...labelStyle, marginBottom: "var(--space-2)" }}>
+              {recetasDelIngrediente.length > 0
+                ? `En ${recetasDelIngrediente.length} receta${recetasDelIngrediente.length !== 1 ? "s" : ""}`
+                : "No figura en ninguna receta todavía"}
+            </p>
+            {recetasDelIngrediente.map((r, idx) => (
+              <button
+                key={r.idReceta}
+                onClick={() => { navigate(`/recetas/${r.idReceta}`); onClose(); }}
+                style={{
+                  display: "block", width: "100%", textAlign: "left",
+                  padding: "var(--space-2) 0", fontFamily: "inherit",
+                  background: "none", border: "none",
+                  borderTop: idx === 0 ? "none" : "1px solid var(--border-subtle)",
+                  cursor: "pointer",
+                }}
+              >
+                <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text-strong)", fontWeight: "var(--fw-medium)" }}>
+                  {r.nombre}
+                </p>
+                <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+                  {[r.cocina, r.proteinaPrincipal, r.tiempoTotalLabel].filter(Boolean).join(" · ")}
+                </p>
+              </button>
+            ))}
+          </div>
+        )}
+
         {error && (
           <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>
             {error}
@@ -311,6 +345,7 @@ export function CatalogoIngredientesRoute() {
   const navigate = useNavigate();
 
   const [catalogo, setCatalogo] = useState<Ingrediente[]>([]);
+  const [recetasIndex, setRecetasIndex] = useState<Map<string, Receta[]>>(new Map());
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
@@ -322,9 +357,17 @@ export function CatalogoIngredientesRoute() {
 
   useEffect(() => {
     if (!isJP) return;
-    getCatalogo()
-      .then((map) => {
-        setCatalogo([...map.values()].sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es")));
+    Promise.all([getCatalogo(), getRecetas()])
+      .then(([catMap, recetas]) => {
+        setCatalogo([...catMap.values()].sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es")));
+        const idx = new Map<string, Receta[]>();
+        for (const r of recetas) {
+          for (const ing of r.ingredientes ?? []) {
+            if (!idx.has(ing.idIngrediente)) idx.set(ing.idIngrediente, []);
+            idx.get(ing.idIngrediente)!.push(r);
+          }
+        }
+        setRecetasIndex(idx);
         setLoading(false);
       })
       .catch((e: unknown) => {
@@ -508,6 +551,7 @@ export function CatalogoIngredientesRoute() {
         <IngredienteSheet
           key={sheet.ing?.idIngrediente ?? "nuevo"}
           ingToEdit={sheet.ing}
+          recetasDelIngrediente={sheet.ing ? (recetasIndex.get(sheet.ing.idIngrediente) ?? []) : []}
           onClose={() => setSheet(null)}
           onSaved={handleSaved}
           onDeleted={handleDeleted}

@@ -18,10 +18,14 @@ import { normalizeText } from "../lib/canonical";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 
+let cachedRecetas: Receta[] | null = null;
+
 export async function getRecetas(): Promise<Receta[]> {
+  if (cachedRecetas) return cachedRecetas;
   const q = query(collection(db, "recetas"), orderBy("nombre"));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => d.data() as Receta);
+  cachedRecetas = snap.docs.map((d) => d.data() as Receta);
+  return cachedRecetas;
 }
 
 export async function getReceta(idReceta: string): Promise<Receta | null> {

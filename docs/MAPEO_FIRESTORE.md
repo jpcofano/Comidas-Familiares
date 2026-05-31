@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.2 (E8.4 — chips de letra por sección de ingrediente + toggle rol/góndola)
-> **Fecha**: 2026-05-30
+> **Versión**: 1.9.3 (E8.5 — ingrediente → recetas que lo usan; renumeración §11 a eje único)
+> **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -143,6 +143,24 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.5 Cambios en v1.9.3 (E8.5 — Ingrediente → recetas que lo usan)
+
+Hace navegable el dato `vecesUsado` del catálogo: al abrir un ingrediente en el sheet, se muestra la lista real de recetas que lo referencian por `idIngrediente`, cada una tappable hacia su detalle.
+
+**Decisiones zanjadas:**
+
+1. **Índice derivado por `idIngrediente`** — al cargar el catálogo se carga también `getRecetas()` (ahora cacheado en `cachedRecetas`). Se construye `Map<idIngrediente, Receta[]>` recorriendo `receta.ingredientes[].idIngrediente`. El match es por ID, no por nombre (el prototipo matcheó por texto por falta de IDs; el código usa el ID que es la verdad). Para el volumen actual (~80 recetas) traer todo está bien; no se implementa query inversa en Firestore (no es directa con array de objetos).
+
+2. **Sección "En N recetas"** en el bottom-sheet de edición, debajo de roles nutricionales. Muestra: encabezado con el conteo; lista de recetas (`nombre` + `cocina · proteinaPrincipal · tiempoTotalLabel`). Cada fila es tappable → navega a `/recetas/:idReceta` y cierra el sheet. Si no hay recetas: "No figura en ninguna receta todavía".
+
+3. **Coherencia con `vecesUsado`** — el conteo derivado puede diferir de `Ingrediente.vecesUsado` (que se mantiene al importar, no al borrar). Se muestra el conteo derivado (verdad presente) sin recalcular masivamente `vecesUsado`.
+
+4. **Cache en `getRecetas`** — `let cachedRecetas: Receta[] | null = null` en `recetas.ts`, mismo patrón que `cachedCatalog` en `ingredientes.ts`. Evita refetch cada vez que se abre la ruta del catálogo en la misma sesión.
+
+5. **Relación con 7.2** — esto es la versión liviana y directa ("qué recetas usan este ingrediente"). El matcher inverso completo ("qué cocino con lo que tengo") sigue siendo el feature E7.2, que es un mini-proyecto separado.
+
+**Cambio 0 (docs)** — §11 Lote 8 renumerado a eje único `E8.x` (antes `8.1–8.5`). Mapa: `8.1→E8.3` ✅, `8.3→E8.5` ✅, `8.2→E8.6`, `8.4→E8.7`, `8.5→E8.8`. Bloque "Mapa backlog → prompts" eliminado (ya no hace falta con eje único).
 
 ### 1.2.E8.4 Cambios en v1.9.2 (E8.4 — Chips de letra por sección de ingrediente + toggle rol/góndola)
 
@@ -2034,6 +2052,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.5_ingrediente_recetas.md`** ✅ **CERRADO (v1.9.3)**: ingrediente → recetas que
+  lo usan. Índice `Map<idIngrediente, Receta[]>` derivado al cargar el catálogo. Sección "En N
+  recetas" en el sheet (lista tappable → navega al detalle y cierra el sheet). Cache en
+  `getRecetas`. Renumeración §11 Lote 8 a eje único `E8.x`. Ver §1.2.E8.5.
 - **`PROMPT_E8.4_ingredientes_rol_gondola.md`** ✅ **CERRADO (v1.9.2)**: chips de letra en
   ingredientes de receta (arregla el bug del punto `·`) + toggle "Por rol / Por góndola" con
   persistencia. `getSeccionRecetaMeta` + `SECCIONES_RECETA_META` en `catalogo.ts`. Vista por
@@ -2262,22 +2284,17 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 Cierra el gap de §1.2.E7.13 pto 6 ("no hay edición de recetas en la app; `cocina` se completa
 desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
-- **8.1 Editor de ingredientes completo** ✅ **HECHO (v1.9.1 — E8.3)** — editar cualquiera /
+- **E8.3 — Editor de ingredientes completo** ✅ **HECHO (v1.9.1)** — editar cualquiera /
   alta / baja en `/biblioteca/catalogo`, no solo ambiguos. Bottom-sheet editor + buscador +
   filtro por góndola + eliminación segura.
-- **8.2 Editor de receta en la app** — al menos la clasificación (`cocina` y bloque
+- **E8.5 — Ingrediente → recetas que lo usan** ✅ **HECHO (v1.9.3)** — sección navegable
+  "En N recetas" en el sheet del ingrediente; índice derivado por `idIngrediente`.
+- **E8.6 — Editor de receta en la app** — al menos la clasificación (`cocina` y bloque
   Clasificación) para migrar las 78 recetas viejas sin la consola de Firebase. Backlog.
-- **8.3 Ingrediente → recetas que lo usan.** Hacer navegable "usado en N recetas": del
-  ingrediente, listar/abrir las recetas que lo referencian. Versión liviana y directa de 7.2
-  (NO el matcher inverso completo). Backlog.
-- **8.4 Sustituciones / equivalencias** de ingredientes (manteca ↔ aceite), sobre `sinonimos`
-  / `alternativas` + matcher E3.4.9. Backlog.
-- **8.5 Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir fusión
-  en vez de crear ambiguo). Backlog.
-
-Mapa backlog → prompts de implementación de Etapa 8:
-- E8.1 pulido · E8.2 dark mode · E8.3 = ítem 8.1 · E8.4 chips/ toggle de secciones.
-- Ítems 8.2–8.5: sin prompt aún (backlog).
+- **E8.7 — Sustituciones / equivalencias** de ingredientes (manteca ↔ aceite), sobre
+  `sinonimos` / `alternativas` + matcher E3.4.9. Backlog.
+- **E8.8 — Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir
+  fusión en vez de crear ambiguo). Backlog.
 
 **Postergado sin urgencia:**
 
@@ -2291,7 +2308,7 @@ Mapa backlog → prompts de implementación de Etapa 8:
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.2:** ciclo funcional completo. Etapa 8 completa (E8.0–E8.4): setup, pulido
-visual, dark mode, catálogo editable (§11 Lote 8.1 cerrado), chips de sección + toggle
-rol/góndola en ingredientes. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se
-reactiva caso por caso cuando aparezca demanda concreta. **Sin deuda técnica viva.**
+**Estado en v1.9.3:** E8.5 agrega "ingrediente → recetas que lo usan" (versión liviana de 7.2).
+§11 Lote 8 renumerado a eje único `E8.x`. E8.3 y E8.5 cerrados; E8.6–E8.8 en backlog.
+Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso.
+**Sin deuda técnica viva.**
