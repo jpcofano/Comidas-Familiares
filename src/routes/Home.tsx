@@ -332,6 +332,29 @@ function HomeJP() {
           onClick={() => navigate("/compras")}
         />
       )}
+
+      {/* ── ¿Qué cocino con lo que tengo? ────────────────────────────────── */}
+      <button
+        onClick={() => navigate("/que-cocino")}
+        style={{
+          marginTop: "var(--space-4)",
+          width: "100%", textAlign: "left",
+          background: "var(--surface-strong)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-md)",
+          padding: "var(--space-3) var(--space-4)",
+          cursor: "pointer", fontFamily: "inherit",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}
+      >
+        <div>
+          <p style={{ margin: 0, fontWeight: 600, color: "var(--text-strong)", fontSize: "var(--fs-sm)" }}>
+            ¿Qué cocino con lo que tengo?
+          </p>
+          <p className="meta" style={{ margin: "2px 0 0" }}>Recetas según tu despensa</p>
+        </div>
+        <span style={{ color: "var(--muted)", fontSize: 18 }}>›</span>
+      </button>
     </div>
   );
 }

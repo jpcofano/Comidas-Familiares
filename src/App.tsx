@@ -16,6 +16,7 @@ import { ComprasRoute } from "./routes/Compras";
 import { HistorialRoute } from "./routes/Historial";
 import { HistorialDetalleRoute } from "./routes/HistorialDetalle";
 import { VotoRoute } from "./routes/Voto";
+import { QueCocinoRoute } from "./routes/QueCocino";
 import { NotFoundRoute } from "./routes/NotFound";
 
 function JPOnly({ children }: { children: React.ReactNode }) {
@@ -58,6 +59,7 @@ function App() {
           <Route path="/historial" element={<HistorialRoute />} />
           <Route path="/historial/:idHist" element={<HistorialDetalleRoute />} />
           <Route path="/voto/:idPlan" element={<VotoRoute />} />
+          <Route path="/que-cocino" element={<QueCocinoRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>
       </Routes>

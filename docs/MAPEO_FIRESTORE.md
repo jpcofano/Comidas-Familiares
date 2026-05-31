@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.0.3 (E9.4 — sustitución al cocinar: "o {sustituto}" en detalle + recap en paso a paso)
+> **Versión**: 2.1.0 (E9.3 — ¿Qué cocino con lo que tengo? matcher inverso + despensa local)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,28 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.3 Cambios en v2.1.0 (E9.3 — ¿Qué cocino con lo que tengo?)
+
+Cierra el ítem histórico **7.2 (matcher inverso)**. El usuario marca su despensa y la app ordena las recetas por cercanía.
+
+**Helper `src/lib/cocinables.ts` — `evaluarCocinables(recetas, despensa, catalogoById)`:**
+
+- **Requeridos = ingredientes no `opcional`**. Los opcionales no bloquean ni afectan la cobertura.
+- Para cada requerido ausente de la despensa: es `sustituye` si (a) algún id de `catalogo[req].equivalencias` está en la despensa, **o** (b) algún `alternativas[].idIngrediente` del ítem de receta está en la despensa. Prioridad: equivalencias > alternativas. Si ninguno aplica: `falta`.
+- **Buckets:** `ahora` (faltan 0 sin sustituciones) · `cambio` (faltan 0 con ≥1 sustitución) · `falta1` (falta 1) · `faltaN` (faltan ≥2).
+- Orden: ahora → cambio → falta1 → faltaN; dentro de cada uno, cobertura desc + nombre asc.
+
+**Básicos de despensa (`BASICOS_CANONICOS`):** sal fina, sal gruesa, pimienta negra, agua, aceite de oliva, aceite de oliva suave, aceite de coco, azúcar mascabo, vinagre de manzana, vinagre de vino. Se asumen siempre disponibles (pre-cargados en la despensa default). El usuario puede sacarlos de su despensa. Futuro: flag en el diccionario canónico de E9.0.
+
+**Despensa persistente:** `localStorage["cf-despensa"]` (array de `idIngrediente`). Default = básicos (resueltos por `despensaDefaultIds(catalogo)`). Futuro: despensa compartida en Firestore por familia (no ahora).
+
+**Pantalla `/que-cocino` (`src/routes/QueCocino.tsx`):**
+- Panel "Mi despensa" colapsable: buscador + chips toggle por ingrediente (GondolaChip letra+color + nombre). Contador "N en casa".
+- Faceta Dieta: Todas / Vegetariana / Keto (mutuamente excluyentes) vía `filtrarRecetas` antes de evaluar.
+- Resultados agrupados por bucket con label ("Cocinás ahora · N", etc.). Cada card: nombre + proteína · tiempo · dificultad + línea de estado (✓ tenés todo / ⇄ usá X en vez de Y / + te falta: A, B…). % de cobertura en chip. Tap → `/recetas/:id`.
+
+**Navegación:** ruta registrada en `App.tsx`. Entrada en `HomeJP`: botón "¿Qué cocino con lo que tengo? / Recetas según tu despensa" al pie del card.
 
 ### 1.2.E9.4 Cambios en v2.0.3 (E9.4 — Sustitución al cocinar)
 
@@ -2227,6 +2249,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.3_que_cocino_con_lo_que_tengo.md`** ✅ **CERRADO (v2.1.0)**: matcher inverso.
+  `evaluarCocinables` puro + 8 tests. Básicos de despensa (10 canonicos). `localStorage`.
+  Ruta `/que-cocino`: despensa colapsable, faceta Dieta, resultados por bucket. Entrada en Home.
+  Cierra ítem 7.2. Ver §1.2.E9.3.
 - **`PROMPT_E9.4_sustitucion_al_cocinar.md`** ✅ **CERRADO (v2.0.3)**: sustitutos al cocinar.
   Helper `sustitutosDeItem` (match por ID, fuentes receta + catálogo, dedup). Línea "o X"
   en `IngredientesPorGondola` + toggle persistido. Recap colapsable en `Cocinar`. 6 tests verdes.
@@ -2492,6 +2518,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.3 — ¿Qué cocino con lo que tengo?** ✅ **HECHO (v2.1.0)** — helper `evaluarCocinables` (buckets ahora/cambio/falta1/faltaN, sustitución por equivalencias y alternativas); básicos de despensa; `localStorage["cf-despensa"]`; ruta `/que-cocino` + entrada en Home. 8 tests. Cierra ítem 7.2. Ver §1.2.E9.3.
 - **E9.4 — Sustitución al cocinar** ✅ **HECHO (v2.0.3)** — helper puro `sustitutosDeItem` (alternativas receta + equivalencias catálogo, dedup por id); línea "o X" en detalle con toggle persistido; recap colapsable en paso a paso. 6 tests. Ver §1.2.E9.4.
 
 ### Lote 8 — Edición en la app y catálogo (del ciclo de diseño post-E7.13)
@@ -2526,6 +2553,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.0.3:** E9.0–E9.2 y E9.4 implementados (E9.3 pendiente). **Pendiente (producción):**
+**Estado en v2.1.0:** E9.0–E9.4 implementados (E9.3 implementado después de E9.4 por orden del cliente). **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.
