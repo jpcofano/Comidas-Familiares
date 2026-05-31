@@ -162,7 +162,7 @@ export function ImportarRecetaRoute() {
             const best = match.sugerencias[0].ingrediente;
             decision = { tipo: "sugerencia", idIngrediente: best.idIngrediente, nombrePreferido: best.nombrePreferido };
           } else {
-            decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" };
+            decision = { tipo: "nuevo", nombre: raw.textoOriginal, categoria: raw.categoriaLLM || "Despensa varios" };
           }
           filasMap.set(canonKey, { raw, match, decision });
         }
@@ -320,6 +320,7 @@ export function ImportarRecetaRoute() {
           pensadaPara: receta.pensadaPara,
           sinLacteos: receta.sinLacteos,
           hidratos: receta.hidratos,
+          ...(receta.esVegetariano !== undefined ? { esVegetariano: receta.esVegetariano } : {}),
           aptoNocheDeADos: receta.aptoNocheDeADos,
           paraJuanPablo: receta.paraJuanPablo,
           paraFamilia: receta.paraFamilia,

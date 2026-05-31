@@ -21,6 +21,10 @@ export interface ParsedIngredienteRaw {
   opcional: boolean;
   notas: string;
   grupoAlternativa?: string; // dos filas con el mismo valor son alternativas; la primera es la "cabeza"
+  // Dimensiones opcionales que el LLM completa solo para ingredientes nuevos (E9.1)
+  categoriaLLM?: string;
+  rolNutricionalLLM?: string[];
+  seccionGondolaLLM?: string;
 }
 
 export interface ParsedPasoRaw {
@@ -45,6 +49,7 @@ export interface ParsedReceta {
   cocina?: Cocina;
   sinLacteos: boolean;
   hidratos: boolean;
+  esVegetariano?: boolean;
   aptoNocheDeADos: AptoNocheDeADos;
   paraJuanPablo: boolean;
   paraFamilia: boolean;
@@ -179,6 +184,9 @@ function parseBloqueReceta(
   const hidratosRaw = kv["hidratos"];
   const hidratos = hidratosRaw !== undefined ? (parseSiNo(hidratosRaw) ?? false) : false;
 
+  const esVegetarianoRaw = kv["esVegetariano"];
+  const esVegetariano = esVegetarianoRaw !== undefined ? (parseSiNo(esVegetarianoRaw) ?? false) : undefined;
+
   const aptoNocheDeADos: AptoNocheDeADos = matchEnum(kv["aptoNocheDeADos"] ?? "", APTO_NOCHE_DE_A_DOS) ?? "No";
 
   const paraJPRaw = kv["paraJuanPablo"];
@@ -205,10 +213,15 @@ function parseBloqueReceta(
   for (const line of ingDataLines) {
     const cells = line.split("|").map(c => c.trim());
     if (cells.length < 5) continue;
-    const [seccion, ingrediente, preparacion, cantidadStr, unidad, opcionalStr = "", notasIng = ""] = cells;
+    // cols 0-6: existentes · cols 7-9: categoria/rol/góndola (E9.1, solo para ingredientes nuevos)
+    const [seccion, ingrediente, preparacion, cantidadStr, unidad, opcionalStr = "", notasIng = "",
+           categoriaLLM = "", rolNutricionalLLMStr = "", seccionGondolaLLM = ""] = cells;
     if (!ingrediente) continue;
 
     const cantResult = parseNumber(cantidadStr);
+    const rolLLM = rolNutricionalLLMStr
+      ? rolNutricionalLLMStr.split(",").map(r => r.trim()).filter(Boolean)
+      : undefined;
     const baseProps = {
       seccion: seccion || "Principal",
       ...(preparacion ? { preparacion } : {}),
@@ -217,6 +230,9 @@ function parseBloqueReceta(
       cantidadMax: cantResult?.max ?? cantResult?.value ?? null,
       unidad: unidad || "",
       notas: notasIng,
+      ...(categoriaLLM    ? { categoriaLLM }    : {}),
+      ...(rolLLM?.length  ? { rolNutricionalLLM: rolLLM } : {}),
+      ...(seccionGondolaLLM ? { seccionGondolaLLM } : {}),
     };
 
     // Split alternativas: "X o Y" → dos filas vinculadas por grupoAlternativa
@@ -293,6 +309,7 @@ function parseBloqueReceta(
       ...(cocina ? { cocina } : {}),
       sinLacteos,
       hidratos,
+      ...(esVegetariano !== undefined ? { esVegetariano } : {}),
       aptoNocheDeADos,
       paraJuanPablo,
       paraFamilia,

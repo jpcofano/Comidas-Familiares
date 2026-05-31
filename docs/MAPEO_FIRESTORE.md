@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.0.0 (E9.0 — proteínas jerárquicas + faceta Dieta + diccionario canónico 265)
+> **Versión**: 2.0.1 (E9.1 — prompt importador con vocabulario canónico + esVegetariano)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,28 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.1 Cambios en v2.0.1 (E9.1 — Prompt del importador con vocabulario canónico)
+
+Blinda el prompt LLM que JP usa para convertir recetas: clasifica los campos de receta como **cerrados** (el LLM elige exactamente de la lista) e **ingredientes como abiertos pero guiados** (el LLM prefiere el nombre canónico si existe; si no, lo agrega clasificado).
+
+**Decisiones zanjadas:**
+
+1. **Distinción cerrado/extensible:** `proteinaPrincipal`, `tipoItem`, `escenarioUso` y demás campos de receta → enum cerrado, el LLM no inventa. Ingredientes → nombre canónico preferido, pero si es nuevo se agrega con las 3 dimensiones ya clasificadas. Esto evita crear ingredientes ambiguos a resolver después.
+
+2. **Vocabulario canónico en el prompt:** lista de 265 `nombrePreferido` agrupados por `categoria`. El LLM usa ese nombre exacto → el matcher del importador lo resuelve como `exacto` (no crea duplicados).
+
+3. **3 columnas nuevas opcionales en `#INGREDIENTES`:** `categoria | rolNutricional | seccionGondola`. Solo se completan para ingredientes nuevos (los canónicos las dejan vacías — la app los toma del catálogo). El parser las lee desde cols 7-9 y las almacena en `ParsedIngredienteRaw` como `categoriaLLM`, `rolNutricionalLLM`, `seccionGondolaLLM`. Retrocompatible: filas sin esas columnas siguen funcionando.
+
+4. **`esVegetariano`** agregado al prompt como campo de `#RECETA` (`Sí/No`). Parseado en `ParsedReceta.esVegetariano` y persistido al crear la receta vía el importador.
+
+5. **Ejemplo actualizado:** `proteinaPrincipal: Aves` (ya no `Pollo`); campo `esVegetariano: No`; un ingrediente canónico (columnas 8-10 vacías) y uno nuevo (columnas 8-10 completas).
+
+6. **Parser (`parseReceta.ts`) — retrocompatibilidad:** el destructuring de celdas ya ignoraba columnas extra. Se extiende para leer cols 7-9. Filas con 7 columnas (formato anterior) siguen parseando igual.
+
+7. **`ImportarReceta.tsx`:** al crear una decisión `"nuevo"` en paso 2, usa `raw.categoriaLLM` como categoría inicial en el dropdown (en vez de `"Despensa varios"` fijo). Si el LLM ya clasificó el ingrediente, JP no tiene que cambiarlo.
+
+**Aplicar en producción:** `npm run e9:importador` (re-seed del promptLLM con `--force`). Sin deploy del front si no se tocó el parser; con deploy si se actualizó `parseReceta.ts` (sí en este caso: `npm run build && firebase deploy --only hosting`).
 
 ### 1.2.E9.0 Cambios en v2.0.0 (E9.0 — Proteínas jerárquicas + faceta Dieta + diccionario canónico)
 
@@ -2176,6 +2198,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.1_blindar_prompt_generador.md`** ✅ **CERRADO (v2.0.1)**: prompt LLM con
+  vocabulario canónico (265 ingredientes por categoría). 3 columnas nuevas en `#INGREDIENTES`
+  para clasificar ingredientes nuevos. `esVegetariano` en `#RECETA`. Parser retrocompatible.
+  `categoriaLLM` pre-llena el dropdown en el importador. Ver §1.2.E9.1.
 - **`PROMPT_E9.0_proteinas_jerarquicas_y_diccionario.md`** ✅ **CERRADO (v2.0.0)**:
   proteínas jerárquicas (13 planas → 11 hojas en 5 grupos, `GRUPOS_PROTEINA`); faceta Dieta
   (`esVegetariano`, `esKeto`); diccionario canónico 265 ingredientes + 5 correcciones de
@@ -2455,8 +2481,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.0.0:** Etapas 0–8 cerradas. E9.0 implementado: proteínas jerárquicas, faceta
-Dieta, diccionario canónico de ingredientes. **Pendiente de aplicar en Firestore** (scripts
-listos: `update-catalogo-ingredientes.ts`, `migrate-proteinas-e9.ts`, `seed-config-importador
---force`). Una vez ejecutados los scripts, el front deployado ya mostrará los nuevos filtros.
-**Sin deuda técnica viva en código.**
+**Estado en v2.0.1:** E9.0–E9.1 implementados. Scripts de datos ya corridos. **Pendiente:**
+`npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
+--only hosting` (parseReceta.ts cambió). Sin deuda técnica viva en código.
