@@ -350,6 +350,9 @@ export function BibliotecaRoute() {
             <span>Importar</span>
           </Link>
         )}
+        <Link to="/biblioteca/catalogo" className="tab-action">
+          <span>Ingredientes</span>
+        </Link>
       </div>
 
       <div className="card">
