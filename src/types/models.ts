@@ -93,6 +93,7 @@ export interface Ingrediente {
   vecesUsado: number;
   ambiguo: boolean;
   origen: "seed" | "import" | "manual";
+  equivalencias?: string[];          // idIngrediente[] — sustitutos generales del catálogo
   fechaCreacion?: FirestoreTimestamp;
   ultimaModificacion?: FirestoreTimestamp;
 }

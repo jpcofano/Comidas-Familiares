@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, Pencil, X } from "lucide-react";
+import { ChevronLeft, Pencil, X, ArrowLeftRight } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import {
   getCatalogo,
@@ -8,6 +8,8 @@ import {
   crearIngrediente,
   eliminarIngrediente,
   proximoIdIngrediente,
+  setEquivalencia,
+  quitarEquivalencia,
 } from "../data/ingredientes";
 import { getRecetas } from "../data/recetas";
 import { normalizeText } from "../lib/canonical";
@@ -73,12 +75,13 @@ function IngredienteRow({ ing, onClick }: { ing: Ingrediente; onClick: () => voi
 interface SheetProps {
   ingToEdit: Ingrediente | null;  // null = create new
   recetasDelIngrediente: Receta[];
+  catalogo: Ingrediente[];
   onClose: () => void;
   onSaved: (msg: string) => void;
   onDeleted: () => void;
 }
 
-function IngredienteSheet({ ingToEdit, recetasDelIngrediente, onClose, onSaved, onDeleted }: SheetProps) {
+function IngredienteSheet({ ingToEdit, recetasDelIngrediente, catalogo, onClose, onSaved, onDeleted }: SheetProps) {
   const navigate = useNavigate();
   const isNew = ingToEdit === null;
 
@@ -86,10 +89,21 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, onClose, onSaved, 
   const [categoria, setCategoria] = useState(ingToEdit?.categoria ?? CATEGORIAS_INGREDIENTE[0]);
   const [seccion, setSeccion] = useState(ingToEdit?.seccionGondola ?? "Despensa / otros");
   const [roles, setRoles] = useState<string[]>(ingToEdit?.rolNutricional ?? []);
+  const [equivIds, setEquivIds] = useState<string[]>(ingToEdit?.equivalencias ?? []);
   const [guardando, setGuardando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmEliminar, setConfirmEliminar] = useState(false);
   const [eliminando, setEliminando] = useState(false);
+
+  async function handleAgregarEquiv(idB: string) {
+    const r = await setEquivalencia(ingToEdit!.idIngrediente, idB);
+    if (r.ok) setEquivIds((prev) => [...prev, idB]);
+  }
+
+  async function handleQuitarEquiv(idB: string) {
+    const r = await quitarEquivalencia(ingToEdit!.idIngrediente, idB);
+    if (r.ok) setEquivIds((prev) => prev.filter((id) => id !== idB));
+  }
 
   function toggleRol(rol: string) {
     setRoles((prev) => prev.includes(rol) ? prev.filter((r) => r !== rol) : [...prev, rol]);
@@ -240,6 +254,55 @@ function IngredienteSheet({ ingToEdit, recetasDelIngrediente, onClose, onSaved, 
             ))}
           </div>
         </div>
+
+        {/* Equivalencias / sustitutos */}
+        {!isNew && (
+          <div style={{ marginBottom: "var(--space-4)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-1)", marginBottom: "var(--space-1)" }}>
+              <ArrowLeftRight size={12} style={{ color: "var(--accent)", flexShrink: 0 }} aria-hidden />
+              <p style={{ ...labelStyle, margin: 0 }}>Se puede reemplazar por</p>
+            </div>
+            <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-2)", fontStyle: "italic" }}>
+              Equivalencias del catálogo · distinto de sinónimos y del "X o Y" de una receta puntual.
+            </p>
+            {equivIds.length > 0 && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)", marginBottom: "var(--space-2)" }}>
+                {equivIds.map((id) => {
+                  const ing = catalogo.find((c) => c.idIngrediente === id);
+                  return (
+                    <span key={id} style={{
+                      display: "inline-flex", alignItems: "center", gap: 4,
+                      padding: "3px 8px", borderRadius: "var(--radius-full)",
+                      background: "var(--accent-soft)", color: "var(--accent)",
+                      border: "1px solid var(--accent-soft)", fontSize: "var(--fs-xs)",
+                    }}>
+                      {ing?.nombrePreferido ?? id}
+                      <button
+                        onClick={() => handleQuitarEquiv(id)}
+                        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--accent)", padding: 0, display: "flex", lineHeight: 1 }}
+                        aria-label={`Quitar ${ing?.nombrePreferido ?? id}`}
+                      >
+                        <X size={11} />
+                      </button>
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+            <select
+              value=""
+              onChange={(e) => { if (e.target.value) handleAgregarEquiv(e.target.value); }}
+              style={{ ...fieldStyle, width: "auto" }}
+            >
+              <option value="">+ Agregar sustituto…</option>
+              {catalogo
+                .filter((c) => c.idIngrediente !== ingToEdit!.idIngrediente && !equivIds.includes(c.idIngrediente))
+                .sort((a, b) => a.nombrePreferido.localeCompare(b.nombrePreferido, "es"))
+                .map((c) => <option key={c.idIngrediente} value={c.idIngrediente}>{c.nombrePreferido}</option>)
+              }
+            </select>
+          </div>
+        )}
 
         {/* En N recetas */}
         {!isNew && (
@@ -552,6 +615,7 @@ export function CatalogoIngredientesRoute() {
           key={sheet.ing?.idIngrediente ?? "nuevo"}
           ingToEdit={sheet.ing}
           recetasDelIngrediente={sheet.ing ? (recetasIndex.get(sheet.ing.idIngrediente) ?? []) : []}
+          catalogo={catalogo}
           onClose={() => setSheet(null)}
           onSaved={handleSaved}
           onDeleted={handleDeleted}

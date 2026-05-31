@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.4 (E8.6 — editor de clasificación de receta en la app)
+> **Versión**: 1.9.5 (E8.7 — equivalencias de ingredientes: campo + UI + simetría garantizada)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,34 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E8.7 Cambios en v1.9.5 (E8.7 — Equivalencias de ingredientes)
+
+Tercer concepto de similitud en el catálogo. Clarificación del modelo de datos:
+
+| Campo | Nivel | Semántica |
+|---|---|---|
+| `sinonimos: string[]` | catálogo | Otros **nombres** del mismo ingrediente ("palta" = "aguacate") |
+| `grupoAlternativa` / `alternativas` | receta | El "X *o* Y" propio de **una** receta puntual (de la capa de importación) |
+| `equivalencias: string[]` | catálogo (**nuevo**) | IDs de sustitutos generales reutilizables en cualquier receta |
+
+**Decisiones zanjadas:**
+
+1. **Campo `equivalencias?: string[]`** en `Ingrediente` (`models.ts`) — lista de `idIngrediente` de sustitutos generales. Opcional (ingredientes sin equivalencias simplemente no tienen el campo).
+
+2. **Relación simétrica**: la reciprocidad se mantiene en la capa de datos mediante `writeBatch`. `setEquivalencia(A, B)` escribe `arrayUnion(B)` en A y `arrayUnion(A)` en B en una sola operación atómica. `quitarEquivalencia` hace lo mismo con `arrayRemove`. Esto garantiza que no quedan estados asimétricos (A sabe de B pero B no sabe de A).
+
+3. **Limpieza al borrar**: `eliminarIngrediente` primero consulta `where("equivalencias", "array-contains", id)` para encontrar todos los que referencian al ingrediente borrado, y los limpia con un batch de `arrayRemove` antes de hacer el `deleteDoc`. Evita punteros colgados.
+
+4. **UI en el catálogo** (`CatalogoIngredientes.tsx`, sección "Se puede reemplazar por"):
+   - Chips accent (`--accent-soft` / `--accent`) con × para quitar — llama `quitarEquivalencia` al instante.
+   - Select "＋ Agregar sustituto…" filtrando el propio ingrediente y los ya agregados — llama `setEquivalencia` al instante.
+   - Nota diferenciadora de sinónimos y alternativas de receta.
+   - Funciona en light y dark (tokens semánticos).
+
+5. **Tests de simetría** — nuevo `src/data/equivalencias.test.ts` (6 tests): verifica que tanto `setEquivalencia` como `quitarEquivalencia` llaman `batch.update` dos veces (una por doc) y `batch.commit` una vez, con el ID correcto en cada llamada.
+
+6. **Firestore rules** — `/ingredientes/{id}` tiene `allow write: if isOwner()`. JP puede hacer `update` del nuevo campo. Sin cambios.
 
 ### 1.2.E8.6 Cambios en v1.9.4 (E8.6 — Editor de clasificación de receta en la app)
 
@@ -1335,6 +1363,7 @@ Mismo lugar, "Add field" a `miembros` con un nuevo memberId (ej: `abuela`) y su 
   ambiguo: false,                      // true = ingresado por importador, dimensiones pendientes
 
   origen: "seed",                      // "seed" | "import" | "manual"
+  equivalencias?: ["ING-0042"],        // idIngrediente[] — sustitutos generales (E8.7)
   fechaCreacion?: Timestamp,
   ultimaModificacion?: Timestamp
 }
@@ -2073,6 +2102,11 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E8.7_equivalencias.md`** ✅ **CERRADO (v1.9.5)**: equivalencias de ingredientes.
+  Campo `equivalencias?: string[]` en `Ingrediente`. Simetría via `writeBatch` en
+  `setEquivalencia` / `quitarEquivalencia`. Limpieza de punteros colgados en
+  `eliminarIngrediente`. UI: chips accent + select en el sheet del catálogo. 6 tests de
+  simetría en `equivalencias.test.ts`. Ver §1.2.E8.7.
 - **`PROMPT_E8.6_editor_clasificacion_receta.md`** ✅ **CERRADO (v1.9.4)**: editor de
   clasificación de receta en la app. Botón lápiz (JP) junto al título + chip "Sin clasificar
   · completar" (warn, punteado) cuando falta `cocina`. Bottom-sheet con selects de todos los
@@ -2319,8 +2353,9 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 - **E8.6 — Editor de clasificación de receta** ✅ **HECHO (v1.9.4)** — bloque Clasificación
   editable desde el detalle (lápiz + chip "Sin clasificar" para JP). Edición completa de
   receta (nombre/ingredientes/pasos) sigue siendo posible feature futura.
-- **E8.7 — Sustituciones / equivalencias** de ingredientes (manteca ↔ aceite), sobre
-  `sinonimos` / `alternativas` + matcher E3.4.9. Backlog.
+- **E8.7 — Equivalencias de ingredientes** ✅ **HECHO (v1.9.5)** — campo `equivalencias?`
+  en catálogo; relación simétrica vía `writeBatch`; UI en el sheet (chips accent + select);
+  limpieza al borrar. Tests de simetría. Ver §1.2.E8.7.
 - **E8.8 — Detección de duplicados al importar** (entra "ajo", ya existe "Ajo" → sugerir
   fusión en vez de crear ambiguo). Backlog.
 
@@ -2336,7 +2371,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.4:** E8.6 cierra el gap de E7.13 pto 6: editor de clasificación de receta
-en la app (lápiz + chip "Sin clasificar"), desbloqueando la migración de las 78 recetas viejas
-desde el celular. E8.3, E8.5 y E8.6 cerrados; E8.7–E8.8 en backlog. Lo postergado (push E6.2,
-dashboard D.3, opcionales §9.*) se reactiva caso por caso. **Sin deuda técnica viva.**
+**Estado en v1.9.5:** E8.3–E8.7 cerrados. E8.8 (detección de duplicados al importar) en
+backlog. Lo postergado (push E6.2, dashboard D.3, opcionales §9.*) se reactiva caso por caso.
+**Sin deuda técnica viva.**
