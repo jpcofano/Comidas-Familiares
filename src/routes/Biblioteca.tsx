@@ -7,7 +7,7 @@ import { getMenus, deriveMenuMetadata } from "../data/menus";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta } from "../lib/filtros";
 import type { Receta, Menu, MenuDerived } from "../types/models";
-import { TIPOS_ITEM, PROTEINAS, COCINAS } from "../types/models";
+import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -158,7 +158,7 @@ function TabRecetas() {
   const resultado = useMemo(() => filtrarRecetas(recetas, filtros), [recetas, filtros]);
   const filtrosActivos = hayFiltrosActivos(filtros);
 
-  function toggle(campo: "sinLacteos" | "sinHidratos") {
+  function toggle(campo: "sinLacteos" | "sinHidratos" | "esVegetariano" | "esKeto") {
     setFiltros(f => ({ ...f, [campo]: !f[campo] }));
   }
 
@@ -214,7 +214,12 @@ function TabRecetas() {
           style={selectStyle}
         >
           <option value="">Todas las proteínas</option>
-          {PROTEINAS.map(p => <option key={p} value={p}>{p}</option>)}
+          {GRUPOS_PROTEINA_ORDEN.map(grupo => (
+            <optgroup key={grupo} label={grupo}>
+              <option value={grupo}>Todas: {grupo}</option>
+              {GRUPOS_PROTEINA[grupo].map(p => <option key={p} value={p}>{p}</option>)}
+            </optgroup>
+          ))}
         </select>
       </div>
 
@@ -244,6 +249,20 @@ function TabRecetas() {
           style={{ fontSize: "var(--fs-sm)" }}
         >
           Sin hidratos
+        </button>
+        <button
+          className={`btn ${filtros.esVegetariano ? "btn-primary" : "btn-secondary"}`}
+          onClick={() => toggle("esVegetariano")}
+          style={{ fontSize: "var(--fs-sm)" }}
+        >
+          Vegetariana
+        </button>
+        <button
+          className={`btn ${filtros.esKeto ? "btn-primary" : "btn-secondary"}`}
+          onClick={() => toggle("esKeto")}
+          style={{ fontSize: "var(--fs-sm)" }}
+        >
+          Keto
         </button>
         {filtrosActivos && (
           <button

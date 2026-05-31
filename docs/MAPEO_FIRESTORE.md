@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.9.6 (E8.8 — detección de duplicados al crear ingrediente)
+> **Versión**: 2.0.0 (E9.0 — proteínas jerárquicas + faceta Dieta + diccionario canónico 265)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,68 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.0 Cambios en v2.0.0 (E9.0 — Proteínas jerárquicas + faceta Dieta + diccionario canónico)
+
+Tres bloques en un prompt; el orden de aplicación en producción es C → B → A.
+
+#### BLOQUE C — Diccionario canónico de ingredientes (265 entradas)
+
+`scripts/seed-data/catalogo_ingredientes.json` — fuente de verdad. Incluye el catálogo existente de 177 + 88 ingredientes argentinos comunes. **5 correcciones de datos corruptos:**
+
+| ID | Ingrediente | Campo | Antes | Ahora |
+|---|---|---|---|---|
+| ING-0087 | Jengibre fresco | categoria/rol/góndola | Lacteo/[Proteina,Grasa]/Lacteos | Hierba y especia/[Fibra/Vegetal]/Verduleria |
+| ING-0159 | Tomate fresco | categoria/rol/góndola | Lacteo/[Proteina,Grasa]/Lacteos | Verdura/[Fibra/Vegetal]/Verduleria |
+| ING-0146 | Repollo blanco | categoria/rol/góndola | Carne/[Proteina]/Carniceria | Verdura/[Fibra/Vegetal]/Verduleria |
+| ING-0113 | Palta | categoria/rol | Fruta/[Grasa,Fibra] | Verdura/[Grasa] |
+| ING-0109 | Nuez moscada | categoria | Semilla y fruto seco | Hierba y especia |
+
+**Criterios canónicos:** `categoria` por uso culinario (palta y tomate = Verdura); productos compuestos por su forma final (passata = Despensa, leche de coco = Despensa — no lácteo); `rolNutricional` independiente de `categoria` (palta = Verdura pero rol Grasa, relevante keto); `seccionGondola` por punto de compra.
+
+Script: `scripts/update-catalogo-ingredientes.ts` — idempotente, solo actualiza `/ingredientes`, sin wipe de otras colecciones.
+
+#### BLOQUE B — Proteínas jerárquicas
+
+`PROTEINAS` pasa de **13 valores planos** a **11 hojas en 5 grupos**. Revierte los meta-valores `Vegetariana`, `Mixta`, `Fiambre` y renombra `Pollo` → `Aves` (más correcto — incluye pollo, pavo, etc.).
+
+**Nuevos exports en `models.ts`:**
+- `GRUPOS_PROTEINA: Record<string, Proteina[]>` — jerarquía 2 niveles
+- `GRUPOS_PROTEINA_ORDEN` — orden canónico de grupos
+- `GrupoProteina` — tipo para los nombres de grupo
+
+**Filtro en `filtros.ts`:** si el valor del filtro coincide con una clave de `GRUPOS_PROTEINA` → filtra por cualquier hoja del grupo; si no, match exacto contra `proteinaPrincipal`. Permite "Todas: Carnes rojas" para filtrar Vacuna + Cerdo + Cordero juntos.
+
+**UI:** selects reemplazados por `<optgroup>` en `Biblioteca.tsx` y `DetalleReceta.tsx` (classification sheet).
+
+**Migración Firestore:** `scripts/migrate-proteinas-e9.ts` — transforma las 78 recetas:
+- `Pollo` → `Aves` (6 recetas)
+- `Fiambre` → `Cerdo` (1 receta, jamón asumido)
+- `Vegetariana` → `Vegetal` + `esVegetariano: true` (15 recetas)
+- `Mixta` — 3 recetas con decisiones por ID: REC-1012 → `Aves`, REC-1503 → `Huevos`, REC-1104 → `Vegetal` + `esVegetariano: true`
+- Todas → `esKeto: !hidratos`
+
+#### BLOQUE A — Faceta Dieta
+
+Campos nuevos opcionales en `Receta`: `esVegetariano?: boolean` y `esKeto?: boolean`. Son **atributos booleanos filtrables**, no ramas del árbol de categorías. `Vegetariana` era un régimen metido en proteína por error; ahora queda como atributo propio.
+
+Filtros nuevos en `FiltrosReceta` + `filtrarRecetas`: `esVegetariano`, `esKeto`. Botones toggle "Vegetariana" y "Keto" en `Biblioteca.tsx`.
+
+#### Sincronización 4 puntos (lección E5.2)
+
+1. `models.ts` (fuente de verdad) — ✅ PROTEINAS actualizadas
+2. `scripts/bootstrap-config.ts` — ✅ corregido drift (tenía 10 valores, ahora tiene 11)
+3. `scripts/seed-config-importador.ts` — ✅ línea `proteinaPrincipal:` actualizada a 11 hojas. Correr con `--force` para actualizar Firestore
+4. `src/import/parseReceta.ts` — ✅ importa de `models.ts`, se sincroniza automáticamente
+
+**Para aplicar en producción (en orden):**
+```
+npx ts-node --esm scripts/update-catalogo-ingredientes.ts          # BLOQUE C
+npx ts-node --esm scripts/migrate-proteinas-e9.ts --dry-run        # revisar
+npx ts-node --esm scripts/migrate-proteinas-e9.ts                  # BLOQUE B data
+npx ts-node --esm scripts/seed-config-importador.ts --force        # sync prompt LLM
+npm run build && firebase deploy --only hosting                    # deploy front
+```
 
 ### 1.2.E8.8 Cambios en v1.9.6 (E8.8 — Detección de duplicados al crear ingrediente)
 
@@ -2114,6 +2176,11 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.0_proteinas_jerarquicas_y_diccionario.md`** ✅ **CERRADO (v2.0.0)**:
+  proteínas jerárquicas (13 planas → 11 hojas en 5 grupos, `GRUPOS_PROTEINA`); faceta Dieta
+  (`esVegetariano`, `esKeto`); diccionario canónico 265 ingredientes + 5 correcciones de
+  datos; sync 4 puntos (models, bootstrap, importador, parser); scripts de migración y
+  actualización de catálogo. Ver §1.2.E9.0.
 - **`PROMPT_E8.8_deteccion_duplicados.md`** ✅ **CERRADO (v1.9.6)**: detección de duplicados.
   Helper puro `detectarDuplicado(nombre, catMap)` (canonico + sinónimos). Catálogo editor:
   warning inline + escape consciente "Crear de todas formas". Importer paso 2: `BadgeDuplicado`
@@ -2388,5 +2455,8 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v1.9.6:** Etapa 8 completa — E8.0–E8.8 cerrados. Lo postergado (push E6.2,
-dashboard D.3, opcionales §9.*) se reactiva caso por caso. **Sin deuda técnica viva.**
+**Estado en v2.0.0:** Etapas 0–8 cerradas. E9.0 implementado: proteínas jerárquicas, faceta
+Dieta, diccionario canónico de ingredientes. **Pendiente de aplicar en Firestore** (scripts
+listos: `update-catalogo-ingredientes.ts`, `migrate-proteinas-e9.ts`, `seed-config-importador
+--force`). Una vez ejecutados los scripts, el front deployado ya mostrará los nuevos filtros.
+**Sin deuda técnica viva en código.**

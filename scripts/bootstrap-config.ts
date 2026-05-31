@@ -61,8 +61,13 @@ const diccionarios = {
     "Hidrato opcional", "Componente"
   ],
   proteinas: [
-    "Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado",
-    "Mariscos", "Huevos", "Legumbres", "Mixta", "Vegetariana"
+    // E9.0: jerarquía 2 niveles — estas son las hojas (valores de recetas)
+    "Vacuna", "Cerdo", "Cordero",           // Carnes rojas
+    "Aves",                                  // ex-Pollo
+    "Pescado", "Mariscos",
+    "Huevos",
+    "Legumbres", "Semillas", "Frutos secos", // Vegetales proteicos
+    "Vegetal",                               // ex-Vegetariana/Mixta sin proteína
   ],
   escenarios: ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"],
   climaPlato: ["Liviano", "Medio", "Potente"],

@@ -26,14 +26,28 @@ export const TIPOS_ITEM = [
 export type TipoItem = typeof TIPOS_ITEM[number];
 
 export const PROTEINAS = [
-  // Proteína animal
-  "Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado", "Mariscos", "Huevos", "Fiambre",
-  // Proteína vegetal
-  "Legumbres", "Semillas", "Frutos secos",
-  // Meta-valores
-  "Mixta", "Vegetariana",
+  "Vacuna", "Cerdo", "Cordero",           // Carnes rojas
+  "Aves",                                  // ex-"Pollo" (E9.0)
+  "Pescado", "Mariscos",                   // Pescados
+  "Huevos",
+  "Legumbres", "Semillas", "Frutos secos", // Vegetales proteicos
+  "Vegetal",                               // Sin proteína animal — ex-"Vegetariana"/"Mixta"
 ] as const;
 export type Proteina = typeof PROTEINAS[number];
+
+// Jerarquía de 2 niveles: grupo → hojas. Permite filtrar por grupo O por hoja.
+export const GRUPOS_PROTEINA: Record<string, Proteina[]> = {
+  "Carnes rojas":        ["Vacuna", "Cerdo", "Cordero"],
+  "Aves":                ["Aves"],
+  "Pescados y mariscos": ["Pescado", "Mariscos"],
+  "Huevos":              ["Huevos"],
+  "Vegetales":           ["Legumbres", "Semillas", "Frutos secos", "Vegetal"],
+};
+
+export const GRUPOS_PROTEINA_ORDEN = [
+  "Carnes rojas", "Aves", "Pescados y mariscos", "Huevos", "Vegetales",
+] as const;
+export type GrupoProteina = typeof GRUPOS_PROTEINA_ORDEN[number];
 
 export const ESCENARIOS = ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"] as const;
 export type Escenario = typeof ESCENARIOS[number];
@@ -144,6 +158,8 @@ export interface Receta {
 
   sinLacteos: boolean;
   hidratos: boolean;
+  esVegetariano?: boolean;  // true = sin proteína animal (E9.0)
+  esKeto?: boolean;          // true = !hidratos (E9.0, derivado)
   aptoNocheDeADos: AptoNocheDeADos;
   paraJuanPablo: boolean;
   paraFamilia: boolean;

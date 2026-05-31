@@ -14,8 +14,9 @@ import { PasosPreview } from "../components/receta/PasosPreview";
 import { AccionesPlan } from "../components/receta/AccionesPlan";
 import { CocinarSticky } from "../components/receta/CocinarSticky";
 import {
-  COCINAS, PROTEINAS, ESCENARIOS, DIFICULTADES, COSTOS,
+  COCINAS, ESCENARIOS, DIFICULTADES, COSTOS,
   APTO_NOCHE_DE_A_DOS, CLIMAS_PLATO, PENSADA_PARA,
+  GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN,
 } from "../types/models";
 import type { Receta, Plan } from "../types/models";
 
@@ -174,8 +175,18 @@ function ClasificacionSheet({ receta, onClose, onSaved }: ClasificacionSheetProp
 
         <SelectField label="Cocina de origen" value={cocina} onChange={setCocina}
           options={COCINAS} placeholder="— Sin clasificar —" />
-        <SelectField label="Proteína principal" value={proteinaPrincipal} onChange={setProteinaPrincipal}
-          options={PROTEINAS} placeholder="— Seleccionar —" />
+        {/* Proteína — select jerárquico con optgroup */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Proteína principal</label>
+          <select value={proteinaPrincipal} onChange={e => setProteinaPrincipal(e.target.value)} style={fieldStyle}>
+            <option value="">— Seleccionar —</option>
+            {GRUPOS_PROTEINA_ORDEN.map(grupo => (
+              <optgroup key={grupo} label={grupo}>
+                {GRUPOS_PROTEINA[grupo].map(p => <option key={p} value={p}>{p}</option>)}
+              </optgroup>
+            ))}
+          </select>
+        </div>
         <SelectField label="Escenario de uso" value={escenarioUso} onChange={setEscenarioUso}
           options={ESCENARIOS} placeholder="— Seleccionar —" />
         <SelectField label="Dificultad" value={dificultad} onChange={setDificultad}

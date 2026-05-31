@@ -39,11 +39,11 @@ function makeReceta(overrides: Partial<Receta>): Receta {
 }
 
 const recetaVacuna   = makeReceta({ idReceta: "REC-001", nombre: "Bondiola braseada", nombreCanonico: "bondiola braseada", tipoItem: "Receta principal", proteinaPrincipal: "Vacuna", sinLacteos: false, hidratos: true });
-const recetaPollo    = makeReceta({ idReceta: "REC-002", nombre: "Pollo al horno", nombreCanonico: "pollo al horno", tipoItem: "Receta principal", proteinaPrincipal: "Pollo", sinLacteos: true, hidratos: false });
+const recetaAves     = makeReceta({ idReceta: "REC-002", nombre: "Pollo al horno", nombreCanonico: "pollo al horno", tipoItem: "Receta principal", proteinaPrincipal: "Aves", sinLacteos: true, hidratos: false });
 const recetaEntrada  = makeReceta({ idReceta: "REC-003", nombre: "Langostinos al ajillo", nombreCanonico: "langostinos al ajillo", tipoItem: "Entrada", proteinaPrincipal: "Mariscos", sinLacteos: true, hidratos: false });
-const recetaPostre   = makeReceta({ idReceta: "REC-004", nombre: "Peras al Malbec", nombreCanonico: "peras al malbec", tipoItem: "Postre", proteinaPrincipal: "Vegetariana", sinLacteos: true, hidratos: true });
+const recetaPostre   = makeReceta({ idReceta: "REC-004", nombre: "Peras al Malbec", nombreCanonico: "peras al malbec", tipoItem: "Postre", proteinaPrincipal: "Vegetal", sinLacteos: true, hidratos: true, esVegetariano: true });
 
-const RECETAS = [recetaVacuna, recetaPollo, recetaEntrada, recetaPostre];
+const RECETAS = [recetaVacuna, recetaAves, recetaEntrada, recetaPostre];
 
 // ─── Sin filtros ──────────────────────────────────────────────────────────────
 
@@ -76,17 +76,50 @@ describe("filtrarRecetas — tipoItem", () => {
 
 // ─── Filtro por proteína ──────────────────────────────────────────────────────
 
-describe("filtrarRecetas — proteína", () => {
-  it("filtra por proteína Pollo", () => {
-    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Pollo" });
+describe("filtrarRecetas — proteína (hoja)", () => {
+  it("filtra por hoja Aves", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Aves" });
     expect(r).toHaveLength(1);
     expect(r[0].idReceta).toBe("REC-002");
   });
 
-  it("filtra por proteína Mariscos", () => {
+  it("filtra por hoja Mariscos", () => {
     const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Mariscos" });
     expect(r).toHaveLength(1);
     expect(r[0].idReceta).toBe("REC-003");
+  });
+});
+
+describe("filtrarRecetas — proteína (grupo)", () => {
+  it("filtra por grupo Carnes rojas incluye Vacuna", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Carnes rojas" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-001");
+  });
+
+  it("filtra por grupo Aves incluye Aves", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Aves" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-002");
+  });
+
+  it("filtra por grupo Vegetales incluye Vegetal", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, proteina: "Vegetales" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-004");
+  });
+});
+
+describe("filtrarRecetas — dieta (esVegetariano, esKeto)", () => {
+  it("filtra por esVegetariano", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, esVegetariano: true });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-004");
+  });
+
+  it("esKeto no filtra nada si ninguna receta tiene esKeto", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, esKeto: true });
+    expect(r).toHaveLength(0);
   });
 });
 
@@ -139,7 +172,7 @@ describe("filtrarRecetas — búsqueda", () => {
 
 describe("filtrarRecetas — combinados", () => {
   it("tipoItem + proteína combinados", () => {
-    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Receta principal", proteina: "Pollo" });
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, tipoItem: "Receta principal", proteina: "Aves" });
     expect(r).toHaveLength(1);
     expect(r[0].idReceta).toBe("REC-002");
   });

@@ -43,7 +43,7 @@ FORMATO ESPERADO:
 #RECETA
 nombre: [nombre completo de la receta]
 tipoItem: [uno de exactamente: Receta principal, Entrada, Guarnición, Postre, Panificado, Snack, Desayuno, Conserva, Hidrato opcional]
-proteinaPrincipal: [uno de exactamente: Vacuna, Cerdo, Pollo, Cordero, Pescado, Mariscos, Huevos, Fiambre, Legumbres, Semillas, Frutos secos, Mixta, Vegetariana]
+proteinaPrincipal: [uno de exactamente: Vacuna, Cerdo, Cordero, Aves, Pescado, Mariscos, Huevos, Legumbres, Semillas, Frutos secos, Vegetal]
 escenarioUso: [uno de exactamente: Noche de a dos, Cocina rápida, Cena Especial, Celebración]
 porciones: [número, ej: 4 — o rango, ej: 4 a 6]
 dificultad: [uno de exactamente: Baja, Media, Media-alta, Alta]
