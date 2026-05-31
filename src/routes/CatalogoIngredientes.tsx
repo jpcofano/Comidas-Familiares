@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft, Pencil, X, ArrowLeftRight } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import {
@@ -439,10 +439,7 @@ export function CatalogoIngredientesRoute() {
       });
   }, [isJP]);
 
-  if (!isJP) {
-    navigate("/biblioteca", { replace: true });
-    return null;
-  }
+  if (!isJP) return <Navigate to="/biblioteca" replace />;
 
   function showToast(msg: string) {
     setToast(msg);
