@@ -98,9 +98,6 @@ describe("evaluarCocinables", () => {
       ["b", makeIng("b")], ["c", makeIng("c")], ["d", makeIng("d")],
     ]);
     const despensa = new Set(["a", "b", "eq-a"]);
-    const r1 = makeReceta("Ahora", [makeItem("a"), makeItem("b")]);         // ahora
-    const r2 = makeReceta("Cambio", [makeItem("a"), makeItem("b"), makeItem("a", { alternativas: [{ idIngrediente: "eq-a" }] })]);  // hmm let me do a simpler case
-    // Simpler: one that needs eq-a (in despensa via equivalencia of "a")
     const r3 = makeReceta("Falta1", [makeItem("a"), makeItem("c")]);        // falta1: c no está
     const r4 = makeReceta("FaltaN", [makeItem("c"), makeItem("d")]);        // faltaN: c,d no están
     const recetaAhora = makeReceta("ZAhora", [makeItem("a"), makeItem("b")]);
