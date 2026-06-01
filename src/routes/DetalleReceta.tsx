@@ -11,6 +11,9 @@ import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibil
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
 import { MetaCards } from "../components/receta/MetaCards";
 import { RecetaPill } from "../components/receta/RecetaPill";
+import { MacrosCard } from "../components/receta/MacrosCard";
+import { getCatalogo } from "../data/ingredientes";
+import type { Ingrediente } from "../types/models";
 import { subscribeVisibilidad, toggleVisibilidadReceta } from "../data/visibilidad";
 import type { VisibilidadBiblioteca } from "../types/models";
 import { IngredientesPorGondola } from "../components/receta/IngredientesPorGondola";
@@ -264,6 +267,7 @@ export function DetalleRecetaRoute() {
   const [confirm, setConfirm] = useState<{ mensaje: string; accion: () => void } | null>(null);
   const [loadingAccion, setLoadingAccion] = useState<"especial" | "extra" | "enproceso" | null>(null);
   const [visibilidad, setVisibilidad] = useState<VisibilidadBiblioteca>({ maria: [], sofia: [], federico: [] });
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente>>(new Map());
   const [sheetOpen, setSheetOpen] = useState(false);
 
   // Carga la receta
@@ -277,6 +281,9 @@ export function DetalleRecetaRoute() {
       .catch(() => setErrorReceta("No se pudo cargar la receta."))
       .finally(() => setLoadingReceta(false));
   }, [idReceta]);
+
+  // Catálogo para macros (cacheado — sin costo extra)
+  useEffect(() => { getCatalogo().then(setCatalogo).catch(() => {}); }, []);
 
   // Suscripción a planes activos (todos — JP para acciones, miembros para gate de cocinar)
   useEffect(() => {
@@ -489,7 +496,12 @@ export function DetalleRecetaRoute() {
         }
       </div>
 
-      {/* 6. Ingredientes */}
+      {/* 6. Macros por porción */}
+      {catalogo.size > 0 && (
+        <MacrosCard receta={receta} catalogoById={catalogo} />
+      )}
+
+      {/* 7. Ingredientes */}
       {receta.ingredientes.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
           <SectionTitle>Ingredientes</SectionTitle>

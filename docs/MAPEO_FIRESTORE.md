@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.4.1 (E11.2 — Workflow LLM + seed idempotente para macros del catálogo)
-> **Fecha**: 2026-05-31
+> **Versión**: 2.5.0 (E11.3 — UI de macros: tarjeta por porción en detalle de receta + agregado en menú)
+> **Fecha**: 2026-06-01
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -143,6 +143,18 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.3 Cambios en v2.5.0 (E11.3 — UI de macros: detalle de receta + menú)
+
+Tercera y última etapa de **Etapa 11 — Macros nutricionales**. Muestra el resultado del helper `macrosDeReceta()` (E11.1) sobre los datos del catálogo (E11.2).
+
+**`src/components/receta/MacrosCard.tsx` (nuevo):** tarjeta de macros por porción. Recibe `receta` y `catalogoById`; llama `macrosDeReceta()` internamente. Hidratos netos como número estrella (`var(--primary)`, 32px bold). Secundarios en grilla 3-col: kcal, Proteínas, Grasas, Fibra, Hidratos totales. Pie de cobertura ("Estimado sobre N de M ingredientes"; parcial en `var(--warn-text)`). Cobertura 0 → estado vacío con borde punteado ("Sin datos de macros para esta receta todavía.").
+
+**`src/routes/DetalleReceta.tsx`:** carga el catálogo con `getCatalogo()` (cacheado, sin costo extra) y renderiza `<MacrosCard>` entre las pills y la sección de ingredientes.
+
+**`src/routes/SeleccionarComponenteMenu.tsx`:** agrega tarjeta de macros del menú completo. Carga el catálogo con `getCatalogo()`. Calcula `macrosDeReceta()` para cada componente del menú y suma los `porPorcion`. Muestra la tarjeta con el texto "Una porción del menú completo (todos los componentes)" entre el card de progreso y la lista de obligatorios. Misma lógica de cobertura: parcial → `var(--warn-text)`; cobertura 0 → estado vacío discreto.
+
+**Tarea 3 (filtro hidratos netos en Biblioteca):** pendiente como E11.4. No bloqueante.
 
 ### 1.2.E11.2 Cambios en v2.4.1 (E11.2 — Workflow LLM + seed idempotente de macros)
 
@@ -2134,6 +2146,11 @@ const menus = await getDocs(collection(db, "menus"));
 // 1 sola query — ingredientes y pasos vienen embebidos:
 const receta = (await getDoc(doc(db, "recetas", id))).data();
 // receta.ingredientes y receta.pasos disponibles directo.
+
+// Tarjeta de macros (E11.3): catálogo cacheado en memoria, sin Firestore extra:
+const catalogoById = await getCatalogo(); // Map<idIngrediente, Ingrediente>
+// macrosDeReceta(receta, catalogoById) → MacrosReceta (lógica pura, sin IO)
+// MacrosCard renderiza: hidratos netos estrella + grilla secundarios + pie cobertura
 ```
 
 **Lista de compras (`/compras`):**
@@ -2423,6 +2440,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E11.3.1_Fix visual.md`** ✅ **CERRADO (v2.5.0)**: `MacrosCard` en
+  `DetalleReceta.tsx` (hidratos netos estrella, grilla 3-col, pie cobertura, estado vacío
+  borde punteado). Agregado de macros del menú completo en `SeleccionarComponenteMenu.tsx`
+  (suma `porPorcion` de todos los componentes, misma lógica de cobertura). Ver §1.2.E11.3.
 - **`PROMPT_E11.2_macros_datos.md`** ✅ **CERRADO (v2.4.1)**: export script, MACROS_LLM_PROMPT,
   seed-macros (validación rangos + warn consistencia + dry-run/force + merge). Ver §1.2.E11.2.
 - **`PROMPT_E11.1_macros_logica.md`** ✅ **CERRADO (v2.4.0)**: `macros?`/`gramosPorUnidad?`
@@ -2763,6 +2784,5 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.4.1:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.2 implementados. Pendiente: JP corre el workflow LLM → seed-macros para poblar los datos; luego E11.3 (UI). **Pendiente (producción):**
-`npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
---only hosting`. Sin deuda técnica viva en código.
+**Estado en v2.5.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.3 implementados. **Etapa 11 — Macros nutricionales completa** (lógica + datos + UI). Pendiente como E11.4: filtro "hidratos netos ≤ N g" en Biblioteca (Tarea 3 de E11.3, dejada fuera por ser opcional). **Pendiente (producción):**
+`npm run build && firebase deploy --only hosting`. Sin deuda técnica viva en código.
