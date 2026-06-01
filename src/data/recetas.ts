@@ -33,6 +33,16 @@ export async function getReceta(idReceta: string): Promise<Receta | null> {
   return snap.exists() ? (snap.data() as Receta) : null;
 }
 
+// Retorna todas las recetas para el owner; para otros miembros filtra por visibilidad.
+// El filtrado es sobre getRecetas() cacheado — sin query extra a Firestore.
+export async function getRecetasParaMiembro(memberId: string): Promise<Receta[]> {
+  if (memberId === "juanpablo") return getRecetas();
+  const { getVisibilidad } = await import("./visibilidad");
+  const [todas, visibilidad] = await Promise.all([getRecetas(), getVisibilidad()]);
+  const visibles = new Set((visibilidad as Record<string, string[]>)[memberId] ?? []);
+  return todas.filter(r => visibles.has(r.idReceta));
+}
+
 export async function getRecetasByIds(ids: string[]): Promise<Receta[]> {
   if (ids.length === 0) return [];
   const snaps = await Promise.all(ids.map((id) => getDoc(doc(db, "recetas", id))));

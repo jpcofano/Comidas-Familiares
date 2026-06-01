@@ -362,6 +362,15 @@ export interface FamiliaConfig {
   semanaArrancaEn: "lunes" | "domingo";
 }
 
+// ─── Visibilidad de biblioteca por miembro ────────────────────────────────────
+// Doc único: /config/visibilidad. Opt-in: solo recetas listadas son visibles.
+// El owner (juanpablo) no aparece — ve todo siempre.
+export interface VisibilidadBiblioteca {
+  maria: string[];
+  sofia: string[];
+  federico: string[];
+}
+
 export interface DiccionariosConfig {
   tiposItem: TipoItem[];
   proteinas: Proteina[];
