@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.3.2 (E10.3 — importador Paso 2 a tokens, respeta dark mode)
+> **Versión**: 2.4.0 (E11.1 — Macros por porción: tipos + conversión + lógica pura)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,34 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.1 Cambios en v2.4.0 (E11.1 — Macros por porción: tipos + conversión + lógica pura)
+
+Abre **Etapa 11 — Macros nutricionales**. Sin UI, sin writes a Firestore. Base para E11.2 (seed de datos) y E11.3 (UI).
+
+**`Ingrediente` — nuevos campos opcionales (retrocompatibles, E11.1, §2.10):**
+```ts
+macros?: { kcal: number; carbohidratos: number; proteinas: number; grasas: number; fibra: number; }
+         // valores por 100 g
+gramosPorUnidad?: number;  // override para unidades no másicas (huevo, diente, etc.)
+```
+
+**`src/lib/conversiones.ts` — `aGramos(cantidad, unidad, ing?)`:**
+- `g`/`kg` exactos; `ml`/`l` ≈ agua (×1/×1000).
+- Tabla de factores por defecto para unidades de cocina: `cda=15g`, `cdita=5g`, `taza=240g`, `unidad=100g`, `diente=5g`, `rama=10g`, etc. (con comentarios de fuente).
+- Override por ingrediente: si `ing.gramosPorUnidad` definido y unidad es de conteo → `cantidad × gramosPorUnidad`.
+- `null`/vacío/"a gusto" → `null`; unidad no reconocida → `null` + `console.warn`.
+- 14 tests verdes.
+
+**`src/lib/macros.ts` — `macrosDeReceta(receta, catalogoById)`:**
+- Resolución: `catalogoById.get(ing.idIngrediente)` (mismo patrón que `compras.ts`; confirmado que `IngredienteEnReceta` tiene `idIngrediente` directo).
+- Ignora: opcionales, sin doc en catálogo, sin `macros`, sin conversión (`aGramos === null`).
+- Cantidad = `(cantidadMin + cantidadMax) / 2`; fallback a `cantidadMin`; porciones = `porcionesMin ?? 4`.
+- Hidratos netos = `max(0, carbohidratos - fibra)` por porción.
+- Cobertura = `conDatos / (conDatos + sinDatos)`.
+- 5 tests verdes (fixture manual verificable con calculadora: 400g pollo + 2 cda aceite + lechuga sin macros → totales/porción/cobertura).
+
+**Diagnóstico confirmado:** `IngredienteEnReceta` tiene `idIngrediente` directo (no `ingredienteCanonico` como sospechaba el prompt). No hay lógica de resolución por nombre.
 
 ### 1.2.E10.3 Cambios en v2.3.2 (E10.3 — Importador a tokens, dark mode)
 
@@ -2381,6 +2409,9 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E11.1_macros_logica.md`** ✅ **CERRADO (v2.4.0)**: `macros?`/`gramosPorUnidad?`
+  en `Ingrediente`; `conversiones.ts` (`aGramos`, 14 tests); `macros.ts` (`macrosDeReceta`,
+  5 tests). Sin UI ni writes. Ver §1.2.E11.1.
 - **`PROMPT_E10.3_importador_tokens.md`** ✅ **CERRADO (v2.3.2)**: todos los `#hex` de
   `ImportarReceta.tsx` migrados a tokens semánticos (ok/warn/err/border/surface). Dark mode OK.
   Ver §1.2.E10.3.
@@ -2716,6 +2747,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.3.2:** E9.0–E9.10, E10.1–E10.3 implementados. **Pendiente (producción):**
+**Estado en v2.4.0:** E9.0–E9.10, E10.1–E10.3, E11.1 implementados. Etapa 11 abierta. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

@@ -96,6 +96,15 @@ export interface RangoNumerico {
 
 // ─── Catálogo de ingredientes ─────────────────────────────────────────────────
 export interface Ingrediente {
+  // E11.1 — macros por 100 g (opcionales, retrocompatibles)
+  macros?: {
+    kcal: number;
+    carbohidratos: number;  // g por 100 g (totales)
+    proteinas: number;      // g por 100 g
+    grasas: number;         // g por 100 g
+    fibra: number;          // g por 100 g
+  };
+  gramosPorUnidad?: number; // override para unidades no másicas (huevo, diente, etc.)
   idIngrediente: string;
   canonico: string;
   nombrePreferido: string;
