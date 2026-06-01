@@ -141,7 +141,7 @@ describe("macrosDeReceta", () => {
 
   it("fallback a porcionesMin=4 si falta", () => {
     const receta = makeReceta([makeItemReceta("pollo", 400, "g")]);
-    (receta as { porcionesMin: null }).porcionesMin = null as unknown as number;
+    Object.assign(receta, { porcionesMin: null });
     const r = macrosDeReceta(receta, catalogo);
     expect(r.porciones).toBe(4);
     expect(r.porPorcion.kcal).toBeCloseTo(165, 0); // 400g × 165/100 / 4 = 165
