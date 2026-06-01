@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.3.1 (E10.2 — MemberAvatar con memberId: color propio en historial/plan cards)
+> **Versión**: 2.3.2 (E10.3 — importador Paso 2 a tokens, respeta dark mode)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,12 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E10.3 Cambios en v2.3.2 (E10.3 — Importador a tokens, dark mode)
+
+Migración de estilos en `src/routes/ImportarReceta.tsx`: todos los colores hardcodeados (`#hex`) reemplazados por tokens semánticos. El importador ahora respeta dark mode en todos sus pasos.
+
+**Cambios:** badges (`#1b5e20`/`#6d4c00`/`#424242`/`#5c35a0` → `--ok-*`/`--warn-*`/`--muted-strong`/`--surface-alt`/`--accent`), textarea (`#ddd` → `--border` + `--surface-strong`/`--text`), bloques de error (`#fdecea`/`#c62828` → `--err-*`), bloques de fallidas parseo (`#fff8e1`/`#f9a825` → `--warn-*`), FilaRow contenedor (`#e0e0e0`/`#fafafa` → `--border`/`--surface`), opciones sugerencia (`#1976d2`/`#ccc`/`#e3f2fd`/`#fff` → `--primary`/`--border`/`--primary-soft`/`--surface-strong`), "crear nuevo" (`#424242`/`#aaa`/`#f5f5f5`/`#555` → `--muted-strong`/`--border`/`--surface-alt`/`--muted-strong`), inputs/selects (`#ccc` → `--border` + `--surface-strong`/`--text`), Paso 3 (`#e8f5e9`/`#fff8e1`/`#fdecea` → ok/warn/err tokens). Fallbacks `var(--token, #hex)` eliminados. No queda ningún `#hex` en estilos salvo `#fff` sobre sólido.
 
 ### 1.2.E10.2 Cambios en v2.3.1 (E10.2 — MemberAvatar con color propio)
 
@@ -2375,6 +2381,9 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E10.3_importador_tokens.md`** ✅ **CERRADO (v2.3.2)**: todos los `#hex` de
+  `ImportarReceta.tsx` migrados a tokens semánticos (ok/warn/err/border/surface). Dark mode OK.
+  Ver §1.2.E10.3.
 - **`PROMPT_E10.2_member_avatar_color.md`** ✅ **CERRADO (v2.3.1)**: memberId en
   HistorialDetalle (filas calificación) + PlanCard (AvatarStack). Realtime vía E10.1. Ver §1.2.E10.2.
 - **`PROMPT_E10.1_perfil_miembro.md`** ✅ **CERRADO (v2.3.0)**: perfil con color, preferencias,
@@ -2707,6 +2716,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.3.1:** E9.0–E9.10, E10.1 y E10.2 implementados. **Pendiente (producción):**
+**Estado en v2.3.2:** E9.0–E9.10, E10.1–E10.3 implementados. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

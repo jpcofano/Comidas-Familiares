@@ -81,9 +81,9 @@ const badge = (color: string, bg: string) => ({
   whiteSpace: "nowrap" as const,
 });
 
-const BADGE_EXACTO  = badge("#1b5e20", "#e8f5e9");
-const BADGE_SUGER   = badge("#6d4c00", "#fff8e1");
-const BADGE_NUEVO   = badge("#424242", "#eeeeee");
+const BADGE_EXACTO  = badge("var(--ok-text)",      "var(--ok-bg)");
+const BADGE_SUGER   = badge("var(--warn-text)",    "var(--warn-bg)");
+const BADGE_NUEVO   = badge("var(--muted-strong)", "var(--surface-alt)");
 
 // ─── Componente principal ─────────────────────────────────────────────────────
 
@@ -381,7 +381,7 @@ export function ImportarRecetaRoute() {
       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
         <Link to="/" style={{ fontSize: "0.875rem", color: "var(--color-primary)" }}>← Inicio</Link>
         <h2 style={{ margin: 0 }}>Importar receta</h2>
-        <span style={{ fontSize: "0.75rem", color: "#888", marginLeft: "auto" }}>Paso {paso} de 3</span>
+        <span style={{ fontSize: "0.75rem", color: "var(--muted)", marginLeft: "auto" }}>Paso {paso} de 3</span>
       </div>
 
       {paso === 1 && (
@@ -472,29 +472,29 @@ function RenderPaso1({
       {tienePrompt && (
         <div style={{
           marginBottom: "1rem", padding: "0.75rem 1rem",
-          background: "var(--surface-alt, #f5f5f5)", borderRadius: "6px",
-          border: "1px solid var(--border, #e0e0e0)",
+          background: "var(--surface-alt)", borderRadius: "6px",
+          border: "1px solid var(--border)",
         }}>
-          <p style={{ margin: "0 0 0.4rem", fontSize: "0.85rem", fontWeight: 600, color: "var(--text-strong, #222)" }}>
+          <p style={{ margin: "0 0 0.4rem", fontSize: "0.85rem", fontWeight: 600, color: "var(--text-strong)" }}>
             Copiar prompt para LLM
           </p>
-          <p style={{ margin: "0 0 0.6rem", fontSize: "0.78rem", color: "var(--muted, #666)" }}>
+          <p style={{ margin: "0 0 0.6rem", fontSize: "0.78rem", color: "var(--muted)" }}>
             Copiá este prompt, pegáselo a tu IA junto con la receta en texto libre, y traé el resultado acá.
           </p>
           <button
             onClick={onCopiarPrompt}
             style={{
               padding: "0.35rem 0.9rem", fontSize: "0.82rem", fontWeight: 600,
-              border: "1px solid var(--primary, #1976d2)",
+              border: "1px solid var(--primary)",
               borderRadius: "4px", cursor: "pointer",
-              background: copiado ? "var(--ok-bg, #e8f5e9)" : "var(--surface, #fff)",
-              color: copiado ? "var(--ok-text, #2e7d32)" : "var(--primary, #1976d2)",
+              background: copiado ? "var(--ok-bg)" : "var(--surface)",
+              color: copiado ? "var(--ok-text)" : "var(--primary)",
               transition: "all 0.15s",
             }}
           >
             {copiado ? "Copiado ✓" : "Copiar prompt"}
           </button>
-          <p style={{ margin: "0.5rem 0 0", fontSize: "0.72rem", color: "var(--muted, #888)" }}>
+          <p style={{ margin: "0.5rem 0 0", fontSize: "0.72rem", color: "var(--muted)" }}>
             Nota: el prompt está acoplado al formato exacto que este importador entiende. Si lo editás en Firestore y cambiás la estructura, el LLM puede devolver un TXT que el parser no reconozca.
           </p>
         </div>
@@ -508,8 +508,8 @@ function RenderPaso1({
       <div style={{ marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
         <label style={{
           display: "inline-block", padding: "0.35rem 0.9rem", fontSize: "0.82rem", fontWeight: 600,
-          border: "1px solid var(--primary, #1976d2)", borderRadius: "4px", cursor: "pointer",
-          background: "var(--surface, #fff)", color: "var(--primary, #1976d2)", userSelect: "none",
+          border: "1px solid var(--primary)", borderRadius: "4px", cursor: "pointer",
+          background: "var(--surface)", color: "var(--primary)", userSelect: "none",
         }}>
           Subir archivo .txt
           <input
@@ -521,12 +521,12 @@ function RenderPaso1({
           />
         </label>
         {archivoNombre && (
-          <span style={{ fontSize: "0.8rem", color: "var(--muted, #666)" }}>
+          <span style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
             Cargado: <strong>{archivoNombre}</strong>
           </span>
         )}
         {fileError && (
-          <span style={{ fontSize: "0.8rem", color: "#c62828" }}>{fileError}</span>
+          <span style={{ fontSize: "0.8rem", color: "var(--err-text)" }}>{fileError}</span>
         )}
       </div>
 
@@ -538,8 +538,9 @@ function RenderPaso1({
         rows={20}
         style={{
           width: "100%", fontFamily: "monospace", fontSize: "0.78rem",
-          padding: "0.75rem", border: "1px solid #ddd", borderRadius: "6px",
+          padding: "0.75rem", border: "1px solid var(--border)", borderRadius: "6px",
           resize: "vertical", boxSizing: "border-box",
+          background: "var(--surface-strong)", color: "var(--text)",
         }}
       />
 
@@ -557,7 +558,7 @@ function RenderPaso1({
       </div>
 
       {parseErrors.length > 0 && (
-        <div style={{ marginTop: "1rem", padding: "0.75rem 1rem", background: "#fdecea", borderRadius: "6px", borderLeft: "4px solid #c62828" }}>
+        <div style={{ marginTop: "1rem", padding: "0.75rem 1rem", background: "var(--err-bg)", borderRadius: "6px", borderLeft: "4px solid var(--err-line)", color: "var(--err-text)" }}>
           <strong>Errores de parseo</strong>
           <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.25rem" }}>
             {parseErrors.map((e, i) => <li key={i} style={{ marginBottom: "0.2rem" }}>{e}</li>)}
@@ -595,7 +596,7 @@ function RenderPaso2({
           {filas.length} ingredientes únicos · {totalPasos} pasos totales
         </p>
         {fallidasParseo.length > 0 && (
-          <div style={{ marginTop: "0.5rem", padding: "0.5rem 0.75rem", background: "#fff8e1", borderRadius: "6px", borderLeft: "4px solid #f9a825" }}>
+          <div style={{ marginTop: "0.5rem", padding: "0.5rem 0.75rem", background: "var(--warn-bg)", borderRadius: "6px", borderLeft: "4px solid var(--warn-line)", color: "var(--warn-text)" }}>
             <strong style={{ fontSize: "0.82rem" }}>
               {fallidasParseo.length === 1 ? "1 receta no pudo parsearse" : `${fallidasParseo.length} recetas no pudieron parsearse`}:
             </strong>
@@ -699,12 +700,12 @@ function FilaRow({
   ].filter(Boolean).join(" ");
 
   return (
-    <div style={{ padding: "0.6rem 0.75rem", border: "1px solid #e0e0e0", borderRadius: "6px", background: "#fafafa" }}>
+    <div style={{ padding: "0.6rem 0.75rem", border: "1px solid var(--border)", borderRadius: "6px", background: "var(--surface)" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
         <span style={{ fontWeight: 500, fontSize: "0.88rem" }}>{titulo}</span>
         {unidadLabel && <span className="meta">{unidadLabel}</span>}
         {raw.grupoAlternativa && (
-          <span style={badge("#5c35a0", "#ede7f6")}>alternativa</span>
+          <span style={badge("var(--accent)", "var(--accent-soft)")}>alternativa</span>
         )}
         {decision.tipo === "exacto"    && <span style={BADGE_EXACTO}>✓ Exacto</span>}
         {decision.tipo === "sugerencia" && <span style={BADGE_SUGER}>⚠ Sugerencias</span>}
@@ -728,8 +729,9 @@ function FilaRow({
                 onClick={() => onChange(idx, { tipo: "sugerencia", idIngrediente: ing.idIngrediente, nombrePreferido: ing.nombrePreferido })}
                 style={{
                   textAlign: "left", padding: "0.3rem 0.6rem",
-                  border: `1px solid ${sel ? "#1976d2" : "#ccc"}`,
-                  borderRadius: "4px", background: sel ? "#e3f2fd" : "#fff",
+                  border: `1px solid ${sel ? "var(--primary)" : "var(--border)"}`,
+                  borderRadius: "4px", background: sel ? "var(--primary-soft)" : "var(--surface-strong)",
+                  color: "var(--text)",
                   cursor: "pointer", fontSize: "0.82rem", fontFamily: "inherit",
                 }}
               >
@@ -756,30 +758,30 @@ function FilaRow({
             onClick={() => onChange(idx, { tipo: "nuevo", nombre: raw.textoOriginal, categoria: "Despensa varios" })}
             style={{
               textAlign: "left", padding: "0.3rem 0.6rem",
-              border: decision.tipo === "nuevo" ? "1px solid #424242" : "1px dashed #aaa",
+              border: decision.tipo === "nuevo" ? "1px solid var(--muted-strong)" : "1px dashed var(--border)",
               borderRadius: "4px",
-              background: decision.tipo === "nuevo" ? "#f5f5f5" : "transparent",
-              cursor: "pointer", fontSize: "0.82rem", color: "#555", fontFamily: "inherit",
+              background: decision.tipo === "nuevo" ? "var(--surface-alt)" : "transparent",
+              cursor: "pointer", fontSize: "0.82rem", color: "var(--muted-strong)", fontFamily: "inherit",
             }}
           >
             + Crear nuevo ingrediente
           </button>
 
           {decision.tipo === "nuevo" && (
-            <div style={{ paddingLeft: "0.6rem", borderLeft: "2px solid #ccc" }}>
+            <div style={{ paddingLeft: "0.6rem", borderLeft: "2px solid var(--border)" }}>
               <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
                 <input
                   type="text"
                   value={decision.nombre}
                   onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
                   placeholder="Nombre en catálogo"
-                  style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
+                  style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid var(--border)", minWidth: "160px", background: "var(--surface-strong)", color: "var(--text)" }}
                 />
                 {categorias.length > 0 && (
                   <select
                     value={decision.categoria}
                     onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
-                    style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+                    style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid var(--border)", background: "var(--surface-strong)", color: "var(--text)" }}
                   >
                     {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
                   </select>
@@ -799,13 +801,13 @@ function FilaRow({
               value={decision.nombre}
               onChange={e => onChange(idx, { ...decision, nombre: e.target.value })}
               placeholder="Nombre en catálogo"
-              style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc", minWidth: "160px" }}
+              style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid var(--border)", minWidth: "160px", background: "var(--surface-strong)", color: "var(--text)" }}
             />
             {categorias.length > 0 && (
               <select
                 value={decision.categoria}
                 onChange={e => onChange(idx, { ...decision, categoria: e.target.value })}
-                style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid #ccc" }}
+                style={{ fontSize: "0.82rem", padding: "3px 6px", borderRadius: "4px", border: "1px solid var(--border)", background: "var(--surface-strong)", color: "var(--text)" }}
               >
                 {categorias.map(cat => <option key={cat} value={cat}>{cat}</option>)}
               </select>
@@ -829,7 +831,7 @@ function RenderPaso3({
 }) {
   if (guardado.fase === "guardando") {
     return (
-      <div style={{ padding: "2rem 0", textAlign: "center", color: "#666" }}>
+      <div style={{ padding: "2rem 0", textAlign: "center", color: "var(--muted)" }}>
         Guardando recetas… ({guardado.progreso} / {guardado.total})
       </div>
     );
@@ -840,7 +842,7 @@ function RenderPaso3({
     return (
       <div>
         {creadas.length > 0 && (
-          <div style={{ padding: "0.75rem 1rem", background: "#e8f5e9", borderRadius: "6px", borderLeft: "4px solid #2e7d32", marginBottom: "0.75rem" }}>
+          <div style={{ padding: "0.75rem 1rem", background: "var(--ok-bg)", borderRadius: "6px", borderLeft: "4px solid var(--ok-line)", color: "var(--ok-text)", marginBottom: "0.75rem" }}>
             <strong>{creadas.length === 1 ? "1 receta creada" : `${creadas.length} recetas creadas`}</strong>
             <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
               {creadas.map(c => (
@@ -858,7 +860,7 @@ function RenderPaso3({
         )}
 
         {duplicadas.length > 0 && (
-          <div style={{ padding: "0.75rem 1rem", background: "#fff8e1", borderRadius: "6px", borderLeft: "4px solid #f9a825", marginBottom: "0.75rem" }}>
+          <div style={{ padding: "0.75rem 1rem", background: "var(--warn-bg)", borderRadius: "6px", borderLeft: "4px solid var(--warn-line)", color: "var(--warn-text)", marginBottom: "0.75rem" }}>
             <strong>{duplicadas.length === 1 ? "1 duplicada" : `${duplicadas.length} duplicadas`}</strong>
             <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
               {duplicadas.map((d, i) => (
@@ -871,7 +873,7 @@ function RenderPaso3({
         )}
 
         {fallidas.length > 0 && (
-          <div style={{ padding: "0.75rem 1rem", background: "#fdecea", borderRadius: "6px", borderLeft: "4px solid #c62828", marginBottom: "0.75rem" }}>
+          <div style={{ padding: "0.75rem 1rem", background: "var(--err-bg)", borderRadius: "6px", borderLeft: "4px solid var(--err-line)", color: "var(--err-text)", marginBottom: "0.75rem" }}>
             <strong>{fallidas.length === 1 ? "1 fallida" : `${fallidas.length} fallidas`}</strong>
             <ul style={{ margin: "0.35rem 0 0", paddingLeft: "1.25rem" }}>
               {fallidas.map((f, i) => (
@@ -884,7 +886,7 @@ function RenderPaso3({
         )}
 
         {creadas.length === 0 && duplicadas.length === 0 && fallidas.length === 0 && (
-          <p style={{ color: "#666" }}>No se procesaron recetas.</p>
+          <p style={{ color: "var(--muted)" }}>No se procesaron recetas.</p>
         )}
 
         <button className="btn-secondary" style={{ marginTop: "0.5rem" }} onClick={onImportarOtra}>
@@ -896,7 +898,7 @@ function RenderPaso3({
 
   // fase === "error"
   return (
-    <div style={{ padding: "0.75rem 1rem", background: "#fdecea", borderRadius: "6px", borderLeft: "4px solid #c62828" }}>
+    <div style={{ padding: "0.75rem 1rem", background: "var(--err-bg)", borderRadius: "6px", borderLeft: "4px solid var(--err-line)", color: "var(--err-text)" }}>
       <strong>Error al guardar</strong>
       <p style={{ margin: "0.35rem 0 0" }}>{guardado.mensaje}</p>
       <button className="btn-secondary" style={{ marginTop: "0.75rem" }} onClick={onVolver}>
