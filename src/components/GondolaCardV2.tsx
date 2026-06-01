@@ -3,15 +3,17 @@
 
 import { GondolaChip } from "./GondolaChip";
 import { IngredienteChip } from "./IngredienteChip";
+import { SustitutoPill } from "./SustitutoPill";
 import type { ItemCompra } from "../types/models";
 
 interface GondolaCardV2Props {
   seccion: string;
   items: ItemCompra[];
   onToggle: (itemId: string) => void;
+  sustitutosMap?: Map<string, string[]>;
 }
 
-export function GondolaCardV2({ seccion, items, onToggle }: GondolaCardV2Props) {
+export function GondolaCardV2({ seccion, items, onToggle, sustitutosMap }: GondolaCardV2Props) {
   const pendientes = items.filter((i) => !i.yaTengo).length;
 
   return (
@@ -50,13 +52,17 @@ export function GondolaCardV2({ seccion, items, onToggle }: GondolaCardV2Props) 
 
       {/* Chips */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-        {items.map((item) => (
-          <IngredienteChip
-            key={item.id}
-            item={item}
-            onToggle={() => onToggle(item.id)}
-          />
-        ))}
+        {items.map((item) => {
+          const sus = sustitutosMap?.get(item.id);
+          return (
+            <div key={item.id} style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <IngredienteChip item={item} onToggle={() => onToggle(item.id)} />
+              {!item.yaTengo && sus?.length ? (
+                <SustitutoPill nombres={sus} onToggle={() => onToggle(item.id)} />
+              ) : null}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

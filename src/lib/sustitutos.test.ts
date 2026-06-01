@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { sustitutosDeItem } from "./sustitutos";
-import type { Ingrediente, IngredienteEnReceta } from "../types/models";
+import { sustitutosDeItem, sustitutosDeItemCompra } from "./sustitutos";
+import type { Ingrediente, IngredienteEnReceta, ItemCompra } from "../types/models";
 
 function makeIng(id: string, nombrePreferido: string, equivalencias?: string[]): Ingrediente {
   return {
@@ -84,5 +84,60 @@ describe("sustitutosDeItem", () => {
     expect(result).toHaveLength(2);
     expect(result[0]).toMatchObject({ idIngrediente: "ing-b", fuente: "receta" });
     expect(result[1]).toMatchObject({ idIngrediente: "ing-c", fuente: "catalogo" });
+  });
+});
+
+// ─── sustitutosDeItemCompra ───────────────────────────────────────────────────
+
+function makeItemCompra(idIngrediente: string): ItemCompra {
+  return {
+    id: `item-${idIngrediente}`,
+    idIngrediente,
+    nombrePreferido: idIngrediente,
+    seccionGondola: "Almacen / secos",
+    cantidadTotal: 1,
+    cantidadLabel: "1",
+    unidad: "u",
+    opcional: false,
+    yaTengo: false,
+    aportes: [],
+    notas: "",
+  } as ItemCompra;
+}
+
+describe("sustitutosDeItemCompra", () => {
+  it("devuelve [] si el ingrediente no tiene equivalencias", () => {
+    const cat = new Map([["ing-a", makeIng("ing-a", "Manteca")]]);
+    expect(sustitutosDeItemCompra(makeItemCompra("ing-a"), cat)).toEqual([]);
+  });
+
+  it("devuelve [] si el ingrediente no está en el catálogo", () => {
+    const cat = new Map<string, Ingrediente>();
+    expect(sustitutosDeItemCompra(makeItemCompra("ing-x"), cat)).toEqual([]);
+  });
+
+  it("resuelve equivalencias a nombres", () => {
+    const cat = new Map([
+      ["ing-a", makeIng("ing-a", "Manteca", ["ing-b"])],
+      ["ing-b", makeIng("ing-b", "Aceite de oliva")],
+    ]);
+    const result = sustitutosDeItemCompra(makeItemCompra("ing-a"), cat);
+    expect(result).toEqual(["Aceite de oliva"]);
+  });
+
+  it("deduplica ids repetidos en equivalencias", () => {
+    const cat = new Map([
+      ["ing-a", makeIng("ing-a", "Manteca", ["ing-b", "ing-b"])],
+      ["ing-b", makeIng("ing-b", "Aceite de coco")],
+    ]);
+    const result = sustitutosDeItemCompra(makeItemCompra("ing-a"), cat);
+    expect(result).toHaveLength(1);
+  });
+
+  it("ignora ids de equivalencias que no están en el catálogo", () => {
+    const cat = new Map([
+      ["ing-a", makeIng("ing-a", "Manteca", ["ing-inexistente"])],
+    ]);
+    expect(sustitutosDeItemCompra(makeItemCompra("ing-a"), cat)).toEqual([]);
   });
 });

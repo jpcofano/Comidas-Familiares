@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.2.0 (E9.8 — Biblioteca personal por miembro: visibilidad curada por el owner)
+> **Versión**: 2.2.1 (E9.7 — equivalencias en la lista de compras: pill "o {sustituto}")
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,20 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.7 Cambios en v2.2.1 (E9.7 — Equivalencias en la lista de compras)
+
+Cierra la **tríada de equivalencias** (E9.3 + E9.4 + E9.7): las equivalencias del catálogo (E8.7) ahora se usan al comprar.
+
+Si un ítem a comprar tiene `catalogo[idIngrediente].equivalencias`, aparece una **pill "⇄ o {sustituto}"** (tono `--accent`) pegada al chip del ingrediente. Tocar la pill marca el ítem como `yaTengo` (lo cubrís con lo que ya tenés → no hace falta comprarlo). Cuando `yaTengo=true`, la pill desaparece. Funciona en ambas vistas (por receta y lista completa por góndola).
+
+**Implementación:**
+- `sustitutos.ts`: nueva función `sustitutosDeItemCompra(item, catalogoById) → string[]` — solo equivalencias del catálogo, dedup, ignora IDs faltantes. 5 tests nuevos (11 en total).
+- `SustitutoPill.tsx`: componente compartido (tono `--accent-soft` / `--accent` / `--accent-strong`).
+- `RecetaCardV2` + `GondolaCardV2`: nueva prop opcional `sustitutosMap?: Map<string, string[]>`; wrapper `inline-flex` agrupa chip + pill para que no se separen en el wrap.
+- `Compras.tsx`: carga catálogo (cacheado, un solo fetch) + computa `sustitutosMap` con `useMemo` sobre `itemsVisibles`.
+
+Sin conversión de cantidades/unidades (solo nombre del sustituto).
 
 ### 1.2.E9.8 Cambios en v2.2.0 (E9.8 — Biblioteca personal por miembro)
 
@@ -2295,6 +2309,9 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.7_equivalencias_compras.md`** ✅ **CERRADO (v2.2.1)**: pill "⇄ o {X}" en compras,
+  `sustitutosDeItemCompra`, `SustitutoPill`, `sustitutosMap` en cards. Cierra tríada E9.3+E9.4+E9.7.
+  Ver §1.2.E9.7.
 - **`PROMPT_E9.8.1_biblioteca_por_miembro.md`** ✅ **CERRADO (v2.2.0)**: visibilidad blanda
   (curación de vista, no seguridad). `config/visibilidad` opt-in, guard nivel-tab, grilla
   curación, toggle en detalle. Security Rules ya cubiertas por regla genérica. Ver §1.2.E9.8.
@@ -2573,6 +2590,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.7 — Equivalencias en la lista de compras** ✅ **HECHO (v2.2.1)** — pill "⇄ o {X}" (tono accent) en ítems pendientes, tap = yaTengo, ambas vistas. Cierra tríada E9.3+E9.4+E9.7. 11 tests. Ver §1.2.E9.7.
 - **E9.8 — Biblioteca personal por miembro** ✅ **HECHO (v2.2.0)** — `config/visibilidad` (opt-in), visibilidad blanda, guard nivel-tab, pantalla curación grilla, toggle en detalle. Ver §1.2.E9.8.
 - **E9.6 — Rediseño detalle Historial** ✅ **HECHO (v2.1.2)** — token `--estrella` (dorado oklch), Stars con prop `size`, hero sin "/ 10" + estrellas, notas por miembro con estrellas + número grande. Ver §1.2.E9.6.
 - **E9.5 — Catálogo de ingredientes antes del listado** ✅ **HECHO (v2.1.1)** — tab-action reemplazada por botón full-width visible siempre. Ver §1.2.E9.5.
@@ -2611,6 +2629,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.2.0:** E9.0–E9.8 implementados (E9.7 pendiente). **Pendiente (producción):**
+**Estado en v2.2.1:** E9.0–E9.8 implementados. Lote 9 completo. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

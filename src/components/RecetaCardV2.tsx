@@ -5,6 +5,7 @@
 import { groupByGondola } from "../lib/catalogo";
 import { IngredienteSubheader } from "./IngredienteSubheader";
 import { IngredienteChip } from "./IngredienteChip";
+import { SustitutoPill } from "./SustitutoPill";
 import { AvatarStack } from "./MemberAvatar";
 import type { ItemCompra, Plan } from "../types/models";
 
@@ -24,9 +25,10 @@ interface RecetaCardV2Props {
   plan: Plan;
   items: ItemCompra[];
   onToggle: (itemId: string) => void;
+  sustitutosMap?: Map<string, string[]>;
 }
 
-export function RecetaCardV2({ plan, items, onToggle }: RecetaCardV2Props) {
+export function RecetaCardV2({ plan, items, onToggle, sustitutosMap }: RecetaCardV2Props) {
   const done = items.length > 0 && items.every((i) => i.yaTengo);
   const completedCount = items.filter((i) => i.yaTengo).length;
   const grupos = groupByGondola(items, (it) => it.seccionGondola);
@@ -168,13 +170,17 @@ export function RecetaCardV2({ plan, items, onToggle }: RecetaCardV2Props) {
           <div key={g.seccion} style={{ marginTop: gi === 0 ? 0 : 8 }}>
             <IngredienteSubheader seccion={g.seccion} />
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {g.items.map((item) => (
-                <IngredienteChip
-                  key={item.id}
-                  item={item}
-                  onToggle={() => onToggle(item.id)}
-                />
-              ))}
+              {g.items.map((item) => {
+                const sus = sustitutosMap?.get(item.id);
+                return (
+                  <div key={item.id} style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                    <IngredienteChip item={item} onToggle={() => onToggle(item.id)} />
+                    {!item.yaTengo && sus?.length ? (
+                      <SustitutoPill nombres={sus} onToggle={() => onToggle(item.id)} />
+                    ) : null}
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}

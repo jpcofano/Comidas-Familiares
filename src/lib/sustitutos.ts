@@ -1,4 +1,4 @@
-import type { Ingrediente, IngredienteEnReceta } from "../types/models";
+import type { Ingrediente, IngredienteEnReceta, ItemCompra } from "../types/models";
 
 export interface Sustituto {
   idIngrediente: string;
@@ -35,4 +35,24 @@ export function sustitutosDeItem(
   }
 
   return result;
+}
+
+// Para un ítem de la lista de compras: resuelve equivalencias del catálogo a nombres.
+// Solo usa el catálogo (ItemCompra no tiene alternativas propias de receta).
+// Devuelve [] si no hay equivalencias o el ingrediente no está en el catálogo.
+export function sustitutosDeItemCompra(
+  item: ItemCompra,
+  catalogoById: Map<string, Ingrediente>,
+): string[] {
+  const ing = catalogoById.get(item.idIngrediente);
+  if (!ing?.equivalencias?.length) return [];
+  const vistos = new Set<string>();
+  const nombres: string[] = [];
+  for (const eqId of ing.equivalencias) {
+    if (vistos.has(eqId)) continue;
+    vistos.add(eqId);
+    const eq = catalogoById.get(eqId);
+    if (eq) nombres.push(eq.nombrePreferido);
+  }
+  return nombres;
 }

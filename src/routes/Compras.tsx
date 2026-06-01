@@ -9,12 +9,14 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
+import { getCatalogo } from "../data/ingredientes";
 import { getSemanaActual } from "../lib/fechas";
 import { groupByGondola } from "../lib/catalogo";
+import { sustitutosDeItemCompra } from "../lib/sustitutos";
 import { ProgressRing } from "../components/ProgressRing";
 import { RecetaCardV2 } from "../components/RecetaCardV2";
 import { GondolaCardV2 } from "../components/GondolaCardV2";
-import type { ListaCompras, ItemCompra, Plan, MiembroId } from "../types/models";
+import type { ListaCompras, ItemCompra, Plan, MiembroId, Ingrediente } from "../types/models";
 import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 
@@ -32,9 +34,13 @@ export function ComprasRoute() {
   const [planes, setPlanes] = useState<Plan[]>([]);
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [items, setItems] = useState<ItemCompra[]>([]);
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente> | null>(null);
   const [loadingPlanes, setLoadingPlanes] = useState(true);
   const [modoVista, setModoVista] = useState<ModoVista>("receta");
   const unsubItems = useRef<(() => void) | null>(null);
+
+  // Catálogo (cacheado — carga una vez)
+  useEffect(() => { getCatalogo().then(setCatalogo).catch(() => {}); }, []);
 
   // Planes en tiempo real
   useEffect(() => {
@@ -95,6 +101,16 @@ export function ComprasRoute() {
     () => groupByGondola(itemsVisibles, (it) => it.seccionGondola),
     [itemsVisibles]
   );
+
+  const sustitutosMap = useMemo(() => {
+    const map = new Map<string, string[]>();
+    if (!catalogo) return map;
+    for (const item of itemsVisibles) {
+      const nombres = sustitutosDeItemCompra(item, catalogo);
+      if (nombres.length > 0) map.set(item.id, nombres);
+    }
+    return map;
+  }, [itemsVisibles, catalogo]);
 
   const yaTengoCount = itemsVisibles.filter((i) => i.yaTengo).length;
   const hasPlanes = planes.length > 0;
@@ -183,6 +199,7 @@ export function ComprasRoute() {
                 plan={plan}
                 items={planItems}
                 onToggle={handleToggleItem}
+                sustitutosMap={sustitutosMap}
               />
             ))
           : porGondola.map((g) => (
@@ -191,6 +208,7 @@ export function ComprasRoute() {
                 seccion={g.seccion}
                 items={g.items}
                 onToggle={handleToggleItem}
+                sustitutosMap={sustitutosMap}
               />
             ))
       )}
