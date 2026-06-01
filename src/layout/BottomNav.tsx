@@ -10,9 +10,10 @@ const jpItems = [
 ];
 
 const memberItems = [
-  { to: "/",           label: "Mi semana",  Icon: Home },
-  { to: "/compras",    label: "Compras",    Icon: ShoppingBag },
-  { to: "/historial",  label: "Historial",  Icon: History },
+  { to: "/",           label: "Mi semana",   Icon: Home },
+  { to: "/biblioteca", label: "Mis recetas", Icon: BookOpen },
+  { to: "/compras",    label: "Compras",     Icon: ShoppingBag },
+  { to: "/historial",  label: "Historial",   Icon: History },
 ];
 
 export function BottomNav() {

@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.2.1 (E9.7 — equivalencias en la lista de compras: pill "o {sustituto}")
+> **Versión**: 2.2.2 (E9.9 — acceso de miembros a su biblioteca + UX de asignación con chips)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,18 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.9 Cambios en v2.2.2 (E9.9 — Acceso de miembros a su biblioteca + UX de asignación)
+
+Cierra el hueco de E9.8: la curación era funcional pero inalcanzable para los miembros.
+
+**1. `BottomNav.tsx`:** `memberItems` pasa de 3 a 4 tabs. Se agrega `{ to: "/biblioteca", label: "Mis recetas", Icon: BookOpen }`. El owner mantiene "Biblioteca".
+
+**2. `Biblioteca.tsx` — vista de miembro:** header "Mis recetas" + bajada ("Las recetas que JP eligió para vos…") visible solo para no-owner. Catálogo, visibilidad, importar, tab Menús ya estaban ocultos (E9.8). El buscador y filtros de browse se mantienen. Botón de visibilidad renombrado a "Asignar recetas a la familia" + ícono `Users`.
+
+**3. `VisibilidadBiblioteca.tsx` — chips de miembro:** reemplaza la grilla de checkboxes por **chips de miembro por receta** (chip relleno = visible, outline = oculto; tap = toggle). Paleta: María `#74324a`, Sofía `#3c4a6e`, Federico `#2e5d2e`. Header renombrado a "Asignar recetas" + bajada explicativa. Contadores y filtros se mantienen.
+
+**4. `DetalleReceta.tsx` — gate de CocinarSticky:** la suscripción a `planesActivos` pasa a ser universal (antes solo JP). Para no-JP, `CocinarSticky` aparece solo si existe un plan de tipo `receta`, con `idSeleccion === idReceta`, que incluya al miembro en `asignaciones` y esté en estado `Compra pendiente`/`Compra lista`/`Cocinando`. El botón navega a `/planes/:idPlan/cocinar/:idReceta` (modo plan). JP mantiene el comportamiento original (libre, `/recetas/:id/cocinar`).
 
 ### 1.2.E9.7 Cambios en v2.2.1 (E9.7 — Equivalencias en la lista de compras)
 
@@ -2309,6 +2321,8 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.9_acceso_miembros_biblioteca.md`** ✅ **CERRADO (v2.2.2)**: tab "Mis recetas",
+  header miembro, chips asignación, gate CocinarSticky. Cierra hueco de E9.8. Ver §1.2.E9.9.
 - **`PROMPT_E9.7_equivalencias_compras.md`** ✅ **CERRADO (v2.2.1)**: pill "⇄ o {X}" en compras,
   `sustitutosDeItemCompra`, `SustitutoPill`, `sustitutosMap` en cards. Cierra tríada E9.3+E9.4+E9.7.
   Ver §1.2.E9.7.
@@ -2590,6 +2604,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.9 — Acceso de miembros a su biblioteca** ✅ **HECHO (v2.2.2)** — tab "Mis recetas" en nav, header miembro, chips asignación (María/Sofía/Federico), gate CocinarSticky por plan. Ver §1.2.E9.9.
 - **E9.7 — Equivalencias en la lista de compras** ✅ **HECHO (v2.2.1)** — pill "⇄ o {X}" (tono accent) en ítems pendientes, tap = yaTengo, ambas vistas. Cierra tríada E9.3+E9.4+E9.7. 11 tests. Ver §1.2.E9.7.
 - **E9.8 — Biblioteca personal por miembro** ✅ **HECHO (v2.2.0)** — `config/visibilidad` (opt-in), visibilidad blanda, guard nivel-tab, pantalla curación grilla, toggle en detalle. Ver §1.2.E9.8.
 - **E9.6 — Rediseño detalle Historial** ✅ **HECHO (v2.1.2)** — token `--estrella` (dorado oklch), Stars con prop `size`, hero sin "/ 10" + estrellas, notas por miembro con estrellas + número grande. Ver §1.2.E9.6.
@@ -2629,6 +2644,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.2.1:** E9.0–E9.8 implementados. Lote 9 completo. **Pendiente (producción):**
+**Estado en v2.2.2:** E9.0–E9.9 implementados. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

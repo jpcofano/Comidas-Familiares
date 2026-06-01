@@ -249,7 +249,8 @@ export function DetalleRecetaRoute() {
   const { id: idReceta } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { state } = useAuth();
-  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+  const memberId = state.status === "authenticated" ? state.user.memberId : null;
+  const isJP = memberId === "juanpablo";
 
   const [receta, setReceta] = useState<Receta | null>(null);
   const [loadingReceta, setLoadingReceta] = useState(true);
@@ -277,12 +278,11 @@ export function DetalleRecetaRoute() {
       .finally(() => setLoadingReceta(false));
   }, [idReceta]);
 
-  // Suscripción a planes activos (solo JP)
+  // Suscripción a planes activos (todos — JP para acciones, miembros para gate de cocinar)
   useEffect(() => {
-    if (!isJP) return;
     const unsub = subscribeToPlanesActivos(semanaInicio, setPlanesActivos);
     return unsub;
-  }, [isJP, semanaInicio]);
+  }, [semanaInicio]);
 
   // Suscripción a visibilidad (solo JP)
   useEffect(() => {
@@ -547,10 +547,21 @@ export function DetalleRecetaRoute() {
         </div>
       )}
 
-      {/* 10. Sticky bottom Cocinar (solo JP) */}
+      {/* 10. Sticky bottom Cocinar — JP siempre; miembro solo con plan asignado cocinable */}
       {isJP && (
         <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
       )}
+      {!isJP && memberId && (() => {
+        const plan = planesActivos.find(p =>
+          p.tipoSeleccion === "receta" &&
+          p.idSeleccion === idReceta &&
+          (p.asignaciones as string[]).includes(memberId) &&
+          ["Compra pendiente", "Compra lista", "Cocinando"].includes(p.estado),
+        );
+        return plan ? (
+          <CocinarSticky onClick={() => navigate(`/planes/${plan.idPlan}/cocinar/${idReceta}`)} />
+        ) : null;
+      })()}
 
       {/* Sheet de clasificación */}
       {sheetOpen && receta && (

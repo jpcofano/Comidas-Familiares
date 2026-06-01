@@ -11,17 +11,15 @@ import type { VisibilidadBiblioteca } from "../types/models";
 import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
 
 const MIEMBROS = [
-  { id: "maria",    nombre: "María" },
-  { id: "sofia",    nombre: "Sofía" },
-  { id: "federico", nombre: "Federico" },
+  { id: "maria",    nombre: "María",    color: "#74324a" },
+  { id: "sofia",    nombre: "Sofía",    color: "#3c4a6e" },
+  { id: "federico", nombre: "Federico", color: "#2e5d2e" },
 ] as const;
 
 export function VisibilidadBibliotecaRoute() {
   const { state } = useAuth();
-
   const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
   if (!isJP) return <Navigate to="/biblioteca" replace />;
-
   return <VisibilidadEditor />;
 }
 
@@ -40,10 +38,10 @@ function VisibilidadEditor() {
     return subscribeVisibilidad(setVisibilidad);
   }, []);
 
-  const filtradas = useMemo(() => {
-    const base = filtrarRecetas(recetas, { ...FILTROS_INICIALES, tipoItem, proteina, cocina, busqueda });
-    return base;
-  }, [recetas, tipoItem, proteina, cocina, busqueda]);
+  const filtradas = useMemo(
+    () => filtrarRecetas(recetas, { ...FILTROS_INICIALES, tipoItem, proteina, cocina, busqueda }),
+    [recetas, tipoItem, proteina, cocina, busqueda],
+  );
 
   const selectStyle: React.CSSProperties = {
     padding: "6px 10px", borderRadius: "var(--radius-md)",
@@ -53,7 +51,6 @@ function VisibilidadEditor() {
 
   if (loading) return <div className="card"><SkeletonList count={6} /></div>;
 
-  // Contadores por miembro
   const totales = {
     maria:    visibilidad.maria.length,
     sofia:    visibilidad.sofia.length,
@@ -63,7 +60,7 @@ function VisibilidadEditor() {
   return (
     <>
       {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-2)" }}>
         <button
           className="btn btn-ghost"
           onClick={() => navigate(-1)}
@@ -72,19 +69,22 @@ function VisibilidadEditor() {
           <ChevronLeft size={20} />
         </button>
         <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "var(--text-strong)" }}>
-          Visibilidad de biblioteca
+          Asignar recetas
         </h1>
       </div>
+      <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 var(--space-3)" }}>
+        Elegí qué recetas ve cada miembro en su biblioteca. Pueden cocinar cualquier receta que les asignes en un plan, esté o no acá.
+      </p>
 
-      {/* Contadores */}
+      {/* Contadores por miembro */}
       <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
         {MIEMBROS.map(m => (
           <div key={m.id} style={{
             flex: 1, padding: "var(--space-2) var(--space-3)",
             background: "var(--surface-strong)", borderRadius: "var(--radius-md)",
-            border: "1px solid var(--border)", textAlign: "center",
+            border: `1px solid ${m.color}22`, textAlign: "center",
           }}>
-            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>{m.nombre}</p>
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", fontWeight: 700, color: m.color }}>{m.nombre}</p>
             <p style={{ margin: "2px 0 0", fontSize: 18, fontWeight: 700, color: "var(--text-strong)" }}>
               {totales[m.id]}
             </p>
@@ -121,36 +121,22 @@ function VisibilidadEditor() {
             ))}
           </select>
         </div>
-        <div style={{ display: "flex", gap: "var(--space-2)" }}>
-          <select value={cocina} onChange={e => setCocina(e.target.value)} style={selectStyle}>
-            <option value="">Todas las cocinas</option>
-            {COCINAS.map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
+        <select value={cocina} onChange={e => setCocina(e.target.value)} style={selectStyle}>
+          <option value="">Todas las cocinas</option>
+          {COCINAS.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
       </div>
 
-      {/* Grilla */}
+      {/* Lista de recetas con chips de miembro */}
       <div className="card" style={{ padding: 0, overflow: "hidden" }}>
-        {/* Header de la grilla */}
         <div style={{
-          display: "grid", gridTemplateColumns: "1fr repeat(3, 56px)",
           padding: "var(--space-2) var(--space-3)",
           background: "var(--surface-alt)",
           borderBottom: "1px solid var(--border)",
-          gap: "var(--space-2)",
         }}>
           <span style={{ fontSize: "var(--fs-xs)", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".06em" }}>
-            Receta · {filtradas.length}
+            Recetas · {filtradas.length}
           </span>
-          {MIEMBROS.map(m => (
-            <span key={m.id} style={{
-              fontSize: "var(--fs-xs)", fontWeight: 700, color: "var(--muted)",
-              textTransform: "uppercase", letterSpacing: ".06em",
-              textAlign: "center",
-            }}>
-              {m.nombre.slice(0, 3)}
-            </span>
-          ))}
         </div>
 
         {filtradas.length === 0 ? (
@@ -179,35 +165,51 @@ function RecetaFila({
   visibilidad: VisibilidadBiblioteca;
   isLast: boolean;
 }) {
-  async function handleToggle(miembro: "maria" | "sofia" | "federico", checked: boolean) {
-    await toggleVisibilidadReceta(miembro, receta.idReceta, checked);
-  }
-
   return (
     <div style={{
-      display: "grid", gridTemplateColumns: "1fr repeat(3, 56px)",
-      padding: "var(--space-2) var(--space-3)",
+      padding: "var(--space-3)",
       borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
-      alignItems: "center", gap: "var(--space-2)",
     }}>
-      <div>
-        <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text-strong)", lineHeight: 1.3 }}>
-          {receta.nombre}
-        </p>
-        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
-          {receta.proteinaPrincipal}
-        </p>
+      <p style={{ margin: "0 0 2px", fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)", lineHeight: 1.3 }}>
+        {receta.nombre}
+      </p>
+      <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+        {receta.proteinaPrincipal} · {receta.tipoItem}
+      </p>
+      <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
+        {MIEMBROS.map(m => {
+          const activo = visibilidad[m.id].includes(receta.idReceta);
+          return (
+            <button
+              key={m.id}
+              onClick={() => void toggleVisibilidadReceta(m.id, receta.idReceta, !activo)}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 5,
+                padding: "4px 10px",
+                borderRadius: 999,
+                border: `1.5px solid ${m.color}`,
+                background: activo ? m.color : "transparent",
+                color: activo ? "#fff" : m.color,
+                fontSize: "var(--fs-xs)", fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+                transition: "all 140ms ease",
+              }}
+            >
+              <span style={{
+                width: 14, height: 14, borderRadius: "50%",
+                background: activo ? "rgba(255,255,255,0.25)" : m.color,
+                color: "#fff",
+                fontSize: 9, fontWeight: 700,
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                {m.nombre[0]}
+              </span>
+              {m.nombre}
+            </button>
+          );
+        })}
       </div>
-      {MIEMBROS.map(m => (
-        <div key={m.id} style={{ display: "flex", justifyContent: "center" }}>
-          <input
-            type="checkbox"
-            checked={visibilidad[m.id].includes(receta.idReceta)}
-            onChange={e => handleToggle(m.id, e.target.checked)}
-            style={{ width: 18, height: 18, cursor: "pointer", accentColor: "var(--primary)" }}
-          />
-        </div>
-      ))}
     </div>
   );
 }

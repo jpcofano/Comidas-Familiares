@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
-import { Plus, Carrot, ChevronRight, Eye } from "lucide-react";
+import { Plus, Carrot, ChevronRight, Users } from "lucide-react";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { getRecetas, getRecetasParaMiembro } from "../data/recetas";
@@ -420,14 +420,25 @@ export function BibliotecaRoute() {
             }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-              <Eye size={18} color="var(--primary)" aria-hidden />
+              <Users size={18} color="var(--primary)" aria-hidden />
               <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600 }}>
-                Visibilidad de biblioteca
+                Asignar recetas a la familia
               </span>
             </span>
             <ChevronRight size={16} color="var(--muted)" aria-hidden />
           </Link>
         </>
+      )}
+
+      {!isJP && (
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <h1 style={{ fontSize: 20, fontWeight: 700, color: "var(--text-strong)", margin: "0 0 4px" }}>
+            Mis recetas
+          </h1>
+          <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: 0 }}>
+            Las recetas que JP eligió para vos. Elegí una para ver el paso a paso.
+          </p>
+        </div>
       )}
 
       <div className="card">
