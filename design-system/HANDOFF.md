@@ -143,9 +143,7 @@ Excelente · Muy bueno · Bueno · Regular (no hay "Malísimo" en sample, pero e
 
 ## ✅ Decisiones cerradas en esta sesión
 
-1. **Logomark elegido: F · Plato con vapor.** Aplicado a `assets/favicon.svg`, `assets/app-mark.svg`, `assets/chef-hat.svg`, los 8 PNG de `assets/pwa/`, los 11 splash de `assets/pwa/splash/`, el `Icon.jsx` del UI kit (keys `'chef-hat'` keep para back-compat + nuevas keys `'plato'` y `'plato-vapor'`), `LoginScreen.jsx` (variante con steam, 36px), y `preview/brand-mark.html`. El Header del UI kit sigue llamando `name="chef-hat"`: levanta el mark nuevo sin cambios en el call site.
-
-2. **Paleta de avatares de miembros confirmada:**
+1. **Paleta de avatares de miembros confirmada:**
    - JP marrón (`--primary`)
    - M bordó
    - S azul
@@ -162,20 +160,17 @@ Excelente · Muy bueno · Bueno · Regular (no hay "Malísimo" en sample, pero e
 
 ## 🚧 Lo que está pendiente
 
-Nada bloqueante en branding. Próximos lugares donde aplicar el mark fuera de este sistema (cuando se tome el codebase real):
+### En curso: Logomark único (reemplazar lucide ChefHat)
 
-- `Comidas-Familiares/public/favicon.svg` (hoy es el favicon morado del template Vite) → copiar `assets/favicon.svg`.
-- `Comidas-Familiares/index.html` → pegar el snippet `<link>` de `assets/pwa/README.md` para registrar los íconos PWA + manifest.
-- `Comidas-Familiares/src/auth/LoginScreen.tsx` → el `<ChefHat>` de lucide-react sigue siendo razonable como icono provisorio dentro del producto, pero ahora el lugar canónico del mark es `assets/app-mark.svg`. Si se quiere reemplazar inline, exportar el SVG inline o cargarlo como `<img>`.
+Exploración hecha, esperando elección:
 
-## 🗄️ Pendientes archivados
+**Ronda 1** — 6 direcciones en `preview/logomark-exploration.html`:
+- 01 Monograma cf · 02 Olla al fuego · **03 Mesa familiar** · 04 Abrazo+cuchara · 05 Sello plato · 06 Casa-cuchara
 
-### Logomark único — CERRADO
+**Ronda 2** — 6 variaciones de "Mesa familiar" en `preview/logomark-03-variations.html`:
+- A Sólido · B Mantel radial · C Pétalos íntimos · D Bowl+4 cucharas · E Mesa con borde · F Plato con vapor
 
-Exploración en 2 rondas, elección final F:
-
-- **Ronda 1** — 6 direcciones en `preview/logomark-exploration.html`: 01 Monograma cf · 02 Olla al fuego · **03 Mesa familiar** · 04 Abrazo+cuchara · 05 Sello plato · 06 Casa-cuchara.
-- **Ronda 2** — 6 variaciones de "Mesa familiar" en `preview/logomark-03-variations.html`: A Sólido · B Mantel radial · C Pétalos íntimos · D Bowl+4 cucharas · E Mesa con borde · **F Plato con vapor ← elegido**.
+**Próximo paso cuando se elija:** actualizar `assets/favicon.svg`, `assets/app-mark.svg`, los 8 PNG de `assets/pwa/`, los 9 splash, el icono del `Header.jsx`, y el `preview/brand-mark.html`.
 
 ---
 

@@ -22,10 +22,20 @@
       color: #d8cdbe; font-family: var(--font-sans); font-size: 12px;
       letter-spacing: 0.05em; text-transform: uppercase;
     }
+    @keyframes cf-toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+    @keyframes cf-fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes cf-sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
   </style>
 </head>
 <body>
   <div class="stage-label">Comida Familiar · Mobile UI Kit</div>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" rx="20" fill="#b5532f"/>
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#fdf6ef" stroke-width="5"/>
+      <circle cx="50" cy="50" r="9" fill="#fdf6ef"/>
+    </svg>
+  </template>
   <div class="stage" id="device-stage">
     <div id="root" style="flex: 1; overflow: hidden;"></div>
   </div>
@@ -38,40 +48,46 @@
   <!-- Icons are inline-SVG via Icon.jsx; no external icon library required -->
 
   <!-- Components: primitives -->
-  <script type="text/babel" src="Icon.jsx"></script>
+  <script type="text/babel" src="Icon.jsx?v=9"></script>
+  <script type="text/babel" src="PlatoMark.jsx"></script>
   <script type="text/babel" src="Button.jsx"></script>
   <script type="text/babel" src="EstadoBadge.jsx"></script>
-  <script type="text/babel" src="MemberAvatar.jsx"></script>
-  <script type="text/babel" src="WeekStrip.jsx"></script>
+  <script type="text/babel" src="MemberAvatar.jsx?v=2"></script>
+  <script type="text/babel" src="WeekStrip.jsx?v=3"></script>
   <script type="text/babel" src="SelectorPuntaje.jsx"></script>
 
   <!-- Components: chrome -->
-  <script type="text/babel" src="Header.jsx"></script>
-  <script type="text/babel" src="BottomNav.jsx"></script>
+  <script type="text/babel" src="Header.jsx?v=5"></script>
+  <script type="text/babel" src="BottomNav.jsx?v=4"></script>
 
   <!-- Screens: shared -->
-  <script type="text/babel" src="LoginScreen.jsx"></script>
-  <script type="text/babel" src="BibliotecaScreen.jsx"></script>
-  <script type="text/babel" src="ComprasScreen.jsx"></script>
-  <script type="text/babel" src="DetalleRecetaScreen.jsx"></script>
-  <script type="text/babel" src="DetalleMenuScreen.jsx"></script>
-  <script type="text/babel" src="SeleccionarComponenteMenuScreen.jsx"></script>
-  <script type="text/babel" src="CocinarScreen.jsx"></script>
+  <script type="text/babel" src="LoginScreen.jsx?v=3"></script>
+  <script type="text/babel" src="BibliotecaScreen.jsx?v=6"></script>
+  <script type="text/babel" src="VisibilidadScreen.jsx?v=1"></script>
+  <script type="text/babel" src="PerfilScreen.jsx?v=1"></script>
+  <script type="text/babel" src="ComprasScreen.jsx?v=5"></script>
+  <script type="text/babel" src="RecetaDetalleParts.jsx?v=7"></script>
+  <script type="text/babel" src="DetalleRecetaScreen.jsx?v=7"></script>
+  <script type="text/babel" src="DetalleMenuScreen.jsx?v=4"></script>
+  <script type="text/babel" src="CatalogoIngredientesScreen.jsx?v=10"></script>
+  <script type="text/babel" src="CocinarScreen.jsx?v=10"></script>
+  <script type="text/babel" src="CocinarConQueTengoScreen.jsx?v=2"></script>
 
   <!-- Screens: JP-only -->
-  <script type="text/babel" src="HomeScreen.jsx"></script>
-  <script type="text/babel" src="ImportarMenuScreen.jsx"></script>
+  <script type="text/babel" src="HomeScreen.jsx?v=4"></script>
+  <script type="text/babel" src="ImportarMenuScreen.jsx?v=4"></script>
+  <script type="text/babel" src="ImportarRecetaScreen.jsx"></script>
 
   <!-- Screens: member view -->
-  <script type="text/babel" src="MemberDashboardScreen.jsx"></script>
+  <script type="text/babel" src="MemberDashboardScreen.jsx?v=6"></script>
 
   <!-- Screens: voto + historial (shared) -->
-  <script type="text/babel" src="VotoScreen.jsx"></script>
-  <script type="text/babel" src="HistorialScreen.jsx"></script>
-  <script type="text/babel" src="HistorialDetalleScreen.jsx"></script>
+  <script type="text/babel" src="VotoScreen.jsx?v=5"></script>
+  <script type="text/babel" src="HistorialScreen.jsx?v=10"></script>
+  <script type="text/babel" src="HistorialDetalleScreen.jsx?v=6"></script>
 
   <!-- Tweaks panel + app shell -->
   <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="App.jsx"></script>
+  <script type="text/babel" src="App.jsx?v=16"></script>
 </body>
 </html>

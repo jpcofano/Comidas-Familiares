@@ -1,213 +1,75 @@
 <!doctype html>
-<html lang="es" data-screen-label="Comida Familiar — Dark mode exploration">
-<head>
-<meta charset="utf-8">
-<title>Dark mode · Cocina apagada</title>
+<html lang="es"><head><meta charset="utf-8">
+<title>Dark mode — Cocina nocturna</title>
+<link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  /* Hard-coded dark tokens (so este card se ve dark independientemente del SO) */
-  :root {
-    --bg:             #1a1310;
-    --surface:        #221915;
-    --surface-strong: #2a201b;
-    --surface-alt:    #34281f;
-    --text:           #f0e6d8;
-    --text-strong:    #fefaf3;
-    --muted:          #a89685;
-    --muted-strong:   #c4b29e;
-    --border-subtle:  #2e231b;
-    --border:         #3a2c22;
-    --line:           #4a3a2c;
-    --primary:        #8a4a2f;
-    --primary-strong: #a05a3a;
-    --primary-soft:   rgba(138, 74, 47, 0.22);
-    --primary-on:     #ffffff;
-    --accent:         #74324a;
-    --ok-bg:    rgba(110, 168, 110, 0.15);
-    --ok-text:  #a8d4a8;
-    --warn-bg:  rgba(236, 212, 154, 0.15);
-    --warn-text:#ecd49a;
-    --info-bg:  rgba(160, 174, 209, 0.15);
-    --info-text:#b3c1de;
-    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .caption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  .panels { display: flex; flex-wrap: wrap; gap: 16px; }
+  .panel {
+    flex: 1; min-width: 240px; border-radius: var(--radius-lg);
+    border: 1px solid var(--border); background: var(--bg); padding: 16px;
   }
-  body { margin: 0; padding: 24px; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 14px; line-height: 1.5; }
-
-  .hero { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
-  .hero h1 { margin: 0; font-size: 22px; color: var(--text-strong); font-weight: 700; letter-spacing: -0.012em; }
-  .hero .tag { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
-
-  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
-  .panel h3 { margin: 0 0 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .panel p { margin: 0 0 8px; font-size: 13px; color: var(--text); line-height: 1.55; }
-  .panel .lede { color: var(--muted); font-size: 12.5px; }
-
-  /* Token comparison rows */
-  .tokens { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .tokens td { padding: 6px 4px; vertical-align: middle; }
-  .tokens .sw { width: 18px; height: 18px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; vertical-align: middle; margin-right: 6px; }
-  .tokens .name { color: var(--muted); font-family: var(--font-mono); font-size: 11px; }
-  .tokens .hex { font-family: var(--font-mono); color: var(--text); font-size: 11px; }
-  .tokens .arrow { color: var(--muted); padding: 0 4px; }
-
-  /* Mock screen — header + plan card */
-  .mock-frame { background: var(--bg); border-radius: 18px; border: 1px solid var(--line); padding: 14px; }
-  .mock-header { display: flex; align-items: center; justify-content: space-between; padding: 6px 0 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
-  .mock-header .brand { display: inline-flex; align-items: center; gap: 8px; }
-  .mock-header .chip { width: 24px; height: 24px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: inline-flex; align-items: center; justify-content: center; }
-  .mock-header .title { font-weight: 700; color: var(--primary); font-size: 15px; letter-spacing: -0.01em; }
-  .mock-header .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; }
-
-  .plan-card { border: 2px solid var(--primary); border-radius: 14px; padding: 14px 16px; background: var(--surface-strong); }
-  .plan-card .overline { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 4px; }
-  .plan-card .title { font-size: 15px; font-weight: 600; color: var(--text-strong); margin: 0 0 2px; }
-  .plan-card .meta { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
-  .plan-card .actions { display: flex; gap: 8px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; border: 0; }
-  .btn-primary { background: var(--primary); color: var(--primary-on); }
-  .btn-primary:hover { background: var(--primary-strong); }
-  .btn-secondary { background: var(--surface-strong); color: var(--text); border: 1px solid var(--line); }
-
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .badge { padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 500; }
-  .b-elegida { background: var(--surface-alt); color: var(--muted); }
-  .b-warn    { background: var(--warn-bg);   color: var(--warn-text); }
-  .b-info    { background: var(--info-bg);   color: var(--info-text); }
-  .b-cocinando { background: var(--primary); color: #fff; }
-  .b-ok      { background: var(--ok-bg);    color: var(--ok-text); }
-
-  .login-mock { background: var(--bg); border-radius: 18px; border: 1px solid var(--line); padding: 36px 20px; text-align: center; }
-  .login-mock .circle { width: 64px; height: 64px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-  .login-mock h2 { margin: 0; font-size: 20px; font-weight: 700; color: var(--text-strong); letter-spacing: -0.01em; }
-  .login-mock p { color: var(--muted); font-size: 12.5px; margin: 6px 0 16px; }
-  .login-mock .btn-primary { width: 70%; }
-
-  .deciders { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
-  .decider { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
-  .decider h4 { margin: 0 0 4px; font-size: 12px; color: var(--text-strong); font-weight: 600; }
-  .decider p { margin: 0; font-size: 11.5px; color: var(--muted); line-height: 1.45; }
-
-  code.tok { font-family: var(--font-mono); font-size: 11px; background: var(--surface-alt); color: var(--muted-strong); padding: 1px 5px; border-radius: 4px; }
-</style>
-</head>
+  .panel h3 { font-size: 13px; margin: 0 0 12px; color: var(--text-strong); }
+  .swatches { display: flex; gap: 8px; margin-bottom: 14px; }
+  .sw { flex: 1; height: 40px; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .card {
+    background: var(--surface-strong); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 12px;
+  }
+  .card .t { font-size: 13px; font-weight: 600; color: var(--text-strong); margin: 0 0 4px; }
+  .card .m { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+  .btn {
+    display: inline-block; background: var(--primary); color: var(--on-primary);
+    font-size: 12px; font-weight: 500; padding: 7px 12px; border-radius: var(--radius-md);
+  }
+  .pill {
+    display: inline-block; background: var(--ok-bg); color: var(--ok-text);
+    font-size: 11px; padding: 2px 9px; border-radius: 9999px; margin-left: 6px;
+  }
+  .lbl { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 3px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 18px; line-height: 1.5; max-width: 560px; }
+</style></head>
 <body>
-
-  <header class="hero">
-    <div>
-      <h1>Cocina apagada</h1>
-      <p class="lede" style="margin-top:4px">Dark mode exploration · misma cocina, luces bajas. Browns brand intactos, crema invertido a off-white tibio, graphite con tinte marrón en vez de black.</p>
-    </div>
-    <div class="tag">Exploración · no shipping</div>
-  </header>
-
-  <div class="grid">
-
-    <!-- ───── Tokens comparison ───── -->
-    <div class="panel" style="grid-column: 1 / -1">
-      <h3>Tokens · light → dark</h3>
-      <table class="tokens">
-        <tr><td><span class="name">--bg</span></td>           <td><span class="sw" style="background:#fdfaf6"></span><span class="hex">#fdfaf6</span></td><td class="arrow">→</td><td><span class="sw" style="background:#1a1310"></span><span class="hex">#1a1310</span></td><td class="name">graphite tibio</td></tr>
-        <tr><td><span class="name">--surface-strong</span></td><td><span class="sw" style="background:#ffffff"></span><span class="hex">#ffffff</span></td><td class="arrow">→</td><td><span class="sw" style="background:#2a201b"></span><span class="hex">#2a201b</span></td><td class="name">card elevada</td></tr>
-        <tr><td><span class="name">--surface-alt</span></td>  <td><span class="sw" style="background:#f6efe5"></span><span class="hex">#f6efe5</span></td><td class="arrow">→</td><td><span class="sw" style="background:#34281f"></span><span class="hex">#34281f</span></td><td class="name">hover</td></tr>
-        <tr><td><span class="name">--text-strong</span></td>  <td><span class="sw" style="background:#0e0a07"></span><span class="hex">#0e0a07</span></td><td class="arrow">→</td><td><span class="sw" style="background:#fefaf3"></span><span class="hex">#fefaf3</span></td><td class="name">headings</td></tr>
-        <tr><td><span class="name">--muted</span></td>         <td><span class="sw" style="background:#6b5d52"></span><span class="hex">#6b5d52</span></td><td class="arrow">→</td><td><span class="sw" style="background:#a89685"></span><span class="hex">#a89685</span></td><td class="name">secundario</td></tr>
-        <tr><td><span class="name">--primary</span></td>       <td><span class="sw" style="background:#8a4a2f"></span><span class="hex">#8a4a2f</span></td><td class="arrow">→</td><td><span class="sw" style="background:#8a4a2f"></span><span class="hex">#8a4a2f</span></td><td class="name">brand, sin cambios</td></tr>
-        <tr><td><span class="name">--primary-strong</span></td><td><span class="sw" style="background:#6e3a23"></span><span class="hex">#6e3a23</span></td><td class="arrow">→</td><td><span class="sw" style="background:#a05a3a"></span><span class="hex">#a05a3a</span></td><td class="name">hover invierte dirección</td></tr>
-        <tr><td><span class="name">--border</span></td>        <td><span class="sw" style="background:#e8dfd4"></span><span class="hex">#e8dfd4</span></td><td class="arrow">→</td><td><span class="sw" style="background:#3a2c22"></span><span class="hex">#3a2c22</span></td><td class="name">card border</td></tr>
-      </table>
-    </div>
-
-    <!-- ───── Plan card mock ───── -->
+  <div class="caption">Dark mode "Cocina nocturna" — toggle manual via &lt;html data-theme="dark"&gt; · default light</div>
+  <div class="panels">
+    <!-- LIGHT -->
     <div class="panel">
-      <h3>Plan card · featured</h3>
-      <div class="mock-frame">
-        <div class="mock-header">
-          <span class="brand">
-            <span class="chip">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/>
-                <path d="M9 21h6"/><path d="M21 9v6"/><path d="M3 9v6"/><path d="M9 3h6"/>
-              </svg>
-            </span>
-            <span class="title">Comida Familiar</span>
-          </span>
-          <span class="avatar">JP</span>
-        </div>
-
-        <div class="plan-card">
-          <p class="overline">Especial de la semana</p>
-          <p class="title">Bondiola braseada al Malbec</p>
-          <p class="meta">Cerdo · 3 h · Media-alta</p>
-          <div class="actions">
-            <button class="btn btn-primary">Cocinar</button>
-            <button class="btn btn-secondary">Ver receta</button>
-          </div>
-        </div>
-
-        <div class="badges">
-          <span class="badge b-elegida">Elegida</span>
-          <span class="badge b-warn">Compra pendiente</span>
-          <span class="badge b-info">Compra lista</span>
-          <span class="badge b-cocinando">Cocinando</span>
-          <span class="badge b-ok">Cocinada</span>
-        </div>
+      <h3>Light</h3>
+      <div class="swatches">
+        <div><div class="sw" style="background:var(--bg)"></div><div class="lbl">bg</div></div>
+        <div><div class="sw" style="background:var(--surface)"></div><div class="lbl">surface</div></div>
+        <div><div class="sw" style="background:var(--primary)"></div><div class="lbl">primary</div></div>
+        <div><div class="sw" style="background:var(--accent)"></div><div class="lbl">accent</div></div>
+      </div>
+      <div class="card">
+        <p class="t">Bondiola al Malbec <span class="pill">Sin lácteos</span></p>
+        <p class="m">Cerdo · 3 h · Media-alta</p>
+        <span class="btn">Empezar a cocinar</span>
       </div>
     </div>
-
-    <!-- ───── Login mock ───── -->
-    <div class="panel">
-      <h3>Login · vapor variant en dark</h3>
-      <div class="login-mock">
-        <div class="circle">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 7 C 10.5 6, 8.5 4, 9 2.5" stroke-width="1.1" opacity="0.55"/>
-            <path d="M12 6.5 C 10 5, 14 3.5, 12 1.5" stroke-width="1.4" opacity="0.95"/>
-            <path d="M15 7 C 13.5 6, 15.5 4, 15 2.5" stroke-width="1.1" opacity="0.65"/>
-            <circle cx="12" cy="13" r="5"/>
-            <circle cx="12" cy="13" r="2.4" fill="currentColor" stroke="none"/>
-            <path d="M9 22h6"/><path d="M22 10v6"/><path d="M2 10v6"/>
-          </svg>
-        </div>
-        <h2>Comida Familiar</h2>
-        <p>Planificación semanal para la familia Cofano</p>
-        <button class="btn btn-primary">Entrar con Google</button>
+    <!-- DARK (scoped via data-theme on this subtree) -->
+    <div class="panel" data-theme="dark">
+      <h3>Dark</h3>
+      <div class="swatches">
+        <div><div class="sw" style="background:var(--bg)"></div><div class="lbl">bg</div></div>
+        <div><div class="sw" style="background:var(--surface)"></div><div class="lbl">surface</div></div>
+        <div><div class="sw" style="background:var(--primary)"></div><div class="lbl">primary</div></div>
+        <div><div class="sw" style="background:var(--accent)"></div><div class="lbl">accent</div></div>
+      </div>
+      <div class="card">
+        <p class="t">Bondiola al Malbec <span class="pill">Sin lácteos</span></p>
+        <p class="m">Cerdo · 3 h · Media-alta</p>
+        <span class="btn">Empezar a cocinar</span>
       </div>
     </div>
-
-    <!-- ───── Decisions / open questions ───── -->
-    <div class="panel" style="grid-column: 1 / -1">
-      <h3>Decisiones &amp; preguntas abiertas</h3>
-      <div class="deciders">
-        <div class="decider">
-          <h4>Primary se queda</h4>
-          <p>Contraste de <code class="tok">#8a4a2f</code> contra el bg dark es 11.5:1 — no hay razón para "iluminarlo". Reconocimiento de marca > frescura visual.</p>
-        </div>
-        <div class="decider">
-          <h4>Hover invierte dirección</h4>
-          <p>En light el hover oscurece el primary; en dark el hover lo aclara (más obvio sobre fondo oscuro). <code class="tok">--primary-strong</code> es lighter en dark, no darker.</p>
-        </div>
-        <div class="decider">
-          <h4>Semantic = washes</h4>
-          <p>Los bg semantic (ok/err/warn/info) pasan de tintes opacos a washes transparentes 15-20% del color. Sigue legible, no abruma sobre graphite.</p>
-        </div>
-        <div class="decider">
-          <h4>Shadows se atenúan</h4>
-          <p>El contraste del bg ya hace el trabajo. Las shadows quedan más sutiles (alpha ~30-40%) y siguen sirviendo para focus ring + header sticky.</p>
-        </div>
-        <div class="decider">
-          <h4>¿Activación?</h4>
-          <p><strong>Por <code class="tok">prefers-color-scheme</code> system-wide</strong> (default propuesto) o <strong>por toggle explícito</strong> en el menú de usuario. Decisión del producto.</p>
-        </div>
-        <div class="decider">
-          <h4>¿Cuándo shippearlo?</h4>
-          <p>El codebase real usa <code class="tok">@media (prefers-color-scheme: dark)</code> con valores del template Vite que están <em>mal</em>. <code class="tok">colors_and_type-dark.css</code> los reemplaza. 1 PR.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
-</body>
-</html>
+
+  <p class="note">
+    El dark mode reescribe solo tokens sobre <code>[data-theme="dark"]</code>; los componentes
+    usan <code>var(--token)</code>, así que el tema se propaga sin tocar markup. En oscuro el
+    primary pasa a terracota luminoso (<code>#e08a63</code>) para contraste sobre fondo marrón;
+    los fondos son marrones muy oscuros (no negro frío). Persiste en
+    <code>localStorage["cf-theme"]</code> con script anti-flash en el <code>index.html</code>.
+  </p>
+</body></html>

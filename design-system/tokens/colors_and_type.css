@@ -44,6 +44,9 @@
   --accent-strong:  #5b2438;
   --accent-soft:    rgba(116, 50, 74, 0.10);
 
+  /* Estrella — dorado cálido para ratings (E9.6) */
+  --estrella:       oklch(0.76 0.14 78);
+
   /* ──────────────────────────────────────────
      SEMANTIC — estados de plan + feedback
      ────────────────────────────────────────── */
@@ -122,6 +125,86 @@
      ────────────────────────────────────────── */
   --t-fast: 120ms ease;
   --t-base: 180ms ease;
+
+  /* ──────────────────────────────────────────
+     MEMBER AVATARS — paleta derivada de tokens (E8.2 / E10)
+     ────────────────────────────────────────── */
+  --member-juanpablo: #8a4a2f;  /* = --primary */
+  --member-maria:     #74324a;  /* = --accent */
+  --member-sofia:     #3c4a6e;  /* = --info-text */
+  --member-federico:  #2e5d2e;  /* = --ok-text */
+}
+
+/* ============================================
+   DARK MODE — "Cocina nocturna"
+   Activar con  <html data-theme="dark">
+   Solo reescribe tokens; los componentes usan var()
+   así que el tema se propaga sin cambios de markup.
+   ============================================ */
+
+[data-theme="dark"] {
+  /* Backgrounds — marrones muy oscuros, cálidos */
+  --bg:             #18130f;
+  --surface:        #211a15;
+  --surface-strong: #2a221c;
+  --surface-alt:    #2f261f;
+
+  /* Text */
+  --text:           #f1e9df;
+  --text-strong:    #fbf6ef;
+  --muted:          #b3a597;
+  --muted-strong:   #cdbfb0;
+  --on-primary:     #ffffff;
+
+  /* Borders */
+  --line:           #463a30;
+  --border:         #382e26;
+  --border-subtle:  #2f2620;
+
+  /* Brand — terracota más luminoso para contraste sobre fondo oscuro */
+  --primary:        #e08a63;
+  --primary-strong: #ec9d79;
+  --primary-soft:   rgba(224, 138, 99, 0.16);
+  --primary-on:     #2a1610;
+
+  /* Accent — bordó aclarado */
+  --accent:         #d18aa3;
+  --accent-strong:  #dc9cb1;
+  --accent-soft:    rgba(209, 138, 163, 0.16);
+
+  /* Estrella — dorado aclarado para contraste en oscuro */
+  --estrella:       oklch(0.80 0.14 80);
+
+  /* Semantic — fondos tenues sobre oscuro */
+  --ok-bg:    #1e2c1e;
+  --ok-line:  #3a5a3a;
+  --ok-text:  #a8d6a8;
+
+  --err-bg:   #321e18;
+  --err-line: #6a3a2c;
+  --err-text: #f0a98f;
+
+  --warn-bg:  #2e2616;
+  --warn-line:#5c4a26;
+  --warn-text:#e6c374;
+
+  --info-bg:  #1c2230;
+  --info-line:#39455e;
+  --info-text:#aeb9d6;
+
+  /* Shadows — más profundas */
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-menu:   0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-toast:  0 4px 14px rgba(0, 0, 0, 0.55);
+  --shadow-focus:  0 0 0 3px var(--primary-soft);
+
+  /* Member avatars — versiones claras para contraste sobre fondo oscuro */
+  --member-juanpablo: #e08a63;  /* = --primary dark */
+  --member-maria:     #d18aa3;  /* = --accent dark */
+  --member-sofia:     #aeb9d6;  /* = --info-text dark */
+  --member-federico:  #a8d6a8;  /* = --ok-text dark */
+
+  color-scheme: dark;
 }
 
 /* ============================================

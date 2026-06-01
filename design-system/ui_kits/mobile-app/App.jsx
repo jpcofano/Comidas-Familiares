@@ -39,7 +39,7 @@ const SAMPLE_PLANES = [
   {
     id: 'p3', tipo: 'En proceso', estado: 'Cocinando',
     nombre: 'Berenjenas grilladas con criolla',
-    proteina: 'Vegetariana', tiempo: '40 min', dificultad: 'Baja',
+    proteina: 'Vegetal', tiempo: '40 min', dificultad: 'Baja',
     cocineros: ['Sofía', 'Federico'],
     asignaciones: ['juanpablo', 'maria', 'sofia', 'federico'],
     recetaId: 'r3',
@@ -47,7 +47,7 @@ const SAMPLE_PLANES = [
   {
     id: 'p4', tipo: 'En proceso', estado: 'Cocinada',
     nombre: 'Pollo al limón',
-    proteina: 'Pollo', tiempo: '50 min', dificultad: 'Baja',
+    proteina: 'Aves', tiempo: '50 min', dificultad: 'Baja',
     cocineros: ['Juan Pablo'],
     asignaciones: ['juanpablo', 'maria', 'sofia', 'federico'],
     recetaId: 'r5',
@@ -57,7 +57,7 @@ const SAMPLE_PLANES = [
   {
     id: 'p5', tipo: 'En proceso', estado: 'Cocinada',
     nombre: 'Risotto de hongos',
-    proteina: 'Vegetariana', tiempo: '45 min', dificultad: 'Media',
+    proteina: 'Vegetal', tiempo: '45 min', dificultad: 'Media',
     cocineros: ['María'],
     asignaciones: ['juanpablo', 'maria', 'sofia', 'federico'],
     recetaId: 'r4',
@@ -85,31 +85,50 @@ const SAMPLE_PLANES = [
       queCambiaria: 'Menos azúcar, más canela.',
     },
   },
-  {
-    id: 'p7', tipo: 'En proceso', estado: 'Cocinando',
-    tipoSeleccion: 'menu', menuId: 'm1',
-    nombre: 'Cena de invierno cálida',
-    proteina: 'Mixto', tiempo: '3 h 40 min', dificultad: 'Media-alta',
-    cocineros: ['Juan Pablo', 'María'],
-    asignaciones: ['juanpablo', 'maria'],
-    componentesCocinados: ['r1'],   // bondiola ya cocinada, falta berenjenas (opcional)
-  },
 ];
 
 // ─── Sample data — Lista de compras (cards y resumen) ────────────────────────
 
 const SAMPLE_LISTA = { pendientes: 7, yaTengo: 11 };
 
-const SAMPLE_COMPRAS = [
-  { id: 'c1', seccion: 'Carnicería',  receta: 'Bondiola al Malbec',     nombre: 'Bondiola de cerdo', cantidad: '1.2 kg',   yaTengo: false },
-  { id: 'c2', seccion: 'Almacén',     receta: 'Bondiola al Malbec',     nombre: 'Malbec',            cantidad: '1 bot.',   yaTengo: true  },
-  { id: 'c3', seccion: 'Verdulería',  receta: 'Bondiola al Malbec',     nombre: 'Cebolla',           cantidad: '2 u',      yaTengo: false },
-  { id: 'c4', seccion: 'Verdulería',  receta: 'Bondiola al Malbec',     nombre: 'Zanahoria',         cantidad: '2 u',      yaTengo: true  },
-  { id: 'c5', seccion: 'Pescadería',  receta: 'Langostinos al ajillo',  nombre: 'Langostinos',       cantidad: '500 g',    yaTengo: false },
-  { id: 'c6', seccion: 'Verdulería',  receta: 'Langostinos al ajillo',  nombre: 'Ajo',               cantidad: '1 cabeza', yaTengo: false },
-  { id: 'c7', seccion: 'Verdulería',  receta: 'Langostinos al ajillo',  nombre: 'Perejil',           cantidad: '1 atado',  yaTengo: false },
-  { id: 'c8', seccion: 'Verdulería',  receta: 'Berenjenas grilladas',   nombre: 'Berenjenas',        cantidad: '2 u',      yaTengo: false },
-  { id: 'c9', seccion: 'Verdulería',  receta: 'Berenjenas grilladas',   nombre: 'Tomate',            cantidad: '2 u',      yaTengo: true  },
+// Lista de compras v2 — agrupada por plan (receta). Cada item tiene su góndola.
+const SAMPLE_COMPRA_PLANES = [
+  {
+    idPlan: 'p1', nombre: 'Bondiola al Malbec', dia: 'Mar', diaNum: 27,
+    porciones: 6, asignaciones: ['Juan Pablo', 'María'],
+    items: [
+      { id: 'c1', seccion: 'Carnicería', nombre: 'Bondiola de cerdo', cantidad: '1.2 kg', yaTengo: false },
+      { id: 'c2', seccion: 'Almacén',    nombre: 'Malbec',            cantidad: '1 bot.', yaTengo: true  },
+      { id: 'c3', seccion: 'Verdulería', nombre: 'Cebolla',           cantidad: '2 u',    yaTengo: false, recetas: 2 },
+      { id: 'c4', seccion: 'Verdulería', nombre: 'Zanahoria',         cantidad: '2 u',    yaTengo: true  },
+    ],
+  },
+  {
+    idPlan: 'p2', nombre: 'Langostinos al ajillo', dia: 'Vie', diaNum: 30,
+    porciones: 3, asignaciones: ['Juan Pablo'],
+    items: [
+      { id: 'c5', seccion: 'Pescadería', nombre: 'Langostinos', cantidad: '500 g',    yaTengo: false },
+      { id: 'c6', seccion: 'Verdulería', nombre: 'Ajo',         cantidad: '1 cabeza', yaTengo: false, recetas: 2 },
+      { id: 'c7', seccion: 'Verdulería', nombre: 'Perejil',     cantidad: '1 atado',  yaTengo: false },
+    ],
+  },
+  {
+    idPlan: 'p3', nombre: 'Berenjenas grilladas', dia: null, diaNum: null,
+    porciones: 4, asignaciones: ['Sofía', 'Federico'],
+    items: [
+      { id: 'c8', seccion: 'Verdulería', nombre: 'Berenjenas', cantidad: '2 u', yaTengo: false },
+      { id: 'c9', seccion: 'Verdulería', nombre: 'Tomate',     cantidad: '2 u', yaTengo: true  },
+    ],
+  },
+  {
+    idPlan: 'p5c', nombre: 'Risotto de hongos', dia: null, diaNum: null,
+    porciones: 4, asignaciones: ['María'],
+    items: [
+      { id: 'c10', seccion: 'Almacén',    nombre: 'Arroz arborio', cantidad: '320 g', yaTengo: false },
+      { id: 'c11', seccion: 'Lácteos',    nombre: 'Manteca',       cantidad: '40 g',  yaTengo: false, sustitutos: ['Aceite de oliva'] },
+      { id: 'c12', seccion: 'Verdulería', nombre: 'Cebolla',       cantidad: '1 u',   yaTengo: true  },
+    ],
+  },
 ];
 
 // ─── Sample data — Recetas ───────────────────────────────────────────────────
@@ -117,37 +136,75 @@ const SAMPLE_COMPRAS = [
 const SAMPLE_RECETAS = [
   {
     id: 'r1', nombre: 'Bondiola braseada al Malbec',
+    macros: { porPorcion: { kcal: 540, carbohidratos: 8, proteinas: 39, grasas: 33, fibra: 2 }, hidratosNetos: 6, porciones: 5, conDatos: 5, total: 6 },
+    usa: ['i1', 'i10', 'i4', 'i5', 'i6', 'i11'],
     tipo: 'Receta principal', proteina: 'Cerdo', tiempo: '3 h', dificultad: 'Media-alta',
+    cocina: 'Argentina',
     sinLacteos: true, sinHidratos: false,
+    esVegetariano: false, esKeto: false,
+    escenarioUso: 'Cena de fin de semana', estilo: 'De olla', costoEstimado: 'Medio',
+    tiempoTotalLabel: '3 h 20 min', tiempoActivoLabel: '40 min', porcionesLabel: '4–6',
+    aptoNocheDeADos: 'No',
+    porQueEspecial: 'Se cocina casi sola: tres horas a fuego bajo y queda lista para desmechar.',
+    riesgos: 'Sellar bien antes de bañar en vino; controlar que no se seque y dar vuelta cada 30 min.',
+    notasCocinero: 'Si sobra salsa, reducila aparte y serví como demi-glace sobre la carne desmechada.',
+    ingredientesDet: [
+      { seccion: 'Principal',           texto: 'Bondiola de cerdo',  cantidad: '1.2', unidad: 'kg' },
+      { seccion: 'Líquido de cocción',  texto: 'Malbec',             cantidad: '1', unidad: 'bot.', alternativas: ['otro vino tinto seco'] },
+      { seccion: 'Base de sabor',       texto: 'Cebolla',            cantidad: '2', unidad: 'u' },
+      { seccion: 'Base de sabor',       texto: 'Zanahoria',          cantidad: '2', unidad: 'u' },
+      { seccion: 'Base de sabor',       texto: 'Ajo',                cantidad: '3', unidad: 'dientes' },
+      { seccion: 'Condimentos',         texto: 'Laurel, tomillo y romero', cantidad: 'c/n', unidad: '', opcional: true },
+      { seccion: 'Cocción',             texto: 'Aceite de oliva',    cantidad: '3', unidad: 'cda' },
+    ],
     ingredientes: [
-      '1.2 kg bondiola de cerdo',
-      '1 botella Malbec',
+      '1.2 kg bondiola de cerdo', '1 botella Malbec',
       '2 cebollas, 2 zanahorias, 3 dientes de ajo',
-      'Hierbas: laurel, tomillo, romero',
-      'Aceite de oliva, sal, pimienta',
+      'Hierbas: laurel, tomillo, romero', 'Aceite de oliva, sal, pimienta',
     ],
     pasos: [
-      { titulo: 'Sellar la bondiola',     tiempo: '8 min',  tiempoMin: 8,   desc: 'Sellar a fuego alto en cazuela de hierro hasta dorar bien por todos los lados.' },
-      { titulo: 'Sumar vino y reducir',   tiempo: '20 min', tiempoMin: 20,  desc: 'Agregar el Malbec y dejar reducir hasta la mitad.' },
-      { titulo: 'Brasear a fuego bajo',   tiempo: '2 h',    tiempoMin: 120, desc: 'Tapar y cocinar a fuego bajo, dando vuelta cada 30 min.' },
+      { titulo: 'Sellar la bondiola',     tiempo: '8 min',  tiempoMin: 8,   desc: 'Sellar a fuego alto en cazuela de hierro hasta dorar bien por todos los lados.', puntoClave: 'Dorar parejo sella los jugos.', errorComun: 'Mover la carne antes de que selle.' },
+      { titulo: 'Sumar vino y reducir',   tiempo: '20 min', tiempoMin: 20,  desc: 'Agregar el Malbec y dejar reducir hasta la mitad.', puntoClave: 'Reducir evapora el alcohol y concentra sabor.' },
+      { titulo: 'Brasear a fuego bajo',   tiempo: '2 h',    tiempoMin: 120, desc: 'Tapar y cocinar a fuego bajo, dando vuelta cada 30 min.', errorComun: 'Fuego alto: la carne se seca por fuera y queda dura.' },
       { titulo: 'Reposar y desmechar',    tiempo: '15 min', tiempoMin: 15,  desc: 'Retirar, reposar fuera del fuego y desmechar la carne.' },
     ],
   },
   {
     id: 'r2', nombre: 'Langostinos al ajillo',
+    macros: { porPorcion: { kcal: 280, carbohidratos: 3, proteinas: 28, grasas: 17, fibra: 1 }, hidratosNetos: 2, porciones: 3, conDatos: 4, total: 4 },
+    usa: ['i2', 'i6', 'i9', 'i11'],
     tipo: 'Receta principal', proteina: 'Mariscos', tiempo: '25 min', dificultad: 'Baja',
+    cocina: 'Española',
     sinLacteos: true, sinHidratos: true,
+    esVegetariano: false, esKeto: true,
+    escenarioUso: 'Entrada rápida', estilo: 'Español', costoEstimado: 'Alto',
+    tiempoTotalLabel: '25 min', tiempoActivoLabel: '18 min', porcionesLabel: '2–3',
+    aptoNocheDeADos: 'Sí',
+    porQueEspecial: 'Quince minutos de sartén y parece de restaurante.',
+    riesgos: 'No pasarse de cocción: el langostino se pone gomoso en segundos.',
+    notasCocinero: 'Terminar con un chorrito de oliva en crudo y pan para mojar.',
+    ingredientesDet: [
+      { seccion: 'Principal',    texto: 'Langostinos',     cantidad: '500', unidad: 'g' },
+      { seccion: 'Base de sabor', texto: 'Ajo',            cantidad: '6', unidad: 'dientes' },
+      { seccion: 'Condimentos',  texto: 'Perejil',         cantidad: '1', unidad: 'atado' },
+      { seccion: 'Condimentos',  texto: 'Ají molido',      cantidad: '1', unidad: 'pizca', opcional: true },
+      { seccion: 'Cocción',      texto: 'Aceite de oliva', cantidad: '4', unidad: 'cda' },
+    ],
     ingredientes: ['500 g langostinos', '6 dientes de ajo', 'Perejil', 'Aceite de oliva', 'Ají molido', 'Sal'],
     pasos: [
-      { titulo: 'Limpiar los langostinos', tiempo: '10 min', tiempoMin: 10, desc: 'Pelar, retirar el intestino.' },
-      { titulo: 'Dorar el ajo',            tiempo: '3 min',  tiempoMin: 3,  desc: 'En aceite de oliva con ají molido.' },
-      { titulo: 'Saltear y servir',        tiempo: '5 min',  tiempoMin: 5,  desc: 'Sumar langostinos, perejil. Servir.' },
+      { titulo: 'Limpiar los langostinos', tiempo: '10 min', tiempoMin: 10, desc: 'Pelar y retirar el intestino.', puntoClave: 'Secarlos bien para que se sellen, no hiervan.' },
+      { titulo: 'Dorar el ajo',            tiempo: '3 min',  tiempoMin: 3,  desc: 'En aceite de oliva con ají molido, a fuego medio.', errorComun: 'Quemar el ajo amarga todo el plato.' },
+      { titulo: 'Saltear y servir',        tiempo: '5 min',  tiempoMin: 5,  desc: 'Sumar langostinos y perejil; saltear 2 min y servir.' },
     ],
   },
   {
     id: 'r3', nombre: 'Berenjenas grilladas con criolla',
-    tipo: 'Guarnición', proteina: 'Vegetariana', tiempo: '40 min', dificultad: 'Baja',
+    macros: { porPorcion: { kcal: 130, carbohidratos: 12, proteinas: 3, grasas: 9, fibra: 6 }, hidratosNetos: 6, porciones: 4, conDatos: 4, total: 4 },
+    usa: ['i7', 'i8', 'i4', 'i11'],
+    tipo: 'Guarnición', proteina: 'Vegetal', tiempo: '40 min', dificultad: 'Baja',
+    cocina: 'Mediterránea',
     sinLacteos: true, sinHidratos: true,
+    esVegetariano: true, esKeto: true,
     ingredientes: ['2 berenjenas', 'Sal gruesa', '2 tomates, 1 cebolla morada, 1 ají morrón', 'Aceite de oliva', 'Vinagre de vino, sal, pimienta'],
     pasos: [
       { titulo: 'Cortar y salar las berenjenas', tiempo: '20 min', tiempoMin: 20, desc: 'Dejar drenar para sacar amargor.' },
@@ -157,54 +214,103 @@ const SAMPLE_RECETAS = [
   },
   {
     id: 'r4', nombre: 'Risotto de hongos',
-    tipo: 'Receta principal', proteina: 'Vegetariana', tiempo: '45 min', dificultad: 'Media',
+    macros: { conDatos: 0, total: 3 },
+    usa: ['i12', 'i4', 'i14'],
+    tipo: 'Receta principal', proteina: 'Vegetal', tiempo: '45 min', dificultad: 'Media',
+    cocina: 'Italiana',
     sinLacteos: false, sinHidratos: false,
+    esVegetariano: true, esKeto: false,
     ingredientes: [], pasos: [],
   },
   {
     id: 'r5', nombre: 'Pollo al limón',
-    tipo: 'Receta principal', proteina: 'Pollo', tiempo: '50 min', dificultad: 'Baja',
+    macros: { porPorcion: { kcal: 310, carbohidratos: 4, proteinas: 41, grasas: 13, fibra: 1 }, hidratosNetos: 3, porciones: 4, conDatos: 2, total: 3 },
+    usa: ['i3', 'i6', 'i11'],
+    tipo: 'Receta principal', proteina: 'Aves', tiempo: '50 min', dificultad: 'Baja',
     sinLacteos: true, sinHidratos: true,
+    esVegetariano: false, esKeto: true,
     ingredientes: [], pasos: [],
   },
   {
     id: 'r6', nombre: 'Tarta de manzana',
+    macros: { porPorcion: { kcal: 340, carbohidratos: 42, proteinas: 5, grasas: 16, fibra: 3 }, hidratosNetos: 39, porciones: 8, conDatos: 2, total: 2 },
+    usa: ['i13', 'i14'],
     tipo: 'Postre', proteina: 'Huevos', tiempo: '1 h 20 min', dificultad: 'Media',
+    cocina: 'Francesa',
     sinLacteos: false, sinHidratos: false,
+    esVegetariano: true, esKeto: false,
     ingredientes: [], pasos: [],
   },
 ];
 
-// ─── Sample data — Menús (composiciones multi-receta) ────────────────────────
+// ─── Sample data — Menús (Modelo M: receta principal + componentes) ──────────
+//
+// Un menú es una selección curada de recetas que se cocinan juntas para una
+// ocasión. Cada componente apunta a una receta (recetaId → SAMPLE_RECETAS) y
+// lleva un rol (Principal, Base, Salsa, Guarnición…) que pinta su chip de letra.
 
 const SAMPLE_MENUS = [
   {
-    idMenu: 'm1', nombreMenu: 'Cena de invierno cálida',
-    escenarioUso: 'Cena familiar', estado: 'Sin probar',
-    estilo: 'Reconfortante, lento, para fin de semana frío',
-    climaDelMenu: 'Frío', idealPara: 'Cena de domingo o festejo informal',
-    descripcion: 'Carne larga + acompañamiento liviano que corta. Para 4-6 personas, requiere planificación de la mañana.',
-    dificultad: 'Media-alta', porciones: '4-6', sinLacteos: true,
-    paraJuanPablo: 'La bondiola necesita 3 h reales, no apurarla. Sumar guarnición al final.',
-    paraFamilia: 'Es comida sustancial; viene bien después de un día en la calle.',
-    notas: 'La bondiola sola es suficiente. La berenjena es opcional pero corta bien la untuosidad.',
+    id: 'm1', nombre: 'Español de mar',
+    escenarioUso: 'Noche de a dos', estado: 'Probado',
+    estilo: 'Mediterráneo, de sartén', climaDelMenu: 'Templado',
+    idealPara: 'Una cena tranquila sin pasar horas en la cocina',
+    descripcion: 'Langostinos al ajillo de entrada y una guarnición fresca. Liviano, rápido y con onda de bodegón costero.',
+    derived: { tiempo: '55 min', dificultad: 'Baja', costo: 'Medio/Alto', porciones: '2–4', sinLacteos: true, hidratos: false },
     componentes: [
-      { idReceta: 'r1', tipo: 'Principal',  orden: 1, obligatorio: true,  notas: '' },
-      { idReceta: 'r3', tipo: 'Guarnición', orden: 2, obligatorio: false, notas: 'Hacer cuando la bondiola esté reposando.' },
+      { orden: 1, tipo: 'Principal',  recetaId: 'r2', obligatorio: true },
+      { orden: 2, tipo: 'Guarnición', recetaId: 'r3', obligatorio: true, notas: 'Se puede grillar mientras descansan los langostinos.' },
+      { orden: 3, tipo: 'Postre',     recetaId: 'r6', obligatorio: false, notas: 'Opcional si querés cerrar dulce.' },
     ],
+    paraJuanPablo: 'Zarzuela sola, sin guarnición.',
+    paraFamilia: 'Sumar pan para mojar en el ajillo.',
+    notasOcasion: 'Anduvo muy bien para un aniversario en casa.',
   },
   {
-    idMenu: 'm2', nombreMenu: 'Mesa de domingo',
-    escenarioUso: 'Almuerzo familiar', estado: 'Probado',
-    estilo: 'Clásico de fin de semana, ritmo tranquilo',
-    idealPara: 'Almuerzo largo de domingo, sin apuro',
-    descripcion: 'Pollo al horno + un postre que se prepara mientras se cocina el pollo. Cierra una mesa para 4.',
-    dificultad: 'Baja', porciones: '4',
+    id: 'm2', nombre: 'Domingo de olla',
+    escenarioUso: 'Domingo familiar', estado: 'Para probar',
+    estilo: 'De olla, contundente', climaDelMenu: 'Frío',
+    idealPara: 'Almuerzo largo de domingo con toda la familia',
+    descripcion: 'La bondiola al Malbec como gran protagonista, con una guarnición liviana al lado y postre para cerrar.',
+    derived: { tiempo: '3 h 40 min', dificultad: 'Media-alta', costo: 'Medio', porciones: '4–6', sinLacteos: false, hidratos: true },
     componentes: [
-      { idReceta: 'r5', tipo: 'Principal', orden: 1, obligatorio: true,  notas: '' },
-      { idReceta: 'r6', tipo: 'Postre',    orden: 2, obligatorio: true,  notas: 'Armar la masa mientras el pollo está al horno.' },
+      { orden: 1, tipo: 'Principal',  recetaId: 'r1', obligatorio: true },
+      { orden: 2, tipo: 'Guarnición', recetaId: 'r3', obligatorio: true },
+      { orden: 3, tipo: 'Postre',     recetaId: 'r6', obligatorio: true, notas: 'Sale del horno mientras se desmecha la bondiola.' },
     ],
+    riesgos: 'Coordinar tiempos: la bondiola lleva 3 h, arrancar temprano.',
+    paraFamilia: 'Rinde para 6 con la guarnición y el postre.',
   },
+];
+
+// ─── Sample data — Catálogo de ingredientes ──────────────────────────────────
+//
+// Espejo reducido de la colección "ingredientes": cada uno con su categoría
+// (qué ES), su sección de góndola (DÓNDE se compra) y sus roles nutricionales
+// (qué APORTA). Los marcados `ambiguo` cayeron con valores por defecto al
+// importarse y JP los tiene que completar.
+
+const SAMPLE_INGREDIENTES = [
+  { id: 'i1',  nombre: 'Bondiola de cerdo', categoria: 'Carne',              gondola: 'Carnicería', roles: ['Proteina', 'Grasa'], usos: 4 },
+  { id: 'i2',  nombre: 'Langostinos',       categoria: 'Pescado y marisco',  gondola: 'Pescadería', roles: ['Proteina'],          usos: 3 },
+  { id: 'i3',  nombre: 'Pollo',             categoria: 'Carne',              gondola: 'Carnicería', roles: ['Proteina'],          usos: 9 },
+  { id: 'i4',  nombre: 'Cebolla',           categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Fibra/Vegetal'],     usos: 22 },
+  { id: 'i5',  nombre: 'Zanahoria',         categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Fibra/Vegetal'],     usos: 14 },
+  { id: 'i6',  nombre: 'Ajo',               categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Neutro'],            usos: 31 },
+  { id: 'i7',  nombre: 'Berenjena',         categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Fibra/Vegetal'],     usos: 5 },
+  { id: 'i8',  nombre: 'Tomate',            categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Fibra/Vegetal'],     usos: 18 },
+  { id: 'i9',  nombre: 'Perejil',           categoria: 'Hierba y especia',   gondola: 'Verdulería', roles: ['Neutro'],            usos: 12 },
+  { id: 'i10', nombre: 'Malbec',            categoria: 'Despensa varios',    gondola: 'Almacén',    roles: ['Neutro'],            usos: 2 },
+  { id: 'i11', nombre: 'Aceite de oliva',   categoria: 'Aceite y grasa',     gondola: 'Almacén',    roles: ['Grasa'],             usos: 27, equivalencias: ['i14'] },
+  { id: 'i12', nombre: 'Arroz arborio',     categoria: 'Cereal y derivado',  gondola: 'Almacén',    roles: ['Hidrato'],           usos: 6 },
+  { id: 'i13', nombre: 'Manzana',           categoria: 'Fruta',              gondola: 'Verdulería', roles: ['Azucar/Dulce', 'Fibra/Vegetal'], usos: 4 },
+  { id: 'i14', nombre: 'Manteca',           categoria: 'Lacteo',             gondola: 'Lácteos',    roles: ['Grasa'],             usos: 8, equivalencias: ['i11'] },
+  // Ambiguos: importados con valores por defecto, falta completar
+  { id: 'i15', nombre: 'Ras el hanout',     categoria: 'Despensa varios',    gondola: 'Despensa / otros', roles: [],            usos: 1, ambiguo: true, canonico: 'ras el hanout' },
+  { id: 'i16', nombre: 'Miso blanco',       categoria: 'Despensa varios',    gondola: 'Despensa / otros', roles: [],            usos: 1, ambiguo: true, canonico: 'miso blanco' },
+  // Duplicados de ejemplo (mismo ingrediente cargado dos veces)
+  { id: 'i17', nombre: 'ajo',               categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Neutro'],            usos: 2, sinonimos: ['diente de ajo'] },
+  { id: 'i18', nombre: 'Tomates',           categoria: 'Verdura',            gondola: 'Verdulería', roles: ['Fibra/Vegetal'],     usos: 3 },
 ];
 
 // ─── Sample data — Historial (platos ya cerrados) ────────────────────────────
@@ -276,7 +382,14 @@ const SAMPLE_HISTORIAL = [
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "viewMode": "juanpablo",
   "startRoute": "home",
-  "showPendientesBadge": true
+  "showPendientesBadge": true,
+  "memberLayout": "rows",
+  "memberState": "ready",
+  "matchLayout": "cercania",
+  "mostrarSubs": true,
+  "subsEstilo": "inline",
+  "macrosLayout": "estrella",
+  "perfilLayout": "hero"
 }/*EDITMODE-END*/;
 
 // ─── App ─────────────────────────────────────────────────────────────────────
@@ -298,27 +411,95 @@ function App() {
 
   function navigate(name, params = {}) { setRoute({ name, ...params }); }
 
+  // ── Toast host (microinteraction shared across screens) ─────────────────────
+  const [toast, setToast] = React.useState(null);
+  const toastTimer = React.useRef(null);
+  React.useEffect(() => {
+    window.__toast = (text, ok = true) => {
+      clearTimeout(toastTimer.current);
+      setToast({ text, ok, id: Date.now() });
+      toastTimer.current = setTimeout(() => setToast(null), 3200);
+    };
+    return () => clearTimeout(toastTimer.current);
+  }, []);
+
+  // Exposed for screenshot tooling — lets external scripts drive route + role.
+  React.useEffect(() => {
+    window.__nav = navigate;
+    window.__setRole = (v) => setTweak('viewMode', v);
+    window.__setAuthed = setAuthed;
+    window.__setTweak = setTweak;
+  });
+
   const miembroId = t.viewMode;
   const isJP      = miembroId === 'juanpablo';
   const nombre    = MIEMBROS[miembroId]?.nombre || 'Juan Pablo';
 
   // ── Derivados de los planes ─────────────────────────────────────────────────
 
+  const [recetas, setRecetas] = React.useState(SAMPLE_RECETAS);
+
+  // Visibilidad de biblioteca por miembro (E9.8) — estado interactivo para el prototipo.
+  // Opt-in: solo las recetas listadas se ven en la biblioteca de ese miembro.
+  const [vis, setVis] = React.useState({
+    maria:    ['r1', 'r5', 'r6'],
+    sofia:    ['r4', 'r6'],
+    federico: [],
+  });
+  function toggleVis(miembro, recetaId) {
+    setVis(prev => {
+      const lista = prev[miembro] || [];
+      const next = lista.includes(recetaId)
+        ? lista.filter(x => x !== recetaId)
+        : [...lista, recetaId];
+      return { ...prev, [miembro]: next };
+    });
+  }
+  // Recetas visibles para el miembro actual (JP ve todas)
+  const recetasParaMiembro = isJP
+    ? recetas
+    : recetas.filter(r => (vis[miembroId] || []).includes(r.id));
+
+  // Perfiles de miembro (Lote 10) — color + preferencias editables por cada uno.
+  const [perfiles, setPerfiles] = React.useState({
+    juanpablo: { inicial: 'JP', color: '#8a4a2f', preferencias: ['Sin picante'] },
+    maria:     { inicial: 'M',  color: '#74324a', preferencias: ['No come pescado'] },
+    sofia:     { inicial: 'S',  color: '#3c4a6e', preferencias: [] },
+    federico:  { inicial: 'F',  color: '#2e5d2e', preferencias: ['Sin lácteos'] },
+  });
+  const [perfilViendo, setPerfilViendo] = React.useState('juanpablo');
+  const ORDEN_MIEMBROS = ['juanpablo', 'maria', 'sofia', 'federico'];
+  const miembrosPerfil = ORDEN_MIEMBROS.map(id => ({
+    id,
+    nombre: MIEMBROS[id]?.nombre || id,
+    inicial: perfiles[id].inicial,
+    color: perfiles[id].color,
+    preferencias: perfiles[id].preferencias,
+    enBiblioteca: id === 'juanpablo' ? recetas.length : (vis[id]?.length ?? 0),
+  }));
+  const perfilActivo = isJP ? perfilViendo : miembroId;
+  function cambiarColor(id, c) { setPerfiles(p => ({ ...p, [id]: { ...p[id], color: c } })); }
+  function addPref(id, t) { setPerfiles(p => ({ ...p, [id]: { ...p[id], preferencias: [...p[id].preferencias, t] } })); }
+  function removePref(id, i) { setPerfiles(p => ({ ...p, [id]: { ...p[id], preferencias: p[id].preferencias.filter((_, j) => j !== i) } })); }
+
+  // E10.2 — publicar los colores personalizados al store de MemberAvatar
+  // (historial, voto, plan cards, header reflejan el color elegido en el perfil).
+  React.useEffect(() => {
+    if (window.__memberColorStore) {
+      const map = {};
+      Object.keys(perfiles).forEach(id => { map[id] = perfiles[id].color; });
+      window.__memberColorStore.set(map);
+    }
+  }, [perfiles]);
+
   const currentRecipe = route.recetaId
-    ? SAMPLE_RECETAS.find(r => r.id === route.recetaId) : null;
+    ? recetas.find(r => r.id === route.recetaId) : null;
   const currentPlan = route.planId
     ? SAMPLE_PLANES.find(p => p.id === route.planId) : null;
   const currentHist = route.histId
     ? SAMPLE_HISTORIAL.find(h => h.idHist === route.histId) : null;
   const currentMenu = route.menuId
-    ? SAMPLE_MENUS.find(m => m.idMenu === route.menuId) : null;
-  const currentPlanMenu = currentPlan && currentPlan.tipoSeleccion === 'menu'
-    ? SAMPLE_MENUS.find(m => m.idMenu === currentPlan.menuId) : null;
-  // recetasMap for menu screens
-  const recetasMap = React.useMemo(
-    () => Object.fromEntries(SAMPLE_RECETAS.map(r => [r.id, r])),
-    []
-  );
+    ? SAMPLE_MENUS.find(m => m.id === route.menuId) : null;
 
   // Pendientes de evaluar: plan en estado Cocinada para los que YO no voté
   const planesCocinados = SAMPLE_PLANES.filter(p => p.estado === 'Cocinada');
@@ -331,6 +512,15 @@ function App() {
     p.estado !== 'Evaluada' && (p.asignaciones || []).includes(miembroId)
   );
 
+  // Plan asignado y cocinable de la receta abierta (para mostrar "Empezar a cocinar").
+  // JP: siempre puede. Miembro: solo si tiene un plan asignado y cocinable de esa receta.
+  const ESTADOS_COCINABLES = ['Compra pendiente', 'Compra lista', 'Cocinando'];
+  const puedeCocinarReceta = isJP || (currentRecipe ? SAMPLE_PLANES.some(p =>
+    p.recetaId === currentRecipe.id &&
+    (p.asignaciones || []).includes(miembroId) &&
+    ESTADOS_COCINABLES.includes(p.estado)
+  ) : false);
+
   if (!authed) {
     return <LoginScreen onSignIn={() => setAuthed(true)}/>;
   }
@@ -339,17 +529,17 @@ function App() {
 
   const tabFor = (r) => {
     if (r.name === 'home') return 'home';
-    if (r.name === 'biblioteca' || r.name === 'detalle' || r.name === 'importar') return 'biblioteca';
+    if (r.name === 'biblioteca' || r.name === 'detalle' || r.name === 'importar' || r.name === 'importar-receta' || r.name === 'detalle-menu' || r.name === 'catalogo' || r.name === 'visibilidad') return 'biblioteca';
+    if (r.name === 'que-cocino') return 'home';
     if (r.name === 'compras')    return 'compras';
-    if (r.name === 'pendientes' || r.name === 'voto') return isJP ? 'historial' : 'pendientes';
+    if (r.name === 'pendientes' || r.name === 'voto') return 'home';
+    if (r.name === 'perfil') return 'home';
     if (r.name === 'historial' || r.name === 'historial-detalle') return 'historial';
     return '';
   };
 
-  // El BottomNav distingue 'pendientes' solo para miembros. Para mantener el
-  // contrato actual del componente (4 ids), traducimos clicks aquí.
+  // ── Click de tab → navegación ───────────────────────────────────────────────
   function onTabClick(id) {
-    if (id === 'pendientes') return navigate('pendientes');
     navigate(id);
   }
 
@@ -365,7 +555,13 @@ function App() {
       background: 'var(--bg)', overflow: 'hidden',
       display: 'flex', flexDirection: 'column',
     }}>
-      <Header nombre={nombre} subtitle={headerSubtitle}/>
+      <Header
+        nombre={nombre}
+        subtitle={headerSubtitle}
+        avatarColor={perfiles[miembroId]?.color}
+        avatarInicial={perfiles[miembroId]?.inicial}
+        onAvatarClick={() => navigate('perfil')}
+      />
 
       <main style={{
         flex: 1, overflow: 'auto',
@@ -379,6 +575,7 @@ function App() {
             onCocinar={(p)     => navigate('cocinar',  { recetaId: p.recetaId })}
             onVerReceta={(p)   => navigate('detalle',  { recetaId: p.recetaId })}
             onIrCompras={()    => navigate('compras')}
+            onQueCocino={()    => navigate('que-cocino')}
             onAgregar={()      => navigate('biblioteca')}
           />
         )}
@@ -388,6 +585,10 @@ function App() {
             misPlanes={misPlanes}
             pendientes={pendientes}
             historial={SAMPLE_HISTORIAL}
+            loading={t.memberState === 'loading'}
+            error={t.memberState === 'error'}
+            layout={t.memberLayout}
+            onReintentar={() => setTweak('memberState', 'ready')}
             onCocinar={(p)        => navigate('cocinar', { recetaId: p.recetaId })}
             onVerReceta={(p)      => navigate('detalle', { recetaId: p.recetaId })}
             onEvaluar={(p)        => navigate('voto',    { planId: p.id })}
@@ -396,30 +597,70 @@ function App() {
           />
         )}
 
-        {/* ── Biblioteca (con cabecera "Importar" para JP) ──────────────── */}
+        {/* ── Biblioteca ────────────────────────────────────────────────── */}
         {route.name === 'biblioteca' && (
-          <>
-            {isJP && (
-              <button
-                onClick={() => navigate('importar')}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 6,
-                  background: 'var(--surface-strong)', border: '1px solid var(--border)',
-                  borderRadius: 9999, padding: '6px 12px',
-                  color: 'var(--primary)', fontFamily: 'inherit',
-                  fontSize: 12, fontWeight: 500, cursor: 'pointer',
-                  marginBottom: 12,
-                }}
-              >
-                <Icon name="upload" size={14}/>
-                Importar menú
-              </button>
-            )}
-            <BibliotecaScreen
-              recetas={SAMPLE_RECETAS}
-              onAbrir={r => navigate('detalle', { recetaId: r.id })}
-            />
-          </>
+          <BibliotecaScreen
+            recetas={recetasParaMiembro}
+            memberMode={!isJP}
+            miNombre={nombre}
+            menus={isJP ? SAMPLE_MENUS : []}
+            onAbrir={r => navigate('detalle', { recetaId: r.id })}
+            onAbrirMenu={m => navigate('detalle-menu', { menuId: m.id })}
+            onImportar={isJP ? () => navigate('importar-receta') : undefined}
+            onVerCatalogo={isJP ? () => navigate('catalogo') : undefined}
+            onVerVisibilidad={isJP ? () => navigate('visibilidad') : undefined}
+          />
+        )}
+
+        {/* ── Perfil de miembro ─────────────────────────────────────────── */}
+        {route.name === 'perfil' && (
+          <PerfilScreen
+            miembros={miembrosPerfil}
+            perfilId={perfilActivo}
+            viewerId={miembroId}
+            isJP={isJP}
+            layout={t.perfilLayout}
+            historial={SAMPLE_HISTORIAL}
+            onCambiarPerfil={setPerfilViendo}
+            onCambiarColor={cambiarColor}
+            onAddPref={addPref}
+            onRemovePref={removePref}
+            onVerHistorial={() => navigate('historial')}
+            onBack={() => navigate(isJP ? 'home' : 'home')}
+          />
+        )}
+
+        {/* ── Asignar recetas / visibilidad por miembro (JP) ────────────── */}
+        {route.name === 'visibilidad' && isJP && (
+          <VisibilidadScreen
+            recetas={recetas}
+            vis={vis}
+            onToggle={toggleVis}
+            onBack={() => navigate('biblioteca')}
+          />
+        )}
+
+        {/* ── Detalle de menú ───────────────────────────────────────────── */}
+        {route.name === 'detalle-menu' && currentMenu && (
+          <DetalleMenuScreen
+            menu={currentMenu}
+            recetas={recetas}
+            isJP={isJP}
+            macrosLayout={t.macrosLayout}
+            onBack={() => navigate('biblioteca')}
+            onAbrirReceta={r => navigate('detalle', { recetaId: r.id })}
+          />
+        )}
+
+        {/* ── Catálogo de ingredientes ──────────────────────────────────── */}
+        {route.name === 'catalogo' && (
+          <CatalogoIngredientesScreen
+            ingredientes={SAMPLE_INGREDIENTES}
+            recetas={recetas}
+            isJP={isJP}
+            onBack={() => navigate('biblioteca')}
+            onAbrirReceta={r => navigate('detalle', { recetaId: r.id })}
+          />
         )}
 
         {/* ── Importar menú (JP) ────────────────────────────────────────── */}
@@ -427,9 +668,25 @@ function App() {
           <ImportarMenuScreen isJP={isJP} onBack={() => navigate('biblioteca')}/>
         )}
 
+        {/* ── Importar receta (JP) ──────────────────────────────────────── */}
+        {route.name === 'importar-receta' && (
+          <ImportarRecetaScreen isJP={isJP} onBack={() => navigate('biblioteca')}/>
+        )}
+
         {/* ── Compras ───────────────────────────────────────────────────── */}
         {route.name === 'compras' && (
-          <ComprasScreen items={SAMPLE_COMPRAS}/>
+          <ComprasScreen planes={SAMPLE_COMPRA_PLANES}/>
+        )}
+
+        {/* ── ¿Qué cocino con lo que tengo? ─────────────────────────────── */}
+        {route.name === 'que-cocino' && (
+          <CocinarConQueTengoScreen
+            recetas={recetas}
+            ingredientes={SAMPLE_INGREDIENTES}
+            layout={t.matchLayout}
+            onBack={() => navigate('home')}
+            onAbrirReceta={r => navigate('detalle', { recetaId: r.id })}
+          />
         )}
 
         {/* ── Pendientes (miembros) ─────────────────────────────────────── */}
@@ -505,10 +762,17 @@ function App() {
         {route.name === 'detalle' && currentRecipe && (
           <DetalleRecetaScreen
             receta={currentRecipe}
+            isJP={isJP}
+            catalogo={SAMPLE_INGREDIENTES}
+            mostrarSubs={t.mostrarSubs}
+            subsEstilo={t.subsEstilo}
+            macrosLayout={t.macrosLayout}
+            puedeCocinar={puedeCocinarReceta}
             onBack={() => navigate('biblioteca')}
             onCocinar={() => navigate('cocinar', { recetaId: currentRecipe.id })}
             onElegirComoEspecial={() => navigate('home')}
             onSumarExtra={() => navigate('home')}
+            onGuardarReceta={(upd) => setRecetas(prev => prev.map(r => r.id === upd.id ? upd : r))}
           />
         )}
 
@@ -516,34 +780,10 @@ function App() {
         {route.name === 'cocinar' && currentRecipe && (
           <CocinarScreen
             receta={currentRecipe}
+            catalogo={SAMPLE_INGREDIENTES}
+            mostrarSubs={t.mostrarSubs}
             onBack={() => navigate('detalle', { recetaId: currentRecipe.id })}
             onFinalizar={() => navigate('home')}
-          />
-        )}
-
-        {/* ── Detalle menú (multi-receta) ──────────────────────────────── */}
-        {route.name === 'menu-detalle' && currentMenu && (
-          <DetalleMenuScreen
-            menu={currentMenu}
-            recetasMap={recetasMap}
-            isJP={isJP}
-            onBack={() => navigate('biblioteca')}
-            onAbrirReceta={(id) => navigate('detalle', { recetaId: id })}
-            onElegirEspecial={() => navigate('home')}
-            onSumarEnProceso={() => navigate('home')}
-          />
-        )}
-
-        {/* ── Seleccionar componente (cocinar un menú activo) ──────────── */}
-        {route.name === 'componentes-menu' && currentPlan && currentPlanMenu && (
-          <SeleccionarComponenteMenuScreen
-            plan={currentPlan}
-            menu={currentPlanMenu}
-            recetasMap={recetasMap}
-            onBack={() => navigate('home')}
-            onCocinarReceta={(id) => navigate('cocinar', { recetaId: id })}
-            onDesmarcar={() => {}}
-            onFinalizarMenu={() => navigate('home')}
           />
         )}
       </main>
@@ -575,28 +815,103 @@ function App() {
           value={route.name}
           options={[
             { value: 'home',              label: isJP ? 'Inicio (JP)' : 'Mi semana' },
-            { value: 'biblioteca',        label: 'Biblioteca' },
+            { value: 'que-cocino',        label: '¿Qué cocino con lo que tengo?' },
+            { value: 'perfil',            label: 'Perfil de miembro' },
+            { value: 'biblioteca',        label: isJP ? 'Biblioteca' : 'Mis recetas' },
+            ...(isJP ? [{ value: 'visibilidad', label: 'Asignar recetas (visibilidad)' }] : []),
+            { value: 'detalle-menu',      label: 'Detalle de menú (Español de mar)' },
+            { value: 'catalogo',          label: 'Catálogo de ingredientes' },
             { value: 'compras',           label: 'Compras' },
-            ...(isJP ? [] : [{ value: 'pendientes', label: 'Pendientes de evaluar' }]),
             { value: 'historial',         label: 'Historial (lista)' },
             { value: 'historial-detalle', label: 'Historial detalle (Bondiola)' },
             { value: 'voto',              label: pendientes[0] ? `Evaluar: ${pendientes[0].nombre}` : 'Evaluar (sin pendientes)' },
             { value: 'detalle',           label: 'Detalle receta (Bondiola)' },
             { value: 'cocinar',           label: 'Cocinar (Bondiola)' },
-            { value: 'menu-detalle',      label: 'Detalle menú (Cena de invierno)' },
-            { value: 'componentes-menu',  label: 'Cocinando menú (componentes)' },
-            ...(isJP ? [{ value: 'importar', label: 'Importar menú' }] : []),
+            ...(isJP ? [{ value: 'importar-receta', label: 'Importar receta' }] : []),
           ]}
           onChange={(v) => {
             if (v === 'historial-detalle') navigate('historial-detalle', { histId: 'h1' });
+            else if (v === 'detalle-menu') navigate('detalle-menu', { menuId: 'm1' });
             else if (v === 'voto' && pendientes[0]) navigate('voto', { planId: pendientes[0].id });
             else if (v === 'voto') navigate('voto', { planId: 'p6' }); // VistaEvaluada (Tarta)
             else if (v === 'detalle' || v === 'cocinar') navigate(v, { recetaId: 'r1' });
-            else if (v === 'menu-detalle') navigate('menu-detalle', { menuId: 'm1' });
-            else if (v === 'componentes-menu') navigate('componentes-menu', { planId: 'p7' });
             else navigate(v);
           }}
         />
+
+        <TweakSection label="¿Qué cocino? — layout"/>        <TweakRadio
+          label="Resultados"
+          value={t.matchLayout}
+          options={[
+            { value: 'cercania', label: 'Cercanía' },
+            { value: 'ranking',  label: 'Ranking' },
+          ]}
+          onChange={(v) => { setTweak('matchLayout', v); navigate('que-cocino'); }}
+        />
+
+        <TweakSection label="Sustitutos (detalle/cocinar)"/>        <TweakToggle
+          label="Mostrar sustitutos"
+          value={t.mostrarSubs}
+          onChange={(v) => setTweak('mostrarSubs', v)}
+        />
+        <TweakRadio
+          label="Estilo"
+          value={t.subsEstilo}
+          options={[
+            { value: 'inline', label: 'o X' },
+            { value: 'chip',   label: 'Chip' },
+          ]}
+          onChange={(v) => setTweak('subsEstilo', v)}
+        />
+
+        <TweakSection label="Macros (detalle/menú)"/>
+        <TweakRadio
+          label="Layout"
+          value={t.macrosLayout}
+          options={[
+            { value: 'estrella', label: 'Estrella' },
+            { value: 'tabla',    label: 'Tabla' },
+          ]}
+          onChange={(v) => { setTweak('macrosLayout', v); }}
+        />
+
+        <TweakSection label="Perfil de miembro — layout"/>
+        <TweakRadio
+          label="Diseño"
+          value={t.perfilLayout}
+          options={[
+            { value: 'hero',     label: 'Hero' },
+            { value: 'compacto', label: 'Compacto' },
+          ]}
+          onChange={(v) => { setTweak('perfilLayout', v); navigate('perfil'); }}
+        />
+
+        {/* Variaciones de la vista de miembro */}
+        {!isJP && (
+          <>
+            <TweakSection label="Mi semana — layout"/>
+            <TweakRadio
+              label="Diseño"
+              value={t.memberLayout}
+              options={[
+                { value: 'rows',  label: 'Filas' },
+                { value: 'cards', label: 'Cards' },
+              ]}
+              onChange={(v) => setTweak('memberLayout', v)}
+            />
+            <TweakSection label="Estado de carga"/>
+            <TweakRadio
+              label="Estado"
+              value={t.memberState}
+              options={[
+                { value: 'ready',   label: 'OK' },
+                { value: 'loading', label: 'Cargando' },
+                { value: 'error',   label: 'Error' },
+              ]}
+              onChange={(v) => setTweak('memberState', v)}
+            />
+          </>
+        )}
 
         <TweakSection label="Estados — saltos rápidos"/>
         <TweakButton label="Vista evaluada (Tarta)" secondary
@@ -606,6 +921,24 @@ function App() {
         <TweakButton label="Sin votos (Pollo)" secondary
           onClick={() => navigate('voto', { planId: 'p4' })}/>
       </TweaksPanel>
+
+      {/* ── Toast ────────────────────────────────────────────────────────── */}
+      {toast && (
+        <div
+          key={toast.id}
+          style={{
+            position: 'absolute', left: '50%', bottom: 88,
+            transform: 'translateX(-50%)', zIndex: 60,
+            maxWidth: 'calc(100% - 32px)', textAlign: 'center',
+            background: toast.ok ? 'var(--ok-bg)' : 'var(--err-bg)',
+            color: toast.ok ? 'var(--ok-text)' : 'var(--err-text)',
+            border: `1px solid ${toast.ok ? 'var(--ok-line)' : 'var(--err-line)'}`,
+            borderRadius: 10, padding: '10px 16px', fontSize: 13, fontWeight: 500,
+            boxShadow: 'var(--shadow-toast)',
+            animation: 'cf-toast-in 200ms ease',
+          }}
+        >{toast.text}</div>
+      )}
     </div>
   );
 }

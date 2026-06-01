@@ -1,7 +1,15 @@
-// WeekStrip.jsx — 7-day chip strip for "esta semana"
+// WeekStrip.jsx — 7-day strip. Los días con comida muestran el mismo punto
+// relleno que el día de hoy (color primary). Alineado con el git.
+
+function Plate({ size = 12, color = 'var(--primary)' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 12 12" fill="none" style={{ display: 'block', color }}>
+      <circle cx="6" cy="6" r="5" fill="currentColor"/>
+    </svg>
+  );
+}
 
 function WeekStrip({ days, today, marked }) {
-  // days: ['Lun', 'Mar', ...] or pass undefined to use defaults
   const defaults = [
     { letter: 'L', label: 'Lun', n: 26 },
     { letter: 'M', label: 'Mar', n: 27 },
@@ -13,16 +21,18 @@ function WeekStrip({ days, today, marked }) {
   ];
   const list = days || defaults;
   const markedSet = new Set(marked || []);
+  const todayIdx = today ?? 1;
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4, marginBottom: 16 }}>
       {list.map((d, i) => {
-        const isToday = i === (today ?? 1);
+        const isToday = i === todayIdx;
         const hasMeal = markedSet.has(i);
         return (
           <div key={i} style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
             padding: '8px 0', borderRadius: 10,
             background: isToday ? 'var(--primary-soft)' : 'transparent',
+            color: isToday ? 'var(--primary)' : 'var(--muted)',
           }}>
             <span style={{
               fontSize: 10, fontWeight: 500,
@@ -33,10 +43,7 @@ function WeekStrip({ days, today, marked }) {
               fontSize: 15, fontWeight: isToday ? 700 : 500,
               color: isToday ? 'var(--primary)' : 'var(--text-strong)',
             }}>{d.n}</span>
-            <span style={{
-              width: 4, height: 4, borderRadius: '50%',
-              background: hasMeal ? (isToday ? 'var(--primary)' : 'var(--line)') : 'transparent',
-            }}/>
+            {hasMeal ? <Plate size={16} color="var(--primary)"/> : <div style={{ height: 16 }}/>}
           </div>
         );
       })}

@@ -9,8 +9,8 @@ function BottomNav({ active, onNavigate, isJP = true }) {
   ];
   const memberItems = [
     { id: 'home',       label: 'Mi semana',  icon: 'home' },
+    { id: 'biblioteca', label: 'Mis recetas', icon: 'book-open' },
     { id: 'compras',    label: 'Compras',    icon: 'shopping-bag' },
-    { id: 'pendientes', label: 'Pendientes', icon: 'clock' },
     { id: 'historial',  label: 'Historial',  icon: 'history' },
   ];
   const items = isJP ? jpItems : memberItems;
@@ -18,7 +18,7 @@ function BottomNav({ active, onNavigate, isJP = true }) {
   return (
     <nav aria-label="Navegación principal" style={{
       position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 20,
-      display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 4,
+      display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 4,
       padding: '8px 8px 12px',
       background: 'var(--bg)',
       borderTop: '1px solid var(--border)',

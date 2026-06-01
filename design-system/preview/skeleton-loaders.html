@@ -1,109 +1,47 @@
 <!doctype html>
-<html lang="es" data-screen-label="Comida Familiar — Skeleton loaders">
-<head>
-<meta charset="utf-8">
+<html lang="es"><head><meta charset="utf-8">
 <title>Skeleton loaders</title>
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
   body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .panel { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
-  .panel h3 { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-
-  /* Pulse animation — subtle, warm */
-  @keyframes pulse-bg { 0%, 100% { background-color: var(--surface-alt); } 50% { background-color: var(--border); } }
+  .caption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  /* Skeleton — fuente de verdad: src/styles/tokens.css */
+  @keyframes pulse-bg {
+    0%, 100% { background-color: var(--surface-alt); }
+    50%      { background-color: var(--border); }
+  }
   .sk { background: var(--surface-alt); border-radius: 6px; animation: pulse-bg 1.6s ease-in-out infinite; }
   .sk-circle { border-radius: 50%; }
-
-  /* Variant 1: Row (avatar + 2 lines) */
-  .v-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
-  .v-row:last-child { border-bottom: 0; }
-  .v-row .sk-avatar { width: 32px; height: 32px; flex-shrink: 0; }
-  .v-row .sk-lines { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-
-  /* Variant 2: Plan card */
-  .v-card { padding: 14px; border: 1px solid var(--border); border-radius: 14px; }
-  .v-card .sk-line { height: 12px; }
-  .v-card .sk-overline { height: 10px; width: 40%; margin-bottom: 10px; }
-  .v-card .sk-title   { height: 18px; width: 75%; margin-bottom: 8px; }
-  .v-card .sk-meta    { height: 12px; width: 50%; margin-bottom: 14px; }
-  .v-card .sk-buttons { display: flex; gap: 8px; }
-  .v-card .sk-btn { height: 32px; flex: 1; border-radius: 10px; }
-
-  /* Variant 3: List of 3 stacked rows */
-  .v-list .v-row { padding: 12px 0; }
-
-  /* Variant 4: Page header */
-  .v-header .sk-title { height: 22px; width: 50%; margin-bottom: 8px; }
-  .v-header .sk-meta  { height: 12px; width: 30%; }
-</style>
-</head>
+  .card {
+    background: var(--surface-strong); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 14px 16px; max-width: 360px; margin-bottom: 12px;
+  }
+  .rowflex { display: flex; gap: 12px; align-items: center; }
+</style></head>
 <body>
-  <div class="grid">
+  <div class="caption">.sk — pulse-bg 1.6s · surface-alt ↔ border · radius 6px</div>
 
-    <div class="panel">
-      <h3>Row · avatar + 2 lines</h3>
-      <div class="v-row">
-        <div class="sk sk-circle sk-avatar"></div>
-        <div class="sk-lines">
-          <div class="sk" style="height:12px;width:60%"></div>
-          <div class="sk" style="height:10px;width:40%"></div>
-        </div>
+  <div class="card">
+    <div class="rowflex" style="margin-bottom:12px">
+      <div class="sk sk-circle" style="width:36px;height:36px"></div>
+      <div style="flex:1">
+        <div class="sk" style="height:13px;width:60%;margin-bottom:7px"></div>
+        <div class="sk" style="height:11px;width:38%"></div>
       </div>
-      <p style="font-size:11px;color:var(--muted);margin:10px 0 0;line-height:1.5">Para filas de historial, asignaciones, miembros.</p>
     </div>
-
-    <div class="panel">
-      <h3>Page header · título + meta</h3>
-      <div class="v-header">
-        <div class="sk sk-title"></div>
-        <div class="sk sk-meta"></div>
-      </div>
-      <p style="font-size:11px;color:var(--muted);margin:14px 0 0;line-height:1.5">Cuando una pantalla entera carga: el chrome aparece, solo el título y el counter quedan en skeleton.</p>
-    </div>
-
-    <div class="panel" style="grid-column: 1 / -1">
-      <h3>Plan card · estructura completa</h3>
-      <div class="v-card">
-        <div class="sk sk-overline"></div>
-        <div class="sk sk-title"></div>
-        <div class="sk sk-meta"></div>
-        <div class="sk-buttons">
-          <div class="sk sk-btn"></div>
-          <div class="sk sk-btn"></div>
-        </div>
-      </div>
-      <p style="font-size:11px;color:var(--muted);margin:12px 0 0;line-height:1.5">Para Home cuando los planes activos están cargando. Mantiene la silueta exacta de un <code style="font-family:var(--font-mono);font-size:11px">PlanCard</code> featured.</p>
-    </div>
-
-    <div class="panel" style="grid-column: 1 / -1">
-      <h3>List · 3 filas apiladas</h3>
-      <div class="v-list">
-        <div class="v-row">
-          <div class="sk sk-circle sk-avatar"></div>
-          <div class="sk-lines">
-            <div class="sk" style="height:12px;width:65%"></div>
-            <div class="sk" style="height:10px;width:35%"></div>
-          </div>
-        </div>
-        <div class="v-row">
-          <div class="sk sk-circle sk-avatar"></div>
-          <div class="sk-lines">
-            <div class="sk" style="height:12px;width:55%"></div>
-            <div class="sk" style="height:10px;width:42%"></div>
-          </div>
-        </div>
-        <div class="v-row">
-          <div class="sk sk-circle sk-avatar"></div>
-          <div class="sk-lines">
-            <div class="sk" style="height:12px;width:70%"></div>
-            <div class="sk" style="height:10px;width:30%"></div>
-          </div>
-        </div>
-      </div>
-      <p style="font-size:11px;color:var(--muted);margin:12px 0 0;line-height:1.5">Biblioteca (50+ recetas), Historial (meses de planes). Animación <code style="font-family:var(--font-mono);font-size:11px">pulse-bg 1.6s ease-in-out</code> sincronizada entre filas. Reemplazar al texto "Cargando…" actual.</p>
-    </div>
-
+    <div class="sk" style="height:11px;width:100%;margin-bottom:7px"></div>
+    <div class="sk" style="height:11px;width:88%;margin-bottom:7px"></div>
+    <div class="sk" style="height:11px;width:72%"></div>
   </div>
-</body>
-</html>
+
+  <div class="card">
+    <div class="sk" style="height:14px;width:50%;margin-bottom:12px"></div>
+    <div class="rowflex">
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+    </div>
+  </div>
+
+  <div class="caption" style="margin-top:6px">Se muestran mientras cargan las rutas; reemplazan el contenido real con el mismo layout.</div>
+</body></html>

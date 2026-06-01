@@ -17,7 +17,7 @@ function LoginScreen({ onSignIn }) {
           background: 'var(--primary-soft)', color: 'var(--primary)',
           display: 'grid', placeItems: 'center', marginBottom: 8,
         }}>
-          <Icon name="plato-vapor" size={36} strokeWidth={1.6}/>
+          <PlatoMark size={36} variant="vapor" strokeWidth={1.5}/>
         </div>
         <h1 style={{ margin: 0 }}>Comida Familiar</h1>
         <p style={{ color: 'var(--muted)', fontSize: 13, lineHeight: 1.5, marginBottom: 12 }}>

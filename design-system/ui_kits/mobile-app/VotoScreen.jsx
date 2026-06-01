@@ -47,7 +47,7 @@ function VotoProgress({ asignaciones, votos }) {
                 fontSize: 12, fontWeight: 500,
                 color: 'var(--ok-text)', background: 'var(--ok-bg)',
                 padding: '2px 8px', borderRadius: 9999,
-              }}>{votos[id]} / 10</span>
+              }}>{votos[id]}</span>
             ) : (
               <span style={{ fontSize: 12, color: 'var(--muted)' }}>Pendiente</span>
             )}
@@ -99,7 +99,7 @@ function VistaEvaluada({ plan, onBack }) {
         <p style={{
           margin: 0, fontSize: 36, fontWeight: 700, color: 'var(--primary)',
           letterSpacing: '-0.02em',
-        }}>{promedio.toFixed(1)} <span style={{ fontSize: 18, color: 'var(--muted)' }}>/ 10</span></p>
+        }}>{promedio.toFixed(1)}</p>
         <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--muted)' }}>{resultado}</p>
       </div>
 
@@ -125,7 +125,7 @@ function VistaEvaluada({ plan, onBack }) {
                   <span style={{ fontSize: 13, fontWeight: 500 }}>{NOMBRES_MIEMBROS[id] || id}</span>
                 </span>
                 <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--primary)' }}>
-                  {v} / 10
+                  {v}
                 </span>
               </div>
               {c && (
@@ -227,7 +227,7 @@ function VotoScreen({ plan, miembroId, isJP, onBack, onGuardar }) {
               margin: '10px 0 0', textAlign: 'center',
               fontSize: 13, color: 'var(--muted)',
             }}>
-              <strong style={{ color: 'var(--primary)' }}>{puntaje}</strong> / 10 — {resultadoTextual(puntaje)}
+              <strong style={{ color: 'var(--primary)' }}>{puntaje}</strong> — {resultadoTextual(puntaje)}
             </p>
           )}
         </div>
