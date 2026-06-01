@@ -4,7 +4,6 @@ import { getHistorialReciente } from "../data/historial";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { normalizeText } from "../lib/canonical";
 import { SummaryMetrics } from "../components/historial/SummaryMetrics";
-import { FilterChips } from "../components/historial/FilterChips";
 import { MonthGroup } from "../components/historial/MonthGroup";
 import { EmptyState } from "../components/historial/EmptyState";
 import type { Historial } from "../types/models";
@@ -74,11 +73,7 @@ export function HistorialRoute() {
       <div className="card" style={{ marginBottom: "var(--space-3)" }}>
         <h2 style={{ margin: "0 0 var(--space-3)", color: "var(--text-strong)" }}>Historial</h2>
 
-        <SummaryMetrics entries={entries} />
-
-        <div style={{ marginBottom: "var(--space-3)" }}>
-          <FilterChips activo={filtro} onChange={setFiltro} />
-        </div>
+        <SummaryMetrics entries={entries} activo={filtro} onSelect={setFiltro} />
 
         <input
           type="search"
