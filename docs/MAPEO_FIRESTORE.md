@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.1.2 (E9.6 — rediseño detalle Historial: estrella dorada + notas con peso)
+> **Versión**: 2.2.0 (E9.8 — Biblioteca personal por miembro: visibilidad curada por el owner)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,34 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E9.8 Cambios en v2.2.0 (E9.8 — Biblioteca personal por miembro)
+
+Feature nueva de **curación de vista** (no seguridad). JP (owner) decide qué recetas ve cada miembro cuando navega su biblioteca.
+
+**Distinción preservada — visibilidad blanda:**
+- **Biblioteca personal** = filtro de presentación opt-in. Un miembro ve solo las recetas que el owner habilitó.
+- **Lectura por plan asignado** = cualquier miembro puede leer y cocinar una receta aunque no esté en su biblioteca. Las Security Rules de `recetas` (`read, write: if isFamilyMember()`) no se tocan.
+- Esto es deliberado: endurecer las rules bloquearía el flujo de cocción de recetas asignadas → rompería E4.4 (guard de cocinar por asignaciones).
+
+**Modelo de datos — `config/visibilidad` (doc nuevo):**
+```ts
+interface VisibilidadBiblioteca { maria: string[]; sofia: string[]; federico: string[]; }
+```
+Opt-in: solo `idReceta` listados son visibles para ese miembro. El owner (`juanpablo`) no aparece — ve todo siempre. Una receta nueva nace invisible para todos (sin tocar la receta).
+
+**Security Rules:** el doc `config/visibilidad` queda cubierto por la regla genérica `match /config/{docId}` ya existente (`read: isFamilyMember()`, `write: isOwner()`). No se agregó regla específica — comportamiento idéntico.
+
+**Capa de datos (`src/data/visibilidad.ts`):**
+`getVisibilidad()`, `subscribeVisibilidad()` (realtime), `toggleVisibilidadReceta(miembro, idReceta, visible)` (setDoc merge + arrayUnion/Remove), `setVisibilidadMiembro()`. `getRecetasParaMiembro(memberId)` en `recetas.ts` — filtra sobre cache.
+
+**Guard — nivel-tab (no nivel-ruta):** `/biblioteca` abierta a todos los miembros autenticados. No-owner: ve solo tab Recetas (curada). Owner: ve todo (tabs + catálogo + visibilidad + importar). Acceso directo a `/biblioteca/visibilidad` por URL → redirect a `/biblioteca` si no es owner.
+
+**UI:**
+- `Biblioteca.tsx` → `TabRecetas` recibe `memberId`/`isJP`; carga `getRecetasParaMiembro` para no-owner; estado vacío amable si lista curada está vacía.
+- `/biblioteca/visibilidad` → grilla receta × 3 miembros con checkboxes; filtros (tipo, proteína, cocina, búsqueda); contadores por miembro; un write por toggle.
+- `DetalleReceta.tsx` → bloque "Visible en biblioteca de:" con checkboxes María/Sofía/Federico (solo owner). Suscripción realtime a visibilidad.
+- `Biblioteca.tsx` → botón `Eye + "Visibilidad de biblioteca"` entre catálogo y card (solo owner).
 
 ### 1.2.E9.6 Cambios en v2.1.2 (E9.6 — Rediseño detalle Historial)
 
@@ -2267,6 +2295,9 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E9.8.1_biblioteca_por_miembro.md`** ✅ **CERRADO (v2.2.0)**: visibilidad blanda
+  (curación de vista, no seguridad). `config/visibilidad` opt-in, guard nivel-tab, grilla
+  curación, toggle en detalle. Security Rules ya cubiertas por regla genérica. Ver §1.2.E9.8.
 - **`PROMPT_E9.6_rediseno_detalle_historial.md`** ✅ **CERRADO (v2.1.2)**: token `--estrella`,
   Stars doradas en lista y detalle, hero sin "/ 10", notas por miembro Stars+número grande.
   Ver §1.2.E9.6.
@@ -2542,6 +2573,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E9.8 — Biblioteca personal por miembro** ✅ **HECHO (v2.2.0)** — `config/visibilidad` (opt-in), visibilidad blanda, guard nivel-tab, pantalla curación grilla, toggle en detalle. Ver §1.2.E9.8.
 - **E9.6 — Rediseño detalle Historial** ✅ **HECHO (v2.1.2)** — token `--estrella` (dorado oklch), Stars con prop `size`, hero sin "/ 10" + estrellas, notas por miembro con estrellas + número grande. Ver §1.2.E9.6.
 - **E9.5 — Catálogo de ingredientes antes del listado** ✅ **HECHO (v2.1.1)** — tab-action reemplazada por botón full-width visible siempre. Ver §1.2.E9.5.
 - **E9.3 — ¿Qué cocino con lo que tengo?** ✅ **HECHO (v2.1.0)** — helper `evaluarCocinables` (buckets ahora/cambio/falta1/faltaN, sustitución por equivalencias y alternativas); básicos de despensa; `localStorage["cf-despensa"]`; ruta `/que-cocino` + entrada en Home. 8 tests. Cierra ítem 7.2. Ver §1.2.E9.3.
@@ -2579,6 +2611,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.1.2:** E9.0–E9.6 implementados. **Pendiente (producción):**
+**Estado en v2.2.0:** E9.0–E9.8 implementados (E9.7 pendiente). **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.
