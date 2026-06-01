@@ -1,5 +1,5 @@
 import {
-  collection, doc, getDoc, getDocs, setDoc, updateDoc, deleteDoc,
+  collection, doc, getDoc, getDocs, getDocsFromServer, setDoc, updateDoc, deleteDoc,
   writeBatch, arrayUnion, arrayRemove, serverTimestamp, query, where,
 } from "firebase/firestore";
 import { db } from "../firebase";
@@ -12,7 +12,12 @@ let cachedCatalog: Map<string, Ingrediente> | null = null;
 
 export async function getCatalogo(): Promise<Map<string, Ingrediente>> {
   if (cachedCatalog) return cachedCatalog;
-  const snap = await getDocs(collection(db, "ingredientes"));
+  let snap;
+  try {
+    snap = await getDocsFromServer(collection(db, "ingredientes"));
+  } catch {
+    snap = await getDocs(collection(db, "ingredientes"));
+  }
   cachedCatalog = new Map(snap.docs.map((d) => [d.id, d.data() as Ingrediente]));
   return cachedCatalog;
 }
