@@ -11,6 +11,8 @@ import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibil
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
 import { MetaCards } from "../components/receta/MetaCards";
 import { RecetaPill } from "../components/receta/RecetaPill";
+import { subscribeVisibilidad, toggleVisibilidadReceta } from "../data/visibilidad";
+import type { VisibilidadBiblioteca } from "../types/models";
 import { IngredientesPorGondola } from "../components/receta/IngredientesPorGondola";
 import { PasosPreview } from "../components/receta/PasosPreview";
 import { AccionesPlan } from "../components/receta/AccionesPlan";
@@ -260,6 +262,7 @@ export function DetalleRecetaRoute() {
   const [toast, setToast] = useState<ToastMsg | null>(null);
   const [confirm, setConfirm] = useState<{ mensaje: string; accion: () => void } | null>(null);
   const [loadingAccion, setLoadingAccion] = useState<"especial" | "extra" | "enproceso" | null>(null);
+  const [visibilidad, setVisibilidad] = useState<VisibilidadBiblioteca>({ maria: [], sofia: [], federico: [] });
   const [sheetOpen, setSheetOpen] = useState(false);
 
   // Carga la receta
@@ -280,6 +283,12 @@ export function DetalleRecetaRoute() {
     const unsub = subscribeToPlanesActivos(semanaInicio, setPlanesActivos);
     return unsub;
   }, [isJP, semanaInicio]);
+
+  // Suscripción a visibilidad (solo JP)
+  useEffect(() => {
+    if (!isJP) return;
+    return subscribeVisibilidad(setVisibilidad);
+  }, [isJP]);
 
   const showToast = useCallback((text: string, ok: boolean) => {
     setToast({ text, ok });
@@ -512,7 +521,33 @@ export function DetalleRecetaRoute() {
         </div>
       )}
 
-      {/* 9. Sticky bottom Cocinar (solo JP) */}
+      {/* 9. Visibilidad en biblioteca (solo JP) */}
+      {isJP && receta && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)", fontSize: "var(--fs-sm)" }}>
+            Visible en biblioteca de:
+          </p>
+          <div style={{ display: "flex", gap: "var(--space-4)" }}>
+            {([
+              { id: "maria",    nombre: "María" },
+              { id: "sofia",    nombre: "Sofía" },
+              { id: "federico", nombre: "Federico" },
+            ] as const).map(m => (
+              <label key={m.id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", cursor: "pointer", fontSize: "var(--fs-sm)" }}>
+                <input
+                  type="checkbox"
+                  checked={visibilidad[m.id].includes(receta.idReceta)}
+                  onChange={e => void toggleVisibilidadReceta(m.id, receta.idReceta, e.target.checked)}
+                  style={{ width: 16, height: 16, cursor: "pointer", accentColor: "var(--primary)" }}
+                />
+                {m.nombre}
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 10. Sticky bottom Cocinar (solo JP) */}
       {isJP && (
         <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
       )}

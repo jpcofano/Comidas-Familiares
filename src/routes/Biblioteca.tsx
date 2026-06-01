@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
-import { Plus, Carrot, ChevronRight } from "lucide-react";
+import { Plus, Carrot, ChevronRight, Eye } from "lucide-react";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
-import { getRecetas } from "../data/recetas";
+import { getRecetas, getRecetasParaMiembro } from "../data/recetas";
 import { getMenus, deriveMenuMetadata } from "../data/menus";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta } from "../lib/filtros";
@@ -143,18 +143,19 @@ function MenuCard({ menu, derived }: { menu: Menu; derived: MenuDerived | null }
 
 // ─── Tab Recetas ──────────────────────────────────────────────────────────────
 
-function TabRecetas() {
+function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
   const [recetas, setRecetas] = useState<Receta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filtros, setFiltros] = useState<FiltrosReceta>(FILTROS_INICIALES);
 
   useEffect(() => {
-    getRecetas()
+    const load = isJP ? getRecetas() : getRecetasParaMiembro(memberId);
+    load
       .then(setRecetas)
       .catch(() => setError("No se pudieron cargar las recetas."))
       .finally(() => setLoading(false));
-  }, []);
+  }, [memberId, isJP]);
 
   const resultado = useMemo(() => filtrarRecetas(recetas, filtros), [recetas, filtros]);
   const filtrosActivos = hayFiltrosActivos(filtros);
@@ -282,7 +283,11 @@ function TabRecetas() {
       {/* Listado */}
       {resultado.length === 0 ? (
         <div style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
-          <p className="meta">Ninguna receta coincide con los filtros.</p>
+          <p className="meta">
+            {!isJP && recetas.length === 0
+              ? "Todavía no tenés recetas en tu biblioteca. Pedile a JP que te habilite algunas."
+              : "Ninguna receta coincide con los filtros."}
+          </p>
         </div>
       ) : (
         resultado.map(r => <RecetaCard key={r.idReceta} receta={r} />)
@@ -343,10 +348,11 @@ function TabMenus() {
 export function BibliotecaRoute() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useAuth();
-  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
 
-  if (!isJP) return <Navigate to="/" replace />;
+  if (state.status !== "authenticated") return <Navigate to="/" replace />;
 
+  const memberId = state.user.memberId;
+  const isJP = memberId === "juanpablo";
   const tab = searchParams.get("tab") ?? "recetas";
 
   return (
@@ -358,13 +364,15 @@ export function BibliotecaRoute() {
         >
           Recetas
         </button>
-        <button
-          className={tab === "menus" ? "tab active" : "tab"}
-          onClick={() => setSearchParams({ tab: "menus" })}
-        >
-          Menús
-        </button>
-        {tab === "recetas" && (
+        {isJP && (
+          <button
+            className={tab === "menus" ? "tab active" : "tab"}
+            onClick={() => setSearchParams({ tab: "menus" })}
+          >
+            Menús
+          </button>
+        )}
+        {isJP && tab === "recetas" && (
           <Link to="/biblioteca/importar" className="tab-action">
             <Plus size={16} aria-hidden />
             <span>Importar</span>
@@ -372,31 +380,60 @@ export function BibliotecaRoute() {
         )}
       </div>
 
-      <Link
-        to="/biblioteca/catalogo"
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "var(--space-3) var(--space-4)",
-          marginBottom: "var(--space-2)",
-          borderRadius: "var(--radius-md)",
-          border: "1px solid var(--border)",
-          background: "var(--surface-strong)",
-          color: "var(--text-strong)",
-          textDecoration: "none",
-          gap: "var(--space-3)",
-        }}
-      >
-        <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-          <Carrot size={18} color="var(--primary)" aria-hidden />
-          <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600 }}>
-            Catálogo de ingredientes
-          </span>
-        </span>
-        <ChevronRight size={16} color="var(--muted)" aria-hidden />
-      </Link>
+      {isJP && (
+        <>
+          <Link
+            to="/biblioteca/catalogo"
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              padding: "var(--space-3) var(--space-4)",
+              marginBottom: "var(--space-2)",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)",
+              background: "var(--surface-strong)",
+              color: "var(--text-strong)",
+              textDecoration: "none",
+              gap: "var(--space-3)",
+            }}
+          >
+            <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+              <Carrot size={18} color="var(--primary)" aria-hidden />
+              <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600 }}>
+                Catálogo de ingredientes
+              </span>
+            </span>
+            <ChevronRight size={16} color="var(--muted)" aria-hidden />
+          </Link>
+
+          <Link
+            to="/biblioteca/visibilidad"
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              padding: "var(--space-3) var(--space-4)",
+              marginBottom: "var(--space-2)",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)",
+              background: "var(--surface-strong)",
+              color: "var(--text-strong)",
+              textDecoration: "none",
+              gap: "var(--space-3)",
+            }}
+          >
+            <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+              <Eye size={18} color="var(--primary)" aria-hidden />
+              <span style={{ fontSize: "var(--fs-sm)", fontWeight: 600 }}>
+                Visibilidad de biblioteca
+              </span>
+            </span>
+            <ChevronRight size={16} color="var(--muted)" aria-hidden />
+          </Link>
+        </>
+      )}
 
       <div className="card">
-        {tab === "recetas" ? <TabRecetas /> : <TabMenus />}
+        {tab === "recetas"
+          ? <TabRecetas memberId={memberId} isJP={isJP} />
+          : (isJP ? <TabMenus /> : null)}
       </div>
     </>
   );
