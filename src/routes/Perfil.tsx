@@ -78,7 +78,7 @@ function PerfilView({
     if (isJP && targetId === "juanpablo") {
       getRecetas().then(rs => setTotalRecetas(rs.length));
     } else {
-      getVisibilidad().then(v => setBibliotecaCount((v[targetId] ?? []).length));
+      getVisibilidad().then(v => setBibliotecaCount(((v as unknown as Record<string, string[]>)[targetId] ?? []).length));
     }
   }, [targetId, isJP]);
 
