@@ -5,7 +5,6 @@ import { useAuth } from "../auth/useAuth";
 import { getRecetas } from "../data/recetas";
 import { subscribeVisibilidad, toggleVisibilidadReceta } from "../data/visibilidad";
 import { filtrarRecetas, FILTROS_INICIALES } from "../lib/filtros";
-import { normalizeText } from "../lib/canonical";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import type { Receta } from "../types/models";
 import type { VisibilidadBiblioteca } from "../types/models";
@@ -18,7 +17,6 @@ const MIEMBROS = [
 ] as const;
 
 export function VisibilidadBibliotecaRoute() {
-  const navigate = useNavigate();
   const { state } = useAuth();
 
   const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";

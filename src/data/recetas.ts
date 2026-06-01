@@ -39,7 +39,7 @@ export async function getRecetasParaMiembro(memberId: string): Promise<Receta[]>
   if (memberId === "juanpablo") return getRecetas();
   const { getVisibilidad } = await import("./visibilidad");
   const [todas, visibilidad] = await Promise.all([getRecetas(), getVisibilidad()]);
-  const visibles = new Set((visibilidad as Record<string, string[]>)[memberId] ?? []);
+  const visibles = new Set((visibilidad as unknown as Record<string, string[]>)[memberId] ?? []);
   return todas.filter(r => visibles.has(r.idReceta));
 }
 
