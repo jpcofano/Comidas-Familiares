@@ -218,7 +218,7 @@ export function HistorialDetalleRoute() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-                  <MemberAvatar name={NOMBRE_MIEMBRO[mid as MiembroId]} size={24} />
+                  <MemberAvatar name={NOMBRE_MIEMBRO[mid as MiembroId]} memberId={mid as MiembroId} size={24} />
                   <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>
                     {NOMBRE_MIEMBRO[mid as MiembroId]}
                   </span>

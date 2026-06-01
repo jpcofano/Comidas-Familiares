@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.3.0 (E10.1 — Perfil de miembro: color de avatar, preferencias, stats, notif)
+> **Versión**: 2.3.1 (E10.2 — MemberAvatar con memberId: color propio en historial/plan cards)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,15 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E10.2 Cambios en v2.3.1 (E10.2 — MemberAvatar con color propio)
+
+Cablea el color custom de `config/perfiles` (E10.1) en los lugares donde se muestran avatares de miembro:
+
+- **`HistorialDetalle.tsx`** — filas de calificación: `<MemberAvatar memberId={mid} name={...} size={24} />`. Es el caso principal: cada nota muestra el avatar del autor con su color custom.
+- **`PlanCard.tsx`** — `<AvatarStack memberIds={plan.asignaciones} names={cocineroNombres} />`. Las plan cards del Home también reflejan el color de los cocineros asignados.
+
+`MemberAvatar.tsx` ya recibe el `memberId` opcional desde E10.1 y usa `useColorMiembro` con fallback al token. `AvatarStack` ya acepta `memberIds?`. Cambio de las llamadas a sitio. Realtime: cambiar el color desde `/perfil` actualiza historial y plan cards sin recargar.
 
 ### 1.2.E10.1 Cambios en v2.3.0 (E10.1 — Perfil de miembro)
 
@@ -2366,6 +2375,8 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E10.2_member_avatar_color.md`** ✅ **CERRADO (v2.3.1)**: memberId en
+  HistorialDetalle (filas calificación) + PlanCard (AvatarStack). Realtime vía E10.1. Ver §1.2.E10.2.
 - **`PROMPT_E10.1_perfil_miembro.md`** ✅ **CERRADO (v2.3.0)**: perfil con color, preferencias,
   stats, notif placeholder. `PerfilesProvider`, `useColorMiembro`, rules. Ver §1.2.E10.1.
 - **`PROMPT_E9.10_historial_tarjetas_filtro.md`** ✅ **CERRADO (v2.2.3)**: SummaryMetrics
@@ -2696,6 +2707,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.3.0:** E9.0–E9.10 y E10.1 implementados. Lote 10 abierto. **Pendiente (producción):**
+**Estado en v2.3.1:** E9.0–E9.10, E10.1 y E10.2 implementados. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

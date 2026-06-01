@@ -213,6 +213,7 @@ export function PlanCard({
           }}>
             <AvatarStack
               names={cocineroNombres}
+              memberIds={plan.asignaciones as MiembroId[]}
               size={22}
               onClick={isJP && plan.estado !== "Evaluada" ? () => { setAsigEditing(true); setDateEditing(false); setMoreOpen(false); } : undefined}
             />
