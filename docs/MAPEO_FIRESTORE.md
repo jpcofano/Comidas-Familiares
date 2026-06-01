@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.2.3 (E9.10 — Historial: tarjetas de resumen como filtros, sin fila de chips)
+> **Versión**: 2.3.0 (E10.1 — Perfil de miembro: color de avatar, preferencias, stats, notif)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,34 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E10.1 Cambios en v2.3.0 (E10.1 — Perfil de miembro)
+
+Feature nueva: pantalla de perfil por miembro con color de avatar custom, preferencias de comida, stats y sección de notificaciones (placeholder).
+
+**Modelo — `config/perfiles` (doc nuevo):**
+```ts
+interface PerfilMiembro { color?: string; preferencias?: string[]; }
+type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+```
+`color`: hex de la paleta curada; si falta → token `--member-{id}`. `preferencias`: lista libre de strings. No ensuciar `config/familia`.
+
+**Security Rules:** `match /config/perfiles { allow read, write: if isFamilyMember(); }` — regla específica que sobreescribe la genérica `config/{docId}` (que solo permite write al owner). Cualquier miembro puede editar su propio color/preferencias.
+
+**Capa de datos (`src/data/perfiles.ts`):** `getPerfiles()`, `subscribePerfiles()` (realtime), `setColorMiembro()`, `addPreferencia()`, `removePreferencia()`.
+
+**Color en toda la app:**
+- `PerfilesProvider` (`src/contexts/PerfilesContext.tsx`) suscrito a `config/perfiles` desde el root de la app. Hook `useColorMiembro(memberId): string` devuelve color custom o token fallback.
+- `MemberAvatar` actualizado: nueva prop opcional `memberId?: MiembroId`. Si viene, usa `useColorMiembro`; si no, fallback por nombre normalizado (retrocompatible). `AvatarStack` acepta `memberIds?` paralelo a `names`.
+- Avatar del header (`Header.tsx`) → `<Link to="/perfil">` con `<MemberAvatar memberId={...} />` (antes era solo la inicial, no navegaba).
+
+**Pantalla `/perfil` y `/perfil/:memberId` (hero layout):**
+1. Owner: selector de miembros (fila de avatares) + puede editar perfil de cualquiera.
+2. No-owner: solo su propio perfil; acceso a `:memberId` ajeno → redirect a `/perfil`.
+3. Secciones: avatar grande + nombre → swatches de paleta curada (6 colores) → 3 stats (calificó / promedio / biblioteca) → preferencias editables (chips + input + sugeridos) → últimos 3 platos calificados → notificaciones placeholder ("próximamente", sin lógica).
+4. Paleta curada: `['#8a4a2f','#74324a','#3c4a6e','#2e5d2e','#7a5c1e','#9a4d2e']`.
+
+**Alta/baja de miembros:** fuera de scope; no se toca `config/familia`.
 
 ### 1.2.E9.10 Cambios en v2.2.3 (E9.10 — Historial: tarjetas-filtro, sin chips)
 
@@ -2338,6 +2366,8 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E10.1_perfil_miembro.md`** ✅ **CERRADO (v2.3.0)**: perfil con color, preferencias,
+  stats, notif placeholder. `PerfilesProvider`, `useColorMiembro`, rules. Ver §1.2.E10.1.
 - **`PROMPT_E9.10_historial_tarjetas_filtro.md`** ✅ **CERRADO (v2.2.3)**: SummaryMetrics
   interactivo (Total→todos, Máximo→ok, Top→top, toggle-back), métrica Máximo, sin FilterChips.
   Ver §1.2.E9.10.
@@ -2624,6 +2654,7 @@ receta → Calificaciones → Foto del plato → Notas del cocinero.
 - **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
 - **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
 - **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E10.1 — Perfil de miembro** ✅ **HECHO (v2.3.0)** — `config/perfiles`, `PerfilesProvider`/`useColorMiembro`, `MemberAvatar` con `memberId`, pantalla `/perfil` (hero, swatches, stats, preferencias, notif placeholder). Rules abiertas a `isFamilyMember`. Ver §1.2.E10.1.
 - **E9.10 — Historial: tarjetas-filtro, sin chips** ✅ **HECHO (v2.2.3)** — SummaryMetrics interactivo (Total/Máximo/Top, toggle-back, estado activo), métrica Máximo, FilterChips eliminado del Historial. Ver §1.2.E9.10.
 - **E9.9 — Acceso de miembros a su biblioteca** ✅ **HECHO (v2.2.2)** — tab "Mis recetas" en nav, header miembro, chips asignación (María/Sofía/Federico), gate CocinarSticky por plan. Ver §1.2.E9.9.
 - **E9.7 — Equivalencias en la lista de compras** ✅ **HECHO (v2.2.1)** — pill "⇄ o {X}" (tono accent) en ítems pendientes, tap = yaTengo, ambas vistas. Cierra tríada E9.3+E9.4+E9.7. 11 tests. Ver §1.2.E9.7.
@@ -2665,6 +2696,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.2.3:** E9.0–E9.10 implementados. **Pendiente (producción):**
+**Estado en v2.3.0:** E9.0–E9.10 y E10.1 implementados. Lote 10 abierto. **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.

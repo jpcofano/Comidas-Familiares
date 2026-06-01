@@ -18,6 +18,8 @@ import { HistorialDetalleRoute } from "./routes/HistorialDetalle";
 import { VotoRoute } from "./routes/Voto";
 import { QueCocinoRoute } from "./routes/QueCocino";
 import { VisibilidadBibliotecaRoute } from "./routes/VisibilidadBiblioteca";
+import { PerfilRoute } from "./routes/Perfil";
+import { PerfilesProvider } from "./contexts/PerfilesContext";
 import { NotFoundRoute } from "./routes/NotFound";
 
 function JPOnly({ children }: { children: React.ReactNode }) {
@@ -42,6 +44,7 @@ function App() {
   }
 
   return (
+    <PerfilesProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<AppShell />}>
@@ -62,10 +65,13 @@ function App() {
           <Route path="/historial/:idHist" element={<HistorialDetalleRoute />} />
           <Route path="/voto/:idPlan" element={<VotoRoute />} />
           <Route path="/que-cocino" element={<QueCocinoRoute />} />
+          <Route path="/perfil" element={<PerfilRoute />} />
+          <Route path="/perfil/:memberId" element={<PerfilRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </PerfilesProvider>
   );
 }
 

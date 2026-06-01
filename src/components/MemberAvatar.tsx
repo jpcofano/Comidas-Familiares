@@ -1,13 +1,18 @@
 // src/components/MemberAvatar.tsx — círculo de iniciales por miembro + stack
+// Si se pasa `memberId`, el color viene de useColorMiembro (realtime, custom > token).
+// Sin `memberId` → fallback al token --member-{key} por nombre normalizado (retrocompat).
 
-interface Palette { bg: string; fg: string; label: string }
+import { useColorMiembro } from "../contexts/PerfilesContext";
+import type { MiembroId } from "../types/models";
+
+interface Palette { fg: string; label: string }
 
 const PALETTE: Record<string, Palette> = {
-  juanpablo: { bg: "var(--member-juanpablo)", fg: "#fff", label: "JP" },
-  juanpablo_: { bg: "var(--member-juanpablo)", fg: "#fff", label: "JP" }, // normalized alias
-  maria:     { bg: "var(--member-maria)",     fg: "#fff", label: "M"  },
-  sofia:     { bg: "var(--member-sofia)",     fg: "#fff", label: "S"  },
-  federico:  { bg: "var(--member-federico)",  fg: "#fff", label: "F"  },
+  juanpablo:  { fg: "#fff", label: "JP" },
+  juanpablo_: { fg: "#fff", label: "JP" },
+  maria:      { fg: "#fff", label: "M"  },
+  sofia:      { fg: "#fff", label: "S"  },
+  federico:   { fg: "#fff", label: "F"  },
 };
 
 function normalize(name: string): string {
@@ -17,24 +22,25 @@ function normalize(name: string): string {
     .replace(/\s+/g, "");
 }
 
+// ─── Avatar single ────────────────────────────────────────────────────────────
+
 interface MemberAvatarProps {
   name: string;
   size?: number;
   withName?: boolean;
+  memberId?: MiembroId;
 }
 
-export function MemberAvatar({ name, size = 22, withName = false }: MemberAvatarProps) {
+function AvatarCircle({ name, size, memberId }: { name: string; size: number; memberId?: MiembroId }) {
+  const colorFromId = memberId ? useColorMiembro(memberId) : null; // eslint-disable-line react-hooks/rules-of-hooks
   const key = normalize(name);
-  const m: Palette = PALETTE[key] ?? {
-    bg: "var(--muted)",
-    fg: "#fff",
-    label: (name || "?").charAt(0).toUpperCase(),
-  };
+  const m: Palette = PALETTE[key] ?? { fg: "#fff", label: (name || "?").charAt(0).toUpperCase() };
+  const bg = colorFromId ?? (PALETTE[key] ? `var(--member-${key})` : "var(--muted)");
 
-  const circle = (
+  return (
     <span style={{
       width: size, height: size, borderRadius: "50%",
-      background: m.bg, color: m.fg,
+      background: bg, color: m.fg,
       display: "inline-flex", alignItems: "center", justifyContent: "center",
       fontSize: size <= 22 ? 10 : 11,
       fontWeight: "var(--fw-semibold)" as unknown as number,
@@ -43,7 +49,10 @@ export function MemberAvatar({ name, size = 22, withName = false }: MemberAvatar
       {m.label}
     </span>
   );
+}
 
+export function MemberAvatar({ name, size = 22, withName = false, memberId }: MemberAvatarProps) {
+  const circle = <AvatarCircle name={name} size={size} memberId={memberId} />;
   if (!withName) return circle;
   return (
     <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
@@ -53,14 +62,17 @@ export function MemberAvatar({ name, size = 22, withName = false }: MemberAvatar
   );
 }
 
+// ─── Avatar stack ─────────────────────────────────────────────────────────────
+
 interface AvatarStackProps {
   names: string[];
+  memberIds?: MiembroId[];
   size?: number;
   max?: number;
   onClick?: () => void;
 }
 
-export function AvatarStack({ names, size = 22, max = 4, onClick }: AvatarStackProps) {
+export function AvatarStack({ names, memberIds, size = 22, max = 4, onClick }: AvatarStackProps) {
   const shown = names.slice(0, max);
   const overflow = names.length - shown.length;
   return (
@@ -86,7 +98,7 @@ export function AvatarStack({ names, size = 22, max = 4, onClick }: AvatarStackP
           borderRadius: "50%",
           display: "inline-flex",
         }}>
-          <MemberAvatar name={n} size={size} />
+          <MemberAvatar name={n} size={size} memberId={memberIds?.[i]} />
         </span>
       ))}
       {overflow > 0 && (

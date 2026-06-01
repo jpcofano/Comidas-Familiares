@@ -362,6 +362,14 @@ export interface FamiliaConfig {
   semanaArrancaEn: "lunes" | "domingo";
 }
 
+// ─── Perfiles de miembro ─────────────────────────────────────────────────────
+// Doc único: /config/perfiles. Cada clave es un MiembroId.
+export interface PerfilMiembro {
+  color?: string;          // hex de la paleta curada; si falta → token --member-{id}
+  preferencias?: string[]; // lista libre de preferencias de comida
+}
+export type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+
 // ─── Visibilidad de biblioteca por miembro ────────────────────────────────────
 // Doc único: /config/visibilidad. Opt-in: solo recetas listadas son visibles.
 // El owner (juanpablo) no aparece — ve todo siempre.

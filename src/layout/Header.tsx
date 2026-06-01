@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { LogOut, Moon, Sun } from "lucide-react";
 import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "../auth/useAuth";
+import { MemberAvatar } from "../components/MemberAvatar";
 import { getInitialTheme, applyTheme, type Theme } from "../lib/theme";
+import type { MiembroId } from "../types/models";
 import "./Header.css";
 
 export function Header() {
@@ -33,8 +36,7 @@ export function Header() {
 
   if (state.status !== "authenticated") return null;
 
-  const { nombre } = state.user;
-  const inicial = nombre.charAt(0).toUpperCase();
+  const { nombre, memberId } = state.user;
 
   return (
     <header className="app-header" ref={headerRef}>
@@ -63,25 +65,23 @@ export function Header() {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <button
+        <Link
+          to="/perfil"
           className="avatar-button"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Menú de usuario"
-          aria-expanded={menuOpen}
+          aria-label="Ver mi perfil"
+          style={{ textDecoration: "none" }}
+          onClick={() => setMenuOpen(false)}
         >
-          <span className="avatar" aria-hidden="true">{inicial}</span>
+          <MemberAvatar name={nombre} memberId={memberId as MiembroId} size={28} />
           <span className="username">{nombre}</span>
-        </button>
+        </Link>
       </div>
       {menuOpen && (
         <div className="user-menu" role="menu">
           <button
             type="button"
             className="user-menu-item"
-            onClick={() => {
-              setMenuOpen(false);
-              signOut();
-            }}
+            onClick={() => { setMenuOpen(false); void signOut(); }}
           >
             <LogOut size={16} aria-hidden />
             <span>Cerrar sesión</span>

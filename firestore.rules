@@ -67,6 +67,11 @@ service cloud.firestore {
       allow write: if isOwner();
     }
 
+    // Perfiles de miembro: cada miembro puede escribir su propio color/preferencias.
+    match /config/perfiles {
+      allow read, write: if isFamilyMember();
+    }
+
     match /users/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;
       allow create: if request.auth != null && request.auth.uid == uid && isFamilyMember();
