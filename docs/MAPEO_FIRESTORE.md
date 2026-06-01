@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.4.0 (E11.1 — Macros por porción: tipos + conversión + lógica pura)
+> **Versión**: 2.4.1 (E11.2 — Workflow LLM + seed idempotente para macros del catálogo)
 > **Fecha**: 2026-05-31
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,20 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.2 Cambios en v2.4.1 (E11.2 — Workflow LLM + seed idempotente de macros)
+
+Pobla los campos `macros?` y `gramosPorUnidad?` en `/ingredientes` (265 docs, sin Utensilio).
+
+**`scripts/export-ingredientes-para-macros.ts`:** Lee `/ingredientes` de Firestore y emite lista ordenada por categoría (`idIngrediente — nombrePreferido (categoria) [unidades]`) a stdout o `--out <archivo>`. Insumo del LLM.
+
+**`docs/prompts/MACROS_LLM_PROMPT.md`:** Prompt blindado. Recibe la lista; pide JSON estricto por 100 g con `{idIngrediente, kcal, carbohidratos, proteinas, grasas, fibra, gramosPorUnidad?}`; exige consistencia calórica (4C+4P+9G≈kcal ±30%); omite Utensilio; no inventa IDs. JP pega salida como `scripts/seed-data/macros.json`.
+
+**`scripts/seed-macros.ts`:** Lee `scripts/seed-data/macros.json`. Validación por fila: `idIngrediente` existe en catálogo; rangos [0,100] para carbs/prot/grasa/fibra, [0,900] para kcal, `fibra ≤ carbs` — fuera de rango: saltear + reportar. Warn de consistencia calórica (no aborta). Escribe SOLO `macros`+`gramosPorUnidad` con `set({...}, { merge: true })`. `--dry-run` (default) / `--force`. Resumen final N/M/K/L.
+
+**Notas de procedencia:** valores son estimaciones LLM revisadas por JP, base 100 g, mercado argentino. Se muestran como "estimado" en UI (E11.3).
+
+**Diagnóstico:** catálogo tiene **265 docs** (≠ 177 asumido en prompt — corregido). 0 docs con `macros` al correr E11.2.
 
 ### 1.2.E11.1 Cambios en v2.4.0 (E11.1 — Macros por porción: tipos + conversión + lógica pura)
 
@@ -2409,6 +2423,8 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E11.2_macros_datos.md`** ✅ **CERRADO (v2.4.1)**: export script, MACROS_LLM_PROMPT,
+  seed-macros (validación rangos + warn consistencia + dry-run/force + merge). Ver §1.2.E11.2.
 - **`PROMPT_E11.1_macros_logica.md`** ✅ **CERRADO (v2.4.0)**: `macros?`/`gramosPorUnidad?`
   en `Ingrediente`; `conversiones.ts` (`aGramos`, 14 tests); `macros.ts` (`macrosDeReceta`,
   5 tests). Sin UI ni writes. Ver §1.2.E11.1.
@@ -2747,6 +2763,6 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.4.0:** E9.0–E9.10, E10.1–E10.3, E11.1 implementados. Etapa 11 abierta. **Pendiente (producción):**
+**Estado en v2.4.1:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.2 implementados. Pendiente: JP corre el workflow LLM → seed-macros para poblar los datos; luego E11.3 (UI). **Pendiente (producción):**
 `npm run e9:importador` (re-seed promptLLM con `--force`) + `npm run build && firebase deploy
 --only hosting`. Sin deuda técnica viva en código.
