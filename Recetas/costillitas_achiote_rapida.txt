@@ -1,0 +1,55 @@
+#RECETA
+nombre: Costillitas de cerdo al achiote con ensalada de repollo a la lima (versión rápida de semana)
+tipoItem: Receta principal
+proteinaPrincipal: Cerdo
+escenarioUso: Cocina rápida
+porciones: 4
+dificultad: Media
+sinLacteos: Sí
+hidratos: No
+esVegetariano: No
+tiempoActivo: 30 min
+tiempoTotal: 1 h 10 min
+costoEstimado: Medio
+aptoNocheDeADos: Sí
+paraJuanPablo: Sí
+paraFamilia: Sí
+climaDelPlato: Potente
+pensadaPara: Semana
+cocina: Mexicana
+notas: **Por qué es especial:** Versión rápida y de semana de las costillitas yucatecas al achiote. No requiere marinado de 12 h ni envoltorio de hojas de plátano: la pasta de achiote se diluye en jugos cítricos (naranja + limón + pomelo, el reemplazo argentino de la naranja agria) y se aplica directo sobre las costillitas, que van al horno en dos fases — cubierto 30 min para tiernizar y descubierto 15 min con glaseado de miel para crispar. La ensalada de repollo blanco en juliana con cebolla morada, cilantro y mucho limón funciona como contraste fresco-ácido para cortar la riqueza de la carne. Bajo en hidratos: no lleva tortillas ni porotos. **Tiempo activo (~30 min de 70):** pasta de achiote (8 min), untado (3 min), ensalada en paralelo al horno (10 min), glaseado y emplatado (10 min). **Riesgos / puntos críticos:** (1) Costillitas en trozos chicos (2-3 costillas por pieza), no costillar entero — la versión rápida necesita superficies expuestas. (2) Sellado hermético del aluminio en la primera fase: si pierde vapor se resecan. (3) Glaseado final con miel a 220°C: pasa de caramelizado a quemado en 1-2 min, vigilar los últimos 5 min. (4) Ensalada de repollo: armarla cuando faltan 10 min de horno, no antes, porque larga agua y queda lacia.
+fuente: Claude
+
+#INGREDIENTES
+seccion | ingrediente | preparacion | cantidad | unidad | opcional | notas | categoria | rolNutricional | seccionGondola
+Principal | Ribs de cerdo | en trozos de 2 a 3 costillas | 1.6 | kg | No | Pechito de cerdo cortado en piezas chicas | | |
+Marinada achiote | Pasta de achiote | | 80 | g | No | Marca El Yucateco u otra | Condimento y aderezo | Neutro | Almacen / secos
+Marinada achiote | Naranja | jugo | 2 | u | No | ~150 ml de jugo | | |
+Marinada achiote | Limon | jugo | 2 | u | No | ~50 ml de jugo para la marinada | | |
+Marinada achiote | Pomelo | jugo | 0.5 | u | No | ~50 ml de jugo | | |
+Marinada achiote | Ajo | machacados | 4 | u | No | | | |
+Marinada achiote | Comino | en polvo | 1 | cdita | No | | | |
+Marinada achiote | Oregano | seco | 1 | cdita | No | | | |
+Marinada achiote | Pimienta negra | molida | 0.5 | cdita | No | Para la marinada | | |
+Marinada achiote | Sal gruesa | | 1.5 | cdita | No | | | |
+Marinada achiote | Aceite de oliva | | 30 | ml | No | Para la marinada | | |
+Glaseado | Miel | | 2 | cda | No | | | |
+Glaseado | Limon | jugo | 0.5 | u | No | ~15 ml para el glaseado | | |
+Ensalada de repollo | Repollo blanco | en juliana fina | 400 | g | No | Medio repollo chico | | |
+Ensalada de repollo | Cebolla morada | en pluma fina | 0.5 | u | No | | | |
+Ensalada de repollo | Cilantro | hojas picadas | 3 | cda | No | | | |
+Ensalada de repollo | Limon | jugo | 1 | u | No | ~30 ml para la ensalada | | |
+Ensalada de repollo | Aceite de oliva | | 20 | ml | No | Para el aderezo | | |
+Ensalada de repollo | Sal fina | | 0.5 | cdita | No | | | |
+Ensalada de repollo | Pimienta negra | molida | 0.25 | cdita | No | Para la ensalada | | |
+Descartables | Papel aluminio | | 2 | pliego | No | Pliegos grandes para sellar la fuente | Utensilio | Neutro | Bazar / otros
+Descartables | Papel de cocina | | 1 | rollo | No | Para secar las costillitas antes de untar | Utensilio | Neutro | Bazar / otros
+
+#PASOS
+nroPaso | titulo | detalle | tiempoEstimadoLabel | puntoClave | errorComun | notas
+1 | Precalentar y pasta de achiote | Precalentar el horno a 200°C con calor arriba y abajo. En paralelo, en bowl mediano, deshacer los 80 g de pasta de achiote con un tenedor. Sumar el jugo de 2 naranjas (~150 ml), el jugo de 2 limones (~50 ml), el jugo de 0.5 pomelo (~50 ml), 4 dientes de ajo machacados, 1 cdita de comino, 1 cdita de orégano seco, 0.5 cdita de pimienta negra, 1.5 cdita de sal gruesa y 30 ml de aceite de oliva. Batir con tenedor hasta una pasta líquida homogénea de color rojo intenso. | 10 min | El color final debe ser rojo profundo y brillante. Si queda anaranjado pálido faltó deshacer bien el achiote. | Achiote en grumos sin deshacer. | Tiempo activo: 8 min.
+2 | Untar costillitas | Secar 1.6 kg de ribs de cerdo (en trozos de 2 a 3 costillas) con papel de cocina. Acomodar en fuente apta horno. Untar toda la marinada en todas las caras de los trozos, masajeando bien con las manos. | 5 min | ⚠️ Punto crítico: secar la carne antes de untar. La humedad superficial diluye la marinada y no se pega. | Marinar carne húmeda. |
+3 | Horno cubierto (fase 1) | Cubrir la fuente con 2 pliegos de papel aluminio bien sellados a los bordes para que no pierda vapor. Hornear a 200°C durante 30 min. | 30 min | ⚠️ Punto crítico: sellado hermético del aluminio. Sin sellado las costillitas se resecan y quedan duras. | Tapa floja. | Tiempo activo: 2 min. Aprovechar los 28 min para armar la ensalada.
+4 | Ensalada de repollo (en paralelo) | A los 20 min de horneado (faltando 10 min para destapar): en bowl grande, mezclar 400 g de repollo blanco en juliana fina, 0.5 cebolla morada en pluma, 3 cda de hojas de cilantro picadas, el jugo de 1 limón (~30 ml), 20 ml de aceite de oliva, 0.5 cdita de sal fina y 0.25 cdita de pimienta negra. Mezclar con las manos masajeando 1 min para que el repollo libere agua y absorba el aderezo. | 10 min | ⚠️ Punto crítico: armar la ensalada cuando faltan 10 min de horno, no antes. Si se hace mucho antes el repollo se vuelve lacio. | Adelantarse mucho con la ensalada. |
+5 | Glaseado y dorado (fase 2) | Sacar la fuente del horno, destapar con cuidado (sale mucho vapor). Mezclar 2 cda de miel con el jugo de 0.5 limón (~15 ml) en un bowl chico. Pincelar las costillitas con esta mezcla. Subir el horno a 220°C y devolver las costillitas sin tapar 12-15 min hasta que la superficie esté caramelizada y oscura en los bordes. | 15 min | ⚠️ Punto crítico: vigilar los últimos 5 min. La miel a 220°C pasa de glaseado brillante a quemado en 1-2 min. | Olvidar el timer. | Tiempo activo: 5 min.
+6 | Reposo y emplatado | Sacar las costillitas del horno y dejar reposar 5 min en la fuente para que los jugos se redistribuyan. En cada plato servir las costillitas (~400 g por persona con hueso) bañadas con su propio jugo de cocción, y una porción generosa de ensalada de repollo (~110 g) al costado. | 7 min | ⚠️ Punto crítico: el reposo de 5 min es indispensable para que no se escape el jugo al cortar. | Servir caliente directo. | Tiempo activo: 5 min.
