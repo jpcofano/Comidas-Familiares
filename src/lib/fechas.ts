@@ -28,6 +28,18 @@ function getLunesLocal(d: Date): string {
   return formatLocal(lunes);
 }
 
+/**
+ * Convierte una fecha "YYYY-MM-DD" al índice de día de la semana (0=Lun, 6=Dom).
+ * Devuelve null si la cadena es vacía o inválida.
+ */
+export function fechaToWeekIdx(dateStr: string): number | null {
+  if (!dateStr) return null;
+  const d = new Date(dateStr + "T12:00:00");
+  if (isNaN(d.getTime())) return null;
+  const dow = d.getDay(); // 0=Dom, 1=Lun … 6=Sáb
+  return dow === 0 ? 6 : dow - 1; // Mon=0 … Sun=6
+}
+
 /** Devuelve la fecha de hoy en formato "YYYY-MM-DD" (local time). */
 export function fechaHoy(): string {
   return formatLocal(new Date());

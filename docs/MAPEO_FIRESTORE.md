@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.5.3 (E11.3.4 — Re-derivar opcional desde fuente; 455 ingredientes corregidos)
+> **Versión**: 2.6.0 (E12.1 — Rediseño Mi semana: hero de hoy + tira con visibilidad por rol)
 > **Fecha**: 2026-06-01
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,28 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E12.1 Cambios en v2.6.0 (E12.1 — Rediseño Mi semana: hero + tira con visibilidad por rol)
+
+Rediseño completo de `src/routes/MemberDashboard.tsx`. La home JP (`Home.tsx`) no se toca.
+
+**Modelo de visibilidad por rol:**
+- Miembro ve nombre/detalle solo de los planes donde está en `asignaciones` (`misPlanes`).
+- `diasConComida` usa solo fecha/existencia de TODOS los planes — nunca `nombreSeleccion` de planes ajenos.
+- Helper `planesVisiblesPara(planes, memberId)` centraliza el filtrado (Tarea 4 mínima).
+- `TODO E12.x`: hardening server-side (Firestore Rules para proyectar nombres redactados). Anotado en el código.
+
+**`src/lib/fechas.ts`:** exporta `fechaToWeekIdx(dateStr)` → 0=Lun…6=Dom. Ya existía local en `Home.tsx`; ahora es pública y reutilizable.
+
+**`src/components/WeekStrip.tsx`:** props opcionales `misDias`, `diasConComida`, `memberColor`, `showLegend`. Modo miembro: plato relleno en color del miembro para `misDias`; punto neutro (var(--border)) para días de otros; pastilla de fondo en color del miembro + número blanco para hoy-en-mis-días. Leyenda "● Cocinás vos · ● Hay comida". Modo JP (marked[]) sin cambio.
+
+**`src/routes/MemberDashboard.tsx`** — nuevo layout:
+1. Saludo (`h2 Hola, {nombre}` + rango de semana).
+2. Card tira de semana (WeekStrip modo miembro + leyenda).
+3. Hero plato de hoy (o próximo): barra izq en color del miembro, eyebrow, nombre h2, tipo, co-cocineros (AvatarStack), botón "Empezar"/"Continuar cocción". Si no cocina nada: sin hero.
+4. Banner por votar (warn, si hay pendientes).
+5. "Lo que cocinás esta semana" — solo `misPlanes` excluyendo hero, con chip de día (LUN 3). Pie: "Los demás días ya hay una comida programada." cuando `diasConComida` > `misDias`.
+6. Mi historial (4 entradas + "Ver todo →").
 
 ### 1.2.E11.3.4 Fix en v2.5.3 (E11.3.4 — Re-derivar `opcional` desde `recetas.json`)
 
@@ -2814,5 +2836,4 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.5.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.3 implementados. **Etapa 11 — Macros nutricionales completa** (lógica + datos + UI). Pendiente como E11.4: filtro "hidratos netos ≤ N g" en Biblioteca (Tarea 3 de E11.3, dejada fuera por ser opcional). **Pendiente (producción):**
-`npm run build && firebase deploy --only hosting`. Sin deuda técnica viva en código.
+**Estado en v2.6.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.3, E12.1 implementados. Pendiente: E11.4 (filtro hidratos netos en Biblioteca, opcional), E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). Sin deuda técnica viva en código.
