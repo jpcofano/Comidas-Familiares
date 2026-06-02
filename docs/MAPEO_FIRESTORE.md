@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.5.2 (E11.3.3 — Fix guard opcional === true + script normalización + tests)
+> **Versión**: 2.5.3 (E11.3.4 — Re-derivar opcional desde fuente; 455 ingredientes corregidos)
 > **Fecha**: 2026-06-01
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,14 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.3.4 Fix en v2.5.3 (E11.3.4 — Re-derivar `opcional` desde `recetas.json`)
+
+Causa raíz de la saga macros: `reseed-ingredientes.ts` hace `Boolean(i.opcional)`, así cualquier string no-vacío quedaba como `opcional: true` en Firestore (ej. "Picada especial" → `true`). El script de E11.3.3 no lo detectaba porque el dato en Firestore ya era boolean.
+
+**`scripts/fix-opcional-desde-fuente.ts` (nuevo):** lee `scripts/seed-data/recetas.json` y construye un índice `Map<idReceta, Map<idIngrediente:textoOriginal, Clasif>>` solo para ingredientes cuyo origen era string. Clasifica con regex `/opcional|aparte|para (los )?chicos|.../i` → `true` (opcionales reales) o `false` (notas de preparación). Mueve el texto a `notas`. Solo toca los ingredientes problemáticos; los de origen boolean quedan intactos.
+
+**Resultado en producción:** 57 recetas corregidas, **455 ingredientes → false** (cuentan en macros), 39 → true (opcionales reales, ej. "Para chicos", "Opcional"). Albóndigas: carne, huevo, cebolla, ajo, tomate ahora cuentan; fideos siguen opcionales.
 
 ### 1.2.E11.3.3 Fix en v2.5.2 (E11.3.3 — guard `opcional === true` + script normalización)
 
