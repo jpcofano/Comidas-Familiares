@@ -213,4 +213,62 @@ describe("hayFiltrosActivos", () => {
   it("true si busqueda no está vacía", () => {
     expect(hayFiltrosActivos({ ...FILTROS_INICIALES, busqueda: "algo" })).toBe(true);
   });
+
+  it("true si maxNetos tiene valor", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, maxNetos: 20 })).toBe(true);
+  });
+});
+
+// ─── filtrarRecetas — maxNetos ────────────────────────────────────────────────
+
+describe("filtrarRecetas — maxNetos", () => {
+  const macros = new Map([
+    ["REC-001", { netos: 8, cobertura: 0.9 }],   // bajo umbral
+    ["REC-002", { netos: 25, cobertura: 0.8 }],  // sobre umbral
+    ["REC-003", { netos: 5, cobertura: 0 }],     // cobertura 0 → sin datos
+    // REC-004 no tiene entrada → ausente del mapa
+  ]);
+
+  it("sin maxNetos devuelve todas las recetas sin importar el mapa", () => {
+    const r = filtrarRecetas(RECETAS, FILTROS_INICIALES, macros);
+    expect(r).toHaveLength(4);
+  });
+
+  it("con maxNetos=10 solo pasa la receta con netos ≤ 10 y cobertura > 0", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10 }, macros);
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-001");
+  });
+
+  it("receta con netos > maxNetos no matchea", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10 }, macros);
+    expect(r.find(x => x.idReceta === "REC-002")).toBeUndefined();
+  });
+
+  it("receta con cobertura 0 no matchea aunque netos sea bajo", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10 }, macros);
+    expect(r.find(x => x.idReceta === "REC-003")).toBeUndefined();
+  });
+
+  it("receta sin entrada en el mapa no matchea", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10 }, macros);
+    expect(r.find(x => x.idReceta === "REC-004")).toBeUndefined();
+  });
+
+  it("con maxNetos=30 pasan recetas con netos ≤ 30 y cobertura > 0", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 30 }, macros);
+    expect(r.map(x => x.idReceta)).toEqual(expect.arrayContaining(["REC-001", "REC-002"]));
+    expect(r).toHaveLength(2);
+  });
+
+  it("con maxNetos activo pero mapa vacío no matchea nada", () => {
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 20 }, new Map());
+    expect(r).toHaveLength(0);
+  });
+
+  it("maxNetos se combina con otros filtros (sinLacteos)", () => {
+    // REC-001 tiene sinLacteos: false — no pasa el filtro booleano
+    const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10, sinLacteos: true }, macros);
+    expect(r).toHaveLength(0);
+  });
 });

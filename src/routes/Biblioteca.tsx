@@ -5,9 +5,11 @@ import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { getRecetas, getRecetasParaMiembro } from "../data/recetas";
 import { getMenus, deriveMenuMetadata } from "../data/menus";
+import { getCatalogo } from "../data/ingredientes";
+import { macrosDeReceta } from "../lib/macros";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
-import type { FiltrosReceta } from "../lib/filtros";
-import type { Receta, Menu, MenuDerived } from "../types/models";
+import type { FiltrosReceta, MacrosPorReceta } from "../lib/filtros";
+import type { Receta, Menu, MenuDerived, Ingrediente } from "../types/models";
 import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
@@ -39,7 +41,7 @@ function dificultadLabel(orden: number): string {
 
 // ─── Tarjeta de receta ────────────────────────────────────────────────────────
 
-function RecetaCard({ receta }: { receta: Receta }) {
+function RecetaCard({ receta, macros }: { receta: Receta; macros?: { netos: number; cobertura: number } }) {
   const navigate = useNavigate();
   return (
     <div
@@ -75,6 +77,11 @@ function RecetaCard({ receta }: { receta: Receta }) {
           <span className="meta">{receta.tiempoTotalLabel}</span>
         )}
         <span className="meta">{dificultadLabel(receta.dificultadOrden)}</span>
+        {macros && macros.cobertura > 0 && (
+          <span style={{ fontSize: "var(--fs-xs)", padding: "1px 7px", borderRadius: "var(--radius-full)", background: "var(--accent-bg, var(--surface-alt))", color: "var(--accent-text, var(--muted-strong))" }}>
+            {Math.round(macros.netos)} g netos
+          </span>
+        )}
       </div>
 
       {(receta.sinLacteos || !receta.hidratos) && (
@@ -150,19 +157,39 @@ function MenuCard({ menu, derived }: { menu: Menu; derived: MenuDerived | null }
 
 function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
   const [recetas, setRecetas] = useState<Receta[]>([]);
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filtros, setFiltros] = useState<FiltrosReceta>(FILTROS_INICIALES);
 
   useEffect(() => {
-    const load = isJP ? getRecetas() : getRecetasParaMiembro(memberId);
-    load
-      .then(setRecetas)
+    const loadRecetas = isJP ? getRecetas() : getRecetasParaMiembro(memberId);
+    Promise.all([
+      loadRecetas,
+      getCatalogo().catch(() => null),
+    ])
+      .then(([rs, cat]) => {
+        setRecetas(rs);
+        setCatalogo(cat);
+      })
       .catch(() => setError("No se pudieron cargar las recetas."))
       .finally(() => setLoading(false));
   }, [memberId, isJP]);
 
-  const resultado = useMemo(() => filtrarRecetas(recetas, filtros), [recetas, filtros]);
+  const macrosPorReceta = useMemo<MacrosPorReceta>(() => {
+    if (!catalogo) return new Map();
+    return new Map(
+      recetas.map(r => {
+        const m = macrosDeReceta(r, catalogo);
+        return [r.idReceta, { netos: m.hidratosNetosPorPorcion, cobertura: m.cobertura }];
+      })
+    );
+  }, [recetas, catalogo]);
+
+  const resultado = useMemo(
+    () => filtrarRecetas(recetas, filtros, macrosPorReceta),
+    [recetas, filtros, macrosPorReceta],
+  );
   const filtrosActivos = hayFiltrosActivos(filtros);
 
   function toggle(campo: "sinLacteos" | "sinHidratos" | "esVegetariano" | "esKeto") {
@@ -242,7 +269,7 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
       </div>
 
       {/* Toggles booleanos + limpiar */}
-      <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap", alignItems: "center" }}>
+      <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-2)", flexWrap: "wrap", alignItems: "center" }}>
         <button
           className={`btn ${filtros.sinLacteos ? "btn-primary" : "btn-secondary"}`}
           onClick={() => toggle("sinLacteos")}
@@ -271,6 +298,22 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
         >
           Keto
         </button>
+      </div>
+
+      {/* Chips de umbral: Netos ≤ N g */}
+      <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap", alignItems: "center" }}>
+        <span className="meta" style={{ whiteSpace: "nowrap" }}>Netos ≤</span>
+        {[10, 20, 30].map(n => (
+          <button
+            key={n}
+            className={`btn ${filtros.maxNetos === n ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setFiltros(f => ({ ...f, maxNetos: f.maxNetos === n ? null : n }))}
+            disabled={!catalogo}
+            style={{ fontSize: "var(--fs-sm)" }}
+          >
+            {n} g
+          </button>
+        ))}
         {filtrosActivos && (
           <button
             className="btn btn-ghost"
@@ -295,7 +338,7 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
           </p>
         </div>
       ) : (
-        resultado.map(r => <RecetaCard key={r.idReceta} receta={r} />)
+        resultado.map(r => <RecetaCard key={r.idReceta} receta={r} macros={macrosPorReceta.get(r.idReceta)} />)
       )}
     </div>
   );

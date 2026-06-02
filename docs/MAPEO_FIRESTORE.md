@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.6.0 (E12.1 — Rediseño Mi semana: hero de hoy + tira con visibilidad por rol)
-> **Fecha**: 2026-06-01
+> **Versión**: 2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca; recetas sin datos no matchean)
+> **Fecha**: 2026-06-02
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -206,7 +206,17 @@ Tercera y última etapa de **Etapa 11 — Macros nutricionales**. Muestra el res
 
 **`src/routes/SeleccionarComponenteMenu.tsx`:** agrega tarjeta de macros del menú completo. Carga el catálogo con `getCatalogo()`. Calcula `macrosDeReceta()` para cada componente del menú y suma los `porPorcion`. Muestra la tarjeta con el texto "Una porción del menú completo (todos los componentes)" entre el card de progreso y la lista de obligatorios. Misma lógica de cobertura: parcial → `var(--warn-text)`; cobertura 0 → estado vacío discreto.
 
-**Tarea 3 (filtro hidratos netos en Biblioteca):** pendiente como E11.4. No bloqueante.
+**Tarea 3 (filtro hidratos netos en Biblioteca):** implementado en E11.4. Ver §1.2.E11.4.
+
+### 1.2.E11.4 Cambios en v2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca)
+
+Filtro real de hidratos netos en la pestaña Recetas de Biblioteca. Las recetas sin datos de macros (cobertura 0) **no** aparecen como si tuvieran 0 g.
+
+**`src/lib/filtros.ts`:** `FiltrosReceta` + `maxNetos: number | null` (null = sin filtro). `FILTROS_INICIALES` → `maxNetos: null`. Nuevo tipo exportado `MacrosPorReceta`. `filtrarRecetas` recibe tercer arg opcional `macrosPorReceta?: MacrosPorReceta`; cuando `maxNetos != null` excluye recetas sin entrada en el mapa, con `cobertura === 0`, o con `netos > maxNetos`. `hayFiltrosActivos` incluye `maxNetos != null`.
+
+**`src/routes/Biblioteca.tsx`:** `TabRecetas` carga el catálogo en paralelo con las recetas (`getCatalogo()` en el mismo `Promise.all`; si falla, queda `null`). `useMemo` precomputa `MacrosPorReceta` (`macrosDeReceta` por cada receta) — no recalcula por cada tecla. `filtrarRecetas` recibe el mapa. UI: chips "Netos ≤ 10 g / 20 g / 30 g" (estilo toggle, mismo patrón que los otros filtros; deshabilitados si catálogo es null; tocar el activo lo apaga). "Limpiar" resetea `maxNetos`. `RecetaCard` recibe `macros?` y muestra chip "X g netos" cuando `cobertura > 0`.
+
+**`src/lib/filtros.test.ts`:** 8 tests nuevos — sin filtro devuelve todo; `maxNetos=10` pasa solo la receta bajo umbral con cobertura > 0; sobre umbral excluye; cobertura 0 excluye; sin entrada excluye; `maxNetos=30` pasa 2; mapa vacío → 0 resultados; combinación con sinLacteos. `hayFiltrosActivos` con `maxNetos != null` → true. Total: 262 tests verdes.
 
 ### 1.2.E11.2 Cambios en v2.4.1 (E11.2 — Workflow LLM + seed idempotente de macros)
 
@@ -2492,6 +2502,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E11.4_filtro_netos_biblioteca.md`** ✅ **CERRADO (v2.7.0)**: filtro "Netos ≤ N g"
+  en Biblioteca. Chips 10/20/30 g, catálogo cargado en paralelo con recetas, `MacrosPorReceta`
+  precomputado en `useMemo`, chip "X g netos" en card. Recetas sin datos no matchean. 8 tests
+  nuevos (262 totales). Ver §1.2.E11.4.
 - **`PROMPT_E11.3.1_Fix visual.md`** ✅ **CERRADO (v2.5.0)**: `MacrosCard` en
   `DetalleReceta.tsx` (hidratos netos estrella, grilla 3-col, pie cobertura, estado vacío
   borde punteado). Agregado de macros del menú completo en `SeleccionarComponenteMenu.tsx`
@@ -2836,4 +2850,4 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.6.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.3, E12.1 implementados. Pendiente: E11.4 (filtro hidratos netos en Biblioteca, opcional), E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). Sin deuda técnica viva en código.
+**Estado en v2.7.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). Sin deuda técnica viva en código.

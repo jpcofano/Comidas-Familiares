@@ -11,6 +11,7 @@ export interface FiltrosReceta {
   esVegetariano: boolean;
   esKeto: boolean;
   busqueda: string;
+  maxNetos: number | null;  // hidratos netos por porción ≤ N g; null = sin filtro
 }
 
 export const FILTROS_INICIALES: FiltrosReceta = {
@@ -22,9 +23,16 @@ export const FILTROS_INICIALES: FiltrosReceta = {
   esVegetariano: false,
   esKeto: false,
   busqueda: "",
+  maxNetos: null,
 };
 
-export function filtrarRecetas(recetas: Receta[], filtros: FiltrosReceta): Receta[] {
+export type MacrosPorReceta = Map<string, { netos: number; cobertura: number }>;
+
+export function filtrarRecetas(
+  recetas: Receta[],
+  filtros: FiltrosReceta,
+  macrosPorReceta?: MacrosPorReceta,
+): Receta[] {
   const nc = normalizeText(filtros.busqueda);
   return recetas.filter(r => {
     if (filtros.tipoItem && r.tipoItem !== filtros.tipoItem) return false;
@@ -46,6 +54,12 @@ export function filtrarRecetas(recetas: Receta[], filtros: FiltrosReceta): Recet
     if (filtros.esVegetariano && !r.esVegetariano) return false;
     if (filtros.esKeto && !r.esKeto) return false;
     if (nc && !r.nombreCanonico.includes(nc)) return false;
+
+    if (filtros.maxNetos != null) {
+      const macros = macrosPorReceta?.get(r.idReceta);
+      if (!macros || macros.cobertura === 0 || macros.netos > filtros.maxNetos) return false;
+    }
+
     return true;
   });
 }
@@ -59,6 +73,7 @@ export function hayFiltrosActivos(filtros: FiltrosReceta): boolean {
     filtros.sinHidratos ||
     filtros.esVegetariano ||
     filtros.esKeto ||
-    filtros.busqueda.trim()
+    filtros.busqueda.trim() ||
+    filtros.maxNetos != null
   );
 }
