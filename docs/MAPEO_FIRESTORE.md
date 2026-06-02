@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.5.1 (E11.3.2 — Fix macros: lee ing.cantidad en vez de cantidadMin/Max)
+> **Versión**: 2.5.2 (E11.3.3 — Fix guard opcional === true + script normalización + tests)
 > **Fecha**: 2026-06-01
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,18 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.3.3 Fix en v2.5.2 (E11.3.3 — guard `opcional === true` + script normalización)
+
+Bug: `macrosDeReceta()` hacía `if (ing.opcional) continue` — cualquier string truthy en ese campo (notas mal mapeadas en el seed) saltea el ingrediente del cálculo.
+
+**`src/lib/macros.ts`:** guard cambiado a `if (ing.opcional === true) continue`. Solo booleanos `true` explícitos excluyen el ingrediente; strings (notas), `false`, o `undefined` entran al cálculo.
+
+**`src/lib/normaliza-opcional.ts` (nuevo):** función pura `normalizaOpcional(raw, notasExistente?)` extraída para ser testeable sin dependencias de Firebase Admin. Lógica: boolean → sin cambio; `""` → false; "Sí"/"No"/"true"/etc. → boolean; texto libre → `{opcional: false, notas: texto}`.
+
+**`scripts/fix-opcional-ingredientes.ts` (nuevo):** script Admin SDK que normaliza `opcional` en todos los `ingredientes[]` de todas las recetas. `--dry-run` por defecto / `--force` para escribir. Dry-run en producción: 79 recetas revisadas, 0 cambios (datos ya limpios; guard `=== true` es la corrección principal).
+
+**`src/lib/macros.test.ts`:** 8 casos nuevos — opcional string no se saltea, opcional:true sí; `normalizaOpcional` con 6 casos (boolean, null, "", "Sí"/"No", texto libre, concatenación con notasExistente). 253 tests verdes.
 
 ### 1.2.E11.3.2 Fix en v2.5.1 (E11.3.2 — macros lee `ing.cantidad`, no `cantidadMin/Max`)
 

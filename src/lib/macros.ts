@@ -63,7 +63,7 @@ export function macrosDeReceta(
   let conDatos = 0;
 
   for (const ing of receta.ingredientes) {
-    if (ing.opcional) continue;
+    if (ing.opcional === true) continue;
 
     const cat = catalogoById.get(ing.idIngrediente);
     if (!cat || !cat.macros) {

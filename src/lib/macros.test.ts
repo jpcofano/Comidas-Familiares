@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { macrosDeReceta } from "./macros";
+import { normalizaOpcional } from "./normaliza-opcional";
 import type { Receta, Ingrediente, IngredienteEnReceta } from "../types/models";
 
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
@@ -179,5 +180,65 @@ describe("macrosDeReceta", () => {
     const r = macrosDeReceta(receta, catalogo);
     expect(r.cobertura).toBe(1);
     expect(r.porPorcion.kcal).toBeCloseTo(165, 0);
+  });
+
+  it("opcional string (nota) NO se saltea — entra al cálculo", () => {
+    // Dato real corrupto: opcional = "Picada especial" (truthy string)
+    const ing: IngredienteEnReceta = {
+      idIngrediente: "pollo", textoOriginal: "pollo",
+      cantidad: 400, unidad: "g",
+      opcional: "Nota de preparación" as unknown as boolean,
+    } as IngredienteEnReceta;
+    const receta = makeReceta([ing]);
+    const r = macrosDeReceta(receta, catalogo);
+    expect(r.cobertura).toBe(1);          // no se saltea
+    expect(r.porPorcion.kcal).toBeCloseTo(165, 0);
+  });
+
+  it("opcional: true SÍ se saltea", () => {
+    const receta = makeReceta([
+      makeItemReceta("pollo",   400, "g", true),  // opcional: true → saltear
+      makeItemReceta("aceite",  2,   "cda"),
+    ]);
+    const r = macrosDeReceta(receta, catalogo);
+    // Solo aceite computable: 2 cda × 15g = 30g → 30/100 × 884 = 265.2 kcal total / 4 = 66.3
+    expect(r.porPorcion.kcal).toBeCloseTo(66.3, 0);
+    expect(r.ingredientesSinDatos).toHaveLength(0);
+  });
+});
+
+// ─── normalizaOpcional ────────────────────────────────────────────────────────
+
+describe("normalizaOpcional", () => {
+  it("boolean → sin cambio", () => {
+    expect(normalizaOpcional(true)).toEqual({ changed: false });
+    expect(normalizaOpcional(false)).toEqual({ changed: false });
+  });
+
+  it("null / undefined → sin cambio", () => {
+    expect(normalizaOpcional(null)).toEqual({ changed: false });
+    expect(normalizaOpcional(undefined)).toEqual({ changed: false });
+  });
+
+  it("string vacío → false", () => {
+    expect(normalizaOpcional("")).toEqual({ changed: true, opcional: false });
+    expect(normalizaOpcional("   ")).toEqual({ changed: true, opcional: false });
+  });
+
+  it('"Sí" / "No" / "true" → boolean correspondiente', () => {
+    expect(normalizaOpcional("Sí")).toEqual({ changed: true, opcional: true });
+    expect(normalizaOpcional("si")).toEqual({ changed: true, opcional: true });
+    expect(normalizaOpcional("No")).toEqual({ changed: true, opcional: false });
+    expect(normalizaOpcional("true")).toEqual({ changed: true, opcional: true });
+  });
+
+  it("texto libre → opcional:false + notas con el texto", () => {
+    const r = normalizaOpcional("Picada especial");
+    expect(r).toEqual({ changed: true, opcional: false, notas: "Picada especial" });
+  });
+
+  it("texto libre + notas existente → concatena con ' · '", () => {
+    const r = normalizaOpcional("Rallada fina", "Nota previa");
+    expect(r).toEqual({ changed: true, opcional: false, notas: "Nota previa · Rallada fina" });
   });
 });
