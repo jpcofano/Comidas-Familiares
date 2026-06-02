@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
-import { Plus, Carrot, ChevronRight, Users } from "lucide-react";
+import { Plus, Carrot, ChevronRight, Users, Globe } from "lucide-react";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
 import { getRecetas, getRecetasParaMiembro } from "../data/recetas";
@@ -65,11 +65,16 @@ function RecetaCard({ receta }: { receta: Receta }) {
       </div>
 
       <div style={{ display: "flex", gap: "var(--space-4)", marginTop: "var(--space-2)", flexWrap: "wrap" }}>
+        {receta.cocina && (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 4, color: "var(--primary)", fontWeight: 600, fontSize: "inherit" }}>
+            <Globe size={13} strokeWidth={2} />{receta.cocina}
+          </span>
+        )}
         <span className="meta">{receta.proteinaPrincipal}</span>
         {receta.tiempoTotalLabel && (
           <span className="meta">{receta.tiempoTotalLabel}</span>
         )}
-        <span className="meta">{receta.dificultad}</span>
+        <span className="meta">{dificultadLabel(receta.dificultadOrden)}</span>
       </div>
 
       {(receta.sinLacteos || !receta.hidratos) && (
