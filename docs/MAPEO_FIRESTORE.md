@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.5.0 (E11.3 — UI de macros: tarjeta por porción en detalle de receta + agregado en menú)
+> **Versión**: 2.5.1 (E11.3.2 — Fix macros: lee ing.cantidad en vez de cantidadMin/Max)
 > **Fecha**: 2026-06-01
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -143,6 +143,16 @@ Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
 
 5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
    consumidores tras el cambio anterior.
+
+### 1.2.E11.3.2 Fix en v2.5.1 (E11.3.2 — macros lee `ing.cantidad`, no `cantidadMin/Max`)
+
+Bug post-deploy: tarjeta mostraba "Sin datos" en todas las recetas. Causa: `macrosDeReceta()` leía `ing.cantidadMin`/`cantidadMax` pero los `IngredienteEnReceta` reales usan `ing.cantidad` (`string | number`). Los 5 tests de E11.1 pasaban porque el fixture usaba `cantidadMin/Max`.
+
+**`src/lib/macros.ts`:** reemplaza lectura de `cantidadMin/Max` por `parseNumber(ing.cantidad)` (reutiliza el parser existente); si `ing.cantidad` es rango ("1,2 a 1,5") promedia min/max; fallback a `cantidadMin/Max` si `ing.cantidad` es undefined (retrocompatibilidad).
+
+**`src/lib/unidades.ts`:** agrega "cucharada(s)" → "cda" y "cucharadita(s)" → "cdita" (plural de la palabra completa no estaba en la tabla; `aGramos` devolvía null silenciosamente).
+
+**`src/lib/macros.test.ts`:** fixture usa `cantidad` (string | number). Casos nuevos: rango con coma decimal, "a gusto" → sinDatos, fallback `cantidadMin/Max`. Total: 245 tests verdes.
 
 ### 1.2.E11.3 Cambios en v2.5.0 (E11.3 — UI de macros: detalle de receta + menú)
 

@@ -7,6 +7,7 @@
  */
 
 import { aGramos } from "./conversiones";
+import { parseNumber } from "./parsers";
 import type { Receta, Ingrediente } from "../types/models";
 
 export interface MacrosReceta {
@@ -70,10 +71,25 @@ export function macrosDeReceta(
       continue;
     }
 
-    // Cantidad media usada
-    const cantidad = ing.cantidadMin != null && ing.cantidadMax != null
-      ? (ing.cantidadMin + ing.cantidadMax) / 2
-      : (ing.cantidadMin ?? 0);
+    // Cantidad: leer ing.cantidad (dato real); fallback a cantidadMin/Max (fixture de tests)
+    let cantidad: number | null = null;
+    if (ing.cantidad != null) {
+      const parsed = parseNumber(ing.cantidad);
+      if (parsed !== null) {
+        cantidad = parsed.min != null && parsed.max != null
+          ? (parsed.min + parsed.max) / 2
+          : parsed.value;
+      }
+    } else if (ing.cantidadMin != null || ing.cantidadMax != null) {
+      cantidad = ing.cantidadMin != null && ing.cantidadMax != null
+        ? (ing.cantidadMin + ing.cantidadMax) / 2
+        : (ing.cantidadMin ?? ing.cantidadMax ?? null);
+    }
+
+    if (cantidad === null) {
+      sinDatos.push(ing.textoOriginal);
+      continue;
+    }
 
     const gramos = aGramos(cantidad, ing.unidad ?? null, cat);
     if (gramos === null || gramos === 0) {

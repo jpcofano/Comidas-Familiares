@@ -14,11 +14,11 @@ function makeIng(id: string, override?: Partial<Ingrediente>): Ingrediente {
   } as Ingrediente;
 }
 
-function makeItemReceta(id: string, cantidadMin: number, unidad: string, opcional = false): IngredienteEnReceta {
+// Usa el campo `cantidad` (string | number) tal como lo guardan las recetas reales.
+function makeItemReceta(id: string, cantidad: string | number, unidad: string, opcional = false): IngredienteEnReceta {
   return {
     idIngrediente: id, textoOriginal: id,
-    cantidadMin, cantidadMax: cantidadMin,
-    unidad, opcional,
+    cantidad, unidad, opcional,
   } as IngredienteEnReceta;
 }
 
@@ -74,7 +74,7 @@ describe("macrosDeReceta", () => {
    * HidratosNetosPorPorcion = max(0, 0 - 0) = 0
    * Cobertura = 2 con datos / (2 + 1 sin datos) = 2/3 ≈ 0.667
    */
-  it("calcula totales, por porción, hidratos netos y cobertura correctamente", () => {
+  it("calcula totales, por porción, hidratos netos y cobertura correctamente (cantidad numérica)", () => {
     const receta = makeReceta([
       makeItemReceta("pollo",   400, "g"),
       makeItemReceta("aceite",  2,   "cda"),
@@ -109,8 +109,29 @@ describe("macrosDeReceta", () => {
     expect(r.porciones).toBe(4);
   });
 
+  it("parsea cantidad como string con rango y coma decimal (dato real)", () => {
+    // "1,2 a 1,5" kg pollo → promedio 1.35 kg = 1350 g
+    // 1350/100 × {165,0,31,3.6,0} = {2227.5, 0, 418.5, 48.6, 0}
+    // Porción (÷4): kcal=556.875, prot=104.625, grasas=12.15
+    const receta = makeReceta([makeItemReceta("pollo", "1,2 a 1,5", "kg")]);
+    const r = macrosDeReceta(receta, catalogo);
+
+    expect(r.cobertura).toBe(1);
+    expect(r.porPorcion.kcal).toBeCloseTo(556.9, 0);
+    expect(r.porPorcion.proteinas).toBeCloseTo(104.6, 0);
+  });
+
+  it("cantidad 'a gusto' → sinDatos (no lanza, no suma)", () => {
+    const receta = makeReceta([
+      makeItemReceta("pollo",  400,      "g"),
+      makeItemReceta("aceite", "a gusto", ""),
+    ]);
+    const r = macrosDeReceta(receta, catalogo);
+    expect(r.cobertura).toBeCloseTo(1 / 2, 3); // solo pollo computable
+    expect(r.ingredientesSinDatos).toContain("aceite");
+  });
+
   it("hidratos netos = max(0, carbs - fibra)", () => {
-    // Ingrediente con carbos y fibra
     const brócoli = makeIng("brocoli", {
       macros: { kcal: 34, carbohidratos: 7, proteinas: 2.8, grasas: 0.4, fibra: 2.6 },
     });
@@ -145,5 +166,18 @@ describe("macrosDeReceta", () => {
     const r = macrosDeReceta(receta, catalogo);
     expect(r.porciones).toBe(4);
     expect(r.porPorcion.kcal).toBeCloseTo(165, 0); // 400g × 165/100 / 4 = 165
+  });
+
+  it("fallback a cantidadMin/Max si ing.cantidad es undefined", () => {
+    // Datos de tests viejos: sin campo cantidad, con cantidadMin/Max
+    const ing: IngredienteEnReceta = {
+      idIngrediente: "pollo", textoOriginal: "pollo",
+      cantidadMin: 400, cantidadMax: 400,
+      unidad: "g", opcional: false,
+    } as IngredienteEnReceta;
+    const receta = makeReceta([ing]);
+    const r = macrosDeReceta(receta, catalogo);
+    expect(r.cobertura).toBe(1);
+    expect(r.porPorcion.kcal).toBeCloseTo(165, 0);
   });
 });
