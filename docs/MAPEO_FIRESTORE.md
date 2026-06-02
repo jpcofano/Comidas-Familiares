@@ -2838,6 +2838,30 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
   `detectarDuplicado` + warning en catálogo editor + badge "⚠ Posible duplicado" en
   importer paso 2. Ver §1.2.E8.8.
 
+### Ideas a futuro — Aprovechar macros y datos existentes (sin prioridad)
+
+Funcionalidades propuestas en revisión de diseño post-E11/E12. Ninguna tiene fecha ni
+prioridad; se activan cuando aparezca ganas/necesidad. Todas se apoyan en datos que la app
+**ya tiene** (planes de la semana, `macrosDeReceta`, `vecesCocinada`/`ultimoPuntaje`,
+despensa de E9.3, historial), así que no requieren modelo nuevo salvo donde se indica.
+
+- **F1 — Resumen de macros de la semana.** Tarjeta en la Home de JP (o pantalla propia) que
+  suma los planes activos de la semana y muestra **netos promedio por día**, proteína total y
+  un mini-gráfico de barras por día. Puro cálculo sobre `macrosDeReceta` + planes; sin modelo
+  nuevo. Es la consecuencia natural de E11. **Candidata más fuerte.**
+- **F2 — "Buenas y olvidadas" / sugeridor semanal.** Al planificar, sección con recetas bien
+  puntuadas (`ultimoPuntaje` alto) que no se cocinan hace X (`vecesCocinada` / fecha). Rescata
+  joyas del historial y combate la repetición. Solapa con la idea "3.1 Sugeridor semanal" del
+  roadmap viejo — unificar bajo F2 si se implementa.
+- **F3 — Despensa ↔ lista de compras conectada.** Los ítems que ya están en la despensa de
+  E9.3 (`localStorage["cf-despensa"]`) aparecen pre-tildados ("ya tengo") al armar la lista de
+  compras. Una sola fuente de verdad de qué hay en casa. Bajo riesgo. Relacionado con la nota
+  "despensa persistente" de §1.2.E9.3.
+- **F4 — Tips de la familia en la receta.** Al votar/evaluar, capturar un texto corto
+  ("la próxima: menos sal / 10 min más"). Los tips se acumulan y se muestran arriba del paso a
+  paso la próxima vez que alguien cocina esa receta. Requiere un campo nuevo (p.ej.
+  `tips[]` en la receta o en el historial) — definir shape cuando se priorice.
+
 **Postergado sin urgencia:**
 
 - **Dashboard de historial avanzado (D.3 / §119.1)** — ver §7 "Postergados sin urgencia".
@@ -2850,4 +2874,4 @@ desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.7.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). Sin deuda técnica viva en código.
+**Estado en v2.7.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). §11 incorpora 4 ideas a futuro (F1–F4) sin prioridad. Sin deuda técnica viva en código.
