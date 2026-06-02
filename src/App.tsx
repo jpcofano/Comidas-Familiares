@@ -19,6 +19,8 @@ import { VotoRoute } from "./routes/Voto";
 import { QueCocinoRoute } from "./routes/QueCocino";
 import { VisibilidadBibliotecaRoute } from "./routes/VisibilidadBiblioteca";
 import { PerfilRoute } from "./routes/Perfil";
+import { CompraRapidaEditorRoute } from "./routes/CompraRapidaEditor";
+import { CompraRapidaDetalleRoute } from "./routes/CompraRapidaDetalle";
 import { PerfilesProvider } from "./contexts/PerfilesContext";
 import { NotFoundRoute } from "./routes/NotFound";
 
@@ -67,6 +69,9 @@ function App() {
           <Route path="/que-cocino" element={<QueCocinoRoute />} />
           <Route path="/perfil" element={<PerfilRoute />} />
           <Route path="/perfil/:memberId" element={<PerfilRoute />} />
+          <Route path="/biblioteca/compra-rapida/nueva" element={<CompraRapidaEditorRoute />} />
+          <Route path="/biblioteca/compra-rapida/:id" element={<CompraRapidaEditorRoute />} />
+          <Route path="/compra-rapida/:idPlan" element={<CompraRapidaDetalleRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>
       </Routes>

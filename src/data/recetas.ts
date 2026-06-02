@@ -110,6 +110,10 @@ export async function buscarRecetasPorNombre(nombre: string): Promise<Receta[]> 
   return snap.docs.map(d => d.data() as Receta).filter(r => r.nombreCanonico === nc);
 }
 
+export function invalidateRecetasCache(): void {
+  cachedRecetas = null;
+}
+
 export async function proximoIdReceta(): Promise<string> {
   const snap = await getDocs(collection(db, "recetas"));
   const nums = snap.docs

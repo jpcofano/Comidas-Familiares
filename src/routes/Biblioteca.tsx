@@ -1,16 +1,17 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
-import { Plus, Carrot, ChevronRight, Users, Globe } from "lucide-react";
+import { Plus, Carrot, ChevronRight, Users, Globe, ShoppingBag, Pencil, Trash2 } from "lucide-react";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { useAuth } from "../auth/useAuth";
-import { getRecetas, getRecetasParaMiembro } from "../data/recetas";
+import { getRecetas, getRecetasParaMiembro, eliminarReceta } from "../data/recetas";
 import { getMenus, deriveMenuMetadata } from "../data/menus";
 import { getCatalogo } from "../data/ingredientes";
 import { macrosDeReceta } from "../lib/macros";
+import { generarInstanciaCompraRapida } from "../data/comprasRapidas";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta, MacrosPorReceta } from "../lib/filtros";
-import type { Receta, Menu, MenuDerived, Ingrediente } from "../types/models";
-import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
+import type { Receta, Menu, MenuDerived, Ingrediente, MiembroId } from "../types/models";
+import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN, MIEMBRO_IDS } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -169,7 +170,8 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
       getCatalogo().catch(() => null),
     ])
       .then(([rs, cat]) => {
-        setRecetas(rs);
+        // Excluir compras rápidas de la lista normal de recetas
+        setRecetas(rs.filter((r) => !r.esCompraRapida));
         setCatalogo(cat);
       })
       .catch(() => setError("No se pudieron cargar las recetas."))
@@ -344,6 +346,127 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
   );
 }
 
+// ─── Tab Compras rápidas ──────────────────────────────────────────────────────
+
+const NOMBRES_MIEMBROS_LABEL: Record<string, string> = {
+  juanpablo: "JP", maria: "María", sofia: "Sofía", federico: "Federico",
+};
+
+function TabComprasRapidas() {
+  const navigate = useNavigate();
+  const [plantillas, setPlantillas] = useState<Receta[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [asignando, setAsignando] = useState<string | null>(null);
+  const [asignadoA, setAsignadoA] = useState<MiembroId>("maria");
+  const [busy, setBusy] = useState<string | null>(null);
+
+  useEffect(() => {
+    getRecetas()
+      .then((rs) => setPlantillas(rs.filter((r) => r.esCompraRapida)))
+      .catch(() => setError("No se pudieron cargar las compras rápidas."))
+      .finally(() => setLoading(false));
+  }, []);
+
+  async function handleGenerar(plantilla: Receta) {
+    setBusy(plantilla.idReceta);
+    const r = await generarInstanciaCompraRapida(plantilla, asignadoA);
+    if (!r.ok) setError(r.error.message);
+    setBusy(null);
+    setAsignando(null);
+  }
+
+  async function handleEliminar(id: string) {
+    if (!confirm("¿Eliminar esta plantilla?")) return;
+    setBusy(id);
+    await eliminarReceta(id);
+    setPlantillas((prev) => prev.filter((p) => p.idReceta !== id));
+    setBusy(null);
+  }
+
+  if (loading) return <SkeletonList count={3} />;
+  if (error) return <p style={{ color: "var(--err-text)" }}>{error}</p>;
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
+        <span className="meta">{plantillas.length} {plantillas.length === 1 ? "plantilla" : "plantillas"}</span>
+        <Link to="/biblioteca/compra-rapida/nueva" className="btn btn-primary" style={{ fontSize: "var(--fs-sm)", display: "flex", alignItems: "center", gap: "var(--space-1)", textDecoration: "none" }}>
+          <Plus size={14} /> Nueva
+        </Link>
+      </div>
+
+      {plantillas.length === 0 ? (
+        <div style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
+          <p className="meta">No hay plantillas todavía.</p>
+        </div>
+      ) : (
+        plantillas.map((p) => (
+          <div key={p.idReceta} className="card" style={{ marginBottom: "var(--space-3)" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)" }}>
+              <ShoppingBag size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: 2 }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p style={{ margin: 0, fontWeight: "var(--fw-medium)", color: "var(--text-strong)" }}>
+                  {p.nombre}
+                </p>
+                <p className="meta" style={{ margin: "2px 0 0" }}>
+                  {p.ingredientes.length} {p.ingredientes.length === 1 ? "ítem" : "ítems"}
+                </p>
+              </div>
+              <button onClick={() => navigate(`/biblioteca/compra-rapida/${p.idReceta}`)} style={iconBtn} title="Editar">
+                <Pencil size={14} />
+              </button>
+              <button onClick={() => handleEliminar(p.idReceta)} disabled={busy === p.idReceta} style={{ ...iconBtn, color: "var(--err-text)" }} title="Eliminar">
+                <Trash2 size={14} />
+              </button>
+            </div>
+
+            {asignando === p.idReceta ? (
+              <div style={{ marginTop: "var(--space-3)", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+                <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text)" }}>Asignar a:</p>
+                <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
+                  {(MIEMBRO_IDS.filter((id) => id !== "juanpablo") as MiembroId[]).map((id) => (
+                    <button
+                      key={id}
+                      className={`btn ${asignadoA === id ? "btn-primary" : "btn-secondary"}`}
+                      onClick={() => setAsignadoA(id)}
+                      style={{ fontSize: "var(--fs-sm)" }}
+                    >
+                      {NOMBRES_MIEMBROS_LABEL[id]}
+                    </button>
+                  ))}
+                </div>
+                <div style={{ display: "flex", gap: "var(--space-2)" }}>
+                  <button className="btn btn-primary" disabled={busy === p.idReceta} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
+                    {busy === p.idReceta ? "Generando…" : "Generar"}
+                  </button>
+                  <button className="btn btn-ghost" onClick={() => setAsignando(null)} style={{ fontSize: "var(--fs-sm)" }}>
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                className="btn btn-secondary"
+                disabled={busy === p.idReceta}
+                onClick={() => setAsignando(p.idReceta)}
+                style={{ marginTop: "var(--space-3)", width: "100%", fontSize: "var(--fs-sm)" }}
+              >
+                Generar la de esta semana
+              </button>
+            )}
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+const iconBtn: React.CSSProperties = {
+  background: "none", border: "none", cursor: "pointer",
+  color: "var(--muted)", padding: 4, flexShrink: 0,
+};
+
 // ─── Tab Menús ────────────────────────────────────────────────────────────────
 
 function TabMenus() {
@@ -420,6 +543,14 @@ export function BibliotecaRoute() {
             Menús
           </button>
         )}
+        {isJP && (
+          <button
+            className={tab === "compras" ? "tab active" : "tab"}
+            onClick={() => setSearchParams({ tab: "compras" })}
+          >
+            Compras
+          </button>
+        )}
         {isJP && tab === "recetas" && (
           <Link to="/biblioteca/importar" className="tab-action">
             <Plus size={16} aria-hidden />
@@ -490,9 +621,9 @@ export function BibliotecaRoute() {
       )}
 
       <div className="card">
-        {tab === "recetas"
-          ? <TabRecetas memberId={memberId} isJP={isJP} />
-          : (isJP ? <TabMenus /> : null)}
+        {tab === "recetas" && <TabRecetas memberId={memberId} isJP={isJP} />}
+        {tab === "menus" && isJP && <TabMenus />}
+        {tab === "compras" && isJP && <TabComprasRapidas />}
       </div>
     </>
   );

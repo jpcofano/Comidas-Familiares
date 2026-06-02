@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca; recetas sin datos no matchean)
+> **Versión**: 2.8.0 (E13.1 — Compra rápida: listas de compra plantilla por comercio, asignables)
 > **Fecha**: 2026-06-02
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -207,6 +207,47 @@ Tercera y última etapa de **Etapa 11 — Macros nutricionales**. Muestra el res
 **`src/routes/SeleccionarComponenteMenu.tsx`:** agrega tarjeta de macros del menú completo. Carga el catálogo con `getCatalogo()`. Calcula `macrosDeReceta()` para cada componente del menú y suma los `porPorcion`. Muestra la tarjeta con el texto "Una porción del menú completo (todos los componentes)" entre el card de progreso y la lista de obligatorios. Misma lógica de cobertura: parcial → `var(--warn-text)`; cobertura 0 → estado vacío discreto.
 
 **Tarea 3 (filtro hidratos netos en Biblioteca):** implementado en E11.4. Ver §1.2.E11.4.
+
+### 1.2.E13.1 Cambios en v2.8.0 (E13.1 — Compra rápida: listas plantilla por comercio)
+
+Funcionalidad nueva independiente del ciclo de recetas. Permite a JP crear listas de compra reutilizables por comercio (Verdulería, Chino, Carrefour…), asignarlas a un miembro y generar instancias semanales.
+
+**Modelo — `Receta` (E13.1):**
+```ts
+esCompraRapida?: boolean  // marca la receta como plantilla de compra
+destino?: string          // comercio destino ("Verdulería", "Chino"…)
+```
+
+**Modelo — `Plan` (E13.1):**
+```ts
+itemsCompraRapida?: Array<{
+  idIngrediente: string; nombre: string; cantidad: string;
+  unidad: string; seccionGondola: string; comprado: boolean;
+}>
+// snapshot editable copiado de la plantilla al generar; editar instancia no toca la plantilla.
+```
+`tipoSeleccion` extendido con `"compra-rapida"`. Las compras rápidas usan estado `"Compra pendiente"` → `"Compra lista"`.
+
+**`src/data/comprasRapidas.ts` (nuevo):**
+- `crearPlantillaCompraRapida(datos)` → `setDoc` en `/recetas` con `esCompraRapida: true`, invalida caché.
+- `actualizarPlantillaCompraRapida(id, datos)` → `updateDoc`.
+- `generarInstanciaCompraRapida(plantilla, miembroId)` → `crearPlan` con `tipoSeleccion: "compra-rapida"`, snapshot de ítems, `comprado: false`.
+- `toggleItemComprado(idPlan, idIngrediente, items)` → reemplaza el array en Firestore.
+- `marcarCompraRapidaHecha(idPlan)` → setea `estado: "Compra lista"`.
+
+**`src/routes/CompraRapidaEditor.tsx` (nuevo):** Solo JP. Form: destino (prefijo fijo "Compra rápida ·"), buscador del catálogo con autocomplete, stepper de cantidad + selector unidad, asignar-a chips. CTA: "Guardar y generar" o "Solo guardar".
+
+**`src/routes/CompraRapidaDetalle.tsx` (nuevo):** Vista del asignado en `/compra-rapida/:idPlan`. Lista agrupada por góndola (`groupByGondola`). Toggle por ítem. Barra de progreso. Botón "Marcar compra como hecha".
+
+**`src/routes/Biblioteca.tsx`:** Nuevo tab "Compras" (solo JP) con `TabComprasRapidas`: lista plantillas, acciones editar/eliminar/generar-esta-semana. Las compras rápidas se filtran de la lista normal de recetas (`esCompraRapida !== true`).
+
+**`src/routes/MemberDashboard.tsx`:** Sección "Compras pendientes" (debajo de "Lo que cocinás esta semana") con una card por cada compra rápida asignada no-hecha, link a detalle, progreso N/M.
+
+**`src/routes/Home.tsx`:** Filtra `tipoSeleccion !== "compra-rapida"` del subscription para no mezclarlos con los planes de comida de JP.
+
+**`src/data/recetas.ts`:** Agrega `invalidateRecetasCache()` export.
+
+**Rutas nuevas:** `/biblioteca/compra-rapida/nueva`, `/biblioteca/compra-rapida/:id`, `/compra-rapida/:idPlan`.
 
 ### 1.2.E11.4 Cambios en v2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca)
 
@@ -2502,6 +2543,10 @@ en su scope necesario.
   `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
   Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
   Ver §1.2.E8.2.
+- **`PROMPT_E13.1_compra_rapida.md`** ✅ **CERRADO (v2.8.0)**: plantillas de compra por comercio
+  (`esCompraRapida` en Receta, `itemsCompraRapida`/`tipoSeleccion:"compra-rapida"` en Plan).
+  Editor JP, detalle para asignado, tab Compras en Biblioteca, sección en MemberDashboard.
+  Ver §1.2.E13.1.
 - **`PROMPT_E11.4_filtro_netos_biblioteca.md`** ✅ **CERRADO (v2.7.0)**: filtro "Netos ≤ N g"
   en Biblioteca. Chips 10/20/30 g, catálogo cargado en paralelo con recetas, `MacrosPorReceta`
   precomputado en `useMemo`, chip "X g netos" en card. Recetas sin datos no matchean. 8 tests
@@ -2874,4 +2919,4 @@ despensa de E9.3, historial), así que no requieren modelo nuevo salvo donde se 
 
 Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-**Estado en v2.7.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). §11 incorpora 4 ideas a futuro (F1–F4) sin prioridad. Sin deuda técnica viva en código.
+**Estado en v2.8.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1, E13.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). §11 incorpora 4 ideas a futuro (F1–F4) sin prioridad. Sin deuda técnica viva en código.

@@ -16,7 +16,7 @@ export type EstadoPlan = typeof ESTADOS_PLAN[number];
 export const TIPOS_PLAN = ["Especial", "Especial extra", "En proceso"] as const;
 export type TipoPlan = typeof TIPOS_PLAN[number];
 
-export type TipoSeleccion = "receta" | "menu";
+export type TipoSeleccion = "receta" | "menu" | "compra-rapida";
 
 // ─── Receta — enums de dominio ────────────────────────────────────────────────
 export const TIPOS_ITEM = [
@@ -193,6 +193,10 @@ export interface Receta {
   notas?: string;
   notasNocheDeADos?: string;
 
+  // E13.1 — Compra rápida
+  esCompraRapida?: boolean;
+  destino?: string;  // comercio ("Verdulería", "Chino"…)
+
   fuente?: string;
   urlFuente?: string;
   imagenUrl?: string;
@@ -289,6 +293,7 @@ export interface Plan {
   datosCocinero: DatosCocinero | null;
   componentesCocinados?: string[];
   fecha?: string;               // "YYYY-MM-DD" — día asignado (opcional, dentro de semanaInicio..semanaFin)
+  itemsCompraRapida?: ItemCompraRapida[];  // E13.1 — snapshot editable, solo para tipoSeleccion "compra-rapida"
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────
@@ -315,6 +320,16 @@ export interface Historial {
   queSalioBien: string;
   queCambiaria: string;
   notasFamiliares: string;
+}
+
+// ─── Compra rápida ────────────────────────────────────────────────────────────
+export interface ItemCompraRapida {
+  idIngrediente: string;
+  nombre: string;
+  cantidad: string;
+  unidad: string;
+  seccionGondola: string;
+  comprado: boolean;
 }
 
 // ─── Compras ──────────────────────────────────────────────────────────────────

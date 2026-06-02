@@ -89,7 +89,7 @@ function HomeJP() {
   // Suscripción a planes activos
   useEffect(() => {
     return subscribeToPlanesActivos(semana, (p) => {
-      setPlanes(p);
+      setPlanes(p.filter((plan) => plan.tipoSeleccion !== "compra-rapida"));
       setLoading(false);
     });
   }, [semana]);

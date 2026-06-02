@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ShoppingBag, CheckCircle2, Circle } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
@@ -155,7 +156,9 @@ export function MemberDashboard() {
 
   // ── Derivar datos ────────────────────────────────────────────────────────────
 
-  const misPlanes = planesVisiblesPara(planes, memberId);
+  const todosLosMiosPorTipo = planesVisiblesPara(planes, memberId);
+  const misPlanes = todosLosMiosPorTipo.filter((p) => p.tipoSeleccion !== "compra-rapida");
+  const misCompras = todosLosMiosPorTipo.filter((p) => p.tipoSeleccion === "compra-rapida");
 
   // Dias con CUALQUIER plan activo (solo existencia, sin nombres ajenos)
   const diasConComida = useMemo(() => {
@@ -333,7 +336,43 @@ export function MemberDashboard() {
         )}
       </div>
 
-      {/* 6. Mi historial */}
+      {/* 6. Compras rápidas asignadas */}
+      {misCompras.filter((p) => p.estado !== "Compra lista").length > 0 && (
+        <div className="card">
+          <h3 style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+            <ShoppingBag size={16} color="var(--primary)" />
+            Compras pendientes
+          </h3>
+          {misCompras.filter((p) => p.estado !== "Compra lista").map((p) => {
+            const items = p.itemsCompraRapida ?? [];
+            const comprados = items.filter((it) => it.comprado).length;
+            return (
+              <Link key={p.idPlan} to={`/compra-rapida/${p.idPlan}`} style={{ textDecoration: "none", display: "block" }}>
+                <div style={{
+                  display: "flex", alignItems: "center", gap: "var(--space-3)",
+                  padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)",
+                }}>
+                  <ShoppingBag size={18} color="var(--muted)" style={{ flexShrink: 0 }} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: "var(--fw-medium)", color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {p.nombreSeleccion}
+                    </p>
+                    <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
+                      {comprados} de {items.length} comprados
+                    </p>
+                  </div>
+                  {comprados === items.length && items.length > 0
+                    ? <CheckCircle2 size={16} color="var(--ok-text)" />
+                    : <Circle size={16} color="var(--muted)" />
+                  }
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
+      {/* 7. Mi historial */}
       <div className="card">
         <h3 style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)" }}>
           Mi historial
