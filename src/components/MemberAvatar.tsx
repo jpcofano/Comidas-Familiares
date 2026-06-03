@@ -1,8 +1,8 @@
 // src/components/MemberAvatar.tsx — círculo de iniciales por miembro + stack
-// Si se pasa `memberId`, el color viene de useColorMiembro (realtime, custom > token).
+// Si se pasa `memberId`, el color viene del contexto de perfiles (realtime, custom > token).
 // Sin `memberId` → fallback al token --member-{key} por nombre normalizado (retrocompat).
 
-import { useColorMiembro } from "../contexts/PerfilesContext";
+import { usePerfiles } from "../contexts/PerfilesContext";
 import type { MiembroId } from "../types/models";
 
 interface Palette { fg: string; label: string }
@@ -18,7 +18,7 @@ const PALETTE: Record<string, Palette> = {
 function normalize(name: string): string {
   return name
     .toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, "");
 }
 
@@ -32,10 +32,17 @@ interface MemberAvatarProps {
 }
 
 function AvatarCircle({ name, size, memberId }: { name: string; size: number; memberId?: MiembroId }) {
-  const colorFromId = memberId ? useColorMiembro(memberId) : null; // eslint-disable-line react-hooks/rules-of-hooks
+  // Hook SIEMPRE llamado (sin violar rules-of-hooks aunque memberId sea undefined).
+  const perfiles = usePerfiles();
   const key = normalize(name);
   const m: Palette = PALETTE[key] ?? { fg: "#fff", label: (name || "?").charAt(0).toUpperCase() };
-  const bg = colorFromId ?? (PALETTE[key] ? `var(--member-${key})` : "var(--muted)");
+
+  const custom  = memberId ? perfiles[memberId]?.color   : undefined;
+  const fotoUrl = memberId ? perfiles[memberId]?.fotoUrl : undefined;
+  const bg = custom
+    ?? (memberId
+        ? `var(--member-${memberId})`
+        : (PALETTE[key] ? `var(--member-${key})` : "var(--muted)"));
 
   return (
     <span style={{
@@ -44,9 +51,12 @@ function AvatarCircle({ name, size, memberId }: { name: string; size: number; me
       display: "inline-flex", alignItems: "center", justifyContent: "center",
       fontSize: size <= 22 ? 10 : 11,
       fontWeight: "var(--fw-semibold)" as unknown as number,
-      flexShrink: 0, letterSpacing: 0,
+      flexShrink: 0, letterSpacing: 0, overflow: "hidden",
     }}>
-      {m.label}
+      {fotoUrl
+        ? <img src={fotoUrl} alt="" width={size} height={size}
+               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        : m.label}
     </span>
   );
 }

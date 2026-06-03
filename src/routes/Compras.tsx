@@ -8,7 +8,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
-import { getListaById, subscribeToItemsLista, toggleItemYaTengo } from "../data/compras";
+import { subscribeToLista, subscribeToItemsLista, toggleItemYaTengo, asignarEncargadoCompras } from "../data/compras";
 import { getCatalogo } from "../data/ingredientes";
 import { getSemanaActual } from "../lib/fechas";
 import { groupByGondola } from "../lib/catalogo";
@@ -17,8 +17,17 @@ import { ProgressRing } from "../components/ProgressRing";
 import { RecetaCardV2 } from "../components/RecetaCardV2";
 import { GondolaCardV2 } from "../components/GondolaCardV2";
 import type { ListaCompras, ItemCompra, Plan, MiembroId, Ingrediente } from "../types/models";
+import { MIEMBRO_IDS } from "../types/models";
+import { MemberAvatar } from "../components/MemberAvatar";
 import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
+
+const NOMBRE_MIEMBRO: Record<MiembroId, string> = {
+  juanpablo: "Juan Pablo",
+  maria:     "María",
+  sofia:     "Sofía",
+  federico:  "Federico",
+};
 
 type ModoVista = "receta" | "gondola";
 
@@ -38,6 +47,13 @@ export function ComprasRoute() {
   const [loadingPlanes, setLoadingPlanes] = useState(true);
   const [modoVista, setModoVista] = useState<ModoVista>("receta");
   const unsubItems = useRef<(() => void) | null>(null);
+  const unsubLista = useRef<(() => void) | null>(null);
+
+  // Encargado: optimista + error
+  const [encargadoPend, setEncargadoPend] = useState<MiembroId | null | undefined>(undefined);
+  const [encargadoError, setEncargadoError] = useState<string | null>(null);
+  const encargadoActual: MiembroId | null =
+    encargadoPend !== undefined ? encargadoPend : (lista?.encargadoCompras ?? null);
 
   // Catálogo (cacheado — carga una vez)
   useEffect(() => { getCatalogo().then(setCatalogo).catch(() => {}); }, []);
@@ -57,10 +73,12 @@ export function ComprasRoute() {
   );
 
   useEffect(() => {
+    if (unsubLista.current) { unsubLista.current(); unsubLista.current = null; }
     if (loadingPlanes) return;
     if (!listaId) { setLista(null); return; }
-    getListaById(listaId).then(setLista);
-  }, [listaId, loadingPlanes]);
+    unsubLista.current = subscribeToLista(listaId, setLista);
+    return () => { if (unsubLista.current) { unsubLista.current(); unsubLista.current = null; } };
+  }, [listaId, loadingPlanes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Items en tiempo real cuando cambia la lista
   useEffect(() => {
@@ -77,14 +95,30 @@ export function ComprasRoute() {
     await toggleItemYaTengo(lista.idLista, itemId, !item.yaTengo);
   }
 
-  // Para miembros no-JP: solo items de sus planes asignados
+  async function handleAsignarEncargado(nuevoId: MiembroId | null) {
+    if (!lista) return;
+    setEncargadoError(null);
+    setEncargadoPend(nuevoId);
+    const r = await asignarEncargadoCompras(lista.idLista, nuevoId);
+    if (!r.ok) {
+      setEncargadoPend(undefined);
+      setEncargadoError("No se pudo asignar el encargado.");
+    } else {
+      setEncargadoPend(undefined);
+    }
+  }
+
+  const esEncargado = !!memberId && lista?.encargadoCompras === memberId;
+  const verCompleta = isJP || esEncargado;
+
+  // JP o encargado ven la lista completa; el resto solo lo suyo
   const itemsVisibles = useMemo(() => {
-    if (isJP || !memberId) return items;
+    if (verCompleta || !memberId) return items;
     const misPlanIds = new Set(
       planes.filter((p) => p.asignaciones.includes(memberId)).map((p) => p.idPlan)
     );
     return items.filter((i) => i.aportes.some((a) => misPlanIds.has(a.idPlan)));
-  }, [items, planes, memberId, isJP]);
+  }, [items, planes, memberId, verCompleta]);
 
   // Vista por receta: planes que tienen al menos un item visible
   const porPlan = useMemo(() => {
@@ -114,8 +148,7 @@ export function ComprasRoute() {
 
   const yaTengoCount = itemsVisibles.filter((i) => i.yaTengo).length;
   const hasPlanes = planes.length > 0;
-  const missingItems =
-    (lista as (ListaCompras & { missingItems?: string[] }) | null)?.missingItems ?? [];
+  const missingItems = lista?.missingItems ?? [];
 
   if (loadingPlanes) {
     return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
@@ -168,6 +201,105 @@ export function ComprasRoute() {
           )}
         </div>
 
+        {/* Encargado de compras — selector JP */}
+        {isJP && lista && (
+          <div style={{ marginBottom: 10 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+              <span style={{ fontSize: 12, color: "var(--muted)", flexShrink: 0 }}>Compras:</span>
+              {MIEMBRO_IDS.map(mid => (
+                <button
+                  key={mid}
+                  onClick={() => void handleAsignarEncargado(encargadoActual === mid ? null : mid)}
+                  style={{
+                    display: "flex", flexDirection: "column", alignItems: "center", gap: 2,
+                    background: "none", border: "none", cursor: "pointer", padding: 2,
+                  }}
+                >
+                  <span style={{
+                    borderRadius: "50%",
+                    outline: encargadoActual === mid ? "2px solid var(--primary)" : "none",
+                    outlineOffset: 2,
+                  }}>
+                    <MemberAvatar name={NOMBRE_MIEMBRO[mid]} memberId={mid} size={30} />
+                  </span>
+                  <span style={{
+                    fontSize: 10,
+                    color: encargadoActual === mid ? "var(--primary)" : "var(--muted)",
+                    fontWeight: encargadoActual === mid ? 700 : 400,
+                  }}>
+                    {NOMBRE_MIEMBRO[mid].split(" ")[0]}
+                  </span>
+                </button>
+              ))}
+              {encargadoActual !== null && (
+                <button
+                  onClick={() => void handleAsignarEncargado(null)}
+                  style={{
+                    padding: "4px 10px", borderRadius: 999, fontSize: 11,
+                    border: "1px solid var(--border)", background: "var(--surface-alt)",
+                    color: "var(--muted)", cursor: "pointer", fontFamily: "inherit",
+                  }}
+                >
+                  Sin asignar
+                </button>
+              )}
+            </div>
+            {encargadoError && (
+              <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", margin: "4px 0 0" }}>
+                {encargadoError}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Encargado de compras — estado y acción (no-JP) */}
+        {!isJP && lista && memberId && (
+          <div style={{ marginBottom: 10 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+              <span style={{ fontSize: 12, color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 5 }}>
+                Compras:{" "}
+                {encargadoActual
+                  ? (
+                    <>
+                      <MemberAvatar name={NOMBRE_MIEMBRO[encargadoActual]} memberId={encargadoActual} size={18} />
+                      <strong style={{ fontSize: 12 }}>{NOMBRE_MIEMBRO[encargadoActual]}</strong>
+                    </>
+                  )
+                  : <em>sin asignar</em>
+                }
+              </span>
+              {encargadoActual === memberId ? (
+                <button
+                  onClick={() => void handleAsignarEncargado(null)}
+                  style={{
+                    padding: "4px 10px", borderRadius: 999, fontSize: 11,
+                    border: "1px solid var(--border)", background: "transparent",
+                    color: "var(--muted)", cursor: "pointer", fontFamily: "inherit",
+                  }}
+                >
+                  Ya no me encargo
+                </button>
+              ) : (
+                <button
+                  onClick={() => void handleAsignarEncargado(memberId)}
+                  style={{
+                    padding: "4px 10px", borderRadius: 999, fontSize: 11,
+                    border: "1px solid var(--primary)", background: "transparent",
+                    color: "var(--primary)", cursor: "pointer", fontFamily: "inherit", fontWeight: 600,
+                  }}
+                >
+                  Encargarme de las compras
+                </button>
+              )}
+            </div>
+            {encargadoError && (
+              <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", margin: "4px 0 0" }}>
+                {encargadoError}
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Toggle vista */}
         {lista && itemsVisibles.length > 0 && (
           <div style={{ display: "flex", gap: 8 }}>
@@ -180,6 +312,21 @@ export function ComprasRoute() {
           </div>
         )}
       </div>
+
+      {/* ── Banner encargado (no-JP) ────────────────────────────────────────── */}
+      {esEncargado && !isJP && (
+        <div style={{
+          padding: "10px 14px", borderRadius: "var(--radius-md)",
+          background: "var(--surface-strong)", border: "1px solid var(--border)",
+          marginBottom: "var(--space-3)",
+          display: "flex", alignItems: "center", gap: 10,
+        }}>
+          <span aria-hidden style={{ fontSize: 20, lineHeight: 1, flexShrink: 0 }}>🛒</span>
+          <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text-strong)", fontWeight: 600 }}>
+            Te toca hacer las compras esta semana.
+          </p>
+        </div>
+      )}
 
       {/* ── Aviso ingredientes faltantes ────────────────────────────────────── */}
       {missingItems.length > 0 && (

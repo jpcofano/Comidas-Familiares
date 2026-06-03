@@ -15,7 +15,7 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import type { ListaCompras, ItemCompra, AporteCompra, Ingrediente, Plan, Receta, Menu } from "../types/models";
+import type { ListaCompras, ItemCompra, AporteCompra, Ingrediente, Plan, Receta, Menu, MiembroId } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { getCatalogo } from "./ingredientes";
@@ -44,6 +44,15 @@ export async function getItemsLista(idLista: string): Promise<ItemCompra[]> {
 
 // ─── Realtime ─────────────────────────────────────────────────────────────────
 
+export function subscribeToLista(
+  idLista: string,
+  cb: (lista: ListaCompras | null) => void
+): () => void {
+  return onSnapshot(doc(db, "compras", idLista), (snap) =>
+    cb(snap.exists() ? (snap.data() as ListaCompras) : null)
+  );
+}
+
 export function subscribeToItemsLista(
   idLista: string,
   callback: (items: ItemCompra[]) => void
@@ -54,6 +63,18 @@ export function subscribeToItemsLista(
 }
 
 // ─── Writes ───────────────────────────────────────────────────────────────────
+
+export async function asignarEncargadoCompras(
+  idLista: string,
+  memberId: MiembroId | null
+): Promise<Result<void, AppError>> {
+  try {
+    await updateDoc(doc(db, "compras", idLista), { encargadoCompras: memberId });
+    return ok(undefined);
+  } catch (e) {
+    return err("encargado-compras-failed", firebaseErrorMessage(e) ?? "No se pudo asignar las compras.", e);
+  }
+}
 
 export async function crearLista(semanaInicio: string): Promise<Result<ListaCompras, AppError>> {
   try {

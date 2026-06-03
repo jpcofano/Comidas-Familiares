@@ -1,13 +1,15 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { useColorMiembro, usePerfiles } from "../contexts/PerfilesContext";
-import { setColorMiembro, addPreferencia, removePreferencia } from "../data/perfiles";
+import { setColorMiembro, addPreferencia, removePreferencia, setFotoMiembro } from "../data/perfiles";
+import { comprimirImagen } from "../lib/comprimirImagen";
 import { getHistorialReciente } from "../data/historial";
 import { getVisibilidad } from "../data/visibilidad";
 import { getRecetas } from "../data/recetas";
 import { MemberAvatar } from "../components/MemberAvatar";
+import { useInstallPrompt } from "../lib/useInstallPrompt";
 import { MIEMBRO_IDS } from "../types/models";
 import type { MiembroId, Historial } from "../types/models";
 
@@ -18,8 +20,11 @@ const NOMBRE_MIEMBRO: Record<MiembroId, string> = {
   federico:  "Federico",
 };
 
+// Paleta ampliada — 12 tonos cálidos, todos legibles con texto blanco.
 const PALETA = [
-  "#8a4a2f", "#74324a", "#3c4a6e", "#2e5d2e", "#7a5c1e", "#9a4d2e",
+  "#8a4a2f", "#a8552e", "#b3701f", "#7a5c1e", // tierras / ocres
+  "#2e5d2e", "#3f6b46", "#2f6f6a", "#3c4a6e", // verdes / teal / azul
+  "#5a3e7a", "#74324a", "#9a3d5a", "#8a3520", // violeta / bordó / rojo
 ];
 
 const PREFERENCIAS_SUGERIDAS = [
@@ -64,6 +69,7 @@ function PerfilView({
   const navigate = useNavigate();
   const perfiles = usePerfiles();
   const colorTarget = useColorMiembro(targetId);
+  const { canInstall, promptInstall, isIOS, isStandalone } = useInstallPrompt();
 
   const perfil = perfiles[targetId] ?? {};
   const preferencias: string[] = perfil.preferencias ?? [];
@@ -73,6 +79,15 @@ function PerfilView({
   const [bibliotecaCount, setBibliotecaCount] = useState<number | null>(null);
   const [totalRecetas, setTotalRecetas] = useState<number | null>(null);
 
+  // Color: selección optimista + error visible
+  const [colorError, setColorError] = useState<string | null>(null);
+  const [colorPend, setColorPend] = useState<string | null>(null);
+
+  // Foto
+  const fotoInputRef = useRef<HTMLInputElement>(null);
+  const [fotoPending, setFotoPending] = useState(false);
+  const [fotoError, setFotoError] = useState<string | null>(null);
+
   useEffect(() => {
     getHistorialReciente().then(r => { if (r.ok) setHistorial(r.value); });
     if (isJP && targetId === "juanpablo") {
@@ -81,6 +96,48 @@ function PerfilView({
       getVisibilidad().then(v => setBibliotecaCount(((v as unknown as Record<string, string[]>)[targetId] ?? []).length));
     }
   }, [targetId, isJP]);
+
+  // Resetear estado de color/foto al cambiar de miembro
+  useEffect(() => { setColorPend(null); setColorError(null); setFotoError(null); }, [targetId]);
+
+  async function elegirColor(hex: string) {
+    setColorError(null);
+    setColorPend(hex);                       // resalta la selección al instante
+    const r = await setColorMiembro(targetId, hex);
+    if (!r.ok) {
+      setColorPend(null);                    // revertí el resaltado
+      setColorError(
+        "No se pudo guardar el color. Si no sos el dueño del plan, " +
+        "puede faltar deployar las reglas de Firestore (config/perfiles)."
+      );
+    }
+  }
+  const colorSel = colorPend ?? colorTarget; // valor mostrado mientras viaja al server
+
+  async function handleFotoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setFotoError(null);
+    setFotoPending(true);
+    try {
+      const dataUrl = await comprimirImagen(file, { maxLado: 128, presupuesto: 60_000 });
+      const r = await setFotoMiembro(targetId, dataUrl);
+      if (!r.ok) setFotoError("No se pudo guardar la foto.");
+    } catch (err) {
+      setFotoError(err instanceof Error ? err.message : "Error al procesar la foto.");
+    } finally {
+      setFotoPending(false);
+      e.target.value = "";
+    }
+  }
+
+  async function handleQuitarFoto() {
+    setFotoError(null);
+    setFotoPending(true);
+    const r = await setFotoMiembro(targetId, null);
+    setFotoPending(false);
+    if (!r.ok) setFotoError("No se pudo quitar la foto.");
+  }
 
   const misEntradas = useMemo(
     () => historial.filter(e => e.calificaciones?.[targetId] != null),
@@ -153,8 +210,43 @@ function PerfilView({
 
       {/* Hero */}
       <div className="card" style={{ textAlign: "center", marginBottom: "var(--space-3)", padding: "var(--space-6) var(--space-4) var(--space-4)" }}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "var(--space-3)" }}>
-          <MemberAvatar name={NOMBRE_MIEMBRO[targetId]} memberId={targetId} size={64} />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "var(--space-3)", gap: 6 }}>
+          {canEdit ? (
+            <button
+              onClick={() => fotoInputRef.current?.click()}
+              disabled={fotoPending}
+              style={{ background: "none", border: "none", cursor: fotoPending ? "default" : "pointer", padding: 0 }}
+              aria-label="Cambiar foto de perfil"
+            >
+              <MemberAvatar name={NOMBRE_MIEMBRO[targetId]} memberId={targetId} size={64} />
+            </button>
+          ) : (
+            <MemberAvatar name={NOMBRE_MIEMBRO[targetId]} memberId={targetId} size={64} />
+          )}
+          {canEdit && (
+            <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <button
+                onClick={() => fotoInputRef.current?.click()}
+                disabled={fotoPending}
+                style={{ fontSize: 12, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+              >
+                {fotoPending ? "Procesando…" : "Cambiar foto"}
+              </button>
+              {!!perfiles[targetId]?.fotoUrl && !fotoPending && (
+                <button
+                  onClick={() => void handleQuitarFoto()}
+                  style={{ fontSize: 12, color: "var(--muted)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+                >
+                  Quitar foto
+                </button>
+              )}
+            </div>
+          )}
+          {fotoError && (
+            <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", margin: 0, textAlign: "center" }}>
+              {fotoError}
+            </p>
+          )}
         </div>
         <h2 style={{ fontSize: 22, fontWeight: 700, color: "var(--text-strong)", margin: "0 0 4px" }}>
           {NOMBRE_MIEMBRO[targetId]}
@@ -171,13 +263,13 @@ function PerfilView({
               {PALETA.map(hex => (
                 <button
                   key={hex}
-                  onClick={() => void setColorMiembro(targetId, hex)}
+                  onClick={() => void elegirColor(hex)}
                   aria-label={`Color ${hex}`}
                   style={{
                     width: 28, height: 28, borderRadius: "50%",
                     background: hex,
                     border: "none",
-                    outline: colorTarget === hex ? "3px solid var(--primary)" : "2px solid transparent",
+                    outline: colorSel === hex ? "3px solid var(--primary)" : "2px solid transparent",
                     outlineOffset: 2,
                     cursor: "pointer",
                     transition: "outline 120ms ease",
@@ -185,6 +277,11 @@ function PerfilView({
                 />
               ))}
             </div>
+            {colorError && (
+              <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginTop: "var(--space-2)" }}>
+                {colorError}
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -314,6 +411,35 @@ function PerfilView({
         </div>
       )}
 
+      {/* Instalar app — visible para el miembro logueado (a menos que ya corra instalada) */}
+      {targetId === selfId && !isStandalone && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 4px", fontSize: "var(--fs-sm)" }}>
+            Instalar la app
+          </p>
+          <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+            Agregala a tu pantalla de inicio para abrirla como app, sin la barra del navegador.
+          </p>
+          {canInstall ? (
+            <button
+              className="btn btn-primary"
+              onClick={() => void promptInstall()}
+              style={{ width: "100%" }}
+            >
+              Instalar app
+            </button>
+          ) : isIOS ? (
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--text)" }}>
+              En iPhone: tocá <strong>Compartir</strong> y después <strong>"Agregar a inicio"</strong>.
+            </p>
+          ) : (
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+              Abrí el menú del navegador (⋮) y elegí <strong>"Instalar app"</strong> o <strong>"Agregar a pantalla de inicio"</strong>.
+            </p>
+          )}
+        </div>
+      )}
+
       {/* Notificaciones (placeholder) */}
       <div className="card">
         <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 4px", fontSize: "var(--fs-sm)" }}>
@@ -344,6 +470,14 @@ function PerfilView({
           </div>
         ))}
       </div>
+
+      <input
+        ref={fotoInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={(e) => void handleFotoChange(e)}
+      />
     </>
   );
 }

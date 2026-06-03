@@ -54,3 +54,15 @@ export async function removePreferencia(
     return err("FIRESTORE_ERROR", firebaseErrorMessage(e) ?? "Error al quitar preferencia.");
   }
 }
+
+export async function setFotoMiembro(
+  id: MiembroId,
+  fotoUrl: string | null,
+): Promise<Result<void, AppError>> {
+  try {
+    await setDoc(REF(), { [id]: { fotoUrl: fotoUrl ?? "" } }, { merge: true });
+    return ok(undefined);
+  } catch (e) {
+    return err("FIRESTORE_ERROR", firebaseErrorMessage(e) ?? "Error al guardar la foto.");
+  }
+}

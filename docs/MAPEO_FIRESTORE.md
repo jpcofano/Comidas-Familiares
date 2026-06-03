@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.8.0 (E13.1 — Compra rápida: listas de compra plantilla por comercio, asignables)
-> **Fecha**: 2026-06-02
+> **Versión**: 2.9.0 (E14.1 — Lista de compras asignable a un encargado + avatar con foto)
+> **Fecha**: 2026-06-03
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -322,14 +322,18 @@ Feature nueva: pantalla de perfil por miembro con color de avatar custom, prefer
 
 **Modelo — `config/perfiles` (doc nuevo):**
 ```ts
-interface PerfilMiembro { color?: string; preferencias?: string[]; }
+interface PerfilMiembro {
+  color?: string;       // hex de la paleta curada
+  preferencias?: string[];
+  fotoUrl?: string;     // NUEVO E14.1 — data URL JPEG comprimida (~128px, ≤60 KB). Ausente → inicial con color.
+}
 type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
 ```
 `color`: hex de la paleta curada; si falta → token `--member-{id}`. `preferencias`: lista libre de strings. No ensuciar `config/familia`.
 
 **Security Rules:** `match /config/perfiles { allow read, write: if isFamilyMember(); }` — regla específica que sobreescribe la genérica `config/{docId}` (que solo permite write al owner). Cualquier miembro puede editar su propio color/preferencias.
 
-**Capa de datos (`src/data/perfiles.ts`):** `getPerfiles()`, `subscribePerfiles()` (realtime), `setColorMiembro()`, `addPreferencia()`, `removePreferencia()`.
+**Capa de datos (`src/data/perfiles.ts`):** `getPerfiles()`, `subscribePerfiles()` (realtime), `setColorMiembro()`, `addPreferencia()`, `removePreferencia()`, `setFotoMiembro(id, dataUrl | null)` (E14.1 — guarda/quita foto de avatar).
 
 **Color en toda la app:**
 - `PerfilesProvider` (`src/contexts/PerfilesContext.tsx`) suscrito a `config/perfiles` desde el root de la app. Hook `useColorMiembro(memberId): string` devuelve color custom o token fallback.
@@ -1460,11 +1464,15 @@ fecha?: string                    // "YYYY-MM-DD" — día asignado al plan (E7.
   // Contadores denormalizados (top-level, no anidados en "resumen"):
   totalItems: 47,
   totalYaTengo: 12,
-  totalPendientes: 35
+  totalPendientes: 35,
+  missingItems: [],                  // nombres de recetas/componentes sin ingredientes cargados
+  encargadoCompras: "maria" | null   // NUEVO E14.1 — quién hace las compras esta semana; null = sin asignar
 }
 ```
 
 > **Nota v1.5.1:** el campo `resumen` que figuraba en versiones anteriores del MAPEO no existe en producción. Los contadores son campos top-level (`totalItems`, `totalYaTengo`, `totalPendientes`). Se actualizan en cada `toggleItemYaTengo`, cada sync, y cada `limpiarAportesDelPlan`.
+>
+> **Nota E14.1:** `encargadoCompras` es opcional y retrocompatible. Cualquier miembro puede autoasignarse; JP puede asignar a cualquiera. El encargado ve la lista completa (igual que JP). Funciones nuevas: `subscribeToLista(idLista, cb)` (realtime), `asignarEncargadoCompras(idLista, memberId | null)`.
 
 **Subcollection `compras/{idLista}/items/{itemId}`:**
 

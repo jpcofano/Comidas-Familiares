@@ -364,6 +364,9 @@ export interface ListaCompras {
   fechaGeneracion: FirestoreTimestamp;
   totalItems?: number;
   totalYaTengo?: number;
+  totalPendientes?: number;
+  missingItems?: string[];
+  encargadoCompras?: MiembroId | null;
 }
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -391,6 +394,7 @@ export interface FamiliaConfig {
 export interface PerfilMiembro {
   color?: string;          // hex de la paleta curada; si falta → token --member-{id}
   preferencias?: string[]; // lista libre de preferencias de comida
+  fotoUrl?: string;        // data URL JPEG comprimida (miniatura ~128px). Ausente → inicial con color.
 }
 export type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
 
