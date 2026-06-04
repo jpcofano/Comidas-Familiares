@@ -358,7 +358,7 @@ function TabComprasRapidas() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [asignando, setAsignando] = useState<string | null>(null);
-  const [asignadoA, setAsignadoA] = useState<MiembroId>("maria");
+  const [asignadoA, setAsignadoA] = useState<MiembroId[]>(["maria"]);
   const [busy, setBusy] = useState<string | null>(null);
 
   useEffect(() => {
@@ -369,8 +369,17 @@ function TabComprasRapidas() {
   }, []);
 
   async function handleGenerar(plantilla: Receta) {
+    if (asignadoA.length === 0) return;
     setBusy(plantilla.idReceta);
-    const r = await generarInstanciaCompraRapida(plantilla, asignadoA);
+    const todosItems = plantilla.ingredientes.map((ing) => ({
+      idIngrediente: ing.idIngrediente,
+      nombre: ing.textoOriginal,
+      cantidad: String(ing.cantidad ?? "1"),
+      unidad: ing.unidad ?? "",
+      seccionGondola: ing.seccion ?? "Despensa / otros",
+      comprado: false,
+    }));
+    const r = await generarInstanciaCompraRapida(plantilla, asignadoA, todosItems);
     if (!r.ok) setError(r.error.message);
     setBusy(null);
     setAsignando(null);
@@ -389,10 +398,24 @@ function TabComprasRapidas() {
 
   return (
     <div>
+      {/* CTA principal: pantalla armar con modos A/B/C */}
+      <Link
+        to="/compras/armar"
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+          padding: "10px 16px", borderRadius: "var(--radius-md)",
+          background: "var(--primary)", color: "#fff", textDecoration: "none",
+          fontWeight: 700, fontSize: "var(--fs-sm)", marginBottom: "var(--space-3)",
+        }}
+      >
+        <ShoppingBag size={16} />
+        Armar la compra (modos A / B / C)
+      </Link>
+
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
         <span className="meta">{plantillas.length} {plantillas.length === 1 ? "plantilla" : "plantillas"}</span>
-        <Link to="/biblioteca/compra-rapida/nueva" className="btn btn-primary" style={{ fontSize: "var(--fs-sm)", display: "flex", alignItems: "center", gap: "var(--space-1)", textDecoration: "none" }}>
-          <Plus size={14} /> Nueva
+        <Link to="/biblioteca/compra-rapida/nueva" className="btn btn-secondary" style={{ fontSize: "var(--fs-sm)", display: "flex", alignItems: "center", gap: "var(--space-1)", textDecoration: "none" }}>
+          <Plus size={14} /> Nueva plantilla
         </Link>
       </div>
 
@@ -411,9 +434,10 @@ function TabComprasRapidas() {
                 </p>
                 <p className="meta" style={{ margin: "2px 0 0" }}>
                   {p.ingredientes.length} {p.ingredientes.length === 1 ? "ítem" : "ítems"}
+                  {p.modoPreferido && <> · último modo: {p.modoPreferido}</>}
                 </p>
               </div>
-              <button onClick={() => navigate(`/biblioteca/compra-rapida/${p.idReceta}`)} style={iconBtn} title="Editar">
+              <button onClick={() => navigate(`/biblioteca/compra-rapida/${p.idReceta}`)} style={iconBtn} title="Editar plantilla">
                 <Pencil size={14} />
               </button>
               <button onClick={() => handleEliminar(p.idReceta)} disabled={busy === p.idReceta} style={{ ...iconBtn, color: "var(--err-text)" }} title="Eliminar">
@@ -423,13 +447,15 @@ function TabComprasRapidas() {
 
             {asignando === p.idReceta ? (
               <div style={{ marginTop: "var(--space-3)", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text)" }}>Asignar a:</p>
+                <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text)" }}>Asignar a (puede ser más de uno):</p>
                 <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
-                  {(MIEMBRO_IDS.filter((id) => id !== "juanpablo") as MiembroId[]).map((id) => (
+                  {MIEMBRO_IDS.map((id) => (
                     <button
                       key={id}
-                      className={`btn ${asignadoA === id ? "btn-primary" : "btn-secondary"}`}
-                      onClick={() => setAsignadoA(id)}
+                      className={`btn ${asignadoA.includes(id) ? "btn-primary" : "btn-secondary"}`}
+                      onClick={() => setAsignadoA((prev) =>
+                        prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+                      )}
                       style={{ fontSize: "var(--fs-sm)" }}
                     >
                       {NOMBRES_MIEMBROS_LABEL[id]}
@@ -437,8 +463,8 @@ function TabComprasRapidas() {
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: "var(--space-2)" }}>
-                  <button className="btn btn-primary" disabled={busy === p.idReceta} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
-                    {busy === p.idReceta ? "Generando…" : "Generar"}
+                  <button className="btn btn-primary" disabled={busy === p.idReceta || asignadoA.length === 0} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
+                    {busy === p.idReceta ? "Generando…" : "Generar (todos los ítems)"}
                   </button>
                   <button className="btn btn-ghost" onClick={() => setAsignando(null)} style={{ fontSize: "var(--fs-sm)" }}>
                     Cancelar
@@ -452,7 +478,7 @@ function TabComprasRapidas() {
                 onClick={() => setAsignando(p.idReceta)}
                 style={{ marginTop: "var(--space-3)", width: "100%", fontSize: "var(--fs-sm)" }}
               >
-                Generar la de esta semana
+                Generar la de esta semana (todos los ítems)
               </button>
             )}
           </div>

@@ -4,7 +4,8 @@ import type { Plan, Receta, MiembroId, ItemCompraRapida } from "../types/models"
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { crearPlan } from "./planes";
-import { invalidateRecetasCache, proximoIdReceta } from "./recetas";
+import { getRecetas, invalidateRecetasCache, proximoIdReceta } from "./recetas";
+import { getCatalogo } from "./ingredientes";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
 import { normalizeText } from "../lib/canonical";
 
@@ -18,6 +19,7 @@ export interface DatosPlantilla {
     cantidad: string;
     unidad: string;
     seccionGondola: string;
+    habitual?: boolean;
   }>;
 }
 
@@ -33,6 +35,7 @@ export async function crearPlantillaCompraRapida(
       cantidad: it.cantidad,
       unidad: it.unidad,
       seccion: it.seccionGondola,
+      ...(it.habitual !== undefined && { habitual: it.habitual }),
     }));
     const docData: Receta = {
       idReceta,
@@ -88,6 +91,7 @@ export async function actualizarPlantillaCompraRapida(
       cantidad: it.cantidad,
       unidad: it.unidad,
       seccion: it.seccionGondola,
+      ...(it.habitual !== undefined && { habitual: it.habitual }),
     }));
     await updateDoc(doc(db, "recetas", idReceta), {
       nombre,
@@ -108,18 +112,11 @@ export async function actualizarPlantillaCompraRapida(
 
 export async function generarInstanciaCompraRapida(
   plantilla: Receta,
-  miembroId: MiembroId,
+  asignados: MiembroId[],
+  itemsSeleccionados: ItemCompraRapida[],
 ): Promise<Result<Plan, AppError>> {
   const semanaInicio = getSemanaActual();
   const semanaFin = getSemanaFin(semanaInicio);
-  const itemsCompraRapida: ItemCompraRapida[] = plantilla.ingredientes.map((ing) => ({
-    idIngrediente: ing.idIngrediente,
-    nombre: ing.textoOriginal,
-    cantidad: String(ing.cantidad ?? "1"),
-    unidad: ing.unidad ?? "",
-    seccionGondola: ing.seccion ?? "Despensa / otros",
-    comprado: false,
-  }));
 
   return crearPlan({
     idPlan: generarIdInstancia(),
@@ -136,9 +133,146 @@ export async function generarInstanciaCompraRapida(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: [miembroId],
-    itemsCompraRapida,
+    asignaciones: asignados,
+    itemsCompraRapida: itemsSeleccionados,
   });
+}
+
+// ─── Persistir selección en la plantilla (modo C) ────────────────────────────
+
+export async function guardarSeleccionPlantilla(
+  idReceta: string,
+  ultimaSeleccion: string[],
+  modoPreferido: "sumar" | "destildar" | "siempre",
+): Promise<Result<void, AppError>> {
+  try {
+    await updateDoc(doc(db, "recetas", idReceta), {
+      ultimaSeleccion,
+      modoPreferido,
+      ultimaModificacion: serverTimestamp(),
+    });
+    invalidateRecetasCache();
+    return ok(undefined);
+  } catch (e) {
+    return err(
+      "compra-rapida-seleccion-failed",
+      firebaseErrorMessage(e) ?? "No se pudo guardar la selección.",
+      e,
+    );
+  }
+}
+
+// ─── Seed: 3 plantillas maestras ─────────────────────────────────────────────
+
+type SeedItem = { nombre: string; cantidad: string; unidad: string };
+
+const SEED_MAESTROS: Array<{ destino: string; items: SeedItem[] }> = [
+  {
+    destino: "Verdulería",
+    items: [
+      { nombre: "papa",        cantidad: "1",   unidad: "kg" },
+      { nombre: "cebolla",     cantidad: "1",   unidad: "kg" },
+      { nombre: "tomate",      cantidad: "0.5", unidad: "kg" },
+      { nombre: "zanahoria",   cantidad: "0.5", unidad: "kg" },
+      { nombre: "ajo",         cantidad: "1",   unidad: "cabeza" },
+      { nombre: "limon",       cantidad: "4",   unidad: "u" },
+      { nombre: "naranja",     cantidad: "1",   unidad: "kg" },
+      { nombre: "lechuga",     cantidad: "1",   unidad: "u" },
+      { nombre: "espinaca",    cantidad: "1",   unidad: "atado" },
+      { nombre: "zapallo",     cantidad: "0.5", unidad: "kg" },
+      { nombre: "batata",      cantidad: "0.5", unidad: "kg" },
+      { nombre: "brocoli",     cantidad: "1",   unidad: "u" },
+      { nombre: "banana",      cantidad: "1",   unidad: "kg" },
+      { nombre: "manzana",     cantidad: "1",   unidad: "kg" },
+      { nombre: "pepino",      cantidad: "1",   unidad: "u" },
+      { nombre: "zapallito",   cantidad: "2",   unidad: "u" },
+      { nombre: "choclo",      cantidad: "2",   unidad: "u" },
+      { nombre: "morron",      cantidad: "1",   unidad: "u" },
+      { nombre: "puerro",      cantidad: "1",   unidad: "u" },
+      { nombre: "apio",        cantidad: "1",   unidad: "u" },
+    ],
+  },
+  {
+    destino: "Almacén",
+    items: [
+      { nombre: "aceite de girasol",  cantidad: "1",   unidad: "l" },
+      { nombre: "sal",                cantidad: "1",   unidad: "kg" },
+      { nombre: "harina",             cantidad: "1",   unidad: "kg" },
+      { nombre: "arroz",              cantidad: "1",   unidad: "kg" },
+      { nombre: "fideos",             cantidad: "1",   unidad: "kg" },
+      { nombre: "tomate triturado",   cantidad: "2",   unidad: "lata" },
+      { nombre: "leche",              cantidad: "2",   unidad: "l" },
+      { nombre: "crema de leche",     cantidad: "1",   unidad: "u" },
+      { nombre: "manteca",            cantidad: "200", unidad: "g" },
+      { nombre: "queso rallado",      cantidad: "1",   unidad: "u" },
+      { nombre: "caldo",              cantidad: "2",   unidad: "u" },
+      { nombre: "azucar",             cantidad: "1",   unidad: "kg" },
+      { nombre: "vinagre",            cantidad: "1",   unidad: "u" },
+      { nombre: "aceite de oliva",    cantidad: "1",   unidad: "u" },
+      { nombre: "pan",                cantidad: "1",   unidad: "u" },
+      { nombre: "yerba",              cantidad: "1",   unidad: "kg" },
+      { nombre: "cafe",               cantidad: "1",   unidad: "u" },
+      { nombre: "mayonesa",           cantidad: "1",   unidad: "u" },
+    ],
+  },
+  {
+    destino: "Fiambre",
+    items: [
+      { nombre: "jamon cocido",       cantidad: "200", unidad: "g" },
+      { nombre: "jamon crudo",        cantidad: "100", unidad: "g" },
+      { nombre: "queso cremoso",      cantidad: "200", unidad: "g" },
+      { nombre: "mozzarella",         cantidad: "250", unidad: "g" },
+      { nombre: "queso gouda",        cantidad: "200", unidad: "g" },
+      { nombre: "ricota",             cantidad: "250", unidad: "g" },
+      { nombre: "yogur",              cantidad: "4",   unidad: "u" },
+      { nombre: "salame",             cantidad: "100", unidad: "g" },
+    ],
+  },
+];
+
+export async function seedPlantillasMaestras(): Promise<Result<void, AppError>> {
+  try {
+    const [existentes, catalogo] = await Promise.all([
+      getRecetas(),
+      getCatalogo(),
+    ]);
+
+    const destinosExistentes = new Set(
+      existentes.filter((r) => r.esCompraRapida).map((r) => r.destino),
+    );
+
+    for (const maestro of SEED_MAESTROS) {
+      if (destinosExistentes.has(maestro.destino)) continue;
+
+      const items: DatosPlantilla["items"] = [];
+      for (const seed of maestro.items) {
+        const nc = normalizeText(seed.nombre);
+        const found = [...catalogo.values()].find(
+          (ing) =>
+            normalizeText(ing.nombrePreferido).includes(nc) ||
+            (ing.sinonimos ?? []).some((s) => normalizeText(s).includes(nc)),
+        );
+        if (!found) continue;
+        items.push({
+          idIngrediente: found.idIngrediente,
+          nombre: found.nombrePreferido,
+          cantidad: seed.cantidad,
+          unidad: found.unidadesHabituales?.[0] ?? seed.unidad,
+          seccionGondola: found.seccionGondola,
+          habitual: true,
+        });
+      }
+
+      if (items.length === 0) continue;
+
+      const r = await crearPlantillaCompraRapida({ destino: maestro.destino, items });
+      if (!r.ok) return { ok: false, error: r.error };
+    }
+
+    return ok(undefined);
+  } catch (e) {
+    return err("seed-maestros-failed", firebaseErrorMessage(e) ?? "No se pudo hacer el seed.", e);
+  }
 }
 
 // ─── Operaciones sobre la instancia ──────────────────────────────────────────

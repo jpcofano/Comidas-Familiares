@@ -15,10 +15,10 @@ import { normalizeText } from "../lib/canonical";
 import type { Ingrediente, MiembroId } from "../types/models";
 
 const MIEMBROS: { id: MiembroId; label: string }[] = [
-  { id: "maria",    label: "María" },
-  { id: "sofia",    label: "Sofía" },
-  { id: "federico", label: "Federico" },
-  { id: "juanpablo", label: "JP" },
+  { id: "juanpablo", label: "JP"      },
+  { id: "maria",     label: "María"   },
+  { id: "sofia",     label: "Sofía"   },
+  { id: "federico",  label: "Federico"},
 ];
 
 interface ItemLocal {
@@ -53,7 +53,7 @@ function CompraRapidaEditorInner({
 
   const [destino, setDestino] = useState("");
   const [items, setItems] = useState<ItemLocal[]>([]);
-  const [asignadoA, setAsignadoA] = useState<MiembroId>("maria");
+  const [asignadoA, setAsignadoA] = useState<MiembroId[]>(["maria"]);
   const [catalogo, setCatalogo] = useState<Map<string, Ingrediente>>(new Map());
   const [busqueda, setBusqueda] = useState("");
   const [saving, setSaving] = useState(false);
@@ -184,7 +184,15 @@ function CompraRapidaEditorInner({
         if (generar) {
           const plantillaActualizada = await getReceta(idReceta);
           if (plantillaActualizada) {
-            const ri = await generarInstanciaCompraRapida(plantillaActualizada, asignadoA);
+            const todosItems = plantillaActualizada.ingredientes.map((ing) => ({
+              idIngrediente: ing.idIngrediente,
+              nombre: ing.textoOriginal,
+              cantidad: String(ing.cantidad ?? "1"),
+              unidad: ing.unidad ?? "",
+              seccionGondola: ing.seccion ?? "Despensa / otros",
+              comprado: false,
+            }));
+            const ri = await generarInstanciaCompraRapida(plantillaActualizada, asignadoA, todosItems);
             if (!ri.ok) { setError(ri.error.message); return; }
           }
         }
@@ -192,7 +200,15 @@ function CompraRapidaEditorInner({
         const r = await crearPlantillaCompraRapida(datos);
         if (!r.ok) { setError(r.error.message); return; }
         if (generar) {
-          const ri = await generarInstanciaCompraRapida(r.value, asignadoA);
+          const todosItems = r.value.ingredientes.map((ing) => ({
+            idIngrediente: ing.idIngrediente,
+            nombre: ing.textoOriginal,
+            cantidad: String(ing.cantidad ?? "1"),
+            unidad: ing.unidad ?? "",
+            seccionGondola: ing.seccion ?? "Despensa / otros",
+            comprado: false,
+          }));
+          const ri = await generarInstanciaCompraRapida(r.value, asignadoA, todosItems);
           if (!ri.ok) { setError(ri.error.message); return; }
         }
       }
@@ -381,7 +397,13 @@ function CompraRapidaEditorInner({
         </label>
         <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
           {MIEMBROS.map((m) => (
-            <button key={m.id} onClick={() => setAsignadoA(m.id)} style={chipStyle(asignadoA === m.id)}>
+            <button
+              key={m.id}
+              onClick={() => setAsignadoA((prev) =>
+                prev.includes(m.id) ? prev.filter((x) => x !== m.id) : [...prev, m.id]
+              )}
+              style={chipStyle(asignadoA.includes(m.id))}
+            >
               {m.label}
             </button>
           ))}

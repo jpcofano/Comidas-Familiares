@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.9.0 (E14.1 — Lista de compras asignable a un encargado + avatar con foto)
+> **Versión**: 2.10.0 (E14.2 — Compra rápida: 3 plantillas maestras, modos A/B/C, selección persistida, multi-asignado)
 > **Fecha**: 2026-06-03
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -212,10 +212,16 @@ Tercera y última etapa de **Etapa 11 — Macros nutricionales**. Muestra el res
 
 Funcionalidad nueva independiente del ciclo de recetas. Permite a JP crear listas de compra reutilizables por comercio (Verdulería, Chino, Carrefour…), asignarlas a un miembro y generar instancias semanales.
 
-**Modelo — `Receta` (E13.1):**
+**Modelo — `Receta` (E13.1 + E14.2):**
 ```ts
-esCompraRapida?: boolean  // marca la receta como plantilla de compra
-destino?: string          // comercio destino ("Verdulería", "Chino"…)
+esCompraRapida?: boolean   // marca la receta como plantilla de compra
+destino?: string           // comercio destino ("Verdulería", "Chino"…)
+ultimaSeleccion?: string[] // E14.2 — idIngrediente[] seleccionados la última vez (modo C)
+modoPreferido?: "sumar" | "destildar" | "siempre" // E14.2 — último modo de armar usado
+```
+**`IngredienteEnReceta` (E14.2):**
+```ts
+habitual?: boolean  // ★ marcado por defecto en modo C la primera vez (sin ultimaSeleccion)
 ```
 
 **Modelo — `Plan` (E13.1):**
@@ -231,7 +237,9 @@ itemsCompraRapida?: Array<{
 **`src/data/comprasRapidas.ts` (nuevo):**
 - `crearPlantillaCompraRapida(datos)` → `setDoc` en `/recetas` con `esCompraRapida: true`, invalida caché.
 - `actualizarPlantillaCompraRapida(id, datos)` → `updateDoc`.
-- `generarInstanciaCompraRapida(plantilla, miembroId)` → `crearPlan` con `tipoSeleccion: "compra-rapida"`, snapshot de ítems, `comprado: false`.
+- `generarInstanciaCompraRapida(plantilla, asignados[], itemsSeleccionados[])` → `crearPlan` con `tipoSeleccion: "compra-rapida"`, multi-asignado, solo los ítems marcados. **E14.2: firma actualizada.**
+- `guardarSeleccionPlantilla(idReceta, ultimaSeleccion, modoPreferido)` → `updateDoc` en la plantilla. **E14.2.**
+- `seedPlantillasMaestras()` → crea Verdulería/Almacén/Fiambre si no existen, buscando ingredientes en el catálogo. Idempotente. **E14.2.**
 - `toggleItemComprado(idPlan, idIngrediente, items)` → reemplaza el array en Firestore.
 - `marcarCompraRapidaHecha(idPlan)` → setea `estado: "Compra lista"`.
 

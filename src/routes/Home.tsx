@@ -13,7 +13,8 @@ import { SkeletonPlanCard } from "../components/skeletons/SkeletonPlanCard";
 import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
 import { SemanaBadge } from "../components/SemanaBadge";
-import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
+import type { Plan, ListaCompras, Menu, Receta, MiembroId } from "../types/models";
+import { AvatarStack } from "../components/MemberAvatar";
 import { MemberDashboard } from "./MemberDashboard";
 
 // ─── Helper: formatea rango de semana "26 may – 1 jun" ───────────────────────
@@ -77,7 +78,7 @@ export function HomeRoute() {
 
 function HomeJP() {
   const navigate = useNavigate();
-  const [planes, setPlanes] = useState<Plan[]>([]);
+  const [planesAll, setPlanesAll] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [menusMap, setMenusMap] = useState<Map<string, Menu>>(new Map());
@@ -86,10 +87,16 @@ function HomeJP() {
 
   const semana = useMemo(() => getSemanaActual(), []);
 
-  // Suscripción a planes activos
+  const planes = useMemo(() => planesAll.filter((p) => p.tipoSeleccion !== "compra-rapida"), [planesAll]);
+  const comprasRapidas = useMemo(
+    () => planesAll.filter((p) => p.tipoSeleccion === "compra-rapida" && p.estado !== "Compra lista"),
+    [planesAll],
+  );
+
+  // Suscripción a planes activos (incluye compra-rapida para JP)
   useEffect(() => {
     return subscribeToPlanesActivos(semana, (p) => {
-      setPlanes(p.filter((plan) => plan.tipoSeleccion !== "compra-rapida"));
+      setPlanesAll(p);
       setLoading(false);
     });
   }, [semana]);
@@ -331,6 +338,54 @@ function HomeJP() {
           yaTengo={lista.totalYaTengo ?? 0}
           onClick={() => navigate("/compras")}
         />
+      )}
+
+      {/* ── Compras rápidas activas ───────────────────────────────────────── */}
+      {comprasRapidas.length > 0 && (
+        <div className="card" style={{ marginTop: "var(--space-3)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-2)" }}>
+            <p style={{ margin: 0, fontWeight: 700, fontSize: "var(--fs-sm)", color: "var(--text-strong)" }}>
+              Compras rápidas activas
+            </p>
+            <button
+              onClick={() => navigate("/compras/armar")}
+              style={{ fontSize: 11, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
+            >
+              + Armar nueva
+            </button>
+          </div>
+          {comprasRapidas.map((p) => {
+            const items = p.itemsCompraRapida ?? [];
+            const comprados = items.filter((it) => it.comprado).length;
+            const NOMBRE_MIEMBRO: Record<MiembroId, string> = { juanpablo: "JP", maria: "María", sofia: "Sofía", federico: "Federico" };
+            return (
+              <button
+                key={p.idPlan}
+                onClick={() => navigate(`/compra-rapida/${p.idPlan}`)}
+                style={{
+                  width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer",
+                  padding: "var(--space-2) 0", borderBottom: "1px solid var(--border-subtle)",
+                  display: "flex", alignItems: "center", gap: "var(--space-3)", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {p.nombreSeleccion}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 11, color: "var(--muted)" }}>
+                    {comprados} de {items.length} comprados
+                    {p.asignaciones.length > 0 && ` · ${p.asignaciones.map((id) => NOMBRE_MIEMBRO[id as MiembroId] ?? id).join(", ")}`}
+                  </p>
+                </div>
+                <AvatarStack
+                  names={p.asignaciones.map((id) => NOMBRE_MIEMBRO[id as MiembroId] ?? id)}
+                  memberIds={p.asignaciones as MiembroId[]}
+                  size={22}
+                />
+              </button>
+            );
+          })}
+        </div>
       )}
 
       {/* ── ¿Qué cocino con lo que tengo? ────────────────────────────────── */}

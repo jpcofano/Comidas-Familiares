@@ -135,6 +135,7 @@ export interface IngredienteEnReceta {
   opcional?: boolean;
   notas?: string;
   alternativas?: Array<{ idIngrediente: string }>;
+  habitual?: boolean;        // ★ marcado por defecto en modo C (compra rápida)
 }
 
 // ─── Paso ─────────────────────────────────────────────────────────────────────
@@ -195,7 +196,9 @@ export interface Receta {
 
   // E13.1 — Compra rápida
   esCompraRapida?: boolean;
-  destino?: string;  // comercio ("Verdulería", "Chino"…)
+  destino?: string;           // comercio ("Verdulería", "Chino"…)
+  ultimaSeleccion?: string[]; // idIngrediente[] seleccionados la última vez (modo C)
+  modoPreferido?: "sumar" | "destildar" | "siempre"; // último modo de armar usado
 
   fuente?: string;
   urlFuente?: string;

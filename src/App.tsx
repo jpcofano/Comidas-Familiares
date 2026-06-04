@@ -21,6 +21,7 @@ import { VisibilidadBibliotecaRoute } from "./routes/VisibilidadBiblioteca";
 import { PerfilRoute } from "./routes/Perfil";
 import { CompraRapidaEditorRoute } from "./routes/CompraRapidaEditor";
 import { CompraRapidaDetalleRoute } from "./routes/CompraRapidaDetalle";
+import { CompraRapidaArmarRoute } from "./routes/CompraRapidaArmar";
 import { PerfilesProvider } from "./contexts/PerfilesContext";
 import { NotFoundRoute } from "./routes/NotFound";
 
@@ -72,6 +73,7 @@ function App() {
           <Route path="/biblioteca/compra-rapida/nueva" element={<CompraRapidaEditorRoute />} />
           <Route path="/biblioteca/compra-rapida/:id" element={<CompraRapidaEditorRoute />} />
           <Route path="/compra-rapida/:idPlan" element={<CompraRapidaDetalleRoute />} />
+          <Route path="/compras/armar" element={<CompraRapidaArmarRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>
       </Routes>
