@@ -35,9 +35,9 @@ export function CompraRapidaEditorRoute() {
   const { id } = useParams<{ id?: string }>();
   const isEditing = !!id;
 
-  if (state.status !== "authenticated" || state.user.memberId !== "juanpablo") {
-    return <Navigate to="/" replace />;
-  }
+  if (state.status !== "authenticated") return <Navigate to="/biblioteca" replace />;
+  const selfId = state.user.memberId;
+  if (selfId !== "juanpablo" && selfId !== "maria") return <Navigate to="/biblioteca" replace />;
 
   return <CompraRapidaEditorInner idReceta={id} isEditing={isEditing} />;
 }

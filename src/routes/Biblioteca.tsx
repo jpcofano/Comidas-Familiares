@@ -550,6 +550,7 @@ export function BibliotecaRoute() {
 
   const memberId = state.user.memberId;
   const isJP = memberId === "juanpablo";
+  const puedeGestionarCompras = memberId === "juanpablo" || memberId === "maria";
   const tab = searchParams.get("tab") ?? "recetas";
 
   return (
@@ -569,7 +570,7 @@ export function BibliotecaRoute() {
             Menús
           </button>
         )}
-        {isJP && (
+        {puedeGestionarCompras && (
           <button
             className={tab === "compras" ? "tab active" : "tab"}
             onClick={() => setSearchParams({ tab: "compras" })}
@@ -635,7 +636,7 @@ export function BibliotecaRoute() {
         </>
       )}
 
-      {!isJP && (
+      {!isJP && tab === "recetas" && (
         <div style={{ marginBottom: "var(--space-3)" }}>
           <h1 style={{ fontSize: 20, fontWeight: 700, color: "var(--text-strong)", margin: "0 0 4px" }}>
             Mis recetas
@@ -648,8 +649,8 @@ export function BibliotecaRoute() {
 
       <div className="card">
         {tab === "recetas" && <TabRecetas memberId={memberId} isJP={isJP} />}
-        {tab === "menus" && isJP && <TabMenus />}
-        {tab === "compras" && isJP && <TabComprasRapidas />}
+        {tab === "menus"   && isJP                  && <TabMenus />}
+        {tab === "compras" && puedeGestionarCompras && <TabComprasRapidas />}
       </div>
     </>
   );

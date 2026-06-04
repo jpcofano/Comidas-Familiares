@@ -336,58 +336,69 @@ export function MemberDashboard() {
         )}
       </div>
 
-      {/* 6. Compras rápidas asignadas */}
-      {misCompras.filter((p) => p.estado !== "Compra lista").length > 0 && (
-        <div className="card">
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-2)" }}>
-            <h3 style={{ margin: 0, fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-              <ShoppingBag size={16} color="var(--primary)" />
-              Compras pendientes
-            </h3>
-            {(memberId === "juanpablo" || memberId === "maria") && (
-              <Link
-                to="/compras/armar"
-                style={{ fontSize: 11, color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}
-              >
-                + Armar
-              </Link>
+      {/* 6. Compras rápidas */}
+      {(() => {
+        const puedeGestionarCompras = memberId === "juanpablo" || memberId === "maria";
+        const comprasActivas = misCompras.filter((p) => p.estado !== "Compra lista");
+        if (comprasActivas.length === 0 && !puedeGestionarCompras) return null;
+        return (
+          <div className="card">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-2)" }}>
+              <h3 style={{ margin: 0, fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+                <ShoppingBag size={16} color="var(--primary)" />
+                Compras pendientes
+              </h3>
+              {puedeGestionarCompras && (
+                <Link
+                  to="/compras/armar"
+                  style={{ fontSize: 11, color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}
+                >
+                  + Armar
+                </Link>
+              )}
+            </div>
+            {comprasActivas.length === 0 ? (
+              <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
+                No hay compras pendientes. Tocá <strong>+ Armar</strong> para preparar la de esta semana.
+              </p>
+            ) : (
+              comprasActivas.map((p) => {
+                const items = p.itemsCompraRapida ?? [];
+                const comprados = items.filter((it) => it.comprado).length;
+                return (
+                  <Link key={p.idPlan} to={`/compra-rapida/${p.idPlan}`} style={{ textDecoration: "none", display: "block" }}>
+                    <div style={{
+                      display: "flex", alignItems: "center", gap: "var(--space-3)",
+                      padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)",
+                    }}>
+                      <ShoppingBag size={18} color="var(--muted)" style={{ flexShrink: 0 }} />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: "var(--fw-medium)", color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {p.nombreSeleccion}
+                        </p>
+                        <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
+                          {comprados} de {items.length} comprados
+                        </p>
+                      </div>
+                      {p.asignaciones.length > 1 && (
+                        <AvatarStack
+                          names={p.asignaciones.map((id) => NOMBRES_MIEMBROS[id] ?? id)}
+                          memberIds={p.asignaciones as MiembroId[]}
+                          size={20}
+                        />
+                      )}
+                      {comprados === items.length && items.length > 0
+                        ? <CheckCircle2 size={16} color="var(--ok-text)" />
+                        : <Circle size={16} color="var(--muted)" />
+                      }
+                    </div>
+                  </Link>
+                );
+              })
             )}
           </div>
-          {misCompras.filter((p) => p.estado !== "Compra lista").map((p) => {
-            const items = p.itemsCompraRapida ?? [];
-            const comprados = items.filter((it) => it.comprado).length;
-            return (
-              <Link key={p.idPlan} to={`/compra-rapida/${p.idPlan}`} style={{ textDecoration: "none", display: "block" }}>
-                <div style={{
-                  display: "flex", alignItems: "center", gap: "var(--space-3)",
-                  padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)",
-                }}>
-                  <ShoppingBag size={18} color="var(--muted)" style={{ flexShrink: 0 }} />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: "var(--fw-medium)", color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                      {p.nombreSeleccion}
-                    </p>
-                    <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
-                      {comprados} de {items.length} comprados
-                    </p>
-                  </div>
-                  {p.asignaciones.length > 1 && (
-                    <AvatarStack
-                      names={p.asignaciones.map((id) => NOMBRES_MIEMBROS[id] ?? id)}
-                      memberIds={p.asignaciones as MiembroId[]}
-                      size={20}
-                    />
-                  )}
-                  {comprados === items.length && items.length > 0
-                    ? <CheckCircle2 size={16} color="var(--ok-text)" />
-                    : <Circle size={16} color="var(--muted)" />
-                  }
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      )}
+        );
+      })()}
 
       {/* 7. Mi historial */}
       <div className="card">

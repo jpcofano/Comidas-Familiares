@@ -6,6 +6,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingBag } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { subscribeToLista, subscribeToItemsLista, toggleItemYaTengo, asignarEncargadoCompras } from "../data/compras";
@@ -108,6 +109,7 @@ export function ComprasRoute() {
     }
   }
 
+  const puedeGestionarCompras = memberId === "juanpablo" || memberId === "maria";
   const esEncargado = !!memberId && lista?.encargadoCompras === memberId;
   const verCompleta = isJP || esEncargado;
 
@@ -200,6 +202,23 @@ export function ComprasRoute() {
             <ProgressRing done={yaTengoCount} total={itemsVisibles.length} />
           )}
         </div>
+
+        {/* Botón armar (JP + María) */}
+        {puedeGestionarCompras && (
+          <Link
+            to="/compras/armar"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "9px 14px", borderRadius: "var(--radius-md)",
+              background: "var(--primary)", color: "#fff",
+              textDecoration: "none", fontWeight: 700,
+              fontSize: "var(--fs-sm)", marginBottom: 10,
+            }}
+          >
+            <ShoppingBag size={16} />
+            Armar la compra
+          </Link>
+        )}
 
         {/* Encargado de compras — selector JP */}
         {isJP && lista && (
