@@ -1,0 +1,3152 @@
+[
+  {
+    "nombre": "Carré de cordero en costra de hierbas y almendra",
+    "estilo": "Francesa",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Cordero",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "el carré es un corte de fiesta y la costra de almendra reemplaza al pan rallado, queda crocante sin hidratos",
+    "riesgos": "pasar la cocción seca el cordero; cortar sin reposar pierde los jugos",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Plato de impacto para dos; calcular 4 a 6 costillitas por persona.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carre de cordero",
+        "textoOriginal": "Carré de cordero",
+        "seccion": "Principal",
+        "cantidad": "1,4",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "francés, limpio, 2 piezas de 8 costillas; pedir al carnicero que limpie los huesos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Sellado",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Costra",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Costra",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Costra",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Costra",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Costra",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "blanda"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "hace de pegamento de la costra"
+      },
+      {
+        "canon": "papel aluminio",
+        "textoOriginal": "Papel aluminio",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para el reposo"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Atemperar y precalentar",
+        "detalle": "Sacar el carré de la heladera 30 min antes. Precalentar el horno a 220°C. Secar bien con papel y salpimentar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "La carne a temperatura ambiente se cocina pareja.",
+        "errorComun": "Llevar la carne fría al horno.",
+        "notas": "Tiempo activo: 5 min; los 30 de atemperado son sin atención."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Calentar el aceite en sartén bien caliente y sellar el carré por todas sus caras hasta dorar, unos 2 min por lado.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: fuego fuerte para dorar sin cocinar el interior.",
+        "errorComun": "Sellar a fuego bajo y terminar hirviendo la carne.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Armar la costra",
+        "detalle": "Mezclar harina de almendra, perejil, romero, tomillo, ajo y manteca hasta una pasta. Pincelar la grasa del carré con mostaza y presionar la costra encima.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "La mostaza pega la costra; sin ella se cae.",
+        "errorComun": "Apoyar la costra sobre carne mojada y sin mostaza.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Hornear",
+        "detalle": "Llevar al horno a 220°C hasta 52°C internos para punto rosado, 15 a 18 min.",
+        "tiempoEstimadoLabel": "18 min",
+        "tiempoEstimadoMin": 18,
+        "puntoClave": "⚠️ Punto crítico: usar termómetro; 52-54°C es el rosado ideal.",
+        "errorComun": "Cocinar de más y secar el cordero.",
+        "notas": "Tiempo activo: 1 min, solo controlar temperatura."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reposar y cortar",
+        "detalle": "Tapar flojo con aluminio y reposar 10 min. Cortar entre los huesos en costillas individuales.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El reposo redistribuye los jugos.",
+        "errorComun": "Cortar apenas sale del horno.",
+        "notas": "Tiempo activo: 2 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Cordero estilo Rogan Josh",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cordero",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz jazmín",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "curry indio profundo de especias tostadas, sin papa, espesado solo con cebolla y yogur",
+    "riesgos": "quemar las especias en seco; cortar el yogur si se agrega a fuego alto",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando las porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "cordero en cubos",
+        "textoOriginal": "Cordero en cubos",
+        "seccion": "Principal",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de paleta o pierna, en cubos de 4 cm; con algo de grasa"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base de sabor",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base de sabor",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base de sabor",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Especias",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "coriandro",
+        "textoOriginal": "Coriandro",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Especias",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "aporta el color rojo"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Lácteo",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero, batido; agregar fuera del hervor"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar el cordero",
+        "detalle": "Secar los cubos, salar y dorar en tandas en el aceite caliente. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: no amontonar; en tandas dora, amontonado hierve.",
+        "errorComun": "Tirar todo junto y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base aromática",
+        "detalle": "En la misma olla, rehogar la cebolla 8 min hasta dorar; sumar ajo y jengibre 1 min.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "El fondo dorado de la cebolla es la base del color y sabor.",
+        "errorComun": "Cebolla pálida apurada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Tostar especias",
+        "detalle": "Bajar el fuego, agregar garam masala, comino, coriandro, pimentón y cúrcuma; revolver 60 segundos.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: tostar en grasa, no en seco, y solo 1 min para que no amarguen.",
+        "errorComun": "Quemar las especias.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Cocción lenta",
+        "detalle": "Volver el cordero, sumar tomate y caldo, tapar y cocinar a fuego mínimo.",
+        "tiempoEstimadoLabel": "1 h 30 min",
+        "tiempoEstimadoMin": 90,
+        "puntoClave": "La paciencia ablanda el cordero.",
+        "errorComun": "Fuego alto que evapora el líquido.",
+        "notas": "Tiempo activo: 2 min; revolver de vez en cuando."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar con yogur",
+        "detalle": "Apagar el fuego, esperar 2 min y recién ahí incorporar el yogur batido. Ajustar sal.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: yogur fuera del hervor para que no se corte.",
+        "errorComun": "Agregar el yogur hirviendo y cortarlo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Costillitas de cordero al romero y ajo",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cordero",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "cordero a la plancha rápido y elegante, marinado simple que perfuma sin tapar",
+    "riesgos": "marinar con sal mucho tiempo reseca; cordero muy hecho pierde jugosidad",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Rápido y fino para una cena de a dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "costillas de cordero",
+        "textoOriginal": "Costillas de cordero",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "tipo \"french rack\" separadas en costillitas; 12 costillitas aprox"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "salar recién al cocinar"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar aceite, romero, ajo y ralladura; untar las costillitas y dejar 30 min a temperatura ambiente.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Sin sal en la marinada para no extraer jugos.",
+        "errorComun": "Marinar salado horas y resecar.",
+        "notas": "Tiempo activo: 5 min; los 30 son de reposo."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Calentar la plancha",
+        "detalle": "Llevar plancha o sartén de hierro a fuego fuerte hasta que humee apenas.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: la plancha bien caliente marca y no pega.",
+        "errorComun": "Empezar en sartén tibia.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "Salpimentar y cocinar 2 a 3 min por lado para punto jugoso.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El cordero queda mejor rosado; tocar y buscar resistencia media.",
+        "errorComun": "Cocinar de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar",
+        "detalle": "Dejar reposar 5 min antes de servir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El reposo termina la cocción y conserva el jugo.",
+        "errorComun": "Servir al toque y que sangre en el plato.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salmón en costra de pistacho con beurre blanc",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "salmón con costra crocante de pistacho y una salsa de manteca emulsionada de restaurante, todo sin harinas",
+    "riesgos": "cortar la beurre blanc por calor excesivo; pasar el salmón y secarlo",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Elegante para dos; salsa por debajo del salmón.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones con piel"
+      },
+      {
+        "canon": "pistachos",
+        "textoOriginal": "Pistachos",
+        "seccion": "Costra",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, picados grueso"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "pega la costra"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Costra",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "blanco"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "50",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "estabiliza la emulsión"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fría, en cubos"
+      },
+      {
+        "canon": "ciboulette",
+        "textoOriginal": "Ciboulette",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Costra",
+        "detalle": "Secar el salmón, salar, pincelar la cara sin piel con mostaza y presionar los pistachos.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Secar bien para que pegue la costra.",
+        "errorComun": "Pescado húmedo: la costra resbala.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Reducción",
+        "detalle": "En cacerolita, reducir echalote, vino y vinagre hasta casi seco, 2 cucharadas de líquido.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "La reducción concentra el sabor de la salsa.",
+        "errorComun": "Cortar la reducción demasiado pronto.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar el salmón",
+        "detalle": "En sartén con aceite, cocinar primero del lado de la piel 4 min, dar vuelta y 2 min del lado de la costra a fuego suave.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: lado costra a fuego bajo para que no se queme el pistacho.",
+        "errorComun": "Dorar la costra a fuego fuerte y amargarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Montar la beurre blanc",
+        "detalle": "Sumar la crema a la reducción, y fuera del fuego fuerte ir incorporando la manteca fría en cubos batiendo hasta una salsa lisa. Sal y ciboulette.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fuego muy bajo o apagado; si hierve, se corta.",
+        "errorComun": "Hervir la salsa y separar la grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Servir",
+        "detalle": "Napar el plato con la beurre blanc y apoyar el salmón con la costra hacia arriba.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Ceviche de corvina",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Marinado en frío",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "entrada fresca y cítrica que \"cocina\" el pescado en frío; cero hidratos y mucho impacto",
+    "riesgos": "pescado poco fresco (es crudo); pasarlo de cítrico lo deja gomoso",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada fresca ideal para abrir una cena de a dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "corvina",
+        "textoOriginal": "Corvina",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "filet sin piel ni espinas, en cubos de 1,5 cm; la más fresca posible"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Leche de tigre",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "jugo; preferir lima si se consigue"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "sin semillas, picado; tipo rocoto o ají amarillo"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Leche de tigre",
+        "cantidad": "5",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Guarnición",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma fina; enjuagada en agua fría"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Guarnición",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para enfriar el bowl"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Enfriar todo",
+        "detalle": "Trabajar con el pescado y el bowl bien fríos, apoyando el bowl sobre hielo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: cadena de frío; el ceviche se arma frío y se come al toque.",
+        "errorComun": "Pescado tibio: riesgo y textura pobre.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Leche de tigre",
+        "detalle": "Mezclar jugo de limón, ají, jengibre, ajo y sal.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El ácido es el que \"cocina\"; equilibrar con sal.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Curar el pescado",
+        "detalle": "Verter la leche de tigre sobre los cubos y dejar 8 a 10 min, hasta que se vean opacos por fuera y jugosos dentro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: no más de 10 min o queda gomoso.",
+        "errorComun": "Dejarlo media hora y pasarlo de cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Sumar cebolla morada y cilantro, mezclar suave y servir de inmediato.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Servir recién mezclado.",
+        "errorComun": "Dejarlo reposar y que la cebolla domine.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Curry verde tailandés de pescado",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz jazmín",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "curry cremoso de coco en 30 min, picante y perfumado, naturalmente sin lácteos ni harinas",
+    "riesgos": "hervir fuerte el coco lo corta; sobrecocinar el pescado lo deshace",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando las porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "abadejo",
+        "textoOriginal": "Abadejo",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "filet en trozos grandes; sirve cualquier pescado blanco firme"
+      },
+      {
+        "canon": "pasta de curry verde",
+        "textoOriginal": "Pasta de curry verde",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de coco",
+        "textoOriginal": "Aceite de coco",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Aromáticos",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Aromáticos",
+        "cantidad": "10",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas; tailandesa si se consigue"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Fraguar la pasta",
+        "detalle": "Calentar el aceite de coco y cocinar la pasta de curry y el jengibre 1 a 2 min hasta que perfume.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: fraguar la pasta en grasa libera el aroma.",
+        "errorComun": "Tirar el coco sin activar la pasta antes.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Verduras",
+        "detalle": "Sumar morrón y berenjena, saltear 3 min.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Coco",
+        "detalle": "Agregar la leche de coco y la salsa de pescado, llevar a hervor muy suave.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Hervor apenas perceptible para que el coco no se corte.",
+        "errorComun": "Hervir fuerte y separar la grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Pescado",
+        "detalle": "Sumar el pescado y cocinar a fuego bajo 5 a 6 min sin revolver de más.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: pescado a fuego suave y casi sin mover.",
+        "errorComun": "Revolver y deshacer los trozos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar",
+        "detalle": "Apagar, agregar jugo de limón y albahaca.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El cítrico al final levanta todo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pulpo a la gallega sobre coliflor",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Papa hervida en rodajas",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h 30 min",
+    "tiempoTotalMin": 90,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "el clásico pulpo á feira, pero apoyado sobre puré de coliflor en vez de papa para que entre en low-carb",
+    "riesgos": "pulpo duro por cocción mal manejada; quemar el pimentón",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada de lujo; media porción por persona.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pulpo",
+        "textoOriginal": "Pulpo",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "fresco o congelado, entero; si es fresco, congelar antes ablanda"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "salar el agua al final"
+      },
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Terminación",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra, para terminar"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Terminación",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en escamas, para terminar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "\"Asustar\" el pulpo",
+        "detalle": "Hervir abundante agua con laurel. Tomar el pulpo de la cabeza y sumergir y sacar las patas 3 veces antes de soltarlo dentro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: el \"asustado\" riza las patas y ayuda a la textura.",
+        "errorComun": "Tirarlo de golpe al agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cocción",
+        "detalle": "Cocinar a fuego medio 35 a 45 min, hasta que un cuchillo entre fácil en la parte gruesa. Salar el agua sobre el final.",
+        "tiempoEstimadoLabel": "45 min",
+        "tiempoEstimadoMin": 45,
+        "puntoClave": "Pinchar para chequear punto; varía según el tamaño.",
+        "errorComun": "Hervir a borbotones fuertes y endurecerlo.",
+        "notas": "Tiempo activo: 2 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Puré de coliflor",
+        "detalle": "Mientras, hervir la coliflor 12 min, escurrir muy bien y procesar con aceite y sal hasta cremoso.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "Escurrir a fondo para que el puré no quede aguado.",
+        "errorComun": "Coliflor mojada que larga agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Cortar y montar",
+        "detalle": "Cortar las patas tibias en rodajas de 1 cm. Apoyar sobre el puré, rociar con aceite virgen, espolvorear los pimentones y la sal en escamas.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: el pimentón va sobre el pulpo tibio y el aceite, nunca a la sartén (se quema y amarga).",
+        "errorComun": "Tostar el pimentón en aceite caliente.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Vieiras selladas sobre puré de coliflor",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "vieiras con costra dorada y centro apenas tierno, plato fino y rapidísimo",
+    "riesgos": "vieiras húmedas no doran; 30 segundos de más y quedan gomosas",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Muy elegante para dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "vieiras",
+        "textoOriginal": "Vieiras",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "limpias, sin coral, secas; unas 16 a 20 medianas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Sellado",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Sellado",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Base",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Base",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "nuez moscada",
+        "textoOriginal": "Nuez moscada",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "ciboulette",
+        "textoOriginal": "Ciboulette",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Terminación",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Puré",
+        "detalle": "Hervir la coliflor 12 min, escurrir muy bien y procesar con crema, manteca, nuez moscada y sal. Mantener tibio.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "Escurrir a fondo: puré seco y sedoso.",
+        "errorComun": "Puré aguado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Secar las vieiras",
+        "detalle": "Secar muy bien las vieiras con papel y salpimentar recién antes de sellar.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: vieira seca = costra dorada; húmeda = hervida.",
+        "errorComun": "Salar con anticipación y que larguen agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "En sartén bien caliente con aceite, sellar 90 segundos por lado sin moverlas; sumar la manteca al final para dorar y nappar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: no moverlas hasta que se despeguen solas.",
+        "errorComun": "Darlas vuelta antes de tiempo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Montar",
+        "detalle": "Apoyar las vieiras sobre el puré, terminar con ciboulette, ralladura y un hilo de la manteca de la sartén.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Cochinita pibil",
+    "estilo": "Mexicana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horno lento",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "3 h 30 min",
+    "tiempoTotalMin": 210,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "cerdo yucateco marinado en achiote y cítricos, deshecho y jugoso, ideal para una mesa grande; sin tortilla queda perfecto en low-carb",
+    "riesgos": "marinada corta no penetra; horno alto seca la carne, va lento y tapado",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,3",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos grandes de 6 cm"
+      },
+      {
+        "canon": "pasta de achiote",
+        "textoOriginal": "Pasta de achiote",
+        "seccion": "Marinada",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Marinada",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "jugo; mejor naranja agria si se consigue"
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Encurtido",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Encurtido",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Encurtido",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "papel aluminio",
+        "textoOriginal": "Papel aluminio",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para sellar la fuente"
+      },
+      {
+        "canon": "papel manteca",
+        "textoOriginal": "Papel manteca",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "forrar antes del aluminio"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Licuar achiote, jugos, vinagre, ajo, comino, orégano, sal y pimienta. Cubrir el cerdo y marinar mínimo 2 h (mejor de un día para otro).",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: cuanto más marina, más penetra el achiote.",
+        "errorComun": "Marinar 10 min y que quede plano.",
+        "notas": "Tiempo activo: 10 min; el resto es reposo en heladera."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar la fuente",
+        "detalle": "Acomodar el cerdo con toda la marinada en una fuente, forrar con papel manteca y luego sellar con aluminio bien ajustado.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El sellado guarda el vapor y cocina sin secar.",
+        "errorComun": "Hornear destapado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocción lenta",
+        "detalle": "Hornear a 160°C durante 3 h, hasta que la carne se deshaga con un tenedor.",
+        "tiempoEstimadoLabel": "3 h",
+        "tiempoEstimadoMin": 180,
+        "puntoClave": "La carne está lista cuando cede sola.",
+        "errorComun": "Subir el horno para apurar y resecar.",
+        "notas": "Tiempo activo: 0 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Encurtido",
+        "detalle": "Mientras, mezclar cebolla morada con jugo de limón y sal; dejar 20 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El encurtido corta la grasa con acidez.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Deshilachar",
+        "detalle": "Deshacer la carne con dos tenedores y mezclar con sus jugos. Servir con la cebolla encurtida.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Mezclar con el jugo de cocción para que quede húmeda.",
+        "errorComun": "Servirla seca, sin sus jugos.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Lomo de cerdo a la pimienta verde",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "medallones tiernos de cerdo con una salsa de pimienta verde clásica de bistró, sin harinas",
+    "riesgos": "pasar el cerdo lo seca; flamear sin cuidado al desglasar",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Bistró en casa para dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "solomillo de cerdo",
+        "textoOriginal": "Solomillo de cerdo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en medallones de 3 cm; el corte magro y tierno"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Sellado",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "conac",
+        "textoOriginal": "Coñac o vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para desglasar; con el coñac, flamear con cuidado",
+        "alternativas": [
+          {
+            "canon": "vino blanco seco"
+          }
+        ]
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta verde en grano",
+        "textoOriginal": "Pimienta verde en grano",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en salmuera, escurrida"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Secar y salar los medallones; dorar 2 a 3 min por lado en aceite y manteca. Retirar a un plato.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dejar el centro apenas rosado; el cerdo magro se pasa rápido.",
+        "errorComun": "Cocinar de más y secar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Desglasar",
+        "detalle": "Bajar el fuego, agregar el coñac o vino y raspar el fondo de la sartén.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El fondo dorado pegado es puro sabor.",
+        "errorComun": "Perder el fondo sin desglasar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar caldo y reducir a la mitad; agregar crema, granos de pimienta verde y mostaza, reducir 4 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Aplastar algunos granos para liberar más sabor.",
+        "errorComun": "Salsa líquida sin reducir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Volver los medallones y sus jugos, calentar 2 min en la salsa.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El jugo que largó la carne va a la salsa.",
+        "errorComun": "Recalentar fuerte y endurecer.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Ossobuco a la gremolata",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Polenta cremosa",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "2 h 30 min",
+    "tiempoTotalMin": 150,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "ossobuco braseado hasta deshacerse, con el caracú adentro y la gremolata fresca que lo despierta; un clásico de domingo",
+    "riesgos": "que el líquido se seque a mitad de cocción; saltear la gremolata (va cruda)",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "osobuco",
+        "textoOriginal": "Osobuco",
+        "seccion": "Principal",
+        "cantidad": "1,4",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "4 rodajas gruesas con hueso; atar con hilo si se desarman"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Soffritto",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Soffritto",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "apio",
+        "textoOriginal": "Apio",
+        "seccion": "Soffritto",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Soffritto",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Gremolata",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Gremolata",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Gremolata",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado muy fino"
+      },
+      {
+        "canon": "hilo de cocina",
+        "textoOriginal": "Hilo de cocina",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para atar las rodajas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Atar las rodajas por el borde, secar, salar y dorar bien de los dos lados en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: un buen sellado da color y profundidad al brasero.",
+        "errorComun": "Apurar y dejarlas grises.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Soffritto",
+        "detalle": "En la misma olla, rehogar cebolla, zanahoria, apio y ajo 8 a 10 min hasta dorar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El soffritto lento es la base del sabor italiano.",
+        "errorComun": "Verduras pálidas y crudas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Sumar el vino y reducir a la mitad raspando el fondo.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver el ossobuco, agregar tomate, caldo y laurel. Tapar y cocinar a fuego mínimo girando las rodajas a la mitad.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "⚠️ Punto crítico: vigilar el líquido; si baja, sumar caldo caliente.",
+        "errorComun": "Dejar que se seque y se pegue.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Gremolata y servir",
+        "detalle": "Mezclar perejil, ralladura y ajo crudos. Quitar el hilo y servir el ossobuco con su salsa y la gremolata por encima.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "La gremolata va cruda y al final.",
+        "errorComun": "Cocinarla y perder el frescor.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bulgogi de res",
+    "estilo": "Coreana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz blanco",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el BBQ coreano hecho en casa, dulzón y umami, con eritritol en lugar de azúcar para mantenerlo low-carb",
+    "riesgos": "marinar de más con la pera ablanda en exceso; sartén floja que hierve en vez de saltear",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando las porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "cortada muy fina; bife angosto o cuadril, casi congelado corta más fino"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "pera",
+        "textoOriginal": "Pera",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallada; ablanda y endulza natural"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "gochujang",
+        "textoOriginal": "Gochujang",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "suma picor coreano"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar soja, sésamo, eritritol, ajo, jengibre, pera y gochujang. Marinar la carne 30 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: no pasar de 1 h con la pera o la carne se deshace.",
+        "errorComun": "Marinar de un día para otro y arruinar la textura.",
+        "notas": "Tiempo activo: 8 min; 30 de marinado."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Calentar fuerte",
+        "detalle": "Llevar una sartén grande o wok a fuego máximo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Mucho calor para saltear, no estofar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Saltear",
+        "detalle": "Cocinar la carne en 2 tandas, 2 min cada una, sin amontonar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: en tandas dora; toda junta larga agua y hierve.",
+        "errorComun": "Tirar los 800 g de una.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Volver toda la carne, sumar el verdeo 1 min y las semillas de sésamo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El verdeo entra al final para que quede vivo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Carpaccio de lomo",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "1 h 20 min",
+    "tiempoTotalMin": 80,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "entrada elegante de lomo crudo cortado finísimo, fresca y sin un gramo de hidrato; impacta y se arma en minutos",
+    "riesgos": "lomo poco fresco (se come crudo); cortarlo grueso arruina la textura",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada cruda y fresca para dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "lomo",
+        "textoOriginal": "Lomo",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "limpio, sin grasa ni nervios; la pieza más fresca posible"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal en escamas",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Aderezo",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "rucula",
+        "textoOriginal": "Rúcula",
+        "seccion": "Terminación",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Terminación",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano en escamas; usar pelapapas para las escamas"
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "escurridas"
+      },
+      {
+        "canon": "film",
+        "textoOriginal": "Film",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para enrollar y freezar el lomo"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Compactar y freezar",
+        "detalle": "Enrollar el lomo bien apretado en film formando un cilindro y llevar al freezer 1 h, hasta que esté firme pero no congelado duro.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: firme por fuera permite cortar finísimo; congelado duro no se corta.",
+        "errorComun": "Cortar a temperatura ambiente y desgarrar la carne.",
+        "notas": "Tiempo activo: 5 min; 1 h de freezer."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cortar",
+        "detalle": "Con un cuchillo bien afilado, cortar láminas lo más finas posible.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Cuchillo afilado y cortes seguros y parejos.",
+        "errorComun": "Cuchillo romo que aplasta las fetas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Montar el plato",
+        "detalle": "Distribuir las láminas cubriendo el plato sin encimar demasiado. Salpimentar.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Una sola capa pareja se ve y se come mejor.",
+        "errorComun": "Amontonar el carpaccio.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Aderezar",
+        "detalle": "Rociar con aceite y limón, repartir rúcula, escamas de queso y alcaparras. Servir frío.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El limón se agrega al servir para que no \"cocine\" la carne antes.",
+        "errorComun": "Aderezar con anticipación y oxidar la carne.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo tikka masala",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz basmati",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "1 h 15 min",
+    "tiempoTotalMin": 75,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "pollo marinado en yogur y especias, dorado y bañado en una salsa cremosa de tomate; el favorito indio para toda la familia, sin harinas",
+    "riesgos": "marinada corta da poco sabor; cortar la crema con fuego alto",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando las porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de pechuga o muslo, en cubos de 3 cm; el muslo queda más jugoso"
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Marinada",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Terminación",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el pollo con yogur, garam masala, comino, cúrcuma, jengibre, ajo y sal. Dejar 30 min como mínimo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: el yogur ablanda y lleva las especias adentro.",
+        "errorComun": "Saltear el marinado de inmediato sin reposo.",
+        "notas": "Tiempo activo: 8 min; 30 de marinado."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar el pollo",
+        "detalle": "En sartén bien caliente con un poco de manteca, dorar el pollo en tandas hasta marcarlo. Reservar; no hace falta que esté cocido del todo.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El dorado da el sabor \"tikka\"; en tandas para que no hierva.",
+        "errorComun": "Cocinarlo amontonado y pálido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "En la misma sartén derretir la manteca, rehogar la cebolla 6 min, sumar pimentón y garam masala 1 min, luego el tomate y cocinar 8 min.",
+        "tiempoEstimadoLabel": "16 min",
+        "tiempoEstimadoMin": 16,
+        "puntoClave": "Cocinar bien el tomate quita la acidez cruda.",
+        "errorComun": "Salsa aguada y ácida por poca cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Crema",
+        "detalle": "Bajar el fuego e incorporar la crema, mezclando.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo al sumar la crema para que no se corte.",
+        "errorComun": "Hervir fuerte y cortar la salsa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Unir",
+        "detalle": "Volver el pollo con sus jugos y cocinar 5 min hasta que termine de cocinarse en la salsa. Terminar con cilantro.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El pollo se termina de cocer en la salsa y queda jugoso.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo a la cazadora",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el clásico pollo alla cacciatora, muslos braseados en tomate, hongos y vino; rinde, recalienta bien y no lleva harinas",
+    "riesgos": "piel sin dorar pierde sabor; fuego alto seca el pollo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando las porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con piel y hueso; 4 patamuslos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceitunas negras",
+        "textoOriginal": "Aceitunas negras",
+        "seccion": "Sabor",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "descarozadas"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Sabor",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar el pollo",
+        "detalle": "Secar y salar los patamuslos; dorarlos con la piel hacia abajo en el aceite, 6 min, hasta dorar. Dar vuelta 2 min y reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: dorar bien la piel es la base del sabor.",
+        "errorComun": "Saltear el paso del dorado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "En la misma olla rehogar cebolla, morrón y ajo 5 min; sumar champignones y cocinar 4 min hasta que pierdan el agua.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Esperar a que los hongos doren, no que se estofen.",
+        "errorComun": "Hongos pálidos largando agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Agregar el vino y reducir a la mitad raspando el fondo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver el pollo, sumar tomate, aceitunas, orégano y laurel. Tapar y cocinar a fuego bajo 30 min.",
+        "tiempoEstimadoLabel": "35 min",
+        "tiempoEstimadoMin": 35,
+        "puntoClave": "Fuego bajo y tapado mantiene el pollo jugoso.",
+        "errorComun": "Fuego fuerte que seca la carne.",
+        "notas": "Tiempo activo: 2 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Hummus casero",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Legumbres",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "dip cremoso de garbanzo y tahini, sirve como entrada o para untar; aporta la proteína de legumbre que casi no hay en la biblioteca",
+    "riesgos": "poca agua fría deja el hummus pesado; ajo crudo en exceso domina todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "garbanzos en lata",
+        "textoOriginal": "Garbanzos en lata",
+        "seccion": "Principal",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "escurridos y enjuagados; reservar un poco del líquido"
+      },
+      {
+        "canon": "tahini",
+        "textoOriginal": "Tahini",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua bien fría",
+        "seccion": "Líquido",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "con un par de cubos de hielo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra, para servir"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "para espolvorear"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Procesar la base",
+        "detalle": "Procesar garbanzos, tahini, jugo de limón, ajo, comino, aceite y sal hasta una pasta.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Procesar bien antes de agregar líquido.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Emulsionar",
+        "detalle": "Con la máquina andando, agregar el agua bien fría de a chorritos hasta que quede liso y aireado.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: el agua fría es lo que vuelve el hummus cremoso y claro.",
+        "errorComun": "Hummus pesado y denso por falta de agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Ajustar y servir",
+        "detalle": "Probar y corregir sal y limón. Servir con un pozo de aceite virgen y pimentón.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Rectificar acidez y sal sobre el final.",
+        "errorComun": "Pasarse de ajo crudo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pesto de albahaca casero",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "pesto fresco que sirve para vegetales, carnes o huevos; se conserva días y no aporta hidratos",
+    "riesgos": "procesar de más calienta y oxida la albahaca; conservar sin cubrir con aceite la pone negra",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Principal",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "hojas, sin tallos"
+      },
+      {
+        "canon": "nueces",
+        "textoOriginal": "Nueces",
+        "seccion": "Base",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplazan a los piñones"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Base",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Procesar",
+        "detalle": "Procesar albahaca, nueces, ajo, queso y sal con pulsos cortos, agregando el aceite en hilo.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: pulsos cortos para no calentar ni oxidar la albahaca.",
+        "errorComun": "Procesar largo y que quede marrón y amargo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ajustar",
+        "detalle": "Probar y corregir sal. Debe quedar untable, ni seco ni líquido.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Conservar",
+        "detalle": "Pasar a un frasco y cubrir la superficie con una capa de aceite. Guardar en heladera.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El aceite arriba lo aísla del aire y conserva el verde.",
+        "errorComun": "Guardar destapado y que se oxide.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Puré de coliflor cremoso",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el reemplazo low-carb del puré de papa, sedoso y neutro, que acompaña casi cualquier plato de este lote",
+    "riesgos": "no escurrir la coliflor deja el puré aguado",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos; una coliflor mediana, 800 g aprox"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Cremoso",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Cremoso",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Cremoso",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "suma cuerpo y sabor"
+      },
+      {
+        "canon": "nuez moscada",
+        "textoOriginal": "Nuez moscada",
+        "seccion": "Cremoso",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cremoso",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir",
+        "detalle": "Hervir la coliflor en agua con sal 12 min, hasta que esté bien tierna.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "Bien tierna para que procese sin grumos.",
+        "errorComun": "Coliflor dura que queda grumosa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Escurrir a fondo",
+        "detalle": "Colar y dejar escurrir bien; opcional presionar con espátula para sacar el agua.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: escurrir a fondo es la diferencia entre puré sedoso y aguado.",
+        "errorComun": "Procesar la coliflor mojada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Procesar",
+        "detalle": "Procesar caliente con manteca, crema, queso, nuez moscada y sal hasta cremoso.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Procesar caliente integra mejor la materia grasa.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

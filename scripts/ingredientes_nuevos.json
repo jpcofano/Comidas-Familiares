@@ -1,0 +1,433 @@
+[
+  {
+    "canonico": "albahaca",
+    "nombrePreferido": "Albahaca",
+    "sinonimos": [
+      "Albahaca fresca"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "alcaparras",
+    "nombrePreferido": "Alcaparras",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "carre de cordero",
+    "nombrePreferido": "Carré de cordero",
+    "sinonimos": [
+      "Rack de cordero"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "conac",
+    "nombrePreferido": "Coñac",
+    "sinonimos": [
+      "Brandy"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "cordero en cubos",
+    "nombrePreferido": "Cordero en cubos",
+    "sinonimos": [
+      "Cordero para guiso"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "corvina",
+    "nombrePreferido": "Corvina",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "costillas de cordero",
+    "nombrePreferido": "Costillas de cordero",
+    "sinonimos": [
+      "Costillitas de cordero"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "crema de leche",
+    "nombrePreferido": "Crema de leche",
+    "sinonimos": [
+      "Crema"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "film",
+    "nombrePreferido": "Film",
+    "sinonimos": [
+      "Film transparente"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "garam masala",
+    "nombrePreferido": "Garam masala",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "gochujang",
+    "nombrePreferido": "Gochujang",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "hielo",
+    "nombrePreferido": "Hielo",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "hilo de cocina",
+    "nombrePreferido": "Hilo de cocina",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "lomo",
+    "nombrePreferido": "Lomo",
+    "sinonimos": [
+      "Lomo vacuno"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "manteca",
+    "nombrePreferido": "Manteca",
+    "sinonimos": [
+      "Mantequilla"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "osobuco",
+    "nombrePreferido": "Osobuco",
+    "sinonimos": [
+      "Ossobuco"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "papel aluminio",
+    "nombrePreferido": "Papel aluminio",
+    "sinonimos": [
+      "Papel de aluminio"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "papel manteca",
+    "nombrePreferido": "Papel manteca",
+    "sinonimos": [
+      "Papel de horno"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pasta de achiote",
+    "nombrePreferido": "Pasta de achiote",
+    "sinonimos": [
+      "Achiote",
+      "Recado rojo"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pasta de curry verde",
+    "nombrePreferido": "Pasta de curry verde",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pimienta verde en grano",
+    "nombrePreferido": "Pimienta verde en grano",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pistachos",
+    "nombrePreferido": "Pistachos",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pulpo",
+    "nombrePreferido": "Pulpo",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salmon",
+    "nombrePreferido": "Salmón",
+    "sinonimos": [
+      "Salmón rosado"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salsa de pescado",
+    "nombrePreferido": "Salsa de pescado",
+    "sinonimos": [
+      "Fish sauce",
+      "Nam pla"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "solomillo de cerdo",
+    "nombrePreferido": "Solomillo de cerdo",
+    "sinonimos": [
+      "Lomo de cerdo"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "vieiras",
+    "nombrePreferido": "Vieiras",
+    "sinonimos": [
+      "Callo de vieira"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]
