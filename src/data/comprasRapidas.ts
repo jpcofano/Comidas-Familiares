@@ -1,4 +1,4 @@
-import { doc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, updateDoc, serverTimestamp, runTransaction, writeBatch, increment } from "firebase/firestore";
 import { db } from "../firebase";
 import type { Plan, Receta, MiembroId, ItemCompraRapida } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
@@ -112,7 +112,6 @@ export async function actualizarPlantillaCompraRapida(
 
 export async function generarInstanciaCompraRapida(
   plantilla: Receta,
-  asignados: MiembroId[],
   itemsSeleccionados: ItemCompraRapida[],
 ): Promise<Result<Plan, AppError>> {
   const semanaInicio = getSemanaActual();
@@ -133,9 +132,39 @@ export async function generarInstanciaCompraRapida(
     listaComprasId: null,
     notas: "",
     origen: null,
-    asignaciones: asignados,
+    asignaciones: [],    // sin asignar — la ven los 4 por turno voluntario
+    encargado: null,     // nadie la tomó todavía
     itemsCompraRapida: itemsSeleccionados,
   });
+}
+
+export async function tomarCompraRapida(
+  idPlan: string,
+  memberId: MiembroId,
+): Promise<Result<void, AppError>> {
+  try {
+    await runTransaction(db, async (tx) => {
+      const ref = doc(db, "planes", idPlan);
+      const snap = await tx.get(ref);
+      const actual = snap.data()?.encargado ?? null;
+      if (actual && actual !== memberId) throw new Error("ya-tomada");
+      tx.update(ref, { encargado: memberId });
+    });
+    return ok(undefined);
+  } catch (e) {
+    if ((e as Error).message === "ya-tomada")
+      return err("compra-ya-tomada", "Otra persona ya se encargó de esta compra.", e);
+    return err("compra-tomar-failed", firebaseErrorMessage(e) ?? "No se pudo tomar la compra.", e);
+  }
+}
+
+export async function liberarCompraRapida(idPlan: string): Promise<Result<void, AppError>> {
+  try {
+    await updateDoc(doc(db, "planes", idPlan), { encargado: null });
+    return ok(undefined);
+  } catch (e) {
+    return err("compra-liberar-failed", firebaseErrorMessage(e) ?? "No se pudo liberar.", e);
+  }
 }
 
 // ─── Persistir selección en la plantilla (modo C) ────────────────────────────
@@ -296,9 +325,18 @@ export async function toggleItemComprado(
 
 export async function marcarCompraRapidaHecha(
   idPlan: string,
+  completadaPor: MiembroId,
 ): Promise<Result<void, AppError>> {
   try {
-    await updateDoc(doc(db, "planes", idPlan), { estado: "Compra lista" });
+    const mesKey = new Date().toISOString().slice(0, 7); // "YYYY-MM"
+    const batch = writeBatch(db);
+    batch.update(doc(db, "planes", idPlan), { estado: "Compra lista" });
+    batch.set(
+      doc(db, "config", "comprasContador"),
+      { meses: { [mesKey]: { [completadaPor]: increment(1) } } },
+      { merge: true },
+    );
+    await batch.commit();
     return ok(undefined);
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo marcar la compra como hecha.";

@@ -72,6 +72,11 @@ service cloud.firestore {
       allow read, write: if isFamilyMember();
     }
 
+    // Contador de compras rápidas: cualquier miembro puede sumar su +1.
+    match /config/comprasContador {
+      allow read, write: if isFamilyMember();
+    }
+
     match /users/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;
       allow create: if request.auth != null && request.auth.uid == uid && isFamilyMember();

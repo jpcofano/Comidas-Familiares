@@ -192,7 +192,7 @@ function CompraRapidaEditorInner({
               seccionGondola: ing.seccion ?? "Despensa / otros",
               comprado: false,
             }));
-            const ri = await generarInstanciaCompraRapida(plantillaActualizada, asignadoA, todosItems);
+            const ri = await generarInstanciaCompraRapida(plantillaActualizada, todosItems);
             if (!ri.ok) { setError(ri.error.message); return; }
           }
         }
@@ -208,7 +208,7 @@ function CompraRapidaEditorInner({
             seccionGondola: ing.seccion ?? "Despensa / otros",
             comprado: false,
           }));
-          const ri = await generarInstanciaCompraRapida(r.value, asignadoA, todosItems);
+          const ri = await generarInstanciaCompraRapida(r.value, todosItems);
           if (!ri.ok) { setError(ri.error.message); return; }
         }
       }

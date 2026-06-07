@@ -13,8 +13,7 @@ import { SkeletonPlanCard } from "../components/skeletons/SkeletonPlanCard";
 import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
 import { SemanaBadge } from "../components/SemanaBadge";
-import type { Plan, ListaCompras, Menu, Receta, MiembroId } from "../types/models";
-import { AvatarStack } from "../components/MemberAvatar";
+import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
 import { MemberDashboard } from "./MemberDashboard";
 
 // ─── Helper: formatea rango de semana "26 may – 1 jun" ───────────────────────
@@ -343,21 +342,12 @@ function HomeJP() {
       {/* ── Compras rápidas activas ───────────────────────────────────────── */}
       {comprasRapidas.length > 0 && (
         <div className="card" style={{ marginTop: "var(--space-3)" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-2)" }}>
-            <p style={{ margin: 0, fontWeight: 700, fontSize: "var(--fs-sm)", color: "var(--text-strong)" }}>
-              Compras rápidas activas
-            </p>
-            <button
-              onClick={() => navigate("/compras/armar")}
-              style={{ fontSize: 11, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
-            >
-              + Armar nueva
-            </button>
-          </div>
+          <p style={{ margin: "0 0 var(--space-2)", fontWeight: 700, fontSize: "var(--fs-sm)", color: "var(--text-strong)" }}>
+            Compras rápidas activas
+          </p>
           {comprasRapidas.map((p) => {
             const items = p.itemsCompraRapida ?? [];
             const comprados = items.filter((it) => it.comprado).length;
-            const NOMBRE_MIEMBRO: Record<MiembroId, string> = { juanpablo: "JP", maria: "María", sofia: "Sofía", federico: "Federico" };
             return (
               <button
                 key={p.idPlan}
@@ -374,14 +364,9 @@ function HomeJP() {
                   </p>
                   <p style={{ margin: 0, fontSize: 11, color: "var(--muted)" }}>
                     {comprados} de {items.length} comprados
-                    {p.asignaciones.length > 0 && ` · ${p.asignaciones.map((id) => NOMBRE_MIEMBRO[id as MiembroId] ?? id).join(", ")}`}
+                    {p.encargado && ` · ${p.encargado === "juanpablo" ? "JP" : p.encargado} se encarga`}
                   </p>
                 </div>
-                <AvatarStack
-                  names={p.asignaciones.map((id) => NOMBRE_MIEMBRO[id as MiembroId] ?? id)}
-                  memberIds={p.asignaciones as MiembroId[]}
-                  size={22}
-                />
               </button>
             );
           })}

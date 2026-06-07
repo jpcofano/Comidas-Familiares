@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ShoppingBag, CheckCircle2, Circle } from "lucide-react";
+import { ShoppingBag, UserCheck } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { getHistorialReciente } from "../data/historial";
@@ -8,8 +8,9 @@ import { getSemanaActual, formatearRangoSemana, fechaToWeekIdx, fechaHoy } from 
 import { useColorMiembro } from "../contexts/PerfilesContext";
 import { WeekStrip } from "../components/WeekStrip";
 import { EstadoBadge } from "../components/EstadoBadge";
-import { AvatarStack } from "../components/MemberAvatar";
+import { AvatarStack, MemberAvatar } from "../components/MemberAvatar";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
+import { tomarCompraRapida, liberarCompraRapida } from "../data/comprasRapidas";
 import type { Plan, Historial, MiembroId } from "../types/models";
 
 // ─── Constantes ───────────────────────────────────────────────────────────────
@@ -158,7 +159,10 @@ export function MemberDashboard() {
 
   const todosLosMiosPorTipo = planesVisiblesPara(planes, memberId);
   const misPlanes = todosLosMiosPorTipo.filter((p) => p.tipoSeleccion !== "compra-rapida");
-  const misCompras = todosLosMiosPorTipo.filter((p) => p.tipoSeleccion === "compra-rapida");
+  // E14.5: compras rápidas activas → las ven los 4 (no filtrar por asignaciones)
+  const misCompras = planes.filter(
+    (p) => p.tipoSeleccion === "compra-rapida" && p.estado !== "Compra lista",
+  );
 
   // Dias con CUALQUIER plan activo (solo existencia, sin nombres ajenos)
   const diasConComida = useMemo(() => {
@@ -336,65 +340,31 @@ export function MemberDashboard() {
         )}
       </div>
 
-      {/* 6. Compras rápidas */}
+      {/* 6. Compras rápidas — turno voluntario */}
       {(() => {
         const puedeGestionarCompras = memberId === "juanpablo" || memberId === "maria";
-        const comprasActivas = misCompras.filter((p) => p.estado !== "Compra lista");
-        if (comprasActivas.length === 0 && !puedeGestionarCompras) return null;
+        if (misCompras.length === 0 && !puedeGestionarCompras) return null;
         return (
           <div className="card">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-2)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
                 <ShoppingBag size={16} color="var(--primary)" />
-                Compras pendientes
+                Compras
               </h3>
               {puedeGestionarCompras && (
-                <Link
-                  to="/compras/armar"
-                  style={{ fontSize: 11, color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}
-                >
+                <Link to="/compras/armar" style={{ fontSize: 11, color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}>
                   + Armar
                 </Link>
               )}
             </div>
-            {comprasActivas.length === 0 ? (
+            {misCompras.length === 0 ? (
               <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
-                No hay compras pendientes. Tocá <strong>+ Armar</strong> para preparar la de esta semana.
+                No hay compras pendientes.{puedeGestionarCompras && <> Tocá <strong>+ Armar</strong> para preparar la de esta semana.</>}
               </p>
             ) : (
-              comprasActivas.map((p) => {
-                const items = p.itemsCompraRapida ?? [];
-                const comprados = items.filter((it) => it.comprado).length;
-                return (
-                  <Link key={p.idPlan} to={`/compra-rapida/${p.idPlan}`} style={{ textDecoration: "none", display: "block" }}>
-                    <div style={{
-                      display: "flex", alignItems: "center", gap: "var(--space-3)",
-                      padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)",
-                    }}>
-                      <ShoppingBag size={18} color="var(--muted)" style={{ flexShrink: 0 }} />
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: "var(--fw-medium)", color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {p.nombreSeleccion}
-                        </p>
-                        <p className="meta" style={{ margin: 0, fontSize: "var(--fs-xs)" }}>
-                          {comprados} de {items.length} comprados
-                        </p>
-                      </div>
-                      {p.asignaciones.length > 1 && (
-                        <AvatarStack
-                          names={p.asignaciones.map((id) => NOMBRES_MIEMBROS[id] ?? id)}
-                          memberIds={p.asignaciones as MiembroId[]}
-                          size={20}
-                        />
-                      )}
-                      {comprados === items.length && items.length > 0
-                        ? <CheckCircle2 size={16} color="var(--ok-text)" />
-                        : <Circle size={16} color="var(--muted)" />
-                      }
-                    </div>
-                  </Link>
-                );
-              })
+              misCompras.map((p) => (
+                <CompraRapidaCardTurno key={p.idPlan} plan={p} selfId={memberId} />
+              ))
             )}
           </div>
         );
@@ -428,6 +398,104 @@ export function MemberDashboard() {
         )}
       </div>
 
+    </div>
+  );
+}
+
+// ─── Card turno voluntario (3 estados) ───────────────────────────────────────
+
+function CompraRapidaCardTurno({ plan, selfId }: { plan: Plan; selfId: MiembroId }) {
+  const navigate = useNavigate();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const encargado = plan.encargado ?? null;
+  const items = plan.itemsCompraRapida ?? [];
+  const comprados = items.filter(it => it.comprado).length;
+
+  async function handleTomar() {
+    setBusy(true); setError(null);
+    const r = await tomarCompraRapida(plan.idPlan, selfId);
+    setBusy(false);
+    if (!r.ok) setError(r.error.message);
+  }
+
+  async function handleLiberar() {
+    setBusy(true); setError(null);
+    const r = await liberarCompraRapida(plan.idPlan);
+    setBusy(false);
+    if (!r.ok) setError(r.error.message);
+  }
+
+  return (
+    <div style={{ padding: "var(--space-3) 0", borderBottom: "1px solid var(--border-subtle)" }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+        <ShoppingBag size={16} color="var(--primary)" style={{ flexShrink: 0 }} />
+        <span style={{ flex: 1, fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {plan.nombreSeleccion}
+        </span>
+        <span style={{ fontSize: 11, color: "var(--muted)" }}>{comprados}/{items.length}</span>
+      </div>
+
+      {/* Estado */}
+      {encargado === null ? (
+        /* Sin encargado */
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+          <span style={{ fontSize: 11, color: "var(--muted)", fontStyle: "italic" }}>Sin encargado · la ven los 4</span>
+          <button
+            disabled={busy}
+            onClick={() => void handleTomar()}
+            style={{
+              padding: "5px 12px", borderRadius: 999, fontSize: 12, fontWeight: 700,
+              border: "1px solid var(--primary)", background: "var(--primary)", color: "#fff",
+              cursor: "pointer", fontFamily: "inherit", flexShrink: 0,
+            }}
+          >
+            Yo me encargo
+          </button>
+        </div>
+      ) : encargado === selfId ? (
+        /* Yo me encargo */
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <UserCheck size={14} color="var(--ok-text)" />
+            <span style={{ fontSize: 11, color: "var(--ok-text)", fontWeight: 600, flex: 1 }}>Lo estoy haciendo yo</span>
+            <button
+              onClick={() => navigate(`/compra-rapida/${plan.idPlan}`)}
+              style={{ fontSize: 11, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
+            >
+              Ver lista →
+            </button>
+          </div>
+          <button
+            disabled={busy}
+            onClick={() => void handleLiberar()}
+            style={{ marginTop: 4, fontSize: 11, color: "var(--muted)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+          >
+            Ya no puedo — liberar
+          </button>
+        </div>
+      ) : (
+        /* Otro lo hace */
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <MemberAvatar name={NOMBRES_MIEMBROS[encargado] ?? encargado} memberId={encargado} size={20} />
+          <span style={{ fontSize: 11, color: "var(--muted)", flex: 1 }}>
+            {NOMBRES_MIEMBROS[encargado] ?? encargado} se está encargando
+          </span>
+          <button
+            disabled={busy}
+            onClick={() => void handleTomar()}
+            style={{ fontSize: 11, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
+          >
+            La hago yo
+          </button>
+        </div>
+      )}
+
+      {error && (
+        <p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--err-text)" }}>{error}</p>
+      )}
     </div>
   );
 }

@@ -13,18 +13,10 @@ import {
   seedPlantillasMaestras,
 } from "../data/comprasRapidas";
 import { groupByGondola, SECCIONES } from "../lib/gondolas";
-import { MemberAvatar } from "../components/MemberAvatar";
-import { MIEMBRO_IDS } from "../types/models";
 import type { Receta, MiembroId, IngredienteEnReceta, ItemCompraRapida } from "../types/models";
 
 type Modo = "sumar" | "destildar" | "siempre";
 
-const NOMBRE_MIEMBRO: Record<MiembroId, string> = {
-  juanpablo: "Juan Pablo",
-  maria:     "María",
-  sofia:     "Sofía",
-  federico:  "Federico",
-};
 
 const ORDEN_MAESTROS = ["Verdulería", "Almacén", "Fiambre"];
 
@@ -38,12 +30,12 @@ export function CompraRapidaArmarRoute() {
   const puedeArmar = selfId === "juanpablo" || selfId === "maria";
   if (!puedeArmar) return <Navigate to="/" replace />;
 
-  return <CompraRapidaArmarInner selfId={selfId} />;
+  return <CompraRapidaArmarInner />;
 }
 
 // ─── Inner ────────────────────────────────────────────────────────────────────
 
-function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
+function CompraRapidaArmarInner() {
   const navigate = useNavigate();
 
   const [plantillas, setPlantillas] = useState<Receta[]>([]);
@@ -60,8 +52,7 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [cantidades, setCantidades] = useState<Record<string, string>>({});
 
-  // Asignados (multi-select)
-  const [asignados, setAsignados] = useState<MiembroId[]>([selfId]);
+  // E14.5: sin asignados — la instancia nace sin encargado, la ven los 4
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -144,11 +135,6 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
     });
   }
 
-  function toggleAsignado(id: MiembroId) {
-    setAsignados((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
-    );
-  }
 
   // Items para la vista: en modo C, los marcados (con ★) van primero dentro del grupo
   const ingConSeccion = useMemo(() => {
@@ -175,10 +161,7 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
   }, [ingConSeccion, modo, checked]);
 
   async function handleGenerar() {
-    if (!plantilla || asignados.length === 0) {
-      setError("Elegí al menos un miembro para asignar la compra.");
-      return;
-    }
+    if (!plantilla) return;
     setError(null);
     setSaving(true);
 
@@ -200,7 +183,7 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
     }
 
     const [genResult, saveResult] = await Promise.all([
-      generarInstanciaCompraRapida(plantilla, asignados, itemsMarcados),
+      generarInstanciaCompraRapida(plantilla, itemsMarcados),
       guardarSeleccionPlantilla(
         plantilla.idReceta,
         itemsMarcados.map((it) => it.idIngrediente),
@@ -418,38 +401,11 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
                 {Object.values(checked).filter(Boolean).length} de {plantilla.ingredientes.length} ítems marcados
               </p>
 
-              {/* Footer: asignados + CTA */}
+              {/* Footer: CTA */}
               <div className="card">
-                <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--muted)", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em" }}>
-                  Asignar a
+                <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)", fontStyle: "italic" }}>
+                  La verán los 4 · alguien toca "Yo me encargo" y la hace.
                 </p>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: "var(--space-3)" }}>
-                  {MIEMBRO_IDS.map((mid) => (
-                    <button
-                      key={mid}
-                      onClick={() => toggleAsignado(mid)}
-                      style={{
-                        display: "flex", flexDirection: "column", alignItems: "center", gap: 3,
-                        background: "none", border: "none", cursor: "pointer", padding: 4,
-                      }}
-                    >
-                      <span style={{
-                        borderRadius: "50%",
-                        outline: asignados.includes(mid) ? "2px solid var(--primary)" : "none",
-                        outlineOffset: 2,
-                      }}>
-                        <MemberAvatar name={NOMBRE_MIEMBRO[mid]} memberId={mid} size={34} />
-                      </span>
-                      <span style={{
-                        fontSize: 10,
-                        color: asignados.includes(mid) ? "var(--primary)" : "var(--muted)",
-                        fontWeight: asignados.includes(mid) ? 700 : 400,
-                      }}>
-                        {NOMBRE_MIEMBRO[mid].split(" ")[0]}
-                      </span>
-                    </button>
-                  ))}
-                </div>
 
                 {error && (
                   <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", margin: "0 0 var(--space-2)" }}>
@@ -459,7 +415,7 @@ function CompraRapidaArmarInner({ selfId }: { selfId: MiembroId }) {
 
                 <button
                   className="btn btn-primary"
-                  disabled={saving || asignados.length === 0}
+                  disabled={saving}
                   onClick={() => void handleGenerar()}
                   style={{ width: "100%", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
                 >

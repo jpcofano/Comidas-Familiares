@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.10.0 (E14.2 — Compra rápida: 3 plantillas maestras, modos A/B/C, selección persistida, multi-asignado)
-> **Fecha**: 2026-06-03
+> **Versión**: 2.11.0 (E14.5 — Consolida compras: turno voluntario + contador mensual + un solo camino de armado)
+> **Fecha**: 2026-06-07
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -237,9 +237,17 @@ itemsCompraRapida?: Array<{
 **`src/data/comprasRapidas.ts` (nuevo):**
 - `crearPlantillaCompraRapida(datos)` → `setDoc` en `/recetas` con `esCompraRapida: true`, invalida caché.
 - `actualizarPlantillaCompraRapida(id, datos)` → `updateDoc`.
-- `generarInstanciaCompraRapida(plantilla, asignados[], itemsSeleccionados[])` → `crearPlan` con `tipoSeleccion: "compra-rapida"`, multi-asignado, solo los ítems marcados. **E14.2: firma actualizada.**
+- `generarInstanciaCompraRapida(plantilla, itemsSeleccionados[])` → `crearPlan` con `tipoSeleccion:"compra-rapida"`, `asignaciones:[]`, `encargado:null`. La ven los 4 por turno voluntario. **E14.5: se eliminó el parámetro `asignados`.**
+- `tomarCompraRapida(idPlan, memberId)` → `runTransaction` con guardia anti-doble-claim. **E14.5.**
+- `liberarCompraRapida(idPlan)` → `encargado: null`. **E14.5.**
+- `marcarCompraRapidaHecha(idPlan, completadaPor)` → batch: `estado:"Compra lista"` + `config/comprasContador` `meses["YYYY-MM"][completadaPor] += 1`. **E14.5: firma actualizada.**
 - `guardarSeleccionPlantilla(idReceta, ultimaSeleccion, modoPreferido)` → `updateDoc` en la plantilla. **E14.2.**
-- `seedPlantillasMaestras()` → crea Verdulería/Almacén/Fiambre si no existen, buscando ingredientes en el catálogo. Idempotente. **E14.2.**
+- `seedPlantillasMaestras()` → crea Verdulería/Almacén/Fiambre si no existen. Idempotente. **E14.2.**
+- **`asignarEncargadoCompras` — RETIRADO** en E14.5. El encargado ahora vive en `Plan.encargado` (turno voluntario), no en `ListaCompras.encargadoCompras`.
+
+**`src/data/comprasContador.ts` (nuevo E14.5):** `subscribeContador(cb)` (realtime), `mesActualKey()` ("YYYY-MM"), `resumenPorMes(c)` (ordenado desc, separa mes actual vs histórico).
+
+**`config/comprasContador`** (doc nuevo E14.5): `{ meses: { "YYYY-MM": { juanpablo: N, maria: N, ... } } }`. Se crea/actualiza automáticamente en `marcarCompraRapidaHecha`. Reglas: `isFamilyMember()` puede leer y escribir.
 - `toggleItemComprado(idPlan, idIngrediente, items)` → reemplaza el array en Firestore.
 - `marcarCompraRapidaHecha(idPlan)` → setea `estado: "Compra lista"`.
 

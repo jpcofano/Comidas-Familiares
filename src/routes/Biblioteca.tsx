@@ -10,8 +10,8 @@ import { macrosDeReceta } from "../lib/macros";
 import { generarInstanciaCompraRapida } from "../data/comprasRapidas";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta, MacrosPorReceta } from "../lib/filtros";
-import type { Receta, Menu, MenuDerived, Ingrediente, MiembroId } from "../types/models";
-import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN, MIEMBRO_IDS } from "../types/models";
+import type { Receta, Menu, MenuDerived, Ingrediente } from "../types/models";
+import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -348,17 +348,12 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
 
 // ─── Tab Compras rápidas ──────────────────────────────────────────────────────
 
-const NOMBRES_MIEMBROS_LABEL: Record<string, string> = {
-  juanpablo: "JP", maria: "María", sofia: "Sofía", federico: "Federico",
-};
-
 function TabComprasRapidas() {
   const navigate = useNavigate();
   const [plantillas, setPlantillas] = useState<Receta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [asignando, setAsignando] = useState<string | null>(null);
-  const [asignadoA, setAsignadoA] = useState<MiembroId[]>(["maria"]);
   const [busy, setBusy] = useState<string | null>(null);
 
   useEffect(() => {
@@ -369,7 +364,6 @@ function TabComprasRapidas() {
   }, []);
 
   async function handleGenerar(plantilla: Receta) {
-    if (asignadoA.length === 0) return;
     setBusy(plantilla.idReceta);
     const todosItems = plantilla.ingredientes.map((ing) => ({
       idIngrediente: ing.idIngrediente,
@@ -379,7 +373,7 @@ function TabComprasRapidas() {
       seccionGondola: ing.seccion ?? "Despensa / otros",
       comprado: false,
     }));
-    const r = await generarInstanciaCompraRapida(plantilla, asignadoA, todosItems);
+    const r = await generarInstanciaCompraRapida(plantilla, todosItems);
     if (!r.ok) setError(r.error.message);
     setBusy(null);
     setAsignando(null);
@@ -398,19 +392,11 @@ function TabComprasRapidas() {
 
   return (
     <div>
-      {/* CTA principal: pantalla armar con modos A/B/C */}
-      <Link
-        to="/compras/armar"
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-          padding: "10px 16px", borderRadius: "var(--radius-md)",
-          background: "var(--primary)", color: "#fff", textDecoration: "none",
-          fontWeight: 700, fontSize: "var(--fs-sm)", marginBottom: "var(--space-3)",
-        }}
-      >
-        <ShoppingBag size={16} />
-        Armar la compra (modos A / B / C)
-      </Link>
+      {/* Referencia a /compras para armar */}
+      <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)", fontStyle: "italic" }}>
+        Para armar la compra de la semana, andá a{" "}
+        <Link to="/compras" style={{ color: "var(--primary)" }}>Compras →</Link>
+      </p>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
         <span className="meta">{plantillas.length} {plantillas.length === 1 ? "plantilla" : "plantillas"}</span>
@@ -446,30 +432,13 @@ function TabComprasRapidas() {
             </div>
 
             {asignando === p.idReceta ? (
-              <div style={{ marginTop: "var(--space-3)", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                <p style={{ margin: 0, fontSize: "var(--fs-sm)", color: "var(--text)" }}>Asignar a (puede ser más de uno):</p>
-                <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap" }}>
-                  {MIEMBRO_IDS.map((id) => (
-                    <button
-                      key={id}
-                      className={`btn ${asignadoA.includes(id) ? "btn-primary" : "btn-secondary"}`}
-                      onClick={() => setAsignadoA((prev) =>
-                        prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-                      )}
-                      style={{ fontSize: "var(--fs-sm)" }}
-                    >
-                      {NOMBRES_MIEMBROS_LABEL[id]}
-                    </button>
-                  ))}
-                </div>
-                <div style={{ display: "flex", gap: "var(--space-2)" }}>
-                  <button className="btn btn-primary" disabled={busy === p.idReceta || asignadoA.length === 0} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
-                    {busy === p.idReceta ? "Generando…" : "Generar (todos los ítems)"}
-                  </button>
-                  <button className="btn btn-ghost" onClick={() => setAsignando(null)} style={{ fontSize: "var(--fs-sm)" }}>
-                    Cancelar
-                  </button>
-                </div>
+              <div style={{ marginTop: "var(--space-3)", display: "flex", gap: "var(--space-2)" }}>
+                <button className="btn btn-primary" disabled={busy === p.idReceta} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
+                  {busy === p.idReceta ? "Generando…" : "Generar (todos los ítems)"}
+                </button>
+                <button className="btn btn-ghost" onClick={() => setAsignando(null)} style={{ fontSize: "var(--fs-sm)" }}>
+                  Cancelar
+                </button>
               </div>
             ) : (
               <button

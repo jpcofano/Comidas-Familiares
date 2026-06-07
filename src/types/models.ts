@@ -297,6 +297,7 @@ export interface Plan {
   componentesCocinados?: string[];
   fecha?: string;               // "YYYY-MM-DD" — día asignado (opcional, dentro de semanaInicio..semanaFin)
   itemsCompraRapida?: ItemCompraRapida[];  // E13.1 — snapshot editable, solo para tipoSeleccion "compra-rapida"
+  encargado?: MiembroId | null; // E14.5 — quién se ofreció a hacer la compra rápida (null = sin encargado)
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────
@@ -400,6 +401,12 @@ export interface PerfilMiembro {
   fotoUrl?: string;        // data URL JPEG comprimida (miniatura ~128px). Ausente → inicial con color.
 }
 export type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+
+// ─── Contador de compras rápidas por mes ─────────────────────────────────────
+// Doc único: /config/comprasContador. Clave = "YYYY-MM" → conteo por miembro.
+export interface ComprasContador {
+  meses: Record<string, Partial<Record<MiembroId, number>>>;
+}
 
 // ─── Visibilidad de biblioteca por miembro ────────────────────────────────────
 // Doc único: /config/visibilidad. Opt-in: solo recetas listadas son visibles.

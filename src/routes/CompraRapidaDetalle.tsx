@@ -3,7 +3,7 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ShoppingBag, CheckCircle2, Circle } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { getPlan } from "../data/planes";
-import { toggleItemComprado, marcarCompraRapidaHecha } from "../data/comprasRapidas";
+import { toggleItemComprado, marcarCompraRapidaHecha, tomarCompraRapida, liberarCompraRapida } from "../data/comprasRapidas";
 import { groupByGondola, getSeccionMeta } from "../lib/catalogo";
 import type { Plan, ItemCompraRapida } from "../types/models";
 
@@ -30,10 +30,6 @@ export function CompraRapidaDetalleRoute() {
           setError("Compra rápida no encontrada.");
           return;
         }
-        if (!p.asignaciones.includes(memberId) && memberId !== "juanpablo") {
-          setError("No tenés acceso a esta compra.");
-          return;
-        }
         setPlan(p);
         setItems(p.itemsCompraRapida ?? []);
       })
@@ -51,15 +47,30 @@ export function CompraRapidaDetalleRoute() {
   }
 
   async function handleMarcarHecha() {
-    if (!idPlan) return;
+    if (!idPlan || !plan) return;
     setMarking(true);
-    const r = await marcarCompraRapidaHecha(idPlan);
+    const completadaPor = (plan.encargado as typeof memberId) ?? (memberId as typeof memberId);
+    const r = await marcarCompraRapidaHecha(idPlan, completadaPor);
     if (r.ok) {
       navigate("/");
     } else {
       setError(r.error.message);
       setMarking(false);
     }
+  }
+
+  async function handleTomar() {
+    if (!idPlan) return;
+    const r = await tomarCompraRapida(idPlan, memberId as import("../types/models").MiembroId);
+    if (!r.ok) setError(r.error.message);
+    else setPlan((prev) => prev ? { ...prev, encargado: memberId as import("../types/models").MiembroId } : prev);
+  }
+
+  async function handleLiberar() {
+    if (!idPlan) return;
+    const r = await liberarCompraRapida(idPlan);
+    if (!r.ok) setError(r.error.message);
+    else setPlan((prev) => prev ? { ...prev, encargado: null } : prev);
   }
 
   if (loading) return <p className="meta" style={{ padding: "var(--space-4)" }}>Cargando…</p>;
@@ -70,6 +81,8 @@ export function CompraRapidaDetalleRoute() {
   const totalComprados = items.filter((it) => it.comprado).length;
   const total = items.length;
   const hecha = plan.estado === "Compra lista";
+  const encargado = plan.encargado ?? null;
+  const soYoElEncargado = encargado === memberId;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
@@ -96,6 +109,40 @@ export function CompraRapidaDetalleRoute() {
             background: "var(--ok-text)", borderRadius: "var(--radius-full)",
             transition: "width .2s",
           }} />
+        </div>
+      )}
+
+      {/* Turno voluntario */}
+      {!hecha && (
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          {encargado === null ? (
+            <>
+              <span style={{ fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>Sin encargado</span>
+              <button
+                onClick={() => void handleTomar()}
+                style={{ padding: "5px 12px", borderRadius: 999, fontSize: 12, fontWeight: 700, border: "1px solid var(--primary)", background: "var(--primary)", color: "#fff", cursor: "pointer", fontFamily: "inherit" }}
+              >
+                Yo me encargo
+              </button>
+            </>
+          ) : soYoElEncargado ? (
+            <button
+              onClick={() => void handleLiberar()}
+              style={{ fontSize: 12, color: "var(--muted)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+            >
+              Ya no puedo — liberar
+            </button>
+          ) : (
+            <>
+              <span style={{ fontSize: 12, color: "var(--muted)" }}>{encargado} se está encargando</span>
+              <button
+                onClick={() => void handleTomar()}
+                style={{ fontSize: 12, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+              >
+                La hago yo
+              </button>
+            </>
+          )}
         </div>
       )}
 
