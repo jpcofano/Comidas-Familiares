@@ -21,7 +21,8 @@
     "test:run": "vitest run",
     "test:rules": "firebase emulators:exec --only firestore \"vitest run --config vitest.rules.config.ts\"",
     "test:all": "vitest run && npm run test:rules",
-    "seed:recetario-tanda1": "tsx scripts/seedRecetarioTanda1.ts"
+    "seed:recetario-tanda1": "tsx scripts/seedRecetarioTanda1.ts",
+    "seed:gondolas": "tsx scripts/seedIngredientesGondolas.ts"
   },
   "dependencies": {
     "firebase": "^12.13.0",
