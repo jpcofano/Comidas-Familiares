@@ -1,0 +1,1089 @@
+[
+  {
+    "canonico": "brocoli",
+    "nombrePreferido": "Brócoli",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "repollo colorado",
+    "nombrePreferido": "Repollo colorado",
+    "sinonimos": [
+      "Repollo morado"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "acelga",
+    "nombrePreferido": "Acelga",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "kale",
+    "nombrePreferido": "Kale",
+    "sinonimos": [
+      "Col rizada"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "puerro",
+    "nombrePreferido": "Puerro",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "hinojo",
+    "nombrePreferido": "Hinojo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "remolacha",
+    "nombrePreferido": "Remolacha",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "nabo",
+    "nombrePreferido": "Nabo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "rabanito",
+    "nombrePreferido": "Rabanito",
+    "sinonimos": [
+      "Rábano"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "radicheta",
+    "nombrePreferido": "Radicheta",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "achicoria",
+    "nombrePreferido": "Achicoria",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "escarola",
+    "nombrePreferido": "Escarola",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "berro",
+    "nombrePreferido": "Berro",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "endivia",
+    "nombrePreferido": "Endivia",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "radicchio",
+    "nombrePreferido": "Radicchio",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "repollitos de bruselas",
+    "nombrePreferido": "Repollitos de Bruselas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "alcaucil",
+    "nombrePreferido": "Alcaucil",
+    "sinonimos": [
+      "Alcachofa"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "choclo",
+    "nombrePreferido": "Choclo",
+    "sinonimos": [
+      "Maíz",
+      "Elote"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "zapallo anco",
+    "nombrePreferido": "Zapallo anco",
+    "sinonimos": [
+      "Calabaza anco"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "calabaza",
+    "nombrePreferido": "Calabaza",
+    "sinonimos": [
+      "Zapallo"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mandioca",
+    "nombrePreferido": "Mandioca",
+    "sinonimos": [
+      "Yuca"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "arvejas frescas",
+    "nombrePreferido": "Arvejas frescas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "habas",
+    "nombrePreferido": "Habas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "morron verde",
+    "nombrePreferido": "Morrón verde",
+    "sinonimos": [
+      "Pimiento verde"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "morron amarillo",
+    "nombrePreferido": "Morrón amarillo",
+    "sinonimos": [
+      "Pimiento amarillo"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "tomate perita",
+    "nombrePreferido": "Tomate perita",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "tomate redondo",
+    "nombrePreferido": "Tomate redondo",
+    "sinonimos": [
+      "Tomate"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "aji verde",
+    "nombrePreferido": "Ají verde",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "girgolas",
+    "nombrePreferido": "Gírgolas",
+    "sinonimos": [
+      "Hongos gírgola"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pak choi",
+    "nombrePreferido": "Pak choi",
+    "sinonimos": [
+      "Bok choy"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "lima",
+    "nombrePreferido": "Lima",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pomelo",
+    "nombrePreferido": "Pomelo",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mandarina",
+    "nombrePreferido": "Mandarina",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "durazno",
+    "nombrePreferido": "Durazno",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "damasco",
+    "nombrePreferido": "Damasco",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "ciruela",
+    "nombrePreferido": "Ciruela",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "cereza",
+    "nombrePreferido": "Cereza",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "kiwi",
+    "nombrePreferido": "Kiwi",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "arandanos",
+    "nombrePreferido": "Arándanos",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "frambuesas",
+    "nombrePreferido": "Frambuesas",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "moras",
+    "nombrePreferido": "Moras",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "uva",
+    "nombrePreferido": "Uva",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mango",
+    "nombrePreferido": "Mango",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "higo",
+    "nombrePreferido": "Higo",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "sandia",
+    "nombrePreferido": "Sandía",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "melon",
+    "nombrePreferido": "Melón",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "anana",
+    "nombrePreferido": "Ananá",
+    "sinonimos": [
+      "Piña"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "granada",
+    "nombrePreferido": "Granada",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "maracuya",
+    "nombrePreferido": "Maracuyá",
+    "sinonimos": [
+      "Fruta de la pasión"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "eneldo",
+    "nombrePreferido": "Eneldo",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "estragon",
+    "nombrePreferido": "Estragón",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salvia",
+    "nombrePreferido": "Salvia",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "jamon crudo",
+    "nombrePreferido": "Jamón crudo",
+    "sinonimos": [
+      "Prosciutto",
+      "Jamón serrano"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "lomito ahumado",
+    "nombrePreferido": "Lomito ahumado",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pavita",
+    "nombrePreferido": "Pavita",
+    "sinonimos": [
+      "Pechuga de pavo"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pastron",
+    "nombrePreferido": "Pastrón",
+    "sinonimos": [
+      "Pastrami"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "peceto",
+    "nombrePreferido": "Peceto",
+    "sinonimos": [
+      "Roast beef"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salame",
+    "nombrePreferido": "Salame",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salamin",
+    "nombrePreferido": "Salamín",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mortadela",
+    "nombrePreferido": "Mortadela",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "bondiola curada",
+    "nombrePreferido": "Bondiola curada",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "panceta",
+    "nombrePreferido": "Panceta",
+    "sinonimos": [
+      "Bacon",
+      "Tocino",
+      "Panceta ahumada"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "chorizo",
+    "nombrePreferido": "Chorizo",
+    "sinonimos": [
+      "Chorizo fresco"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "longaniza",
+    "nombrePreferido": "Longaniza",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "sopressata",
+    "nombrePreferido": "Sopressata",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salchicha",
+    "nombrePreferido": "Salchicha",
+    "sinonimos": [
+      "Salchicha tipo viena"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "morcilla",
+    "nombrePreferido": "Morcilla",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

@@ -32,3 +32,6 @@ scripts/_backups/
 *.njsproj
 *.sln
 *.sw?
+*.zip
+service-account*.json
+**/service-account*.json
