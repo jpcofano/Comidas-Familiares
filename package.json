@@ -23,7 +23,8 @@
     "test:all": "vitest run && npm run test:rules",
     "seed:recetario-tanda1": "tsx scripts/seedRecetarioTanda1.ts",
     "seed:gondolas": "tsx scripts/seedIngredientesGondolas.ts",
-    "seed:recetario-tanda2": "tsx scripts/seedRecetarioTanda2.ts"
+    "seed:recetario-tanda2": "tsx scripts/seedRecetarioTanda2.ts",
+    "seed:jugos": "tsx scripts/seedJugosNaturales.ts"
   },
   "dependencies": {
     "firebase": "^12.13.0",

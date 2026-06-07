@@ -22,6 +22,7 @@ export type TipoSeleccion = "receta" | "menu" | "compra-rapida";
 export const TIPOS_ITEM = [
   "Receta principal", "Entrada", "Guarnición", "Postre",
   "Panificado", "Snack", "Desayuno", "Conserva", "Hidrato opcional",
+  "Jugo natural",
 ] as const;
 export type TipoItem = typeof TIPOS_ITEM[number];
 
@@ -32,6 +33,7 @@ export const PROTEINAS = [
   "Huevos",
   "Legumbres", "Semillas", "Frutos secos", // Vegetales proteicos
   "Vegetal",                               // Sin proteína animal — ex-"Vegetariana"/"Mixta"
+  "Bebida",                                // Jugos y bebidas sin proteína (E3.6)
 ] as const;
 export type Proteina = typeof PROTEINAS[number];
 
