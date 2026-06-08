@@ -24,7 +24,8 @@
     "seed:recetario-tanda1": "tsx scripts/seedRecetarioTanda1.ts",
     "seed:gondolas": "tsx scripts/seedIngredientesGondolas.ts",
     "seed:recetario-tanda2": "tsx scripts/seedRecetarioTanda2.ts",
-    "seed:jugos": "tsx scripts/seedJugosNaturales.ts"
+    "seed:jugos": "tsx scripts/seedJugosNaturales.ts",
+    "seed:recetario-tanda3": "tsx scripts/seedRecetarioTanda3.ts"
   },
   "dependencies": {
     "firebase": "^12.13.0",

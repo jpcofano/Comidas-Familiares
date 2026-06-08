@@ -1,0 +1,1971 @@
+[
+  {
+    "nombre": "Mayonesa casera",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Emulsión",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la base de medio recetario hecha en casa, sin conservantes ni azúcar; emulsión de huevo y aceite que sale en minutos",
+    "riesgos": "usar huevo bien fresco (va crudo); agregar el aceite de golpe corta la emulsión",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "a temperatura ambiente; bien fresco, va crudo"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "o mezcla con neutro para sabor más liviano"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "ayuda a emulsionar"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "jugo; o vinagre de vino blanco"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Arrancar la emulsión",
+        "detalle": "Poner el huevo entero, la mostaza, el jugo de limón y la sal en el vaso de la licuadora o procesadora.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Todo a temperatura ambiente emulsiona mejor.",
+        "errorComun": "Ingredientes fríos que cuesta ligar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Incorporar el aceite",
+        "detalle": "Con la máquina andando, agregar el aceite en hilo finito y constante hasta que espese y blanquee.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: el aceite va en hilo, nunca de golpe, o se corta.",
+        "errorComun": "Volcar todo el aceite junto y que quede líquida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Ajustar",
+        "detalle": "Probar y corregir sal y limón. Guardar en frasco tapado en la heladera hasta 3 días.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Rectificar acidez al final.",
+        "errorComun": "Guardarla a temperatura ambiente.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Chimichurri",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Macerado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la salsa de asado argentina por excelencia, que te faltaba como conserva reutilizable; perfuma carnes, pollo y verduras",
+    "riesgos": "procesarlo hasta puré pierde textura; poco descanso no integra los sabores",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "6",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado muy fino"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "seco"
+      },
+      {
+        "canon": "aji molido",
+        "textoOriginal": "Ají molido",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "regular el picante a gusto familiar"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Líquidos",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tinto"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquidos",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tibia; hidrata las hierbas secas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Líquidos",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hidratar secos",
+        "detalle": "Mezclar el orégano y el ají molido con el agua tibia y el vinagre; dejar 5 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Hidratar las hierbas secas las despierta.",
+        "errorComun": "Saltear este paso y que queden ásperas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Integrar",
+        "detalle": "Sumar perejil, ajo y sal, y por último el aceite. Mezclar con cuchara, sin procesar.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: a cuchillo y cuchara, no procesadora, para que no se haga puré.",
+        "errorComun": "Licuarlo y perder la textura.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Reposar",
+        "detalle": "Pasar a frasco y dejar reposar idealmente unas horas antes de usar. Dura una semana en heladera.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El reposo redondea el sabor.",
+        "errorComun": "Usarlo recién hecho y crudo de gusto.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salsa criolla",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Picado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el clásico criollo fresco que acompaña carnes, huevos y pescados; suma vegetales sin un gramo de hidrato",
+    "riesgos": "cortar grueso desbalancea; sin reposo el vinagre queda crudo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos, sin semillas"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "sin semillas, picado; si gusta el picante"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Líquidos",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tinto"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Líquidos",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Picar parejo",
+        "detalle": "Cortar tomate, cebolla y morrón en cubos chicos y parejos.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El corte chico y parejo es clave para la textura.",
+        "errorComun": "Cubos grandes que se comen sueltos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Macerar",
+        "detalle": "Mezclar todo con vinagre, aceite, sal y perejil. Dejar reposar 10 min antes de servir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: el reposo suaviza la cebolla y el vinagre.",
+        "errorComun": "Servir al toque con el vinagre crudo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Vinagreta clásica",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Emulsión",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "5 min",
+    "tiempoActivoMin": 5,
+    "tiempoTotalLabel": "5 min",
+    "tiempoTotalMin": 5,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el aderezo base de toda ensalada, emulsión simple de aceite y vinagre con mostaza; reemplaza a los aderezos comprados llenos de azúcar",
+    "riesgos": "sin mostaza la emulsión se separa enseguida; demasiado vinagre la vuelve agresiva",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Base",
+        "cantidad": "40",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "tinto o blanco; proporción 3 a 1 con el aceite"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "emulsiona y da cuerpo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Base",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Disolver",
+        "detalle": "En un frasco, juntar vinagre, mostaza, sal y pimienta y mezclar hasta disolver la sal.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Disolver la sal en el vinagre antes del aceite.",
+        "errorComun": "Sumar el aceite con la sal sin disolver.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Emulsionar",
+        "detalle": "Agregar el aceite, tapar el frasco y agitar fuerte hasta que ligue y se vea cremosa.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: agitar enérgico; la mostaza mantiene unida la emulsión.",
+        "errorComun": "Revolver flojo y que quede cortada.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Alioli",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Emulsión",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el ajo emulsionado español que potencia pescados, carnes y verduras asadas; intenso y sin lácteos",
+    "riesgos": "aceite de golpe corta la emulsión; demasiado ajo crudo domina",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "a temperatura ambiente; bien fresco, va crudo"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Base",
+        "cantidad": "180",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "el virgen extra puro amarga, mejor suave"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Procesar el ajo con el huevo, el jugo de limón y la sal unos segundos.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El ajo bien triturado se integra sin trozos.",
+        "errorComun": "Dejar pedazos de ajo crudo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Emulsionar",
+        "detalle": "Con la máquina andando, sumar el aceite en hilo finito hasta una salsa espesa.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: aceite en hilo y constante; suave para que no amargue.",
+        "errorComun": "Aceite de golpe o virgen extra puro.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Ajustar",
+        "detalle": "Probar, corregir sal y limón. Guardar tapado en heladera hasta 3 días.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salsa golf",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Emulsión",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "12 min",
+    "tiempoActivoMin": 12,
+    "tiempoTotalLabel": "12 min",
+    "tiempoTotalMin": 12,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el invento argentino para palta, langostinos y huevos, acá en versión low-carb con tomate concentrado y eritritol en vez de kétchup azucarado",
+    "riesgos": "cortar la mayonesa base; pasarse de tomate y aguarla",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Mayonesa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "a temperatura ambiente; bien fresco, va crudo"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Mayonesa",
+        "cantidad": "180",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Mayonesa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Mayonesa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Golf",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "concentrada; reducida o concentrada, no aguada"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Golf",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "reemplaza el dulzor del kétchup"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mayonesa base",
+        "detalle": "Procesar huevo, limón y sal; sumar el aceite en hilo hasta una mayonesa firme.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: aceite en hilo para no cortar la base.",
+        "errorComun": "Volcar el aceite de golpe.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Teñir y endulzar",
+        "detalle": "Incorporar la passata concentrada y el eritritol; mezclar hasta un rosado parejo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Usar tomate concentrado, no triturado aguado.",
+        "errorComun": "Aguar la salsa con tomate líquido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Ajustar",
+        "detalle": "Probar y corregir sal. Guardar tapada en heladera hasta 3 días.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Mollejas al verdeo",
+    "estilo": "Argentina",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "la achura más fina, blanqueada y dorada a la plancha hasta crocante, con un verdeo perfumado; categoría que no tenías en la biblioteca",
+    "riesgos": "saltar el blanqueado deja la molleja blanda; dorar sin secar no logra la costra",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "mollejas",
+        "textoOriginal": "Mollejas",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de corazón, limpias; pedir las de corazón, más parejas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Blanqueado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; para el agua de blanqueado"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Blanqueado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Dorado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Dorado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Verdeo",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros finos"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Verdeo",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos, para servir"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Blanquear",
+        "detalle": "Hervir agua con jugo de limón y sal; sumergir las mollejas 5 min, escurrir y enfriar. Sacar la grasa y nervios visibles.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: el blanqueado firma la molleja y permite dorarla bien.",
+        "errorComun": "Ir directo a la plancha y que queden gomosas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Orear y secar",
+        "detalle": "Apoyar entre papel y dejar secar bien; opcional prensar 10 min con un peso para compactar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Molleja seca = costra crocante.",
+        "errorComun": "Llevarlas húmedas a la sartén.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Dorar",
+        "detalle": "En sartén o plancha caliente con aceite, dorar las mollejas 4 a 5 min por lado hasta crocantes. Salar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: fuego fuerte y no moverlas hasta que se despeguen solas.",
+        "errorComun": "Removerlas y que larguen agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Verdeo y servir",
+        "detalle": "Bajar el fuego, sumar el verdeo y el vino, dejar evaporar 2 min y volcar sobre las mollejas. Terminar con perejil y limón.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El verdeo se hace apenas para que quede vivo.",
+        "errorComun": "Quemar el verdeo a fuego alto.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Lengua a la vinagreta",
+    "estilo": "Argentina",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el fiambre criollo de las fiestas, lengua tierna en vinagreta de huevo y morrón; rinde, se hace con anticipación y es naturalmente low-carb",
+    "riesgos": "no pelar la lengua en caliente la deja imposible; poca cocción la deja dura",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "lengua",
+        "textoOriginal": "Lengua",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "de vaca, entera"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "partida"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Vinagreta",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, picados"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Vinagreta",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Vinagreta",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Vinagreta",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Vinagreta",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Vinagreta",
+        "cantidad": "8",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Vinagreta",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir",
+        "detalle": "Cubrir la lengua con agua junto con cebolla, zanahoria, laurel y sal. Hervir a fuego bajo 2 a 2,5 h hasta que un cuchillo entre fácil.",
+        "tiempoEstimadoLabel": "2 h 30 min",
+        "tiempoEstimadoMin": 150,
+        "puntoClave": "La paciencia es lo que la ablanda.",
+        "errorComun": "Apurar el hervor y que quede dura.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pelar en caliente",
+        "detalle": "Sacar la lengua, dejar entibiar apenas y retirar la piel exterior tirando con un cuchillo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: pelar tibia; fría la piel no sale.",
+        "errorComun": "Dejarla enfriar y no poder pelarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cortar",
+        "detalle": "Cortar en rodajas finas en contra de la fibra y acomodar en una fuente.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Rodajas finas y parejas.",
+        "errorComun": "Cortar grueso y a favor de la fibra.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Vinagreta",
+        "detalle": "Mezclar huevo duro, morrón, cebolla, perejil, vinagre, aceite y sal; volcar sobre la lengua y dejar tomar gusto 15 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Dejar marinar para que absorba la vinagreta.",
+        "errorComun": "Servir sin reposo y de gusto plano.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Riñones al jerez",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la tapa española de riñones salteados al jerez, intensa y rapidísima; el remojo previo es el secreto para que no tengan olor fuerte",
+    "riesgos": "saltar el remojo deja sabor amoniacal; sobrecocinarlos los endurece",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "rinones",
+        "textoOriginal": "Riñones",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de ternera, en trozos"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Remojo",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para el remojo"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Remojo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "el alma del plato"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Salsa",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Remojar",
+        "detalle": "Limpiar los riñones de grasa y conductos, trozar y remojar 15 min en agua con vinagre y limón. Escurrir y secar muy bien.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: el remojo ácido saca el olor; secarlos bien permite dorarlos.",
+        "errorComun": "Cocinarlos sin remojar ni secar.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "En sartén bien caliente con aceite, saltear los riñones 2 min a fuego fuerte hasta dorar. Retirar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: dorar rápido y sacar; si se cocinan de más, se endurecen.",
+        "errorComun": "Dejarlos hasta que larguen agua y se pongan duros.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sofrito",
+        "detalle": "Bajar el fuego, rehogar cebolla y ajo en la misma sartén 5 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El fondo del salteado da base a la salsa.",
+        "errorComun": "Quemar el ajo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Jerez y reducir",
+        "detalle": "Sumar el jerez y dejar evaporar el alcohol 2 min; agregar el caldo y reducir a la mitad.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Reducir hasta que nape.",
+        "errorComun": "Salsa líquida sin reducir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar",
+        "detalle": "Volver los riñones y sus jugos 1 min para calentar. Salpimentar y terminar con perejil.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Apenas calentar para que queden tiernos.",
+        "errorComun": "Recocerlos en la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Matambre arrollado",
+    "estilo": "Argentina",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Arrollado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "40 min",
+    "tiempoActivoMin": 40,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el matambre relleno de las fiestas, hervido y prensado, que se come frío en finas rodajas; sin la fécula del relleno tradicional queda perfecto en low-carb",
+    "riesgos": "atar flojo deja que se desarme; cortarlo sin prensar lo desgrana",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "matambre",
+        "textoOriginal": "Matambre",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "de ternera, desgrasado; pedir que lo abran parejo"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Adobo",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Adobo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Adobo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji molido",
+        "textoOriginal": "Ají molido",
+        "seccion": "Adobo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Adobo",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Adobo",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Relleno",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en mitades"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en bastones, blanqueada"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": "para hervir; o agua con sal y laurel"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hilo de cocina",
+        "textoOriginal": "Hilo de cocina",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para atar el arrollado"
+      },
+      {
+        "canon": "film",
+        "textoOriginal": "Film",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para prensar en frío"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Adobar",
+        "detalle": "Abrir el matambre, untar con el adobo de ajo, perejil, orégano, ají, vinagre y sal. Dejar tomar gusto 15 min.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "El adobo perfuma toda la carne.",
+        "errorComun": "Salar de menos una pieza grande.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rellenar y arrollar",
+        "detalle": "Distribuir huevo, morrón y zanahoria sobre el matambre dejando un borde libre. Arrollar firme y atar con hilo a lo largo y a lo ancho.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: arrollar y atar bien firme para que no entre agua ni se desarme.",
+        "errorComun": "Atar flojo y que se abra al hervir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hervir",
+        "detalle": "Sumergir en el caldo con laurel y hervir a fuego bajo 2 h, hasta que esté tierno.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "Fuego bajo y parejo ablanda sin reventar.",
+        "errorComun": "Hervor fuerte que lo deshace.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Prensar en frío",
+        "detalle": "Sacar, envolver bien apretado en film y prensar con un peso en la heladera mínimo 4 h o toda la noche.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: el prensado en frío es lo que permite cortarlo fino.",
+        "errorComun": "Cortarlo tibio y que se desgrane.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Cortar y servir",
+        "detalle": "Retirar hilo y film, cortar en rodajas finas. Servir frío, rico con chimichurri o salsa criolla.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Rodajas finas con cuchillo afilado.",
+        "errorComun": "Rodajas gruesas que se abren.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Áspic de pollo",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Gelificado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "5 h",
+    "tiempoTotalMin": 300,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la entrada fría y elegante de pollo en gelatina de su propio caldo, tipo Capon in Aspic clásico; impacta en la mesa, se hace con anticipación y es 100% low-carb",
+    "riesgos": "caldo turbio arruina la presentación; poca gelatina no toma cuerpo",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pechuga de pollo",
+        "textoOriginal": "Pechuga de pollo",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "hervida y desmenuzada; reservar el caldo de cocción"
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Gelatina",
+        "cantidad": "600",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien desgrasado y colado; el de cocción del pollo"
+      },
+      {
+        "canon": "gelatina sin sabor",
+        "textoOriginal": "Gelatina sin sabor",
+        "seccion": "Gelatina",
+        "cantidad": "14",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en polvo; 2 sobres, cuadruplica para 600 ml firme"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Gelatina",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "jugo; aporta frescura y aclara"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Decoración",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas finas, blanqueada"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Decoración",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en rodajas"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Decoración",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en hojas; para decorar el fondo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "film",
+        "textoOriginal": "Film",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para desmoldar; forrar el molde"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Caldo claro",
+        "detalle": "Calentar el caldo desgrasado, salar y sumar el jugo de limón. Hidratar la gelatina en un poco de caldo frío y disolverla en el caldo caliente sin que hierva.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: gelatina disuelta sin hervir; si hierve pierde poder de cuajado.",
+        "errorComun": "Volcar la gelatina seca al caldo caliente y que queden grumos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar el molde",
+        "detalle": "Forrar un molde con film. Verter una capa fina de caldo y enfriar 20 min hasta que tome. Acomodar perejil, zanahoria y huevo como decoración.",
+        "tiempoEstimadoLabel": "25 min",
+        "tiempoEstimadoMin": 25,
+        "puntoClave": "La capa base fija la decoración boca abajo.",
+        "errorComun": "Tirar todo junto y que la decoración flote.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Rellenar",
+        "detalle": "Distribuir el pollo desmenuzado y cubrir con el resto del caldo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Repartir parejo para que cada porción tenga pollo.",
+        "errorComun": "Pollo amontonado en un lado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Gelificar",
+        "detalle": "Llevar a la heladera mínimo 4 h, mejor toda la noche, hasta que esté firme.",
+        "tiempoEstimadoLabel": "4 h",
+        "tiempoEstimadoMin": 240,
+        "puntoClave": "⚠️ Punto crítico: frío suficiente para que tome cuerpo entero.",
+        "errorComun": "Desmoldar antes de tiempo y que se desarme.",
+        "notas": "Tiempo activo: 0 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Desmoldar",
+        "detalle": "Pasar un cuchillo por el borde, apoyar un plato encima y dar vuelta tirando del film. Cortar en porciones frías.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Desmoldar bien frío y con el film.",
+        "errorComun": "Forzarlo tibio y romperlo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Escabeche de pescado",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Escabechado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "conserva clásica de pescado en escabeche de vinagre y vegetales que mejora con los días; entrada o plato frío listo en la heladera, sin hidratos",
+    "riesgos": "dorar mal el pescado lo deshace en el escabeche; poco reposo no integra el sabor",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "o abadejo, en trozos grandes; pescado blanco firme"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Escabeche",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Escabeche",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas finas"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Escabeche",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Escabeche",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Escabeche",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Escabeche",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en grano"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Escabeche",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Escabeche",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para el escabeche"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Escabeche",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar el pescado",
+        "detalle": "Secar y salar los trozos; dorarlos apenas en aceite caliente 1 a 2 min por lado, sin cocinar del todo. Reservar con cuidado.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: solo marcarlos; terminan de cocinarse en el escabeche.",
+        "errorComun": "Cocinarlos enteros y que se desarmen.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pochar vegetales",
+        "detalle": "En el mismo aceite, cocinar cebolla, zanahoria, morrón y ajo a fuego bajo 10 min, sin dorar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Vegetales tiernos pero enteros.",
+        "errorComun": "Quemarlos o dejarlos crudos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Escabeche",
+        "detalle": "Sumar laurel, pimienta en grano, vinagre, el aceite de escabeche y la sal. Llevar a hervor suave 5 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El líquido debe casi cubrir; ajustar proporción vinagre-aceite.",
+        "errorComun": "Hervor fuerte que evapora el vinagre.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Armar y reposar",
+        "detalle": "Acomodar el pescado en un recipiente, cubrir con los vegetales y el líquido caliente. Enfriar y guardar en heladera mínimo 24 h.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: el reposo en frío de un día es lo que hace el escabeche.",
+        "errorComun": "Comerlo recién hecho sin reposo.",
+        "notas": "Tiempo activo: 5 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Mousse de chocolate amargo 85%",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Batido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "mousse intenso de chocolate 85% montado solo con huevos y un toque de café, sin crema ni lácteos y endulzado con eritritol; postre de restaurante apto low-carb",
+    "riesgos": "chocolate recalentado se corta; mezclar las claras de golpe baja el aire",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Postre",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "chocolate 85%",
+        "textoOriginal": "Chocolate 85%",
+        "seccion": "Base",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "picado; sin azúcar agregada"
+      },
+      {
+        "canon": "cafe",
+        "textoOriginal": "Café",
+        "seccion": "Base",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "fuerte, caliente; espresso o instantáneo bien cargado"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza la manteca, da brillo"
+      },
+      {
+        "canon": "yemas de huevo",
+        "textoOriginal": "Yemas de huevo",
+        "seccion": "Yemas",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Yemas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "impalpable si se consigue"
+      },
+      {
+        "canon": "claras de huevo",
+        "textoOriginal": "Claras de huevo",
+        "seccion": "Claras",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "a temperatura ambiente"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Claras",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "una pizca; ayuda a montar las claras"
+      },
+      {
+        "canon": "esencia de vainilla",
+        "textoOriginal": "Esencia de vainilla",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Fundir el chocolate",
+        "detalle": "Derretir el chocolate con el café caliente y el aceite, revolviendo hasta liso. Dejar entibiar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fundir suave y entibiar; chocolate muy caliente cocina las yemas.",
+        "errorComun": "Sumar las yemas al chocolate hirviendo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Yemas",
+        "detalle": "Batir las yemas con el eritritol hasta cremosas y unir al chocolate tibio con la vainilla.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El eritritol impalpable evita textura arenosa.",
+        "errorComun": "Granos de eritritol sin disolver.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Montar claras",
+        "detalle": "Batir las claras con la pizca de sal a punto nieve firme.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Claras firmes pero no secas.",
+        "errorComun": "Pasarse y que se sequen.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Integrar",
+        "detalle": "Incorporar las claras al chocolate en 3 veces con movimientos envolventes, suaves, de abajo hacia arriba.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: envolver con espátula sin batir para no perder el aire.",
+        "errorComun": "Mezclar de golpe y bajar la espuma.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Enfriar",
+        "detalle": "Repartir en 4 copas y llevar a la heladera mínimo 2 h hasta firme.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "El frío termina de cuajar la mousse.",
+        "errorComun": "Servirla blanda sin reposo.",
+        "notas": "Tiempo activo: 2 min."
+      }
+    ]
+  }
+]
