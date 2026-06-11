@@ -1669,7 +1669,7 @@
       "Proteina",
       "Grasa"
     ],
-    "seccionGondola": "Lacteos y frescos"
+    "seccionGondola": "Fiambreria"
   },
   {
     "idIngrediente": "ING-0142",
@@ -2390,7 +2390,7 @@
     "rolNutricional": [
       "Proteina"
     ],
-    "seccionGondola": "Carniceria"
+    "seccionGondola": "Fiambreria"
   },
   {
     "idIngrediente": "ING-0204",
@@ -2899,7 +2899,7 @@
       "Proteina",
       "Grasa"
     ],
-    "seccionGondola": "Lacteos y frescos"
+    "seccionGondola": "Fiambreria"
   },
   {
     "idIngrediente": "ING-0250",
@@ -2911,7 +2911,7 @@
       "Proteina",
       "Grasa"
     ],
-    "seccionGondola": "Lacteos y frescos"
+    "seccionGondola": "Fiambreria"
   },
   {
     "idIngrediente": "ING-0251",

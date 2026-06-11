@@ -1,8 +1,8 @@
-// src/lib/gondolas.ts — Secciones display (5 groups) mapeadas desde los 9
+// src/lib/gondolas.ts — Secciones display (6 groups) mapeadas desde los 9
 // valores raw de `seccionGondola` en Firestore / catalogo.ts.
 
 export const ORDEN_GONDOLA_DISPLAY = [
-  'Verdulería', 'Carnicería', 'Lácteos', 'Almacén', 'Panadería',
+  'Verdulería', 'Carnicería', 'Fiambrería', 'Lácteos', 'Almacén', 'Panadería',
 ] as const;
 
 export type Seccion = typeof ORDEN_GONDOLA_DISPLAY[number];
@@ -10,17 +10,18 @@ export type Seccion = typeof ORDEN_GONDOLA_DISPLAY[number];
 export const SECCIONES: Record<Seccion, { color: string; letra: string }> = {
   'Verdulería': { color: 'oklch(0.62 0.07 130)', letra: 'V' },
   'Carnicería': { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Fiambrería': { color: 'oklch(0.58 0.09 350)', letra: 'F' },
   'Lácteos':    { color: 'oklch(0.78 0.04 90)',  letra: 'L' },
   'Almacén':    { color: 'oklch(0.62 0.08 60)',  letra: 'A' },
   'Panadería':  { color: 'oklch(0.65 0.07 50)',  letra: 'P' },
 };
 
-// Maps raw seccionGondola values (9, sin acentos) → display section (5, con acentos)
+// Maps raw seccionGondola values (9, sin acentos) → display section (6, con acentos)
 const GONDOLA_MAP: Record<string, Seccion> = {
   'Verduleria':        'Verdulería',
   'Carniceria':        'Carnicería',
-  'Pescaderia':        'Carnicería',   // agrupado con Carnicería
-  'Fiambreria':        'Carnicería',   // agrupado con Carnicería
+  'Pescaderia':        'Carnicería',   // pescado sigue con carnes (casi sin uso)
+  'Fiambreria':        'Fiambrería',   // sección propia desde E14.6
   'Lacteos y frescos': 'Lácteos',
   'Almacen / secos':   'Almacén',
   'Panaderia':         'Panadería',
@@ -34,7 +35,7 @@ export interface GrupoGondola<T> {
 }
 
 /**
- * Devuelve items agrupados por góndola (5 secciones display), en orden canónico.
+ * Devuelve items agrupados por góndola (6 secciones display), en orden canónico.
  * Acepta cualquier tipo que tenga `seccionGondola: string` (valor raw de Firestore).
  * Secciones no reconocidas caen a 'Almacén'.
  */

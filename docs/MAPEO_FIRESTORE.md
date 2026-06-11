@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.11.0 (E14.5 — Consolida compras: turno voluntario + contador mensual + un solo camino de armado)
-> **Fecha**: 2026-06-07
+> **Versión**: 2.12.0 (E14.6 — Fiambrería como sección de display propia; display pasa de 5 a 6 grupos; valores raw de Firestore no cambian)
+> **Fecha**: 2026-06-10
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 

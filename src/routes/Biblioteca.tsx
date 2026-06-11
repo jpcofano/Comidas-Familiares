@@ -7,7 +7,6 @@ import { getRecetas, getRecetasParaMiembro, eliminarReceta } from "../data/recet
 import { getMenus, deriveMenuMetadata } from "../data/menus";
 import { getCatalogo } from "../data/ingredientes";
 import { macrosDeReceta } from "../lib/macros";
-import { generarInstanciaCompraRapida } from "../data/comprasRapidas";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta, MacrosPorReceta } from "../lib/filtros";
 import type { Receta, Menu, MenuDerived, Ingrediente } from "../types/models";
@@ -353,7 +352,6 @@ function TabComprasRapidas() {
   const [plantillas, setPlantillas] = useState<Receta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [asignando, setAsignando] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
 
   useEffect(() => {
@@ -362,22 +360,6 @@ function TabComprasRapidas() {
       .catch(() => setError("No se pudieron cargar las compras rápidas."))
       .finally(() => setLoading(false));
   }, []);
-
-  async function handleGenerar(plantilla: Receta) {
-    setBusy(plantilla.idReceta);
-    const todosItems = plantilla.ingredientes.map((ing) => ({
-      idIngrediente: ing.idIngrediente,
-      nombre: ing.textoOriginal,
-      cantidad: String(ing.cantidad ?? "1"),
-      unidad: ing.unidad ?? "",
-      seccionGondola: ing.seccion ?? "Despensa / otros",
-      comprado: false,
-    }));
-    const r = await generarInstanciaCompraRapida(plantilla, todosItems);
-    if (!r.ok) setError(r.error.message);
-    setBusy(null);
-    setAsignando(null);
-  }
 
   async function handleEliminar(id: string) {
     if (!confirm("¿Eliminar esta plantilla?")) return;
@@ -392,10 +374,10 @@ function TabComprasRapidas() {
 
   return (
     <div>
-      {/* Referencia a /compras para armar */}
+      {/* Referencia a /compras/armar */}
       <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)", fontStyle: "italic" }}>
         Para armar la compra de la semana, andá a{" "}
-        <Link to="/compras" style={{ color: "var(--primary)" }}>Compras →</Link>
+        <Link to="/compras/armar" style={{ color: "var(--primary)" }}>Compras → Armar la compra</Link>.
       </p>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
@@ -431,25 +413,6 @@ function TabComprasRapidas() {
               </button>
             </div>
 
-            {asignando === p.idReceta ? (
-              <div style={{ marginTop: "var(--space-3)", display: "flex", gap: "var(--space-2)" }}>
-                <button className="btn btn-primary" disabled={busy === p.idReceta} onClick={() => handleGenerar(p)} style={{ flex: 1, fontSize: "var(--fs-sm)" }}>
-                  {busy === p.idReceta ? "Generando…" : "Generar (todos los ítems)"}
-                </button>
-                <button className="btn btn-ghost" onClick={() => setAsignando(null)} style={{ fontSize: "var(--fs-sm)" }}>
-                  Cancelar
-                </button>
-              </div>
-            ) : (
-              <button
-                className="btn btn-secondary"
-                disabled={busy === p.idReceta}
-                onClick={() => setAsignando(p.idReceta)}
-                style={{ marginTop: "var(--space-3)", width: "100%", fontSize: "var(--fs-sm)" }}
-              >
-                Generar la de esta semana (todos los ítems)
-              </button>
-            )}
           </div>
         ))
       )}

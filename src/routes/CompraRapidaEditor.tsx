@@ -7,7 +7,6 @@ import { getReceta } from "../data/recetas";
 import {
   crearPlantillaCompraRapida,
   actualizarPlantillaCompraRapida,
-  generarInstanciaCompraRapida,
   type DatosPlantilla,
 } from "../data/comprasRapidas";
 import { getSeccionMeta } from "../lib/catalogo";
@@ -166,7 +165,7 @@ function CompraRapidaEditorInner({
     );
   }
 
-  async function handleGuardar(generar: boolean) {
+  async function handleGuardar() {
     if (!destino.trim()) { setError("Ingresá el destino de la compra."); return; }
     if (items.length === 0) { setError("Agregá al menos un ítem."); return; }
     setError(null);
@@ -181,36 +180,9 @@ function CompraRapidaEditorInner({
       if (isEditing && idReceta) {
         const r = await actualizarPlantillaCompraRapida(idReceta, datos);
         if (!r.ok) { setError(r.error.message); return; }
-        if (generar) {
-          const plantillaActualizada = await getReceta(idReceta);
-          if (plantillaActualizada) {
-            const todosItems = plantillaActualizada.ingredientes.map((ing) => ({
-              idIngrediente: ing.idIngrediente,
-              nombre: ing.textoOriginal,
-              cantidad: String(ing.cantidad ?? "1"),
-              unidad: ing.unidad ?? "",
-              seccionGondola: ing.seccion ?? "Despensa / otros",
-              comprado: false,
-            }));
-            const ri = await generarInstanciaCompraRapida(plantillaActualizada, todosItems);
-            if (!ri.ok) { setError(ri.error.message); return; }
-          }
-        }
       } else {
         const r = await crearPlantillaCompraRapida(datos);
         if (!r.ok) { setError(r.error.message); return; }
-        if (generar) {
-          const todosItems = r.value.ingredientes.map((ing) => ({
-            idIngrediente: ing.idIngrediente,
-            nombre: ing.textoOriginal,
-            cantidad: String(ing.cantidad ?? "1"),
-            unidad: ing.unidad ?? "",
-            seccionGondola: ing.seccion ?? "Despensa / otros",
-            comprado: false,
-          }));
-          const ri = await generarInstanciaCompraRapida(r.value, todosItems);
-          if (!ri.ok) { setError(ri.error.message); return; }
-        }
       }
       navigate("/biblioteca?tab=compras");
     } finally {
@@ -419,18 +391,10 @@ function CompraRapidaEditorInner({
         <button
           className="btn btn-primary"
           disabled={saving}
-          onClick={() => handleGuardar(true)}
+          onClick={() => handleGuardar()}
           style={{ width: "100%", fontWeight: 700 }}
         >
-          {saving ? "Guardando…" : isEditing ? "Guardar y generar la de esta semana" : "Guardar plantilla y generar la de esta semana"}
-        </button>
-        <button
-          className="btn btn-secondary"
-          disabled={saving}
-          onClick={() => handleGuardar(false)}
-          style={{ width: "100%" }}
-        >
-          {isEditing ? "Solo guardar cambios" : "Solo guardar plantilla"}
+          {saving ? "Guardando…" : isEditing ? "Guardar cambios" : "Guardar plantilla"}
         </button>
         <button
           className="btn btn-ghost"

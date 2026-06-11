@@ -58,6 +58,7 @@ export interface SeccionMeta {
 export const SECCIONES_META: Record<string, SeccionMeta> = {
   'Verdulería':   { color: 'oklch(0.62 0.07 130)', letra: 'V' },
   'Carnicería':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Fiambrería':   { color: 'oklch(0.58 0.09 350)', letra: 'F' },
   'Lácteos':      { color: 'oklch(0.78 0.04 90)',  letra: 'L' },
   'Almacén':      { color: 'oklch(0.62 0.08 60)',  letra: 'A' },
   'Panadería':    { color: 'oklch(0.65 0.07 50)',  letra: 'P' },
@@ -65,7 +66,7 @@ export const SECCIONES_META: Record<string, SeccionMeta> = {
   'Verduleria':   { color: 'oklch(0.62 0.07 130)', letra: 'V' },
   'Carniceria':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
   'Pescaderia':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
-  'Fiambreria':   { color: 'oklch(0.55 0.10 25)',  letra: 'C' },
+  'Fiambreria':   { color: 'oklch(0.58 0.09 350)', letra: 'F' },
   'Lacteos y frescos': { color: 'oklch(0.78 0.04 90)', letra: 'L' },
   'Almacen / secos':   { color: 'oklch(0.62 0.08 60)', letra: 'A' },
   'Panaderia':    { color: 'oklch(0.65 0.07 50)',  letra: 'P' },
