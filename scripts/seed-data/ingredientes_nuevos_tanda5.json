@@ -1,0 +1,111 @@
+[
+  {
+    "canonico": "brocoli",
+    "nombrePreferido": "Brócoli",
+    "sinonimos": [
+      "Brocoli"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "cinco especias chinas",
+    "nombrePreferido": "Cinco especias chinas",
+    "sinonimos": [
+      "Five spice",
+      "Polvo de cinco especias"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "doubanjiang",
+    "nombrePreferido": "Doubanjiang",
+    "sinonimos": [
+      "Pasta de habas picante",
+      "Chili bean paste",
+      "Toban djan"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pimienta de sichuan",
+    "nombrePreferido": "Pimienta de Sichuan",
+    "sinonimos": [
+      "Sichuan pepper",
+      "Pimienta de Szechuan"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salsa de ostras",
+    "nombrePreferido": "Salsa de ostras",
+    "sinonimos": [
+      "Oyster sauce"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "tofu firme",
+    "nombrePreferido": "Tofu firme",
+    "sinonimos": [
+      "Tofu",
+      "Queso de soja"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

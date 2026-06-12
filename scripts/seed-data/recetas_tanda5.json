@@ -1,0 +1,1763 @@
+[
+  {
+    "nombre": "Cerdo agridulce sin azúcar",
+    "estilo": "China",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el agridulce del delivery pero sin azúcar ni rebozado de harina; cubos de cerdo dorados con costra de almendra y una salsa que se espesa por reducción",
+    "riesgos": "salsa sin reducir queda aguada; cerdo amontonado que hierve en vez de dorar",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Cerdo",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 3 cm"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Cerdo",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "para rebozar; reemplaza la fécula del rebozado"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Cerdo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batido"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Cerdo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para dorar"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cerdo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "da color y cuerpo"
+      },
+      {
+        "canon": "vinagre de arroz",
+        "textoOriginal": "Vinagre de arroz",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salsa",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rebozar y dorar",
+        "detalle": "Salar los cubos, pasarlos por huevo y harina de almendra. Dorar en aceite caliente en tandas hasta crocantes. Reservar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: en tandas y a fuego fuerte; amontonados hierven y no doran.",
+        "errorComun": "Tirar todo junto y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Saltear verduras",
+        "detalle": "En la misma sartén saltear morrón y cebolla 3 min, que queden al dente.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Verduras crocantes, no blandas.",
+        "errorComun": "Recocerlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar jengibre y ajo 30 seg; agregar passata, vinagre, soja y eritritol. Reducir hasta que espese y nape.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: reducir bien la salsa reemplaza a la fécula.",
+        "errorComun": "Salsa líquida que no se pega al cerdo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver el cerdo, mezclar para glasear 1 min. Terminar con verdeo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Sumar el cerdo al final para que no se ablande.",
+        "errorComun": "Hervirlo en la salsa y perder lo crocante.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo kung pao",
+    "estilo": "China",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el salteado de Sichuan con maní y chiles, picante y umami, sin azúcar; un wok rápido de mucho impacto",
+    "riesgos": "quemar los chiles y el ajo; pollo amontonado que se cocina al vapor",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Pollo",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de pechuga o muslo, en cubos de 2 cm"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Pollo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para marinar"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Pollo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "peperoncino",
+        "textoOriginal": "Peperoncino",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en hojuelas, o chiles secos; regular el picante"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "pimienta de sichuan",
+        "textoOriginal": "Pimienta de Sichuan",
+        "seccion": "Salteado",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": true,
+        "notas": "molida; el toque que hormiguea, opcional"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de arroz",
+        "textoOriginal": "Vinagre de arroz",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mani",
+        "textoOriginal": "Maní",
+        "seccion": "Final",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "tostado, sin sal"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el pollo con 2 cda de soja y el aceite de sésamo; dejar 10 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El marinado corto ya da sabor y jugosidad.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Saltear pollo",
+        "detalle": "En wok o sartén bien caliente, dorar el pollo en 2 tandas. Reservar.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: en tandas para que dore y no se cocine al vapor.",
+        "errorComun": "Amontonarlo y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Aromáticos",
+        "detalle": "Bajar un poco el fuego; saltear peperoncino, ajo, jengibre y Sichuan 30 seg, solo hasta que perfumen.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: 30 segundos; el ajo y el chile se queman rápido y amargan.",
+        "errorComun": "Dejarlos de más y que se quemen.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver el pollo, sumar soja, vinagre y eritritol; saltear 2 min. Terminar con maní y verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El maní entra al final para que quede crocante.",
+        "errorComun": "Sumarlo antes y que se ablande.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Res con brócoli",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el clásico de wok de tiras de carne tiernas y brócoli al dente en salsa de ostras; rápido, sin azúcar y naturalmente low-carb",
+    "riesgos": "brócoli pasado de cocción; carne recocida que se endurece",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Carne",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bife angosto o cuadril, casi congelado corta más fino"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Carne",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para marinar"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "brocoli",
+        "textoOriginal": "Brócoli",
+        "seccion": "Brócoli",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "salsa de ostras",
+        "textoOriginal": "Salsa de ostras",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o vino de arroz Shaoxing; el Shaoxing es lo auténtico; el jerez seco es el reemplazo local"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar la carne con 2 cda de soja y el aceite de sésamo; dejar 10 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El marinado ablanda y sazona.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Blanquear brócoli",
+        "detalle": "Hervir el brócoli 2 min, escurrir y pasar por agua fría para frenar la cocción.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: brócoli al dente y verde brillante; el agua fría lo fija.",
+        "errorComun": "Hervirlo de más y que quede blando y gris.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Saltear carne",
+        "detalle": "En wok bien caliente, saltear la carne en 2 tandas, 1 a 2 min, hasta dorar. Reservar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Fuego máximo y rápido para que no largue agua.",
+        "errorComun": "Amontonarla y estofarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Saltear ajo y jengibre 30 seg; sumar ostras, soja, caldo y jerez. Volver carne y brócoli y saltear 2 min hasta glasear.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Saltear todo junto poco tiempo para que el brócoli quede firme.",
+        "errorComun": "Recocer y ablandar todo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Mapo tofu",
+    "estilo": "China",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el clásico de Sichuan de tofu sedoso en salsa picante de pasta de habas; versión vegetariana con carne opcional, intensa y sin hidratos",
+    "riesgos": "romper el tofu al revolver; doubanjiang sin freír queda crudo y plano",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "tofu firme",
+        "textoOriginal": "Tofu firme",
+        "seccion": "Base",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 2 cm; escurrido"
+      },
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "de cerdo o vacuna; la versión clásica la lleva; omitir para vegetariano"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "doubanjiang",
+        "textoOriginal": "Doubanjiang",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "pasta de habas picante; el alma del plato"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "pimienta de sichuan",
+        "textoOriginal": "Pimienta de Sichuan",
+        "seccion": "Salteado",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": true,
+        "notas": "molida; el hormigueo característico"
+      },
+      {
+        "canon": "caldo de verduras",
+        "textoOriginal": "Caldo de verduras",
+        "seccion": "Salsa",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Templar el tofu",
+        "detalle": "Sumergir los cubos de tofu en agua caliente con sal 5 min; escurrir con cuidado. Esto lo firma.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El baño caliente firma el tofu y evita que se rompa.",
+        "errorComun": "Saltearlo crudo y que se desarme.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Carne",
+        "detalle": "Si se usa, dorar la carne picada en el aceite hasta crocante. (Si es vegetariano, ir al paso 3.)",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Dorar bien la carne suma umami.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Fritar la pasta",
+        "detalle": "Bajar el fuego, sumar doubanjiang, ajo, jengibre y Sichuan; freír 1 min hasta que el aceite se tiña de rojo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: freír la pasta libera color y sabor; cruda queda plana.",
+        "errorComun": "Tirar el caldo sin freír la pasta antes.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Guisar",
+        "detalle": "Agregar caldo y soja, llevar a hervor suave e incorporar el tofu. Cocinar 5 min moviendo la sartén, sin revolver con cuchara.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: mover la sartén en vez de revolver para no romper el tofu.",
+        "errorComun": "Revolver fuerte y deshacerlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar",
+        "detalle": "Apagar y terminar con abundante verdeo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El verdeo fresco corta el picante.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Char siu de cerdo",
+    "estilo": "China",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el cerdo laqueado cantonés, dulce y brillante, acá con eritritol y cinco especias en vez de azúcar y miel; impacta y se hace casi solo en el horno",
+    "riesgos": "marinada corta no penetra; glaseado a fuego alto se quema por el dulzor",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Cerdo",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en tiras gruesas de 5 cm"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de ostras",
+        "textoOriginal": "Salsa de ostras",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza azúcar y miel"
+      },
+      {
+        "canon": "cinco especias chinas",
+        "textoOriginal": "Cinco especias chinas",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o Shaoxing"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "papel aluminio",
+        "textoOriginal": "Papel aluminio",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para forrar la fuente"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar todos los ingredientes de la marinada, reservar 3 cda para glasear y cubrir el cerdo con el resto. Marinar mínimo 2 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: cuanto más marina, más penetra el sabor y el color.",
+        "errorComun": "Marinar 10 min y que quede plano.",
+        "notas": "Tiempo activo: 10 min; el resto es heladera."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Hornear",
+        "detalle": "Acomodar el cerdo sobre rejilla en fuente forrada con aluminio. Hornear a 180°C 40 min, dando vuelta a la mitad.",
+        "tiempoEstimadoLabel": "40 min",
+        "tiempoEstimadoMin": 40,
+        "puntoClave": "El horno medio cocina parejo sin quemar el dulzor.",
+        "errorComun": "Horno muy alto que carboniza la marinada.",
+        "notas": "Tiempo activo: 2 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Glasear",
+        "detalle": "Pincelar con la marinada reservada y subir a 210°C 8 a 10 min hasta que esté laqueado y brillante.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: vigilar de cerca; el eritritol se dora rápido y puede pasarse.",
+        "errorComun": "Dejarlo y que se queme el glaseado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar y cortar",
+        "detalle": "Dejar reposar 5 min y cortar en láminas finas en contra de la fibra.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "El reposo conserva los jugos.",
+        "errorComun": "Cortarlo al salir y que pierda jugo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Chow mein de repollo y vegetales",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el salteado de fideos chinos pero con repollo en juliana haciendo de \"fideo\"; mismo sabor a wok, cero harina",
+    "riesgos": "repollo recocido que larga agua; wok poco caliente que estofa en vez de saltear",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "repollo blanco",
+        "textoOriginal": "Repollo blanco",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana fina; hace de fideo"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en bastones finos"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Verduras",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Verduras",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "8",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de ostras",
+        "textoOriginal": "Salsa de ostras",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Calentar el wok",
+        "detalle": "Llevar el wok o sartén grande a fuego máximo con el aceite suave.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Mucho calor es la base de un buen salteado.",
+        "errorComun": "Wok tibio que estofa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Verduras firmes",
+        "detalle": "Saltear zanahoria, morrón y champignón 3 min, moviendo constante.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Movimiento constante para saltear parejo.",
+        "errorComun": "Dejarlas quietas y que se quemen.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Repollo",
+        "detalle": "Sumar el repollo y saltear 3 a 4 min, justo hasta que ablande pero quede al dente.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: cocción corta; pasado larga agua y deja de ser \"fideo\".",
+        "errorComun": "Recocerlo y que quede aguado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsear",
+        "detalle": "Agregar ajo, jengibre, soja, ostras y aceite de sésamo; saltear 2 min. Terminar con verdeo y sésamo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Salsear sobre el final para que no se evapore.",
+        "errorComun": "Salsear al principio y secar todo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sopa agripicante",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la hot and sour soup de los restaurantes, picante y ácida, con tofu y hongos; reconfortante y sin la fécula que la espesa habitualmente",
+    "riesgos": "hervir fuerte al sumar el huevo arruina los hilos; demasiado vinagre tapa todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "caldo de verduras",
+        "textoOriginal": "Caldo de verduras",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": "o de pollo"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "tofu firme",
+        "textoOriginal": "Tofu firme",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en bastones"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Sabor",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de arroz",
+        "textoOriginal": "Vinagre de arroz",
+        "seccion": "Sabor",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "el ácido de la sopa"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Sabor",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida; el picante clásico va de pimienta"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Ligado",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos; para los hilos"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Llevar el caldo a hervor suave con jengibre, soja y los champignones; cocinar 5 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Un buen caldo es la base de la sopa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Tofu y sabor",
+        "detalle": "Sumar el tofu, el vinagre y la pimienta; cocinar 3 min y probar el equilibrio ácido-picante.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Ajustar vinagre y pimienta al gusto familiar.",
+        "errorComun": "Pasarse de vinagre y tapar el resto.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hilos de huevo",
+        "detalle": "Bajar a fuego mínimo; verter el huevo batido en hilo mientras se revuelve suave en un sentido.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo y movimiento suave forman los hilos finos.",
+        "errorComun": "Hervir fuerte y hacer grumos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Apagar, sumar el aceite de sésamo y el verdeo. Servir bien caliente.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El sésamo va fuera del fuego para que perfume.",
+        "errorComun": "Hervirlo y perder el aroma.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Langostinos salteados con ajo y jengibre",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "langostinos al wok perfumados con ajo, jengibre y verdeo, rápidos y finos; salteado express de cero hidratos",
+    "riesgos": "langostino pasado de cocción queda gomoso; ajo quemado amarga todo",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, limpios; dejar la cola si gusta"
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o Shaoxing"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en juliana fina"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de ostras",
+        "textoOriginal": "Salsa de ostras",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar los langostinos con el jerez y la sal; dejar 5 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Marinado corto para que tomen sabor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aromáticos",
+        "detalle": "Calentar los aceites; saltear ajo y jengibre 30 seg hasta que perfumen.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: 30 segundos a fuego medio; el ajo se quema enseguida.",
+        "errorComun": "Dorarlo de más y amargar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Langostinos",
+        "detalle": "Subir el fuego y saltear los langostinos 2 a 3 min, solo hasta que se pongan rosados y opacos.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: apenas cambian de color están listos; un minuto de más y se ponen gomosos.",
+        "errorComun": "Recocerlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsear",
+        "detalle": "Sumar soja y ostras, saltear 1 min y terminar con verdeo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Salsear al final para no recocer.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Berenjenas estilo Sichuan",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "berenjenas sedosas en salsa agridulce-picante estilo yúxiāng; guarnición o plato vegetariano de mucho sabor, con eritritol en vez de azúcar",
+    "riesgos": "berenjena cruda que queda amarga; pasta de habas sin freír",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en bastones"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para desamargar"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "la berenjena toma bastante"
+      },
+      {
+        "canon": "doubanjiang",
+        "textoOriginal": "Doubanjiang",
+        "seccion": "Salteado",
+        "cantidad": "1,5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "pasta de habas picante"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de arroz",
+        "textoOriginal": "Vinagre de arroz",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Desamargar",
+        "detalle": "Salar los bastones de berenjena y dejar 15 min; secar el agua que sueltan.",
+        "tiempoEstimadoLabel": "17 min",
+        "tiempoEstimadoMin": 17,
+        "puntoClave": "Desamargar evita el gusto amargo y que absorba tanto aceite.",
+        "errorComun": "Saltear este paso.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "Saltear la berenjena en el aceite caliente hasta dorada y tierna. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dorar bien hasta que quede sedosa, no cruda.",
+        "errorComun": "Berenjena cruda y amarga.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Bajar el fuego, freír doubanjiang, ajo y jengibre 1 min; sumar soja, vinagre y eritritol.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: freír la pasta de habas antes de los líquidos.",
+        "errorComun": "Tirar todo junto sin activar la pasta.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver la berenjena y glasear 2 min. Terminar con verdeo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Glasear para que se impregne de salsa.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Huevos revueltos con tomate",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el plato casero chino por excelencia, huevos cremosos con tomate apenas dulce; rápido, baratísimo y que les gusta a todos",
+    "riesgos": "recocer el huevo y que quede seco; tomate sin escurrir que aguada todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en gajos"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salteado",
+        "cantidad": "5",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "equilibra la acidez del tomate"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sabor",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Cuajar huevos",
+        "detalle": "Batir los huevos con sal; cocinarlos en 2 cda de aceite a fuego medio hasta apenas cremosos. Retirar todavía húmedos.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: sacarlos cremosos; se terminan de cocer con el calor residual.",
+        "errorComun": "Recocerlos y secarlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Tomate",
+        "detalle": "En el mismo wok, con 1 cda de aceite, saltear jengibre y el tomate 3 min hasta que ablande y largue su jugo.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Que el tomate se deshaga apenas, formando la salsa.",
+        "errorComun": "Recocerlo hasta puré aguado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sazonar",
+        "detalle": "Sumar soja, eritritol y la parte blanca del verdeo; cocinar 1 min.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El eritritol equilibra la acidez sin dulzar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver los huevos, mezclar suave 30 seg para integrar. Terminar con verdeo y aceite de sésamo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Integrar apenas para no recocer el huevo.",
+        "errorComun": "Revolver de más y secar.",
+        "notas": ""
+      }
+    ]
+  }
+]
