@@ -219,6 +219,31 @@ describe("hayFiltrosActivos", () => {
   });
 });
 
+// ─── Filtro por cocina ────────────────────────────────────────────────────────
+
+describe("filtrarRecetas — cocina", () => {
+  const recetaJaponesa = makeReceta({ idReceta: "REC-010", nombre: "Sopa de miso", nombreCanonico: "sopa de miso", estilo: "Japonesa" });
+  const recetaFrancesa = makeReceta({ idReceta: "REC-011", nombre: "Coq au vin", nombreCanonico: "coq au vin", estilo: "Francesa" });
+  const recetaConEnum  = makeReceta({ idReceta: "REC-012", nombre: "Asado", nombreCanonico: "asado", estilo: "Parrilla", cocina: "Argentina" });
+
+  it("filtra por estilo cuando cocina enum está vacío", () => {
+    const r = filtrarRecetas([recetaJaponesa, recetaFrancesa], { ...FILTROS_INICIALES, cocina: "Japonesa" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-010");
+  });
+
+  it("filtra por cocina enum cuando el estilo no coincide", () => {
+    const r = filtrarRecetas([recetaConEnum, recetaFrancesa], { ...FILTROS_INICIALES, cocina: "Argentina" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-012");
+  });
+
+  it("sin filtro de cocina devuelve todas", () => {
+    const r = filtrarRecetas([recetaJaponesa, recetaFrancesa, recetaConEnum], FILTROS_INICIALES);
+    expect(r).toHaveLength(3);
+  });
+});
+
 // ─── filtrarRecetas — maxNetos ────────────────────────────────────────────────
 
 describe("filtrarRecetas — maxNetos", () => {

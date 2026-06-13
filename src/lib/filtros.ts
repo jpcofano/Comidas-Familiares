@@ -48,7 +48,7 @@ export function filtrarRecetas(
       }
     }
 
-    if (filtros.cocina && r.cocina !== filtros.cocina) return false;
+    if (filtros.cocina && r.estilo !== filtros.cocina && r.cocina !== filtros.cocina) return false;
     if (filtros.sinLacteos && !r.sinLacteos) return false;
     if (filtros.sinHidratos && r.hidratos) return false;
     if (filtros.esVegetariano && !r.esVegetariano) return false;
