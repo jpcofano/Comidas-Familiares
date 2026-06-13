@@ -1,0 +1,21 @@
+[
+  {
+    "canonico": "miso",
+    "nombrePreferido": "Miso",
+    "sinonimos": [
+      "Pasta de miso",
+      "Miso blanco"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

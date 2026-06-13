@@ -1,0 +1,1420 @@
+[
+  {
+    "nombre": "Sukiyaki",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el hot pot japonés de carne finísima, tofu y verduras cocidos en la mesa en un caldo dulzón de soja; convivial y sin azúcar ni fideos",
+    "riesgos": "carne gruesa que se endurece; caldo desbalanceado entre dulce y salado",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Carne",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bife angosto cortado finísimo; casi congelada corta más fino"
+      },
+      {
+        "canon": "tofu firme",
+        "textoOriginal": "Tofu firme",
+        "seccion": "Verduras",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Verduras",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Verduras",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "repollo blanco",
+        "textoOriginal": "Repollo blanco",
+        "seccion": "Verduras",
+        "cantidad": "0,25",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Caldo",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Caldo",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "o sake; el sake es lo auténtico"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Caldo",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar y el mirin"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Caldo",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Servir",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "crudos, para mojar; el clásico baño de huevo batido, opcional"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Warishita",
+        "detalle": "Mezclar soja, jerez, eritritol y agua para el caldo dulzón.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El equilibrio dulce-salado del caldo es la base.",
+        "errorComun": "Caldo demasiado salado o dulce.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar la olla",
+        "detalle": "En una sartén amplia disponer el tofu, los hongos, el verdeo y el repollo por sectores. Verter parte del caldo.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Ordenar por sectores deja cada cosa en su punto.",
+        "errorComun": "Mezclar todo y cocción despareja.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar",
+        "detalle": "Llevar a hervor suave y cocinar las verduras 8 min, sumando caldo a medida que se consume.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Hervor suave para que no se deshaga el tofu.",
+        "errorComun": "Hervor fuerte.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Carne",
+        "detalle": "Sumergir las tiras de carne de a poco en el caldo caliente, apenas 30 a 60 seg cada tanda.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: la carne es finísima; segundos en el caldo y queda tierna.",
+        "errorComun": "Hervirla y endurecerla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Servir",
+        "detalle": "Servir con el huevo batido crudo aparte para mojar, si se desea.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El huevo crudo aporta cremosidad al clásico.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Yakitori",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Grillado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "las brochetas de pollo glaseadas con salsa tare de soja, dulzona y brillante; sin azúcar y de cero hidratos",
+    "riesgos": "glasear demasiado pronto quema la salsa; pollo seco por brasa excesiva",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "muslos",
+        "textoOriginal": "Muslos",
+        "seccion": "Brochetas",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "deshuesados, en cubos de 3 cm; el muslo queda jugoso"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Brochetas",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "parte blanca, en trozos"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Tare",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Tare",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "o sake"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Tare",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Tare",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Tare",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados en agua"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Tare",
+        "detalle": "Reducir soja, jerez, eritritol, jengibre y ajo a fuego medio 8 min hasta que espese y brille.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: reducir bien la tare le da el brillo y el cuerpo sin azúcar.",
+        "errorComun": "Salsa líquida que no glasea.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Ensartar el pollo alternando con trozos de verdeo en los palillos remojados.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Palillos remojados para que no se quemen.",
+        "errorComun": "Palillos secos que se prenden fuego.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "Cocinar las brochetas en plancha o parrilla fuerte 6 min, girando, hasta dorar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorar primero, glasear después.",
+        "errorComun": "Pintar con salsa desde el inicio y quemarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Glasear",
+        "detalle": "Pincelar con la tare y cocinar 2 a 3 min más girando, hasta laqueadas.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: glasear sobre el final para que no se queme el dulzor.",
+        "errorComun": "Quemar la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Karaage de pollo",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Frito",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el pollo frito japonés, jugoso y crocante, marinado en soja y jengibre; rebozado con harina de almendra en vez de fécula para que sea low-carb",
+    "riesgos": "aceite poco caliente empapa el rebozado; trozos grandes quedan crudos adentro",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "muslos",
+        "textoOriginal": "Muslos",
+        "seccion": "Marinada",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "deshuesados, en trozos de 4 cm"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o sake"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Rebozado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batido"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Rebozado",
+        "cantidad": "120",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza la fécula"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Fritura",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para freír; o aceite neutro para fritura"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el pollo con soja, jerez, jengibre y ajo; marinar 20 min.",
+        "tiempoEstimadoLabel": "20 min",
+        "tiempoEstimadoMin": 20,
+        "puntoClave": "El marinado sazona desde adentro.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rebozar",
+        "detalle": "Escurrir el pollo, pasar por huevo y luego por harina de almendra, presionando.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Presionar el rebozado para que se adhiera.",
+        "errorComun": "Rebozado flojo que se cae.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Freír",
+        "detalle": "Calentar el aceite a 170°C y freír el pollo en tandas 4 a 5 min hasta dorado y cocido.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: aceite a 170°C; más frío empapa, más caliente quema y deja crudo el centro.",
+        "errorComun": "Aceite tibio que absorbe grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Escurrir",
+        "detalle": "Escurrir sobre rejilla o papel y servir con limón.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Escurrir bien para que quede crocante.",
+        "errorComun": "Apilarlos y que se ablanden.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salmón shioyaki",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Grillado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "salmón salado y grillado a la japonesa, de piel crocante y carne jugosa; minimalista, puro pescado, sin hidratos",
+    "riesgos": "no salar con tiempo no extrae la humedad; piel pegada por sartén poco caliente",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones con piel"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Salado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salar",
+        "detalle": "Salar los medallones por ambos lados y dejar 30 min en la heladera; secar el líquido que sueltan.",
+        "tiempoEstimadoLabel": "32 min",
+        "tiempoEstimadoMin": 32,
+        "puntoClave": "⚠️ Punto crítico: el salado previo extrae humedad y concentra el sabor.",
+        "errorComun": "Salar al momento y que quede aguado.",
+        "notas": "Tiempo activo: 2 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Calentar",
+        "detalle": "Llevar una sartén o plancha a fuego medio-alto con el aceite.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Sartén bien caliente para que la piel no se pegue.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar piel",
+        "detalle": "Cocinar primero del lado de la piel 4 min sin mover, hasta crocante.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: no mover hasta que la piel se despegue sola.",
+        "errorComun": "Darlo vuelta antes de tiempo y romper la piel.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Dar vuelta y cocinar 2 min más, dejando el centro jugoso. Servir con limón.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Centro apenas tierno, no seco.",
+        "errorComun": "Pasarlo de cocción.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Buta no shogayaki",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "cerdo finito salteado en una salsa intensa de jengibre y soja; un plato casero japonés rapidísimo y sin azúcar",
+    "riesgos": "cerdo grueso que se endurece; salsa que se evapora antes de glasear",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "cerdo en tiras",
+        "textoOriginal": "Cerdo en tiras",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bien finas"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o sake"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salsa",
+        "cantidad": "25",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado; abundante, es el alma del plato"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salsa",
+        "detalle": "Mezclar soja, jerez, eritritol, jengibre y ajo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Jengibre generoso: define el shogayaki.",
+        "errorComun": "Poco jengibre y plato plano.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cebolla",
+        "detalle": "Saltear la cebolla en el aceite 3 min hasta tierna.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cerdo",
+        "detalle": "Subir el fuego y saltear el cerdo 3 a 4 min hasta dorar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: fuego fuerte y rápido para que dore y no hierva.",
+        "errorComun": "Amontonarlo y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Glasear",
+        "detalle": "Sumar la salsa y saltear 2 min hasta que glasee la carne. Terminar con verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Reducir apenas para glasear sin secar.",
+        "errorComun": "Evaporar de más y resecar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Agedashi tofu",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Frito",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "cubos de tofu apenas dorados bañados en un caldo tibio de soja y jengibre; entrada elegante y reconfortante, con rebozado de almendra en vez de fécula",
+    "riesgos": "tofu mal escurrido salpica al freír; caldo muy salado tapa el tofu",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tofu firme",
+        "textoOriginal": "Tofu firme",
+        "seccion": "Tofu",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos grandes; escurrido y seco"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Tofu",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "para rebozar; reemplaza la fécula"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Tofu",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para freír"
+      },
+      {
+        "canon": "caldo de verduras",
+        "textoOriginal": "Caldo de verduras",
+        "seccion": "Caldo",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "hace de dashi"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Caldo",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o mirin"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Caldo",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Escurrir tofu",
+        "detalle": "Envolver el tofu en papel y prensar 10 min con un peso para sacar el agua.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: tofu bien seco no salpica y dora mejor.",
+        "errorComun": "Tofu mojado que salta en el aceite.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Caldo",
+        "detalle": "Calentar caldo, soja, jerez y jengibre sin que hierva; mantener tibio.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Caldo tibio y suave para no tapar el tofu.",
+        "errorComun": "Caldo muy salado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Rebozar y freír",
+        "detalle": "Pasar los cubos por harina de almendra y freír en aceite caliente hasta dorados. Escurrir.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorado parejo y crocante.",
+        "errorComun": "Aceite tibio que empapa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Apoyar el tofu en bowls, bañar con el caldo tibio y terminar con verdeo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Servir al momento para que conserve lo crocante.",
+        "errorComun": "Dejarlo en el caldo y que se ablande.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sopa de miso",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la sopa diaria japonesa de miso con tofu y verdeo, reconfortante y rápida; aporta umami y probióticos sin un gramo de hidrato",
+    "riesgos": "hervir el miso lo amarga y mata los fermentos; sal de más por no probar",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "caldo de verduras",
+        "textoOriginal": "Caldo de verduras",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": "hace de dashi"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Caldo",
+        "cantidad": "8",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "miso",
+        "textoOriginal": "Miso",
+        "seccion": "Miso",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "pasta de soja fermentada"
+      },
+      {
+        "canon": "tofu firme",
+        "textoOriginal": "Tofu firme",
+        "seccion": "Sólidos",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Sólidos",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Caldo",
+        "detalle": "Calentar el caldo con el jengibre hasta hervor suave, 5 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Un buen caldo es la base de la sopa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Tofu",
+        "detalle": "Bajar el fuego, sumar el tofu y calentar 2 min sin hervir fuerte.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Calor suave para que el tofu no se rompa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Disolver miso",
+        "detalle": "Apagar el fuego. Disolver el miso en un cucharón de caldo aparte y recién ahí integrarlo a la olla.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: el miso se suma fuera del hervor para no amargarlo ni matar los fermentos.",
+        "errorComun": "Hervir el miso y arruinarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con el verdeo y servir de inmediato.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "Servir recién hecha.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pescado al miso",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "pescado marinado en miso dulzón estilo saikyo-yaki, que queda sedoso y laqueado; elegante, de restaurante y sin azúcar",
+    "riesgos": "marinada corta no penetra; grill demasiado fuerte quema el miso",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "merluza negra",
+        "textoOriginal": "Merluza negra",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones; o salmón"
+      },
+      {
+        "canon": "miso",
+        "textoOriginal": "Miso",
+        "seccion": "Marinada",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o sake"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el mirin azucarado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "8",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Servir",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar miso, jerez, eritritol y jengibre; untar el pescado y marinar mínimo 2 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: el miso cura el pescado y lo deja sedoso; más tiempo, mejor.",
+        "errorComun": "Marinar 10 min y que quede plano.",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Limpiar",
+        "detalle": "Retirar el exceso de miso del pescado con los dedos o papel.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Sacar el exceso evita que se queme.",
+        "errorComun": "Hornearlo con la pasta encima y quemarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Hornear a 200°C o bajo grill medio 10 a 12 min, hasta laqueado y cocido.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: grill medio; el miso se dora y quema rápido.",
+        "errorComun": "Grill fuerte que carboniza.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con verdeo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Nasu dengaku",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "berenjenas horneadas glaseadas con miso dulzón, cremosas por dentro y laqueadas arriba; guarnición vegetariana de mucho umami",
+    "riesgos": "berenjena poco cocida queda dura; glaseado quemado por grill fuerte",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Principal",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "cortadas al medio a lo largo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Principal",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "miso",
+        "textoOriginal": "Miso",
+        "seccion": "Glaseado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o sake"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hornear berenjena",
+        "detalle": "Hacer cortes en cruz en la pulpa, pincelar con aceite y hornear a 200°C 20 min, hasta tiernas.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: la berenjena tiene que quedar bien cremosa antes de glasear.",
+        "errorComun": "Glasear sobre berenjena cruda y dura.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Glaseado",
+        "detalle": "Mezclar miso, jerez, eritritol y aceite de sésamo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El glaseado dulzón es el sello del dengaku.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Gratinar",
+        "detalle": "Pincelar la pulpa con el glaseado y gratinar bajo grill medio 3 a 4 min hasta dorar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: grill medio y mirar de cerca; el miso se quema rápido.",
+        "errorComun": "Quemar el glaseado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con semillas de sésamo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sunomono de pepino",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Mezclado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la ensalada japonesa de pepino en vinagre de arroz, fresca y ácida; el contrapunto liviano perfecto, sin azúcar",
+    "riesgos": "pepino sin escurrir aguada el aliño; demasiado vinagre tapa todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas muy finas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "para sudar"
+      },
+      {
+        "canon": "vinagre de arroz",
+        "textoOriginal": "Vinagre de arroz",
+        "seccion": "Aliño",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Aliño",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Aliño",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sudar pepino",
+        "detalle": "Salar las rodajas de pepino y dejar 10 min; exprimir el agua que sueltan.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: exprimir el pepino evita que el aliño quede aguado.",
+        "errorComun": "Pepino mojado que diluye el vinagre.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aliño",
+        "detalle": "Mezclar vinagre, eritritol y soja hasta disolver.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Disolver bien el eritritol.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Unir",
+        "detalle": "Mezclar el pepino con el aliño y terminar con sésamo. Servir frío.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Mejor bien frío.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]
