@@ -16,6 +16,7 @@ function makeReceta(overrides: Partial<Receta>): Receta {
     escenarioUso: "Cena Especial",
     pensadaPara: "Especial",
     sinLacteos: false,
+    sinGluten: false,
     hidratos: false,
     aptoNocheDeADos: "Sí",
     paraJuanPablo: true,
@@ -305,5 +306,61 @@ describe("filtrarRecetas — maxNetos", () => {
     // REC-001 tiene sinLacteos: false — no pasa el filtro booleano
     const r = filtrarRecetas(RECETAS, { ...FILTROS_INICIALES, maxNetos: 10, sinLacteos: true }, macros);
     expect(r).toHaveLength(0);
+  });
+});
+
+// ─── Filtro sinGluten (Sin TACC) ──────────────────────────────────────────────
+
+describe("filtrarRecetas — sinGluten", () => {
+  const sinTacc  = makeReceta({ idReceta: "REC-030", sinGluten: true });
+  const conTacc  = makeReceta({ idReceta: "REC-031", sinGluten: false });
+  const sinCampo = makeReceta({ idReceta: "REC-032" }); // sinGluten ausente → false
+
+  it("sinGluten:true solo devuelve recetas con sinGluten=true", () => {
+    const r = filtrarRecetas([sinTacc, conTacc, sinCampo], { ...FILTROS_INICIALES, sinGluten: true });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-030");
+  });
+
+  it("sinGluten:false (filtro desactivado) devuelve todas", () => {
+    const r = filtrarRecetas([sinTacc, conTacc, sinCampo], FILTROS_INICIALES);
+    expect(r).toHaveLength(3);
+  });
+
+  it("receta con sinGluten ausente no pasa el filtro sinGluten", () => {
+    const r = filtrarRecetas([sinCampo], { ...FILTROS_INICIALES, sinGluten: true });
+    expect(r).toHaveLength(0);
+  });
+
+  it("hayFiltrosActivos es true cuando sinGluten está activo", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, sinGluten: true })).toBe(true);
+  });
+});
+
+// ─── Filtro tecnica ───────────────────────────────────────────────────────────
+
+describe("filtrarRecetas — tecnica", () => {
+  const alHorno    = makeReceta({ idReceta: "REC-040", tecnica: "Horno" });
+  const aLaPlancha = makeReceta({ idReceta: "REC-041", tecnica: "Parrilla / Plancha" });
+  const sinTecnica = makeReceta({ idReceta: "REC-042" }); // tecnica ausente
+
+  it("filtra por técnica Horno", () => {
+    const r = filtrarRecetas([alHorno, aLaPlancha, sinTecnica], { ...FILTROS_INICIALES, tecnica: "Horno" });
+    expect(r).toHaveLength(1);
+    expect(r[0].idReceta).toBe("REC-040");
+  });
+
+  it("receta sin campo tecnica no matchea ninguna técnica", () => {
+    const r = filtrarRecetas([sinTecnica], { ...FILTROS_INICIALES, tecnica: "Horno" });
+    expect(r).toHaveLength(0);
+  });
+
+  it("sin filtro de tecnica devuelve todas", () => {
+    const r = filtrarRecetas([alHorno, aLaPlancha, sinTecnica], FILTROS_INICIALES);
+    expect(r).toHaveLength(3);
+  });
+
+  it("hayFiltrosActivos es true cuando tecnica tiene valor", () => {
+    expect(hayFiltrosActivos({ ...FILTROS_INICIALES, tecnica: "Horno" })).toBe(true);
   });
 });

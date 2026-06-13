@@ -6,7 +6,9 @@ export interface FiltrosReceta {
   tipoItem: string;
   proteina: string;      // puede ser hoja ("Aves") o grupo ("Carnes rojas")
   cocina: string;
+  tecnica: string;
   sinLacteos: boolean;
+  sinGluten: boolean;
   sinHidratos: boolean;
   esVegetariano: boolean;
   esKeto: boolean;
@@ -18,7 +20,9 @@ export const FILTROS_INICIALES: FiltrosReceta = {
   tipoItem: "",
   proteina: "",
   cocina: "",
+  tecnica: "",
   sinLacteos: false,
+  sinGluten: false,
   sinHidratos: false,
   esVegetariano: false,
   esKeto: false,
@@ -49,7 +53,9 @@ export function filtrarRecetas(
     }
 
     if (filtros.cocina && r.estilo !== filtros.cocina && r.cocina !== filtros.cocina) return false;
+    if (filtros.tecnica && r.tecnica !== filtros.tecnica) return false;
     if (filtros.sinLacteos && !r.sinLacteos) return false;
+    if (filtros.sinGluten && !r.sinGluten) return false;
     if (filtros.sinHidratos && r.hidratos) return false;
     if (filtros.esVegetariano && !r.esVegetariano) return false;
     if (filtros.esKeto && !r.esKeto) return false;
@@ -69,7 +75,9 @@ export function hayFiltrosActivos(filtros: FiltrosReceta): boolean {
     filtros.tipoItem ||
     filtros.proteina ||
     filtros.cocina ||
+    filtros.tecnica ||
     filtros.sinLacteos ||
+    filtros.sinGluten ||
     filtros.sinHidratos ||
     filtros.esVegetariano ||
     filtros.esKeto ||

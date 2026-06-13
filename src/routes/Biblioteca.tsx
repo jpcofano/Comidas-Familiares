@@ -10,7 +10,7 @@ import { macrosDeReceta } from "../lib/macros";
 import { filtrarRecetas, hayFiltrosActivos, FILTROS_INICIALES } from "../lib/filtros";
 import type { FiltrosReceta, MacrosPorReceta } from "../lib/filtros";
 import type { Receta, Menu, MenuDerived, Ingrediente } from "../types/models";
-import { TIPOS_ITEM, COCINAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
+import { TIPOS_ITEM, COCINAS, TECNICAS, GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN } from "../types/models";
 
 // ─── Cache de derivados de menú (por sesión) ──────────────────────────────────
 
@@ -193,7 +193,7 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
   );
   const filtrosActivos = hayFiltrosActivos(filtros);
 
-  function toggle(campo: "sinLacteos" | "sinHidratos" | "esVegetariano" | "esKeto") {
+  function toggle(campo: "sinLacteos" | "sinGluten" | "sinHidratos" | "esVegetariano" | "esKeto") {
     setFiltros(f => ({ ...f, [campo]: !f[campo] }));
   }
 
@@ -267,6 +267,14 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
           <option value="">Todas las cocinas</option>
           {COCINAS.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
+        <select
+          value={filtros.tecnica}
+          onChange={e => setFiltros(f => ({ ...f, tecnica: e.target.value }))}
+          style={selectStyle}
+        >
+          <option value="">Todas las técnicas</option>
+          {TECNICAS.map(t => <option key={t} value={t}>{t}</option>)}
+        </select>
       </div>
 
       {/* Toggles booleanos + limpiar */}
@@ -298,6 +306,13 @@ function TabRecetas({ memberId, isJP }: { memberId: string; isJP: boolean }) {
           style={{ fontSize: "var(--fs-sm)" }}
         >
           Keto
+        </button>
+        <button
+          className={`btn ${filtros.sinGluten ? "btn-primary" : "btn-secondary"}`}
+          onClick={() => toggle("sinGluten")}
+          style={{ fontSize: "var(--fs-sm)" }}
+        >
+          Sin TACC
         </button>
       </div>
 

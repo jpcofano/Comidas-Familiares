@@ -16,6 +16,7 @@ function makeReceta(overrides: Partial<Receta> = {}): Receta {
     escenarioUso: "Cena Especial",
     pensadaPara: "Especial",
     sinLacteos: true,
+    sinGluten: false,
     hidratos: false,
     aptoNocheDeADos: "Sí",
     paraJuanPablo: true,

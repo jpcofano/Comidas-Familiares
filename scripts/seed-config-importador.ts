@@ -49,6 +49,7 @@ escenarioUso: [uno de exactamente: Noche de a dos, Cocina rápida, Cena Especial
 porciones: [número, ej: 4 — o rango, ej: 4 a 6]
 dificultad: [uno de exactamente: Baja, Media, Media-alta, Alta]
 sinLacteos: [Sí o No]
+sinGluten: [Sí o No — Sí si NO lleva harina de trigo, pan, pan rallado, pasta, sémola, cuscús, cebada, centeno ni avena no certificada (ni rebozados/empanados con esos). Las harinas de almendra/coco/garbanzo y el rebozado con harina de almendra SÍ son sin gluten. Atención: la salsa de soja común contiene trigo — solo el tamari es sin gluten.]
 hidratos: [Sí o No — Sí si la receta lleva hidratos integrados como arroz, pasta o papas]
 esVegetariano: [Sí o No — Sí si no lleva ninguna proteína animal]
 tiempoActivo: [tiempo activo en cocina, ej: 20 min — o: 1 h 30 min]
@@ -62,6 +63,8 @@ pensadaPara: [uno de exactamente: Especial, Semana, Cualquiera]
 cocina: [uno de exactamente: Argentina, Italiana, Española, Francesa, Mediterránea, China, Japonesa, Coreana, Tailandesa, India, Mexicana, Peruana, Árabe / Medio Oriente, Estadounidense, Otra]
   (campo obligatorio filtrable — elegí la cocina de ORIGEN del plato, no el estilo descriptivo; si no encaja en ninguna cocina real usá Otra)
 estilo: [subtítulo libre y descriptivo, ej: "Steakhouse", "Criollo / parrilla", "Familiar rápido" — NO repetir el valor de cocina aquí]
+tecnica: [uno de exactamente: Horno, Parrilla / Plancha, Salteado / Sartén, Frito, Hervido, Guiso / Braseado, Crudo / Sin cocción, Licuado / Procesado, Otra]
+  (técnica principal filtrable — dejar tecnicaPrincipal para el subtítulo libre descriptivo)
 hidratoOpcional: [si aplica: hidrato para servir aparte, ej: Arroz blanco — si no aplica, omitir esta línea]
 notas: [notas generales — si no hay, omitir esta línea]
 fuente: ChatGPT
@@ -130,6 +133,7 @@ escenarioUso: Cocina rápida
 porciones: 4
 dificultad: Baja
 sinLacteos: No
+sinGluten: No
 hidratos: No
 esVegetariano: No
 tiempoActivo: 20 min
@@ -142,6 +146,7 @@ climaDelPlato: Medio
 pensadaPara: Semana
 cocina: India
 estilo: Curry cremoso
+tecnica: Salteado / Sartén
 fuente: ChatGPT
 
 #INGREDIENTES

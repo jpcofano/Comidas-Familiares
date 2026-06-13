@@ -48,6 +48,7 @@ export async function crearPlantillaCompraRapida(
       escenarioUso: "Cocina rápida",
       pensadaPara: "Semana",
       sinLacteos: false,
+      sinGluten: false,
       hidratos: false,
       aptoNocheDeADos: "No",
       paraJuanPablo: true,

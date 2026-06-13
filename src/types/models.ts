@@ -70,6 +70,12 @@ export type Cocina = typeof COCINAS[number];
 export const DIFICULTADES = ["Baja", "Media", "Media-alta", "Alta"] as const;
 export type Dificultad = typeof DIFICULTADES[number];
 
+export const TECNICAS = [
+  "Horno", "Parrilla / Plancha", "Salteado / Sartén", "Frito", "Hervido",
+  "Guiso / Braseado", "Crudo / Sin cocción", "Licuado / Procesado", "Otra",
+] as const;
+export type Tecnica = typeof TECNICAS[number];
+
 export const COSTOS = ["Bajo", "Medio", "Medio/Alto", "Alto"] as const;
 export type Costo = typeof COSTOS[number];
 
@@ -163,12 +169,14 @@ export interface Receta {
   proteinaPrincipal: Proteina;
   estilo: string;
   tecnicaPrincipal: string;
+  tecnica?: Tecnica;        // técnica canónica filtrable (E14.8)
   escenarioUso: Escenario;
   climaDelPlato?: ClimaPlato;
   pensadaPara: PensadaPara;
   cocina?: Cocina;
 
   sinLacteos: boolean;
+  sinGluten: boolean;       // true = apta sin TACC; ausente tratado como false (E14.8)
   hidratos: boolean;
   esVegetariano?: boolean;  // true = sin proteína animal (E9.0)
   esKeto?: boolean;          // true = !hidratos (E9.0, derivado)

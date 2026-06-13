@@ -2,10 +2,10 @@ import { normalizeText } from "../lib/canonical";
 import { parseTime, parseDificultad, parseCosto, parseSiNo, parseNumber } from "../lib/parsers";
 import type {
   TipoItem, Proteina, Escenario, ClimaPlato, PensadaPara,
-  AptoNocheDeADos, Dificultad, Costo, Cocina,
+  AptoNocheDeADos, Dificultad, Costo, Cocina, Tecnica,
 } from "../types/models";
 import {
-  TIPOS_ITEM, PROTEINAS, ESCENARIOS, CLIMAS_PLATO, PENSADA_PARA, APTO_NOCHE_DE_A_DOS, COCINAS,
+  TIPOS_ITEM, PROTEINAS, ESCENARIOS, CLIMAS_PLATO, PENSADA_PARA, APTO_NOCHE_DE_A_DOS, COCINAS, TECNICAS,
 } from "../types/models";
 
 // ─── Tipos exportados ─────────────────────────────────────────────────────────
@@ -48,6 +48,7 @@ export interface ParsedReceta {
   pensadaPara: PensadaPara;
   cocina?: Cocina;
   sinLacteos: boolean;
+  sinGluten: boolean;
   hidratos: boolean;
   esVegetariano?: boolean;
   aptoNocheDeADos: AptoNocheDeADos;
@@ -64,6 +65,7 @@ export interface ParsedReceta {
   porcionesMax: number | null;
   costoEstimado: Costo;
   costoOrden: number;
+  tecnica?: Tecnica;
   hidratoOpcional?: string;
   notas?: string;
   fuente: string;
@@ -153,6 +155,14 @@ function parseBloqueReceta(
     errors.push(`${nombreDisplay}: 'cocina' inválido: "${cocinaRaw}". Valores: ${COCINAS.join(", ")}.`);
   }
 
+  const tecnicaRaw = kv["tecnica"];
+  const tecnica = tecnicaRaw !== undefined && tecnicaRaw !== ""
+    ? matchEnum(tecnicaRaw, TECNICAS)
+    : undefined;
+  if (tecnicaRaw !== undefined && tecnicaRaw !== "" && !tecnica) {
+    errors.push(`${nombreDisplay}: 'tecnica' inválido: "${tecnicaRaw}". Valores: ${TECNICAS.join(", ")}.`);
+  }
+
   const difResult = parseDificultad(kv["dificultad"] ?? "");
   if (!difResult.label) {
     errors.push(`${nombreDisplay}: 'dificultad' inválido: "${kv["dificultad"] ?? ""}". Valores: Baja, Media, Media-alta, Alta.`);
@@ -180,6 +190,9 @@ function parseBloqueReceta(
 
   const sinLacteosRaw = kv["sinLacteos"];
   const sinLacteos = sinLacteosRaw !== undefined ? (parseSiNo(sinLacteosRaw) ?? true) : true;
+
+  const sinGlutenRaw = kv["sinGluten"];
+  const sinGluten = sinGlutenRaw !== undefined ? (parseSiNo(sinGlutenRaw) ?? false) : false;
 
   const hidratosRaw = kv["hidratos"];
   const hidratos = hidratosRaw !== undefined ? (parseSiNo(hidratosRaw) ?? false) : false;
@@ -307,7 +320,9 @@ function parseBloqueReceta(
       ...(climaDelPlato ? { climaDelPlato } : {}),
       pensadaPara,
       ...(cocina ? { cocina } : {}),
+      ...(tecnica ? { tecnica } : {}),
       sinLacteos,
+      sinGluten,
       hidratos,
       ...(esVegetariano !== undefined ? { esVegetariano } : {}),
       aptoNocheDeADos,
