@@ -1,0 +1,1789 @@
+[
+  {
+    "nombre": "Butter chicken",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guisado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el murgh makhani cremoso de tomate y manteca, suave y reconfortante; el curry que les gusta a todos, sin azúcar ni harinas",
+    "riesgos": "cortar la crema con fuego alto; salsa de tomate cruda por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Marinada",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo, en cubos de 3 cm; el muslo queda más jugoso"
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Marinada",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "da color"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el pollo con yogur, garam masala, jengibre y ajo; dejar 20 min.",
+        "tiempoEstimadoLabel": "20 min",
+        "tiempoEstimadoMin": 20,
+        "puntoClave": "El yogur ablanda y lleva las especias adentro.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar pollo",
+        "detalle": "En sartén con un poco de manteca, dorar el pollo en tandas hasta marcarlo. Reservar; no hace falta que esté cocido.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Marcar el pollo da el sabor \"tandoori\".",
+        "errorComun": "Amontonarlo y que hierva.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Derretir la manteca, rehogar la cebolla 6 min; sumar pimentón y garam masala 1 min, luego el tomate y cocinar 10 min.",
+        "tiempoEstimadoLabel": "18 min",
+        "tiempoEstimadoMin": 18,
+        "puntoClave": "Cocinar bien el tomate quita la acidez cruda.",
+        "errorComun": "Salsa ácida por poca cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Crema",
+        "detalle": "Bajar el fuego, incorporar la crema y mezclar.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo al sumar la crema para que no se corte.",
+        "errorComun": "Hervir fuerte y cortar la salsa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Unir",
+        "detalle": "Volver el pollo y cocinar 6 min en la salsa hasta cocido y jugoso. Terminar con cilantro.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "El pollo se termina de cocer en la salsa.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo tandoori",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "muslos marinados en yogur y especias, asados hasta dorar; jugosos, picantes y sin nada de hidrato",
+    "riesgos": "marinada corta da poco sabor; horno flojo no dora ni seca el exceso de yogur",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "muslos",
+        "textoOriginal": "Muslos",
+        "seccion": "Pollo",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con hueso, sin piel, con cortes; hacerles tajos para que penetre la marinada"
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Marinada",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "aporta el color rojo"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Hacer tajos en los muslos. Mezclar todos los ingredientes de la marinada y cubrir el pollo. Marinar mínimo 1,5 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: los tajos y el tiempo hacen que la marinada penetre.",
+        "errorComun": "Marinar 10 min y que quede plano.",
+        "notas": "Tiempo activo: 12 min; el resto es heladera."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Acomodar",
+        "detalle": "Sacar el exceso de marinada y disponer los muslos sobre rejilla en una fuente.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Sacar el exceso permite que dore en vez de hervir.",
+        "errorComun": "Hornear ahogado en yogur.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 220°C 30 a 35 min, dando vuelta a la mitad, hasta dorado y cocido.",
+        "tiempoEstimadoLabel": "35 min",
+        "tiempoEstimadoMin": 35,
+        "puntoClave": "Horno fuerte para imitar el tandoor y dorar los bordes.",
+        "errorComun": "Horno flojo que lo deja pálido.",
+        "notas": "Tiempo activo: 2 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con cilantro y un chorro de limón.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El limón al final levanta el plato.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Palak paneer",
+    "estilo": "India",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Guisado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el clásico de espinaca cremosa con cubos de queso fresco haciendo de paneer; vegetariano, contundente y low-carb",
+    "riesgos": "espinaca sobrecocida pierde el verde; queso que se deshace si se revuelve de más",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "espinaca",
+        "textoOriginal": "Espinaca",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "lavada"
+      },
+      {
+        "canon": "queso fresco",
+        "textoOriginal": "Queso fresco",
+        "seccion": "Principal",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos, como paneer"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Base",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Cremoso",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cremoso",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Blanquear espinaca",
+        "detalle": "Hervir la espinaca 1 min, escurrir y procesar a puré.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: blanqueo corto para conservar el verde intenso.",
+        "errorComun": "Hervirla de más y dejarla gris.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Rehogar cebolla en manteca 5 min; sumar ajo, jengibre, comino y garam masala 1 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Cocinar las especias en grasa libera el aroma.",
+        "errorComun": "Especias en seco que amargan.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Unir",
+        "detalle": "Agregar el puré de espinaca y la crema; cocinar 5 min y salar.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "La crema redondea el amargor de la espinaca.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Queso",
+        "detalle": "Sumar los cubos de queso y calentar 3 min moviendo la sartén, sin revolver fuerte.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Mover la sartén para no deshacer el queso.",
+        "errorComun": "Revolver y desarmar los cubos.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Vindaloo de cerdo",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el curry goano picante y agrio de cerdo, marinado en vinagre y especias; intenso, profundo y naturalmente sin lácteos ni harinas",
+    "riesgos": "poca marinada no da el agrio característico; cocción apurada deja el cerdo duro",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Marinada",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 4 cm"
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Marinada",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "el ácido del vindaloo"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza al chile cachemir"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "peperoncino",
+        "textoOriginal": "Peperoncino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en hojuelas; regular el picante"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Cocción",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Cocción",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el cerdo con vinagre, pimentón, comino, cúrcuma, peperoncino, ajo y jengibre. Marinar mínimo 1 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: la marinada de vinagre define el agrio del vindaloo.",
+        "errorComun": "Saltearla y perder el carácter.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Escurrir el cerdo (reservar la marinada) y dorarlo en tandas en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Dorar en tandas para que no hierva.",
+        "errorComun": "Amontonarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Base",
+        "detalle": "Rehogar la cebolla 8 min; sumar el tomate y la marinada reservada y cocinar 5 min.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "Cocinar la marinada quita el crudo del vinagre.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver el cerdo, sumar caldo y sal, tapar y cocinar a fuego mínimo 1 h hasta tierno.",
+        "tiempoEstimadoLabel": "1 h",
+        "tiempoEstimadoMin": 60,
+        "puntoClave": "Cocción lenta para ablandar el cerdo.",
+        "errorComun": "Apurar y endurecer.",
+        "notas": "Tiempo activo: 3 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Keema de carne",
+    "estilo": "India",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "carne picada especiada estilo indio, rápida y económica, que rinde y recalienta bien; sin papa ni arvejas para mantenerla low-carb",
+    "riesgos": "carne amontonada que hierve; especias en seco que se queman",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "magra"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "12",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar carne",
+        "detalle": "Dorar la carne picada en el aceite caliente, deshaciéndola, hasta que se evapore el líquido y empiece a dorar. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dorar de verdad, no solo cambiar de color; ahí está el sabor.",
+        "errorComun": "Carne gris hervida en su jugo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "En la misma sartén rehogar cebolla 6 min; sumar ajo y jengibre 1 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Especias",
+        "detalle": "Bajar el fuego, sumar garam masala, comino, cúrcuma y pimentón 1 min en la grasa.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: tostar las especias en grasa, no en seco.",
+        "errorComun": "Quemarlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Guisar",
+        "detalle": "Volver la carne, sumar el tomate y la sal; cocinar 8 min. Terminar con cilantro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El guiso corto integra los sabores.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Cordero korma",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cordero",
+    "tecnicaPrincipal": "Guisado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h 45 min",
+    "tiempoTotalMin": 105,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "curry suave y aromático de cordero en salsa de yogur, crema y almendras; elegante y delicado, sin el dulzor ni las harinas habituales",
+    "riesgos": "cortar el yogur con fuego alto; salsa fina por no moler bien las almendras",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "cordero en cubos",
+        "textoOriginal": "Cordero en cubos",
+        "seccion": "Principal",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de paleta o pierna"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "15",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "almendras",
+        "textoOriginal": "Almendras",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "molidas; espesan la salsa"
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero, batido"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar cordero",
+        "detalle": "Dorar los cubos de cordero en tandas en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Dorar bien da color y sabor a la salsa.",
+        "errorComun": "Amontonar y estofar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Rehogar la cebolla 8 min hasta dorar; sumar ajo, jengibre, garam masala y comino 1 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "La cebolla dorada es la base del korma.",
+        "errorComun": "Cebolla pálida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar las almendras molidas, el caldo y volver el cordero. Tapar y cocinar a fuego mínimo 1 h.",
+        "tiempoEstimadoLabel": "1 h 5 min",
+        "tiempoEstimadoMin": 65,
+        "puntoClave": "Las almendras espesan sin harina.",
+        "errorComun": "Salsa fina por almendra mal molida.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Apagar el fuego, esperar 2 min e incorporar yogur y crema fuera del hervor. Ajustar sal.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: yogur y crema fuera del hervor para que no se corten.",
+        "errorComun": "Agregarlos hirviendo y cortar la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Langostinos al curry de coco",
+    "estilo": "India",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Guisado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "curry costero de langostinos en leche de coco y especias, cremoso y perfumado, naturalmente sin lácteos",
+    "riesgos": "hervir fuerte el coco lo corta; sobrecocinar los langostinos los pone gomosos",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, limpios"
+      },
+      {
+        "canon": "aceite de coco",
+        "textoOriginal": "Aceite de coco",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o aceite de oliva"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "12",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Rehogar la cebolla en el aceite de coco 6 min; sumar ajo y jengibre 1 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Especias y tomate",
+        "detalle": "Sumar cúrcuma, comino y pimentón 1 min; agregar el tomate y cocinar 5 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Cocinar el tomate concentra la base.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Coco",
+        "detalle": "Agregar la leche de coco y llevar a hervor muy suave 5 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: hervor apenas perceptible para que el coco no se corte.",
+        "errorComun": "Hervir fuerte y separar la grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Langostinos",
+        "detalle": "Sumar los langostinos y cocinar a fuego bajo 4 a 5 min, hasta que estén rosados. Terminar con limón, cilantro y sal.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: apenas se ponen rosados están listos; un minuto de más y se endurecen.",
+        "errorComun": "Recocerlos.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Baingan bharta",
+    "estilo": "India",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Asado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "berenjenas asadas hasta ahumadas y deshechas en un salteado de cebolla, tomate y especias; guarnición vegetariana de mucho sabor y sin hidratos",
+    "riesgos": "berenjena poco asada no da el ahumado; tomate crudo por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Principal",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "grandes"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "picado; regular el picante"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Especias",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en cubos"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar berenjenas",
+        "detalle": "Asar las berenjenas enteras sobre la hornalla o en horno fuerte hasta que la piel se queme y la pulpa quede tierna, 20 min.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: quemar la piel es lo que da el ahumado característico.",
+        "errorComun": "Pulpa cruda sin asar bien.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pelar y pisar",
+        "detalle": "Dejar entibiar, pelar y pisar la pulpa con tenedor.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Sacar toda la piel quemada para que no amargue.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sofrito",
+        "detalle": "Rehogar cebolla 6 min; sumar ajo, jengibre, ají y especias 1 min; agregar el tomate y cocinar 6 min.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "Cocinar bien el tomate antes de la berenjena.",
+        "errorComun": "Tomate crudo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Sumar la pulpa de berenjena y cocinar 5 min integrando. Terminar con cilantro y sal.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Integrar bien para un puré sabroso.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Dal de lentejas",
+    "estilo": "India",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Legumbres",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el guiso de lentejas especiadas con un tarka final de especias en aceite caliente; reconfortante, económico y la proteína de legumbre que casi no hay en la biblioteca",
+    "riesgos": "lentejas sin cocer del todo quedan duras; tarka quemado amarga",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "lenteja seca",
+        "textoOriginal": "Lentejas",
+        "seccion": "Lentejas",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "enjuagadas"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Lentejas",
+        "cantidad": "750",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Lentejas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Lentejas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Tarka",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Tarka",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en grano"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Tarka",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Tarka",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Tarka",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Tarka",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "garam masala",
+        "textoOriginal": "Garam masala",
+        "seccion": "Tarka",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir lentejas",
+        "detalle": "Hervir las lentejas con el agua, la cúrcuma y la sal a fuego bajo 25 a 30 min, hasta tiernas y deshaciéndose un poco.",
+        "tiempoEstimadoLabel": "30 min",
+        "tiempoEstimadoMin": 30,
+        "puntoClave": "Tiernas y cremosas, no enteras y duras.",
+        "errorComun": "Lentejas crudas por poca cocción.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Tarka",
+        "detalle": "En otra sartén, calentar el aceite y tostar el comino 30 seg; sumar ajo, jengibre y cebolla y dorar 6 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: el tarka perfuma el dal; tostar sin quemar.",
+        "errorComun": "Quemar el comino y amargar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Tomate",
+        "detalle": "Sumar el tomate y el garam masala al tarka y cocinar 4 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volcar el tarka sobre las lentejas, mezclar y cocinar 5 min. Terminar con cilantro.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El tarka integrado da el sabor final.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Raita de pepino",
+    "estilo": "India",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Mezclado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el yogur fresco con pepino y menta que calma el picante de los curries; refrescante, rápido y low-carb",
+    "riesgos": "pepino sin escurrir aguada la raita; tostar de más el comino lo amarga",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Base",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero"
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallado y escurrido"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido y tostado"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Escurrir pepino",
+        "detalle": "Rallar el pepino y exprimir bien para sacar el agua.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: escurrir el pepino evita que la raita quede aguada.",
+        "errorComun": "Pepino mojado que la diluye.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar el yogur con el pepino, el comino, la menta, el cilantro y la sal.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Probar y ajustar sal y acidez.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Enfriar",
+        "detalle": "Llevar a la heladera hasta servir. Mejor bien fría.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Servir fría para que cumpla su función de refrescar.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]
