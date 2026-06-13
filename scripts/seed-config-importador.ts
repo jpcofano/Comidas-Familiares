@@ -59,7 +59,9 @@ paraJuanPablo: [Sí o No]
 paraFamilia: [Sí o No]
 climaDelPlato: [uno de exactamente: Liviano, Medio, Potente]
 pensadaPara: [uno de exactamente: Especial, Semana, Cualquiera]
-cocina: [OPCIONAL — uno de exactamente: Argentina, Italiana, Española, Francesa, Mediterránea, China, Japonesa, Coreana, Tailandesa, India, Mexicana, Peruana, Árabe / Medio Oriente, Estadounidense, Otra — omitir si no aplica o no está claro]
+cocina: [uno de exactamente: Argentina, Italiana, Española, Francesa, Mediterránea, China, Japonesa, Coreana, Tailandesa, India, Mexicana, Peruana, Árabe / Medio Oriente, Estadounidense, Otra]
+  (campo obligatorio filtrable — elegí la cocina de ORIGEN del plato, no el estilo descriptivo; si no encaja en ninguna cocina real usá Otra)
+estilo: [subtítulo libre y descriptivo, ej: "Steakhouse", "Criollo / parrilla", "Familiar rápido" — NO repetir el valor de cocina aquí]
 hidratoOpcional: [si aplica: hidrato para servir aparte, ej: Arroz blanco — si no aplica, omitir esta línea]
 notas: [notas generales — si no hay, omitir esta línea]
 fuente: ChatGPT
@@ -138,6 +140,8 @@ paraJuanPablo: Sí
 paraFamilia: Sí
 climaDelPlato: Medio
 pensadaPara: Semana
+cocina: India
+estilo: Curry cremoso
 fuente: ChatGPT
 
 #INGREDIENTES

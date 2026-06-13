@@ -242,6 +242,16 @@ describe("filtrarRecetas — cocina", () => {
     const r = filtrarRecetas([recetaJaponesa, recetaFrancesa, recetaConEnum], FILTROS_INICIALES);
     expect(r).toHaveLength(3);
   });
+
+  it("filtra por cocina backfilleada aunque el estilo sea descriptivo", () => {
+    const r = makeReceta({ idReceta: "REC-020", estilo: "Steakhouse", cocina: "Argentina" });
+    expect(filtrarRecetas([r], { ...FILTROS_INICIALES, cocina: "Argentina" })).toHaveLength(1);
+  });
+
+  it("receta con estilo descriptivo y sin cocina no matchea ninguna opción del enum", () => {
+    const r = makeReceta({ idReceta: "REC-021", estilo: "Steakhouse" });
+    expect(filtrarRecetas([r], { ...FILTROS_INICIALES, cocina: "Argentina" })).toHaveLength(0);
+  });
 });
 
 // ─── filtrarRecetas — maxNetos ────────────────────────────────────────────────
