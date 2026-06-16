@@ -1,0 +1,1517 @@
+[
+  {
+    "nombre": "Tortilla española de zucchini",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la tortilla de papas clásica pero con zucchini en lugar de papa, jugosa y dorada; mismo espíritu, sin hidratos",
+    "riesgos": "zucchini con agua aguada la tortilla; dar vuelta sin firmeza la rompe",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas finas"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Pochar verduras",
+        "detalle": "Cocinar zucchini y cebolla en el aceite a fuego medio 12 min, hasta tiernos pero sin dorar. Escurrir el exceso de aceite.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "⚠️ Punto crítico: evaporar el agua del zucchini para que la tortilla no quede aguada.",
+        "errorComun": "Zucchini húmedo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Mezclar",
+        "detalle": "Batir los huevos con sal e integrar las verduras tibias. Dejar reposar 5 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Verduras tibias para no cocinar el huevo antes.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cuajar",
+        "detalle": "Volcar en sartén con un poco de aceite a fuego bajo; cocinar 6 min hasta que cuaje casi todo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Fuego bajo para que cuaje sin quemarse.",
+        "errorComun": "Fuego alto que quema abajo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Dar vuelta",
+        "detalle": "Dar vuelta con ayuda de un plato y cocinar 3 min más, dejando el centro jugoso.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: girar con plato y movimiento firme y seco.",
+        "errorComun": "Dudar al girar y romperla.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Gambas al ajillo",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "la tapa por excelencia, langostinos en aceite de oliva con mucho ajo y un toque de guindilla; rápida, intensa y sin hidratos",
+    "riesgos": "quemar el ajo amarga el aceite; sobrecocinar los langostinos",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, limpios"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "virgen extra; generoso, es parte del plato"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "6",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "peperoncino",
+        "textoOriginal": "Peperoncino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en hojuelas; la guindilla"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Infusionar ajo",
+        "detalle": "En sartén o cazuela, calentar el aceite con el ajo y el peperoncino a fuego medio-bajo hasta que el ajo apenas dore.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: ajo dorado apenas, nunca marrón, o amarga todo el aceite.",
+        "errorComun": "Quemar el ajo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Langostinos",
+        "detalle": "Subir el fuego, sumar los langostinos y cocinar 2 a 3 min hasta que estén rosados.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: apenas rosados; un minuto de más y se endurecen.",
+        "errorComun": "Recocerlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Apagar, sumar perejil y sal. Servir bien caliente con el aceite.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El aceite perfumado es lo mejor del plato.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo al ajillo",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "pollo en trozos dorado con abundante ajo y vino blanco, jugoso y aromático; un clásico de tasca, económico y sin hidratos",
+    "riesgos": "quemar el ajo; pollo amontonado que no dora",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo deshuesado",
+        "textoOriginal": "Pollo deshuesado",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos chicos; muslo o pechuga"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Líquidos",
+        "cantidad": "50",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "el toque andaluz"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar pollo",
+        "detalle": "Secar y salar el pollo; dorarlo bien en el aceite en tandas. Reservar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: dorar en tandas para que no hierva.",
+        "errorComun": "Amontonarlo y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ajo",
+        "detalle": "Bajar el fuego y dorar apenas el ajo con el laurel en el mismo aceite.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Ajo dorado apenas, sin quemar.",
+        "errorComun": "Quemar el ajo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Volver el pollo, sumar vino y jerez y raspar el fondo; cocinar 10 min hasta reducir.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "El fondo dorado más el vino es la salsa.",
+        "errorComun": "Perder el fondo sin desglasar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Reducir hasta que apenas quede salsa. Terminar con perejil.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Salsa concentrada y brillante.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pisto manchego",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el sofrito manchego de morrón, zucchini, berenjena y tomate cocido lento; guarnición o base para un huevo encima, sin hidratos",
+    "riesgos": "apurar el sofrito deja las verduras crudas; tomate poco cocido queda ácido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "morron verde",
+        "textoOriginal": "Morrón verde",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Verduras",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en cubos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sofrito",
+        "detalle": "Rehogar cebolla y morrones en el aceite 8 min; sumar el ajo.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Sofrito lento y parejo.",
+        "errorComun": "Apurar y dejar crudo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Verduras",
+        "detalle": "Sumar zucchini y berenjena y cocinar 8 min hasta tiernos.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Cocinar hasta que ablanden bien.",
+        "errorComun": "Verduras duras.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Tomate",
+        "detalle": "Agregar el tomate y la sal; cocinar a fuego bajo 20 min hasta que espese.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: cocción larga del tomate para que pierda la acidez.",
+        "errorComun": "Tomate crudo y ácido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar",
+        "detalle": "Dejar reposar 5 min. Rico tibio o frío, o con un huevo encima.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Mejora reposado.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Albóndigas en salsa de almendras",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "albóndigas en una salsa andaluza de almendras y vino, ligadas con harina de almendra en vez de pan; jugosas y sin hidratos",
+    "riesgos": "amasar de más endurece las albóndigas; salsa fina por no moler bien las almendras",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Albóndigas",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "mezcla de vaca y cerdo"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Albóndigas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Albóndigas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "liga, reemplaza el pan"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Albóndigas",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Albóndigas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Albóndigas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "almendras",
+        "textoOriginal": "Almendras",
+        "seccion": "Salsa",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "molidas; espesan la salsa"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "azafran",
+        "textoOriginal": "Azafrán",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "hebras"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar albóndigas",
+        "detalle": "Mezclar carne, huevo, harina de almendra, ajo, perejil y sal sin amasar de más. Formar bolitas.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: mezclar lo justo; amasar de más endurece.",
+        "errorComun": "Compactarlas demasiado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "Dorar las albóndigas en el aceite por todos lados. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorar para sellar el jugo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Rehogar la cebolla; sumar almendras molidas, vino, caldo y azafrán. Cocinar 5 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Las almendras espesan sin harina.",
+        "errorComun": "Salsa fina por mala molienda.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Guisar",
+        "detalle": "Volver las albóndigas y cocinar a fuego bajo 15 min, hasta cocidas y la salsa napada.",
+        "tiempoEstimadoLabel": "16 min",
+        "tiempoEstimadoMin": 16,
+        "puntoClave": "Cocción suave para que queden jugosas.",
+        "errorComun": "Hervir fuerte y secarlas.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo al chilindrón",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "55 min",
+    "tiempoTotalMin": 55,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "pollo guisado con morrones, tomate y jamón crudo, jugoso y reconfortante; un clásico aragonés sin hidratos",
+    "riesgos": "piel sin dorar pierde sabor; fuego alto seca el pollo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con piel y hueso"
+      },
+      {
+        "canon": "jamon crudo",
+        "textoOriginal": "Jamón crudo",
+        "seccion": "Base",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "morron verde",
+        "textoOriginal": "Morrón verde",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar pollo",
+        "detalle": "Secar y salar los patamuslos; dorarlos con la piel hacia abajo en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: dorar bien la piel es la base del sabor.",
+        "errorComun": "Saltear el dorado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sofrito",
+        "detalle": "En la misma olla dorar el jamón; sumar cebolla, morrones y ajo y rehogar 6 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El jamón perfuma el sofrito.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Sumar el vino y reducir a la mitad raspando el fondo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Guisar",
+        "detalle": "Volver el pollo, agregar tomate y laurel. Tapar y cocinar a fuego bajo 30 min.",
+        "tiempoEstimadoLabel": "32 min",
+        "tiempoEstimadoMin": 32,
+        "puntoClave": "Fuego bajo y tapado mantiene el pollo jugoso.",
+        "errorComun": "Fuego fuerte que seca.",
+        "notas": "Tiempo activo: 2 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Merluza a la vizcaína",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "lomos de merluza en una salsa vasca de morrón y tomate, suave y sabrosa; plato de pescado clásico, sin hidratos",
+    "riesgos": "sobrecocinar la merluza la deshace; salsa cruda por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en lomos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salsa",
+        "detalle": "Rehogar cebolla y morrón en el aceite 10 min hasta tiernos; sumar ajo y pimentón 1 min.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Cocinar bien la base de cebolla y morrón.",
+        "errorComun": "Quemar el pimentón.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cocinar salsa",
+        "detalle": "Sumar vino, reducir, agregar el tomate y cocinar 10 min. Licuar para una salsa lisa.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "⚠️ Punto crítico: licuar da la textura sedosa vizcaína.",
+        "errorComun": "Salsa rústica y ácida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Pescado",
+        "detalle": "Salar la merluza y cocinarla en la salsa a fuego bajo 6 a 8 min, sin moverla de más.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "⚠️ Punto crítico: fuego suave y casi sin mover para que no se deshaga.",
+        "errorComun": "Revolver y romper el pescado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Servir la merluza napada con su salsa.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Champiñones al ajillo",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la tapa de champiñones salteados con ajo, perejil y un toque de jerez; rápida, sabrosa y sin hidratos",
+    "riesgos": "hongos amontonados que hierven; quemar el ajo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en mitades"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "peperoncino",
+        "textoOriginal": "Peperoncino",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": true,
+        "notas": "en hojuelas"
+      },
+      {
+        "canon": "jerez seco",
+        "textoOriginal": "Jerez seco",
+        "seccion": "Líquidos",
+        "cantidad": "40",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar hongos",
+        "detalle": "Saltear los champiñones en el aceite a fuego fuerte sin amontonar, hasta que pierdan el agua y doren.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: en una capa y fuego fuerte para que doren y no hiervan.",
+        "errorComun": "Amontonarlos y que larguen agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ajo",
+        "detalle": "Bajar el fuego, sumar el ajo y el peperoncino 1 min hasta que perfumen.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Ajo dorado apenas.",
+        "errorComun": "Quemarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Jerez",
+        "detalle": "Subir el fuego, sumar el jerez y dejar evaporar 1 min.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El jerez desglasa y perfuma.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Apagar, sumar perejil y sal.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pinchos morunos",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Parrilla",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "brochetas de cerdo marinadas en especias morunas, jugosas y perfumadas; herencia árabe en la cocina española, sin hidratos",
+    "riesgos": "marinada corta no penetra; brasa excesiva seca la carne",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 3 cm"
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar todas las especias con el aceite y el ajo; cubrir el cerdo y marinar mínimo 1,5 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: el tiempo de marinada define el perfume moruno.",
+        "errorComun": "Marinar poco y que quede plano.",
+        "notas": "Tiempo activo: 12 min; el resto es heladera."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ensartar",
+        "detalle": "Ensartar los cubos en los palillos remojados, sin apretarlos demasiado.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Dejar aire entre cubos para que doren parejo.",
+        "errorComun": "Apretarlos y que queden crudos en el medio.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar",
+        "detalle": "Cocinar en parrilla o plancha fuerte 8 a 10 min, girando, hasta dorados y jugosos.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Sellar por todos lados sin pasarlos.",
+        "errorComun": "Brasa excesiva que los seca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar",
+        "detalle": "Dejar reposar 3 min antes de servir.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El reposo conserva los jugos.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Gazpacho",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "1 h 15 min",
+    "tiempoTotalMin": 75,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la sopa fría andaluza de tomate y verduras crudas, refrescante para el verano; sin el pan del original, queda liviana y low-carb",
+    "riesgos": "tomate sin sabor da gazpacho pálido; servirlo sin enfriar pierde la gracia",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "6",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros; bien maduros y sabrosos"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "6",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": true,
+        "notas": "molido"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Procesar",
+        "detalle": "Licuar tomate, morrón, pepino y ajo hasta muy liso.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: usar tomate bien maduro; es el 80% del sabor.",
+        "errorComun": "Tomate insípido y gazpacho pálido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Emulsionar",
+        "detalle": "Con la máquina andando, sumar el aceite en hilo, luego vinagre, sal y comino.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El aceite en hilo emulsiona y da cuerpo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Colar y enfriar",
+        "detalle": "Colar si se quiere más fino y llevar a la heladera mínimo 1 h.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: servir bien frío; es la esencia del gazpacho.",
+        "errorComun": "Servirlo tibio.",
+        "notas": "Tiempo activo: 3 min."
+      }
+    ]
+  }
+]
