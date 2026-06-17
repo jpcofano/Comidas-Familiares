@@ -1,0 +1,21 @@
+[
+  {
+    "canonico": "chorizo",
+    "nombrePreferido": "Chorizo",
+    "sinonimos": [
+      "Chorizo parrillero",
+      "Chorizo fresco"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

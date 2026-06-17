@@ -1,0 +1,56 @@
+[
+  {
+    "canonico": "eneldo",
+    "nombrePreferido": "Eneldo",
+    "sinonimos": [
+      "Dill"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "cda",
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pejerrey",
+    "nombrePreferido": "Pejerrey",
+    "sinonimos": [
+      "Filet de pejerrey"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "trucha",
+    "nombrePreferido": "Trucha",
+    "sinonimos": [
+      "Trucha arcoíris"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

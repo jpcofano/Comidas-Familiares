@@ -1,0 +1,3009 @@
+[
+  {
+    "nombre": "Merluza a la plancha con limón y alcaparras",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "lomos de merluza a la plancha con una salsa rápida de limón, alcaparras y perejil; liviano, en 15 minutos y sin hidratos",
+    "riesgos": "pescado húmedo no dora; sobrecocción lo seca y deshace",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en lomos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "escurridas"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Secar y salar",
+        "detalle": "Secar muy bien los lomos con papel y salar.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: pescado seco para que dore y no hierva.",
+        "errorComun": "Llevarlo húmedo a la plancha.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "En plancha caliente con la mitad del aceite, cocinar 3 min por lado hasta dorar.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "No moverlo hasta que se despegue solo.",
+        "errorComun": "Darlo vuelta antes de tiempo y romperlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Mezclar el resto del aceite con limón, alcaparras, ajo y perejil; volcar sobre el pescado.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Salsa cruda y fresca, fuera del fuego.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salmón al horno en costra de hierbas",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "salmón al horno con una costra crocante de hierbas, ajo y almendra en vez de pan; elegante, jugoso y sin hidratos",
+    "riesgos": "pasarlo de horno lo seca; costra sin grasa no pega",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones con piel"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Costra",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza el pan rallado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Costra",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "eneldo",
+        "textoOriginal": "Eneldo",
+        "seccion": "Costra",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "pega la costra"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Costra",
+        "detalle": "Mezclar harina de almendra, perejil, eneldo, ajo y aceite hasta una pasta.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "La pasta debe quedar húmeda para gratinar.",
+        "errorComun": "Costra seca que no dora.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Secar y salar el salmón, pincelar con mostaza y presionar la costra encima.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: la mostaza pega la costra; sin ella se cae.",
+        "errorComun": "Apoyar la costra sobre pescado seco sin mostaza.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 12 a 15 min, hasta que la costra dore y el centro quede jugoso.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: sacarlo apenas opaco al centro; se seca rápido.",
+        "errorComun": "Cocinarlo de más.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Trucha al horno con almendras",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "trucha a la navarra, con jamón crudo dentro y almendras doradas por encima; clásico de río, sabroso y sin hidratos",
+    "riesgos": "almendras quemadas amargan; trucha pasada se seca",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "trucha",
+        "textoOriginal": "Trucha",
+        "seccion": "Principal",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "4 truchas limpias o filetes"
+      },
+      {
+        "canon": "jamon crudo",
+        "textoOriginal": "Jamón crudo",
+        "seccion": "Principal",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en fetas; una por trucha"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "almendras",
+        "textoOriginal": "Almendras",
+        "seccion": "Terminación",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Terminación",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rellenar",
+        "detalle": "Salar las truchas y poner una feta de jamón dentro de cada una. Acomodar en fuente con un hilo de aceite.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El jamón perfuma desde adentro.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 18 a 20 min, hasta que la carne se desprenda fácil.",
+        "tiempoEstimadoLabel": "20 min",
+        "tiempoEstimadoMin": 20,
+        "puntoClave": "Listo cuando la carne se separa de la espina.",
+        "errorComun": "Pasarla y secarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Almendras",
+        "detalle": "Dorar las almendras y el ajo en el aceite hasta apenas dorados; sumar limón y perejil.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: almendras doradas apenas, nunca marrones, o amargan.",
+        "errorComun": "Quemarlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Volcar las almendras con su aceite sobre las truchas.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Atún encebollado",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "atún fresco con mucha cebolla pochada al vino y pimentón, jugoso y sabroso; un clásico canario sin hidratos",
+    "riesgos": "pasar el atún lo seca; cebolla cruda por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "atun rojo",
+        "textoOriginal": "Atún rojo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en medallones"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Encebollado",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Encebollado",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Encebollado",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Encebollado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Encebollado",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Encebollado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar atún",
+        "detalle": "Salar y sellar los medallones 1 min por lado a fuego fuerte; reservar jugoso.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: sellar y retirar; el atún se pasa enseguida.",
+        "errorComun": "Cocinarlo de más y secarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cebolla",
+        "detalle": "Pochar la cebolla y el ajo en el aceite a fuego bajo 12 min, hasta tiernos y dorados.",
+        "tiempoEstimadoLabel": "13 min",
+        "tiempoEstimadoMin": 13,
+        "puntoClave": "Cebolla bien pochada, dulce.",
+        "errorComun": "Apurarla cruda.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar pimentón fuera del fuego, luego vino y laurel; reducir 4 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El pimentón se quema fácil: fuera del fuego.",
+        "errorComun": "Quemar el pimentón.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver el atún a la cebolla 1 min para calentar sin recocer.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Apenas integrar.",
+        "errorComun": "Recocer el atún.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Abadejo en papillote con verduras",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "abadejo cocido al vapor en su propio paquete de papel con juliana de verduras; sano, sin grasa agregada y sin hidratos",
+    "riesgos": "paquete mal cerrado pierde el vapor; verduras gruesas quedan crudas",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "abadejo",
+        "textoOriginal": "Abadejo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 filetes"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana fina"
+      },
+      {
+        "canon": "puerro",
+        "textoOriginal": "Puerro",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aromáticos",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "eneldo",
+        "textoOriginal": "Eneldo",
+        "seccion": "Aromáticos",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "o tomillo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aromáticos",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Aromáticos",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "papel manteca",
+        "textoOriginal": "Papel manteca",
+        "seccion": "Utensilios",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para los paquetes"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar paquetes",
+        "detalle": "Sobre cada papel poner una cama de verduras en juliana, encima el filete salado, rodajas de limón, eneldo, un hilo de aceite y un chorrito de vino.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Verduras finas para que se cocinen al vapor en el tiempo del pescado.",
+        "errorComun": "Verduras gruesas que quedan crudas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cerrar",
+        "detalle": "Cerrar los paquetes plegando los bordes para que queden bien sellados.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: sellar bien para que el vapor cocine adentro.",
+        "errorComun": "Paquete abierto que se seca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 15 a 18 min. Servir el paquete cerrado para abrirlo en la mesa.",
+        "tiempoEstimadoLabel": "18 min",
+        "tiempoEstimadoMin": 18,
+        "puntoClave": "El paquete se infla cuando está listo.",
+        "errorComun": "Abrirlo antes y perder el vapor.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Lenguado a la meunière",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "lenguado en manteca dorada con limón y perejil, el clásico de bistró; elegante y rapidísimo, sin la harina del rebozado tradicional",
+    "riesgos": "quemar la manteca la amarga; pescado húmedo no dora",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "lenguado",
+        "textoOriginal": "Lenguado",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 filetes"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Principal",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para rebozar fino; reemplaza la harina de trigo"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "evita que se queme la manteca"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rebozar",
+        "detalle": "Secar y salar los filetes; pasarlos apenas por harina de almendra.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Reboce finito para dorar sin empanar.",
+        "errorComun": "Pescado húmedo que no dora.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "En sartén con el aceite y la mitad de la manteca, dorar el lenguado 2 min por lado. Reservar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: pescado fino, cocción corta.",
+        "errorComun": "Pasarlo y secarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Manteca dorada",
+        "detalle": "Sumar el resto de la manteca y dejar que dore hasta avellana; agregar limón y perejil.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: manteca dorada, no quemada (negra = amarga).",
+        "errorComun": "Quemar la manteca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Volcar la manteca dorada sobre el lenguado.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Corvina al horno con tomate y aceitunas",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "corvina al horno sobre tomate, aceitunas y cebolla, estilo mediterráneo; jugosa, colorida y sin hidratos",
+    "riesgos": "tomate aguado moja el pescado; horno excesivo lo seca",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "corvina",
+        "textoOriginal": "Corvina",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 filetes o lomos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomates cherry",
+        "textoOriginal": "Tomates cherry",
+        "seccion": "Base",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en mitades"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "aceitunas negras",
+        "textoOriginal": "Aceitunas negras",
+        "seccion": "Base",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Mezclar tomates, cebolla, aceitunas, ajo, orégano y aceite en una fuente; hornear 12 min a 200°C.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "Precocinar la base concentra el tomate.",
+        "errorComun": "Base cruda que larga agua bajo el pescado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pescado",
+        "detalle": "Apoyar los filetes salados sobre la base, rociar con aceite y hornear 15 min más.",
+        "tiempoEstimadoLabel": "16 min",
+        "tiempoEstimadoMin": 16,
+        "puntoClave": "⚠️ Punto crítico: sacarlo apenas opaco; la corvina se seca rápido.",
+        "errorComun": "Pasarlo de cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Terminar con perejil fresco.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salmón a la mostaza y eneldo",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "salmón glaseado con mostaza, eneldo y un toque de eritritol; agridulce, rápido y sin azúcar",
+    "riesgos": "glaseado quemado por horno fuerte; salmón pasado seco",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Glaseado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eneldo",
+        "textoOriginal": "Eneldo",
+        "seccion": "Glaseado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "equilibra la mostaza"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Glaseado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Glaseado",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Glaseado",
+        "detalle": "Mezclar mostaza, eneldo, eritritol, aceite y limón.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El eritritol da el dulzor sin azúcar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pincelar",
+        "detalle": "Salar el salmón y cubrir la superficie con el glaseado.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Capa generosa para que quede jugoso.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 12 a 15 min, hasta apenas opaco al centro.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: sacarlo jugoso; el salmón pasado se seca y desmiga.",
+        "errorComun": "Cocinarlo de más.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Merluza a la crema de puerros",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "lomos de merluza en una salsa sedosa de puerro y crema; reconfortante, suave y sin hidratos",
+    "riesgos": "puerro mal lavado deja tierra; cortar la crema con fuego alto",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en lomos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "puerro",
+        "textoOriginal": "Puerro",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros finos, bien lavado"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "nuez moscada",
+        "textoOriginal": "Nuez moscada",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "ciboulette",
+        "textoOriginal": "Ciboulette",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Puerro",
+        "detalle": "Rehogar el puerro en la manteca a fuego bajo 8 min hasta tierno, sin dorar.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "⚠️ Punto crítico: lavar bien el puerro entre capas; junta tierra.",
+        "errorComun": "Puerro con tierra.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Sumar el vino y reducir; agregar la crema y la nuez moscada y cocinar 3 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo con la crema para que no se corte.",
+        "errorComun": "Hervir fuerte y cortarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Pescado",
+        "detalle": "Acomodar la merluza salada en la salsa y cocinar tapado a fuego bajo 8 min.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Cocción suave para que no se deshaga.",
+        "errorComun": "Revolver y romper el pescado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con ciboulette.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Filet de merluza gratinado con tomate y queso",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "filetes de merluza gratinados con tomate, ajo y mozzarella; fácil, rendidor y que les gusta a los chicos, sin pan ni harina",
+    "riesgos": "tomate aguado moja el gratín; gratinar de más reseca el pescado",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Base",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "concentrada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mozzarella",
+        "textoOriginal": "Mozzarella",
+        "seccion": "Gratén",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Gratén",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Gratén",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Mezclar passata, ajo y orégano; extender en el fondo de una fuente aceitada.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Usar passata concentrada para que no quede aguado.",
+        "errorComun": "Salsa líquida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pescado",
+        "detalle": "Apoyar los filetes salados sobre la salsa, una cucharada de salsa encima y cubrir con los quesos.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Poca salsa arriba para que no se empape.",
+        "errorComun": "Ahogar el pescado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Gratinar",
+        "detalle": "Horno a 200°C 15 a 18 min, hasta gratinar el queso y cocer el pescado.",
+        "tiempoEstimadoLabel": "18 min",
+        "tiempoEstimadoMin": 18,
+        "puntoClave": "⚠️ Punto crítico: retirar apenas el pescado esté opaco.",
+        "errorComun": "Gratinar de más y resecar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Hamburguesas de salmón",
+    "estilo": "Estadounidense",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "medallones de salmón picado a cuchillo, ligados con almendra y huevo en vez de pan; jugosos y sin hidratos, ricos con alioli",
+    "riesgos": "procesar el salmón lo vuelve pasta; medallón fino se seca",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Base",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "sin piel, picado a cuchillo"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "liga"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el pan rallado"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "eneldo",
+        "textoOriginal": "Eneldo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mezclar",
+        "detalle": "Picar el salmón a cuchillo y mezclar con huevo, almendra, verdeo, eneldo, mostaza y sal.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: picar a cuchillo, no procesar, para que no quede pasta.",
+        "errorComun": "Hacerlo puré en la procesadora.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Formar",
+        "detalle": "Formar 4 medallones de 2 cm y dejarlos firmar 5 min en la heladera.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El frío ayuda a que no se desarmen.",
+        "errorComun": "Cocinarlos blandos y que se rompan.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Dorar",
+        "detalle": "Dorar en aceite 3 a 4 min por lado, dándolos vuelta una sola vez.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Una sola vuelta para que no se deshagan.",
+        "errorComun": "Darlos vuelta de más.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Croquetas de atún low-carb",
+    "estilo": "Otra",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "croquetas de atún ligadas con huevo y almendra y horneadas en vez de fritas; prácticas, económicas y sin hidratos",
+    "riesgos": "mezcla húmeda no toma forma; horno flojo no dora",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "atun al natural",
+        "textoOriginal": "Atún al natural",
+        "seccion": "Base",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "escurrido"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Base",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para pincelar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar bien el atún escurrido con huevo, almendra, verdeo, perejil, mostaza, ralladura y sal.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: escurrir bien el atún; húmedo no toma forma.",
+        "errorComun": "Mezcla aguada que se desarma.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Formar",
+        "detalle": "Formar croquetas y acomodarlas en placa; pincelar con aceite.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Compactar bien para que no se abran.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 20 min, dando vuelta a la mitad, hasta doradas.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "Dorar bien para que queden firmes.",
+        "errorComun": "Sacarlas pálidas y blandas.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pejerrey en costra de almendra",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Frito",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "filetes de pejerrey rebozados en almendra, crocantes como los \"a la romana\" pero sin harina ni pan; económicos y sin hidratos",
+    "riesgos": "aceite poco caliente empapa el rebozado; pejerrey fino se pasa rápido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pejerrey",
+        "textoOriginal": "Pejerrey",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "filetes"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Rebozado",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Rebozado",
+        "cantidad": "120",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza la harina"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Rebozado",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "suma sabor a la costra"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Cocción",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para freír"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rebozar",
+        "detalle": "Salar los filetes, pasarlos por huevo y luego por almendra (con el queso si se usa).",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Presionar la costra para que se adhiera.",
+        "errorComun": "Costra floja.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Freír",
+        "detalle": "Freír en aceite caliente a 170°C 2 min por lado hasta dorados.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: aceite a 170°C; tibio empapa, muy caliente quema.",
+        "errorComun": "Aceite tibio que absorbe grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Escurrir",
+        "detalle": "Escurrir sobre papel y servir con limón.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Escurrir para que queden crocantes.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tiradito de salmón",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "láminas finas de salmón crudo bañadas en una leche de tigre cítrica y picante al servir; fresco, elegante y sin hidratos",
+    "riesgos": "salmón poco fresco (va crudo); bañar con anticipación lo \"cocina\" y opaca",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "muy fresco, sin piel; la pieza más fresca posible"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Leche de tigre",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Leche de tigre",
+        "cantidad": "8",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "sin semillas, picado; tipo ají amarillo"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Leche de tigre",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Leche de tigre",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros finos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Cortar",
+        "detalle": "Cortar el salmón en láminas finas y disponerlas en una sola capa en el plato. Llevar a la heladera.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Láminas finas y plato frío.",
+        "errorComun": "Cortes gruesos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Leche de tigre",
+        "detalle": "Mezclar limón, jengibre, ajo, ají, cilantro y sal.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El ácido equilibrado con sal es la clave.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Bañar el salmón con la leche de tigre recién al servir y terminar con verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: bañar al momento; si se hace antes, el ácido lo opaca y endurece.",
+        "errorComun": "Marinar con anticipación.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sopa marinera de pescado",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "sopa de pescado con base de tomate, vino y azafrán, reconfortante y de mar; sin papa ni fideos, queda liviana y sin hidratos",
+    "riesgos": "hervir mucho el pescado lo deshace; base sin concentrar queda aguada",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Pescado",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en trozos; o abadejo"
+      },
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Pescado",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Base",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de pescado",
+        "textoOriginal": "Caldo de pescado",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "azafran",
+        "textoOriginal": "Azafran",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "hebras; o pimentón"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sofrito",
+        "detalle": "Rehogar cebolla, morrón y ajo en el aceite 8 min.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Base bien rehogada.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Sumar el tomate y cocinar 8 min; agregar vino y reducir.",
+        "tiempoEstimadoLabel": "11 min",
+        "tiempoEstimadoMin": 11,
+        "puntoClave": "⚠️ Punto crítico: concentrar el tomate para que la sopa tenga cuerpo.",
+        "errorComun": "Base aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Caldo",
+        "detalle": "Sumar el caldo de pescado y el azafrán; hervir suave 10 min.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "El azafrán perfuma y colorea.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Pescado",
+        "detalle": "Sumar merluza y langostinos y cocinar 4 a 5 min, sin hervir fuerte. Terminar con perejil.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: cocción corta y suave para que no se deshagan.",
+        "errorComun": "Hervir fuerte y deshacer todo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Cazuela de mariscos",
+    "estilo": "Española",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "una cazuela festiva de langostinos, mejillones y calamares en salsa de tomate y vino; plato de mar de mesa grande, sin hidratos",
+    "riesgos": "sobrecocer los mariscos los pone gomosos; mejillones que no abren se descartan",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Mariscos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "mejillones",
+        "textoOriginal": "Mejillones",
+        "seccion": "Mariscos",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "limpios; descartar los abiertos"
+      },
+      {
+        "canon": "calamares limpios",
+        "textoOriginal": "Calamares limpios",
+        "seccion": "Mariscos",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sofrito",
+        "detalle": "Rehogar cebolla, morrón y ajo en el aceite 8 min; sumar pimentón fuera del fuego.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "El pimentón se quema fácil.",
+        "errorComun": "Quemar el pimentón.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Sumar tomate y vino; cocinar 10 min hasta espesar.",
+        "tiempoEstimadoLabel": "11 min",
+        "tiempoEstimadoMin": 11,
+        "puntoClave": "Salsa concentrada de base.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Calamares",
+        "detalle": "Sumar los calamares y cocinar 5 min (se ablandan primero).",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Los calamares necesitan un poco más que el resto.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Resto",
+        "detalle": "Sumar langostinos y mejillones, tapar y cocinar 4 a 5 min hasta que abran los mejillones.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: listos apenas abren; descartar los cerrados. Mariscos sobrecocidos = gomosos.",
+        "errorComun": "Cocinarlos de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Servir",
+        "detalle": "Terminar con abundante perejil.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Calamares rellenos",
+    "estilo": "Mediterránea",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "40 min",
+    "tiempoActivoMin": 40,
+    "tiempoTotalLabel": "1 h 15 min",
+    "tiempoTotalMin": 75,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "tubos de calamar rellenos con sus tentáculos, huevo y almendra, guisados en salsa de tomate; plato de fiesta, sin el pan del relleno tradicional",
+    "riesgos": "rellenar de más revienta el tubo; cocción corta deja el calamar duro (necesita guiso largo)",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "calamares limpios",
+        "textoOriginal": "Calamares limpios",
+        "seccion": "Calamares",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "tubos enteros + tentáculos; pedir los tubos enteros para rellenar"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, picados"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Relleno",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "liga el relleno"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Relleno",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Relleno",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para cerrar los tubos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Relleno",
+        "detalle": "Picar los tentáculos y saltearlos 2 min; mezclar con huevo duro, almendra, ajo, perejil y sal.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El relleno se hace con los propios tentáculos.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rellenar",
+        "detalle": "Rellenar los tubos hasta 3/4 (se encogen) y cerrar con un palillo.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: no llenar del todo; al cocinar se encogen y revientan.",
+        "errorComun": "Sobrecargarlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar y salsa",
+        "detalle": "Dorar los tubos en el aceite; reservar. Rehogar cebolla, sumar tomate y vino.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Sellar da color y sabor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Guisar",
+        "detalle": "Volver los calamares a la salsa, tapar y cocinar a fuego bajo 45 min hasta tiernos.",
+        "tiempoEstimadoLabel": "45 min",
+        "tiempoEstimadoMin": 45,
+        "puntoClave": "⚠️ Punto crítico: el calamar pide guiso largo; corto queda duro.",
+        "errorComun": "Cocinarlos poco y que queden gomosos.",
+        "notas": "Tiempo activo: 3 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Mejillones a la provenzal",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "mejillones gratinados con una pasta de ajo, perejil y aceite, intensos y aromáticos; tapa marinera sin pan ni hidratos",
+    "riesgos": "mejillones que no abren se descartan; gratinar de más los reseca",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "mejillones",
+        "textoOriginal": "Mejillones",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "frescos, limpios; descartar los abiertos"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Apertura",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Provenzal",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado muy fino"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Provenzal",
+        "cantidad": "6",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Provenzal",
+        "cantidad": "6",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Provenzal",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "da cuerpo en vez de pan rallado"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Provenzal",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Abrir",
+        "detalle": "Abrir los mejillones en una olla tapada con el vino a fuego fuerte, 4 min. Descartar los cerrados.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: descartar los que no abren.",
+        "errorComun": "Usar los cerrados.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Media valva",
+        "detalle": "Quitar la valva vacía de cada mejillón y acomodarlos en una fuente.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Dejarlos en media valva para gratinar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Provenzal",
+        "detalle": "Mezclar ajo, perejil, aceite, almendra y pimienta; poner un poco sobre cada mejillón.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Pasta cubriendo cada mejillón.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Gratinar",
+        "detalle": "Gratinar bajo grill fuerte 3 a 4 min hasta dorar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: grill corto; de más los reseca.",
+        "errorComun": "Gratinar de más.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pulpo a la parrilla con chimichurri",
+    "estilo": "Argentina",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Parrilla",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "1 h 45 min",
+    "tiempoTotalMin": 105,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "pulpo primero hervido tierno y después marcado a la parrilla, con chimichurri fresco; el cruce perfecto entre lo español y el asado argentino, sin hidratos",
+    "riesgos": "pulpo mal hervido queda duro; parrilla floja no marca",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pulpo",
+        "textoOriginal": "Pulpo",
+        "seccion": "Pulpo",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "entero, fresco o congelado; si es fresco, congelar antes ablanda"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Pulpo",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Pulpo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Parrilla",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Chimichurri",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Chimichurri",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Chimichurri",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "seco"
+      },
+      {
+        "canon": "aji molido",
+        "textoOriginal": "Ají molido",
+        "seccion": "Chimichurri",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Chimichurri",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Chimichurri",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir",
+        "detalle": "Hervir el pulpo con laurel a fuego medio 40 a 50 min, hasta que un cuchillo entre fácil. Salar al final.",
+        "tiempoEstimadoLabel": "50 min",
+        "tiempoEstimadoMin": 50,
+        "puntoClave": "⚠️ Punto crítico: pinchar para chequear; el punto define todo.",
+        "errorComun": "Hervir a borbotones y endurecerlo.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Chimichurri",
+        "detalle": "Mezclar perejil, ajo, orégano, ají molido, vinagre y aceite; dejar reposar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Mejor con un rato de reposo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Marcar",
+        "detalle": "Cortar el pulpo en patas, pincelar con aceite y marcar en parrilla o plancha bien caliente 2 min por lado.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: parrilla bien caliente para marcar y dar lo crocante.",
+        "errorComun": "Plancha tibia que no marca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Servir el pulpo con el chimichurri por encima.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Vuelve a la vida",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "el cóctel de mariscos mexicano en una salsa fresca de tomate y cítricos con palta; refrescante y de fiesta, con tomate y eritritol en vez de kétchup azucarado",
+    "riesgos": "sobrecocer los mariscos; salsa aguada por tomate sin concentrar",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Mariscos",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "calamares limpios",
+        "textoOriginal": "Calamares limpios",
+        "seccion": "Mariscos",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "mejillones",
+        "textoOriginal": "Mejillones",
+        "seccion": "Mariscos",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "sin valva, cocidos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en cubos"
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "concentrada"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "reemplaza el dulzor del kétchup"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "palta",
+        "textoOriginal": "Palta",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Cocer mariscos",
+        "detalle": "Hervir langostinos y calamares 2 a 3 min en agua con sal; escurrir y enfriar en agua con hielo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: cocción corta y corte de frío para que no queden gomosos.",
+        "errorComun": "Sobrecocerlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Mezclar tomate, passata, limón, eritritol, cebolla morada, cilantro y sal.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Salsa concentrada y bien cítrica.",
+        "errorComun": "Salsa aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Unir",
+        "detalle": "Mezclar los mariscos fríos con la salsa y los mejillones. Enfriar 10 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Servir bien frío.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Sumar la palta en cubos al servir, con cuidado de no deshacerla.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "La palta al final para que no se pise.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]
