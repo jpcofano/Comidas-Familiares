@@ -1,0 +1,1519 @@
+[
+  {
+    "nombre": "Ribs de cerdo BBQ sin azúcar",
+    "estilo": "Estadounidense",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "2 h 30 min",
+    "tiempoTotalMin": 150,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "costillas de cerdo cocidas lentas y glaseadas con una salsa BBQ casera sin azúcar; se deshacen y no llevan hidratos",
+    "riesgos": "horno alto seca y quema el glaseado; poco tiempo deja las costillas duras",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "ribs de cerdo",
+        "textoOriginal": "Ribs de cerdo",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "tira de costillar"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "ajo en polvo",
+        "textoOriginal": "Ajo en polvo",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar de la BBQ"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "papel aluminio",
+        "textoOriginal": "Papel aluminio",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para sellar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hornear lento",
+        "detalle": "Frotar las costillas con el rub, envolver en aluminio y hornear a 150°C 2 h.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "⚠️ Punto crítico: horno bajo y tapado para que se deshagan sin secarse.",
+        "errorComun": "Horno alto que las endurece.",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Reducir passata, vinagre, eritritol, mostaza y pimentón 8 min hasta una BBQ espesa.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Reducir bien para que glasee.",
+        "errorComun": "Salsa líquida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Glasear",
+        "detalle": "Destapar, pincelar con la salsa y hornear a 210°C 12 min hasta laquear.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "⚠️ Punto crítico: vigilar; el eritritol se quema rápido.",
+        "errorComun": "Quemar el glaseado.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Alitas Buffalo",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "alitas crocantes al horno bañadas en salsa picante y manteca, el clásico de bar; sin rebozado, low-carb",
+    "riesgos": "alitas húmedas no se ponen crocantes; salsa sobre alitas frías no pega",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "alita de pollo",
+        "textoOriginal": "Alita de pollo",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Principal",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sriracha",
+        "textoOriginal": "Sriracha",
+        "seccion": "Salsa",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "la base picante"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo en polvo",
+        "textoOriginal": "Ajo en polvo",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Secar y hornear",
+        "detalle": "Secar muy bien las alitas, salar y aceitar. Hornear a 220°C 35 min, girando, hasta crocantes.",
+        "tiempoEstimadoLabel": "38 min",
+        "tiempoEstimadoMin": 38,
+        "puntoClave": "⚠️ Punto crítico: alitas bien secas y horno fuerte para que queden crocantes.",
+        "errorComun": "Alitas húmedas que quedan blandas.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Derretir la manteca con sriracha, vinagre y ajo en polvo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Salsa tibia para que se integre.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Bañar",
+        "detalle": "Mezclar las alitas calientes con la salsa hasta cubrir.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: bañar en caliente para que la salsa se adhiera.",
+        "errorComun": "Salsa sobre alitas frías.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pulled pork",
+    "estilo": "Estadounidense",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "3 h 30 min",
+    "tiempoTotalMin": 210,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bondiola desmenuzada estilo sureño con salsa BBQ sin azúcar; rinde muchísimo y se come sin pan",
+    "riesgos": "poca cocción no deshilacha; horno alto la seca",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos grandes"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Rub",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Rub",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Cocción",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hornear",
+        "detalle": "Frotar la bondiola con el rub, poner en fuente con el caldo, tapar con aluminio y hornear a 150°C 3 h.",
+        "tiempoEstimadoLabel": "3 h",
+        "tiempoEstimadoMin": 180,
+        "puntoClave": "⚠️ Punto crítico: cocción larga y tapada hasta que se deshilache sola.",
+        "errorComun": "Apurar el horno y que quede dura.",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Deshilachar",
+        "detalle": "Deshacer la carne con dos tenedores y mezclar con sus jugos.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Mezclar con el jugo para que quede húmeda.",
+        "errorComun": "Servirla seca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Reducir passata, vinagre, eritritol y mostaza 8 min; mezclar con la carne.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Meatloaf low-carb",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el pan de carne americano ligado con almendra en vez de pan y glaseado con kétchup sin azúcar; rinde y recalienta bien",
+    "riesgos": "mezcla seca se desarma; glaseado azucarado (usar eritritol)",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Base",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Base",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza el pan"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Glaseado",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Glaseado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar carne, huevos, almendra, cebolla, ajo, mostaza y sal sin amasar de más.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: mezclar lo justo para que no quede duro.",
+        "errorComun": "Compactar demasiado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Formar",
+        "detalle": "Formar un pan en una fuente y cubrir con la mezcla de passata, eritritol y vinagre.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El glaseado se pone antes de hornear.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Horno a 190°C 40 min, hasta firme y dorado. Reposar 5 min antes de cortar.",
+        "tiempoEstimadoLabel": "42 min",
+        "tiempoEstimadoMin": 42,
+        "puntoClave": "El reposo evita que se desarme al cortar.",
+        "errorComun": "Cortarlo recién salido.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sloppy joes sin pan",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "carne picada en una salsa agridulce y especiada, servida sobre hojas verdes en vez de pan; rápida y que les gusta a los chicos",
+    "riesgos": "salsa aguada; carne hervida por no dorar",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Base",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hojas verdes",
+        "textoOriginal": "Hojas verdes",
+        "seccion": "Servir",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de base"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Rehogar cebolla, morrón y ajo 5 min en el aceite.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Carne",
+        "detalle": "Sumar la carne y dorarla deshaciéndola hasta que pierda el agua.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: dorar de verdad para que tenga sabor.",
+        "errorComun": "Carne gris hervida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar passata, mostaza, vinagre, eritritol y pimentón; cocinar 6 min hasta espesar. Servir sobre hojas.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Reducir hasta que quede jugosa pero no líquida.",
+        "errorComun": "Salsa aguada.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo frito sureño low-carb",
+    "estilo": "Estadounidense",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Frito",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "pollo marinado en yogur y especias, rebozado en almendra y frito crocante; el fried chicken sureño sin harina",
+    "riesgos": "aceite poco caliente empapa; trozos grandes quedan crudos",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo deshuesado",
+        "textoOriginal": "Pollo deshuesado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos; muslo o pechuga"
+      },
+      {
+        "canon": "yogur natural",
+        "textoOriginal": "Yogur natural",
+        "seccion": "Marinada",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "entero; reemplaza el buttermilk"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo en polvo",
+        "textoOriginal": "Ajo en polvo",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Rebozado",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Rebozado",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "da más costra"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Fritura",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para freír"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar el pollo con yogur, pimentón, ajo en polvo y sal; marinar 30 min.",
+        "tiempoEstimadoLabel": "30 min",
+        "tiempoEstimadoMin": 30,
+        "puntoClave": "El yogur ablanda y sazona.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rebozar",
+        "detalle": "Escurrir apenas y pasar por la mezcla de almendra y queso, presionando.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Presionar la costra.",
+        "errorComun": "Costra floja.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Freír",
+        "detalle": "Freír a 170°C 5 a 6 min hasta dorado y cocido. Escurrir sobre rejilla.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: aceite a 170°C; tibio empapa, muy caliente deja crudo el centro.",
+        "errorComun": "Aceite mal calibrado.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Philly cheesesteak en plato",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "tiras de carne salteadas con cebolla y morrón y fundidas con queso, el cheesesteak de Filadelfia servido en plato, sin el pan",
+    "riesgos": "carne amontonada que hierve; queso que no funde",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bien finas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "morron verde",
+        "textoOriginal": "Morrón verde",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Salteado",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "provoleta",
+        "textoOriginal": "Provoleta",
+        "seccion": "Queso",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas; o mozzarella"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Verduras",
+        "detalle": "Saltear cebolla, morrón y champiñón en el aceite hasta dorar. Reservar.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Bien dorados.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Carne",
+        "detalle": "Saltear la carne salada a fuego máximo en tandas.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fuego fuerte y en tandas para que dore.",
+        "errorComun": "Amontonarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Fundir",
+        "detalle": "Volver las verduras, juntar todo, cubrir con el queso y tapar 2 min hasta fundir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: tapar para que el queso funda sobre la carne.",
+        "errorComun": "Queso sin fundir.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Cobb salad",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la ensalada compuesta americana con pollo, panceta, huevo, palta y queso en hileras; completa, vistosa y low-carb",
+    "riesgos": "panceta blanda sin dorar; aderezar con anticipación marchita",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "hojas verdes",
+        "textoOriginal": "Hojas verdes",
+        "seccion": "Base",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pollo cocido desmenuzado",
+        "textoOriginal": "Pollo cocido desmenuzado",
+        "seccion": "Base",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "panceta",
+        "textoOriginal": "Panceta",
+        "seccion": "Base",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos, dorada"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en cuartos"
+      },
+      {
+        "canon": "palta",
+        "textoOriginal": "Palta",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "tomates cherry",
+        "textoOriginal": "Tomates cherry",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en mitades"
+      },
+      {
+        "canon": "queso fresco",
+        "textoOriginal": "Queso fresco",
+        "seccion": "Base",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "desmenuzado; tipo roquefort si se consigue"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar",
+        "detalle": "Dorar la panceta hasta crocante. Tener listos pollo, huevo, palta, tomate y queso.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: panceta bien crocante aporta el contraste.",
+        "errorComun": "Panceta blanda.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Montar",
+        "detalle": "Sobre las hojas, disponer cada ingrediente en hileras separadas.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El montaje en hileras es el estilo Cobb.",
+        "errorComun": "Mezclar todo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Aderezar",
+        "detalle": "Emulsionar aceite, vinagre y mostaza y rociar al servir.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Aderezar al momento.",
+        "errorComun": "Marchitar las hojas.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jambalaya de coliflor",
+    "estilo": "Estadounidense",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "el plato cajún de pollo, chorizo y langostinos, acá sobre arroz de coliflor en vez de arroz; especiado y de un solo sartén",
+    "riesgos": "langostinos sobrecocidos; coliflor aguada si se tapa de más",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Proteínas",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "chorizo",
+        "textoOriginal": "Chorizo",
+        "seccion": "Proteínas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Proteínas",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "procesada en arroz"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "apio",
+        "textoOriginal": "Apio",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "peperoncino",
+        "textoOriginal": "Peperoncino",
+        "seccion": "Especias",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Especias",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Proteínas",
+        "detalle": "Dorar pollo y chorizo en el aceite; reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorar bien para el sabor cajún.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Rehogar cebolla, morrón, apio y ajo 6 min; sumar pimentón, peperoncino y tomate.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "La \"santa trinidad\" cajún es cebolla, morrón y apio.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Coliflor",
+        "detalle": "Sumar el arroz de coliflor y el pollo con el chorizo; saltear 6 min sin tapar.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: sin tapar para que la coliflor no largue agua.",
+        "errorComun": "Coliflor aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Langostinos",
+        "detalle": "Sumar los langostinos y cocinar 3 a 4 min hasta rosados.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: apenas rosados; no recocer.",
+        "errorComun": "Langostinos gomosos.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Coleslaw low-carb",
+    "estilo": "Estadounidense",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la ensalada de repollo cremosa que acompaña todo lo de BBQ, con aderezo tipo mayonesa casera y eritritol en vez de azúcar",
+    "riesgos": "repollo sin escurrir aguada el aderezo; cortar grueso lo hace difícil de comer",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "repollo blanco",
+        "textoOriginal": "Repollo blanco",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana muy fina"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "yemas de huevo",
+        "textoOriginal": "Yemas de huevo",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "base de la mayonesa"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Aderezo",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Aderezo",
+        "detalle": "Hacer una mayonesa: batir la yema con mostaza y sal, sumar el aceite en hilo; agregar vinagre y eritritol.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: aceite en hilo para que no se corte.",
+        "errorComun": "Volcar el aceite de golpe.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar el repollo y la zanahoria con el aderezo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Repollo bien fino para que se integre.",
+        "errorComun": "Cortarlo grueso.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Enfriar",
+        "detalle": "Llevar a la heladera 10 min antes de servir; queda mejor reposado.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Reposado se ablanda y toma gusto.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

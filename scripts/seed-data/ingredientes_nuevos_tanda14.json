@@ -1,0 +1,57 @@
+[
+  {
+    "canonico": "chucrut",
+    "nombrePreferido": "Chucrut",
+    "sinonimos": [
+      "Sauerkraut",
+      "Repollo fermentado"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "pepino en vinagre",
+    "nombrePreferido": "Pepino en vinagre",
+    "sinonimos": [
+      "Pickles",
+      "Pepinillos"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salchicha",
+    "nombrePreferido": "Salchicha",
+    "sinonimos": [
+      "Bratwurst",
+      "Salchicha alemana"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]
