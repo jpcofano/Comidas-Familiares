@@ -44,6 +44,15 @@ export async function getItemsLista(idLista: string): Promise<ItemCompra[]> {
 
 // ─── Realtime ─────────────────────────────────────────────────────────────────
 
+export function subscribeToLista(
+  idLista: string,
+  cb: (lista: ListaCompras | null) => void
+): () => void {
+  return onSnapshot(doc(db, "compras", idLista), (snap) =>
+    cb(snap.exists() ? (snap.data() as ListaCompras) : null)
+  );
+}
+
 export function subscribeToItemsLista(
   idLista: string,
   callback: (items: ItemCompra[]) => void
@@ -54,6 +63,10 @@ export function subscribeToItemsLista(
 }
 
 // ─── Writes ───────────────────────────────────────────────────────────────────
+
+// E14.5: asignarEncargadoCompras retirado — el encargado ahora vive en Plan.encargado
+// (turno voluntario, ver comprasRapidas.ts). El campo encargadoCompras en ListaCompras
+// queda en Firestore por compatibilidad pero ya no se usa desde la UI.
 
 export async function crearLista(semanaInicio: string): Promise<Result<ListaCompras, AppError>> {
   try {

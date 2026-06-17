@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Tabs & form</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { margin: 0; padding: 16px; background: var(--bg); font-family: var(--font-sans); }
+  .tabs {
+    display: flex; gap: 8px; margin-bottom: 14px;
+    align-items: center; border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    background: transparent; border: 0;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    padding: 8px 4px; font-weight: 500; font-size: 14px;
+    color: var(--muted); cursor: pointer; font-family: inherit;
+  }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+  .tab-action {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 12px; background: var(--primary); color: #fff;
+    border-radius: 10px; font-size: 13px; font-weight: 500;
+    text-decoration: none;
+  }
+  .tab-action svg { width: 16px; height: 16px; }
+  input.search {
+    width: 100%; padding: 8px 12px; border-radius: 10px;
+    border: 1px solid var(--border); font-size: 13px;
+    background: var(--surface-strong); color: var(--text);
+    box-sizing: border-box; font-family: inherit;
+  }
+  .selrow { display: flex; gap: 8px; margin-top: 8px; }
+  select {
+    padding: 6px 10px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--surface-strong);
+    color: var(--text); font-size: 13px; flex: 1; font-family: inherit;
+  }
+</style></head>
+<body>
+  <div class="tabs">
+    <button class="tab active">Recetas</button>
+    <button class="tab">Menús</button>
+    <a class="tab-action"><i data-lucide="plus"></i><span>Importar</span></a>
+  </div>
+  <input class="search" placeholder="Buscar receta…">
+  <div class="selrow">
+    <select><option>Todos los tipos</option></select>
+    <select><option>Todas las proteínas</option></select>
+  </div>
+  <script>lucide.createIcons();</script>
+</body></html>

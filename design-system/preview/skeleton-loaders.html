@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Skeleton loaders</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .caption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  /* Skeleton — fuente de verdad: src/styles/tokens.css */
+  @keyframes pulse-bg {
+    0%, 100% { background-color: var(--surface-alt); }
+    50%      { background-color: var(--border); }
+  }
+  .sk { background: var(--surface-alt); border-radius: 6px; animation: pulse-bg 1.6s ease-in-out infinite; }
+  .sk-circle { border-radius: 50%; }
+  .card {
+    background: var(--surface-strong); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 14px 16px; max-width: 360px; margin-bottom: 12px;
+  }
+  .rowflex { display: flex; gap: 12px; align-items: center; }
+</style></head>
+<body>
+  <div class="caption">.sk — pulse-bg 1.6s · surface-alt ↔ border · radius 6px</div>
+
+  <div class="card">
+    <div class="rowflex" style="margin-bottom:12px">
+      <div class="sk sk-circle" style="width:36px;height:36px"></div>
+      <div style="flex:1">
+        <div class="sk" style="height:13px;width:60%;margin-bottom:7px"></div>
+        <div class="sk" style="height:11px;width:38%"></div>
+      </div>
+    </div>
+    <div class="sk" style="height:11px;width:100%;margin-bottom:7px"></div>
+    <div class="sk" style="height:11px;width:88%;margin-bottom:7px"></div>
+    <div class="sk" style="height:11px;width:72%"></div>
+  </div>
+
+  <div class="card">
+    <div class="sk" style="height:14px;width:50%;margin-bottom:12px"></div>
+    <div class="rowflex">
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+      <div class="sk" style="height:54px;flex:1;border-radius:var(--radius-md)"></div>
+    </div>
+  </div>
+
+  <div class="caption" style="margin-top:6px">Se muestran mientras cargan las rutas; reemplazan el contenido real con el mismo layout.</div>
+</body></html>

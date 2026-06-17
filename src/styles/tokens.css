@@ -1,7 +1,7 @@
 :root {
   /* ============================================
-     PALETA — Estilo B · Cocina cálida (provisoria)
-     A revisar en Etapa 6 con Claude Design
+     Comida Familiar — Design Tokens
+     Sourced from design-system colors_and_type.css v1.0
      ============================================ */
 
   /* Backgrounds — tonos crema cálidos */
@@ -31,6 +31,9 @@
   --accent:         #74324a;
   --accent-strong:  #5b2438;
   --accent-soft:    rgba(116, 50, 74, 0.10);
+
+  /* Estrella — dorado cálido para ratings */
+  --estrella: oklch(0.76 0.14 78);
 
   /* Semantic — ok / err / warn / info */
   --ok-bg:    #ecf5ec;
@@ -118,6 +121,55 @@
 }
 
 /* ============================================
+   DARK MODE — "Cocina nocturna"
+   Activar con <html data-theme="dark">. Solo reescribe tokens.
+   ============================================ */
+[data-theme="dark"] {
+  --bg:             #18130f;
+  --surface:        #211a15;
+  --surface-strong: #2a221c;
+  --surface-alt:    #2f261f;
+
+  --text:           #f1e9df;
+  --text-strong:    #fbf6ef;
+  --muted:          #b3a597;
+  --muted-strong:   #cdbfb0;
+
+  --line:           #463a30;
+  --border:         #382e26;
+  --border-subtle:  #2f2620;
+
+  --primary:        #e08a63;
+  --primary-strong: #ec9d79;
+  --primary-soft:   rgba(224, 138, 99, 0.16);
+  --primary-on:     #2a1610;
+
+  --accent:         #d18aa3;
+  --accent-strong:  #dc9cb1;
+  --accent-soft:    rgba(209, 138, 163, 0.16);
+  --estrella:       oklch(0.80 0.14 80);
+
+  --ok-bg:    #1e2c1e;  --ok-line:  #3a5a3a;  --ok-text:  #a8d6a8;
+  --err-bg:   #321e18;  --err-line: #6a3a2c;  --err-text: #f0a98f;
+  --warn-bg:  #2e2616;  --warn-line:#5c4a26;  --warn-text:#e6c374;
+  --info-bg:  #1c2230;  --info-line:#39455e;  --info-text:#aeb9d6;
+
+  --shadow-header: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-menu:   0 4px 14px rgba(0,0,0,0.5);
+  --shadow-toast:  0 4px 14px rgba(0,0,0,0.55);
+  --shadow-focus:  0 0 0 3px var(--primary-soft);
+
+  --on-primary: #ffffff;
+  color-scheme: dark;
+
+  /* Member avatars — versiones claras para contraste sobre fondo oscuro */
+  --member-juanpablo: #e08a63;  /* = --primary dark */
+  --member-maria:     #d18aa3;  /* = --accent dark */
+  --member-sofia:     #aeb9d6;  /* = --info-text dark */
+  --member-federico:  #a8d6a8;  /* = --ok-text dark */
+}
+
+/* ============================================
    Resets compactos
    ============================================ */
 * {
@@ -167,3 +219,16 @@ textarea:focus-visible {
   outline: none;
   box-shadow: var(--shadow-focus);
 }
+
+/* ── Skeleton loaders ─────────────────────────────────────────────────── */
+@keyframes pulse-bg {
+  0%, 100% { background-color: var(--surface-alt); }
+  50%       { background-color: var(--border); }
+}
+.sk {
+  background: var(--surface-alt);
+  border-radius: 6px;
+  animation: pulse-bg 1.6s ease-in-out infinite;
+}
+.sk-circle { border-radius: 50%; }
+.sk-row:last-child { border-bottom: none; }

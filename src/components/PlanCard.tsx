@@ -1,37 +1,22 @@
 // src/components/PlanCard.tsx — card de plan con visual del DS v1.0
 
 import { useState, useEffect } from "react";
-import { actualizarAsignaciones } from "../data/planes";
+import { actualizarAsignaciones, asignarFechaPlan } from "../data/planes";
 import { AvatarStack } from "./MemberAvatar";
-import type { Plan, Menu, MiembroId, EstadoPlan } from "../types/models";
+import { EstadoBadge } from "./EstadoBadge";
+import type { Plan, Menu, MiembroId } from "../types/models";
 import { MIEMBRO_IDS } from "../types/models";
 
 const NOMBRES: Record<string, string> = {
   juanpablo: "Juan Pablo", maria: "María", sofia: "Sofía", federico: "Federico",
 };
 
-// ─── EstadoBadge ─────────────────────────────────────────────────────────────
+const DAYS_ES = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const LETRA_DIA: Record<number, string> = { 0: "D", 1: "L", 2: "M", 3: "X", 4: "J", 5: "V", 6: "S" };
 
-function EstadoBadge({ estado }: { estado: EstadoPlan | string }) {
-  const styles: Record<string, { bg: string; color: string }> = {
-    "Elegida":          { bg: "var(--surface-alt)",  color: "var(--muted)" },
-    "Compra pendiente": { bg: "var(--warn-bg)",       color: "var(--warn-text)" },
-    "Compra lista":     { bg: "var(--info-bg)",       color: "var(--info-text)" },
-    "Cocinando":        { bg: "var(--primary)",       color: "#fff" },
-    "Cocinada":         { bg: "var(--ok-bg)",         color: "var(--ok-text)" },
-    "Evaluada":         { bg: "var(--surface-alt)",   color: "var(--muted-strong)" },
-  };
-  const s = styles[estado] ?? styles["Elegida"];
-  return (
-    <span style={{
-      display: "inline-block", padding: "2px 10px",
-      borderRadius: "var(--radius-full)",
-      fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)" as unknown as number,
-      background: s.bg, color: s.color, flexShrink: 0,
-    }}>
-      {estado}
-    </span>
-  );
+function formatChipDia(fecha: string): string {
+  const d = new Date(fecha + "T12:00:00");
+  return `${DAYS_ES[d.getDay()]} ${d.getDate()}`;
 }
 
 // ─── Props ────────────────────────────────────────────────────────────────────
@@ -81,6 +66,10 @@ export function PlanCard({
   const [guardandoAsig, setGuardandoAsig] = useState(false);
   const [errorAsig, setErrorAsig] = useState<string | null>(null);
 
+  // Day picker
+  const [dateEditing, setDateEditing] = useState(false);
+  const [busyLocal, setBusyLocal] = useState(false);
+
   useEffect(() => {
     if (!asigEditing) setAsigLocal([...plan.asignaciones]);
   }, [plan.asignaciones, asigEditing]);
@@ -102,6 +91,34 @@ export function PlanCard({
     setConfirming(false);
     setMoreOpen(false);
     onDescartar?.();
+  }
+
+  async function handleAsignarDia(fecha: string) {
+    setBusyLocal(true);
+    try {
+      const result = await asignarFechaPlan(plan.idPlan, fecha);
+      if (result.ok) {
+        setDateEditing(false);
+      } else {
+        console.error(result.error);
+      }
+    } finally {
+      setBusyLocal(false);
+    }
+  }
+
+  async function handleQuitarDia() {
+    setBusyLocal(true);
+    try {
+      const result = await asignarFechaPlan(plan.idPlan, null);
+      if (result.ok) {
+        setDateEditing(false);
+      } else {
+        console.error(result.error);
+      }
+    } finally {
+      setBusyLocal(false);
+    }
   }
 
   const cocineroNombres = plan.asignaciones.map((id) => NOMBRES[id] ?? id);
@@ -128,7 +145,7 @@ export function PlanCard({
           </p>
         )}
 
-        {/* Título + badge */}
+        {/* Título + badge + chip día */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
           <h3 style={{
             fontWeight: 600, fontSize: featured ? 18 : 15,
@@ -137,7 +154,35 @@ export function PlanCard({
           }}>
             {plan.nombreSeleccion}
           </h3>
-          <EstadoBadge estado={plan.estado} />
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, flexShrink: 0 }}>
+            <EstadoBadge estado={plan.estado} />
+            {isJP && plan.estado !== "Evaluada" && plan.estado !== "Cocinada" ? (
+              <button
+                aria-label="Asignar día a este plan"
+                onClick={() => { setDateEditing(true); setAsigEditing(false); setMoreOpen(false); setConfirming(false); }}
+                style={{
+                  display: "inline-block", padding: "2px 9px",
+                  borderRadius: "var(--radius-full)",
+                  fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)" as unknown as number,
+                  background: plan.fecha ? "var(--primary-soft)" : "var(--surface-alt)",
+                  color: plan.fecha ? "var(--primary)" : "var(--muted)",
+                  cursor: "pointer", border: "none", fontFamily: "inherit",
+                }}
+              >
+                {plan.fecha ? formatChipDia(plan.fecha) : "Sin día"}
+              </button>
+            ) : (
+              <span style={{
+                display: "inline-block", padding: "2px 9px",
+                borderRadius: "var(--radius-full)",
+                fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)" as unknown as number,
+                background: plan.fecha ? "var(--primary-soft)" : "var(--surface-alt)",
+                color: plan.fecha ? "var(--primary)" : "var(--muted)",
+              }}>
+                {plan.fecha ? formatChipDia(plan.fecha) : "Sin día"}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Metadata: proteína · tiempo · dificultad */}
@@ -168,8 +213,9 @@ export function PlanCard({
           }}>
             <AvatarStack
               names={cocineroNombres}
+              memberIds={plan.asignaciones as MiembroId[]}
               size={22}
-              onClick={isJP && plan.estado !== "Evaluada" ? () => setAsigEditing(true) : undefined}
+              onClick={isJP && plan.estado !== "Evaluada" ? () => { setAsigEditing(true); setDateEditing(false); setMoreOpen(false); } : undefined}
             />
             <span style={{ fontSize: 13, color: "var(--muted)" }}>
               {cocineroNombres.join(", ")}
@@ -214,7 +260,7 @@ export function PlanCard({
         </button>
         <button
           aria-label="Más acciones"
-          onClick={() => { setMoreOpen((v) => !v); setConfirming(false); }}
+          onClick={() => { setMoreOpen((v) => !v); setConfirming(false); setDateEditing(false); }}
           style={{
             background: "var(--surface-strong)", border: "1px solid var(--line)",
             borderRadius: "var(--radius-md)", padding: "0 10px",
@@ -245,7 +291,7 @@ export function PlanCard({
           {onDescartar && (
             <button
               className="btn btn-ghost"
-              onClick={() => setConfirming(true)}
+              onClick={() => { setConfirming(true); setDateEditing(false); }}
               disabled={busy}
               style={{
                 textAlign: "left", padding: "10px 18px", fontSize: "var(--fs-sm)",
@@ -277,10 +323,10 @@ export function PlanCard({
           </p>
           <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-2)" }}>
             <button
-              className="btn btn-primary"
+              className="btn btn-danger"
               onClick={handleDescartar}
               disabled={busy}
-              style={{ fontSize: "var(--fs-sm)", background: "var(--accent)", flex: 1 }}
+              style={{ fontSize: "var(--fs-sm)", flex: 1 }}
             >
               {busy ? "…" : "Confirmar"}
             </button>
@@ -349,6 +395,76 @@ export function PlanCard({
               onClick={() => { setAsigEditing(false); setErrorAsig(null); setMoreOpen(false); }}
               disabled={guardandoAsig}
               style={{ flex: 1, fontSize: "var(--fs-xs)" }}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── Day picker ────────────────────────────────────────────────────── */}
+      {dateEditing && (
+        <div style={{
+          borderTop: "1px solid var(--border-subtle)",
+          background: "var(--surface-alt)",
+          padding: "var(--space-3) var(--space-4)",
+        }}>
+          <p style={{
+            fontSize: "var(--fs-xs)", color: "var(--muted)",
+            textTransform: "uppercase", letterSpacing: ".05em",
+            margin: "0 0 var(--space-2)",
+          }}>
+            Asignar a un día
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 4, marginBottom: "var(--space-2)" }}>
+            {Array.from({ length: 7 }, (_, i) => {
+              const d = new Date(plan.semanaInicio + "T12:00:00");
+              d.setDate(d.getDate() + i);
+              const yyyy = d.getFullYear();
+              const mm = String(d.getMonth() + 1).padStart(2, "0");
+              const dd = String(d.getDate()).padStart(2, "0");
+              const fecha = `${yyyy}-${mm}-${dd}`;
+              const isActive = plan.fecha === fecha;
+              return (
+                <button
+                  key={fecha}
+                  disabled={busyLocal}
+                  onClick={() => void handleAsignarDia(fecha)}
+                  style={{
+                    display: "flex", flexDirection: "column", alignItems: "center",
+                    padding: "8px 0", borderRadius: 10, fontFamily: "inherit",
+                    border: isActive ? "none" : "1px solid var(--border)",
+                    background: isActive ? "var(--primary)" : "var(--surface-strong)",
+                    color: isActive ? "#fff" : "var(--text-strong)",
+                    fontWeight: isActive ? 700 : 400,
+                    cursor: busyLocal ? "default" : "pointer",
+                    opacity: busyLocal ? 0.6 : 1,
+                  }}
+                >
+                  <span style={{ fontSize: 10, textTransform: "uppercase", lineHeight: 1 }}>
+                    {LETRA_DIA[d.getDay()]}
+                  </span>
+                  <span style={{ fontSize: 15, lineHeight: 1.4 }}>{d.getDate()}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div style={{ display: "flex", gap: "var(--space-2)" }}>
+            {plan.fecha && (
+              <button
+                className="btn btn-ghost"
+                onClick={() => void handleQuitarDia()}
+                disabled={busyLocal}
+                style={{ fontSize: "var(--fs-xs)", color: "var(--muted-strong)" }}
+              >
+                Quitar día
+              </button>
+            )}
+            <button
+              className="btn btn-ghost"
+              onClick={() => setDateEditing(false)}
+              disabled={busyLocal}
+              style={{ fontSize: "var(--fs-xs)", color: "var(--muted)" }}
             >
               Cancelar
             </button>

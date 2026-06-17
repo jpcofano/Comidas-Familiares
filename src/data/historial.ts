@@ -3,6 +3,9 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc,
+  deleteDoc,
+  serverTimestamp,
   query,
   where,
   orderBy,
@@ -55,4 +58,39 @@ export async function getHistorialDeMenu(idMenu: string): Promise<Historial[]> {
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => d.data() as Historial);
+}
+
+// ─── Foto del plato (subcollection /historial/{idHist}/media/foto) ─────────────
+
+export async function getFotoHistorial(idHist: string): Promise<string | null> {
+  const snap = await getDoc(doc(db, "historial", idHist, "media", "foto"));
+  if (!snap.exists()) return null;
+  return (snap.data().dataUrl as string) ?? null;
+}
+
+export async function setFotoHistorial(
+  idHist: string,
+  dataUrl: string,
+  byMemberId: string
+): Promise<Result<void, AppError>> {
+  try {
+    await setDoc(doc(db, "historial", idHist, "media", "foto"), {
+      dataUrl,
+      contentType: "image/jpeg",
+      byMemberId,
+      updatedAt: serverTimestamp(),
+    });
+    return ok(undefined);
+  } catch (e) {
+    return err("foto-historial-write-failed", firebaseErrorMessage(e) ?? "No se pudo guardar la foto.", e);
+  }
+}
+
+export async function deleteFotoHistorial(idHist: string): Promise<Result<void, AppError>> {
+  try {
+    await deleteDoc(doc(db, "historial", idHist, "media", "foto"));
+    return ok(undefined);
+  } catch (e) {
+    return err("foto-historial-delete-failed", firebaseErrorMessage(e) ?? "No se pudo eliminar la foto.", e);
+  }
 }

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Bottom nav</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { margin: 0; padding: 0; background: var(--bg); font-family: var(--font-sans); }
+  .preview-frame { padding: 16px; }
+  .nav {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    padding: 8px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 12px;
+  }
+  .nav-btn {
+    min-height: 56px; padding: 8px 4px; border-radius: 10px;
+    font-size: 12px; font-weight: 500;
+    background: transparent; color: var(--muted);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 4px; line-height: 1.1;
+    border: 0; cursor: pointer;
+  }
+  .nav-btn.active { background: var(--primary-soft); color: var(--primary); }
+  .nav-btn svg { width: 20px; height: 20px; }
+  .caption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+</style></head>
+<body>
+  <div class="preview-frame">
+    <div class="caption">BottomNav (JP variant)</div>
+    <div class="nav">
+      <button class="nav-btn active"><i data-lucide="home"></i><span>Inicio</span></button>
+      <button class="nav-btn"><i data-lucide="book-open"></i><span>Biblioteca</span></button>
+      <button class="nav-btn"><i data-lucide="shopping-bag"></i><span>Compras</span></button>
+      <button class="nav-btn"><i data-lucide="history"></i><span>Historial</span></button>
+    </div>
+  </div>
+  <script>lucide.createIcons();</script>
+</body></html>

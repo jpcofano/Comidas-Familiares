@@ -1,0 +1,1865 @@
+[
+  {
+    "nombre": "Bondiola a la mostaza, miel y romero",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Zanahorias asadas o puré de coliflor",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bifes de bondiola bien dorados con una salsa rápida, intensa y apenas agridulce; resuelve una cena especial en menos de media hora sin lácteos ni acompañamientos con almidón",
+    "riesgos": "exceso de miel se quema; cocinar de más seca los bifes",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "bondiola",
+        "textoOriginal": "Bondiola",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en 4 bifes de 2 a 3 cm"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "0,75",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza Dijon",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "miel",
+        "textoOriginal": "Miel",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "cantidad medida para mantener el perfil low-carb"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Salsa",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Secar y condimentar",
+        "detalle": "Secar los bifes de bondiola y condimentarlos con sal y pimienta.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": "La superficie seca permite formar una buena costra.",
+        "puntoClave": "Poner la carne húmeda en la sartén.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar la bondiola",
+        "detalle": "Calentar el aceite a fuego fuerte y dorar los bifes 3 a 4 minutos por lado. Retirar a un plato.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": "No mover los bifes hasta que se despeguen con facilidad.",
+        "puntoClave": "Dar vuelta antes de que se forme la costra.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hacer la salsa",
+        "detalle": "Bajar a fuego medio, agregar mostaza, miel, romero y caldo; raspar el fondo y cocinar 2 minutos.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "La miel debe incorporarse con líquido para que no se queme.",
+        "puntoClave": "Usar fuego fuerte después de agregar la miel.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Devolver la bondiola y cocinar 2 a 4 minutos, bañándola con la salsa, hasta el punto deseado.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "La salsa debe napar sin secarse.",
+        "puntoClave": "Reducir demasiado y salar de más.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola al ajillo, limón y perejil",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Zucchini grillado o ensalada de hojas verdes",
+    "tiempoActivoLabel": "18 min",
+    "tiempoActivoMin": 18,
+    "tiempoTotalLabel": "22 min",
+    "tiempoTotalMin": 22,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "una preparación directa y fresca en la que el ajo dorado, la ralladura de limón y el perejil equilibran la grasa natural de la bondiola",
+    "riesgos": "quemar el ajo amarga todo el plato; demasiado jugo de limón tapa la carne",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "bondiola",
+        "textoOriginal": "Bondiola",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en 4 bifes"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "laminado fino"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "usar solo 1 a 2 cda de jugo"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "0,75",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar la carne",
+        "detalle": "Secar la bondiola y condimentarla con sal y pimienta.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": "Secar bien para dorar.",
+        "puntoClave": "Salar en exceso un corte fino.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Calentar 1 cucharada de aceite y cocinar los bifes 3 a 4 minutos por lado. Retirar y dejar reposar.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": "Fuego fuerte y cocción corta.",
+        "puntoClave": "Recocer la bondiola.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Dorar el ajo",
+        "detalle": "Bajar el fuego, sumar el resto del aceite y cocinar el ajo 30 a 60 segundos, apenas dorado.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": "Retirar del calor apenas toma color.",
+        "puntoClave": "Dejar que el ajo se oscurezca.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar con limón",
+        "detalle": "Apagar el fuego, sumar ralladura, 1 cucharada de jugo de limón y perejil. Volcar sobre la carne y servir.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "El limón entra fuera del fuego para conservar frescura.",
+        "puntoClave": "Agregar demasiado jugo y volver ácida la salsa.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola con hongos al Malbec",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Puré de coliflor, choclo cremoso en porción pequeña o vegetales asados",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "32 min",
+    "tiempoTotalMin": 32,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "una versión rápida de bistró: bondiola sellada, hongos dorados y una reducción de Malbec con echalote y tomillo, completamente sin crema",
+    "riesgos": "amontonar los hongos los hierve; una reducción insuficiente deja sabor alcohólico",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola",
+        "textoOriginal": "Bondiola",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en 4 bifes gruesos"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Salsa",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteado"
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "vino malbec",
+        "textoOriginal": "Vino Malbec",
+        "seccion": "Salsa",
+        "cantidad": "180",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar la bondiola",
+        "detalle": "Secar, salpimentar y dorar la carne en aceite 3 a 4 minutos por lado. Retirar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Usar sartén amplia y muy caliente.",
+        "puntoClave": "Mover la carne antes de que dore.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar los hongos",
+        "detalle": "En la misma sartén agregar los hongos en una sola capa y dejarlos quietos 2 minutos; luego remover y dorar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": "Los hongos necesitan espacio para dorarse.",
+        "puntoClave": "Salar al principio y hacerlos largar demasiada agua.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sumar echalote",
+        "detalle": "Agregar el echalote y el tomillo; cocinar a fuego medio hasta transparente.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "El echalote debe ablandarse sin quemarse.",
+        "puntoClave": "Dorar demasiado la base.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reducir la salsa",
+        "detalle": "Incorporar el Malbec, raspar el fondo y reducir a la mitad. Agregar el caldo y reducir hasta que la salsa nape.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": "Debe desaparecer el aroma alcohólico crudo.",
+        "puntoClave": "Dejar la salsa líquida.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Integrar y servir",
+        "detalle": "Devolver la carne 2 minutos, apagar y terminar con perejil.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "Solo recalentar la carne en la salsa.",
+        "puntoClave": "Hervirla y secarla.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola oriental con soja, jengibre y sésamo",
+    "estilo": "China",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz jazmín",
+    "acompPadres": "Se sirve sola; arroz jazmín únicamente como hidrato opcional para la familia",
+    "tiempoActivoLabel": "22 min",
+    "tiempoActivoMin": 22,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "tiras de bondiola salteadas a fuego fuerte con brócoli, jengibre, soja y sésamo; una cena completa, rápida y sin arroz obligatorio",
+    "riesgos": "sobrecargar el wok hace que la carne hierva; demasiada soja vuelve el plato salado",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "bondiola",
+        "textoOriginal": "Bondiola",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en tiras finas"
+      },
+      {
+        "canon": "brocoli",
+        "textoOriginal": "Brócoli",
+        "seccion": "Vegetales",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en flores pequeñas"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salsa",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "parte blanca y verde separadas"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "miel",
+        "textoOriginal": "Miel",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": true,
+        "notas": "opcional; mantener esta cantidad para un perfil low-carb"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar el brócoli",
+        "detalle": "Blanquear el brócoli 2 minutos en agua hirviendo y enfriar; debe quedar firme.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "Cocción corta para conservar textura.",
+        "puntoClave": "Hervirlo hasta que quede blando.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar la carne",
+        "detalle": "Calentar muy bien una sartén amplia o wok y saltear la bondiola en dos tandas con aceite. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": "Trabajar por tandas mantiene el dorado.",
+        "puntoClave": "Poner toda la carne junta.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Perfumar",
+        "detalle": "Saltear la parte blanca del verdeo, ajo y jengibre durante 30 segundos.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": "Los aromáticos no deben quemarse.",
+        "puntoClave": "Fuego excesivo sin mover.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Integrar",
+        "detalle": "Agregar brócoli, soja, miel opcional y la carne; saltear 2 a 3 minutos.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "La salsa debe cubrir, no inundar.",
+        "puntoClave": "Agregar sal antes de probar la soja.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar",
+        "detalle": "Apagar, incorporar aceite de sésamo, semillas y parte verde del verdeo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": "El aceite de sésamo se usa al final.",
+        "puntoClave": "Cocinarlo mucho y perder el aroma.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola ahumada con cebolla morada",
+    "estilo": "Argentina",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Berenjenas asadas o repollo salteado",
+    "tiempoActivoLabel": "22 min",
+    "tiempoActivoMin": 22,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bondiola dorada con cebolla morada, pimentón ahumado y un toque de vinagre; sabor de parrilla resuelto en sartén y sin salsas pesadas",
+    "riesgos": "quemar el pimentón lo vuelve amargo; cocinar de más la cebolla puede volverla demasiado dulce",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "bondiola",
+        "textoOriginal": "Bondiola",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en bifes o cubos grandes"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Condimentos",
+        "cantidad": "2",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji molido",
+        "textoOriginal": "Ají molido",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": true,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "0,75",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar la carne",
+        "detalle": "Secar y salpimentar la bondiola. Dorarla en aceite a fuego fuerte y retirar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Dorar por tandas si se usa carne en cubos.",
+        "puntoClave": "Amontonar la carne.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cocinar la cebolla",
+        "detalle": "Bajar a fuego medio y cocinar la cebolla morada 5 minutos, manteniendo algo de textura.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "Debe ablandarse sin deshacerse.",
+        "puntoClave": "Caramelizarla demasiado.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Agregar especias",
+        "detalle": "Apartar la sartén un instante del fuego, sumar pimentón y ají molido, mezclar 20 segundos.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": "El pimentón se hidrata enseguida con el líquido del paso siguiente.",
+        "puntoClave": "Quemar el pimentón en aceite muy caliente.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Desglasar",
+        "detalle": "Agregar vinagre y caldo, raspar el fondo y cocinar 3 minutos.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": "El vinagre debe perder su agresividad.",
+        "puntoClave": "Usar demasiado vinagre.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Terminar",
+        "detalle": "Devolver la carne y cocinar 3 a 5 minutos. Terminar con perejil.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "La salsa debe quedar corta y concentrada.",
+        "puntoClave": "Secarla por completo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola braseada al Malbec con hongos y echalotes",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Papas Anna",
+    "acompPadres": "Puré de coliflor o Papas Anna como hidrato opcional",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "2 h 45 min",
+    "tiempoTotalMin": 165,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "una pieza entera braseada lentamente en Malbec, caldo, hongos y hierbas hasta quedar tierna, con una salsa oscura y brillante sin crema ni manteca",
+    "riesgos": "poco líquido o tapa mal cerrada seca la carne; una salsa sin reducción queda aguada",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "partidos a la mitad"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Base",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "enteros o en mitades"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "aplastados"
+      },
+      {
+        "canon": "vino malbec",
+        "textoOriginal": "Vino Malbec",
+        "seccion": "Líquidos",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Hierbas",
+        "cantidad": "4",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Hierbas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar la pieza",
+        "detalle": "Secar, salpimentar y dorar la bondiola entera en una olla apta horno por todos sus lados. Retirar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": "El dorado inicial construye el sabor de la salsa.",
+        "puntoClave": "Dar vuelta demasiado pronto.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar la base",
+        "detalle": "Agregar echalotes y hongos; dorar 6 minutos. Sumar el ajo al final.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": "Los hongos deben tomar color antes del líquido.",
+        "puntoClave": "Agregar vino con los hongos aún pálidos.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Verter el Malbec, raspar bien el fondo y hervir 5 minutos para reducir.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": "Reducir antes de agregar el caldo elimina el alcohol crudo.",
+        "puntoClave": "Tapar inmediatamente sin reducir.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Agregar caldo, tomillo y laurel; devolver la carne, tapar y hornear a 160 °C durante 2 horas. Dar vuelta a mitad de cocción.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": "El líquido debe llegar aproximadamente a un tercio o la mitad de la pieza.",
+        "puntoClave": "Horno demasiado fuerte que hierve y endurece.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reducir la salsa",
+        "detalle": "Retirar la carne, descartar hierbas y reducir el líquido destapado hasta que nape.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": "Probar de sal recién después de reducir.",
+        "puntoClave": "Salar antes y concentrar demasiado.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 6,
+        "titulo": "Reposar y cortar",
+        "detalle": "Dejar reposar la bondiola 10 minutos, cortar y servir con la salsa y los hongos.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "El reposo conserva los jugos.",
+        "puntoClave": "Cortar inmediatamente.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola laqueada con naranja, soja y jengibre",
+    "estilo": "China",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Brócoli, pak choi o repollo salteado",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "2 h 15 min",
+    "tiempoTotalMin": 135,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bondiola entera cocida lentamente y terminada con un laqueado cítrico de naranja, soja y jengibre; brillante y festiva con azúcar muy controlada",
+    "riesgos": "un laqueado demasiado dulce se quema; destapar desde el principio seca la carne",
+    "notas": "Low-carb moderada: la receta utiliza una sola cucharada de miel para cuatro porciones.",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo y ralladura fina"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "miel",
+        "textoOriginal": "Miel",
+        "seccion": "Laqueado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "no aumentar; cantidad total para 4 porciones"
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "usar poca por la soja"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar la marinada",
+        "detalle": "Mezclar jugo y ralladura de naranja, soja, jengibre, ajo, miel, vinagre y pimienta.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": "Reservar 150 ml de la mezcla limpia para el laqueado final.",
+        "puntoClave": "Usar como salsa final la marinada que tocó carne cruda.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Secar la bondiola, salar muy poco y dorarla con aceite por todos sus lados.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "La soja terminará de salar el plato.",
+        "puntoClave": "Agregar demasiada sal inicial.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar tapada",
+        "detalle": "Colocar en una fuente, sumar la marinada no reservada, tapar y hornear a 170 °C durante 1 hora 30 minutos.",
+        "tiempoEstimadoLabel": "1 h 30 min",
+        "tiempoEstimadoMin": "Bañar la carne una vez durante la cocción.",
+        "puntoClave": "Dejar la fuente destapada.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reducir el laqueado",
+        "detalle": "Mientras tanto, hervir la marinada reservada hasta reducir a consistencia de jarabe liviano.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Debe cubrir el dorso de una cuchara sin volverse caramelo.",
+        "puntoClave": "Reducir hasta que se queme.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Laquear y dorar",
+        "detalle": "Destapar, pincelar varias veces y hornear a 210 °C durante 20 a 25 minutos.",
+        "tiempoEstimadoLabel": "25 min",
+        "tiempoEstimadoMin": "Pincelar en capas finas.",
+        "puntoClave": "Poner toda la reducción de una vez.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 6,
+        "titulo": "Reposar",
+        "detalle": "Reposar 10 minutos y terminar con sésamo.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "El reposo estabiliza los jugos y el laqueado.",
+        "puntoClave": "Cortar recién salida del horno.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola rellena de espinaca y almendras",
+    "estilo": "Mediterránea",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Zanahorias asadas o ensalada de hinojo",
+    "tiempoActivoLabel": "45 min",
+    "tiempoActivoMin": 45,
+    "tiempoTotalLabel": "1 h 55 min",
+    "tiempoTotalMin": 115,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "una bondiola abierta, rellena con espinaca, ajo, almendras y hierbas, enrollada y dorada; corte vistoso de celebración sin pan rallado ni queso",
+    "riesgos": "un relleno húmedo abre el rollo; atar flojo hace que pierda la forma",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "abierta tipo libro"
+      },
+      {
+        "canon": "espinaca",
+        "textoOriginal": "Espinaca",
+        "seccion": "Relleno",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "lavada y bien seca"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Relleno",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "almendras",
+        "textoOriginal": "Almendras",
+        "seccion": "Relleno",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "tostadas y picadas"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza Dijon",
+        "seccion": "Relleno",
+        "cantidad": "1,5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Líquidos",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hilo de cocina",
+        "textoOriginal": "Hilo de cocina",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "aproximadamente 2 m"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar el relleno",
+        "detalle": "Saltear el ajo en 1 cucharada de aceite, sumar la espinaca y cocinar solo hasta que baje. Enfriar y exprimir muy bien.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "El relleno debe quedar casi seco.",
+        "puntoClave": "Rellenar con espinaca húmeda.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Condimentar",
+        "detalle": "Mezclar la espinaca con almendras, perejil y ralladura. Abrir la bondiola, salpimentar y untar con mostaza.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Dejar un borde libre para que el relleno no se escape.",
+        "puntoClave": "Llegar con el relleno hasta los bordes.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Enrollar y atar",
+        "detalle": "Distribuir el relleno, enrollar con firmeza y atar cada 3 a 4 cm.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": "El rollo debe quedar parejo y compacto.",
+        "puntoClave": "Atar flojo o de manera irregular.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Sellar",
+        "detalle": "Dorar el rollo en una olla o sartén apta horno con el resto del aceite.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Sellar también los extremos.",
+        "puntoClave": "Manipularlo sin pinzas y abrir el atado.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Hornear",
+        "detalle": "Agregar vino y caldo, raspar el fondo y hornear a 180 °C durante 60 a 70 minutos, bañando una vez.",
+        "tiempoEstimadoLabel": "1 h 10 min",
+        "tiempoEstimadoMin": "El líquido debe quedar alrededor, no cubrir la carne.",
+        "puntoClave": "Cocinar en exceso hasta secar el centro.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 6,
+        "titulo": "Reposar y cortar",
+        "detalle": "Reposar 15 minutos, retirar el hilo y cortar en rodajas gruesas.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": "Un cuchillo bien afilado conserva el dibujo del relleno.",
+        "puntoClave": "Cortar caliente y desarmar el rollo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola estilo porchetta con ajo, hinojo y hierbas",
+    "estilo": "Italiana",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "Hinojo asado, ensalada verde o coliflor al horno",
+    "tiempoActivoLabel": "40 min",
+    "tiempoActivoMin": 40,
+    "tiempoTotalLabel": "2 h 35 min",
+    "tiempoTotalMin": 155,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "una bondiola enrollada con ajo, romero, semillas de hinojo y limón, cocida lentamente y terminada a horno fuerte para formar una superficie intensamente dorada",
+    "riesgos": "enrollar flojo impide un corte prolijo; horno fuerte durante toda la cocción seca la carne",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "abierta tipo libro"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Relleno",
+        "cantidad": "5",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "hojas picadas"
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "hojitas"
+      },
+      {
+        "canon": "semillas de hinojo",
+        "textoOriginal": "Semillas de hinojo",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "machacadas"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limón",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hinojo",
+        "textoOriginal": "Hinojo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "en gajos, opcional como cama de cocción"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Condimentos",
+        "cantidad": "2",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Condimentos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hilo de cocina",
+        "textoOriginal": "Hilo de cocina",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "aproximadamente 2 m"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar la pasta de hierbas",
+        "detalle": "Mezclar ajo, romero, tomillo, semillas de hinojo, ralladura, aceite, sal y pimienta.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": "Machacar las semillas libera mejor el aroma.",
+        "puntoClave": "Usarlas enteras y en exceso.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rellenar",
+        "detalle": "Extender la bondiola, distribuir la pasta de hierbas por toda la cara interna y enrollar firmemente.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "La capa de condimento debe ser fina y pareja.",
+        "puntoClave": "Formar montones de ajo y hierbas.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Atar",
+        "detalle": "Atar el rollo cada 3 a 4 cm y dejarlo reposar 15 minutos mientras se calienta el horno.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "Un atado parejo mantiene la forma cilíndrica.",
+        "puntoClave": "Dejar zonas sin atar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Cocción lenta",
+        "detalle": "Colocar sobre gajos de hinojo si se usan y hornear a 160 °C durante 1 hora 45 minutos.",
+        "tiempoEstimadoLabel": "1 h 45 min",
+        "tiempoEstimadoMin": "Girar la fuente una vez para cocción pareja.",
+        "puntoClave": "Usar 220 °C desde el inicio.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Dorar",
+        "detalle": "Subir a 220 °C y cocinar 20 a 25 minutos hasta dorar intensamente.",
+        "tiempoEstimadoLabel": "25 min",
+        "tiempoEstimadoMin": "Vigilar los últimos minutos.",
+        "puntoClave": "Quemar las hierbas exteriores.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 6,
+        "titulo": "Reposar y cortar",
+        "detalle": "Reposar 15 minutos, retirar el hilo y cortar.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": "El reposo evita que se pierdan los jugos.",
+        "puntoClave": "Cortar inmediatamente.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bondiola al achiote y cítricos",
+    "estilo": "Mexicana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Tortillas",
+    "acompPadres": "Repollo blanco y cebolla morada con limón",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "3 h 15 min",
+    "tiempoTotalMin": 195,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bondiola marinada en achiote, naranja, limón, ajo y especias, cocida lentamente hasta quedar desmechable; intensa, rendidora y naturalmente sin lácteos",
+    "riesgos": "una fuente mal tapada seca el cerdo; exceso de pomelo o limón vuelve amarga la marinada",
+    "notas": "La versión base es low-carb; las tortillas quedan como hidrato opcional para quien quiera.",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "ChatGPT",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en una pieza o 3 trozos grandes"
+      },
+      {
+        "canon": "pasta de achiote",
+        "textoOriginal": "Pasta de achiote",
+        "seccion": "Marinada",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "pomelo",
+        "textoOriginal": "Pomelo",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "jugo; omitir si es muy amargo"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "5",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "machacado"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "en pluma fina para servir"
+      },
+      {
+        "canon": "repollo blanco",
+        "textoOriginal": "Repollo blanco",
+        "seccion": "Final",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "en juliana para acompañar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Preparar la marinada",
+        "detalle": "Deshacer la pasta de achiote con los jugos cítricos, vinagre, aceite, ajo, comino, orégano, sal y pimienta.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": "La pasta debe quedar completamente disuelta.",
+        "puntoClave": "Dejar grumos concentrados de achiote.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Marinar",
+        "detalle": "Cubrir la bondiola con la mezcla y refrigerar al menos 1 hora; idealmente 4 a 12 horas.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "Dar vuelta una vez si la marinada no cubre toda la pieza.",
+        "puntoClave": "Usar un recipiente metálico reactivo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Preparar la cocción",
+        "detalle": "Colocar carne y marinada en una fuente profunda y tapar herméticamente.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "El cierre debe conservar el vapor.",
+        "puntoClave": "Tapar de forma floja.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Hornear a 160 °C durante 2 horas 30 minutos a 3 horas, hasta que se pueda desmechar con tenedor.",
+        "tiempoEstimadoLabel": "2 h 45 min",
+        "tiempoEstimadoMin": "Revisar a las 2 horas 30 minutos y sumar un poco de agua solo si está seco.",
+        "puntoClave": "Subir la temperatura para acelerar.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reducir y desmechar",
+        "detalle": "Retirar la carne, reducir los jugos si están muy líquidos y desmechar en trozos grandes. Mezclar con parte de la salsa.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": "Conservar textura; no triturar la carne.",
+        "puntoClave": "Desmenuzar demasiado fino.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 6,
+        "titulo": "Servir",
+        "detalle": "Servir con cebolla morada y repollo aliñado con limón.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": "Los vegetales frescos equilibran la grasa.",
+        "puntoClave": "Agregar tortillas como acompañamiento obligatorio.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

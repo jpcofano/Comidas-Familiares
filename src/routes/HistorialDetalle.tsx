@@ -1,9 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import { getHistorialPorId } from "../data/historial";
+import { useAuth } from "../auth/useAuth";
+import {
+  getHistorialPorId,
+  getFotoHistorial,
+  setFotoHistorial,
+  deleteFotoHistorial,
+} from "../data/historial";
+import { comprimirImagen } from "../lib/comprimirImagen";
 import { MIEMBRO_IDS } from "../types/models";
 import type { Historial, MiembroId } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonList } from "../components/skeletons/SkeletonList";
+import { MemberAvatar } from "../components/MemberAvatar";
+import { ResultadoBadge } from "../components/ResultadoBadge";
+import { Stars } from "../components/historial/Stars";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -13,26 +25,6 @@ const NOMBRE_MIEMBRO: Record<MiembroId, string> = {
   sofia: "Sofía",
   federico: "Federico",
 };
-
-function ResultadoBadge({ resultado }: { resultado: string }) {
-  const colors: Record<string, { bg: string; color: string }> = {
-    "Excelente": { bg: "var(--ok-bg)",   color: "var(--ok-text)" },
-    "Muy bueno": { bg: "var(--ok-bg)",   color: "var(--ok-text)" },
-    "Bueno":     { bg: "var(--info-bg)", color: "var(--info-text)" },
-    "Regular":   { bg: "var(--warn-bg)", color: "var(--warn-text)" },
-    "Malísimo":  { bg: "var(--err-bg)",  color: "var(--err-text)" },
-  };
-  const s = colors[resultado] ?? { bg: "var(--surface-alt)", color: "var(--muted)" };
-  return (
-    <span style={{
-      display: "inline-block", padding: "4px 14px",
-      borderRadius: "var(--radius-full)", fontSize: "var(--fs-sm)",
-      fontWeight: "var(--fw-medium)", background: s.bg, color: s.color,
-    }}>
-      {resultado}
-    </span>
-  );
-}
 
 function Campo({ label, valor }: { label: string; valor: string | undefined }) {
   if (!valor) return null;
@@ -44,15 +36,50 @@ function Campo({ label, valor }: { label: string; valor: string | undefined }) {
   );
 }
 
+function ConfirmDialog({
+  mensaje, textoConfirmar, onConfirmar, onCancelar,
+}: {
+  mensaje: string;
+  textoConfirmar: string;
+  onConfirmar: () => void;
+  onCancelar: () => void;
+}) {
+  return (
+    <div style={{
+      position: "fixed", inset: 0, background: "rgba(0,0,0,.45)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      zIndex: 9998, padding: "var(--space-4)",
+    }}>
+      <div className="card" style={{ maxWidth: 380, width: "100%", margin: 0 }}>
+        <p style={{ marginBottom: "var(--space-4)", lineHeight: 1.5 }}>{mensaje}</p>
+        <div style={{ display: "flex", gap: "var(--space-3)", justifyContent: "flex-end" }}>
+          <button className="btn btn-secondary" onClick={onCancelar}>Cancelar</button>
+          <button className="btn btn-primary" onClick={onConfirmar}>{textoConfirmar}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Ruta ─────────────────────────────────────────────────────────────────────
 
 export function HistorialDetalleRoute() {
   const { idHist } = useParams<{ idHist: string }>();
   const navigate = useNavigate();
+  const { state } = useAuth();
+  const memberId = state.status === "authenticated" ? state.user.memberId : null;
 
   const [entry, setEntry] = useState<Historial | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [fotoUrl, setFotoUrl] = useState<string | null>(null);
+  const [fotoLoading, setFotoLoading] = useState(true);
+  const [subiendoFoto, setSubiendoFoto] = useState(false);
+  const [fotoError, setFotoError] = useState<string | null>(null);
+  const [confirmandoQuitar, setConfirmandoQuitar] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!idHist) return;
@@ -63,7 +90,51 @@ export function HistorialDetalleRoute() {
     });
   }, [idHist]);
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  useEffect(() => {
+    if (!idHist) return;
+    setFotoLoading(true);
+    getFotoHistorial(idHist)
+      .then((url) => { setFotoUrl(url); })
+      .catch(() => { /* error de red — no rompe el detalle */ })
+      .finally(() => { setFotoLoading(false); });
+  }, [idHist]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !idHist) return;
+    e.target.value = "";
+
+    setSubiendoFoto(true);
+    setFotoError(null);
+    try {
+      const dataUrl = await comprimirImagen(file);
+      const r = await setFotoHistorial(idHist, dataUrl, memberId ?? "");
+      if (r.ok) {
+        setFotoUrl(dataUrl);
+      } else {
+        setFotoError(r.error.message);
+      }
+    } catch (err) {
+      setFotoError(err instanceof Error ? err.message : "Error al procesar la foto.");
+    } finally {
+      setSubiendoFoto(false);
+    }
+  };
+
+  const handleQuitarFoto = async () => {
+    if (!idHist) return;
+    setConfirmandoQuitar(false);
+    setSubiendoFoto(true);
+    const r = await deleteFotoHistorial(idHist);
+    if (r.ok) {
+      setFotoUrl(null);
+    } else {
+      setFotoError(r.error.message);
+    }
+    setSubiendoFoto(false);
+  };
+
+  if (loading) return <div className="card"><SkeletonHeader /><div style={{ marginTop: "var(--space-3)" }}><SkeletonList count={3} /></div></div>;
   if (error || !entry) {
     return (
       <div className="card">
@@ -74,10 +145,6 @@ export function HistorialDetalleRoute() {
       </div>
     );
   }
-
-  const tieneComentarios = MIEMBRO_IDS.some(
-    (mid) => entry.comentarios?.[mid as MiembroId]
-  );
 
   return (
     <>
@@ -95,89 +162,171 @@ export function HistorialDetalleRoute() {
         </h2>
       </div>
 
-      {/* Resumen */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
-          <div>
-            <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 2px" }}>{entry.fechaRealizada}</p>
-            {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
-          </div>
-          <div style={{ textAlign: "right" }}>
-            <p style={{ fontSize: "var(--fs-2xl, 2rem)", fontWeight: "var(--fw-bold)", color: "var(--text-strong)", margin: "0 0 4px", lineHeight: 1 }}>
-              {entry.promedio}
-            </p>
-            {entry.resultado && <ResultadoBadge resultado={entry.resultado} />}
-          </div>
+      {/* Hero score */}
+      <div className="card" style={{ marginBottom: "var(--space-3)", textAlign: "center", padding: "var(--space-6) var(--space-4)" }}>
+        <div style={{ marginBottom: "var(--space-2)", lineHeight: 1 }}>
+          <span style={{ fontSize: 36, fontWeight: "var(--fw-bold)", color: "var(--primary)" }}>
+            {entry.promedio.toFixed(1)}
+          </span>
         </div>
-
-        {/* Link a receta o menú */}
-        {entry.tipoSeleccion === "receta" && entry.idReceta && (
-          <Link to={`/recetas/${entry.idReceta}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
-            Ver receta →
-          </Link>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "var(--space-3)" }}>
+          <Stars value={entry.promedio} scale={10} size={16} />
+        </div>
+        {entry.resultado && (
+          <div style={{ marginBottom: "var(--space-3)" }}>
+            <ResultadoBadge resultado={entry.resultado} />
+          </div>
         )}
-        {entry.tipoSeleccion === "menu" && entry.idMenu && (
-          <Link to={`/menus/${entry.idMenu}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
-            Ver menú →
-          </Link>
-        )}
+        <p style={{ fontSize: "var(--fs-xs)", color: "var(--muted)", margin: "0 0 2px" }}>{entry.fechaRealizada}</p>
+        {entry.ocasion && <p className="meta" style={{ margin: 0 }}>{entry.ocasion}</p>}
       </div>
+
+      {/* Ver receta / menú */}
+      {((entry.tipoSeleccion === "receta" && entry.idReceta) ||
+        (entry.tipoSeleccion === "menu" && entry.idMenu)) && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          {entry.tipoSeleccion === "receta" && entry.idReceta && (
+            <Link to={`/recetas/${entry.idReceta}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
+              Ver receta →
+            </Link>
+          )}
+          {entry.tipoSeleccion === "menu" && entry.idMenu && (
+            <Link to={`/menus/${entry.idMenu}`} style={{ fontSize: "var(--fs-sm)", color: "var(--primary)" }}>
+              Ver menú →
+            </Link>
+          )}
+        </div>
+      )}
 
       {/* Calificaciones */}
       <div className="card" style={{ marginBottom: "var(--space-3)" }}>
         <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
           Calificaciones
         </p>
-        {MIEMBRO_IDS.map((mid) => {
+        {MIEMBRO_IDS.map((mid, idx) => {
           const nota = entry.calificaciones?.[mid as MiembroId];
+          const comentario = entry.comentarios?.[mid as MiembroId];
+          const isLast = idx === MIEMBRO_IDS.length - 1;
           return (
             <div
               key={mid}
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-2)" }}
+              style={{
+                paddingBottom: "var(--space-2)",
+                marginBottom: "var(--space-2)",
+                borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
+              }}
             >
-              <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>
-                {NOMBRE_MIEMBRO[mid as MiembroId]}
-              </span>
-              <span style={{
-                fontSize: "var(--fs-sm)",
-                fontWeight: nota != null ? "var(--fw-semibold)" : "var(--fw-regular)",
-                color: nota != null ? "var(--text-strong)" : "var(--muted)",
-              }}>
-                {/* null = sin voto (E3.6 solo JP vota; E4.2 traerá los 4) */}
-                {nota != null ? nota : "Sin voto"}
-              </span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+                  <MemberAvatar name={NOMBRE_MIEMBRO[mid as MiembroId]} memberId={mid as MiembroId} size={24} />
+                  <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>
+                    {NOMBRE_MIEMBRO[mid as MiembroId]}
+                  </span>
+                </div>
+                {nota != null ? (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    <Stars value={nota} scale={10} size={12} />
+                    <span style={{
+                      fontSize: 18, fontWeight: 700,
+                      color: "var(--text-strong)",
+                      fontVariantNumeric: "tabular-nums",
+                    }}>
+                      {nota}
+                    </span>
+                  </span>
+                ) : (
+                  <span style={{ fontSize: "var(--fs-sm)", color: "var(--muted)" }}>Sin voto</span>
+                )}
+              </div>
+              {comentario && (
+                <p style={{
+                  margin: "var(--space-1) 0 0",
+                  paddingLeft: 30,
+                  fontSize: "var(--fs-xs)",
+                  color: "var(--muted)",
+                  fontStyle: "italic",
+                  lineHeight: "var(--lh-base)",
+                }}>
+                  {comentario}
+                </p>
+              )}
             </div>
           );
         })}
       </div>
 
-      {/* Comentarios */}
-      {tieneComentarios && (
-        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
-            Comentarios
-          </p>
-          {MIEMBRO_IDS.map((mid) => {
-            const comentario = entry.comentarios?.[mid as MiembroId];
-            if (!comentario) return null;
-            return (
-              <div key={mid} style={{ marginBottom: "var(--space-2)" }}>
-                <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
-                  {NOMBRE_MIEMBRO[mid as MiembroId]}:{" "}
-                </span>
-                <span style={{ fontSize: "var(--fs-sm)" }}>{comentario}</span>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      {/* Foto del plato */}
+      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+        <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
+          Foto del plato
+        </p>
 
-      {/* Datos del cocinero */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+
+        {fotoLoading ? (
+          <p className="meta" style={{ margin: 0 }}>Cargando foto…</p>
+        ) : fotoUrl ? (
+          <>
+            <img
+              src={fotoUrl}
+              alt="Foto del plato"
+              loading="lazy"
+              style={{
+                width: "100%",
+                borderRadius: "var(--radius-md)",
+                display: "block",
+                marginBottom: "var(--space-3)",
+              }}
+            />
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => fileInputRef.current?.click()}
+                style={{ flex: 1 }}
+              >
+                {subiendoFoto ? "Procesando…" : "Cambiar foto"}
+              </button>
+              <button
+                className="btn btn-secondary"
+                disabled={subiendoFoto}
+                onClick={() => setConfirmandoQuitar(true)}
+                style={{ flex: 1 }}
+              >
+                Quitar foto
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            className="btn btn-secondary"
+            disabled={subiendoFoto}
+            onClick={() => fileInputRef.current?.click()}
+            style={{ width: "100%" }}
+          >
+            {subiendoFoto ? "Procesando…" : "Agregar foto del plato"}
+          </button>
+        )}
+
+        {fotoError && (
+          <p style={{ color: "var(--err-text)", fontSize: "var(--fs-sm)", marginTop: "var(--space-2)", margin: "var(--space-2) 0 0" }}>
+            {fotoError}
+          </p>
+        )}
+      </div>
+
+      {/* Notas del cocinero */}
       {(entry.repetir || entry.costoRealAprox || entry.dificultadReal ||
         entry.queSalioBien || entry.queCambiaria || entry.notasFamiliares) && (
         <div className="card">
           <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)" }}>
-            Datos del cocinero
+            Notas del cocinero
           </p>
           <Campo label="¿Repetir?" valor={entry.repetir || undefined} />
           <Campo label="Costo real" valor={entry.costoRealAprox || undefined} />
@@ -186,6 +335,16 @@ export function HistorialDetalleRoute() {
           <Campo label="Qué cambiaría" valor={entry.queCambiaria || undefined} />
           <Campo label="Notas familiares" valor={entry.notasFamiliares || undefined} />
         </div>
+      )}
+
+      {/* Modal confirmar quitar foto */}
+      {confirmandoQuitar && (
+        <ConfirmDialog
+          mensaje="¿Quitar la foto del plato? Esta acción no se puede deshacer."
+          textoConfirmar="Quitar"
+          onConfirmar={handleQuitarFoto}
+          onCancelar={() => setConfirmandoQuitar(false)}
+        />
       )}
     </>
   );

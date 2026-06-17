@@ -16,7 +16,13 @@ import { ComprasRoute } from "./routes/Compras";
 import { HistorialRoute } from "./routes/Historial";
 import { HistorialDetalleRoute } from "./routes/HistorialDetalle";
 import { VotoRoute } from "./routes/Voto";
-import { PendientesRoute } from "./routes/Pendientes";
+import { QueCocinoRoute } from "./routes/QueCocino";
+import { VisibilidadBibliotecaRoute } from "./routes/VisibilidadBiblioteca";
+import { PerfilRoute } from "./routes/Perfil";
+import { CompraRapidaEditorRoute } from "./routes/CompraRapidaEditor";
+import { CompraRapidaDetalleRoute } from "./routes/CompraRapidaDetalle";
+import { CompraRapidaArmarRoute } from "./routes/CompraRapidaArmar";
+import { PerfilesProvider } from "./contexts/PerfilesContext";
 import { NotFoundRoute } from "./routes/NotFound";
 
 function JPOnly({ children }: { children: React.ReactNode }) {
@@ -41,6 +47,7 @@ function App() {
   }
 
   return (
+    <PerfilesProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<AppShell />}>
@@ -48,21 +55,30 @@ function App() {
           <Route path="/biblioteca" element={<BibliotecaRoute />} />
           <Route path="/biblioteca/importar" element={<ImportarRecetaRoute />} />
           <Route path="/biblioteca/catalogo" element={<CatalogoIngredientesRoute />} />
+          <Route path="/biblioteca/visibilidad" element={<VisibilidadBibliotecaRoute />} />
           <Route path="/recetas/:id" element={<DetalleRecetaRoute />} />
           <Route path="/recetas/:id/cocinar" element={<CocinarRoute />} />
           <Route path="/planes/:idPlan/cocinar/:idReceta" element={<CocinarRoute />} />
           <Route path="/planes/:idPlan/componentes" element={<SeleccionarComponenteMenuRoute />} />
           <Route path="/menus/importar" element={<ImportarMenuRoute />} />
           <Route path="/menus/:id" element={<JPOnly><DetalleMenuRoute /></JPOnly>} />
-          <Route path="/pendientes" element={<PendientesRoute />} />
+          <Route path="/pendientes" element={<Navigate to="/" replace />} />
           <Route path="/compras" element={<ComprasRoute />} />
           <Route path="/historial" element={<HistorialRoute />} />
           <Route path="/historial/:idHist" element={<HistorialDetalleRoute />} />
           <Route path="/voto/:idPlan" element={<VotoRoute />} />
+          <Route path="/que-cocino" element={<QueCocinoRoute />} />
+          <Route path="/perfil" element={<PerfilRoute />} />
+          <Route path="/perfil/:memberId" element={<PerfilRoute />} />
+          <Route path="/biblioteca/compra-rapida/nueva" element={<CompraRapidaEditorRoute />} />
+          <Route path="/biblioteca/compra-rapida/:id" element={<CompraRapidaEditorRoute />} />
+          <Route path="/compra-rapida/:idPlan" element={<CompraRapidaDetalleRoute />} />
+          <Route path="/compras/armar" element={<CompraRapidaArmarRoute />} />
           <Route path="*" element={<NotFoundRoute />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </PerfilesProvider>
   );
 }
 

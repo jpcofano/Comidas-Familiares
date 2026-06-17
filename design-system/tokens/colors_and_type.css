@@ -1,0 +1,253 @@
+/* ============================================
+   Comida Familiar — Design Tokens
+   Paleta "Cocina cálida" · sourced from
+   Comidas-Familiares/src/styles/tokens.css
+   ============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ──────────────────────────────────────────
+     BACKGROUNDS — tonos crema cálidos
+     ────────────────────────────────────────── */
+  --bg:             #fdfaf6;   /* página: crema apenas tintado */
+  --surface:        #fdf8f3;   /* cards: crema más visible */
+  --surface-strong: #ffffff;   /* superficies elevadas: blanco puro */
+  --surface-alt:    #f6efe5;   /* hovers, fondos secundarios */
+
+  /* ──────────────────────────────────────────
+     TEXT
+     ────────────────────────────────────────── */
+  --text:           #1f1a16;   /* casi negro con calidez */
+  --text-strong:    #0e0a07;   /* títulos importantes */
+  --muted:          #6b5d52;   /* secundario, hints */
+  --muted-strong:   #4a3f37;   /* secundario contrastado */
+  --on-primary:     #ffffff;   /* texto sobre primary */
+
+  /* ──────────────────────────────────────────
+     BORDERS
+     ────────────────────────────────────────── */
+  --line:           #d8cdbe;   /* divisores fuertes */
+  --border:         #e8dfd4;   /* borders default cards */
+  --border-subtle:  #efe8de;   /* borders sutiles */
+
+  /* ──────────────────────────────────────────
+     BRAND — marrón cálido cocina
+     ────────────────────────────────────────── */
+  --primary:        #8a4a2f;
+  --primary-strong: #6e3a23;
+  --primary-soft:   rgba(138, 74, 47, 0.10);
+  --primary-on:     #ffffff;
+
+  /* Accent — bordó (guiño Apps Script, uso restringido) */
+  --accent:         #74324a;
+  --accent-strong:  #5b2438;
+  --accent-soft:    rgba(116, 50, 74, 0.10);
+
+  /* Estrella — dorado cálido para ratings (E9.6) */
+  --estrella:       oklch(0.76 0.14 78);
+
+  /* ──────────────────────────────────────────
+     SEMANTIC — estados de plan + feedback
+     ────────────────────────────────────────── */
+  --ok-bg:    #ecf5ec;
+  --ok-line:  #b6d6b6;
+  --ok-text:  #2e5d2e;
+
+  --err-bg:   #f7e8e3;
+  --err-line: #e8c0b3;
+  --err-text: #8a3520;
+
+  --warn-bg:  #fbf2dd;
+  --warn-line:#ecd49a;
+  --warn-text:#7d5610;
+
+  --info-bg:  #ebeef5;
+  --info-line:#bec5d8;
+  --info-text:#3c4a6e;
+
+  /* ──────────────────────────────────────────
+     SPACING — escala 4px
+     ────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ──────────────────────────────────────────
+     RADIUS
+     ────────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ──────────────────────────────────────────
+     SHADOWS — solo funcionales (header, menú, focus)
+     ────────────────────────────────────────── */
+  --shadow-header: 0 1px 3px rgba(31, 26, 22, 0.06);
+  --shadow-menu:   0 4px 12px rgba(31, 26, 22, 0.10);
+  --shadow-toast:  0 4px 12px rgba(0, 0, 0, 0.18);
+  --shadow-focus:  0 0 0 3px var(--primary-soft);
+
+  /* ──────────────────────────────────────────
+     TYPOGRAPHY
+     ────────────────────────────────────────── */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* Scale (densa, mobile-first) */
+  --fs-xs:   12px;
+  --fs-sm:   13px;
+  --fs-base: 14px;
+  --fs-md:   15px;
+  --fs-lg:   17px;
+  --fs-xl:   20px;
+  --fs-2xl:  24px;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+
+  --lh-tight:   1.25;
+  --lh-base:    1.5;
+  --lh-relaxed: 1.7;
+
+  /* ──────────────────────────────────────────
+     TRANSITIONS
+     ────────────────────────────────────────── */
+  --t-fast: 120ms ease;
+  --t-base: 180ms ease;
+
+  /* ──────────────────────────────────────────
+     MEMBER AVATARS — paleta derivada de tokens (E8.2 / E10)
+     ────────────────────────────────────────── */
+  --member-juanpablo: #8a4a2f;  /* = --primary */
+  --member-maria:     #74324a;  /* = --accent */
+  --member-sofia:     #3c4a6e;  /* = --info-text */
+  --member-federico:  #2e5d2e;  /* = --ok-text */
+}
+
+/* ============================================
+   DARK MODE — "Cocina nocturna"
+   Activar con  <html data-theme="dark">
+   Solo reescribe tokens; los componentes usan var()
+   así que el tema se propaga sin cambios de markup.
+   ============================================ */
+
+[data-theme="dark"] {
+  /* Backgrounds — marrones muy oscuros, cálidos */
+  --bg:             #18130f;
+  --surface:        #211a15;
+  --surface-strong: #2a221c;
+  --surface-alt:    #2f261f;
+
+  /* Text */
+  --text:           #f1e9df;
+  --text-strong:    #fbf6ef;
+  --muted:          #b3a597;
+  --muted-strong:   #cdbfb0;
+  --on-primary:     #ffffff;
+
+  /* Borders */
+  --line:           #463a30;
+  --border:         #382e26;
+  --border-subtle:  #2f2620;
+
+  /* Brand — terracota más luminoso para contraste sobre fondo oscuro */
+  --primary:        #e08a63;
+  --primary-strong: #ec9d79;
+  --primary-soft:   rgba(224, 138, 99, 0.16);
+  --primary-on:     #2a1610;
+
+  /* Accent — bordó aclarado */
+  --accent:         #d18aa3;
+  --accent-strong:  #dc9cb1;
+  --accent-soft:    rgba(209, 138, 163, 0.16);
+
+  /* Estrella — dorado aclarado para contraste en oscuro */
+  --estrella:       oklch(0.80 0.14 80);
+
+  /* Semantic — fondos tenues sobre oscuro */
+  --ok-bg:    #1e2c1e;
+  --ok-line:  #3a5a3a;
+  --ok-text:  #a8d6a8;
+
+  --err-bg:   #321e18;
+  --err-line: #6a3a2c;
+  --err-text: #f0a98f;
+
+  --warn-bg:  #2e2616;
+  --warn-line:#5c4a26;
+  --warn-text:#e6c374;
+
+  --info-bg:  #1c2230;
+  --info-line:#39455e;
+  --info-text:#aeb9d6;
+
+  /* Shadows — más profundas */
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-menu:   0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-toast:  0 4px 14px rgba(0, 0, 0, 0.55);
+  --shadow-focus:  0 0 0 3px var(--primary-soft);
+
+  /* Member avatars — versiones claras para contraste sobre fondo oscuro */
+  --member-juanpablo: #e08a63;  /* = --primary dark */
+  --member-maria:     #d18aa3;  /* = --accent dark */
+  --member-sofia:     #aeb9d6;  /* = --info-text dark */
+  --member-federico:  #a8d6a8;  /* = --ok-text dark */
+
+  color-scheme: dark;
+}
+
+/* ============================================
+   Semantic element styles (h1–h3, p, code, .meta)
+   ============================================ */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+h1 { font-size: var(--fs-2xl); font-weight: var(--fw-bold);   line-height: var(--lh-tight); letter-spacing: -0.01em;  color: var(--text-strong); margin: 0; }
+h2 { font-size: var(--fs-xl);  font-weight: var(--fw-bold);   line-height: var(--lh-tight); letter-spacing: -0.005em; color: var(--text-strong); margin: 0; }
+h3 { font-size: var(--fs-lg);  font-weight: var(--fw-medium); line-height: var(--lh-tight); color: var(--text-strong); margin: 0; }
+p  { margin: 0; }
+
+.meta {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--surface-alt);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--text-strong);
+}
+
+/* Focus ring (consistent across interactive el's) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}

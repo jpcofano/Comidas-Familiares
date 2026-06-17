@@ -22,7 +22,7 @@ import { MIEMBRO_IDS } from "../types/models";
 import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { calcularPromedio, calcularResultadoTextual, proximoIdHistorial } from "../lib/voto";
-import { getSemanaFin } from "../lib/fechas";
+import { getSemanaFin, fechaHoy } from "../lib/fechas";
 import { sincronizarListaDesdeFirestore, limpiarAportesDelPlan } from "./compras";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
@@ -52,23 +52,6 @@ export function subscribeToPlanesActivos(
     collection(db, "planes"),
     where("semanaInicio", "==", semanaInicio),
     where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"])
-  );
-  return onSnapshot(q, (snap) => {
-    callback(snap.docs.map((d) => d.data() as Plan));
-  });
-}
-
-// Usa el índice compuesto semanaInicio + estado + asignaciones (ARRAY_CONTAINS) de §5.3.
-export function subscribeToPlanesActivosMiembro(
-  semanaInicio: string,
-  miembroId: string,
-  callback: (planes: Plan[]) => void
-): () => void {
-  const q = query(
-    collection(db, "planes"),
-    where("semanaInicio", "==", semanaInicio),
-    where("estado", "in", ["Elegida", "Compra pendiente", "Compra lista", "Cocinando", "Cocinada"]),
-    where("asignaciones", "array-contains", miembroId)
   );
   return onSnapshot(q, (snap) => {
     callback(snap.docs.map((d) => d.data() as Plan));
@@ -160,7 +143,10 @@ export async function marcarCocinada(
     if (!snap.exists()) return err("plan-not-found", "El plan no existe.");
     const plan = snap.data() as Plan;
 
-    const updates: Record<string, unknown> = { estado: "Cocinada" };
+    const updates: Record<string, unknown> = {
+      estado: "Cocinada",
+      fecha: fechaHoy(),
+    };
     if (opciones?.resetComponentes) updates.componentesCocinados = [];
     await updateDoc(ref, updates);
 
@@ -437,12 +423,12 @@ function _cerrarEvaluacion(
 ): { promedio: number; resultado: string } {
   const promedio = calcularPromedio(votosFinales);
   const resultado = calcularResultadoTextual(promedio);
-  const fechaHoy = new Date().toISOString().slice(0, 10);
+  const fechaRealizadaStr = fechaHoy();
   const idHistorial = proximoIdHistorial();
 
   const historialDoc: Historial = {
     idHist: idHistorial,
-    fechaRealizada: fechaHoy,
+    fechaRealizada: fechaRealizadaStr,
     fechaRealizadaTimestamp: Timestamp.now(),
     idPlan: plan.idPlan,
     idReceta: plan.tipoSeleccion === "receta" ? plan.idSeleccion : "",

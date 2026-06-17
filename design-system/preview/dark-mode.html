@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Dark mode — Cocina nocturna</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .caption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  .panels { display: flex; flex-wrap: wrap; gap: 16px; }
+  .panel {
+    flex: 1; min-width: 240px; border-radius: var(--radius-lg);
+    border: 1px solid var(--border); background: var(--bg); padding: 16px;
+  }
+  .panel h3 { font-size: 13px; margin: 0 0 12px; color: var(--text-strong); }
+  .swatches { display: flex; gap: 8px; margin-bottom: 14px; }
+  .sw { flex: 1; height: 40px; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .card {
+    background: var(--surface-strong); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 12px;
+  }
+  .card .t { font-size: 13px; font-weight: 600; color: var(--text-strong); margin: 0 0 4px; }
+  .card .m { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+  .btn {
+    display: inline-block; background: var(--primary); color: var(--on-primary);
+    font-size: 12px; font-weight: 500; padding: 7px 12px; border-radius: var(--radius-md);
+  }
+  .pill {
+    display: inline-block; background: var(--ok-bg); color: var(--ok-text);
+    font-size: 11px; padding: 2px 9px; border-radius: 9999px; margin-left: 6px;
+  }
+  .lbl { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 3px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 18px; line-height: 1.5; max-width: 560px; }
+</style></head>
+<body>
+  <div class="caption">Dark mode "Cocina nocturna" — toggle manual via &lt;html data-theme="dark"&gt; · default light</div>
+  <div class="panels">
+    <!-- LIGHT -->
+    <div class="panel">
+      <h3>Light</h3>
+      <div class="swatches">
+        <div><div class="sw" style="background:var(--bg)"></div><div class="lbl">bg</div></div>
+        <div><div class="sw" style="background:var(--surface)"></div><div class="lbl">surface</div></div>
+        <div><div class="sw" style="background:var(--primary)"></div><div class="lbl">primary</div></div>
+        <div><div class="sw" style="background:var(--accent)"></div><div class="lbl">accent</div></div>
+      </div>
+      <div class="card">
+        <p class="t">Bondiola al Malbec <span class="pill">Sin lácteos</span></p>
+        <p class="m">Cerdo · 3 h · Media-alta</p>
+        <span class="btn">Empezar a cocinar</span>
+      </div>
+    </div>
+    <!-- DARK (scoped via data-theme on this subtree) -->
+    <div class="panel" data-theme="dark">
+      <h3>Dark</h3>
+      <div class="swatches">
+        <div><div class="sw" style="background:var(--bg)"></div><div class="lbl">bg</div></div>
+        <div><div class="sw" style="background:var(--surface)"></div><div class="lbl">surface</div></div>
+        <div><div class="sw" style="background:var(--primary)"></div><div class="lbl">primary</div></div>
+        <div><div class="sw" style="background:var(--accent)"></div><div class="lbl">accent</div></div>
+      </div>
+      <div class="card">
+        <p class="t">Bondiola al Malbec <span class="pill">Sin lácteos</span></p>
+        <p class="m">Cerdo · 3 h · Media-alta</p>
+        <span class="btn">Empezar a cocinar</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    El dark mode reescribe solo tokens sobre <code>[data-theme="dark"]</code>; los componentes
+    usan <code>var(--token)</code>, así que el tema se propaga sin tocar markup. En oscuro el
+    primary pasa a terracota luminoso (<code>#e08a63</code>) para contraste sobre fondo marrón;
+    los fondos son marrones muy oscuros (no negro frío). Persiste en
+    <code>localStorage["cf-theme"]</code> con script anti-flash en el <code>index.html</code>.
+  </p>
+</body></html>

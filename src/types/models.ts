@@ -16,24 +16,40 @@ export type EstadoPlan = typeof ESTADOS_PLAN[number];
 export const TIPOS_PLAN = ["Especial", "Especial extra", "En proceso"] as const;
 export type TipoPlan = typeof TIPOS_PLAN[number];
 
-export type TipoSeleccion = "receta" | "menu";
+export type TipoSeleccion = "receta" | "menu" | "compra-rapida";
 
 // ─── Receta — enums de dominio ────────────────────────────────────────────────
 export const TIPOS_ITEM = [
   "Receta principal", "Entrada", "Guarnición", "Postre",
   "Panificado", "Snack", "Desayuno", "Conserva", "Hidrato opcional",
+  "Jugo natural",
 ] as const;
 export type TipoItem = typeof TIPOS_ITEM[number];
 
 export const PROTEINAS = [
-  // Proteína animal
-  "Vacuna", "Cerdo", "Pollo", "Cordero", "Pescado", "Mariscos", "Huevos", "Fiambre",
-  // Proteína vegetal
-  "Legumbres", "Semillas", "Frutos secos",
-  // Meta-valores
-  "Mixta", "Vegetariana",
+  "Vacuna", "Cerdo", "Cordero",           // Carnes rojas
+  "Aves",                                  // ex-"Pollo" (E9.0)
+  "Pescado", "Mariscos",                   // Pescados
+  "Huevos",
+  "Legumbres", "Semillas", "Frutos secos", // Vegetales proteicos
+  "Vegetal",                               // Sin proteína animal — ex-"Vegetariana"/"Mixta"
+  "Bebida",                                // Jugos y bebidas sin proteína (E3.6)
 ] as const;
 export type Proteina = typeof PROTEINAS[number];
+
+// Jerarquía de 2 niveles: grupo → hojas. Permite filtrar por grupo O por hoja.
+export const GRUPOS_PROTEINA: Record<string, Proteina[]> = {
+  "Carnes rojas":        ["Vacuna", "Cerdo", "Cordero"],
+  "Aves":                ["Aves"],
+  "Pescados y mariscos": ["Pescado", "Mariscos"],
+  "Huevos":              ["Huevos"],
+  "Vegetales":           ["Legumbres", "Semillas", "Frutos secos", "Vegetal"],
+};
+
+export const GRUPOS_PROTEINA_ORDEN = [
+  "Carnes rojas", "Aves", "Pescados y mariscos", "Huevos", "Vegetales",
+] as const;
+export type GrupoProteina = typeof GRUPOS_PROTEINA_ORDEN[number];
 
 export const ESCENARIOS = ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"] as const;
 export type Escenario = typeof ESCENARIOS[number];
@@ -44,8 +60,21 @@ export type ClimaPlato = typeof CLIMAS_PLATO[number];
 export const PENSADA_PARA = ["Especial", "Semana", "Cualquiera"] as const;
 export type PensadaPara = typeof PENSADA_PARA[number];
 
+export const COCINAS = [
+  "Argentina", "Italiana", "Española", "Francesa", "Mediterránea",
+  "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana",
+  "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra",
+] as const;
+export type Cocina = typeof COCINAS[number];
+
 export const DIFICULTADES = ["Baja", "Media", "Media-alta", "Alta"] as const;
 export type Dificultad = typeof DIFICULTADES[number];
+
+export const TECNICAS = [
+  "Horno", "Parrilla / Plancha", "Salteado / Sartén", "Frito", "Hervido",
+  "Guiso / Braseado", "Crudo / Sin cocción", "Licuado / Procesado", "Otra",
+] as const;
+export type Tecnica = typeof TECNICAS[number];
 
 export const COSTOS = ["Bajo", "Medio", "Medio/Alto", "Alto"] as const;
 export type Costo = typeof COSTOS[number];
@@ -75,6 +104,15 @@ export interface RangoNumerico {
 
 // ─── Catálogo de ingredientes ─────────────────────────────────────────────────
 export interface Ingrediente {
+  // E11.1 — macros por 100 g (opcionales, retrocompatibles)
+  macros?: {
+    kcal: number;
+    carbohidratos: number;  // g por 100 g (totales)
+    proteinas: number;      // g por 100 g
+    grasas: number;         // g por 100 g
+    fibra: number;          // g por 100 g
+  };
+  gramosPorUnidad?: number; // override para unidades no másicas (huevo, diente, etc.)
   idIngrediente: string;
   canonico: string;
   nombrePreferido: string;
@@ -86,6 +124,7 @@ export interface Ingrediente {
   vecesUsado: number;
   ambiguo: boolean;
   origen: "seed" | "import" | "manual";
+  equivalencias?: string[];          // idIngrediente[] — sustitutos generales del catálogo
   fechaCreacion?: FirestoreTimestamp;
   ultimaModificacion?: FirestoreTimestamp;
 }
@@ -104,6 +143,7 @@ export interface IngredienteEnReceta {
   opcional?: boolean;
   notas?: string;
   alternativas?: Array<{ idIngrediente: string }>;
+  habitual?: boolean;        // ★ marcado por defecto en modo C (compra rápida)
 }
 
 // ─── Paso ─────────────────────────────────────────────────────────────────────
@@ -129,12 +169,17 @@ export interface Receta {
   proteinaPrincipal: Proteina;
   estilo: string;
   tecnicaPrincipal: string;
+  tecnica?: Tecnica;        // técnica canónica filtrable (E14.8)
   escenarioUso: Escenario;
   climaDelPlato?: ClimaPlato;
   pensadaPara: PensadaPara;
+  cocina?: Cocina;
 
   sinLacteos: boolean;
+  sinGluten: boolean;       // true = apta sin TACC; ausente tratado como false (E14.8)
   hidratos: boolean;
+  esVegetariano?: boolean;  // true = sin proteína animal (E9.0)
+  esKeto?: boolean;          // true = !hidratos (E9.0, derivado)
   aptoNocheDeADos: AptoNocheDeADos;
   paraJuanPablo: boolean;
   paraFamilia: boolean;
@@ -158,6 +203,12 @@ export interface Receta {
   riesgos?: string;
   notas?: string;
   notasNocheDeADos?: string;
+
+  // E13.1 — Compra rápida
+  esCompraRapida?: boolean;
+  destino?: string;           // comercio ("Verdulería", "Chino"…)
+  ultimaSeleccion?: string[]; // idIngrediente[] seleccionados la última vez (modo C)
+  modoPreferido?: "sumar" | "destildar" | "siempre"; // último modo de armar usado
 
   fuente?: string;
   urlFuente?: string;
@@ -255,6 +306,8 @@ export interface Plan {
   datosCocinero: DatosCocinero | null;
   componentesCocinados?: string[];
   fecha?: string;               // "YYYY-MM-DD" — día asignado (opcional, dentro de semanaInicio..semanaFin)
+  itemsCompraRapida?: ItemCompraRapida[];  // E13.1 — snapshot editable, solo para tipoSeleccion "compra-rapida"
+  encargado?: MiembroId | null; // E14.5 — quién se ofreció a hacer la compra rápida (null = sin encargado)
 }
 
 // ─── Historial ────────────────────────────────────────────────────────────────
@@ -281,6 +334,16 @@ export interface Historial {
   queSalioBien: string;
   queCambiaria: string;
   notasFamiliares: string;
+}
+
+// ─── Compra rápida ────────────────────────────────────────────────────────────
+export interface ItemCompraRapida {
+  idIngrediente: string;
+  nombre: string;
+  cantidad: string;
+  unidad: string;
+  seccionGondola: string;
+  comprado: boolean;
 }
 
 // ─── Compras ──────────────────────────────────────────────────────────────────
@@ -315,6 +378,9 @@ export interface ListaCompras {
   fechaGeneracion: FirestoreTimestamp;
   totalItems?: number;
   totalYaTengo?: number;
+  totalPendientes?: number;
+  missingItems?: string[];
+  encargadoCompras?: MiembroId | null;
 }
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -337,12 +403,37 @@ export interface FamiliaConfig {
   semanaArrancaEn: "lunes" | "domingo";
 }
 
+// ─── Perfiles de miembro ─────────────────────────────────────────────────────
+// Doc único: /config/perfiles. Cada clave es un MiembroId.
+export interface PerfilMiembro {
+  color?: string;          // hex de la paleta curada; si falta → token --member-{id}
+  preferencias?: string[]; // lista libre de preferencias de comida
+  fotoUrl?: string;        // data URL JPEG comprimida (miniatura ~128px). Ausente → inicial con color.
+}
+export type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+
+// ─── Contador de compras rápidas por mes ─────────────────────────────────────
+// Doc único: /config/comprasContador. Clave = "YYYY-MM" → conteo por miembro.
+export interface ComprasContador {
+  meses: Record<string, Partial<Record<MiembroId, number>>>;
+}
+
+// ─── Visibilidad de biblioteca por miembro ────────────────────────────────────
+// Doc único: /config/visibilidad. Opt-in: solo recetas listadas son visibles.
+// El owner (juanpablo) no aparece — ve todo siempre.
+export interface VisibilidadBiblioteca {
+  maria: string[];
+  sofia: string[];
+  federico: string[];
+}
+
 export interface DiccionariosConfig {
   tiposItem: TipoItem[];
   proteinas: Proteina[];
   escenarios: Escenario[];
   climaPlato: ClimaPlato[];
   pensadaPara: PensadaPara[];
+  cocinas: Cocina[];
   tiposPlan: TipoPlan[];
   ocasiones: Ocasion[];
   aptoNocheDeADos: AptoNocheDeADos[];

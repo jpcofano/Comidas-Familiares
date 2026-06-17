@@ -1,0 +1,1626 @@
+[
+  {
+    "nombre": "Vitello tonnato",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "el clásico piamontés de peceto frío en finas láminas bajo una salsa cremosa de atún y alcaparras; entrada elegante de fiesta, naturalmente sin hidratos",
+    "riesgos": "cortar el peceto tibio lo desgrana; salsa muy líquida no napa",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "peceto",
+        "textoOriginal": "Peceto",
+        "seccion": "Carne",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en una pieza"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "partida"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Cocción",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "atun al natural",
+        "textoOriginal": "Atún al natural",
+        "seccion": "Salsa",
+        "cantidad": "160",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "escurrido"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "a temperatura ambiente; bien fresco, para la mayonesa base"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "escurridas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para decorar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir el peceto",
+        "detalle": "Cubrir el peceto con agua junto con cebolla, zanahoria, laurel, vino y sal. Hervir a fuego bajo 1,5 h hasta tierno. Enfriar en su líquido.",
+        "tiempoEstimadoLabel": "1 h 45 min",
+        "tiempoEstimadoMin": 105,
+        "puntoClave": "El peceto se corta bien solo cuando está frío.",
+        "errorComun": "Hervor fuerte que lo seca.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Enfriar y cortar",
+        "detalle": "Una vez frío, cortar en láminas lo más finas posible y acomodar en una fuente.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: bien frío para láminas finas y parejas.",
+        "errorComun": "Cortarlo tibio y que se desarme.",
+        "notas": "Tiempo activo: 12 min; el resto es enfriado."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa tonnata",
+        "detalle": "Hacer una mayonesa: procesar huevo, jugo de limón y sal, sumar el aceite en hilo. Agregar atún y alcaparras y procesar hasta cremoso.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: aceite en hilo para no cortar la mayonesa base.",
+        "errorComun": "Salsa líquida que no napa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Montar",
+        "detalle": "Cubrir las láminas con la salsa, tapar y enfriar al menos 1 h. Decorar con alcaparras al servir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El reposo en frío integra los sabores.",
+        "errorComun": "Servir apenas salseado y de gusto plano.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Saltimbocca alla romana",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "escalopes finos de ternera con jamón crudo y salvia, salteados en manteca y vino; un clásico romano rapidísimo y elegante, sin la harina del original para que sea low-carb",
+    "riesgos": "escalope grueso queda duro; recocer la carne la seca",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bifecitos de cuadril",
+        "textoOriginal": "Bifecitos de cuadril",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bien finos, tipo escalope; 8 escalopes finos"
+      },
+      {
+        "canon": "jamon crudo",
+        "textoOriginal": "Jamón crudo",
+        "seccion": "Principal",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en fetas; una feta por escalope"
+      },
+      {
+        "canon": "salvia",
+        "textoOriginal": "Salvia",
+        "seccion": "Principal",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas frescas; una por escalope"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salteado",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salteado",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "el jamón ya aporta sal"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Final",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para sujetar; sujetan jamón y salvia"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar",
+        "detalle": "Sobre cada escalope apoyar una feta de jamón crudo y una hoja de salvia; sujetar con un palillo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El jamón va del lado que se cocina segundo.",
+        "errorComun": "Salvia suelta que se cae al dar vuelta.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar lado carne",
+        "detalle": "Calentar manteca y aceite; cocinar los escalopes 2 min del lado de la carne a fuego fuerte.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: escalope fino y fuego fuerte, cocción muy corta.",
+        "errorComun": "Carne gruesa o fuego bajo que la endurece.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Dar vuelta",
+        "detalle": "Dar vuelta y cocinar 1 min del lado del jamón. Retirar a un plato.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Apenas marcar el jamón, no resecarlo.",
+        "errorComun": "Recocer y secar la carne.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsa",
+        "detalle": "En la misma sartén sumar el vino, raspar el fondo y reducir 2 min. Salpimentar y volcar sobre los escalopes.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El fondo de cocción más el vino es toda la salsa.",
+        "errorComun": "Perder el fondo sin desglasar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo a la parmesana sin pan",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la parmigiana de pollo de toda la familia, con costra de almendra en vez de pan rallado y gratinada con mozzarella; clásico reconfortante en versión low-carb",
+    "riesgos": "salsa aguada moja la costra; gratinar de más reseca el pollo",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pechuga de pollo",
+        "textoOriginal": "Pechuga de pollo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "abierta en 4 escalopes"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Costra",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza el pan rallado"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Costra",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Costra",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Costra",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para dorar"
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "concentrada, no aguada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Salsa",
+        "cantidad": "6",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en hojas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mozzarella",
+        "textoOriginal": "Mozzarella",
+        "seccion": "Gratén",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Gratén",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Empanar",
+        "detalle": "Pasar los escalopes por huevo y luego por la mezcla de almendra y parmesano.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Apretar bien la costra de almendra.",
+        "errorComun": "Costra floja que se cae al dorar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "Dorar los escalopes en aceite 2 min por lado hasta que la costra esté firme. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dorar a fuego medio; la almendra se quema más rápido que el pan.",
+        "errorComun": "Fuego alto que amarga la costra.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa rápida",
+        "detalle": "Rehogar el ajo, sumar la passata, albahaca y sal; cocinar 8 min hasta espesar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Salsa espesa para que no moje la costra.",
+        "errorComun": "Salsa líquida que ablanda todo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Armar y gratinar",
+        "detalle": "En fuente, base de salsa, los escalopes, una cucharada de salsa sobre cada uno, mozzarella y parmesano. Horno a 200°C 12 min hasta gratinar.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: poca salsa arriba para que la costra no se empape.",
+        "errorComun": "Ahogar el pollo en salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Melanzane alla parmigiana",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "1 h 15 min",
+    "tiempoTotalMin": 75,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la parmigiana de berenjenas clásica, en capas con tomate y quesos pero sin rebozar ni freír en harina; vegetariana, contundente y low-carb",
+    "riesgos": "berenjena sin desamargar suelta agua; capas mojadas no toman cuerpo",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Principal",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas de 1 cm"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Principal",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para desamargar"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Principal",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para asar"
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Salsa",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en hojas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mozzarella",
+        "textoOriginal": "Mozzarella",
+        "seccion": "Capas",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Capas",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "parmesano"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Desamargar",
+        "detalle": "Salar las rodajas de berenjena y dejar 20 min; secar el agua que sueltan con papel.",
+        "tiempoEstimadoLabel": "25 min",
+        "tiempoEstimadoMin": 25,
+        "puntoClave": "⚠️ Punto crítico: desamargar y secar evita el agua amarga en la fuente.",
+        "errorComun": "Saltear este paso y que largue líquido.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Asar",
+        "detalle": "Pincelar con aceite y asar en plancha u horno fuerte hasta tiernas y doradas.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "Asadas, no fritas: menos grasa y nada de harina.",
+        "errorComun": "Berenjena cruda que queda gomosa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Rehogar ajo, sumar passata, albahaca y sal; cocinar 10 min.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Salsa concentrada para capas firmes.",
+        "errorComun": "Salsa aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Armar y hornear",
+        "detalle": "Alternar capas de berenjena, salsa, mozzarella y parmesano. Terminar con parmesano. Horno 200°C 25 min.",
+        "tiempoEstimadoLabel": "30 min",
+        "tiempoEstimadoMin": 30,
+        "puntoClave": "Dejar reposar 10 min antes de cortar para que asiente.",
+        "errorComun": "Cortarla recién salida y que se desarme.",
+        "notas": "Tiempo activo: 10 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Insalata caprese",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Emplatado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la entrada italiana más simple y vistosa, tomate, mozzarella y albahaca; fresca, low-carb y lista en minutos",
+    "riesgos": "tomate frío sin gusto; aderezar con anticipación la aguanta",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas; maduros y a temperatura ambiente"
+      },
+      {
+        "canon": "mozzarella",
+        "textoOriginal": "Mozzarella",
+        "seccion": "Base",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas; de búfala si se consigue"
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Base",
+        "cantidad": "12",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en hojas"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal en escamas",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Aderezo",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Emplatar",
+        "detalle": "Alternar rodajas de tomate y mozzarella, intercalando hojas de albahaca.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: tomate y mozzarella a temperatura ambiente para que tengan sabor.",
+        "errorComun": "Servir todo frío de heladera y sin gusto.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aderezar",
+        "detalle": "Rociar con aceite de oliva, sal en escamas y pimienta recién al servir.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Aderezar al momento para que no largue agua.",
+        "errorComun": "Salar con anticipación y que se ague.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Scaloppine al limone",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "escalopes de pollo en una salsa brillante de limón, vino y manteca; un clásico de trattoria rápido, sin harina para mantenerlo low-carb",
+    "riesgos": "pollo grueso queda seco; cortar la salsa con la manteca por calor excesivo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pechuga de pollo",
+        "textoOriginal": "Pechuga de pollo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "abierta en escalopes finos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fría, en cubos; da brillo y liga la salsa"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Salar los escalopes y dorarlos en aceite 2 min por lado. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: escalope fino y cocción corta para que quede jugoso.",
+        "errorComun": "Pollo grueso recocido y seco.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "En la misma sartén sumar vino, limón y caldo; reducir a la mitad raspando el fondo.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Reducir concentra el sabor cítrico.",
+        "errorComun": "Salsa líquida sin reducir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Montar manteca",
+        "detalle": "Bajar el fuego al mínimo e incorporar la manteca fría en cubos batiendo hasta una salsa brillante.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: fuego muy bajo al sumar la manteca; si hierve, se corta.",
+        "errorComun": "Hervir la salsa y separarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Volver el pollo y sus jugos 1 min para calentar. Terminar con perejil.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El jugo que largó la carne va a la salsa.",
+        "errorComun": "Recalentar fuerte y endurecer.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Frittata de zucchini",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la tortilla italiana de huevo y zucchini, que se come tibia o fría, rinde y recalienta bien; económica y sin un gramo de hidrato",
+    "riesgos": "zucchini con agua aguada la frittata; fuego alto la quema abajo y la deja cruda arriba",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas finas"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Base",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Base",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "parmesano; suma sabor; omitir para versión sin lácteos"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Saltear verduras",
+        "detalle": "Rehogar cebolla y ajo en aceite, sumar el zucchini y cocinar hasta que pierda el agua, 8 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: evaporar bien el agua del zucchini antes del huevo.",
+        "errorComun": "Zucchini húmedo que aguada la frittata.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Mezclar",
+        "detalle": "Batir los huevos con sal, pimienta, perejil y el queso opcional; integrar las verduras tibias.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Verduras tibias, no calientes, para no cocinar el huevo antes.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cuajar",
+        "detalle": "Volcar en sartén apenas aceitada a fuego bajo; cocinar tapado 8 min hasta casi cuajar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Fuego bajo para que cuaje pareja sin quemarse.",
+        "errorComun": "Fuego alto: quemada abajo, cruda arriba.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Dar vuelta con ayuda de un plato, o terminar 3 min en horno fuerte hasta dorar arriba.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Dorada de los dos lados y firme al centro.",
+        "errorComun": "Dejarla babé en el medio.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo al marsala",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "escalopes de pollo con hongos en una salsa de vino marsala reducido y manteca; clásico ítalo-americano de restaurante, sin harina para que sea low-carb",
+    "riesgos": "hongos amontonados que hierven; reducir poco el marsala deja la salsa dulzona",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pechuga de pollo",
+        "textoOriginal": "Pechuga de pollo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "abierta en escalopes"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Salsa",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino marsala",
+        "textoOriginal": "Vino marsala",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "el alma del plato"
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Salsa",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fría, en cubos; liga y da brillo"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar pollo",
+        "detalle": "Salar y dorar los escalopes en aceite 2 min por lado. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorar sin cocinar del todo; se termina en la salsa.",
+        "errorComun": "Recocerlo y secarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar hongos",
+        "detalle": "En la misma sartén dorar los champignones sin amontonar hasta que pierdan el agua; sumar el echalote 1 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: hongos en una capa para que doren y no hiervan.",
+        "errorComun": "Amontonarlos y que larguen agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Marsala",
+        "detalle": "Sumar el marsala y reducir a la mitad; agregar el caldo y reducir otro poco.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: reducir bien el marsala para que pierda el dulzor crudo.",
+        "errorComun": "Salsa dulzona sin reducir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Bajar el fuego, montar con la manteca fría, volver el pollo y sus jugos 2 min. Terminar con perejil.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Fuego bajo al sumar la manteca para que no se corte.",
+        "errorComun": "Hervir y cortar la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Caponata siciliana",
+    "estilo": "Italiana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Estofado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el agridulce siciliano de berenjenas, apio y aceitunas; guarnición o entrada fría que mejora al otro día, con eritritol en vez de azúcar",
+    "riesgos": "berenjena cruda amarga; poco reposo no integra el agridulce",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "apio",
+        "textoOriginal": "Apio",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceitunas verdes",
+        "textoOriginal": "Aceitunas verdes",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "descarozadas, en mitades"
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "escurridas"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Agridulce",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Agridulce",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar berenjena",
+        "detalle": "Saltear los cubos de berenjena en aceite caliente hasta dorar. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: dorar bien la berenjena quita el amargor y da sabor.",
+        "errorComun": "Berenjena pálida y amarga.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "En la misma olla rehogar cebolla y apio 6 min hasta tiernos.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "El apio aporta el crocante clásico.",
+        "errorComun": "Apio crudo y duro.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Volver la berenjena, sumar passata, aceitunas y alcaparras; cocinar 8 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Agridulce y reposar",
+        "detalle": "Agregar vinagre y eritritol, cocinar 3 min y apagar. Servir tibio o frío, mejor reposado.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: el equilibrio agridulce define la caponata; ajustar al gusto.",
+        "errorComun": "Servir caliente sin reposo y de gusto plano.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Involtini de carne al sugo",
+    "estilo": "Italiana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "1 h 30 min",
+    "tiempoTotalMin": 90,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "finos bifes rellenos de jamón crudo, ajo y perejil, arrollados y braseados en salsa de tomate; clásico de domingo italiano, sin el pan del relleno tradicional",
+    "riesgos": "arrollar flojo y que se abra; salsa que se seca en cocción larga",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bifecitos de cuadril",
+        "textoOriginal": "Bifecitos de cuadril",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "bien finos; 8 bifes finos"
+      },
+      {
+        "canon": "jamon crudo",
+        "textoOriginal": "Jamón crudo",
+        "seccion": "Relleno",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en fetas; media feta por bife"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Relleno",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Relleno",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Relleno",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "parmesano; omitir para versión sin lácteos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "vino tinto",
+        "textoOriginal": "Vino tinto",
+        "seccion": "Salsa",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para cerrar los arrollados"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rellenar",
+        "detalle": "Sobre cada bife distribuir jamón, ajo, perejil y un poco de parmesano. Arrollar y cerrar con un palillo.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: arrollar firme y cerrar bien para que no se abra al cocinar.",
+        "errorComun": "Relleno de más que no deja arrollar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Salar y dorar los involtini en aceite por todas sus caras. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Un buen sellado da color y sabor a la salsa.",
+        "errorComun": "Apurar y dejarlos grises.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "En la misma olla rehogar la cebolla, sumar el vino y reducir; agregar tomate y laurel.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "El fondo del sellado enriquece la salsa.",
+        "errorComun": "Perder el fondo sin desglasar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver los involtini, tapar y cocinar a fuego bajo 1 h, girándolos a la mitad.",
+        "tiempoEstimadoLabel": "1 h",
+        "tiempoEstimadoMin": 60,
+        "puntoClave": "⚠️ Punto crítico: fuego mínimo y tapado; si baja el líquido, sumar agua o caldo.",
+        "errorComun": "Dejar que se seque y se pegue.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Servir",
+        "detalle": "Retirar los palillos y servir los involtini con su salsa.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Sacar todos los palillos antes de servir.",
+        "errorComun": "Olvidar un palillo en el plato.",
+        "notas": ""
+      }
+    ]
+  }
+]

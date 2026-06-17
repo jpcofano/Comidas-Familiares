@@ -1,0 +1,1730 @@
+[
+  {
+    "nombre": "Coq au vin",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Puré de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "1 h 45 min",
+    "tiempoTotalMin": 105,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el clásico borgoñón de pollo braseado en vino tinto con panceta y hongos, profundo y reconfortante; espesado por reducción en vez de harina para mantenerlo low-carb",
+    "riesgos": "no dorar bien el pollo resta sabor; líquido que se seca en el braseado",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Pollo",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con piel y hueso; 4 patamuslos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Pollo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "panceta",
+        "textoOriginal": "Panceta",
+        "seccion": "Base",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "enteros, pelados; o cebollitas"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Base",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cuartos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino tinto",
+        "textoOriginal": "Vino tinto",
+        "seccion": "Líquidos",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "un tinto seco y frutado"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "aporta cuerpo"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Hierbas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Panceta",
+        "detalle": "Dorar la panceta en el aceite hasta crocante; retirar y reservar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "La grasa de la panceta perfuma todo el plato.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar pollo",
+        "detalle": "Secar y salar los patamuslos; dorarlos bien en la grasa, con piel primero. Reservar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: un buen dorado de la piel es la base del sabor.",
+        "errorComun": "Saltear el dorado y que quede pálido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Verduras",
+        "detalle": "En la misma olla dorar echalotes y hongos; sumar el ajo 1 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Dorar los hongos hasta que pierdan el agua.",
+        "errorComun": "Hongos pálidos y aguados.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver pollo y panceta, sumar vino, caldo, tomate, laurel y tomillo. Tapar y cocinar a fuego bajo 1 h.",
+        "tiempoEstimadoLabel": "1 h 5 min",
+        "tiempoEstimadoMin": 65,
+        "puntoClave": "El braseado lento ablanda y concentra.",
+        "errorComun": "Fuego alto que seca el líquido.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reducir y servir",
+        "detalle": "Destapar, retirar el pollo y reducir la salsa 8 min hasta que nape. Volver el pollo y terminar con perejil.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: reducir reemplaza a la harina para espesar.",
+        "errorComun": "Salsa líquida sin reducir.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Boeuf bourguignon",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Puré de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el estofado borgoñón de carne en vino tinto, panceta y hongos, deshaciéndose tras horas de cocción lenta; un clásico de domingo, sin harina",
+    "riesgos": "sellar la carne mojada no dora; cocción apurada deja la carne dura",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en cubos",
+        "textoOriginal": "Carne vacuna en cubos",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "de roast beef o paleta, en cubos de 4 cm; con algo de grasa"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "panceta",
+        "textoOriginal": "Panceta",
+        "seccion": "Base",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas gruesas"
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "enteros"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Base",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cuartos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino tinto",
+        "textoOriginal": "Vino tinto",
+        "seccion": "Líquidos",
+        "cantidad": "600",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Líquidos",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Hierbas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Panceta",
+        "detalle": "Dorar la panceta en el aceite hasta crocante; reservar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "La panceta da la base grasa y de sabor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar carne",
+        "detalle": "Secar y salar los cubos; sellarlos en tandas en la grasa hasta dorar por todas las caras. Reservar.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: carne seca y en tandas; mojada o amontonada hierve y no dora.",
+        "errorComun": "Tirar todo junto y estofar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sofrito",
+        "detalle": "Rehogar cebolla, zanahoria, echalotes y hongos 8 min; sumar ajo 1 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Dorar las verduras suma profundidad.",
+        "errorComun": "Verduras pálidas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Brasear",
+        "detalle": "Volver carne y panceta, sumar vino, caldo, tomate, laurel y tomillo. Tapar y cocinar a fuego mínimo 2 h, hasta que la carne ceda sola.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "La paciencia es lo que ablanda la carne.",
+        "errorComun": "Apurar el fuego y endurecerla.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reducir",
+        "detalle": "Si quedó líquido, destapar y reducir hasta napar. Terminar con perejil.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: reducir da cuerpo sin harina.",
+        "errorComun": "Servir aguado.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Ratatouille",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Estofado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el guiso provenzal de verduras de verano, perfumado con hierbas; guarnición o plato vegetariano liviano y naturalmente low-carb",
+    "riesgos": "cocinar todo junto desde el inicio hace una sopa; poca cocción deja las verduras crudas",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Verduras",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en cubos"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "herbes de Provence si se consigue"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Final",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en hojas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar por tandas",
+        "detalle": "Saltear la berenjena en aceite hasta dorar; reservar. Repetir con zucchini y con morrón.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: dorar cada verdura por separado conserva su textura.",
+        "errorComun": "Tirar todo junto y hacer una sopa aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base de tomate",
+        "detalle": "En la misma olla rehogar cebolla y ajo; sumar tomate, hierbas y sal y cocinar 10 min.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "La base de tomate concentrada liga el plato.",
+        "errorComun": "Tomate crudo y ácido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Unir",
+        "detalle": "Volver todas las verduras, mezclar suave y cocinar tapado a fuego bajo 15 min.",
+        "tiempoEstimadoLabel": "17 min",
+        "tiempoEstimadoMin": 17,
+        "puntoClave": "Cocción suave para que se integren sin deshacerse.",
+        "errorComun": "Revolver fuerte y hacer puré.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Apagar, sumar la albahaca y dejar reposar 5 min. Rico tibio o frío.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El reposo redondea los sabores.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Steak au poivre",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "el bife de bistró con costra de pimienta y salsa cremosa de coñac; elegante, rápido y sin un gramo de hidrato",
+    "riesgos": "flamear el coñac sin cuidado; cortar la crema por hervor fuerte",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "ojo de bife",
+        "textoOriginal": "Ojo de bife",
+        "seccion": "Carne",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones de 2,5 cm"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Carne",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en grano, machacada gruesa; la costra del plato"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Sellado",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "conac",
+        "textoOriginal": "Coñac o vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "para flamear; con coñac, flamear con cuidado"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Empanar en pimienta",
+        "detalle": "Salar los medallones y presionar la pimienta machacada sobre ambas caras formando costra.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Pimienta gruesa, no molida fina, para una costra real.",
+        "errorComun": "Pimienta en polvo que pica de más y no da textura.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Dorar los bifes en aceite y manteca 3 min por lado para punto jugoso. Retirar y reservar al calor.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dejar el centro rosado; se terminan fuera del fuego.",
+        "errorComun": "Pasarlos de cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Desglasar",
+        "detalle": "Bajar el fuego, sumar el coñac y desglasar raspando el fondo (flamear con cuidado si se quiere).",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El fondo de la sartén es puro sabor.",
+        "errorComun": "Perder el fondo sin desglasar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsa",
+        "detalle": "Sumar caldo y reducir; agregar crema y mostaza y cocinar a fuego bajo 3 min hasta napar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo con la crema para que no se corte.",
+        "errorComun": "Hervir fuerte y cortar la salsa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Servir",
+        "detalle": "Volver los bifes y sus jugos a la salsa 1 min y servir.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "El jugo que largó la carne va a la salsa.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salade niçoise",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Emplatado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la ensalada compuesta de Niza con atún, huevo y chauchas; completa, fresca y, sin la papa del original, perfectamente low-carb",
+    "riesgos": "chauchas recocidas pierden el verde; aderezar con anticipación marchita las hojas",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "atun al natural",
+        "textoOriginal": "Atún al natural",
+        "seccion": "Base",
+        "cantidad": "320",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "escurrido"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en mitades"
+      },
+      {
+        "canon": "chauchas",
+        "textoOriginal": "Chauchas",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "blanqueadas"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      },
+      {
+        "canon": "hojas verdes",
+        "textoOriginal": "Hojas verdes",
+        "seccion": "Base",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceitunas negras",
+        "textoOriginal": "Aceitunas negras",
+        "seccion": "Base",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "anchoas",
+        "textoOriginal": "Anchoas",
+        "seccion": "Base",
+        "cantidad": "6",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "en filetes; el toque clásico, opcional"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "virgen extra"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Blanquear chauchas",
+        "detalle": "Hervir las chauchas 3 min y pasarlas por agua fría para fijar el verde.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: al dente y agua fría para que queden verdes y crocantes.",
+        "errorComun": "Recocerlas y dejarlas mustias.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aderezo",
+        "detalle": "Emulsionar aceite, vinagre, mostaza y sal en un frasco.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Mostaza para que la vinagreta no se corte.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Montar",
+        "detalle": "Disponer las hojas, y encima en grupos el atún, huevo, chauchas, tomate, aceitunas y anchoas.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Montar por grupos, no mezclado, es el estilo niçoise.",
+        "errorComun": "Revolver todo y perder la presentación.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Aderezar",
+        "detalle": "Rociar con la vinagreta recién al servir.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Aderezar al momento para que no se marchite.",
+        "errorComun": "Aderezar antes y aguar la ensalada.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Quiche lorraine sin masa",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la quiche lorraine de panceta y puerro pero sin masa, cuajada como un flan salado; rinde, se come fría o tibia y no lleva harina",
+    "riesgos": "hornear de más la reseca; puerro mal lavado deja tierra",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "panceta",
+        "textoOriginal": "Panceta",
+        "seccion": "Base",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "puerro",
+        "textoOriginal": "Puerro",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros finos, bien lavado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Relleno",
+        "cantidad": "6",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Relleno",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Relleno",
+        "cantidad": "80",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "gruyère o sardo"
+      },
+      {
+        "canon": "nuez moscada",
+        "textoOriginal": "Nuez moscada",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Relleno",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "la panceta ya aporta sal"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Relleno",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Saltear base",
+        "detalle": "Dorar la panceta; sumar el puerro y cocinar 5 min hasta tierno. Dejar entibiar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: lavar muy bien el puerro entre las capas; junta tierra.",
+        "errorComun": "Puerro con tierra que arruina el plato.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Batido",
+        "detalle": "Batir huevos con crema, queso, nuez moscada, sal y pimienta.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El queso y la crema dan la textura cremosa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Armar",
+        "detalle": "Aceitar una tartera, repartir panceta y puerro y volcar el batido encima.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Distribuir parejo para que cuaje uniforme.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Hornear",
+        "detalle": "Horno a 180°C 30 min, hasta que esté firme al centro y dorada. Reposar 5 min.",
+        "tiempoEstimadoLabel": "32 min",
+        "tiempoEstimadoMin": 32,
+        "puntoClave": "⚠️ Punto crítico: retirar cuando el centro apenas tiembla; se firma al reposar.",
+        "errorComun": "Hornear de más y resecarla.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Soupe à l'oignon gratinée",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Estofado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la sopa de cebolla gratinada de bistró, dulzona por la cebolla caramelizada y cubierta de queso fundido; sin el pan, gratinada directo sobre la sopa para que sea low-carb",
+    "riesgos": "apurar la caramelización deja la sopa pálida y sin sabor; quemar la cebolla la amarga",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma fina; el alma de la sopa"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Base",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "120",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Gratén",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "gruyère o similar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Caramelizar",
+        "detalle": "Cocinar la cebolla en manteca y aceite con una pizca de sal a fuego medio-bajo 25 min, revolviendo, hasta dorada y dulce.",
+        "tiempoEstimadoLabel": "27 min",
+        "tiempoEstimadoMin": 27,
+        "puntoClave": "⚠️ Punto crítico: la caramelización lenta es TODO el sabor; no apurar.",
+        "errorComun": "Cebolla pálida apurada a fuego alto.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Desglasar",
+        "detalle": "Subir el fuego, sumar el vino y reducir raspando el fondo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El fondo dorado va a la sopa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sopa",
+        "detalle": "Agregar caldo, laurel y tomillo; hervir suave 15 min. Ajustar sal.",
+        "tiempoEstimadoLabel": "17 min",
+        "tiempoEstimadoMin": 17,
+        "puntoClave": "Un caldo sabroso es clave sin el pan.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Gratinar",
+        "detalle": "Servir en cazuelas, cubrir con el queso y gratinar en horno fuerte o grill hasta fundir y dorar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: gratinar directo sobre la sopa reemplaza al pan.",
+        "errorComun": "Quemar el queso bajo el grill por descuido.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Poulet rôti aux herbes",
+    "estilo": "Francesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "1 h 30 min",
+    "tiempoTotalMin": 90,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el pollo entero asado a la francesa con manteca de hierbas bajo la piel, dorado y jugoso; un clásico de mesa que se hace casi solo",
+    "riesgos": "no secar la piel impide que dore; cortar sin reposar pierde los jugos",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo entero",
+        "textoOriginal": "Pollo entero",
+        "seccion": "Principal",
+        "cantidad": "1,8",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Manteca",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "blanda"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Manteca",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Manteca",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "tomillo",
+        "textoOriginal": "Tomillo",
+        "seccion": "Manteca",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Manteca",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Manteca",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Cavidad",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en mitades"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Cavidad",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "cabeza partida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Manteca de hierbas",
+        "detalle": "Mezclar la manteca blanda con ajo, romero, tomillo, perejil y sal.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "La manteca de hierbas perfuma la carne desde adentro.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Untar",
+        "detalle": "Secar muy bien el pollo. Separar la piel de la pechuga con los dedos y untar la manteca por debajo y por encima.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: piel bien seca y manteca por debajo para dorar y dar sabor.",
+        "errorComun": "Piel húmeda que no dora.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Rellenar y atar",
+        "detalle": "Poner el limón y el ajo en la cavidad; atar los muslos.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El relleno aromático perfuma desde adentro.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Hornear",
+        "detalle": "Horno a 200°C 1 h 10 min, hasta que el jugo salga claro al pinchar el muslo.",
+        "tiempoEstimadoLabel": "1 h 10 min",
+        "tiempoEstimadoMin": 70,
+        "puntoClave": "Pinchar el muslo: jugo claro = listo.",
+        "errorComun": "Sacarlo crudo en el hueso.",
+        "notas": "Tiempo activo: 2 min."
+      },
+      {
+        "nroPaso": 5,
+        "titulo": "Reposar",
+        "detalle": "Dejar reposar 10 min tapado flojo antes de trinchar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: el reposo redistribuye los jugos.",
+        "errorComun": "Trincharlo al salir y que pierda jugo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Moules marinière",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "mejillones al vapor de vino blanco, echalote y manteca, listos en minutos; plato marinero de bistró, festivo y sin hidratos",
+    "riesgos": "mejillones que no cierran al golpearlos hay que descartarlos; sobrecocción los encoge y endurece",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "mejillones",
+        "textoOriginal": "Mejillones",
+        "seccion": "Principal",
+        "cantidad": "2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "frescos, limpios y sin barbas; descartar los que estén abiertos"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Base",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "echalote",
+        "textoOriginal": "Echalote",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Líquidos",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Final",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Final",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Limpiar",
+        "detalle": "Lavar los mejillones, quitar las barbas y descartar los que estén abiertos y no cierren al golpearlos.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: descartar los abiertos que no cierran; no son seguros.",
+        "errorComun": "Cocinar mejillones muertos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Rehogar echalote y ajo en la manteca 3 min sin dorar; sumar vino y laurel y llevar a hervor.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Base aromática para el vapor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Al vapor",
+        "detalle": "Sumar los mejillones, tapar y cocinar a fuego fuerte 4 a 5 min, hasta que se abran todos.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: listos apenas se abren; descartar los que queden cerrados.",
+        "errorComun": "Cocinarlos de más y encogerlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Repartir en bowls con su caldo, abundante perejil y pimienta.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Servir con el caldo, que es lo mejor del plato.",
+        "errorComun": "Tirar el caldo de cocción.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Gratin de coliflor",
+    "estilo": "Francesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horneado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el gratin dauphinois pero con coliflor en vez de papa, cremoso y gratinado; la guarnición francesa por excelencia en versión low-carb",
+    "riesgos": "coliflor mal escurrida aguada el gratín; gratinar poco no dora la superficie",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos; una coliflor grande"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Crema",
+        "cantidad": "250",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Crema",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "nuez moscada",
+        "textoOriginal": "Nuez moscada",
+        "seccion": "Crema",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Crema",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Gratén",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "gruyère o sardo"
+      },
+      {
+        "canon": "manteca",
+        "textoOriginal": "Manteca",
+        "seccion": "Gratén",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "para la fuente"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Hervir coliflor",
+        "detalle": "Hervir la coliflor 6 min, apenas tierna; escurrir muy bien.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: escurrir a fondo; coliflor mojada aguada el gratín.",
+        "errorComun": "Coliflor chorreando que larga agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Crema",
+        "detalle": "Calentar la crema con ajo, nuez moscada y sal sin que hierva, 3 min.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Infusionar el ajo en la crema da sabor parejo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Armar",
+        "detalle": "Enmantecar la fuente, acomodar la coliflor, bañar con la crema y cubrir con el queso.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Repartir la crema para que llegue a todos lados.",
+        "errorComun": "Crema solo arriba y base seca.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Gratinar",
+        "detalle": "Horno a 200°C 20 min, hasta que esté dorado y burbujeante.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: gratinar bien para la costra dorada característica.",
+        "errorComun": "Sacarlo pálido sin gratinar.",
+        "notas": ""
+      }
+    ]
+  }
+]

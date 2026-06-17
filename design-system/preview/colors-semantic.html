@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Semantic states</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .card { padding: 10px 14px; border-radius: 10px; border: 1px solid; }
+  .head { font-size: 13px; font-weight: 600; }
+  .body { font-size: 12px; opacity: .9; margin-top: 4px; font-family: var(--font-mono); }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 9999px; font-weight: 500; margin-top: 6px; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="card" style="background:var(--ok-bg); border-color:var(--ok-line); color:var(--ok-text)">
+      <div class="head">ok · Cocinada</div>
+      <div class="body">--ok-bg / line / text</div>
+      <span class="badge" style="background:var(--ok-bg); color:var(--ok-text); border:1px solid var(--ok-line)">Cocinada</span>
+    </div>
+    <div class="card" style="background:var(--warn-bg); border-color:var(--warn-line); color:var(--warn-text)">
+      <div class="head">warn · Compra pendiente</div>
+      <div class="body">--warn-bg / line / text</div>
+      <span class="badge" style="background:var(--warn-bg); color:var(--warn-text); border:1px solid var(--warn-line)">Compra pendiente</span>
+    </div>
+    <div class="card" style="background:var(--info-bg); border-color:var(--info-line); color:var(--info-text)">
+      <div class="head">info · Compra lista</div>
+      <div class="body">--info-bg / line / text</div>
+      <span class="badge" style="background:var(--info-bg); color:var(--info-text); border:1px solid var(--info-line)">Compra lista</span>
+    </div>
+    <div class="card" style="background:var(--err-bg); border-color:var(--err-line); color:var(--err-text)">
+      <div class="head">err · Descartar</div>
+      <div class="body">--err-bg / line / text</div>
+      <span class="badge" style="background:var(--err-bg); color:var(--err-text); border:1px solid var(--err-line)">Error</span>
+    </div>
+  </div>
+</body></html>

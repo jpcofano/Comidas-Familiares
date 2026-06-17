@@ -5,7 +5,10 @@ import { useAuth } from "../auth/useAuth";
 import { getPlan, marcarCocinada, desmarcarComponenteCocinado } from "../data/planes";
 import { getMenu } from "../data/menus";
 import { getReceta } from "../data/recetas";
-import type { Plan, Menu, Receta } from "../types/models";
+import { getCatalogo } from "../data/ingredientes";
+import { macrosDeReceta } from "../lib/macros";
+import type { Plan, Menu, Receta, Ingrediente } from "../types/models";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
 
 export function SeleccionarComponenteMenuRoute() {
   const { idPlan } = useParams<{ idPlan: string }>();
@@ -17,8 +20,11 @@ export function SeleccionarComponenteMenuRoute() {
   const [plan, setPlan] = useState<Plan | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
   const [recetasMap, setRecetasMap] = useState<Map<string, Receta>>(new Map());
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente>>(new Map());
   const [loading, setLoading] = useState(true);
   const [finalizando, setFinalizando] = useState(false);
+
+  useEffect(() => { getCatalogo().then(setCatalogo).catch(() => {}); }, []);
 
   useEffect(() => {
     if (!idPlan) return;
@@ -41,7 +47,7 @@ export function SeleccionarComponenteMenuRoute() {
     });
   }, [idPlan]);
 
-  if (loading) return <div className="card"><p className="meta">Cargando…</p></div>;
+  if (loading) return <div className="card"><SkeletonHeader /></div>;
   if (!plan || !menu) {
     return (
       <div className="card">
@@ -169,6 +175,95 @@ export function SeleccionarComponenteMenuRoute() {
           </div>
         )}
       </div>
+
+      {/* Macros del menú completo */}
+      {catalogo.size > 0 && (() => {
+        const componentesConReceta = menu.componentes.filter(c => recetasMap.has(c.idReceta));
+        if (componentesConReceta.length === 0) return null;
+
+        let kcal = 0, carbohidratos = 0, proteinas = 0, grasas = 0, fibra = 0;
+        let totalIngredientes = 0, sinDatosTotal = 0;
+
+        for (const c of componentesConReceta) {
+          const m = macrosDeReceta(recetasMap.get(c.idReceta)!, catalogo);
+          kcal          += m.porPorcion.kcal;
+          carbohidratos += m.porPorcion.carbohidratos;
+          proteinas     += m.porPorcion.proteinas;
+          grasas        += m.porPorcion.grasas;
+          fibra         += m.porPorcion.fibra;
+          totalIngredientes += recetasMap.get(c.idReceta)!.ingredientes.filter(i => !i.opcional).length;
+          sinDatosTotal     += m.ingredientesSinDatos.length;
+        }
+
+        const hidratosNetos = Math.max(0, carbohidratos - fibra);
+        const conDatos = totalIngredientes - sinDatosTotal;
+        const cobertura = totalIngredientes > 0 ? conDatos / totalIngredientes : 0;
+
+        if (cobertura === 0) {
+          return (
+            <div style={{
+              padding: "var(--space-3) var(--space-4)", borderRadius: "var(--radius-md)",
+              border: "1.5px dashed var(--border)", marginBottom: "var(--space-3)",
+              textAlign: "center",
+            }}>
+              <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+                Sin datos de macros para este menú todavía.
+              </p>
+            </div>
+          );
+        }
+
+        const parcial = cobertura > 0 && cobertura < 1;
+        const coberturaLabel = `Estimado sobre ${conDatos} de ${totalIngredientes} ingrediente${totalIngredientes !== 1 ? "s" : ""}`;
+        const secundarios = [
+          { label: "kcal",             value: kcal.toFixed(0) },
+          { label: "Proteínas",        value: `${proteinas.toFixed(1)} g` },
+          { label: "Grasas",           value: `${grasas.toFixed(1)} g` },
+          { label: "Fibra",            value: `${fibra.toFixed(1)} g` },
+          { label: "Hidratos totales", value: `${carbohidratos.toFixed(1)} g` },
+        ];
+
+        return (
+          <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+            <p style={{
+              margin: "0 0 var(--space-1)", fontSize: "var(--fs-xs)", fontWeight: 700,
+              textTransform: "uppercase", letterSpacing: ".06em", color: "var(--muted)",
+            }}>
+              Macros por porción del menú completo
+            </p>
+            <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+              Una porción del menú completo (todos los componentes)
+            </p>
+            <div style={{ marginBottom: "var(--space-3)" }}>
+              <span style={{ fontSize: 32, fontWeight: 700, color: "var(--primary)", fontVariantNumeric: "tabular-nums" }}>
+                {hidratosNetos.toFixed(1)} g
+              </span>
+              <p style={{ margin: "2px 0 0", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+                Hidratos netos · carbohidratos − fibra · lo que cuenta para keto
+              </p>
+            </div>
+            <div style={{
+              display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "var(--space-2)", marginBottom: "var(--space-3)",
+            }}>
+              {secundarios.map(s => (
+                <div key={s.label} style={{
+                  background: "var(--surface-alt)", borderRadius: "var(--radius-sm)",
+                  padding: "var(--space-2)", textAlign: "center",
+                }}>
+                  <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: "var(--text-strong)", fontVariantNumeric: "tabular-nums" }}>
+                    {s.value}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 10, color: "var(--muted)" }}>{s.label}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: parcial ? "var(--warn-text)" : "var(--muted)" }}>
+              {parcial ? `Parcial · ${coberturaLabel}` : coberturaLabel}
+            </p>
+          </div>
+        );
+      })()}
 
       {/* Obligatorios */}
       {obligatorios.length > 0 && (

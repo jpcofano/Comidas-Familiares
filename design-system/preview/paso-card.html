@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Paso card · cocinar</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 16px; background: var(--bg); font-family: var(--font-sans); }
+  .stack > * + * { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  .step { display: flex; gap: 12px; align-items: flex-start; }
+  .num {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600;
+  }
+  .num.idle { background: var(--surface-alt); color: var(--text); }
+  .num.active { background: var(--primary); color: #fff; }
+  .num.done { background: var(--muted); color: var(--text); }
+  .body { flex: 1; min-width: 0; }
+  .head { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+  .title { font-weight: 600; color: var(--text-strong); font-size: 14px; margin: 0; flex: 1; }
+  .title.done { text-decoration: line-through; }
+  .time { font-size: 13px; color: var(--muted); }
+  .timer-btn {
+    margin-top: 4px; font-size: 12px;
+    padding: 3px 10px; border-radius: 6px;
+    background: var(--surface-alt); border: 1px solid var(--border);
+    color: var(--text); cursor: pointer; font-family: inherit;
+  }
+  .timer-active {
+    margin-top: 4px; font-size: 12px;
+    padding: 3px 10px; border-radius: 6px;
+    background: var(--warn-bg); border: 0;
+    color: var(--warn-text); cursor: pointer; font-family: inherit;
+  }
+  .desc { font-size: 13px; color: var(--text); margin-top: 4px; line-height: 1.5; }
+  .step.done { opacity: .55; }
+</style></head>
+<body>
+  <div class="stack">
+    <div class="step done">
+      <span class="num done">✓</span>
+      <div class="body">
+        <div class="head"><p class="title done">Sellar la bondiola</p><span class="time">8 min</span></div>
+        <p class="desc">Sellar a fuego alto en cazuela de hierro.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="num active">2</span>
+      <div class="body">
+        <div class="head"><p class="title">Sumar vino y reducir</p><span class="time">20 min</span></div>
+        <p class="desc">Agregar el Malbec y dejar reducir hasta la mitad.</p>
+        <button class="timer-active">⏱ Timer activo — Cancelar</button>
+      </div>
+    </div>
+    <div class="step">
+      <span class="num idle">3</span>
+      <div class="body">
+        <div class="head"><p class="title">Brasear 2 hs</p><span class="time">2 h</span></div>
+        <button class="timer-btn">⏱ Iniciar timer 120 min</button>
+      </div>
+    </div>
+  </div>
+</body></html>

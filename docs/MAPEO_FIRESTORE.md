@@ -1,11 +1,11 @@
 # MAPEO_FIRESTORE — Comida Familiar
 
-> Documento maestro de migración de Apps Script + Google Sheets a Firebase + React + Vite.
+> Fuente de verdad para el modelo de datos, arquitectura y decisiones de producto de la app. Ciclo funcional completo en v1.8.1 (Etapas 0–7 cerradas). v1.8.2 agrega foto del plato en el detalle del historial. Mejoras puntuales se registran como sub-etapas (`E7.x`) o entradas en `§10`.
 >
-> Fuente de verdad para todo el trabajo de Etapas 2–7. Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
+> Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 1.7.3 (LIMPIEZA — §10.3/§10.4 cerrados: ING-0178 eliminado, REC-15xx verificadas)
-> **Fecha**: 2026-05-26
+> **Versión**: 2.12.0 (E14.6 — Fiambrería como sección de display propia; display pasa de 5 a 6 grupos; valores raw de Firestore no cambian)
+> **Fecha**: 2026-06-10
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 
@@ -23,6 +23,7 @@
 8. [Claude Design: cuándo y qué pedirle](#8-claude-design-cuándo-y-qué-pedirle)
 9. [Apéndice: futuro](#9-apéndice-futuro)
 10. [Deuda técnica pendiente](#10-deuda-técnica-pendiente--post-etapa-3)
+11. [Backlog](#11-backlog)
 
 ---
 
@@ -52,6 +53,782 @@
 - 10 pantallas principales del front (home, recetas, detalle, importar, menus, menuDetalle, compras, cocinar, resultado, historial) + dashboard miembro + voto miembro.
 - Importador TXT (todas las validaciones y reglas anti-duplicado).
 - Diccionarios editables (`Tipos de ítem`, `Proteínas`, `Escenarios`, `Clima del plato`, `Pensada para`, `Tipos de plan`, `Miembros`, `Ocasiones`).
+
+### 1.2.cierre Cambios en v1.8.0 (cierre del scope)
+
+La app entra en uso real de la familia con todo el ciclo cubierto: planificación, compras,
+cocinar, voto, evaluación, historial, importador. Esta versión declara el cierre formal
+del scope inicial.
+
+1. **Etapas 0–6 cerradas.** Auth, modelo de datos, security rules, seeds, importador,
+   funcionalidad core JP, modo miembro, importador desde frontend, PWA instalable + splash iOS.
+
+2. **Etapa 7 cerrada en su scope necesario:**
+   - E7.1 — campo `fecha` en el plan ✅
+   - E7.2 — design system v1 (PlatoMark, PWA assets, componentes nuevos) ✅
+   - E7.3 — contador real de pasos en Cocinar ✅
+   - E7.4 — rediseño v2 (Compras, Cocinar, Detalle receta, Home tweaks) ✅
+   - E7.5 — fixes de auditoría (CTAs Home + marcar cocinada con fecha futura + detalle
+     receta sin foto + acciones JP arriba) ✅
+   - E7.6 — pulidos del detalle de receta + acciones JP visibles (cinco cosméticos
+     + sacar el acordeón de acciones, volver a botones directos con ocultar los no
+     elegibles) ✅
+   - E7.7 — distribución y onboarding (Open Graph para WhatsApp + botón Instalar app
+     en Android desde el login) ✅ cerrado en v1.8.1 — ver §10.5 y §10.6
+
+3. **E6.2 push notifications — postergada sin urgencia.** No es necesaria para el uso
+   actual de la familia. Cuando se retome, ver `PROMPT_DOCS_mapeo_e62_en_espera.md` para
+   la decisión Camino A (Blaze + Cloud Function) vs Camino B (in-app sobre realtime).
+
+4. **§9.1 dashboard de historial avanzado (D.3) — postergado sin urgencia.** La pantalla
+   de historial actual (E3.7) cubre lo que la familia usa hoy: lista con filtros, métricas,
+   detalle. El dashboard con gráficos y comparación miembro-vs-familia entra cuando
+   aparezca necesidad real.
+
+5. **Apps Script viejo — cerrado.** JP retiró el acceso de escritura. El spreadsheet
+   queda como respaldo histórico read-only. La app Firebase es la única fuente de verdad
+   para la familia. Ver §9.12.
+
+6. **Apéndice §9 restante** (§9.2, §9.5, §9.7, §9.8, §9.10, §9.11) — futuro opcional sin
+   compromiso de fecha. Se reactiva si aparece necesidad real.
+
+7. **Deuda técnica §10 restante:**
+   - §10.1 — filtros de Biblioteca post-E3.4.8: pendiente verificación.
+   - §10.2.3 — display "a gusto" para unidad null: pospuesto por JP (no bloqueante).
+   - §10.5 — Open Graph + Twitter Card ✅ CERRADO en v1.8.1 (E7.7).
+   - §10.6 — Botón "Instalar app" en Android ✅ CERRADO en v1.8.1 (E7.7).
+
+### 1.2.e77 Cambios en v1.8.1 (E7.7 cerrado)
+
+E7.7 distribución/onboarding ejecutado y deployado. Cierra el último pendiente del ciclo.
+
+1. **Open Graph + Twitter Card** (commit `23e7ef3`). Al compartir el link de la app por
+   WhatsApp / Telegram / iMessage, el preview muestra logo + nombre + descripción.
+   `public/og-image.png` (1200×630). Metas con URLs absolutas a producción en `index.html`.
+
+2. **Botón "Instalar app" (Android)** (commit `26f49c8`). `useInstallPrompt` captura
+   `beforeinstallprompt`; `LoginScreen` muestra un botón secundario "Instalar app" solo
+   cuando la PWA es instalable y no corre ya en standalone. iOS sigue con "Agregar a
+   pantalla de inicio" manual (Safari no dispara el evento), ya cubierto por el splash
+   de E6.1.1.
+
+3. **§10.5 y §10.6 cerradas.**
+
+Con E7.7 cerrado, el ciclo funcional de la app está completo. Lo que sigue es opcional
+(Apéndice §9) o postergado sin urgencia (push E6.2, dashboard D.3).
+
+### 1.2.E7.9 Cambios en v1.8.3 (E7.9 — Compras filtrada confirmada + redundancia Pendientes)
+
+Sub-etapa de cierre de dos bugs reportados sobre v1.8.2 en la vista de miembro.
+
+1. **Bug Compras "ven todas" — causa real y decisión.** El filtro por miembro ya
+   existía y funcionaba; lo que se percibía como "ven todas" era consecuencia natural
+   de la agregación de aportes en `ItemCompra` sobre ingredientes base compartidos.
+   Decisión tomada por JP: mantener cantidad total, no recalcular porción individual.
+   `Compras.tsx` sin cambios. Documentado en §2.5.
+
+2. **Default de `asignaciones` corregido en el doc.** §1.2.quaterdecies #3 declaraba
+   `[...MIEMBRO_IDS]`; el valor real en `src/data/planes.ts` es `["juanpablo"]`.
+   Verificado en producción por JP. Corregido en el doc, no en código.
+
+3. **`MemberDashboard.tsx` — sección "Pendientes de evaluar" eliminada.** Redundante
+   con la pestaña `/pendientes`. La home de miembro queda con saludo+semana, "Mi semana",
+   "Mi historial".
+
+4. **`Pendientes.tsx` — fuente de datos corregida.** Cambia
+   `subscribeToPlanesActivosMiembro` → `subscribeToPlanesActivos` + filtro client
+   `estado === "Cocinada" && !votos[memberId]`. Razón: post-E4.2.1, el voto es
+   independiente de `asignaciones`, así que la fuente filtrada por `asignaciones`
+   perdía planes que el miembro debe votar pero no cocina.
+
+5. **`subscribeToPlanesActivosMiembro` eliminada** de `src/data/planes.ts` — sin
+   consumidores tras el cambio anterior.
+
+### 1.2.E12.1 Cambios en v2.6.0 (E12.1 — Rediseño Mi semana: hero + tira con visibilidad por rol)
+
+Rediseño completo de `src/routes/MemberDashboard.tsx`. La home JP (`Home.tsx`) no se toca.
+
+**Modelo de visibilidad por rol:**
+- Miembro ve nombre/detalle solo de los planes donde está en `asignaciones` (`misPlanes`).
+- `diasConComida` usa solo fecha/existencia de TODOS los planes — nunca `nombreSeleccion` de planes ajenos.
+- Helper `planesVisiblesPara(planes, memberId)` centraliza el filtrado (Tarea 4 mínima).
+- `TODO E12.x`: hardening server-side (Firestore Rules para proyectar nombres redactados). Anotado en el código.
+
+**`src/lib/fechas.ts`:** exporta `fechaToWeekIdx(dateStr)` → 0=Lun…6=Dom. Ya existía local en `Home.tsx`; ahora es pública y reutilizable.
+
+**`src/components/WeekStrip.tsx`:** props opcionales `misDias`, `diasConComida`, `memberColor`, `showLegend`. Modo miembro: plato relleno en color del miembro para `misDias`; punto neutro (var(--border)) para días de otros; pastilla de fondo en color del miembro + número blanco para hoy-en-mis-días. Leyenda "● Cocinás vos · ● Hay comida". Modo JP (marked[]) sin cambio.
+
+**`src/routes/MemberDashboard.tsx`** — nuevo layout:
+1. Saludo (`h2 Hola, {nombre}` + rango de semana).
+2. Card tira de semana (WeekStrip modo miembro + leyenda).
+3. Hero plato de hoy (o próximo): barra izq en color del miembro, eyebrow, nombre h2, tipo, co-cocineros (AvatarStack), botón "Empezar"/"Continuar cocción". Si no cocina nada: sin hero.
+4. Banner por votar (warn, si hay pendientes).
+5. "Lo que cocinás esta semana" — solo `misPlanes` excluyendo hero, con chip de día (LUN 3). Pie: "Los demás días ya hay una comida programada." cuando `diasConComida` > `misDias`.
+6. Mi historial (4 entradas + "Ver todo →").
+
+### 1.2.E11.3.4 Fix en v2.5.3 (E11.3.4 — Re-derivar `opcional` desde `recetas.json`)
+
+Causa raíz de la saga macros: `reseed-ingredientes.ts` hace `Boolean(i.opcional)`, así cualquier string no-vacío quedaba como `opcional: true` en Firestore (ej. "Picada especial" → `true`). El script de E11.3.3 no lo detectaba porque el dato en Firestore ya era boolean.
+
+**`scripts/fix-opcional-desde-fuente.ts` (nuevo):** lee `scripts/seed-data/recetas.json` y construye un índice `Map<idReceta, Map<idIngrediente:textoOriginal, Clasif>>` solo para ingredientes cuyo origen era string. Clasifica con regex `/opcional|aparte|para (los )?chicos|.../i` → `true` (opcionales reales) o `false` (notas de preparación). Mueve el texto a `notas`. Solo toca los ingredientes problemáticos; los de origen boolean quedan intactos.
+
+**Resultado en producción:** 57 recetas corregidas, **455 ingredientes → false** (cuentan en macros), 39 → true (opcionales reales, ej. "Para chicos", "Opcional"). Albóndigas: carne, huevo, cebolla, ajo, tomate ahora cuentan; fideos siguen opcionales.
+
+### 1.2.E11.3.3 Fix en v2.5.2 (E11.3.3 — guard `opcional === true` + script normalización)
+
+Bug: `macrosDeReceta()` hacía `if (ing.opcional) continue` — cualquier string truthy en ese campo (notas mal mapeadas en el seed) saltea el ingrediente del cálculo.
+
+**`src/lib/macros.ts`:** guard cambiado a `if (ing.opcional === true) continue`. Solo booleanos `true` explícitos excluyen el ingrediente; strings (notas), `false`, o `undefined` entran al cálculo.
+
+**`src/lib/normaliza-opcional.ts` (nuevo):** función pura `normalizaOpcional(raw, notasExistente?)` extraída para ser testeable sin dependencias de Firebase Admin. Lógica: boolean → sin cambio; `""` → false; "Sí"/"No"/"true"/etc. → boolean; texto libre → `{opcional: false, notas: texto}`.
+
+**`scripts/fix-opcional-ingredientes.ts` (nuevo):** script Admin SDK que normaliza `opcional` en todos los `ingredientes[]` de todas las recetas. `--dry-run` por defecto / `--force` para escribir. Dry-run en producción: 79 recetas revisadas, 0 cambios (datos ya limpios; guard `=== true` es la corrección principal).
+
+**`src/lib/macros.test.ts`:** 8 casos nuevos — opcional string no se saltea, opcional:true sí; `normalizaOpcional` con 6 casos (boolean, null, "", "Sí"/"No", texto libre, concatenación con notasExistente). 253 tests verdes.
+
+### 1.2.E11.3.2 Fix en v2.5.1 (E11.3.2 — macros lee `ing.cantidad`, no `cantidadMin/Max`)
+
+Bug post-deploy: tarjeta mostraba "Sin datos" en todas las recetas. Causa: `macrosDeReceta()` leía `ing.cantidadMin`/`cantidadMax` pero los `IngredienteEnReceta` reales usan `ing.cantidad` (`string | number`). Los 5 tests de E11.1 pasaban porque el fixture usaba `cantidadMin/Max`.
+
+**`src/lib/macros.ts`:** reemplaza lectura de `cantidadMin/Max` por `parseNumber(ing.cantidad)` (reutiliza el parser existente); si `ing.cantidad` es rango ("1,2 a 1,5") promedia min/max; fallback a `cantidadMin/Max` si `ing.cantidad` es undefined (retrocompatibilidad).
+
+**`src/lib/unidades.ts`:** agrega "cucharada(s)" → "cda" y "cucharadita(s)" → "cdita" (plural de la palabra completa no estaba en la tabla; `aGramos` devolvía null silenciosamente).
+
+**`src/lib/macros.test.ts`:** fixture usa `cantidad` (string | number). Casos nuevos: rango con coma decimal, "a gusto" → sinDatos, fallback `cantidadMin/Max`. Total: 245 tests verdes.
+
+### 1.2.E11.3 Cambios en v2.5.0 (E11.3 — UI de macros: detalle de receta + menú)
+
+Tercera y última etapa de **Etapa 11 — Macros nutricionales**. Muestra el resultado del helper `macrosDeReceta()` (E11.1) sobre los datos del catálogo (E11.2).
+
+**`src/components/receta/MacrosCard.tsx` (nuevo):** tarjeta de macros por porción. Recibe `receta` y `catalogoById`; llama `macrosDeReceta()` internamente. Hidratos netos como número estrella (`var(--primary)`, 32px bold). Secundarios en grilla 3-col: kcal, Proteínas, Grasas, Fibra, Hidratos totales. Pie de cobertura ("Estimado sobre N de M ingredientes"; parcial en `var(--warn-text)`). Cobertura 0 → estado vacío con borde punteado ("Sin datos de macros para esta receta todavía.").
+
+**`src/routes/DetalleReceta.tsx`:** carga el catálogo con `getCatalogo()` (cacheado, sin costo extra) y renderiza `<MacrosCard>` entre las pills y la sección de ingredientes.
+
+**`src/routes/SeleccionarComponenteMenu.tsx`:** agrega tarjeta de macros del menú completo. Carga el catálogo con `getCatalogo()`. Calcula `macrosDeReceta()` para cada componente del menú y suma los `porPorcion`. Muestra la tarjeta con el texto "Una porción del menú completo (todos los componentes)" entre el card de progreso y la lista de obligatorios. Misma lógica de cobertura: parcial → `var(--warn-text)`; cobertura 0 → estado vacío discreto.
+
+**Tarea 3 (filtro hidratos netos en Biblioteca):** implementado en E11.4. Ver §1.2.E11.4.
+
+### 1.2.E13.1 Cambios en v2.8.0 (E13.1 — Compra rápida: listas plantilla por comercio)
+
+Funcionalidad nueva independiente del ciclo de recetas. Permite a JP crear listas de compra reutilizables por comercio (Verdulería, Chino, Carrefour…), asignarlas a un miembro y generar instancias semanales.
+
+**Modelo — `Receta` (E13.1 + E14.2):**
+```ts
+esCompraRapida?: boolean   // marca la receta como plantilla de compra
+destino?: string           // comercio destino ("Verdulería", "Chino"…)
+ultimaSeleccion?: string[] // E14.2 — idIngrediente[] seleccionados la última vez (modo C)
+modoPreferido?: "sumar" | "destildar" | "siempre" // E14.2 — último modo de armar usado
+```
+**`IngredienteEnReceta` (E14.2):**
+```ts
+habitual?: boolean  // ★ marcado por defecto en modo C la primera vez (sin ultimaSeleccion)
+```
+
+**Modelo — `Plan` (E13.1):**
+```ts
+itemsCompraRapida?: Array<{
+  idIngrediente: string; nombre: string; cantidad: string;
+  unidad: string; seccionGondola: string; comprado: boolean;
+}>
+// snapshot editable copiado de la plantilla al generar; editar instancia no toca la plantilla.
+```
+`tipoSeleccion` extendido con `"compra-rapida"`. Las compras rápidas usan estado `"Compra pendiente"` → `"Compra lista"`.
+
+**`src/data/comprasRapidas.ts` (nuevo):**
+- `crearPlantillaCompraRapida(datos)` → `setDoc` en `/recetas` con `esCompraRapida: true`, invalida caché.
+- `actualizarPlantillaCompraRapida(id, datos)` → `updateDoc`.
+- `generarInstanciaCompraRapida(plantilla, itemsSeleccionados[])` → `crearPlan` con `tipoSeleccion:"compra-rapida"`, `asignaciones:[]`, `encargado:null`. La ven los 4 por turno voluntario. **E14.5: se eliminó el parámetro `asignados`.**
+- `tomarCompraRapida(idPlan, memberId)` → `runTransaction` con guardia anti-doble-claim. **E14.5.**
+- `liberarCompraRapida(idPlan)` → `encargado: null`. **E14.5.**
+- `marcarCompraRapidaHecha(idPlan, completadaPor)` → batch: `estado:"Compra lista"` + `config/comprasContador` `meses["YYYY-MM"][completadaPor] += 1`. **E14.5: firma actualizada.**
+- `guardarSeleccionPlantilla(idReceta, ultimaSeleccion, modoPreferido)` → `updateDoc` en la plantilla. **E14.2.**
+- `seedPlantillasMaestras()` → crea Verdulería/Almacén/Fiambre si no existen. Idempotente. **E14.2.**
+- **`asignarEncargadoCompras` — RETIRADO** en E14.5. El encargado ahora vive en `Plan.encargado` (turno voluntario), no en `ListaCompras.encargadoCompras`.
+
+**`src/data/comprasContador.ts` (nuevo E14.5):** `subscribeContador(cb)` (realtime), `mesActualKey()` ("YYYY-MM"), `resumenPorMes(c)` (ordenado desc, separa mes actual vs histórico).
+
+**`config/comprasContador`** (doc nuevo E14.5): `{ meses: { "YYYY-MM": { juanpablo: N, maria: N, ... } } }`. Se crea/actualiza automáticamente en `marcarCompraRapidaHecha`. Reglas: `isFamilyMember()` puede leer y escribir.
+- `toggleItemComprado(idPlan, idIngrediente, items)` → reemplaza el array en Firestore.
+- `marcarCompraRapidaHecha(idPlan)` → setea `estado: "Compra lista"`.
+
+**`src/routes/CompraRapidaEditor.tsx` (nuevo):** Solo JP. Form: destino (prefijo fijo "Compra rápida ·"), buscador del catálogo con autocomplete, stepper de cantidad + selector unidad, asignar-a chips. CTA: "Guardar y generar" o "Solo guardar".
+
+**`src/routes/CompraRapidaDetalle.tsx` (nuevo):** Vista del asignado en `/compra-rapida/:idPlan`. Lista agrupada por góndola (`groupByGondola`). Toggle por ítem. Barra de progreso. Botón "Marcar compra como hecha".
+
+**`src/routes/Biblioteca.tsx`:** Nuevo tab "Compras" (solo JP) con `TabComprasRapidas`: lista plantillas, acciones editar/eliminar/generar-esta-semana. Las compras rápidas se filtran de la lista normal de recetas (`esCompraRapida !== true`).
+
+**`src/routes/MemberDashboard.tsx`:** Sección "Compras pendientes" (debajo de "Lo que cocinás esta semana") con una card por cada compra rápida asignada no-hecha, link a detalle, progreso N/M.
+
+**`src/routes/Home.tsx`:** Filtra `tipoSeleccion !== "compra-rapida"` del subscription para no mezclarlos con los planes de comida de JP.
+
+**`src/data/recetas.ts`:** Agrega `invalidateRecetasCache()` export.
+
+**Rutas nuevas:** `/biblioteca/compra-rapida/nueva`, `/biblioteca/compra-rapida/:id`, `/compra-rapida/:idPlan`.
+
+### 1.2.E11.4 Cambios en v2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca)
+
+Filtro real de hidratos netos en la pestaña Recetas de Biblioteca. Las recetas sin datos de macros (cobertura 0) **no** aparecen como si tuvieran 0 g.
+
+**`src/lib/filtros.ts`:** `FiltrosReceta` + `maxNetos: number | null` (null = sin filtro). `FILTROS_INICIALES` → `maxNetos: null`. Nuevo tipo exportado `MacrosPorReceta`. `filtrarRecetas` recibe tercer arg opcional `macrosPorReceta?: MacrosPorReceta`; cuando `maxNetos != null` excluye recetas sin entrada en el mapa, con `cobertura === 0`, o con `netos > maxNetos`. `hayFiltrosActivos` incluye `maxNetos != null`.
+
+**`src/routes/Biblioteca.tsx`:** `TabRecetas` carga el catálogo en paralelo con las recetas (`getCatalogo()` en el mismo `Promise.all`; si falla, queda `null`). `useMemo` precomputa `MacrosPorReceta` (`macrosDeReceta` por cada receta) — no recalcula por cada tecla. `filtrarRecetas` recibe el mapa. UI: chips "Netos ≤ 10 g / 20 g / 30 g" (estilo toggle, mismo patrón que los otros filtros; deshabilitados si catálogo es null; tocar el activo lo apaga). "Limpiar" resetea `maxNetos`. `RecetaCard` recibe `macros?` y muestra chip "X g netos" cuando `cobertura > 0`.
+
+**`src/lib/filtros.test.ts`:** 8 tests nuevos — sin filtro devuelve todo; `maxNetos=10` pasa solo la receta bajo umbral con cobertura > 0; sobre umbral excluye; cobertura 0 excluye; sin entrada excluye; `maxNetos=30` pasa 2; mapa vacío → 0 resultados; combinación con sinLacteos. `hayFiltrosActivos` con `maxNetos != null` → true. Total: 262 tests verdes.
+
+### 1.2.E11.2 Cambios en v2.4.1 (E11.2 — Workflow LLM + seed idempotente de macros)
+
+Pobla los campos `macros?` y `gramosPorUnidad?` en `/ingredientes` (265 docs, sin Utensilio).
+
+**`scripts/export-ingredientes-para-macros.ts`:** Lee `/ingredientes` de Firestore y emite lista ordenada por categoría (`idIngrediente — nombrePreferido (categoria) [unidades]`) a stdout o `--out <archivo>`. Insumo del LLM.
+
+**`docs/prompts/MACROS_LLM_PROMPT.md`:** Prompt blindado. Recibe la lista; pide JSON estricto por 100 g con `{idIngrediente, kcal, carbohidratos, proteinas, grasas, fibra, gramosPorUnidad?}`; exige consistencia calórica (4C+4P+9G≈kcal ±30%); omite Utensilio; no inventa IDs. JP pega salida como `scripts/seed-data/macros.json`.
+
+**`scripts/seed-macros.ts`:** Lee `scripts/seed-data/macros.json`. Validación por fila: `idIngrediente` existe en catálogo; rangos [0,100] para carbs/prot/grasa/fibra, [0,900] para kcal, `fibra ≤ carbs` — fuera de rango: saltear + reportar. Warn de consistencia calórica (no aborta). Escribe SOLO `macros`+`gramosPorUnidad` con `set({...}, { merge: true })`. `--dry-run` (default) / `--force`. Resumen final N/M/K/L.
+
+**Notas de procedencia:** valores son estimaciones LLM revisadas por JP, base 100 g, mercado argentino. Se muestran como "estimado" en UI (E11.3).
+
+**Diagnóstico:** catálogo tiene **265 docs** (≠ 177 asumido en prompt — corregido). 0 docs con `macros` al correr E11.2.
+
+### 1.2.E11.1 Cambios en v2.4.0 (E11.1 — Macros por porción: tipos + conversión + lógica pura)
+
+Abre **Etapa 11 — Macros nutricionales**. Sin UI, sin writes a Firestore. Base para E11.2 (seed de datos) y E11.3 (UI).
+
+**`Ingrediente` — nuevos campos opcionales (retrocompatibles, E11.1, §2.10):**
+```ts
+macros?: { kcal: number; carbohidratos: number; proteinas: number; grasas: number; fibra: number; }
+         // valores por 100 g
+gramosPorUnidad?: number;  // override para unidades no másicas (huevo, diente, etc.)
+```
+
+**`src/lib/conversiones.ts` — `aGramos(cantidad, unidad, ing?)`:**
+- `g`/`kg` exactos; `ml`/`l` ≈ agua (×1/×1000).
+- Tabla de factores por defecto para unidades de cocina: `cda=15g`, `cdita=5g`, `taza=240g`, `unidad=100g`, `diente=5g`, `rama=10g`, etc. (con comentarios de fuente).
+- Override por ingrediente: si `ing.gramosPorUnidad` definido y unidad es de conteo → `cantidad × gramosPorUnidad`.
+- `null`/vacío/"a gusto" → `null`; unidad no reconocida → `null` + `console.warn`.
+- 14 tests verdes.
+
+**`src/lib/macros.ts` — `macrosDeReceta(receta, catalogoById)`:**
+- Resolución: `catalogoById.get(ing.idIngrediente)` (mismo patrón que `compras.ts`; confirmado que `IngredienteEnReceta` tiene `idIngrediente` directo).
+- Ignora: opcionales, sin doc en catálogo, sin `macros`, sin conversión (`aGramos === null`).
+- Cantidad = `(cantidadMin + cantidadMax) / 2`; fallback a `cantidadMin`; porciones = `porcionesMin ?? 4`.
+- Hidratos netos = `max(0, carbohidratos - fibra)` por porción.
+- Cobertura = `conDatos / (conDatos + sinDatos)`.
+- 5 tests verdes (fixture manual verificable con calculadora: 400g pollo + 2 cda aceite + lechuga sin macros → totales/porción/cobertura).
+
+**Diagnóstico confirmado:** `IngredienteEnReceta` tiene `idIngrediente` directo (no `ingredienteCanonico` como sospechaba el prompt). No hay lógica de resolución por nombre.
+
+### 1.2.E10.3 Cambios en v2.3.2 (E10.3 — Importador a tokens, dark mode)
+
+Migración de estilos en `src/routes/ImportarReceta.tsx`: todos los colores hardcodeados (`#hex`) reemplazados por tokens semánticos. El importador ahora respeta dark mode en todos sus pasos.
+
+**Cambios:** badges (`#1b5e20`/`#6d4c00`/`#424242`/`#5c35a0` → `--ok-*`/`--warn-*`/`--muted-strong`/`--surface-alt`/`--accent`), textarea (`#ddd` → `--border` + `--surface-strong`/`--text`), bloques de error (`#fdecea`/`#c62828` → `--err-*`), bloques de fallidas parseo (`#fff8e1`/`#f9a825` → `--warn-*`), FilaRow contenedor (`#e0e0e0`/`#fafafa` → `--border`/`--surface`), opciones sugerencia (`#1976d2`/`#ccc`/`#e3f2fd`/`#fff` → `--primary`/`--border`/`--primary-soft`/`--surface-strong`), "crear nuevo" (`#424242`/`#aaa`/`#f5f5f5`/`#555` → `--muted-strong`/`--border`/`--surface-alt`/`--muted-strong`), inputs/selects (`#ccc` → `--border` + `--surface-strong`/`--text`), Paso 3 (`#e8f5e9`/`#fff8e1`/`#fdecea` → ok/warn/err tokens). Fallbacks `var(--token, #hex)` eliminados. No queda ningún `#hex` en estilos salvo `#fff` sobre sólido.
+
+### 1.2.E10.2 Cambios en v2.3.1 (E10.2 — MemberAvatar con color propio)
+
+Cablea el color custom de `config/perfiles` (E10.1) en los lugares donde se muestran avatares de miembro:
+
+- **`HistorialDetalle.tsx`** — filas de calificación: `<MemberAvatar memberId={mid} name={...} size={24} />`. Es el caso principal: cada nota muestra el avatar del autor con su color custom.
+- **`PlanCard.tsx`** — `<AvatarStack memberIds={plan.asignaciones} names={cocineroNombres} />`. Las plan cards del Home también reflejan el color de los cocineros asignados.
+
+`MemberAvatar.tsx` ya recibe el `memberId` opcional desde E10.1 y usa `useColorMiembro` con fallback al token. `AvatarStack` ya acepta `memberIds?`. Cambio de las llamadas a sitio. Realtime: cambiar el color desde `/perfil` actualiza historial y plan cards sin recargar.
+
+### 1.2.E10.1 Cambios en v2.3.0 (E10.1 — Perfil de miembro)
+
+Feature nueva: pantalla de perfil por miembro con color de avatar custom, preferencias de comida, stats y sección de notificaciones (placeholder).
+
+**Modelo — `config/perfiles` (doc nuevo):**
+```ts
+interface PerfilMiembro {
+  color?: string;       // hex de la paleta curada
+  preferencias?: string[];
+  fotoUrl?: string;     // NUEVO E14.1 — data URL JPEG comprimida (~128px, ≤60 KB). Ausente → inicial con color.
+}
+type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+```
+`color`: hex de la paleta curada; si falta → token `--member-{id}`. `preferencias`: lista libre de strings. No ensuciar `config/familia`.
+
+**Security Rules:** `match /config/perfiles { allow read, write: if isFamilyMember(); }` — regla específica que sobreescribe la genérica `config/{docId}` (que solo permite write al owner). Cualquier miembro puede editar su propio color/preferencias.
+
+**Capa de datos (`src/data/perfiles.ts`):** `getPerfiles()`, `subscribePerfiles()` (realtime), `setColorMiembro()`, `addPreferencia()`, `removePreferencia()`, `setFotoMiembro(id, dataUrl | null)` (E14.1 — guarda/quita foto de avatar).
+
+**Color en toda la app:**
+- `PerfilesProvider` (`src/contexts/PerfilesContext.tsx`) suscrito a `config/perfiles` desde el root de la app. Hook `useColorMiembro(memberId): string` devuelve color custom o token fallback.
+- `MemberAvatar` actualizado: nueva prop opcional `memberId?: MiembroId`. Si viene, usa `useColorMiembro`; si no, fallback por nombre normalizado (retrocompatible). `AvatarStack` acepta `memberIds?` paralelo a `names`.
+- Avatar del header (`Header.tsx`) → `<Link to="/perfil">` con `<MemberAvatar memberId={...} />` (antes era solo la inicial, no navegaba).
+
+**Pantalla `/perfil` y `/perfil/:memberId` (hero layout):**
+1. Owner: selector de miembros (fila de avatares) + puede editar perfil de cualquiera.
+2. No-owner: solo su propio perfil; acceso a `:memberId` ajeno → redirect a `/perfil`.
+3. Secciones: avatar grande + nombre → swatches de paleta curada (6 colores) → 3 stats (calificó / promedio / biblioteca) → preferencias editables (chips + input + sugeridos) → últimos 3 platos calificados → notificaciones placeholder ("próximamente", sin lógica).
+4. Paleta curada: `['#8a4a2f','#74324a','#3c4a6e','#2e5d2e','#7a5c1e','#9a4d2e']`.
+
+**Alta/baja de miembros:** fuera de scope; no se toca `config/familia`.
+
+### 1.2.E9.10 Cambios en v2.2.3 (E9.10 — Historial: tarjetas-filtro, sin chips)
+
+`SummaryMetrics` pasa de componente estático a **control de filtro interactivo**. Se elimina la fila de chips (`FilterChips`) del Historial.
+
+**Cambios en `SummaryMetrics.tsx`:**
+- Nuevas props: `activo: FiltroId` y `onSelect: (f: FiltroId) => void`.
+- Cada `MetricCard` pasa de `<div>` a `<button>`. Estado activo: `background: var(--primary-soft)`, `border: 2px solid var(--primary)`, label en `var(--primary)`.
+- Mapeo tarjeta → filtro: `Total → "todos"`, `Máximo → "ok"` (Para repetir), `Top → "top"`.
+- Toggle-back: tocar la tarjeta cuyo filtro ya está activo vuelve a `"todos"`.
+- **Métrica del medio: Promedio → Máximo** (`Math.max(...entries.map(e => e.promedio))`). Label "Máximo", valor `toFixed(1)` + `<Stars />`.
+
+**Cambios en `Historial.tsx`:**
+- Eliminado el import de `FilterChips` y su render `<div><FilterChips … /></div>`.
+- `<SummaryMetrics entries={entries} activo={filtro} onSelect={setFiltro} />`.
+
+**Lógica de filtros conservada** (`repetir`-based para `ok`, `resultado`-based para `top`). El filtro `"mal"` (No repetir) sigue en el mapa pero ya no tiene entrada UI — intencional; las 3 tarjetas son el único mecanismo de filtro.
+
+### 1.2.E9.9 Cambios en v2.2.2 (E9.9 — Acceso de miembros a su biblioteca + UX de asignación)
+
+Cierra el hueco de E9.8: la curación era funcional pero inalcanzable para los miembros.
+
+**1. `BottomNav.tsx`:** `memberItems` pasa de 3 a 4 tabs. Se agrega `{ to: "/biblioteca", label: "Mis recetas", Icon: BookOpen }`. El owner mantiene "Biblioteca".
+
+**2. `Biblioteca.tsx` — vista de miembro:** header "Mis recetas" + bajada ("Las recetas que JP eligió para vos…") visible solo para no-owner. Catálogo, visibilidad, importar, tab Menús ya estaban ocultos (E9.8). El buscador y filtros de browse se mantienen. Botón de visibilidad renombrado a "Asignar recetas a la familia" + ícono `Users`.
+
+**3. `VisibilidadBiblioteca.tsx` — chips de miembro:** reemplaza la grilla de checkboxes por **chips de miembro por receta** (chip relleno = visible, outline = oculto; tap = toggle). Paleta: María `#74324a`, Sofía `#3c4a6e`, Federico `#2e5d2e`. Header renombrado a "Asignar recetas" + bajada explicativa. Contadores y filtros se mantienen.
+
+**4. `DetalleReceta.tsx` — gate de CocinarSticky:** la suscripción a `planesActivos` pasa a ser universal (antes solo JP). Para no-JP, `CocinarSticky` aparece solo si existe un plan de tipo `receta`, con `idSeleccion === idReceta`, que incluya al miembro en `asignaciones` y esté en estado `Compra pendiente`/`Compra lista`/`Cocinando`. El botón navega a `/planes/:idPlan/cocinar/:idReceta` (modo plan). JP mantiene el comportamiento original (libre, `/recetas/:id/cocinar`).
+
+### 1.2.E9.7 Cambios en v2.2.1 (E9.7 — Equivalencias en la lista de compras)
+
+Cierra la **tríada de equivalencias** (E9.3 + E9.4 + E9.7): las equivalencias del catálogo (E8.7) ahora se usan al comprar.
+
+Si un ítem a comprar tiene `catalogo[idIngrediente].equivalencias`, aparece una **pill "⇄ o {sustituto}"** (tono `--accent`) pegada al chip del ingrediente. Tocar la pill marca el ítem como `yaTengo` (lo cubrís con lo que ya tenés → no hace falta comprarlo). Cuando `yaTengo=true`, la pill desaparece. Funciona en ambas vistas (por receta y lista completa por góndola).
+
+**Implementación:**
+- `sustitutos.ts`: nueva función `sustitutosDeItemCompra(item, catalogoById) → string[]` — solo equivalencias del catálogo, dedup, ignora IDs faltantes. 5 tests nuevos (11 en total).
+- `SustitutoPill.tsx`: componente compartido (tono `--accent-soft` / `--accent` / `--accent-strong`).
+- `RecetaCardV2` + `GondolaCardV2`: nueva prop opcional `sustitutosMap?: Map<string, string[]>`; wrapper `inline-flex` agrupa chip + pill para que no se separen en el wrap.
+- `Compras.tsx`: carga catálogo (cacheado, un solo fetch) + computa `sustitutosMap` con `useMemo` sobre `itemsVisibles`.
+
+Sin conversión de cantidades/unidades (solo nombre del sustituto).
+
+### 1.2.E9.8 Cambios en v2.2.0 (E9.8 — Biblioteca personal por miembro)
+
+Feature nueva de **curación de vista** (no seguridad). JP (owner) decide qué recetas ve cada miembro cuando navega su biblioteca.
+
+**Distinción preservada — visibilidad blanda:**
+- **Biblioteca personal** = filtro de presentación opt-in. Un miembro ve solo las recetas que el owner habilitó.
+- **Lectura por plan asignado** = cualquier miembro puede leer y cocinar una receta aunque no esté en su biblioteca. Las Security Rules de `recetas` (`read, write: if isFamilyMember()`) no se tocan.
+- Esto es deliberado: endurecer las rules bloquearía el flujo de cocción de recetas asignadas → rompería E4.4 (guard de cocinar por asignaciones).
+
+**Modelo de datos — `config/visibilidad` (doc nuevo):**
+```ts
+interface VisibilidadBiblioteca { maria: string[]; sofia: string[]; federico: string[]; }
+```
+Opt-in: solo `idReceta` listados son visibles para ese miembro. El owner (`juanpablo`) no aparece — ve todo siempre. Una receta nueva nace invisible para todos (sin tocar la receta).
+
+**Security Rules:** el doc `config/visibilidad` queda cubierto por la regla genérica `match /config/{docId}` ya existente (`read: isFamilyMember()`, `write: isOwner()`). No se agregó regla específica — comportamiento idéntico.
+
+**Capa de datos (`src/data/visibilidad.ts`):**
+`getVisibilidad()`, `subscribeVisibilidad()` (realtime), `toggleVisibilidadReceta(miembro, idReceta, visible)` (setDoc merge + arrayUnion/Remove), `setVisibilidadMiembro()`. `getRecetasParaMiembro(memberId)` en `recetas.ts` — filtra sobre cache.
+
+**Guard — nivel-tab (no nivel-ruta):** `/biblioteca` abierta a todos los miembros autenticados. No-owner: ve solo tab Recetas (curada). Owner: ve todo (tabs + catálogo + visibilidad + importar). Acceso directo a `/biblioteca/visibilidad` por URL → redirect a `/biblioteca` si no es owner.
+
+**UI:**
+- `Biblioteca.tsx` → `TabRecetas` recibe `memberId`/`isJP`; carga `getRecetasParaMiembro` para no-owner; estado vacío amable si lista curada está vacía.
+- `/biblioteca/visibilidad` → grilla receta × 3 miembros con checkboxes; filtros (tipo, proteína, cocina, búsqueda); contadores por miembro; un write por toggle.
+- `DetalleReceta.tsx` → bloque "Visible en biblioteca de:" con checkboxes María/Sofía/Federico (solo owner). Suscripción realtime a visibilidad.
+- `Biblioteca.tsx` → botón `Eye + "Visibilidad de biblioteca"` entre catálogo y card (solo owner).
+
+### 1.2.E9.6 Cambios en v2.1.2 (E9.6 — Rediseño detalle Historial)
+
+Mejora de presentación en `src/routes/HistorialDetalle.tsx` y `src/components/historial/Stars.tsx`.
+
+1. **Token `--estrella`** en `tokens.css`: `oklch(0.76 0.14 78)` (light) y `oklch(0.80 0.14 80)` (dark). `Stars.tsx` cambia `fill="var(--accent)"` → `fill="var(--estrella)"`. Impacta también el listado de Historial (coherencia buscada: lista y detalle con el mismo dorado).
+
+2. **Prop `size` en `Stars`**: default 12 (retrocompatible). Permite usar estrellas más grandes en el hero (16 px) sin duplicar el componente.
+
+3. **Hero del detalle**: se elimina `/ 10`; el promedio pasa a `toFixed(1)`; se agrega fila de `<Stars size={16} />` centrada entre el número y el `ResultadoBadge`.
+
+4. **Calificaciones por miembro**: el `<span>` de nota reemplazado por cluster inline `Stars (size=12) + número (fontSize 18, fontWeight 700, color --text-strong, tabular-nums)`. `null` → "Sin voto" en `--muted`, sin estrellas.
+
+### 1.2.E9.5 Cambios en v2.1.1 (E9.5 — Catálogo de ingredientes antes del listado)
+
+Cambio de UX en `src/routes/Biblioteca.tsx`: el acceso al catálogo de ingredientes era un `<Link className="tab-action">Ingredientes</Link>` poco visible dentro de la fila de tabs.
+
+**Cambio:** se elimina esa tab-action y se agrega un botón full-width **"Catálogo de ingredientes"** (ícono Carrot + label + ChevronRight) ubicado entre la fila de tabs y el card de contenido — visible desde ambos tabs (Recetas y Menús). Navega a `/biblioteca/catalogo`. Usa tokens (`--surface-strong`, `--border`, `--primary`, `--muted`). La acción Importar permanece como tab-action en la fila de tabs.
+
+### 1.2.E9.3 Cambios en v2.1.0 (E9.3 — ¿Qué cocino con lo que tengo?)
+
+Cierra el ítem histórico **7.2 (matcher inverso)**. El usuario marca su despensa y la app ordena las recetas por cercanía.
+
+**Helper `src/lib/cocinables.ts` — `evaluarCocinables(recetas, despensa, catalogoById)`:**
+
+- **Requeridos = ingredientes no `opcional`**. Los opcionales no bloquean ni afectan la cobertura.
+- Para cada requerido ausente de la despensa: es `sustituye` si (a) algún id de `catalogo[req].equivalencias` está en la despensa, **o** (b) algún `alternativas[].idIngrediente` del ítem de receta está en la despensa. Prioridad: equivalencias > alternativas. Si ninguno aplica: `falta`.
+- **Buckets:** `ahora` (faltan 0 sin sustituciones) · `cambio` (faltan 0 con ≥1 sustitución) · `falta1` (falta 1) · `faltaN` (faltan ≥2).
+- Orden: ahora → cambio → falta1 → faltaN; dentro de cada uno, cobertura desc + nombre asc.
+
+**Básicos de despensa (`BASICOS_CANONICOS`):** sal fina, sal gruesa, pimienta negra, agua, aceite de oliva, aceite de oliva suave, aceite de coco, azúcar mascabo, vinagre de manzana, vinagre de vino. Se asumen siempre disponibles (pre-cargados en la despensa default). El usuario puede sacarlos de su despensa. Futuro: flag en el diccionario canónico de E9.0.
+
+**Despensa persistente:** `localStorage["cf-despensa"]` (array de `idIngrediente`). Default = básicos (resueltos por `despensaDefaultIds(catalogo)`). Futuro: despensa compartida en Firestore por familia (no ahora).
+
+**Pantalla `/que-cocino` (`src/routes/QueCocino.tsx`):**
+- Panel "Mi despensa" colapsable: buscador + chips toggle por ingrediente (GondolaChip letra+color + nombre). Contador "N en casa".
+- Faceta Dieta: Todas / Vegetariana / Keto (mutuamente excluyentes) vía `filtrarRecetas` antes de evaluar.
+- Resultados agrupados por bucket con label ("Cocinás ahora · N", etc.). Cada card: nombre + proteína · tiempo · dificultad + línea de estado (✓ tenés todo / ⇄ usá X en vez de Y / + te falta: A, B…). % de cobertura en chip. Tap → `/recetas/:id`.
+
+**Navegación:** ruta registrada en `App.tsx`. Entrada en `HomeJP`: botón "¿Qué cocino con lo que tengo? / Recetas según tu despensa" al pie del card.
+
+### 1.2.E9.4 Cambios en v2.0.3 (E9.4 — Sustitución al cocinar)
+
+Muestra sustitutos de ingredientes en el **detalle de receta** y los agrupa en un **recap colapsable en el paso a paso**. Usa las dos fuentes que ya existían: `alternativas` (propias de la receta, del importador) y `equivalencias` del catálogo (E8.7). Sin cambios de modelo.
+
+**Decisiones:**
+
+1. **Helper puro `src/lib/sustitutos.ts`:** `sustitutosDeItem(item, catalogoById)` → `Sustituto[]` (`{ idIngrediente, nombre, fuente: "receta"|"catalogo" }`). Match por `idIngrediente` (no por nombre). Fuente receta primero, luego catálogo. Dedup por id (el primero en aparecer gana, fuente receta tiene prioridad).
+
+2. **Detalle de receta (`IngredientesPorGondola`):** línea secundaria `⇄ o {X} o {Y}` en `--primary` debajo del nombre del ingrediente. Toggle "Sustitutos" (ON por defecto, persistido en `localStorage["cf-mostrar-sustitutos"]`). Solo aparece cuando el catálogo ya cargó.
+
+3. **Paso a paso (`Cocinar`):** tira colapsable "Sustitutos a mano (N)" sobre el riesgo/pasos; lista `{ingrediente} — o {X}` de todos los ítems con al menos un sustituto. Collapsable (default cerrado). En modo guiada aparece solo en el paso 1; en modo scroll, siempre arriba. Catálogo cargado junto con la receta en el mismo `Promise.all` (ya cacheado).
+
+4. **No se toca la cantidad/unidad de sustitutos** — solo el nombre. Sustituir cantidades queda para E9.5+.
+
+### 1.2.E9.2 Cambios en v2.0.2 (E9.2 — Fix regresión Historial)
+
+**Regresión detectada y cerrada.** El commit `11ff3df` ("skeleton loaders en todas las rutas + Historial con tarjetas clickeables") reemplazó `src/routes/Historial.tsx` por una versión simplificada con lista plana y `ResultadoBadge` local, dejando huérfanos los componentes `SummaryMetrics`, `FilterChips`, `MonthGroup`, `HistorialCard` y `EmptyState` que existían en `src/components/historial/` desde commits anteriores.
+
+**Fix:** reescritura de `src/routes/Historial.tsx` cableando los componentes existentes:
+
+1. **`<SummaryMetrics entries={entries} />`** — 3 cards Total / Promedio / Top, sobre el total sin filtrar.
+2. **`<FilterChips activo={filtro} onChange={setFiltro} />`** — chips Todos / ★ Top / Para repetir / No repetir. Lógica: `top` → `resultado ∈ {Excelente, Muy bueno}`; `ok` → `repetir === "Sí"`; `mal` → `repetir === "No"`.
+3. **Agrupación por mes** (`YYYY-MM` de `fechaRealizada`), orden desc. Un `<MonthGroup>` por grupo con header sticky y `HistorialCard` por entrada.
+4. **`<EmptyState context=... />`** contextual: `"sin-entries"` / `"sin-matches-busqueda"` / `"sin-matches-filtro"`.
+5. `SkeletonList` mantenido (parte correcta del mismo commit).
+6. `ResultadoBadge` local eliminado (sin otros consumidores en el archivo).
+
+**Alcance del commit causante:** solo `Historial.tsx` perdió lógica (136 líneas cambiadas). Las demás rutas tocadas (`Home`, `Biblioteca`, `Compras`, `Cocinar`, `DetalleMenu`, `HistorialDetalle`, `MemberDashboard`, `SeleccionarComponenteMenu`, `Voto`) solo agregaron 3-5 líneas de skeleton — contenido real intacto.
+
+### 1.2.E9.1 Cambios en v2.0.1 (E9.1 — Prompt del importador con vocabulario canónico)
+
+Blinda el prompt LLM que JP usa para convertir recetas: clasifica los campos de receta como **cerrados** (el LLM elige exactamente de la lista) e **ingredientes como abiertos pero guiados** (el LLM prefiere el nombre canónico si existe; si no, lo agrega clasificado).
+
+**Decisiones zanjadas:**
+
+1. **Distinción cerrado/extensible:** `proteinaPrincipal`, `tipoItem`, `escenarioUso` y demás campos de receta → enum cerrado, el LLM no inventa. Ingredientes → nombre canónico preferido, pero si es nuevo se agrega con las 3 dimensiones ya clasificadas. Esto evita crear ingredientes ambiguos a resolver después.
+
+2. **Vocabulario canónico en el prompt:** lista de 265 `nombrePreferido` agrupados por `categoria`. El LLM usa ese nombre exacto → el matcher del importador lo resuelve como `exacto` (no crea duplicados).
+
+3. **3 columnas nuevas opcionales en `#INGREDIENTES`:** `categoria | rolNutricional | seccionGondola`. Solo se completan para ingredientes nuevos (los canónicos las dejan vacías — la app los toma del catálogo). El parser las lee desde cols 7-9 y las almacena en `ParsedIngredienteRaw` como `categoriaLLM`, `rolNutricionalLLM`, `seccionGondolaLLM`. Retrocompatible: filas sin esas columnas siguen funcionando.
+
+4. **`esVegetariano`** agregado al prompt como campo de `#RECETA` (`Sí/No`). Parseado en `ParsedReceta.esVegetariano` y persistido al crear la receta vía el importador.
+
+5. **Ejemplo actualizado:** `proteinaPrincipal: Aves` (ya no `Pollo`); campo `esVegetariano: No`; un ingrediente canónico (columnas 8-10 vacías) y uno nuevo (columnas 8-10 completas).
+
+6. **Parser (`parseReceta.ts`) — retrocompatibilidad:** el destructuring de celdas ya ignoraba columnas extra. Se extiende para leer cols 7-9. Filas con 7 columnas (formato anterior) siguen parseando igual.
+
+7. **`ImportarReceta.tsx`:** al crear una decisión `"nuevo"` en paso 2, usa `raw.categoriaLLM` como categoría inicial en el dropdown (en vez de `"Despensa varios"` fijo). Si el LLM ya clasificó el ingrediente, JP no tiene que cambiarlo.
+
+**Aplicar en producción:** `npm run e9:importador` (re-seed del promptLLM con `--force`). Sin deploy del front si no se tocó el parser; con deploy si se actualizó `parseReceta.ts` (sí en este caso: `npm run build && firebase deploy --only hosting`).
+
+### 1.2.E9.0 Cambios en v2.0.0 (E9.0 — Proteínas jerárquicas + faceta Dieta + diccionario canónico)
+
+Tres bloques en un prompt; el orden de aplicación en producción es C → B → A.
+
+#### BLOQUE C — Diccionario canónico de ingredientes (265 entradas)
+
+`scripts/seed-data/catalogo_ingredientes.json` — fuente de verdad. Incluye el catálogo existente de 177 + 88 ingredientes argentinos comunes. **5 correcciones de datos corruptos:**
+
+| ID | Ingrediente | Campo | Antes | Ahora |
+|---|---|---|---|---|
+| ING-0087 | Jengibre fresco | categoria/rol/góndola | Lacteo/[Proteina,Grasa]/Lacteos | Hierba y especia/[Fibra/Vegetal]/Verduleria |
+| ING-0159 | Tomate fresco | categoria/rol/góndola | Lacteo/[Proteina,Grasa]/Lacteos | Verdura/[Fibra/Vegetal]/Verduleria |
+| ING-0146 | Repollo blanco | categoria/rol/góndola | Carne/[Proteina]/Carniceria | Verdura/[Fibra/Vegetal]/Verduleria |
+| ING-0113 | Palta | categoria/rol | Fruta/[Grasa,Fibra] | Verdura/[Grasa] |
+| ING-0109 | Nuez moscada | categoria | Semilla y fruto seco | Hierba y especia |
+
+**Criterios canónicos:** `categoria` por uso culinario (palta y tomate = Verdura); productos compuestos por su forma final (passata = Despensa, leche de coco = Despensa — no lácteo); `rolNutricional` independiente de `categoria` (palta = Verdura pero rol Grasa, relevante keto); `seccionGondola` por punto de compra.
+
+Script: `scripts/update-catalogo-ingredientes.ts` — idempotente, solo actualiza `/ingredientes`, sin wipe de otras colecciones.
+
+#### BLOQUE B — Proteínas jerárquicas
+
+`PROTEINAS` pasa de **13 valores planos** a **11 hojas en 5 grupos**. Revierte los meta-valores `Vegetariana`, `Mixta`, `Fiambre` y renombra `Pollo` → `Aves` (más correcto — incluye pollo, pavo, etc.).
+
+**Nuevos exports en `models.ts`:**
+- `GRUPOS_PROTEINA: Record<string, Proteina[]>` — jerarquía 2 niveles
+- `GRUPOS_PROTEINA_ORDEN` — orden canónico de grupos
+- `GrupoProteina` — tipo para los nombres de grupo
+
+**Filtro en `filtros.ts`:** si el valor del filtro coincide con una clave de `GRUPOS_PROTEINA` → filtra por cualquier hoja del grupo; si no, match exacto contra `proteinaPrincipal`. Permite "Todas: Carnes rojas" para filtrar Vacuna + Cerdo + Cordero juntos.
+
+**UI:** selects reemplazados por `<optgroup>` en `Biblioteca.tsx` y `DetalleReceta.tsx` (classification sheet).
+
+**Migración Firestore:** `scripts/migrate-proteinas-e9.ts` — transforma las 78 recetas:
+- `Pollo` → `Aves` (6 recetas)
+- `Fiambre` → `Cerdo` (1 receta, jamón asumido)
+- `Vegetariana` → `Vegetal` + `esVegetariano: true` (15 recetas)
+- `Mixta` — 3 recetas con decisiones por ID: REC-1012 → `Aves`, REC-1503 → `Huevos`, REC-1104 → `Vegetal` + `esVegetariano: true`
+- Todas → `esKeto: !hidratos`
+
+#### BLOQUE A — Faceta Dieta
+
+Campos nuevos opcionales en `Receta`: `esVegetariano?: boolean` y `esKeto?: boolean`. Son **atributos booleanos filtrables**, no ramas del árbol de categorías. `Vegetariana` era un régimen metido en proteína por error; ahora queda como atributo propio.
+
+Filtros nuevos en `FiltrosReceta` + `filtrarRecetas`: `esVegetariano`, `esKeto`. Botones toggle "Vegetariana" y "Keto" en `Biblioteca.tsx`.
+
+#### Sincronización 4 puntos (lección E5.2)
+
+1. `models.ts` (fuente de verdad) — ✅ PROTEINAS actualizadas
+2. `scripts/bootstrap-config.ts` — ✅ corregido drift (tenía 10 valores, ahora tiene 11)
+3. `scripts/seed-config-importador.ts` — ✅ línea `proteinaPrincipal:` actualizada a 11 hojas. Correr con `--force` para actualizar Firestore
+4. `src/import/parseReceta.ts` — ✅ importa de `models.ts`, se sincroniza automáticamente
+
+**Para aplicar en producción (en orden):**
+```
+npx ts-node --esm scripts/update-catalogo-ingredientes.ts          # BLOQUE C
+npx ts-node --esm scripts/migrate-proteinas-e9.ts --dry-run        # revisar
+npx ts-node --esm scripts/migrate-proteinas-e9.ts                  # BLOQUE B data
+npx ts-node --esm scripts/seed-config-importador.ts --force        # sync prompt LLM
+npm run build && firebase deploy --only hosting                    # deploy front
+```
+
+### 1.2.E8.8 Cambios en v1.9.6 (E8.8 — Detección de duplicados al crear ingrediente)
+
+Previene la creación de ingredientes duplicados en dos puntos del flujo:
+
+1. **Catálogo editor ("+ Nuevo")** — `handleGuardar` llama `detectarDuplicado(nombre, catMap)` antes de `crearIngrediente`. Si hay colisión y no fue confirmada, muestra un bloque warn inline: "Ya existe **{nombre}**. ¿Usar ese en su lugar?" con dos botones: "Usar existente" (cierra el sheet sin crear) y "Crear de todas formas" (pasa `skipDupCheck = true` como escape consciente).
+
+2. **Importador, paso 2 — filas "nuevo"** — el catálogo se almacena en estado (`catalogoMap`) al cargar en `handleParsear` y se pasa a cada `FilaRow`. El nuevo componente `BadgeDuplicado` calcula `detectarDuplicado(decision.nombre, catalogoMap)` en cada render; si hay colisión, muestra un badge warn "⚠ Posible duplicado de **{nombre}**" + botón "Usar ese" que cambia la decision a `{ tipo: "sugerencia", ... }` (idéntico a elegir una sugerencia del matcher — el sinónimo se agrega en el paso 3 vía `agregarSinonimo`). Si JP ignora el badge y guarda igual, se crea el duplicado como decisión consciente.
+
+3. **Helper puro `src/lib/detectarDuplicado.ts`** — calcula `canon = normalizeText(nombre)` y recorre el catálogo buscando `ing.canonico === canon` o `ing.sinonimos.some(s => normalizeText(s) === canon)`. Sin side-effects. Testeable. 6 tests en `src/lib/detectarDuplicado.test.ts`.
+
+**Fuera de scope:** fusión de dos ingredientes ya existentes (requiere reasignación de IDs en recetas); similitud difusa (solo canonico exacto y sinónimos).
+
+### 1.2.E8.7 Cambios en v1.9.5 (E8.7 — Equivalencias de ingredientes)
+
+Tercer concepto de similitud en el catálogo. Clarificación del modelo de datos:
+
+| Campo | Nivel | Semántica |
+|---|---|---|
+| `sinonimos: string[]` | catálogo | Otros **nombres** del mismo ingrediente ("palta" = "aguacate") |
+| `grupoAlternativa` / `alternativas` | receta | El "X *o* Y" propio de **una** receta puntual (de la capa de importación) |
+| `equivalencias: string[]` | catálogo (**nuevo**) | IDs de sustitutos generales reutilizables en cualquier receta |
+
+**Decisiones zanjadas:**
+
+1. **Campo `equivalencias?: string[]`** en `Ingrediente` (`models.ts`) — lista de `idIngrediente` de sustitutos generales. Opcional (ingredientes sin equivalencias simplemente no tienen el campo).
+
+2. **Relación simétrica**: la reciprocidad se mantiene en la capa de datos mediante `writeBatch`. `setEquivalencia(A, B)` escribe `arrayUnion(B)` en A y `arrayUnion(A)` en B en una sola operación atómica. `quitarEquivalencia` hace lo mismo con `arrayRemove`. Esto garantiza que no quedan estados asimétricos (A sabe de B pero B no sabe de A).
+
+3. **Limpieza al borrar**: `eliminarIngrediente` primero consulta `where("equivalencias", "array-contains", id)` para encontrar todos los que referencian al ingrediente borrado, y los limpia con un batch de `arrayRemove` antes de hacer el `deleteDoc`. Evita punteros colgados.
+
+4. **UI en el catálogo** (`CatalogoIngredientes.tsx`, sección "Se puede reemplazar por"):
+   - Chips accent (`--accent-soft` / `--accent`) con × para quitar — llama `quitarEquivalencia` al instante.
+   - Select "＋ Agregar sustituto…" filtrando el propio ingrediente y los ya agregados — llama `setEquivalencia` al instante.
+   - Nota diferenciadora de sinónimos y alternativas de receta.
+   - Funciona en light y dark (tokens semánticos).
+
+5. **Tests de simetría** — nuevo `src/data/equivalencias.test.ts` (6 tests): verifica que tanto `setEquivalencia` como `quitarEquivalencia` llaman `batch.update` dos veces (una por doc) y `batch.commit` una vez, con el ID correcto en cada llamada.
+
+6. **Firestore rules** — `/ingredientes/{id}` tiene `allow write: if isOwner()`. JP puede hacer `update` del nuevo campo. Sin cambios.
+
+### 1.2.E8.6 Cambios en v1.9.4 (E8.6 — Editor de clasificación de receta en la app)
+
+Cierra el gap de §1.2.E7.13 pto 6: antes, `cocina` y el bloque de clasificación solo podían editarse desde la consola de Firebase. Ahora JP puede hacerlo desde el detalle de la receta en la app, **desbloqueando la migración de las 78 recetas viejas desde el celular**. Alcance acordado: solo el bloque "Clasificación" (nombre, ingredientes y pasos no se editan — eso sería una edición completa, mini-proyecto).
+
+**Decisiones zanjadas:**
+
+1. **Botón lápiz junto al título** — visible solo para JP. Abre el sheet de clasificación.
+
+2. **Chip "Sin clasificar · completar"** — visible solo para JP cuando `!receta.cocina`. Borde punteado con colores `--warn-*`, tappable. Desaparece al guardar `cocina`. Esto hace evidente, receta por receta, cuáles de las 78 antiguas faltan migrar.
+
+3. **Bottom-sheet "Editar clasificación"** — mismo patrón que el editor de ingredientes (E8.3): `position: fixed`, scrim, `maxHeight: 90dvh`, `key` por `idReceta`. Campos con prefill de los valores actuales:
+   - **Selects con enum**: `cocina` (COCINAS, con opción "Sin clasificar"), `proteinaPrincipal`, `escenarioUso`, `dificultad`, `costoEstimado`, `aptoNocheDeADos`, `climaDelPlato`, `pensadaPara`.
+   - **Texto libre**: `estilo`, `tecnicaPrincipal`.
+   - **Toggles**: `sinLacteos`, `hidratos` (= Con hidratos).
+
+4. **Patch selectivo** — solo los campos con valor no-vacío van en el `updateDoc` (los booleanos siempre van). Evita escribir strings vacíos en Firestore para campos opcionales no completados.
+
+5. **Actualización local inmediata** — `onSaved(patch)` mergea el patch sobre el estado local de la receta; las pills se actualizan al instante sin refetch.
+
+6. **Firestore rules** — `/recetas/{id}` ya tiene `allow read, write: if isFamilyMember()`. JP puede `update`. Sin cambios.
+
+### 1.2.E8.5 Cambios en v1.9.3 (E8.5 — Ingrediente → recetas que lo usan)
+
+Hace navegable el dato `vecesUsado` del catálogo: al abrir un ingrediente en el sheet, se muestra la lista real de recetas que lo referencian por `idIngrediente`, cada una tappable hacia su detalle.
+
+**Decisiones zanjadas:**
+
+1. **Índice derivado por `idIngrediente`** — al cargar el catálogo se carga también `getRecetas()` (ahora cacheado en `cachedRecetas`). Se construye `Map<idIngrediente, Receta[]>` recorriendo `receta.ingredientes[].idIngrediente`. El match es por ID, no por nombre (el prototipo matcheó por texto por falta de IDs; el código usa el ID que es la verdad). Para el volumen actual (~80 recetas) traer todo está bien; no se implementa query inversa en Firestore (no es directa con array de objetos).
+
+2. **Sección "En N recetas"** en el bottom-sheet de edición, debajo de roles nutricionales. Muestra: encabezado con el conteo; lista de recetas (`nombre` + `cocina · proteinaPrincipal · tiempoTotalLabel`). Cada fila es tappable → navega a `/recetas/:idReceta` y cierra el sheet. Si no hay recetas: "No figura en ninguna receta todavía".
+
+3. **Coherencia con `vecesUsado`** — el conteo derivado puede diferir de `Ingrediente.vecesUsado` (que se mantiene al importar, no al borrar). Se muestra el conteo derivado (verdad presente) sin recalcular masivamente `vecesUsado`.
+
+4. **Cache en `getRecetas`** — `let cachedRecetas: Receta[] | null = null` en `recetas.ts`, mismo patrón que `cachedCatalog` en `ingredientes.ts`. Evita refetch cada vez que se abre la ruta del catálogo en la misma sesión.
+
+5. **Relación con 7.2** — esto es la versión liviana y directa ("qué recetas usan este ingrediente"). El matcher inverso completo ("qué cocino con lo que tengo") sigue siendo el feature E7.2, que es un mini-proyecto separado.
+
+**Cambio 0 (docs)** — §11 Lote 8 renumerado a eje único `E8.x` (antes `8.1–8.5`). Mapa: `8.1→E8.3` ✅, `8.3→E8.5` ✅, `8.2→E8.6`, `8.4→E8.7`, `8.5→E8.8`. Bloque "Mapa backlog → prompts" eliminado (ya no hace falta con eje único).
+
+### 1.2.E8.4 Cambios en v1.9.2 (E8.4 — Chips de letra por sección de ingrediente + toggle rol/góndola)
+
+**Hallazgo y causa raíz**: `IngredientesPorGondola.tsx` usaba `getSeccionMeta()` (que solo conoce góndolas de supermercado) para pintar `ing.seccion` (que es una **sección culinaria**: `"Principal"`, `"Base de sabor"`, etc.). Cualquier sección culinaria caía al fallback `"Despensa / otros"` con letra `·`. Bug arreglado sin cambiar el modelo de datos.
+
+**Decisiones zanjadas:**
+
+1. **`SECCIONES_RECETA_META` en `catalogo.ts`** — mapa separado de `SECCIONES_META` (góndola) para secciones culinarias: `P` Principal, `B` Base de sabor, `L` Líquido de cocción, `S` Salsa, `C` Condimentos/Cocción, `G` Guarnición, `O` Opcional familia. Función `getSeccionRecetaMeta(seccion)` con **fallback a la inicial** del string para secciones libres no listadas (el campo es texto libre del importador — no se valida contra enum cerrado para no romper imports existentes). Sin cambio de modelo de datos.
+
+2. **Toggle "Por rol / Por góndola"** en `IngredientesPorGondola.tsx`:
+   - **"Por rol" (default):** agrupa por `ing.seccion` en orden de primera aparición, cada grupo con chip `SeccionChip` (usa `getSeccionRecetaMeta`) → letras correctas, no `·`.
+   - **"Por góndola":** carga el catálogo (`getCatalogo()`, cacheado) → mapea `ing.idIngrediente` → `seccionGondola`; agrupa con `groupByGondola` + `GondolaChip`. Ingredientes sin match → "Otros". Mientras el catálogo carga, muestra la vista por rol (no bloquea).
+   - Preferencia persiste en `localStorage["cf-ingredientes-vista"]`.
+
+3. **Chips en componentes de menú** (`DetalleMenu.tsx`): cada componente muestra a la izquierda un chip de letra (20×20, `getSeccionRecetaMeta(comp.tipo)`) para consistencia visual con el detalle de receta. `comp.tipo` sigue mostrándose como texto debajo del chip.
+
+### 1.2.E8.3 Cambios en v1.9.1 (E8.3 — Catálogo de ingredientes editable)
+
+`/biblioteca/catalogo` (`CatalogoIngredientes.tsx`) reescrito: de solo resolver ambiguos a catálogo completo navegable y editable. Solo-JP (guard existente).
+
+**Alcance:**
+
+1. **Ver todo el catálogo** agrupado por góndola (orden `ORDEN_GONDOLA`). Buscador por nombre + chips de filtro por góndola (scroll horizontal). Cada fila muestra badge de letra, nombre, categoría y roles; tap abre el editor. Conteo por sección.
+
+2. **Sección "Por completar"** (ambiguos) diferenciada con borde warn y badge "por completar" — funciona igual que antes pero a través del mismo bottom-sheet editor.
+
+3. **Editor en bottom-sheet** (modal anclado al pie, `position: fixed`, scrim). Campos: nombre, categoría, sección de góndola, roles nutricionales (toggles). `key` por `idIngrediente` (o `"nuevo"`) para reinicializar el form al cambiar de ingrediente. Cerrar: scrim o botón ×.
+
+4. **Alta**: botón "+ Nuevo" en el header. El sheet en modo create genera el id con `proximoIdIngrediente()`, construye el doc con `origen: "manual"`, `ambiguo: false`, `canonico` via `normalizeText`.
+
+5. **Baja** (solo en edición): botón "Eliminar ingrediente". Muestra `vecesUsado` en el sheet. Si `vecesUsado > 0`, la confirmación advierte "Está en N recetas. Eliminarlo no actualizará esas recetas." Un paso adicional de confirmación en ambos casos antes de ejecutar.
+
+6. **`eliminarIngrediente(id)`** (nuevo en `src/data/ingredientes.ts`): `deleteDoc` + `invalidateCatalogCache()` + patrón `Result`.
+
+7. **`actualizarIngrediente`** — tipo de `cambios` ampliado para incluir `nombrePreferido` (antes solo `categoria | rolNutricional | seccionGondola | ambiguo`).
+
+8. **Firestore rules**: `allow write: if isOwner()` en `/ingredientes/{id}` ya cubre `create | update | delete`. Sin cambios.
+
+9. **Recarga optimizada**: después de cualquier mutación exitosa, el cache se invalida en la función de datos y se relanza `getCatalogo()` para refrescar la lista local.
+
+### 1.2.E8.2 Cambios en v1.9.0 (E8.2 — Dark mode "Cocina nocturna")
+
+Dark mode completo implementado como **reescritura de tokens** sobre `[data-theme="dark"]` en `src/styles/tokens.css`. Los componentes ya usaban `var(--token)` en todos sus estilos, por lo que el cambio de tema se propaga sin tocar markup. **Reemplaza** la propuesta vieja del handoff del DS (que era `prefers-color-scheme` automático): la decisión de producto es **toggle manual, default = light**.
+
+**Decisiones zanjadas:**
+
+1. **Solo tokens.** El bloque `[data-theme="dark"]` sobreescribe los 40+ tokens de color de `:root`: fondos (`--bg`, `--surface`, `--surface-strong`, `--surface-alt`), texto (`--text`, `--text-strong`, `--muted`, `--muted-strong`), bordes, primary cálido (`#e08a63`), accent, semánticos ok/err/warn/info, sombras y `color-scheme: dark`. No hay CSS por-componente nuevo.
+
+2. **`--member-*` en dark.** Los colores de avatar en `:root` son versiones oscuras (`#8a4a2f`, `#74324a`, etc.) que quedarían sin contraste sobre fondos oscuros. Se añadió override en el bloque dark con las variantes claras equivalentes: `--member-juanpablo: #e08a63` (= `--primary` dark), `--member-maria: #d18aa3`, `--member-sofia: #aeb9d6`, `--member-federico: #a8d6a8`.
+
+3. **Toggle en el header.** Botón circular (32×32 px) a la izquierda del avatar, sin borde, fondo transparente. Ícono `Moon` (lucide) en light → muestra que al presionar va a dark; `Sun` en dark → vuelve a light. `aria-label` dinámico. Estado local `theme` inicializado con `getInitialTheme()` (lee `localStorage["cf-theme"]`).
+
+4. **Helper `src/lib/theme.ts`.** Exporta `getInitialTheme(): Theme` y `applyTheme(t: Theme)`. `applyTheme` setea/quita el atributo `data-theme` en `<html>` y persiste en `localStorage`. La función es pura (sin imports de React), reutilizable desde cualquier lugar.
+
+5. **Sin flash al recargar.** Script inline en `index.html` (antes del bundle) lee `localStorage["cf-theme"]` y aplica `data-theme="dark"` si corresponde, antes de que React monte. Elimina el flash de light en usuarios que tenían dark guardado.
+
+### 1.2.E8.1 Cambios en v1.8.9 (E8.1 — Pulido de diseño)
+
+Micro-ajustes visuales del ciclo de diseño post-E7.13. Sin cambios de modelo ni lógica.
+
+1. **Home — resumen sin "planeadas".** `"Sin comidas planeadas"` → `"Sin comidas"`;
+   `"N comidas planeadas"` → `"N comidas"`. Texto más limpio.
+
+2. **WeekStrip — todos los días con comida usan el plato relleno primary.** Antes,
+   solo `isToday` mostraba `<Plate filled>` en `var(--primary)`; otros días con comida
+   mostraban outlined (`fill=false`) en `var(--muted)`. Cambio: `filled={hasMeal}` (en vez
+   de `filled={isToday}`) y el plato se envuelve en `<span style={{ color: "var(--primary)" }}>`,
+   forzando `currentColor = --primary` en todos los días con comida. El fondo
+   `--primary-soft` y el número en negrita siguen marcando solo el día de hoy.
+
+3. **Header — logo más grande.** El círculo contenedor pasa de `28×28` a `38×38` px;
+   `<PlatoMark size={16}>` → `size={23}`. El logomark resulta notablemente más visible.
+
+4. **Dashboard de miembro — badge "N por votar".** En el saludo (`Hola, {nombre}`) se
+   agrega a la derecha un chip pill `"N por votar"` (fondo `--warn-bg`, borde `--warn-line`,
+   texto `--warn-text`) visible solo cuando `pendientes.length > 0`. Al tocarlo navega
+   directo al primer plan pendiente (`/voto/:idPlan`).
+
+### 1.2.E7.13 Cambios en v1.8.7 (E7.13 — Dimensión `cocina` en recetas)
+
+Nueva dimensión de clasificación para recetas: **tipo de cocina / origen** (Italiana, China, Argentina, etc.). Calca el patrón de `climaDelPlato` / `pensadaPara`: **enum opcional** validado contra `/config/diccionarios`. No todas las recetas la tienen (campo opcional).
+
+**Decisiones zanjadas:**
+
+1. **Nombre del campo: `cocina`** (no "origen"). Lo que clasifica es la cocina/estilo del plato, no necesariamente el país de procedencia. No se pisa con el campo `estilo` (texto libre, ej. "Argentino gourmet") ni con `tecnicaPrincipal` (texto libre): `cocina` es enum cerrado para **filtrar**; `estilo` queda como matiz libre. Va en el bloque "Clasificación" del doc de receta.
+
+2. **Opcional.** `cocina?: string`. Si la receta no la tiene, la clave se **omite** del doc (no se guarda `""` ni `null`). En UI se omite la fila cuando falta.
+
+3. **Lista de 15 cocinas**, definida en `models.ts` como `COCINAS` (`as const`) → tipo `Cocina = typeof COCINAS[number]`:
+   `["Argentina", "Italiana", "Española", "Francesa", "Mediterránea", "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana", "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra"]`.
+   `"Otra"` como catch-all al final. **`models.ts` es la fuente de verdad** (no la Console). Para agregar/cambiar una cocina: editar `models.ts` + re-correr el script de sync — mismo flujo controlado con que se arregló `proteinaPrincipal` en E5.2. La copia en `/config/diccionarios.cocinas` se mantiene sincronizada por script y existe **solo** para la validación runtime del importador.
+
+4. **Fuente de verdad = `src/types/models.ts`** (lección de E5.2: `proteinaPrincipal` se había desincronizado en 4 lugares). `cocina` debe quedar consistente en los **4 puntos**: (a) tipo en `models.ts` (`COCINAS` + `Cocina`, y agregar el slot `cocinas: Cocina[]` a la interfaz `DiccionariosConfig`, que hoy no lo tiene), (b) `/config/diccionarios.cocinas`, (c) prompt modelo del importador (`/config/importador.promptLLM`), (d) validación del parser.
+
+5. **Importador.** El parser acepta `cocina:` en el `#RECETA` (opcional). Validación **estricta si viene** (distinto a `climaDelPlato`, que silencia el error): `matchEnum(cocina, COCINAS)` → si falla, `errors.push(...)` → el bloque va a `fallidas` (consistente con multi-receta de E7.11). Ausente → clave omitida (`...(cocina ? { cocina } : {})`), sin default. El prompt modelo del LLM lista el campo como opcional con los valores válidos. ⚠️ El seed (`scripts/seed-config-importador.ts`) **no sobreescribe** si `promptLLM` ya existe; para actualizarlo se agrega un flag **`--force`**, y JP debe re-correr el seed **con `--force`** (si no, la app sigue mandando el prompt viejo sin `cocina`).
+
+6. **Recetas existentes (78) no se migran automáticamente.** `cocina` se completa en las recetas viejas desde el detalle de la receta en la app (**editor de clasificación llegó en E8.6, v1.9.4**): botón lápiz junto al título (solo JP) + chip "Sin clasificar · completar" cuando falta `cocina`. Los nuevos imports la traen desde el parser. No se intenta inferir automáticamente (no es confiable). Las recetas sin `cocina` aparecen como "sin clasificar" y caen fuera de cualquier filtro por cocina.
+
+7. **Filtro en Biblioteca + cierre de §10.1.** Se agrega `cocina` como faceta de filtro en `/biblioteca`. El diagnóstico de Code confirmó que las facetas existentes (`tipoItem`, `proteina`) leen de `models.ts` (`TIPOS_ITEM`, `PROTEINAS`), están sincronizadas y **funcionan** → eso **cierra §10.1 por verificación** (los filtros no estaban rotos). Por consistencia, la faceta `cocina` también **lee `COCINAS` de `models.ts`** (no de Firestore): sin fetch async, sin divergencia. Recetas sin `cocina` no matchean ningún valor del filtro de cocina.
+
+**Display.** El diagnóstico de Code aclaró que `climaDelPlato` / `pensadaPara` **no** aparecen hoy en las pills de `DetalleReceta` (las pills actuales son: proteína, escenario, estilo, técnica, costo, sin lácteos, sin hidratos, apto noche de a dos). `cocina` se agrega como **pill nueva** (`{receta.cocina && <RecetaPill label={receta.cocina} />}`), omitida si falta. No se replica un display inexistente.
+
+### 1.2.E7.12 Cambios en v1.8.6 (E7.12 — Alarma del timer de pasos: repetir hasta detener + más audible)
+
+Fix de UX sobre el timer de pasos de la pantalla Cocinar (introducido en E3.5, refinado en E7.3/E7.4). **Problema:** al llegar el countdown a `00:00` se disparaba un único beep corto vía Web Audio que **apenas se escucha** — fácil de perder si JP está cocinando y no mira la pantalla.
+
+**Decisiones zanjadas:**
+
+1. **Alarma repetida, no un beep único.** Al llegar a `00:00`, en vez de un solo pitido, suena un patrón de dos tonos que **se repite** (beep-beep, pausa ~1.2 s, repetir) hasta que se detiene. Más fuerte (mayor `gain`) y con tonos más agudos que cortan mejor en parlante de celular.
+
+2. **Se detiene con un control explícito.** Aparece un botón destacado **"Detener alarma"** al disparar; cortarlo es instantáneo. La alarma también se detiene al avanzar/retroceder de paso, reiniciar el timer o salir de la pantalla.
+
+3. **Auto-corte de seguridad a los 60 s.** Si nadie la corta, se silencia sola a los 60 s (constante configurable) para no quedar sonando si no hay nadie cerca.
+
+4. **AudioContext.** El contexto ya está desbloqueado porque el timer se inicia con un gesto del usuario. Si al disparar está `suspended` (tab en background), se intenta `resume()`; si no se logra, la **notificación del navegador** (que ya existe) queda como respaldo. La Notification **no** se repite — solo el audio in-app se repite.
+
+5. **Cleanup obligatorio.** Se detienen los osciladores y se limpia el `setInterval` en: stop manual, cambio de paso, reinicio del timer, desmontaje del componente y navegación fuera de Cocinar. Sin esto, la alarma queda sonando al salir de la pantalla.
+
+**Qué NO se toca:** la lógica de cuenta de pasos / parser de tiempos (E7.3), estados del plan, Firestore, ni la notificación del navegador (salvo evitar que se repita).
+
+### 1.2.E7.11 Cambios en v1.8.5 (E7.11 — Fix importador: multi-receta + split de alternativas + subir archivo .txt) ✅ IMPLEMENTADO
+
+Tres correcciones sobre v1.8.4 en `/biblioteca/importar`.
+
+1. **Bug 1 — Multi-receta.** `parseRecetaTxt` (`src/import/parseReceta.ts`) pasa de devolver una sola receta a devolver un **array**. El TXT puede contener N bloques `#RECETA`; cada uno se parsea de forma independiente. Si un bloque falla validación, se agrega a `fallidas` sin abortar el lote. `ParseRecetaResult` es ahora `{ ok: true; recetas: ParsedReceta[]; fallidas: ParsedFallida[] } | { ok: false; errors: string[] }`. La numeración de `nroPaso` reinicia en 1 dentro de cada receta (no es global).
+
+2. **Bug 2 — Split de alternativas (`X o Y`).** Cuando la columna `ingrediente` contiene ` o ` (espacio-o-espacio), el parser divide en dos `ParsedIngredienteRaw` separados. Ambas filas quedan marcadas con el mismo `grupoAlternativa` (string interno) y `opcional: true`. El split es automático en el parseo; JP resuelve el matcheo de cada alternativa por separado en el paso 2 (como cualquier ingrediente). El vínculo en Firestore se arma en `handleGuardar`: la primera alternativa (cabeza) recibe `alternativas: [{ idIngrediente: idB }]`; la segunda no apunta de vuelta. Campo `alternativas?: Array<{ idIngrediente: string }>` ya existía en `IngredienteEnReceta`; no se modificó el modelo.
+
+3. **Bug 3 (nueva funcionalidad) — Subir archivo `.txt`.** El paso 1 del importador ahora acepta upload de archivo `.txt` además del textarea. El contenido se lee en cliente con `FileReader.readAsText(file, 'utf-8')` y se vuelca en el mismo estado `txt` — no hay segundo code path de parseo. El textarea muestra el contenido para revisión. Upload 100% en cliente, sin Firebase Storage.
+
+4. **"A gusto" para unidad `null` (cierra §10.2.3).** Como E7.11 ya abría el parser, se resolvió en la misma pasada la deuda §10.2.3: cuando `unidad` es `null`, el display muestra el texto explícito `"a gusto"` en vez de un número suelto sin contexto. El dato almacenado no cambia (la unidad sigue omitida); el ajuste es solo de presentación (`cantidadLabel`).
+
+**Flujo de UI actualizado:**
+- Paso 1: textarea + botón "Subir archivo .txt". Muestra nombre del archivo cargado.
+- Paso 2: "N recetas detectadas, X ingredientes únicos". El matcher corre sobre el conjunto deduplicado de ingredientes de todas las recetas; la decisión de JP se aplica a todas las que usen ese ingrediente. Si algún bloque falló parseo, se lista con el motivo.
+- Paso 3: reporte estructurado — Creadas / Duplicadas / Fallidas, con links a las recetas creadas.
+
+**Anti-dup diferenciados:**
+- *Dedup de matcheo (paso 2)*: un mismo ingrediente canónico se resuelve una sola vez aunque aparezca en N recetas.
+- *Anti-dup dentro de receta (§3.5)*: si una receta lista el mismo ingrediente con la misma unidad dos veces, se colapsa a una fila. Este dedup opera **por receta**, no globalmente.
+
+### 1.2.E7.10 Cambios en v1.8.4 (E7.10 — reversión Bug 2 de E7.9 + badge de agregación)
+
+Dos correcciones puntuales sobre v1.8.3.
+
+1. **Reversión de E7.9 #3 y #4.** La Decisión 2 de E7.9 era "sacar el botón Pendientes
+   del BottomNav y dejar todo en la home"; se había aplicado al revés (sacaron la
+   sección de la home, mantuvieron la pestaña). E7.10 corrige:
+   - `MemberDashboard.tsx`: restaurada la sección "Pendientes de evaluar" (fuente
+     `subscribeToPlanesActivos` + filtro client `estado === "Cocinada" && !votos[memberId]`).
+   - `BottomNav` (modo miembro): eliminada la pestaña "Pendientes". Queda con
+     Mi semana / Compras / Historial.
+   - `src/routes/Pendientes.tsx`: archivo eliminado.
+   - Router: ruta `/pendientes` reemplazada por `<Navigate to="/" replace />` para
+     bookmarks viejos.
+   - `subscribeToPlanesActivosMiembro` sigue eliminada (estaba bien sacarla en E7.9).
+
+2. **Badge de agregación en Compras.** Cuando un `ItemCompra` agrega aportes de más
+   de una receta única, se muestra un badge inline `+N recetas` al lado de la cantidad
+   (`N = new Set(aportes.map(a => a.idReceta)).size`). Si `N === 1`, sin badge. Aplica
+   para JP y miembros por igual. NO se implementa vista expandida con desglose por
+   receta — decisión consciente para mantener la UI simple. La trazabilidad en
+   `aportes[]` se conserva en el dato, no se expone en UI.
 
 ### 1.2.bis Cambios estructurales en v1.2 (modelo de menús)
 
@@ -217,7 +994,7 @@ Después de revisar el modelo de Apps Script, se detectó duplicación entre `/r
 
 2. **`subscribeToPlanesActivosMiembro`** (`src/data/planes.ts`): query realtime con triple filtro `semanaInicio == X AND estado IN activos AND asignaciones ARRAY_CONTAINS miembroId`. Requiere índice compuesto §5.3 (ya desplegado).
 
-3. **`asignaciones` default = los 4 miembros**: todas las funciones de creación de planes (`elegirComoEspecial`, `sumarComoExtra`, `sumarComoEnProceso`, `elegirMenuComoEspecial`, `sumarMenuComoEnProceso`) pasan `asignaciones: [...MIEMBRO_IDS]`. Antes era `["juanpablo"]`. Backfill en planes activos via `scripts/backfill-asignaciones.ts`.
+3. **`asignaciones` default = `["juanpablo"]`**: todas las funciones de creación de planes (`elegirComoEspecial`, `sumarComoExtra`, `sumarComoEnProceso`, `elegirMenuComoEspecial`, `sumarMenuComoEnProceso`) pasan `asignaciones: ["juanpablo"]`. JP reasigna explícitamente cuando otro miembro cocina. Nota histórica: una versión intermedia del default fue `[...MIEMBRO_IDS]` (con backfill via `scripts/backfill-asignaciones.ts`), pero se revirtió a `["juanpablo"]` para que el filtro de Compras por miembro tenga sentido — un miembro solo debe ver compras de los planes que efectivamente cocina. La reversión no se documentó en su momento; queda corregida en E7.9.
 
 4. **`BottomNav` ramificado**: JP ve Inicio/Biblioteca/Compras/Historial; miembro ve Mi semana/Compras/Pendientes/Historial.
 
@@ -415,6 +1192,7 @@ Los seeds están como **arrays de tuples** (orden posicional). El script de seed
   escenarioUso: "Cena Especial",   // enum del diccionario "Escenarios"
   climaDelPlato: "Potente",        // enum "Clima del plato"
   pensadaPara: "Especial",         // enum "Pensada para" — auto-derivable
+  cocina: "Italiana",              // enum "Cocinas" (opcional, E7.13) — omitir clave si falta
 
   // Apto / restricciones
   sinLacteos: true,                // boolean (en sheet era "Sí"/"No")
@@ -702,11 +1480,15 @@ fecha?: string                    // "YYYY-MM-DD" — día asignado al plan (E7.
   // Contadores denormalizados (top-level, no anidados en "resumen"):
   totalItems: 47,
   totalYaTengo: 12,
-  totalPendientes: 35
+  totalPendientes: 35,
+  missingItems: [],                  // nombres de recetas/componentes sin ingredientes cargados
+  encargadoCompras: "maria" | null   // NUEVO E14.1 — quién hace las compras esta semana; null = sin asignar
 }
 ```
 
 > **Nota v1.5.1:** el campo `resumen` que figuraba en versiones anteriores del MAPEO no existe en producción. Los contadores son campos top-level (`totalItems`, `totalYaTengo`, `totalPendientes`). Se actualizan en cada `toggleItemYaTengo`, cada sync, y cada `limpiarAportesDelPlan`.
+>
+> **Nota E14.1:** `encargadoCompras` es opcional y retrocompatible. Cualquier miembro puede autoasignarse; JP puede asignar a cualquiera. El encargado ve la lista completa (igual que JP). Funciones nuevas: `subscribeToLista(idLista, cb)` (realtime), `asignarEncargadoCompras(idLista, memberId | null)`.
 
 **Subcollection `compras/{idLista}/items/{itemId}`:**
 
@@ -771,12 +1553,26 @@ Se llama desde `marcarCocinada` (limpieza total del plan) y desde `marcarCompone
 
 > **Post E3.4.5:** tanto la clave de agrupado como la comparación de preservación de `yaTengo` usan `normalizarUnidad()`. Esto resuelve el bug donde `"cda"` y `"cdas"` (misma unidad, distinto string) generaban dos ítems para el mismo ingrediente.
 
-**Vista del usuario:**
+**Vista del usuario (E7.10):**
 
-- Vista resumida (default): un solo renglón "Cebolla — 3 unidades" con badge "+2 recetas".
-- Vista expandida (al tap): "Cebolla — 3 unidades:" + sublistado de aportes ("• 2 para Bondiola" / "• 1 para Berenjenas").
+- Renglón único "Cebolla — 3 unidades" con badge `+N recetas` cuando el ítem agrega
+  aportes de más de una receta (`new Set(aportes.map(a => a.idReceta)).size > 1`).
+  Si viene de una sola receta, sin badge.
+- **No hay vista expandida**: el desglose por receta ("• 2 para Bondiola" / "• 1 para
+  Berenjenas") queda fuera de scope por decisión de JP en E7.10. La trazabilidad en
+  `aportes[]` se conserva en el dato (limpieza al cocinar y otras operaciones la siguen
+  usando), pero no se expone en UI.
 
 Esto es **una mejora real sobre Apps Script** (ver §6.1).
+
+**Visión por miembro (E7.9):** un miembro no-JP en `/compras` ve solo los ítems donde
+alguno de sus planes asignados aporta (`aportes[].idPlan ∈ misPlanIds`, regla `some`).
+La cantidad mostrada es el `cantidadTotal` del ítem completo — suma de **todos** los
+aportes, incluidos los de planes ajenos. Decisión consciente: la familia compra junta
+y el total es la cantidad real a comprar; recalcular a la porción del miembro generaría
+confusión sobre cuánto comprar. Consecuencia esperada: los ingredientes base compartidos
+(cebolla, aceite, sal, ajo) aparecen para varios miembros simultáneamente, con cantidades
+familiares. Ítems con aportes exclusivamente de planes ajenos al miembro NO aparecen.
 
 ---
 
@@ -836,6 +1632,21 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
 **Por qué guardamos snapshots:**
 - `receta` y `nombreSeleccion` se duplican porque si se borra la receta en el futuro, el historial sigue siendo legible.
 
+**Foto del plato (v1.8.2 — E7.8):** la foto **no** vive en este doc. Vive en el sub-doc
+`/historial/{idHist}/media/foto` para que `getHistorialReciente` (query de 30 entradas)
+no descargue decenas de MB de base64. Solo `HistorialDetalle` hace un `getDoc` extra.
+
+Shape del sub-doc:
+```typescript
+{
+  dataUrl: string,        // "data:image/jpeg;base64,..." — foto comprimida en cliente
+  contentType: "image/jpeg",
+  byMemberId: string,     // memberId de quien la subió
+  updatedAt: Timestamp    // serverTimestamp()
+}
+```
+Doc id fijo `"foto"`. Una sola foto por entrada; subir otra la reemplaza con `setDoc`.
+
 ---
 
 ### 2.7 `/config/diccionarios` — Doc único de valores cerrados
@@ -855,6 +1666,9 @@ Esto es **una mejora real sobre Apps Script** (ver §6.1).
   escenarios: ["Noche de a dos", "Cocina rápida", "Cena Especial", "Celebración"],
   climaPlato: ["Liviano", "Medio", "Potente"],
   pensadaPara: ["Especial", "Semana", "Cualquiera"],
+  cocinas: ["Argentina", "Italiana", "Española", "Francesa", "Mediterránea",
+            "China", "Japonesa", "Coreana", "Tailandesa", "India", "Mexicana",
+            "Peruana", "Árabe / Medio Oriente", "Estadounidense", "Otra"],  // E7.13, opcional en receta
   tiposPlan: ["Especial", "Especial extra", "En proceso"],
   ocasiones: ["Cena familiar", "Con invitados", "Cumpleaños", "Celebración", "Otra"],
   aptoNocheDeADos: ["Sí", "No", "Adaptable"],
@@ -1009,6 +1823,7 @@ Mismo lugar, "Add field" a `miembros` con un nuevo memberId (ej: `abuela`) y su 
   ambiguo: false,                      // true = ingresado por importador, dimensiones pendientes
 
   origen: "seed",                      // "seed" | "import" | "manual"
+  equivalencias?: ["ING-0042"],        // idIngrediente[] — sustitutos generales (E8.7)
   fechaCreacion?: Timestamp,
   ultimaModificacion?: Timestamp
 }
@@ -1089,6 +1904,8 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 
 ### 3.5 Validaciones del importador
 
+**Multi-receta (desde E7.11):** el TXT puede contener N bloques `#RECETA`. Cada bloque se valida de forma independiente. Los bloques que fallan no abortan el lote — pasan a `fallidas` con el motivo (nombre de campo y valor inválido). El importador procede con los bloques válidos.
+
 **Campos obligatorios en `#RECETA`:**
 - `nombre`, `tipoItem`, `proteinaPrincipal`, `escenarioUso`, `porciones`, `dificultad`, `sinLacteos`, `hidratos`.
 - Al menos uno entre `tiempoTotal` y `tiempoEstimado`.
@@ -1099,6 +1916,7 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 - `escenarioUso` ∈ `diccionarios.escenarios`
 - `climaDelPlato` ∈ `diccionarios.climaPlato` (si viene)
 - `pensadaPara` ∈ `diccionarios.pensadaPara` (si viene)
+- `cocina` ∈ `COCINAS` (validación estricta **si viene** — opcional, E7.13). Si no está en la lista, el bloque va a `fallidas`. Ausente → clave omitida, sin default. (El parser valida runtime contra `diccionarios.cocinas`, copia sincronizada de `COCINAS`.)
 
 **Validación de booleanos:**
 - `sinLacteos`, `hidratos`: solo "Sí" o "No".
@@ -1106,11 +1924,13 @@ Elegida ──────────► Compra pendiente ◄──► Compra l
 
 **Validación de tablas:**
 - `#INGREDIENTES`: ≥ 1 ingrediente con `ingrediente` no vacío.
-- `#PASOS`: ≥ 1 paso, números numéricos y sin duplicados.
+- `#PASOS`: ≥ 1 paso, números numéricos. La numeración reinicia en 1 por receta (no es global entre bloques).
+
+**Split de alternativas (desde E7.11):** si la columna `ingrediente` contiene ` o ` (espacio-o-espacio), el parser divide automáticamente en dos filas. Ambas quedan marcadas con el mismo `grupoAlternativa` interno y `opcional: true`. En Firestore la cabeza (primera alternativa) recibe `alternativas: [{ idIngrediente: idB }]`; la segunda no apunta de vuelta. Aplica en todas las secciones (incluyendo utensilios/descartables).
 
 **Anti-duplicado:**
-- Receta: no crear si existe `idReceta` o `nombreCanonico` ya cargado.
-- Ingrediente dentro de receta: no duplicar `(ingredienteCanonico, unidad, categoria)`.
+- Receta: no crear si existe `nombreCanonico` ya cargado (verificado antes de llamar a `crearReceta`). Una receta duplicada no bloquea las demás del lote.
+- Ingrediente dentro de receta: no duplicar `(normalizeText(textoOriginal), unidad)` — opera por receta, no globalmente entre recetas del lote.
 - Paso: no duplicar `(idReceta, orden)`.
 
 **Auto-derivación:**
@@ -1453,6 +2273,11 @@ const menus = await getDocs(collection(db, "menus"));
 // 1 sola query — ingredientes y pasos vienen embebidos:
 const receta = (await getDoc(doc(db, "recetas", id))).data();
 // receta.ingredientes y receta.pasos disponibles directo.
+
+// Tarjeta de macros (E11.3): catálogo cacheado en memoria, sin Firestore extra:
+const catalogoById = await getCatalogo(); // Map<idIngrediente, Ingrediente>
+// macrosDeReceta(receta, catalogoById) → MacrosReceta (lógica pura, sin IO)
+// MacrosCard renderiza: hidratos netos estrella + grilla secundarios + pie cobertura
 ```
 
 **Lista de compras (`/compras`):**
@@ -1669,12 +2494,177 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 
 - **`PROMPT_E6.1_pwa_instalable.md`** ✅ **CERRADO**: manifest.json + 8 íconos PNG ya en `public/`. Service worker generado con `vite-plugin-pwa` (Workbox). App instalable, shell offline, actualizaciones automáticas. Ver §1.2.unvicies.
 - **`PROMPT_E6.1.1_splash_ios.md`** ✅ **CERRADO**: 9 splash screens de iPhone activadas en `index.html`. Ver §1.2.duovicies.
-- **`PROMPT_E6.2_push_notifications.md`** ⏳ **EN ESPERA — decisión pendiente de JP**: Firebase Cloud Messaging (requiere plan Blaze de Firebase, de pago) vs. alternativa cliente-a-cliente vía Firestore listener (gratuita, más limitada — no llega si la app está cerrada). JP decide cuál usar antes de que se escriba el prompt.
+- **`PROMPT_E6.2_push_notifications.md`** 🅿️ **POSTERGADO sin urgencia** (decisión JP en v1.8.0). La familia no necesita push para el uso actual. Cuando se retome, ver `PROMPT_DOCS_mapeo_e62_en_espera.md` para los dos caminos posibles (A: Cloud Function + Blaze; B: in-app sobre realtime). FCM es gratis en ambos planes; lo que define la decisión es si se aceptan los términos del plan Blaze para activar Cloud Functions.
 
-### 7.7 Etapa 7 — Features nuevos (D.3 y más)
+### 7.7 Etapa 7 — Features post-cierre de Etapas 1–6
 
-- **`PROMPT_E7.1_dashboard_historial.md`**: D.3 con filtros y gráficos.
-- Otros prompts según prioridad familiar.
+Etapa 7 acumula todo lo que se hizo después del cierre funcional inicial. Cerrada en v1.8.0
+en su scope necesario.
+
+- **`PROMPT_E7.1_campo_fecha_plan.md`** ✅ **CERRADO**: campo `fecha?: string` en el plan +
+  `asignarFechaPlan(idPlan, fecha)` con validación de rango contra `semanaInicio..semanaFin`.
+  Sin UI — la UI llegó con E7.4. Ver §1.2.tervicies.
+- **`PROMPT_E7.2_design_v1.md`** ✅ **CERRADO**: integración del Design System v1.0
+  (logomark `PlatoMark`, PWA assets, componentes `WeekStrip`, `MemberAvatar`, `PlanCard`,
+  `CompraProgress`, rediseño Home v2 + screens de menú).
+- **`PROMPT_E7.3_contador_pasos.md`** ✅ **CERRADO**: contador real de pasos en Cocinar
+  con parser de tiempos libres + `StepTimer` reusable.
+- **`PROMPT_E7.4_design_v2.md`** ✅ **CERRADO**: rediseño v2 de Lista de Compras
+  (variante C — recetas envueltas), Cocinar (flow guiado/scroll con cursor "acá vas",
+  LiveTimer con notificaciones), Detalle de receta (hero + meta + ingredientes agrupados
+  + pasos preview + acciones JP plegables), Home (SemanaBadge, WeekStrip con Plate icon).
+- **`PROMPT_E7.5_home_ctas_fix_cocinada_detalle_arriba.md`** ✅ **CERRADO**: CTAs en el Home
+  (Elegir como Especial siempre cuando no hay; En proceso siempre; quitado el botón
+  Importar menú); `marcarCocinada` actualiza `fecha` a hoy y el WeekStrip excluye estado
+  `Cocinada`; `<CompraProgress>` se oculta con `totalItems === 0`; detalle de receta sin
+  placeholder de foto y con `AccionesPlan` reposicionado entre MetaCards y pills.
+- **`PROMPT_E7.6_pulido_detalle_receta.md`** ✅ **CERRADO**: cinco pulidos cosméticos del
+  detalle de receta (MetaCards sin borde + sub "X min activo"; borde solo entre items en
+  ingredientes; tiempo del paso en línea con título; banner riesgos con borde + estructura
+  ícono+texto; sticky bottom Cocinar con `position: sticky` + gradient fade) **+ cambio
+  funcional en `AccionesPlan`**: sacar el acordeón, mostrar los tres botones directamente,
+  ocultar los no elegibles (regla: `puede: false` → no renderizar). Conserva el flujo de
+  confirmación de reemplazo cuando hay Especial elegida.
+- **`PROMPT_E7.7_distribucion_onboarding.md`** ✅ **CERRADO (v1.8.1)**: Open Graph + Twitter Card
+  en `index.html` para que el preview al compartir el link de la app por WhatsApp /
+  Telegram / iMessage muestre logo y descripción. Asset de preview (1200×630, derivado
+  del PlatoMark). Botón "Instalar app" en `LoginScreen` para Android (captar
+  `beforeinstallprompt`, mostrar mientras esté disponible). iOS sigue con su flujo manual
+  "Agregar a pantalla de inicio".
+- **`PROMPT_E7.8_foto_plato_historial.md`** ✅ **CERRADO (v1.8.2)**: foto del plato en el
+  detalle del historial. Sub-doc `/historial/{idHist}/media/foto` con `dataUrl` (base64
+  JPEG). Compresión en cliente (`comprimirImagen`: lado largo 1440px, calidad 0.82 con
+  presupuesto ≤900 KB, fallback a 1080px). UI: sección "Foto del plato" con add/cambiar/
+  quitar, input `capture="environment"`. Cualquier miembro puede subir. Plan Spark, $0.
+
+- **`PROMPT_E7.11_fix_importador.md`** ✅ **CERRADO (v1.8.5)**: fix del importador TXT.
+  Bug 1 — multi-receta: `parseRecetaTxt` devuelve array, split por bloque `#RECETA`, los
+  bloques inválidos van a `fallidas` sin abortar el lote. Bug 2 — split de alternativas
+  (` o `) en dos filas con mismo `grupoAlternativa` + `opcional: true`; cabeza enlaza vía
+  `alternativas[]`. Bug 3 — upload de `.txt` en el paso 1. Además cerró §10.2.3 ("a gusto"
+  para unidad `null`) en la misma pasada del parser. Ver §1.2.E7.11.
+- **`PROMPT_E7.12_alarma_timer.md`** 🛠 **EN IMPLEMENTACIÓN (v1.8.6)**: alarma del timer
+  de pasos en Cocinar. Reemplaza el beep único por un patrón de dos tonos que se repite
+  hasta detenerse (botón "Detener alarma"), más fuerte, con auto-corte de seguridad a 60 s
+  y cleanup en cambio de paso / desmontaje. Notification del navegador como respaldo, no se
+  repite. Ver §1.2.E7.12.
+- **`PROMPT_E7.13_cocina_dimension.md`** ✅ **CERRADO (v1.8.7)**: nueva dimensión
+  `cocina` (enum opcional) en recetas. Tipo en `models.ts` + `diccionarios.cocinas` (15
+  valores) + prompt del importador + validación del parser (4 puntos sincronizados, lección
+  E5.2) + display en DetalleReceta + filtro en Biblioteca (que de paso cierra §10.1). Recetas
+  existentes se completan desde Firebase Console (no hay editor de recetas; sin backfill
+  automático). Ver §1.2.E7.13.
+- **`PROMPT_E8.0_setup.md`** ✅ **CERRADO (v1.8.8)**: setup de Etapa 8. `docs/WORKFLOW.md`
+  (fuentes de verdad, ciclo, convenciones, definición de terminado, anti-drift) + backlog
+  §11 Lote 8 (edición en la app y catálogo). Solo-docs, sin cambios de código.
+- **`PROMPT_E8.1_pulido_diseño.md`** ✅ **CERRADO (v1.8.9)**: micro-ajustes visuales del
+  ciclo de diseño. Home "N comidas" (sin "planeadas"); WeekStrip plato relleno primary en
+  todos los días con comida; header logo 28→38 px / PlatoMark 16→23; badge pill "N por
+  votar" en saludo del dashboard de miembro. Ver §1.2.E8.1.
+- **`PROMPT_E8.2_dark_mode.md`** ✅ **CERRADO (v1.9.0)**: dark mode "Cocina nocturna". Bloque
+  `[data-theme="dark"]` en `tokens.css` (reescritura completa de tokens de color, incluido
+  override `--member-*` para contraste). Helper `src/lib/theme.ts` (get/apply + persistencia
+  `localStorage["cf-theme"]`). Toggle Moon/Sun en header (32×32, a la izquierda del avatar).
+  Script inline en `index.html` anti-flash. Reemplaza propuesta vieja de `prefers-color-scheme`.
+  Ver §1.2.E8.2.
+- **`PROMPT_E13.1_compra_rapida.md`** ✅ **CERRADO (v2.8.0)**: plantillas de compra por comercio
+  (`esCompraRapida` en Receta, `itemsCompraRapida`/`tipoSeleccion:"compra-rapida"` en Plan).
+  Editor JP, detalle para asignado, tab Compras en Biblioteca, sección en MemberDashboard.
+  Ver §1.2.E13.1.
+- **`PROMPT_E11.4_filtro_netos_biblioteca.md`** ✅ **CERRADO (v2.7.0)**: filtro "Netos ≤ N g"
+  en Biblioteca. Chips 10/20/30 g, catálogo cargado en paralelo con recetas, `MacrosPorReceta`
+  precomputado en `useMemo`, chip "X g netos" en card. Recetas sin datos no matchean. 8 tests
+  nuevos (262 totales). Ver §1.2.E11.4.
+- **`PROMPT_E11.3.1_Fix visual.md`** ✅ **CERRADO (v2.5.0)**: `MacrosCard` en
+  `DetalleReceta.tsx` (hidratos netos estrella, grilla 3-col, pie cobertura, estado vacío
+  borde punteado). Agregado de macros del menú completo en `SeleccionarComponenteMenu.tsx`
+  (suma `porPorcion` de todos los componentes, misma lógica de cobertura). Ver §1.2.E11.3.
+- **`PROMPT_E11.2_macros_datos.md`** ✅ **CERRADO (v2.4.1)**: export script, MACROS_LLM_PROMPT,
+  seed-macros (validación rangos + warn consistencia + dry-run/force + merge). Ver §1.2.E11.2.
+- **`PROMPT_E11.1_macros_logica.md`** ✅ **CERRADO (v2.4.0)**: `macros?`/`gramosPorUnidad?`
+  en `Ingrediente`; `conversiones.ts` (`aGramos`, 14 tests); `macros.ts` (`macrosDeReceta`,
+  5 tests). Sin UI ni writes. Ver §1.2.E11.1.
+- **`PROMPT_E10.3_importador_tokens.md`** ✅ **CERRADO (v2.3.2)**: todos los `#hex` de
+  `ImportarReceta.tsx` migrados a tokens semánticos (ok/warn/err/border/surface). Dark mode OK.
+  Ver §1.2.E10.3.
+- **`PROMPT_E10.2_member_avatar_color.md`** ✅ **CERRADO (v2.3.1)**: memberId en
+  HistorialDetalle (filas calificación) + PlanCard (AvatarStack). Realtime vía E10.1. Ver §1.2.E10.2.
+- **`PROMPT_E10.1_perfil_miembro.md`** ✅ **CERRADO (v2.3.0)**: perfil con color, preferencias,
+  stats, notif placeholder. `PerfilesProvider`, `useColorMiembro`, rules. Ver §1.2.E10.1.
+- **`PROMPT_E9.10_historial_tarjetas_filtro.md`** ✅ **CERRADO (v2.2.3)**: SummaryMetrics
+  interactivo (Total→todos, Máximo→ok, Top→top, toggle-back), métrica Máximo, sin FilterChips.
+  Ver §1.2.E9.10.
+- **`PROMPT_E9.9_acceso_miembros_biblioteca.md`** ✅ **CERRADO (v2.2.2)**: tab "Mis recetas",
+  header miembro, chips asignación, gate CocinarSticky. Cierra hueco de E9.8. Ver §1.2.E9.9.
+- **`PROMPT_E9.7_equivalencias_compras.md`** ✅ **CERRADO (v2.2.1)**: pill "⇄ o {X}" en compras,
+  `sustitutosDeItemCompra`, `SustitutoPill`, `sustitutosMap` en cards. Cierra tríada E9.3+E9.4+E9.7.
+  Ver §1.2.E9.7.
+- **`PROMPT_E9.8.1_biblioteca_por_miembro.md`** ✅ **CERRADO (v2.2.0)**: visibilidad blanda
+  (curación de vista, no seguridad). `config/visibilidad` opt-in, guard nivel-tab, grilla
+  curación, toggle en detalle. Security Rules ya cubiertas por regla genérica. Ver §1.2.E9.8.
+- **`PROMPT_E9.6_rediseno_detalle_historial.md`** ✅ **CERRADO (v2.1.2)**: token `--estrella`,
+  Stars doradas en lista y detalle, hero sin "/ 10", notas por miembro Stars+número grande.
+  Ver §1.2.E9.6.
+- **`PROMPT_E9.5_pulido_biblioteca_catalogo.md`** ✅ **CERRADO (v2.1.1)**: acceso Catálogo
+  movido de tab-action a botón full-width (Carrot + label + chevron) entre tabs y listado.
+  Visible en ambos tabs. Ver §1.2.E9.5.
+- **`PROMPT_E9.3_que_cocino_con_lo_que_tengo.md`** ✅ **CERRADO (v2.1.0)**: matcher inverso.
+  `evaluarCocinables` puro + 8 tests. Básicos de despensa (10 canonicos). `localStorage`.
+  Ruta `/que-cocino`: despensa colapsable, faceta Dieta, resultados por bucket. Entrada en Home.
+  Cierra ítem 7.2. Ver §1.2.E9.3.
+- **`PROMPT_E9.4_sustitucion_al_cocinar.md`** ✅ **CERRADO (v2.0.3)**: sustitutos al cocinar.
+  Helper `sustitutosDeItem` (match por ID, fuentes receta + catálogo, dedup). Línea "o X"
+  en `IngredientesPorGondola` + toggle persistido. Recap colapsable en `Cocinar`. 6 tests verdes.
+  Ver §1.2.E9.4.
+- **`PROMPT_E9.2_fix_historial.md`** ✅ **CERRADO (v2.0.2)**: fix regresión — `Historial.tsx`
+  simplificado por commit `11ff3df` recableado con SummaryMetrics + FilterChips + MonthGroup +
+  HistorialCard + EmptyState. Filtros: `top` por resultado, `ok`/`mal` por `repetir`. Skeleton
+  mantenido. Ver §1.2.E9.2.
+- **`PROMPT_E9.0.1_blindar_prompt_generador.md`** ✅ **CERRADO (v2.0.1)**: prompt LLM con
+  vocabulario canónico (265 ingredientes por categoría). 3 columnas nuevas en `#INGREDIENTES`
+  para clasificar ingredientes nuevos. `esVegetariano` en `#RECETA`. Parser retrocompatible.
+  `categoriaLLM` pre-llena el dropdown en el importador. Ver §1.2.E9..0.1.
+- **`PROMPT_E9.0_proteinas_jerarquicas_y_diccionario.md`** ✅ **CERRADO (v2.0.0)**:
+  proteínas jerárquicas (13 planas → 11 hojas en 5 grupos, `GRUPOS_PROTEINA`); faceta Dieta
+  (`esVegetariano`, `esKeto`); diccionario canónico 265 ingredientes + 5 correcciones de
+  datos; sync 4 puntos (models, bootstrap, importador, parser); scripts de migración y
+  actualización de catálogo. Ver §1.2.E9.0.
+- **`PROMPT_E8.8_deteccion_duplicados.md`** ✅ **CERRADO (v1.9.6)**: detección de duplicados.
+  Helper puro `detectarDuplicado(nombre, catMap)` (canonico + sinónimos). Catálogo editor:
+  warning inline + escape consciente "Crear de todas formas". Importer paso 2: `BadgeDuplicado`
+  con botón "Usar ese" → convierte decisión a sugerencia. 6 tests. Ver §1.2.E8.8.
+- **`PROMPT_E8.7_equivalencias.md`** ✅ **CERRADO (v1.9.5)**: equivalencias de ingredientes.
+  Campo `equivalencias?: string[]` en `Ingrediente`. Simetría via `writeBatch` en
+  `setEquivalencia` / `quitarEquivalencia`. Limpieza de punteros colgados en
+  `eliminarIngrediente`. UI: chips accent + select en el sheet del catálogo. 6 tests de
+  simetría en `equivalencias.test.ts`. Ver §1.2.E8.7.
+- **`PROMPT_E8.6_editor_clasificacion_receta.md`** ✅ **CERRADO (v1.9.4)**: editor de
+  clasificación de receta en la app. Botón lápiz (JP) junto al título + chip "Sin clasificar
+  · completar" (warn, punteado) cuando falta `cocina`. Bottom-sheet con selects de todos los
+  enums (cocina, proteína, escenario, dificultad, costo, apto noche, clima, pensada para) +
+  texto libre (estilo, técnica) + toggles (sinLacteos, hidratos). Patch selectivo; actualización
+  local inmediata. Rules sin cambio. Cierra §1.2.E7.13 pto 6. Cierra §11 E8.6. Ver §1.2.E8.6.
+- **`PROMPT_E8.5_ingrediente_recetas.md`** ✅ **CERRADO (v1.9.3)**: ingrediente → recetas que
+  lo usan. Índice `Map<idIngrediente, Receta[]>` derivado al cargar el catálogo. Sección "En N
+  recetas" en el sheet (lista tappable → navega al detalle y cierra el sheet). Cache en
+  `getRecetas`. Renumeración §11 Lote 8 a eje único `E8.x`. Ver §1.2.E8.5.
+- **`PROMPT_E8.4_ingredientes_rol_gondola.md`** ✅ **CERRADO (v1.9.2)**: chips de letra en
+  ingredientes de receta (arregla el bug del punto `·`) + toggle "Por rol / Por góndola" con
+  persistencia. `getSeccionRecetaMeta` + `SECCIONES_RECETA_META` en `catalogo.ts`. Vista por
+  góndola usa catálogo cacheado. Chips de letra en componentes de menú (`DetalleMenu.tsx`).
+  Sin cambio de modelo de datos. Ver §1.2.E8.4.
+- **`PROMPT_E8.3_catalogo_editable.md`** ✅ **CERRADO (v1.9.0.1)**: catálogo de ingredientes
+  editable. `CatalogoIngredientes.tsx` reescrito: ver todo + buscador + filtro góndola +
+  lista agrupada + bottom-sheet editor para editar/crear/eliminar (baja segura con aviso de
+  vecesUsado). `eliminarIngrediente` en `ingredientes.ts`. `actualizarIngrediente` ampliado
+  con `nombrePreferido`. Rules sin cambio (`allow write` ya cubre delete). Cierra §11 Lote 8.1.
+  Ver §1.2.E8.3.
+
+**Postergados sin urgencia (v1.8.0):**
+
+- **Dashboard de historial avanzado (D.3 / §9.1)** — la pantalla actual de historial
+  cubre el uso real. Cuando se retome, requiere primero pasada por Claude Design (§8.2).
+- **Otros features del Apéndice §9** — sin compromiso de fecha.
 
 ---
 
@@ -1743,60 +2733,64 @@ El importador completo fue construido en la Etapa 3 (E3.4.6/7/9). La pieza pendi
 
 Cosas planteadas pero **fuera de scope** para Etapas 0-6:
 
-### 9.1 D.3 — Dashboard de historial avanzado (Etapa 7)
+### 19.1 D.3 — Dashboard de historial avanzado (Etapa 7)
 Filtros, gráficos, comparaciones miembro vs. familia. Ver §8.2.
 
-### 9.2 Multi-semana
+**Estado en v1.8.0:** postergado sin urgencia. La pantalla de historial actual (E3.7)
+cubre el uso real de la familia. Se reactiva si aparece necesidad concreta.
+
+### 19.2 Multi-semana
 Hoy: una sola semana activa (la actual). Futuro: planificación de la próxima semana, hover sobre las próximas 4 semanas en home.
 
-### 9.3 Notificaciones push contextuales
+### 19.3 Notificaciones push contextuales
 Cloud Functions + FCM. Triggers: "JP te asignó la Especial", "La lista de compras se actualizó", "Pendiente de votar la cena del sábado".
 Requiere Blaze.
 
-### 9.4 Importador con foto / OCR
+### 19.4 Importador con foto / OCR
 Subir foto del libro de cocina → Vision API → TXT estructurado → mismo flujo del importador actual. Requiere Cloud Functions + Vision API (ambas Blaze).
 
-### 9.5 Sugerencias inteligentes
+### 19.5 Sugerencias inteligentes
 "Esta semana no comieron pollo, te recomendamos..." / "Hace 6 semanas que no hacen pescado". Requiere queries más complejas y posiblemente un endpoint con lógica server-side.
 
-### 9.6 Diccionario de sinónimos de ingredientes extendido ✓ (resuelto en v1.5.9 — E3.4.9)
+### 19.6 Diccionario de sinónimos de ingredientes extendido ✓ (resuelto en v1.5.9 — E3.4.9)
 El matcher aprende sinónimos automáticamente cuando JP elige una sugerencia en el importador. El término tipeado se agrega a `sinonimos[]` del ingrediente elegido; la próxima importación lo resuelve como `exacto` sin intervención. Panel de admin para sinónimos manuales sigue siendo futuro opcional; el loop humano de §9.6 está implementado.
 
-### 9.7 Costos reales tracking
+### 19.7 Costos reales tracking
 Hoy: `costoReal` es texto libre del cocinero. Futuro: form con precio por ingrediente, total calculado, evolución temporal del costo de la familia.
 
-### 9.8 Modo "noche de a dos"
+### 19.8 Modo "noche de a dos"
 Filtrar todo lo no-apto, ajustar porciones, ocultar lo de los chicos. Switch global.
 
-### 9.9 Lista de compras compartida en tiempo real ✅ Movida a §6.8 en v1.3
+### 19.9 Lista de compras compartida en tiempo real ✅ Movida a §6.8 en v1.3
 ~~Hoy: cada miembro ve la lista pero las marcas "Ya tengo" se sincronizan al refrescar. Futuro: listener real-time (`onSnapshot`), ver el toggle de María mientras estoy en el super.~~
 
 **Implementado en v1.3** vía `onSnapshot` en `src/data/compras.ts` (`subscribeToItemsLista`) + hook `useCollectionRealtime` (E2.2). Ver §6.8.
 
-### 9.10 Backup / export
+### 19.10 Backup / export
 Botón "Exportar todo a JSON" para snapshot offline. Útil si en el futuro queremos migrar de Firebase.
 
-### 9.11 Invitados con scope limitado
+### 19.11 Invitados con scope limitado
 Hoy: cualquier miembro en `/config/familia.miembros` tiene acceso completo (read/write a todas las recetas, planes, etc).
 Futuro: agregar un campo `scope` a la metadata del miembro (ej: `scope: "guest"`) y ajustar las Security Rules para que un guest pueda leer recetas pero no votar ni elegir planes. Útil si quisieras invitar a un suegro a ver el menú del finde sin que pueda romper el sistema.
 
-### 9.12 Cierre del Apps Script
-Una vez que la familia use Firebase con confianza por 4-6 semanas, deprecamos el Apps Script. Acciones:
-- Read-only en el Sheet.
-- Reemplazar `Index.html` con un mensaje "Esta versión está retirada, andá a https://comida-familiar.web.app".
-- Mantener el spreadsheet como respaldo histórico, sin acceso de escritura.
+### 19.12 Cierre del Apps Script ✅ HECHO (v1.8.0)
+
+JP retiró el acceso de escritura al spreadsheet original. El Apps Script viejo queda
+deprecado. El spreadsheet permanece como respaldo histórico read-only. La app Firebase
+en `https://comida-familiar.web.app` es la única fuente de verdad para la familia.
 
 ---
 
-## 10. Deuda técnica pendiente — post Etapa 3
+## 10. Deuda técnica pendiente — vivos en v1.8.0
 
-Ítems conocidos que no se abordaron en Etapa 3. Deben resolverse o decidirse explícitamente antes de Etapa 4-5. No es una lista de bugs bloqueantes — la app funciona — sino de cosas que van a morder si se ignoran.
+Ítems abiertos que no bloquean el uso de la app pero conviene resolver cuando aparezca
+ventana. No son bugs, son cosas que se notan al usar la app un tiempo.
 
 ### 10.1 Filtros de Biblioteca — posiblemente desactualizados tras E3.4.8
 
 Los filtros del listado de recetas en `/biblioteca` probablemente leen enums hardcodeados o desde `src/types/models.ts`, en vez de leer desde `/config/diccionarios`. El rediseño de E3.4.8 cambió el shape del diccionario: eliminó `seccionesIngredientes`, agregó `categoriasIngrediente`, `rolesNutricionales`, `seccionesGondola`. Si algún filtro consumía `seccionesIngredientes` o un valor viejo, está roto silenciosamente.
 
-**Acción pendiente:** revisar `src/routes/Biblioteca.tsx` y confirmar que los filtros de categoría y tipo siguen funcionando contra el catálogo post-E3.4.8.
+**Acción pendiente:** revisar `src/routes/Biblioteca.tsx` y confirmar que los filtros de categoría y tipo siguen funcionando contra el catálogo post-E3.4.8. **✅ CERRADO en E7.13 (v1.8.7) por verificación:** el diagnóstico D4 de E7.13 confirmó que las facetas `tipoItem` y `proteina` leen de `models.ts` (`TIPOS_ITEM`, `PROTEINAS`), están sincronizadas con Firestore y funcionan; no estaban rotas. La faceta nueva `cocina` sigue el mismo patrón (lee `COCINAS` de `models.ts`).
 
 ### 10.2 Deuda de UI en el importador
 
@@ -1804,7 +2798,7 @@ Los filtros del listado de recetas en `/biblioteca` probablemente leen enums har
 
 2. ~~**Pluralización de unidades**~~ ✅ **Resuelto en E5.3**: `formatearCantidadUnidad` / `pluralizarUnidad` en `src/lib/unidades.ts`. Aplicado en Compras, DetalleReceta e ImportarReceta. El dato almacenado (unidad canónica singular) no se tocó.
 
-3. **"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.
+3. ~~**"A gusto" en vez de cantidad sin unidad** (§10.2.3 — pospuesto por JP): cuando `unidad` es `null`, `cantidadLabel` puede mostrar solo el número sin contexto. Alinear el display con `"a gusto"` como texto explícito en esos casos. Requiere tocar el parser del importador.~~ ✅ **Resuelto en E7.11 (v1.8.5):** se hizo en la misma pasada que abría el parser. `cantidadLabel` muestra `"a gusto"` cuando `unidad` es `null`. El dato almacenado no cambió. Ver §1.2.E7.11 item 4.
 
 ### ~~10.3 ING-0178 "Arroz" — residuo del bug pre-E3.4.9~~ ✅ CERRADO (v1.7.3)
 
@@ -1835,10 +2829,118 @@ Inventario completo del rango verificado:
 
 Ninguna tiene nombre que delate ser de testing. Ítem cerrado.
 
+### ~~10.5 Open Graph / Twitter Card para compartir el link~~ ✅ CERRADO (v1.8.1 — E7.7, commit `23e7ef3`)
+
+`index.html` ahora tiene metas `og:*` y `twitter:*` completas. Asset `public/og-image.png`
+1200×630 px (41 KB) con fondo `#fdfaf6`, ícono `icon-512.png` centrado-izquierda y
+texto "Comida Familiar" generado con System.Drawing (Segoe UI). URLs absolutas a
+`https://comida-familiar.web.app/`. Validación real (WhatsApp / opengraph.xyz): post-deploy.
+
+**Ajuste v1.8.3 (E7.7.1):** WhatsApp mostraba preview chico (thumbnail cuadrado) porque
+faltaban `og:image:secure_url`, `og:image:type` y `og:image:alt`. Agregadas las 3 metas
+(+ `twitter:image:alt`) para forzar el banner grande. `og:image:width`/`height` ya
+existían. `twitter:card summary_large_image` ya existía.
+
+### ~~10.6 Botón "Instalar app" en Android desde el login~~ ✅ CERRADO (v1.8.1 — E7.7, commit `26f49c8`)
+
+Hook `useInstallPrompt` (`src/lib/useInstallPrompt.ts`) captura `beforeinstallprompt`,
+previene el mini-infobar nativo y expone `canInstall` + `promptInstall`. Botón
+"Instalar app" (`btn-secondary`) visible en `LoginScreen` solo cuando `canInstall=true`
+(Android/Chrome instalable, no standalone). En iOS y Firefox el evento nunca llega —
+botón no aparece. Validación real: post-deploy en Android.
+
+### 10.7 Foto del plato en el detalle del historial — E7.8 ✅ CERRADO (v1.8.2)
+
+Sub-doc `/historial/{idHist}/media/foto` con `{ dataUrl (base64 JPEG), contentType,
+byMemberId, updatedAt }`. Foto comprimida en cliente (`src/lib/comprimirImagen.ts`):
+lado largo 1440px, calidad 0.82 con presupuesto ≤900 KB y fallback a 1080px. NO va en
+el doc principal de historial para no inflar `getHistorialReciente` (la lista no la lee;
+solo `HistorialDetalle` hace un `getDoc` extra). Capa de datos: `getFotoHistorial` /
+`setFotoHistorial` / `deleteFotoHistorial` en `src/data/historial.ts` (read tira,
+writes `Result`). UI: sección "Foto del plato" en `HistorialDetalle` con add/cambiar/quitar.
+Cualquier miembro puede subirla. Reglas: subcollection `media` hereda `isFamilyMember()`.
+Plan Spark, sin Cloud Storage, $0.
+
+**Ajuste v1.8.2.1 (E7.8.1):** input sin `capture` (selector nativo muestra cámara + galería
+en todos los SO). Sección "Foto del plato" reubicada al final del detalle: Hero → Ver
+receta → Calificaciones → Foto del plato → Notas del cocinero.
+
+---
+
+## 11. Backlog
+
+Ítems diseñados pero no implementados aún. Organizados por ciclo de diseño (Lote). Cuando un ítem se implementa, se marca ✅ y se referencia el prompt que lo cerró.
+
+### Lote 9 — Proteínas jerárquicas, vocabulario canónico y fixes (E9.x)
+
+- **E9.0 — Proteínas jerárquicas + faceta Dieta + diccionario canónico** ✅ **HECHO (v2.0.0)** — 13 proteínas planas → 11 hojas en 5 grupos (`GRUPOS_PROTEINA`); `esVegetariano`/`esKeto`; diccionario canónico 265 ingredientes. Ver §1.2.E9.0.
+- **E9.0.1 — Prompt importador con vocabulario canónico** ✅ **HECHO (v2.0.1)** — prompt LLM blindado con lista de 265 ingredientes canónicos; 3 columnas nuevas para ingredientes nuevos; `esVegetariano` en `#RECETA`. Ver §1.2.E9.1.
+- **E9.1 — Prompt importador actualizado** ✅ **HECHO (v2.0.1)** — ver E9.0.1 (mismo bloque de trabajo).
+- **E9.2 — Fix regresión Historial** ✅ **HECHO (v2.0.2)** — regresión detectada en commit `11ff3df`: route simplificado dejó huérfanos SummaryMetrics/FilterChips/MonthGroup/HistorialCard/EmptyState. Recableado completo. Ver §1.2.E9.2.
+- **E10.1 — Perfil de miembro** ✅ **HECHO (v2.3.0)** — `config/perfiles`, `PerfilesProvider`/`useColorMiembro`, `MemberAvatar` con `memberId`, pantalla `/perfil` (hero, swatches, stats, preferencias, notif placeholder). Rules abiertas a `isFamilyMember`. Ver §1.2.E10.1.
+- **E9.10 — Historial: tarjetas-filtro, sin chips** ✅ **HECHO (v2.2.3)** — SummaryMetrics interactivo (Total/Máximo/Top, toggle-back, estado activo), métrica Máximo, FilterChips eliminado del Historial. Ver §1.2.E9.10.
+- **E9.9 — Acceso de miembros a su biblioteca** ✅ **HECHO (v2.2.2)** — tab "Mis recetas" en nav, header miembro, chips asignación (María/Sofía/Federico), gate CocinarSticky por plan. Ver §1.2.E9.9.
+- **E9.7 — Equivalencias en la lista de compras** ✅ **HECHO (v2.2.1)** — pill "⇄ o {X}" (tono accent) en ítems pendientes, tap = yaTengo, ambas vistas. Cierra tríada E9.3+E9.4+E9.7. 11 tests. Ver §1.2.E9.7.
+- **E9.8 — Biblioteca personal por miembro** ✅ **HECHO (v2.2.0)** — `config/visibilidad` (opt-in), visibilidad blanda, guard nivel-tab, pantalla curación grilla, toggle en detalle. Ver §1.2.E9.8.
+- **E9.6 — Rediseño detalle Historial** ✅ **HECHO (v2.1.2)** — token `--estrella` (dorado oklch), Stars con prop `size`, hero sin "/ 10" + estrellas, notas por miembro con estrellas + número grande. Ver §1.2.E9.6.
+- **E9.5 — Catálogo de ingredientes antes del listado** ✅ **HECHO (v2.1.1)** — tab-action reemplazada por botón full-width visible siempre. Ver §1.2.E9.5.
+- **E9.3 — ¿Qué cocino con lo que tengo?** ✅ **HECHO (v2.1.0)** — helper `evaluarCocinables` (buckets ahora/cambio/falta1/faltaN, sustitución por equivalencias y alternativas); básicos de despensa; `localStorage["cf-despensa"]`; ruta `/que-cocino` + entrada en Home. 8 tests. Cierra ítem 7.2. Ver §1.2.E9.3.
+- **E9.4 — Sustitución al cocinar** ✅ **HECHO (v2.0.3)** — helper puro `sustitutosDeItem` (alternativas receta + equivalencias catálogo, dedup por id); línea "o X" en detalle con toggle persistido; recap colapsable en paso a paso. 6 tests. Ver §1.2.E9.4.
+
+### Lote 8 — Edición en la app y catálogo (del ciclo de diseño post-E7.13)
+
+Cierra el gap de §1.2.E7.13 pto 6 ("no hay edición de recetas en la app; `cocina` se completa
+desde la consola"). Donde solapa con 7.2, esa sigue siendo el feature completo.
+
+- **E8.3 — Editor de ingredientes completo** ✅ **HECHO (v1.9.1)** — editar cualquiera /
+  alta / baja en `/biblioteca/catalogo`, no solo ambiguos. Bottom-sheet editor + buscador +
+  filtro por góndola + eliminación segura.
+- **E8.5 — Ingrediente → recetas que lo usan** ✅ **HECHO (v1.9.3)** — sección navegable
+  "En N recetas" en el sheet del ingrediente; índice derivado por `idIngrediente`.
+- **E8.6 — Editor de clasificación de receta** ✅ **HECHO (v1.9.4)** — bloque Clasificación
+  editable desde el detalle (lápiz + chip "Sin clasificar" para JP). Edición completa de
+  receta (nombre/ingredientes/pasos) sigue siendo posible feature futura.
+- **E8.7 — Equivalencias de ingredientes** ✅ **HECHO (v1.9.5)** — campo `equivalencias?`
+  en catálogo; relación simétrica vía `writeBatch`; UI en el sheet (chips accent + select);
+  limpieza al borrar. Tests de simetría. Ver §1.2.E8.7.
+- **E8.8 — Detección de duplicados al importar** ✅ **HECHO (v1.9.6)** — helper puro
+  `detectarDuplicado` + warning en catálogo editor + badge "⚠ Posible duplicado" en
+  importer paso 2. Ver §1.2.E8.8.
+
+### Ideas a futuro — Aprovechar macros y datos existentes (sin prioridad)
+
+Funcionalidades propuestas en revisión de diseño post-E11/E12. Ninguna tiene fecha ni
+prioridad; se activan cuando aparezca ganas/necesidad. Todas se apoyan en datos que la app
+**ya tiene** (planes de la semana, `macrosDeReceta`, `vecesCocinada`/`ultimoPuntaje`,
+despensa de E9.3, historial), así que no requieren modelo nuevo salvo donde se indica.
+
+- **F1 — Resumen de macros de la semana.** Tarjeta en la Home de JP (o pantalla propia) que
+  suma los planes activos de la semana y muestra **netos promedio por día**, proteína total y
+  un mini-gráfico de barras por día. Puro cálculo sobre `macrosDeReceta` + planes; sin modelo
+  nuevo. Es la consecuencia natural de E11. **Candidata más fuerte.**
+- **F2 — "Buenas y olvidadas" / sugeridor semanal.** Al planificar, sección con recetas bien
+  puntuadas (`ultimoPuntaje` alto) que no se cocinan hace X (`vecesCocinada` / fecha). Rescata
+  joyas del historial y combate la repetición. Solapa con la idea "3.1 Sugeridor semanal" del
+  roadmap viejo — unificar bajo F2 si se implementa.
+- **F3 — Despensa ↔ lista de compras conectada.** Los ítems que ya están en la despensa de
+  E9.3 (`localStorage["cf-despensa"]`) aparecen pre-tildados ("ya tengo") al armar la lista de
+  compras. Una sola fuente de verdad de qué hay en casa. Bajo riesgo. Relacionado con la nota
+  "despensa persistente" de §1.2.E9.3.
+- **F4 — Tips de la familia en la receta.** Al votar/evaluar, capturar un texto corto
+  ("la próxima: menos sal / 10 min más"). Los tips se acumulan y se muestran arriba del paso a
+  paso la próxima vez que alguien cocina esa receta. Requiere un campo nuevo (p.ej.
+  `tips[]` en la receta o en el historial) — definir shape cuando se priorice.
+
+**Postergado sin urgencia:**
+
+- **Dashboard de historial avanzado (D.3 / §119.1)** — ver §7 "Postergados sin urgencia".
+- **Push notifications (E6.2)** — ver §7.6.
+- **Otros features del Apéndice §9** — sin compromiso de fecha.
+
 ---
 
 ## Cierre
 
-Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome en el trabajo concreto y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
+Este documento es la **fuente de verdad** del modelo de datos y la arquitectura de la app Firebase. Cualquier decisión que se tome y modifique algo de acá, **debe reflejarse en este documento en el mismo commit**.
 
-Próximo paso: cerrar Etapa 0 con commit + push y arrancar Etapa 1 desde `PROMPT_E1.0_bootstrap_config.md`.
+**Estado en v2.8.0:** E9.0–E9.10, E10.1–E10.3, E11.1–E11.4, E12.1, E13.1 implementados. Pendiente: E12.x (hardening server-side visibilidad — TODO en MemberDashboard y MAPEO). §11 incorpora 4 ideas a futuro (F1–F4) sin prioridad. Sin deuda técnica viva en código.

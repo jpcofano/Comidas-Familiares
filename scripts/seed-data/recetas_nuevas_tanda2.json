@@ -1,0 +1,1951 @@
+[
+  {
+    "nombre": "Tataki de atún con costra de sésamo",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Sellado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "atún apenas sellado por fuera y crudo por dentro, con costra de sésamo y una salsa ponzu casera; entrada finísima sin un gramo de hidrato",
+    "riesgos": "atún poco fresco (va casi crudo); pasarlo de cocción y que pierda el centro rojo",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada cruda y elegante para dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "atun rojo",
+        "textoOriginal": "Atún rojo",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en lomo parejo, bien fresco; grado sushi si se consigue"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Costra",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "mezclar blanco y negro si hay"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Costra",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Sellado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; lima si se consigue"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salsa",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros finos"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salsa",
+        "detalle": "Mezclar salsa de soja, jugo de limón y jengibre. Reservar.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El ácido y el jengibre cortan la grasa del atún.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Costra",
+        "detalle": "Secar el atún, salar y presionar el sésamo en todas las caras.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: atún seco para que pegue el sésamo y selle.",
+        "errorComun": "Atún húmedo: el sésamo resbala.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "En sartén muy caliente con el aceite de sésamo, sellar 30 a 45 segundos por cara; el centro queda crudo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: fuego máximo y poco tiempo; solo dorar la costra.",
+        "errorComun": "Cocinarlo de más y perder el centro rojo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Cortar y servir",
+        "detalle": "Reposar 2 min, cortar en láminas de 1 cm, servir con la salsa y el verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Cuchillo bien filoso para láminas parejas.",
+        "errorComun": "Cortarlo apenas sale de la sartén y desgarrarlo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Salmón teriyaki sin azúcar",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "salmón glaseado en una salsa teriyaki brillante hecha con eritritol en vez de azúcar; el sabor de siempre, low-carb",
+    "riesgos": "quemar el glaseado (el eritritol se dora rápido); pasar el salmón y secarlo",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "salmon",
+        "textoOriginal": "Salmón",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "4 medallones con piel"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Salsa",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salsa",
+        "detalle": "Mezclar soja, eritritol, jengibre y ajo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El eritritol se disuelve al calentar y da el brillo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "En sartén con el aceite de sésamo, cocinar el salmón del lado de la piel 4 min, dar vuelta 2 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: dejar el centro jugoso; el salmón se seca enseguida.",
+        "errorComun": "Cocinarlo de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Glasear",
+        "detalle": "Bajar el fuego, volcar la salsa y bañar el salmón 1 a 2 min hasta que espese y glasee.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: fuego medio-bajo; el eritritol se quema a fuego fuerte.",
+        "errorComun": "Glasear a fuego alto y amargar la salsa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Servir con la salsa por encima, verdeo y sésamo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Gyudon de res sobre arroz de coliflor",
+    "estilo": "Japonesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el clásico bowl japonés de carne y cebolla, servido sobre arroz de coliflor en vez de arroz blanco para que entre en low-carb",
+    "riesgos": "pasar la carne fina y endurecerla; arroz de coliflor aguado por no secarlo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Práctico para dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "cortada muy fina; bife angosto, casi congelado corta más fino"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Caldo",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Caldo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Caldo",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Arroz",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en ramitos; una coliflor mediana"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Arroz",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Terminación",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "uno por plato, poché o frito"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Arroz de coliflor",
+        "detalle": "Procesar la coliflor cruda hasta granos tipo arroz y saltear en el aceite de sésamo 5 min. Reservar tapado.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: saltear sin tapar para que evapore y no quede aguado.",
+        "errorComun": "Coliflor cruda mojada que larga agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Caldo y cebolla",
+        "detalle": "Hervir el caldo con soja, eritritol y jengibre; sumar la cebolla y cocinar 5 min hasta tierna.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "El caldo dulzón-salado es el alma del gyudon.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Carne",
+        "detalle": "Sumar la carne en el caldo y cocinar 3 a 4 min, justo hasta que cambie de color.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: la carne fina se cocina en segundos; no pasarla.",
+        "errorComun": "Hervirla de más y endurecerla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Montar",
+        "detalle": "Servir la carne y su caldo sobre el arroz de coliflor, con un huevo encima y el verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo katsu en costra de almendra",
+    "estilo": "Japonesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Frito",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la milanesa japonesa crocante, empanada en harina de almendra en vez de panko; queda dorada y crujiente sin hidratos",
+    "riesgos": "la almendra se dora rápido y se quema; pechuga gruesa que queda cruda adentro",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Rápido y rendidor para dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pechuga de pollo",
+        "textoOriginal": "Pechuga de pollo",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en bifes finos de 1 cm; aplanar parejo"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Empanado",
+        "cantidad": "120",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Empanado",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Empanado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Empanado",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Fritura",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para freír"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tonkatsu rápida"
+      },
+      {
+        "canon": "mostaza",
+        "textoOriginal": "Mostaza",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Empanar",
+        "detalle": "Salpimentar el pollo, pasar por huevo y luego por harina de almendra presionando bien.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: presionar la almendra para que forme costra pareja.",
+        "errorComun": "Capa floja que se cae al freír.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Mezclar soja, mostaza y eritritol para la salsa tonkatsu rápida.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Freír",
+        "detalle": "Dorar en aceite a fuego medio 3 min por lado, hasta dorar sin quemar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: fuego medio; la almendra se quema más rápido que el panko.",
+        "errorComun": "Fuego fuerte que dora afuera y deja crudo adentro.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar y cortar",
+        "detalle": "Escurrir sobre rejilla, reposar 2 min y cortar en tiras. Servir con la salsa.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Rejilla mantiene la costra crocante.",
+        "errorComun": "Apilar sobre papel y que se ablande.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Larb de res tailandés",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "ensalada tibia tailandesa de carne picada con hierbas frescas, ácida y picante; se come en hojas de lechuga, cero hidratos",
+    "riesgos": "carne hervida en vez de dorada por amontonarla; condimentar a fuego fuerte y perder el frescor",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada tibia ideal para abrir una cena de a dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "magra; de res; también va de cerdo"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; lima si se consigue"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma fina"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Hierbas",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Hierbas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas; reemplazan el arroz tostado tradicional"
+      },
+      {
+        "canon": "lechuga",
+        "textoOriginal": "Lechuga",
+        "seccion": "Para servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas enteras; tipo mantecosa, para armar bocados"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar la carne",
+        "detalle": "Saltear la carne picada en seco a fuego fuerte hasta que dore y se seque.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: en seco y sin amontonar para que dore, no hierva.",
+        "errorComun": "Tirar todo junto y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Condimentar",
+        "detalle": "Apagar el fuego y recién ahí mezclar salsa de pescado, limón, eritritol y ají.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: condimentar fuera del fuego para no cocinar el cítrico.",
+        "errorComun": "Hervir el aderezo y perder frescura.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hierbas",
+        "detalle": "Sumar cebolla morada, verdeo, menta y cilantro, mezclar suave.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Las hierbas van crudas y al final.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con el sésamo y servir tibio con las hojas de lechuga para armar bocados.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tom kha gai",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz jazmín",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "sopa tailandesa de coco con pollo, jengibre y lemongrass, cremosa y perfumada, naturalmente sin lácteos ni harinas",
+    "riesgos": "hervir fuerte el coco y cortarlo; pasar el pollo y que quede seco",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Reconfortante; se adapta a dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo, en cubos de 3 cm; el muslo queda más jugoso"
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Caldo",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Caldo",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "lemongrass",
+        "textoOriginal": "Lemongrass",
+        "seccion": "Aromáticos",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "aplastado, en trozos; citronela; se retira al final"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Aromáticos",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en rodajas; mejor galanga si se consigue"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignón",
+        "seccion": "Verduras",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; lima si se consigue"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Infusionar",
+        "detalle": "Llevar leche de coco y caldo a fuego suave con lemongrass y jengibre; infusionar 5 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Los aromáticos perfuman el caldo antes de sumar el pollo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pollo y hongos",
+        "detalle": "Sumar pollo y champignones, cocinar a fuego suave 8 min.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "⚠️ Punto crítico: hervor apenas perceptible; el coco se corta si hierve fuerte.",
+        "errorComun": "Hervir a borbotones y separar la grasa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Apagar, retirar el lemongrass, agregar salsa de pescado, limón, ají, cilantro y verdeo.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El cítrico y la salsa de pescado van fuera del hervor.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Aguachile de langostinos",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Marinado en frío",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "la versión mexicana del ceviche, picante y verde, con los langostinos curados en limón al instante; fresco, intenso y sin hidratos",
+    "riesgos": "langostino poco fresco (va casi crudo); pasarlo de cítrico y que quede gomoso",
+    "notas": "",
+    "escenarioUso": "Noche de a dos",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada fresca de impacto para dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, abiertos mariposa; lo más frescos posible"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa verde",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "jugo; lima si se consigue"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Salsa verde",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "sin semillas; tipo serrano o verde picante"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Salsa verde",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Salsa verde",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado, en trozos; parte a la salsa, parte en láminas"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa verde",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa verde",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Guarnición",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma fina; enjuagada en agua fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para enfriar el bowl"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Enfriar",
+        "detalle": "Trabajar con los langostinos y el bowl bien fríos, apoyando el bowl sobre hielo.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: cadena de frío; se arma frío y se come al toque.",
+        "errorComun": "Langostino tibio: riesgo y textura pobre.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa verde",
+        "detalle": "Procesar limón, ají, cilantro, parte del pepino, ajo y sal hasta una salsa verde.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Equilibrar el picante con la sal y el limón.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Curar",
+        "detalle": "Bañar los langostinos con la salsa y dejar 5 a 10 min hasta que se vean opacos por fuera.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: no más de 10 min o quedan gomosos.",
+        "errorComun": "Dejarlos media hora y pasarlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Sumar cebolla morada y láminas de pepino, servir de inmediato bien frío.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tinga de pollo",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Tortillas",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "pollo deshilachado en salsa de tomate y chipotle ahumado, servido en hojas de lechuga en vez de tortilla; rinde, recalienta y pica rico",
+    "riesgos": "pasarse de chipotle y que pique de más; salsa cruda por poca cocción del tomate",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Rinde y recalienta; práctico para dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo cocido desmenuzado",
+        "textoOriginal": "Pollo cocido desmenuzado",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de pechuga o muslo hervido; reservar un poco del caldo"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "chipotle",
+        "textoOriginal": "Chipotle",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en adobo, picado; ajustar a gusto de picante"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "lechuga",
+        "textoOriginal": "Lechuga",
+        "seccion": "Para servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas enteras; para armar tacos low-carb"
+      },
+      {
+        "canon": "palta",
+        "textoOriginal": "Palta",
+        "seccion": "Para servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "en láminas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Rehogar la cebolla en el aceite 5 min; sumar ajo 1 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Agregar tomate, chipotle, orégano y laurel; cocinar 10 min.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: dosificar el chipotle, pica fuerte.",
+        "errorComun": "Salsa aguada y ácida por poca cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Pollo",
+        "detalle": "Sumar el pollo desmenuzado y un poco de caldo; cocinar 5 min hasta integrar y que quede jugoso.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Un chorrito de caldo evita que quede seco.",
+        "errorComun": "Tinga seca sin líquido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Servir en hojas de lechuga con palta.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Dak galbi de pollo picante",
+    "estilo": "Coreana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "salteado coreano de pollo bien picante con gochujang y verduras, dulzón con eritritol en lugar de azúcar; potente y low-carb",
+    "riesgos": "sartén floja que estofa en vez de saltear; quemar el gochujang por exceso de fuego sin líquido",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Picante; se adapta a dos.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "deshuesada, en trozos; el muslo aguanta mejor el salteado"
+      },
+      {
+        "canon": "gochujang",
+        "textoOriginal": "Gochujang",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Marinada",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de sesamo",
+        "textoOriginal": "Aceite de sésamo",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "repollo blanco",
+        "textoOriginal": "Repollo blanco",
+        "seccion": "Verduras",
+        "cantidad": "0,25",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en trozos; un cuarto de repollo"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "zucchini",
+        "textoOriginal": "Zucchini",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en medias lunas"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Terminación",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar gochujang, soja, eritritol, ajo, jengibre y aceite de sésamo; marinar el pollo 15 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El gochujang da el picor y el color rojo.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 8 min; 15 de marinado."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar el pollo",
+        "detalle": "En sartén grande bien caliente, saltear el pollo a fuego fuerte hasta marcarlo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: mucho calor para saltear, no estofar.",
+        "errorComun": "Sartén floja que larga agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Verduras",
+        "detalle": "Sumar repollo, cebolla y zucchini; cocinar 8 min hasta tiernas pero con textura.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Las verduras sueltan algo de líquido que despega el gochujang del fondo.",
+        "errorComun": "Cocinarlas hasta deshacer.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Terminar con verdeo y sésamo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Anticuchos de res al ají panca",
+    "estilo": "Peruana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "55 min",
+    "tiempoTotalMin": 55,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "las brochettes peruanas marinadas en ají panca, ahumadas y jugosas, ideales para una parrilla con invitados; sin hidratos",
+    "riesgos": "marinada corta da poco sabor; pasar la carne en la plancha y secarla",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "entrana",
+        "textoOriginal": "Entraña",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 4 cm; tradicional es corazón; la entraña es más accesible"
+      },
+      {
+        "canon": "aji panca",
+        "textoOriginal": "Ají panca",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta; base del anticucho"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Marinada",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados en agua; para que no se quemen"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar ají panca, ajo, comino, vinagre, orégano, aceite, sal y pimienta; cubrir la carne y marinar 30 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: cuanto más marina, más sabor toma.",
+        "errorComun": "Marinar 5 min y que quede plano.",
+        "notas": "Tiempo activo: 10 min; 30 de marinado."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Ensartar los cubos en los palillos remojados.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Remojar los palillos evita que se quemen en la plancha.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "Plancha o parrilla bien caliente, 2 a 3 min por lado, pincelando con la marinada.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: fuego fuerte y jugoso por dentro.",
+        "errorComun": "Cocinar de más y secar la carne.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar",
+        "detalle": "Reposar 3 min antes de servir.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Calamares a la plancha con ajillo",
+    "estilo": "Española",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "calamares dorados a la plancha con ajillo y limón, entrada marina rápida y sin hidratos",
+    "riesgos": "calamar húmedo que hierve en vez de dorar; pasarlo de cocción y que quede gomoso; quemar el pimentón",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "Entrada marina rápida para dos.",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "calamares limpios",
+        "textoOriginal": "Calamares limpios",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "tubos y tentáculos; secar muy bien"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Plancha",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Plancha",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Plancha",
+        "cantidad": "0,25",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Ajillo",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Ajillo",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Ajillo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Ajillo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "fuera del fuego para no quemarlo"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Secar",
+        "detalle": "Secar muy bien los calamares con papel.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: secos doran; húmedos hierven.",
+        "errorComun": "Calamar mojado que larga agua en la plancha.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Plancha",
+        "detalle": "Plancha bien caliente con un poco de aceite; cocinar los calamares 1 a 2 min por lado.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: poco tiempo; el calamar se pone gomoso si se pasa.",
+        "errorComun": "Cocinarlo de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Ajillo",
+        "detalle": "Aparte, dorar apenas el ajo en aceite; sumar perejil y retirar del fuego.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Volcar el ajillo sobre los calamares, agregar limón y el pimentón fuera del fuego.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El pimentón va al final para que no se queme y amargue.",
+        "errorComun": "Tostar el pimentón en aceite caliente.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Souvlaki de cerdo",
+    "estilo": "Mediterránea",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Pan pita",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "las brochettes griegas de cerdo marinadas en limón, orégano y ajo, jugosas y perfumadas; sin hidratos y muy de juntada",
+    "riesgos": "salar en la marinada y resecar; pasar el cerdo magro y que quede seco",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "Se adapta a dos bajando porciones.",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "solomillo de cerdo",
+        "textoOriginal": "Solomillo de cerdo",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 3 cm; corte magro y tierno"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "salar recién al cocinar"
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Final",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados en agua"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar limón, orégano, ajo y aceite (sin sal); marinar el cerdo 30 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Sin sal en la marinada para no extraer jugos.",
+        "errorComun": "Marinar salado y resecar.",
+        "notas": "Tiempo activo: 8 min; 30 de marinado."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Ensartar los cubos en los palillos remojados.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "Salpimentar y cocinar en plancha o parrilla bien caliente 3 min por lado.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: no pasar el cerdo magro; jugoso por dentro.",
+        "errorComun": "Cocinarlo de más y secarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar",
+        "detalle": "Reposar 3 min antes de servir con limón.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

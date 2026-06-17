@@ -1,0 +1,93 @@
+[
+  {
+    "canonico": "jamon crudo",
+    "nombrePreferido": "Jamón crudo",
+    "sinonimos": [
+      "Prosciutto",
+      "Jamón serrano"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mozzarella",
+    "nombrePreferido": "Mozzarella",
+    "sinonimos": [
+      "Muzzarella",
+      "Mozzarella de búfala"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "peceto",
+    "nombrePreferido": "Peceto",
+    "sinonimos": [
+      "Redondo",
+      "Eye round"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g",
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "salvia",
+    "nombrePreferido": "Salvia",
+    "sinonimos": [
+      "Salvia fresca",
+      "Sage"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "vino marsala",
+    "nombrePreferido": "Vino marsala",
+    "sinonimos": [
+      "Marsala"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Shadows & focus</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-sans); }
+  .row { display: flex; gap: 18px; align-items: stretch; }
+  .item { flex: 1; text-align: center; }
+  .box { height: 56px; background: var(--surface-strong); border-radius: 10px; margin-bottom: 10px; }
+  .tok { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .name { font-size: 12px; color: var(--text-strong); font-weight: 500; margin-bottom: 2px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="item">
+      <div class="box" style="box-shadow: var(--shadow-header)"></div>
+      <div class="name">header</div>
+      <div class="tok">0 1px 3px / 6%</div>
+    </div>
+    <div class="item">
+      <div class="box" style="box-shadow: var(--shadow-menu)"></div>
+      <div class="name">menu</div>
+      <div class="tok">0 4px 12px / 10%</div>
+    </div>
+    <div class="item">
+      <div class="box" style="box-shadow: var(--shadow-focus); border:1px solid var(--border)"></div>
+      <div class="name">focus ring</div>
+      <div class="tok">0 0 0 3px primary-soft</div>
+    </div>
+  </div>
+</body></html>

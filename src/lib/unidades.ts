@@ -10,13 +10,17 @@
 // null = "a gusto" (sin medida precisa)
 const TABLA: Record<string, string | null> = {
   // cucharadas
-  "cda":  "cda",
-  "cdas": "cda",
+  "cda":        "cda",
+  "cdas":       "cda",
+  "cucharada":  "cda",
+  "cucharadas": "cda",
 
   // cucharaditas
-  "cdita":  "cdita",
-  "cditas": "cdita",
-  "cdta":   "cdita",
+  "cdita":        "cdita",
+  "cditas":       "cdita",
+  "cdta":         "cdita",
+  "cucharadita":  "cdita",
+  "cucharaditas": "cdita",
 
   // unidades contables
   "unidad":   "unidad",

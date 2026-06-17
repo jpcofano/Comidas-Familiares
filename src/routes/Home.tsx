@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos, marcarCocinada, descartarPlan } from "../data/planes";
 import { getListaById } from "../data/compras";
@@ -8,10 +8,25 @@ import { getMenu } from "../data/menus";
 import { getSemanaActual } from "../lib/fechas";
 import { separarPlanes } from "../lib/home";
 import { WeekStrip } from "../components/WeekStrip";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonPlanCard } from "../components/skeletons/SkeletonPlanCard";
 import { PlanCard } from "../components/PlanCard";
 import { CompraProgress } from "../components/CompraProgress";
+import { SemanaBadge } from "../components/SemanaBadge";
 import type { Plan, ListaCompras, Menu, Receta } from "../types/models";
 import { MemberDashboard } from "./MemberDashboard";
+
+// ─── Helper: formatea rango de semana "26 may – 1 jun" ───────────────────────
+
+const MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+function getSemanaRango(semanaInicio: string): string {
+  const lunes = new Date(semanaInicio + "T12:00:00");
+  const domingo = new Date(lunes);
+  domingo.setDate(lunes.getDate() + 6);
+  const fmt = (d: Date) => `${d.getDate()} ${MESES_ES[d.getMonth()]}`;
+  return `${fmt(lunes)} – ${fmt(domingo)}`;
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -62,7 +77,7 @@ export function HomeRoute() {
 
 function HomeJP() {
   const navigate = useNavigate();
-  const [planes, setPlanes] = useState<Plan[]>([]);
+  const [planesAll, setPlanesAll] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [lista, setLista] = useState<ListaCompras | null>(null);
   const [menusMap, setMenusMap] = useState<Map<string, Menu>>(new Map());
@@ -71,10 +86,16 @@ function HomeJP() {
 
   const semana = useMemo(() => getSemanaActual(), []);
 
-  // Suscripción a planes activos
+  const planes = useMemo(() => planesAll.filter((p) => p.tipoSeleccion !== "compra-rapida"), [planesAll]);
+  const comprasRapidas = useMemo(
+    () => planesAll.filter((p) => p.tipoSeleccion === "compra-rapida" && p.estado !== "Compra lista"),
+    [planesAll],
+  );
+
+  // Suscripción a planes activos (incluye compra-rapida para JP)
   useEffect(() => {
     return subscribeToPlanesActivos(semana, (p) => {
-      setPlanes(p);
+      setPlanesAll(p);
       setLoading(false);
     });
   }, [semana]);
@@ -109,10 +130,13 @@ function HomeJP() {
 
   const { especial, extras, enProceso } = useMemo(() => separarPlanes(planes), [planes]);
 
-  // Días marcados en el WeekStrip
+  const semanaRango = useMemo(() => getSemanaRango(semana), [semana]);
+
+  // Días marcados en el WeekStrip — excluir planes ya cocinados
   const marked = useMemo(() => {
     const indices = new Set<number>();
     planes.forEach((p) => {
+      if (p.estado === "Cocinada") return;
       const dateStr = p.fecha ?? p.fechaPrevistaComida;
       if (dateStr) {
         const idx = fechaToWeekIdx(dateStr);
@@ -162,7 +186,11 @@ function HomeJP() {
   if (loading) {
     return (
       <div className="card">
-        <p className="meta">Cargando…</p>
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-5)" }}>
+          <SkeletonPlanCard />
+          <SkeletonPlanCard />
+        </div>
       </div>
     );
   }
@@ -172,127 +200,201 @@ function HomeJP() {
   return (
     <div className="card" style={{ paddingBottom: "var(--space-6)", display: "flex", flexDirection: "column", gap: 0 }}>
 
+      {/* ── Kicker + título + badge de semana ──────────────────────────── */}
+      <div style={{ marginBottom: "var(--space-3)" }}>
+        <p style={{
+          fontSize: 11, fontWeight: 600, color: "var(--muted)",
+          textTransform: "uppercase", letterSpacing: ".06em",
+          marginBottom: 4,
+        }}>
+          Esta semana
+        </p>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
+          <h1 style={{
+            fontSize: 20,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}>
+            {planes.length === 0
+              ? "Sin comidas"
+              : `${planes.length} ${planes.length === 1 ? "comida" : "comidas"}`}
+          </h1>
+          <SemanaBadge rango={semanaRango} />
+        </div>
+      </div>
+
       {/* ── WeekStrip ────────────────────────────────────────────────────── */}
       <WeekStrip semanaInicio={semana} marked={marked} />
 
-      {/* ── Sin planes ───────────────────────────────────────────────────── */}
-      {!hasPlanes && (
-        <div style={{ textAlign: "center", padding: "var(--space-8) 0" }}>
-          <p className="meta" style={{ marginBottom: "var(--space-4)" }}>
-            Todavía no hay comidas elegidas para esta semana.
-          </p>
-          <Link
-            to="/biblioteca"
-            className="btn btn-primary"
-            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
-          >
-            Ver recetas
-          </Link>
-        </div>
-      )}
-
       {/* ── Especial + extras ────────────────────────────────────────────── */}
-      {especial && (
-        <section style={{ marginBottom: "var(--space-2)" }}>
-          <PlanCard
-            plan={especial}
-            menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
-            featured
-            isJP
-            busy={busy === especial.idPlan}
-            contexto={getContexto(especial)}
-            confirmDescartarMsg="¿Descartar la Especial? También se van a descartar sus extras."
-            onCocinar={() => handleCocinar(especial)}
-            onVerReceta={() => navigate(detallePath(especial))}
-            onMarkCocinada={() => handleMarcarCocinada(especial)}
-            onDescartar={() => handleDescartar(especial.idPlan)}
-            onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
-            {...recetaProps(especial)}
-          />
+      <section style={{ marginBottom: "var(--space-2)" }}>
+        {especial ? (
+          <>
+            <PlanCard
+              plan={especial}
+              menu={especial.tipoSeleccion === "menu" ? (menusMap.get(especial.idSeleccion) ?? null) : null}
+              featured
+              isJP
+              busy={busy === especial.idPlan}
+              contexto={getContexto(especial)}
+              confirmDescartarMsg="¿Descartar la Especial? También se van a descartar sus extras."
+              onCocinar={() => handleCocinar(especial)}
+              onVerReceta={() => navigate(detallePath(especial))}
+              onMarkCocinada={() => handleMarcarCocinada(especial)}
+              onDescartar={() => handleDescartar(especial.idPlan)}
+              onEvaluar={() => navigate(`/voto/${especial.idPlan}`)}
+              {...recetaProps(especial)}
+            />
 
-          {/* Extras */}
-          <div style={{
-            marginLeft: "var(--space-5)",
-            paddingLeft: "var(--space-4)",
-            borderLeft: "3px solid var(--line)",
-          }}>
-            {extras.length > 0 && (
-              <>
-                <SectionLabel>Extras</SectionLabel>
-                {extras.map((p) => (
-                  <PlanCard
-                    key={p.idPlan}
-                    plan={p}
-                    menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
-                    isJP
-                    busy={busy === p.idPlan}
-                    onCocinar={() => handleCocinar(p)}
-                    onVerReceta={() => navigate(detallePath(p))}
-                    onMarkCocinada={() => handleMarcarCocinada(p)}
-                    onDescartar={() => handleDescartar(p.idPlan)}
-                    onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-                    {...recetaProps(p)}
-                  />
-                ))}
-              </>
-            )}
+            {/* Extras */}
+            <div style={{
+              marginLeft: "var(--space-5)",
+              paddingLeft: "var(--space-4)",
+              borderLeft: "3px solid var(--line)",
+            }}>
+              {extras.length > 0 && (
+                <>
+                  <SectionLabel>Extras</SectionLabel>
+                  {extras.map((p) => (
+                    <PlanCard
+                      key={p.idPlan}
+                      plan={p}
+                      menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
+                      isJP
+                      busy={busy === p.idPlan}
+                      onCocinar={() => handleCocinar(p)}
+                      onVerReceta={() => navigate(detallePath(p))}
+                      onMarkCocinada={() => handleMarcarCocinada(p)}
+                      onDescartar={() => handleDescartar(p.idPlan)}
+                      onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+                      {...recetaProps(p)}
+                    />
+                  ))}
+                </>
+              )}
+              <button
+                className="btn btn-ghost"
+                onClick={() => navigate("/biblioteca")}
+                style={{
+                  fontSize: "var(--fs-sm)",
+                  marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)",
+                  marginBottom: "var(--space-2)",
+                }}
+              >
+                + Sumar extra
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <SectionLabel>Especial</SectionLabel>
             <button
               className="btn btn-ghost"
               onClick={() => navigate("/biblioteca")}
-              style={{
-                fontSize: "var(--fs-sm)",
-                marginTop: extras.length > 0 ? "var(--space-1)" : "var(--space-2)",
-                marginBottom: "var(--space-2)",
-              }}
+              style={{ fontSize: "var(--fs-sm)" }}
             >
-              + Sumar extra
+              + Elegir como Especial
             </button>
-          </div>
-        </section>
-      )}
+          </>
+        )}
+      </section>
 
-      {/* ── En proceso ───────────────────────────────────────────────────── */}
-      {enProceso.length > 0 && (
-        <section style={{ marginTop: "var(--space-4)" }}>
-          <SectionLabel>En proceso</SectionLabel>
-          {enProceso.map((p) => (
-            <PlanCard
-              key={p.idPlan}
-              plan={p}
-              menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
-              isJP
-              busy={busy === p.idPlan}
-              onCocinar={() => handleCocinar(p)}
-              onVerReceta={() => navigate(detallePath(p))}
-              onMarkCocinada={() => handleMarcarCocinada(p)}
-              onDescartar={() => handleDescartar(p.idPlan)}
-              onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
-              {...recetaProps(p)}
-            />
-          ))}
-        </section>
-      )}
+      {/* ── En proceso — siempre visible ─────────────────────────────────── */}
+      <section style={{ marginTop: "var(--space-4)" }}>
+        <SectionLabel>En proceso</SectionLabel>
+        {enProceso.map((p) => (
+          <PlanCard
+            key={p.idPlan}
+            plan={p}
+            menu={p.tipoSeleccion === "menu" ? (menusMap.get(p.idSeleccion) ?? null) : null}
+            isJP
+            busy={busy === p.idPlan}
+            onCocinar={() => handleCocinar(p)}
+            onVerReceta={() => navigate(detallePath(p))}
+            onMarkCocinada={() => handleMarcarCocinada(p)}
+            onDescartar={() => handleDescartar(p.idPlan)}
+            onEvaluar={() => navigate(`/voto/${p.idPlan}`)}
+            {...recetaProps(p)}
+          />
+        ))}
+        <button
+          className="btn btn-ghost"
+          onClick={() => navigate("/biblioteca")}
+          style={{
+            fontSize: "var(--fs-sm)",
+            marginTop: enProceso.length > 0 ? "var(--space-1)" : "var(--space-2)",
+          }}
+        >
+          + Sumar en proceso
+        </button>
+      </section>
 
-      {/* ── Lista de compras ─────────────────────────────────────────────── */}
-      {hasPlanes && (
+      {/* ── Lista de compras — solo si hay items ─────────────────────────── */}
+      {hasPlanes && lista && (lista.totalItems ?? 0) > 0 && (
         <CompraProgress
-          pendientes={(lista?.totalItems ?? 0) - (lista?.totalYaTengo ?? 0)}
-          yaTengo={lista?.totalYaTengo ?? 0}
+          pendientes={(lista.totalItems ?? 0) - (lista.totalYaTengo ?? 0)}
+          yaTengo={lista.totalYaTengo ?? 0}
           onClick={() => navigate("/compras")}
         />
       )}
 
-      {/* ── Herramientas JP ──────────────────────────────────────────────── */}
-      <div style={{ marginTop: "var(--space-6)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--border)" }}>
-        <p className="meta" style={{ marginBottom: "var(--space-2)" }}>Herramientas JP</p>
-        <Link
-          to="/menus/importar"
-          className="btn btn-primary"
-          style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
-        >
-          + Importar menú
-        </Link>
-      </div>
+      {/* ── Compras rápidas activas ───────────────────────────────────────── */}
+      {comprasRapidas.length > 0 && (
+        <div className="card" style={{ marginTop: "var(--space-3)" }}>
+          <p style={{ margin: "0 0 var(--space-2)", fontWeight: 700, fontSize: "var(--fs-sm)", color: "var(--text-strong)" }}>
+            Compras rápidas activas
+          </p>
+          {comprasRapidas.map((p) => {
+            const items = p.itemsCompraRapida ?? [];
+            const comprados = items.filter((it) => it.comprado).length;
+            return (
+              <button
+                key={p.idPlan}
+                onClick={() => navigate(`/compra-rapida/${p.idPlan}`)}
+                style={{
+                  width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer",
+                  padding: "var(--space-2) 0", borderBottom: "1px solid var(--border-subtle)",
+                  display: "flex", alignItems: "center", gap: "var(--space-3)", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <p style={{ margin: 0, fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {p.nombreSeleccion}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 11, color: "var(--muted)" }}>
+                    {comprados} de {items.length} comprados
+                    {p.encargado && ` · ${p.encargado === "juanpablo" ? "JP" : p.encargado} se encarga`}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ── ¿Qué cocino con lo que tengo? ────────────────────────────────── */}
+      <button
+        onClick={() => navigate("/que-cocino")}
+        style={{
+          marginTop: "var(--space-4)",
+          width: "100%", textAlign: "left",
+          background: "var(--surface-strong)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-md)",
+          padding: "var(--space-3) var(--space-4)",
+          cursor: "pointer", fontFamily: "inherit",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}
+      >
+        <div>
+          <p style={{ margin: 0, fontWeight: 600, color: "var(--text-strong)", fontSize: "var(--fs-sm)" }}>
+            ¿Qué cocino con lo que tengo?
+          </p>
+          <p className="meta" style={{ margin: "2px 0 0" }}>Recetas según tu despensa</p>
+        </div>
+        <span style={{ color: "var(--muted)", fontSize: 18 }}>›</span>
+      </button>
     </div>
   );
 }

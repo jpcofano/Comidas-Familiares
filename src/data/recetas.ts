@@ -18,15 +18,29 @@ import { normalizeText } from "../lib/canonical";
 
 // ─── Reads ────────────────────────────────────────────────────────────────────
 
+let cachedRecetas: Receta[] | null = null;
+
 export async function getRecetas(): Promise<Receta[]> {
+  if (cachedRecetas) return cachedRecetas;
   const q = query(collection(db, "recetas"), orderBy("nombre"));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => d.data() as Receta);
+  cachedRecetas = snap.docs.map((d) => d.data() as Receta);
+  return cachedRecetas;
 }
 
 export async function getReceta(idReceta: string): Promise<Receta | null> {
   const snap = await getDoc(doc(db, "recetas", idReceta));
   return snap.exists() ? (snap.data() as Receta) : null;
+}
+
+// Retorna todas las recetas para el owner; para otros miembros filtra por visibilidad.
+// El filtrado es sobre getRecetas() cacheado — sin query extra a Firestore.
+export async function getRecetasParaMiembro(memberId: string): Promise<Receta[]> {
+  if (memberId === "juanpablo") return getRecetas();
+  const { getVisibilidad } = await import("./visibilidad");
+  const [todas, visibilidad] = await Promise.all([getRecetas(), getVisibilidad()]);
+  const visibles = new Set((visibilidad as unknown as Record<string, string[]>)[memberId] ?? []);
+  return todas.filter(r => visibles.has(r.idReceta));
 }
 
 export async function getRecetasByIds(ids: string[]): Promise<Receta[]> {
@@ -94,6 +108,10 @@ export async function buscarRecetasPorNombre(nombre: string): Promise<Receta[]> 
   const nc = normalizeText(nombre);
   const snap = await getDocs(collection(db, "recetas"));
   return snap.docs.map(d => d.data() as Receta).filter(r => r.nombreCanonico === nc);
+}
+
+export function invalidateRecetasCache(): void {
+  cachedRecetas = null;
 }
 
 export async function proximoIdReceta(): Promise<string> {

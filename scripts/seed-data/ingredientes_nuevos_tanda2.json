@@ -1,0 +1,73 @@
+[
+  {
+    "canonico": "aji panca",
+    "nombrePreferido": "Ají panca",
+    "sinonimos": [
+      "Pasta de ají panca"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "atun rojo",
+    "nombrePreferido": "Atún rojo",
+    "sinonimos": [
+      "Atún fresco",
+      "Atún grado sushi"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "chipotle",
+    "nombrePreferido": "Chipotle",
+    "sinonimos": [
+      "Chile chipotle",
+      "Chipotle en adobo"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "lemongrass",
+    "nombrePreferido": "Lemongrass",
+    "sinonimos": [
+      "Citronela",
+      "Hierba limón"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

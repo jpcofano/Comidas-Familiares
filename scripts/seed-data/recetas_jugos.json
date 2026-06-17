@@ -1,0 +1,1379 @@
+[
+  {
+    "nombre": "Jugo verde de pepino, apio y limón",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "jugo verde refrescante, hidratante y prácticamente sin azúcar; el más apto para low-carb de toda la sección",
+    "riesgos": "si se deja mucho rato se oxida y amarga; colar para que quede liviano",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado, en trozos"
+      },
+      {
+        "canon": "apio",
+        "textoOriginal": "Apio",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelado"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "low-carb; solo si se quiere dulce"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar pepino, apio, jengibre, menta, jugo de limón y agua fría hasta integrar.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Agua fría conserva el color y el frescor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar con colador fino para sacar la fibra gruesa.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: colar deja el jugo liviano; sin colar queda pastoso.",
+        "errorComun": "Dejarlo con toda la pulpa y que quede espeso.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Probar, endulzar con eritritol si se quiere, servir con hielo de inmediato.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Tomarlo recién hecho antes de que se oxide.",
+        "errorComun": "Dejarlo reposar y que amargue.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Limonada de jengibre",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Exprimido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "6 min",
+    "tiempoActivoMin": 6,
+    "tiempoTotalLabel": "6 min",
+    "tiempoTotalMin": 6,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "limonada picante de jengibre, refrescante y sin azúcar usando eritritol; baja en hidratos",
+    "riesgos": "pasarse de jengibre y que pique demasiado; demasiado limón sin endulzar queda muy ácido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "800",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Aromático",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": true,
+        "notas": "hojas"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Endulzante",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "ajustar a gusto"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Infusión rápida",
+        "detalle": "Rallar el jengibre y mezclar con el jugo de limón; dejar 2 min para que tome sabor.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El jengibre rallado libera más aroma que en trozos.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Sumar el agua fría, la menta y endulzar con eritritol al gusto.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: probar y ajustar dulzor de a poco; el eritritol no se nota igual que el azúcar.",
+        "errorComun": "Cargar todo el eritritol de una.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir con hielo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de pepino y menta",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "6 min",
+    "tiempoActivoMin": 6,
+    "tiempoTotalLabel": "6 min",
+    "tiempoTotalMin": 6,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "jugo súper liviano de pepino y menta, hidratante y casi sin calorías; ideal para el calor y para low-carb",
+    "riesgos": "pepino amargo si no se pela; oxidación si se deja parado",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado, en trozos"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "solo si se quiere dulce"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar pepino, menta, jugo de limón y agua fría.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Pelar el pepino evita el amargor de la cáscara.",
+        "errorComun": "Dejar la cáscara y que amargue.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar y endulzar",
+        "detalle": "Colar, probar y endulzar con eritritol si se quiere.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: servir al toque para que no pierda color ni frescor.",
+        "errorComun": "Dejarlo reposar y que se oxide.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir con hielo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo verde de espinaca y pepino",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "verde cargado de espinaca y pepino, bajísimo en azúcar y lleno de fibra; el clásico \"detox\" en versión low-carb",
+    "riesgos": "la espinaca cruda en exceso da sabor terroso; colar bien para que no quede arenoso",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "espinaca",
+        "textoOriginal": "Espinaca",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "taza",
+        "opcional": false,
+        "notas": "lavada"
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado, en trozos"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelado"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "solo si se quiere dulce"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar espinaca, pepino, jengibre, jugo de limón y agua fría hasta bien integrado.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El limón equilibra el sabor terroso de la espinaca.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar con colador fino.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: colar a fondo para que no quede arenoso.",
+        "errorComun": "Servir con toda la fibra y que quede áspero.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Probar, endulzar si se quiere y servir con hielo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Agua saborizada de pomelo y romero",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Macerado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "5 min",
+    "tiempoActivoMin": 5,
+    "tiempoTotalLabel": "5 min",
+    "tiempoTotalMin": 5,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "agua saborizada elegante de pomelo y romero, amarga y aromática, muy baja en azúcar",
+    "riesgos": "el pomelo solo queda muy amargo, equilibrar con un toque de endulzante; el romero en exceso domina",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "pomelo",
+        "textoOriginal": "Pomelo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "romero",
+        "textoOriginal": "Romero",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "ramita"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "700",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "para cortar el amargor"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Macerar",
+        "detalle": "Exprimir el pomelo y mezclar con el agua fría y la ramita de romero; dejar 3 min.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: el romero infusiona rápido; no dejarlo más de unos minutos o amarga.",
+        "errorComun": "Dejar el romero horas y que domine todo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Terminar",
+        "detalle": "Retirar el romero, endulzar apenas con eritritol y servir con hielo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Un toque de dulzor equilibra el amargo del pomelo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de tomate, apio y limón",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "jugo salado estilo \"bloody mary\" sin alcohol, sabroso y bajo en hidratos; una opción savory para la sección",
+    "riesgos": "salar de más; tomate poco maduro da un jugo desabrido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en trozos"
+      },
+      {
+        "canon": "apio",
+        "textoOriginal": "Apio",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "rama",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Sabor",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Sabor",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": "molida"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar tomate, apio y jugo de limón.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Tomate bien maduro = jugo sabroso.",
+        "errorComun": "Tomate verde que da un jugo desabrido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar para sacar piel y semillas.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: colar deja un jugo limpio y bebible.",
+        "errorComun": "Dejar piel y semillas y que quede áspero.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sazonar",
+        "detalle": "Sal, pimienta, probar y servir bien frío con hielo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Sazonar de a poco; siempre se puede sumar sal.",
+        "errorComun": "Pasarse de sal de entrada.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de naranja exprimido",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Exprimido",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el clásico jugo de naranja recién exprimido para la familia; no es low-carb (azúcar de la fruta)",
+    "riesgos": "exprimir de más la cáscara amarga; tomarlo enseguida porque pierde vitamina C",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Base",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; de jugo, bien maduras"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "azucar mascabo",
+        "textoOriginal": "Azúcar mascabo",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "casi nunca hace falta; o edulcorante"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Exprimir",
+        "detalle": "Exprimir las naranjas.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: no apretar la cáscara para no extraer el amargor.",
+        "errorComun": "Exprimir machacando la cáscara.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Servir",
+        "detalle": "Probar, endulzar solo si están ácidas y servir de inmediato con hielo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Recién exprimido conserva mejor el sabor y la vitamina C.",
+        "errorComun": "Dejarlo parado horas.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de manzana y zanahoria",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "jugo dulce natural de manzana y zanahoria que les encanta a los chicos; tiene hidratos de la fruta y la zanahoria",
+    "riesgos": "si no se cuela queda muy espeso; el limón evita que se oxide y se ponga marrón",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "manzana roja",
+        "textoOriginal": "Manzana roja",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "sin semillas, en trozos"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelada, en trozos"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; evita que se oxide"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "pelado"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar manzana, zanahoria, jengibre, jugo de limón y agua fría.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El limón mantiene el color y evita que se ponga marrón.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar para sacar la fibra gruesa.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: colar para que no quede pastoso.",
+        "errorComun": "Servirlo espeso y con pulpa gruesa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir bien frío con hielo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Licuado de frutilla y banana",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "6 min",
+    "tiempoActivoMin": 6,
+    "tiempoTotalLabel": "6 min",
+    "tiempoTotalMin": 6,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "licuado cremoso de frutilla y banana, dulce natural y favorito de los chicos; tiene hidratos de la fruta",
+    "riesgos": "la banana muy madura tapa el sabor de la frutilla; queda muy espeso si falta líquido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "frutillas",
+        "textoOriginal": "Frutillas",
+        "seccion": "Base",
+        "cantidad": "300",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "sin cabito"
+      },
+      {
+        "canon": "banana",
+        "textoOriginal": "Banana",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "no demasiado maduras"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría; o bebida vegetal sin azúcar"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "azucar mascabo",
+        "textoOriginal": "Azúcar mascabo",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "rara vez hace falta; o edulcorante"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar frutillas, banana y agua fría hasta cremoso.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Agregar el líquido de a poco hasta la textura deseada.",
+        "errorComun": "Poco líquido y que quede una pasta.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Servir",
+        "detalle": "Probar, endulzar solo si hace falta y servir con hielo.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "La fruta madura suele alcanzar sin azúcar.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de sandía y menta",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "7 min",
+    "tiempoActivoMin": 7,
+    "tiempoTotalLabel": "7 min",
+    "tiempoTotalMin": 7,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "jugo de sandía con menta, fresquísimo de verano; dulce natural de la fruta (tiene hidratos)",
+    "riesgos": "las semillas amargan si se licúan, colar; pierde frescor si se deja parado",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "sandia",
+        "textoOriginal": "Sandía",
+        "seccion": "Base",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "sin semillas, en cubos"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; levanta el sabor"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "azucar mascabo",
+        "textoOriginal": "Azúcar mascabo",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "rara vez hace falta"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar la sandía con la menta y el jugo de limón.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Sacar las semillas grandes antes de licuar.",
+        "errorComun": "Licuar las semillas y que amargue.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar liviano.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: el limón realza el dulzor de la sandía.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir bien frío con hielo de inmediato.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jugo de ananá y jengibre",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Licuado",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "8 min",
+    "tiempoActivoMin": 8,
+    "tiempoTotalLabel": "8 min",
+    "tiempoTotalMin": 8,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "jugo tropical de ananá con un toque de jengibre, dulce y aromático; tiene hidratos de la fruta",
+    "riesgos": "ananá verde queda ácido; demasiado jengibre tapa la fruta",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "anana",
+        "textoOriginal": "Ananá",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "pelado, en trozos; bien madura"
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Base",
+        "cantidad": "10",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelado"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "azucar mascabo",
+        "textoOriginal": "Azúcar mascabo",
+        "seccion": "Endulzante",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "según lo madura que esté la fruta"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Licuar",
+        "detalle": "Licuar el ananá con el jengibre y el agua fría.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Ananá madura aporta dulzor natural.",
+        "errorComun": "Ananá verde que queda muy ácida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Colar",
+        "detalle": "Colar para sacar la fibra.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: el jengibre va de a poco, es intenso.",
+        "errorComun": "Pasarse de jengibre y tapar la fruta.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir bien frío con hielo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Limonada clásica",
+    "estilo": "",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Bebida",
+    "tecnicaPrincipal": "Exprimido",
+    "sinLacteos": true,
+    "hidratos": true,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "6 min",
+    "tiempoActivoMin": 6,
+    "tiempoTotalLabel": "6 min",
+    "tiempoTotalMin": 6,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la limonada de siempre para la familia, con azúcar a gusto (o edulcorante para bajarle los hidratos)",
+    "riesgos": "muy ácida sin endulzar; demasiada azúcar la vuelve empalagosa",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Jugo natural",
+    "paraJuanPablo": false,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Líquido",
+        "cantidad": "800",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": "bien fría"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Aromático",
+        "cantidad": "1",
+        "unidad": "puñado",
+        "opcional": true,
+        "notas": "hojas"
+      },
+      {
+        "canon": "hielo",
+        "textoOriginal": "Hielo",
+        "seccion": "Frío",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para servir"
+      },
+      {
+        "canon": "azucar mascabo",
+        "textoOriginal": "Azúcar mascabo",
+        "seccion": "Endulzante",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": true,
+        "notas": "a gusto; o edulcorante para versión low-carb"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar",
+        "detalle": "Mezclar el jugo de limón con el agua fría.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Endulzar",
+        "detalle": "Sumar azúcar o edulcorante y revolver hasta disolver; probar y ajustar.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: disolver bien el endulzante antes de servir.",
+        "errorComun": "Azúcar sin disolver en el fondo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Sumar menta si se quiere y servir con hielo.",
+        "tiempoEstimadoLabel": "1 min",
+        "tiempoEstimadoMin": 1,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

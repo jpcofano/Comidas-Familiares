@@ -1,0 +1,58 @@
+[
+  {
+    "canonico": "pasta de achiote",
+    "nombrePreferido": "Pasta de achiote",
+    "sinonimos": [
+      "Achiote en pasta",
+      "Recado rojo"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g",
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "semillas de hinojo",
+    "nombrePreferido": "Semillas de hinojo",
+    "sinonimos": [
+      "Hinojo en semilla",
+      "Fennel seeds"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita",
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "hilo de cocina",
+    "nombrePreferido": "Hilo de cocina",
+    "sinonimos": [
+      "Hilo para bridar",
+      "Hilo choricero"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

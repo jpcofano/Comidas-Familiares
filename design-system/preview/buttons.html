@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 40px; padding: 8px 16px; border: 0;
+    border-radius: 10px; font-weight: 500; font-size: 14px;
+    transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+    font-family: inherit; cursor: pointer;
+  }
+  .btn-primary { background: var(--primary); color: var(--on-primary); }
+  .btn-primary.hover { background: var(--primary-strong); }
+  .btn-secondary { background: var(--surface-strong); color: var(--text); border: 1px solid var(--line); }
+  .btn-secondary.hover { background: var(--surface-alt); }
+  .btn-ghost { background: transparent; color: var(--text); }
+  .btn-ghost.hover { background: var(--surface-alt); }
+  .btn:disabled, .btn.disabled { opacity: .5; cursor: not-allowed; }
+  .lbl { font-family: var(--font-mono); font-size: 11px; color: var(--muted); width: 80px; }
+</style></head>
+<body>
+  <div class="row"><div class="lbl">primary</div>
+    <button class="btn btn-primary">Cocinar</button>
+    <button class="btn btn-primary hover">hover</button>
+    <button class="btn btn-primary disabled">disabled</button>
+  </div>
+  <div class="row"><div class="lbl">secondary</div>
+    <button class="btn btn-secondary">Marcar Cocinada</button>
+    <button class="btn btn-secondary hover">hover</button>
+  </div>
+  <div class="row"><div class="lbl">ghost</div>
+    <button class="btn btn-ghost">Descartar</button>
+    <button class="btn btn-ghost hover">hover</button>
+  </div>
+</body></html>

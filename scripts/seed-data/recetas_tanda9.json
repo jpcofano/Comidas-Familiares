@@ -1,0 +1,1552 @@
+[
+  {
+    "nombre": "Carne asada",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Parrilla",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "entraña marinada en cítricos, ajo y cilantro y sellada a fuego fuerte; jugosa, ahumada y de cero hidratos sin la tortilla",
+    "riesgos": "marinar con sal mucho tiempo reseca; pasar la entraña la endurece",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "entrana",
+        "textoOriginal": "Entraña",
+        "seccion": "Principal",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "limpia"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima si se consigue"
+      },
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "salar al cocinar"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma, para servir"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar jugos, ajo, cilantro, comino y aceite (sin sal); cubrir la entraña y marinar 30 a 40 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Sin sal en la marinada para no extraer jugos.",
+        "errorComun": "Marinar salado y resecar.",
+        "notas": "Tiempo activo: 8 min; el resto es reposo."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Calentar fuerte",
+        "detalle": "Llevar la parrilla o plancha de hierro a fuego máximo hasta que humee.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: superficie muy caliente para marcar y no hervir.",
+        "errorComun": "Empezar en plancha tibia.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Sellar",
+        "detalle": "Secar la entraña, salar y cocinar 3 a 4 min por lado para punto jugoso.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "La entraña es fina: cocción corta y fuego fuerte.",
+        "errorComun": "Pasarla de cocción.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Reposar y cortar",
+        "detalle": "Reposar 5 min y cortar en contra de la fibra en tiras finas. Servir con cebolla morada.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "⚠️ Punto crítico: cortar en contra de la fibra la vuelve tierna.",
+        "errorComun": "Cortar a favor de la fibra y que quede dura.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Fajitas de pollo",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Tortillas",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "tiras de pollo y morrones salteados con especias y lima, jugosos y coloridos; se sirven en hojas de lechuga para mantenerlas low-carb",
+    "riesgos": "sartén floja que hierve las verduras; pollo amontonado que larga agua",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en tiras",
+        "textoOriginal": "Pollo en tiras",
+        "seccion": "Pollo",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de pechuga o muslo"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "morron verde",
+        "textoOriginal": "Morrón verde",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "lechuga",
+        "textoOriginal": "Lechuga",
+        "seccion": "Servir",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas grandes; para envolver en vez de tortilla"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Condimentar",
+        "detalle": "Mezclar el pollo con comino, pimentón, orégano y sal.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Condimentar antes para que tome sabor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar pollo",
+        "detalle": "En sartén bien caliente con aceite, dorar el pollo en tandas. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: en tandas y fuego fuerte para que dore y no hierva.",
+        "errorComun": "Amontonarlo y que largue agua.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Verduras",
+        "detalle": "Saltear morrones y cebolla 4 min, que queden al dente; sumar el ajo 1 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Verduras crocantes, no blandas.",
+        "errorComun": "Recocerlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Unir",
+        "detalle": "Volver el pollo, saltear 2 min. Terminar con lima y cilantro. Servir en hojas de lechuga.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El cítrico al final levanta todo.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Carnitas",
+    "estilo": "Mexicana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "cerdo cocido lento en su grasa con naranja y especias, deshilachado y dorado hasta crocante; sin tortilla queda perfecto en low-carb",
+    "riesgos": "apurar la cocción deja el cerdo duro; saltar el dorado final pierde lo crocante",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,3",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos grandes de 6 cm"
+      },
+      {
+        "canon": "naranja",
+        "textoOriginal": "Naranja",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en mitades; se cocina y se exprime adentro"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "cabeza partida"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cocción",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Cocción",
+        "cantidad": "300",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar la olla",
+        "detalle": "Poner el cerdo, naranja, ajo, laurel, comino, orégano, sal, aceite y agua en una olla pesada.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El agua se evapora y el cerdo termina cocinándose en su grasa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cocción lenta",
+        "detalle": "Tapar y cocinar a fuego mínimo 2,5 h, hasta que la carne se deshaga.",
+        "tiempoEstimadoLabel": "2 h 30 min",
+        "tiempoEstimadoMin": 150,
+        "puntoClave": "⚠️ Punto crítico: fuego mínimo y paciencia; así queda jugoso.",
+        "errorComun": "Apurar el fuego y endurecerlo.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Deshilachar",
+        "detalle": "Retirar naranja y laurel, exprimir la naranja, deshacer la carne con tenedores.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Mezclar con los jugos para que quede húmeda.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Dorar",
+        "detalle": "Subir el fuego y dorar la carne deshilachada en su propia grasa hasta crocante por partes.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: el dorado final da el contraste crocante típico.",
+        "errorComun": "Servirla solo hervida, sin dorar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo en mole sin azúcar",
+    "estilo": "Mexicana",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "40 min",
+    "tiempoActivoMin": 40,
+    "tiempoTotalLabel": "1 h 15 min",
+    "tiempoTotalMin": 75,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el mole festivo de chiles, especias y chocolate amargo, profundo y complejo; versión accesible y low-carb, con chocolate 85% en vez de azúcar",
+    "riesgos": "quemar las especias y los chiles amarga el mole; salsa sin licuar queda rústica",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Pollo",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con hueso"
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Pollo",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros"
+      },
+      {
+        "canon": "chipotle",
+        "textoOriginal": "Chipotle",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en adobo; aporta ahumado y picante"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "canela",
+        "textoOriginal": "Canela",
+        "seccion": "Especias",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "almendras",
+        "textoOriginal": "Almendras",
+        "seccion": "Frutos secos",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "espesan la salsa"
+      },
+      {
+        "canon": "semillas de sesamo",
+        "textoOriginal": "Semillas de sésamo",
+        "seccion": "Frutos secos",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "tostadas"
+      },
+      {
+        "canon": "chocolate 85%",
+        "textoOriginal": "Chocolate 85%",
+        "seccion": "Chocolate",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "picado; reemplaza el dulzor del mole"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar pollo",
+        "detalle": "Salar y dorar los patamuslos en aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Dorar da sabor y color.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "En la misma olla rehogar cebolla, ajo y tomate 8 min; sumar chipotle, comino, canela y pimentón 1 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: tostar las especias sin quemarlas; quemadas amargan.",
+        "errorComun": "Quemar especias y chiles.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Licuar",
+        "detalle": "Sumar almendras, sésamo y caldo; cocinar 5 min y licuar todo hasta una salsa lisa.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: licuar bien para la textura sedosa del mole.",
+        "errorComun": "Dejarla rústica y aguada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Mole",
+        "detalle": "Volver la salsa a la olla, sumar el chocolate y derretir. Volver el pollo y cocinar 25 min.",
+        "tiempoEstimadoLabel": "30 min",
+        "tiempoEstimadoMin": 30,
+        "puntoClave": "El chocolate da profundidad sin dulzor.",
+        "errorComun": "Hervir fuerte y pegar el fondo.",
+        "notas": "Tiempo activo: 5 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Camarones a la diabla",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "langostinos en una salsa roja picante de chipotle y tomate, rápida e intensa; cero hidratos y mucho impacto",
+    "riesgos": "sobrecocinar los langostinos los pone gomosos; salsa cruda por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados, limpios"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros"
+      },
+      {
+        "canon": "chipotle",
+        "textoOriginal": "Chipotle",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en adobo; regular el picante"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salsa",
+        "detalle": "Licuar tomate, chipotle y ajo hasta una salsa lisa.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "El chipotle da el ahumado y el picor.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sofreír",
+        "detalle": "Rehogar la cebolla en aceite 4 min; sumar la salsa y cocinar 6 min hasta concentrar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: cocinar la salsa quita el crudo del tomate.",
+        "errorComun": "Salsa aguada y ácida.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Langostinos",
+        "detalle": "Sumar los langostinos y cocinar 3 a 4 min, solo hasta que estén rosados.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: apenas rosados; un minuto de más y se endurecen.",
+        "errorComun": "Recocerlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Terminar",
+        "detalle": "Apagar, sumar limón, cilantro y sal.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "El cítrico al final equilibra el picante.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Chiles rellenos de queso",
+    "estilo": "Mexicana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "morrones asados rellenos de queso en salsa de tomate, gratinados al horno; sin el rebozado frito de harina del original, quedan low-carb",
+    "riesgos": "no pelar bien el morrón asado deja la piel dura; relleno que se escapa si se sobrecarga",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Principal",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "grandes; como chile poblano"
+      },
+      {
+        "canon": "queso fresco",
+        "textoOriginal": "Queso fresco",
+        "seccion": "Relleno",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en bastones"
+      },
+      {
+        "canon": "mozzarella",
+        "textoOriginal": "Mozzarella",
+        "seccion": "Relleno",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "rallada"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar morrones",
+        "detalle": "Asar los morrones enteros hasta que la piel se queme; tapar 10 min en un bowl y pelar.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: el vapor bajo tapa despega la piel quemada.",
+        "errorComun": "No pelar y dejar la piel dura.",
+        "notas": "Tiempo activo: 5 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Rellenar",
+        "detalle": "Hacer un corte, quitar semillas y rellenar con los quesos sin sobrecargar. Cerrar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Rellenar parejo para que cierre.",
+        "errorComun": "Sobrecargar y que se abra.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Rehogar cebolla y ajo, sumar tomate, comino y sal; cocinar 8 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Salsa concentrada de base.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Gratinar",
+        "detalle": "Acomodar los morrones sobre la salsa, cubrir con un poco más de muzzarella y hornear 12 min a 200°C.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "El gratinado dora y funde el queso.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Rajas con crema",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "tiras de morrón asado en crema, suaves y reconfortantes; guarnición clásica mexicana que acompaña carnes o se come sola, low-carb",
+    "riesgos": "cortar la crema con fuego alto; morrón sin asar queda crudo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Crema",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "queso rallado",
+        "textoOriginal": "Queso rallado",
+        "seccion": "Crema",
+        "cantidad": "30",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar morrones",
+        "detalle": "Asar y pelar los morrones, o saltearlos en tiras hasta tiernos y dorados.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Asarlos da el sabor ahumado típico.",
+        "errorComun": "Morrón crudo y duro.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Cebolla",
+        "detalle": "Saltear la cebolla en aceite 5 min hasta dorar; sumar las tiras de morrón.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Crema",
+        "detalle": "Bajar el fuego, sumar la crema y el queso; cocinar 3 min hasta espesar. Salar.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo con la crema para que no se corte.",
+        "errorComun": "Hervir fuerte y cortar la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Guacamole",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "la pasta de palta con lima, cebolla y cilantro; fresca, grasa saludable y sin hidratos, para untar o acompañar",
+    "riesgos": "procesar de más la vuelve papilla; sin lima se oxida y ennegrece",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "palta",
+        "textoOriginal": "Palta",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "madura"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "picado; si gusta el picante"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Pisar palta",
+        "detalle": "Pisar la palta con la lima y la sal, dejando algo de textura.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "⚠️ Punto crítico: pisar, no procesar, para que no quede papilla.",
+        "errorComun": "Hacerla puré.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Integrar",
+        "detalle": "Sumar cebolla, tomate, cilantro y ají; mezclar suave.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Mezclar con cuchara para mantener trozos.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Probar, ajustar sal y lima. Servir al momento.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "La lima evita que se oxide.",
+        "errorComun": "Dejarlo expuesto y que ennegrezca.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pico de gallo",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "10 min",
+    "tiempoActivoMin": 10,
+    "tiempoTotalLabel": "10 min",
+    "tiempoTotalMin": 10,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la salsa fresca de tomate, cebolla y cilantro que acompaña todo; cruda, rápida y sin hidratos",
+    "riesgos": "tomate aguado sin escurrir; cortar grueso desbalancea",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros, en cubos chicos, sin semillas"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": true,
+        "notas": "picado; regular el picante"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Picar",
+        "detalle": "Cortar tomate, cebolla y ají en cubos chicos y parejos.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Corte parejo para textura pareja.",
+        "errorComun": "Cubos grandes.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Escurrir",
+        "detalle": "Quitar las semillas del tomate para que no quede aguado.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "⚠️ Punto crítico: sin semillas ni jugo para que no se desarme.",
+        "errorComun": "Tomate aguado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Mezclar",
+        "detalle": "Unir con cilantro, lima y sal. Servir fresco.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Mejor recién hecho.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sopa azteca sin tortilla",
+    "estilo": "Mexicana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "caldo de tomate y chipotle ahumado, servido con palta y queso en vez de las tiras de tortilla fritas; reconfortante y low-carb",
+    "riesgos": "caldo soso por no concentrar el tomate; chipotle de más tapa todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Caldo",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "maduros"
+      },
+      {
+        "canon": "chipotle",
+        "textoOriginal": "Chipotle",
+        "seccion": "Caldo",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en adobo; regular el picante"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Caldo",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de verduras",
+        "textoOriginal": "Caldo de verduras",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": "o de pollo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Caldo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palta",
+        "textoOriginal": "Palta",
+        "seccion": "Guarnición",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos; reemplaza las tiras de tortilla"
+      },
+      {
+        "canon": "queso fresco",
+        "textoOriginal": "Queso fresco",
+        "seccion": "Guarnición",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": true,
+        "notas": "en cubos; omitir para versión sin lácteos"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Guarnición",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar base",
+        "detalle": "Asar tomate, cebolla, ajo y chipotle en seco o al horno hasta dorar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Asar concentra y da el ahumado.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Licuar",
+        "detalle": "Licuar lo asado con un poco del caldo hasta liso.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "⚠️ Punto crítico: licuar bien para un caldo sedoso.",
+        "errorComun": "Caldo rústico y aguado.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocinar",
+        "detalle": "Sofreír el licuado en aceite 5 min, sumar el resto del caldo y la sal; hervir suave 12 min.",
+        "tiempoEstimadoLabel": "18 min",
+        "tiempoEstimadoMin": 18,
+        "puntoClave": "Cocinar el licuado quita el crudo del tomate.",
+        "errorComun": "Caldo soso sin concentrar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Servir bien caliente con palta, queso (opcional) y cilantro encima.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Los toppings van al momento de servir.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Surfaces</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); }
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-strong); }
+  .chip { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; border: 1px solid var(--border-subtle); }
+  .label { font-size: 13px; color: var(--text-strong); font-weight: 500; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .col { flex: 1; }
+  .right { font-size: 11px; color: var(--muted); }
+</style></head>
+<body>
+  <div class="stack">
+    <div class="row"><div class="chip" style="background:#fdfaf6"></div><div class="col"><div class="label">--bg</div><div class="hex">#fdfaf6</div></div><div class="right">pagina</div></div>
+    <div class="row"><div class="chip" style="background:#fdf8f3"></div><div class="col"><div class="label">--surface</div><div class="hex">#fdf8f3</div></div><div class="right">cards</div></div>
+    <div class="row"><div class="chip" style="background:#ffffff"></div><div class="col"><div class="label">--surface-strong</div><div class="hex">#ffffff</div></div><div class="right">elevadas</div></div>
+    <div class="row"><div class="chip" style="background:#f6efe5"></div><div class="col"><div class="label">--surface-alt</div><div class="hex">#f6efe5</div></div><div class="right">hovers</div></div>
+  </div>
+</body></html>

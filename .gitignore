@@ -19,6 +19,9 @@ dist-ssr
 scripts/service-account.json
 **/*-service-account*.json
 
+# Backups operacionales (scripts/_backups/)
+scripts/_backups/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -29,3 +32,6 @@ scripts/service-account.json
 *.njsproj
 *.sln
 *.sw?
+*.zip
+service-account*.json
+**/service-account*.json

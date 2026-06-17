@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — Logomark exploration">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comida Familiar · Logomark exploration</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../colors_and_type.css">
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); }
+    body { padding: 40px 32px 64px; max-width: 1280px; margin: 0 auto; }
+    .page-h {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 28px;
+    }
+    .page-h h1 { font-size: 26px; margin: 0; color: var(--text-strong); letter-spacing: -0.015em; }
+    .page-h p  { font-size: 13px; color: var(--muted); margin: 0; text-align: right; max-width: 380px; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 22px 20px;
+      display: grid; grid-template-columns: 96px 1fr; gap: 22px; align-items: start;
+    }
+    .card-icons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .icon-big {
+      width: 96px; height: 96px; border-radius: 22px; background: var(--primary);
+      display: grid; place-items: center; color: var(--surface-strong);
+      box-shadow: 0 2px 8px rgba(138,74,47,.15);
+    }
+    .icon-fav {
+      width: 32px; height: 32px; border-radius: 8px; background: var(--primary-soft);
+      display: grid; place-items: center; color: var(--primary);
+    }
+
+    .card-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    .lockup {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface); border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+    .lockup-mark {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--primary-soft); color: var(--primary);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .lockup-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .lockup-text .wm { font-size: 18px; font-weight: 700; color: var(--primary); letter-spacing: -0.015em; }
+    .lockup-text .tag { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    .meta {
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .meta .num {
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .meta .name { font-size: 14px; font-weight: 600; color: var(--text-strong); }
+    .rationale { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; text-wrap: pretty; }
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px;
+    }
+    .kw {
+      font-size: 10px; font-weight: 500; color: var(--muted);
+      padding: 2px 8px; border-radius: 9999px;
+      background: var(--surface-alt); border: 1px solid var(--border-subtle);
+    }
+
+    .footer-note {
+      margin-top: 32px; padding: 16px 18px;
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: 12px; font-size: 12.5px; color: var(--muted); line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-h">
+    <div>
+      <h1>Logomark — exploración</h1>
+    </div>
+    <p>6 direcciones para reemplazar el <code>ChefHat</code> genérico de Lucide. Misma paleta, misma escala visual.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- ───────────── 01 — Monograma cf ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <!-- Custom lowercase c + f ligature -->
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+            <!-- "c" shape -->
+            <path d="M28 12c-9 0-16 7-16 16s7 16 16 16c4 0 7.5-1.4 10.5-3.8"
+                  stroke="currentColor" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <!-- "f" descender stem -->
+            <path d="M36 8v36"
+                  stroke="currentColor" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <!-- "f" crossbar -->
+            <path d="M30 22h12"
+                  stroke="currentColor" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="20" height="20" viewBox="0 0 56 56" fill="none">
+            <path d="M28 12c-9 0-16 7-16 16s7 16 16 16c4 0 7.5-1.4 10.5-3.8"
+                  stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M36 8v36" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+            <path d="M30 22h12" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">01</span><span class="name">Monograma cf</span></div>
+        <p class="rationale">Ligadura minúscula de <strong>c</strong> + <strong>f</strong>. Tipográfico, calmo, propietario. Es el primero que se va a leer rápido en una solapa del browser.</p>
+        <div class="keywords"><span class="kw">tipográfico</span><span class="kw">propietario</span><span class="kw">refinado</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <path d="M28 12c-9 0-16 7-16 16s7 16 16 16c4 0 7.5-1.4 10.5-3.8"
+                    stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M36 8v36" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              <path d="M30 22h12" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── 02 — Olla con tapa + vapor ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Steam wisps -->
+            <path d="M19 11c2 2-2 4 0 6"/>
+            <path d="M28 8c2 2-2 4 0 6"/>
+            <path d="M37 11c2 2-2 4 0 6"/>
+            <!-- Lid -->
+            <path d="M11 24h34"/>
+            <!-- Lid handle dot -->
+            <circle cx="28" cy="21" r="2" fill="currentColor"/>
+            <!-- Pot body with side handles -->
+            <path d="M13 24v10c0 6 4 10 10 10h10c6 0 10-4 10-10V24"/>
+            <path d="M11 27h-3a2 2 0 0 0 0 4h3"/>
+            <path d="M45 27h3a2 2 0 0 1 0 4h-3"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 8c2 2-2 4 0 6"/>
+            <path d="M11 24h34"/>
+            <circle cx="28" cy="21" r="2.5" fill="currentColor"/>
+            <path d="M13 24v10c0 6 4 10 10 10h10c6 0 10-4 10-10V24"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">02</span><span class="name">Olla al fuego</span></div>
+        <p class="rationale">Olla con tapa, vapor saliendo. Inmediato, doméstico, "está pasando algo en la cocina". El más literal de los seis.</p>
+        <div class="keywords"><span class="kw">doméstico</span><span class="kw">cálido</span><span class="kw">literal</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M28 8c2 2-2 4 0 6"/>
+              <path d="M11 24h34"/>
+              <circle cx="28" cy="21" r="2.5" fill="currentColor"/>
+              <path d="M13 24v10c0 6 4 10 10 10h10c6 0 10-4 10-10V24"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── 03 — Mesa familiar (top-down) ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Big table circle (center plate) -->
+            <circle cx="28" cy="28" r="9" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <circle cx="28" cy="28" r="3" fill="currentColor"/>
+            <!-- Four family plates around -->
+            <circle cx="28" cy="9"  r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <circle cx="47" cy="28" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <circle cx="28" cy="47" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <circle cx="9"  cy="28" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="8" stroke="currentColor" stroke-width="4" fill="none"/>
+            <circle cx="28" cy="9"  r="4" fill="currentColor"/>
+            <circle cx="47" cy="28" r="4" fill="currentColor"/>
+            <circle cx="28" cy="47" r="4" fill="currentColor"/>
+            <circle cx="9"  cy="28" r="4" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">03</span><span class="name">Mesa familiar</span></div>
+        <p class="rationale">Vista cenital de una mesa: plato grande al centro, cuatro chicos alrededor — uno por cada Cofano. Cuenta la historia de la marca, no la receta.</p>
+        <div class="keywords"><span class="kw">familiar</span><span class="kw">conceptual</span><span class="kw">simétrico</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="8" stroke="currentColor" stroke-width="4" fill="none"/>
+              <circle cx="28" cy="9"  r="4" fill="currentColor"/>
+              <circle cx="47" cy="28" r="4" fill="currentColor"/>
+              <circle cx="28" cy="47" r="4" fill="currentColor"/>
+              <circle cx="9"  cy="28" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── 04 — Cuchara abrazo ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Outer "bowl"/heart curve hugging spoon -->
+            <path d="M28 46c-12 0-18-8-18-16 0-6 4-10 9-10 3 0 6 2 9 5"/>
+            <path d="M28 46c12 0 18-8 18-16 0-6-4-10-9-10-3 0-6 2-9 5"/>
+            <!-- Spoon: handle + bowl -->
+            <path d="M28 10v28"/>
+            <ellipse cx="28" cy="20" rx="5" ry="7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 46c-12 0-18-8-18-16 0-6 4-10 9-10 3 0 6 2 9 5"/>
+            <path d="M28 46c12 0 18-8 18-16 0-6-4-10-9-10-3 0-6 2-9 5"/>
+            <ellipse cx="28" cy="20" rx="5" ry="7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">04</span><span class="name">Abrazo + cuchara</span></div>
+        <p class="rationale">Una cuchara abrazada por una forma de corazón abierto. El gesto "comer + cuidar" en un solo trazo. Cálido pero no edulcorado.</p>
+        <div class="keywords"><span class="kw">cálido</span><span class="kw">afectivo</span><span class="kw">distintivo</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M28 46c-12 0-18-8-18-16 0-6 4-10 9-10 3 0 6 2 9 5"/>
+              <path d="M28 46c12 0 18-8 18-16 0-6-4-10-9-10-3 0-6 2-9 5"/>
+              <ellipse cx="28" cy="20" rx="5" ry="7" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── 05 — Plato + cubiertos (sello geométrico) ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <!-- Outer ring (plate edge) -->
+            <circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="2" fill="none" opacity="0.4"/>
+            <!-- Inner ring -->
+            <circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <!-- Fork (4 tines) -->
+            <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M22 18v8"/>
+              <path d="M19 18v8"/>
+              <path d="M25 18v8"/>
+              <path d="M22 26v12"/>
+            </g>
+            <!-- Knife -->
+            <path d="M34 18l3 4-3 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M34 30v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="4" fill="none"/>
+            <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <path d="M21 19v18"/>
+              <path d="M35 19v18"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">05</span><span class="name">Sello plato</span></div>
+        <p class="rationale">Plato visto de frente con tenedor + cuchillo. Más cerca de un sello de "restaurante" que de app — funciona como marca de oficio.</p>
+        <div class="keywords"><span class="kw">clásico</span><span class="kw">sello</span><span class="kw">oficio</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="4" fill="none"/>
+              <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                <path d="M21 19v18"/>
+                <path d="M35 19v18"/>
+              </g>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── 06 — Casa+cuchara (techo de cuchara) ───────────── -->
+    <div class="card">
+      <div class="card-icons">
+        <div class="icon-big">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- House body -->
+            <path d="M10 28v18a2 2 0 0 0 2 2h32a2 2 0 0 0 2-2V28"/>
+            <!-- Roof formed by spoon bowl on top -->
+            <ellipse cx="28" cy="22" rx="20" ry="8" fill="currentColor" stroke="none"/>
+            <!-- Spoon handle going up -->
+            <path d="M28 14V6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <!-- Door -->
+            <path d="M24 48v-10a4 4 0 0 1 8 0v10"/>
+          </svg>
+        </div>
+        <div class="icon-fav">
+          <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 28v18a2 2 0 0 0 2 2h32a2 2 0 0 0 2-2V28"/>
+            <ellipse cx="28" cy="22" rx="20" ry="8" fill="currentColor" stroke="none"/>
+            <path d="M28 14V6" stroke="currentColor" stroke-width="4"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="num">06</span><span class="name">Casa-cuchara</span></div>
+        <p class="rationale">La casa con el techo formado por una cuchara invertida. Sintetiza "comida" + "familia" en una sola silueta. Memorable, raro, propio.</p>
+        <div class="keywords"><span class="kw">conceptual</span><span class="kw">memorable</span><span class="kw">propio</span></div>
+        <div class="lockup">
+          <div class="lockup-mark">
+            <svg width="22" height="22" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 28v18a2 2 0 0 0 2 2h32a2 2 0 0 0 2-2V28"/>
+              <ellipse cx="28" cy="22" rx="20" ry="8" fill="currentColor" stroke="none"/>
+              <path d="M28 14V6" stroke="currentColor" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="lockup-text"><span class="wm">Comida Familiar</span><span class="tag">Familia Cofano</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <strong>Cómo elegir:</strong> 01-04 leen más limpio a 16×16; 05-06 piden más espacio. 03 (mesa) y 06 (casa-cuchara) son las opciones más "marca propia"; 01 (cf) es la más adulta. Decime el número y aplico — actualizo <code>favicon.svg</code>, <code>app-mark.svg</code>, los 8 PNG de PWA, los splash screens y el icono del Header en el UI Kit.
+  </div>
+</body>
+</html>

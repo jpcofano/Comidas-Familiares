@@ -1,13 +1,24 @@
 import { useState, useEffect, useRef } from "react";
-import { LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
+import { LogOut, Moon, Sun } from "lucide-react";
 import { PlatoMark } from "../brand/PlatoMark";
 import { useAuth } from "../auth/useAuth";
+import { MemberAvatar } from "../components/MemberAvatar";
+import { getInitialTheme, applyTheme, type Theme } from "../lib/theme";
+import type { MiembroId } from "../types/models";
 import "./Header.css";
 
 export function Header() {
   const { state, signOut } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const headerRef = useRef<HTMLElement>(null);
+
+  function toggleTheme() {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    setTheme(next);
+  }
 
   // Click outside cierra el menú.
   useEffect(() => {
@@ -25,42 +36,52 @@ export function Header() {
 
   if (state.status !== "authenticated") return null;
 
-  const { nombre } = state.user;
-  const inicial = nombre.charAt(0).toUpperCase();
+  const { nombre, memberId } = state.user;
 
   return (
     <header className="app-header" ref={headerRef}>
       <div className="header-inner">
         <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
           <span aria-hidden style={{
-            width: 28, height: 28, borderRadius: "50%",
+            width: 38, height: 38, borderRadius: "50%",
             background: "var(--primary-soft)", color: "var(--primary)",
             display: "inline-flex", alignItems: "center", justifyContent: "center",
             flexShrink: 0,
           }}>
-            <PlatoMark size={16} variant="simple" strokeWidth={1.6} />
+            <PlatoMark size={23} variant="simple" strokeWidth={1.6} />
           </span>
           <h1 className="header-title">Comida Familiar</h1>
         </div>
         <button
-          className="avatar-button"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Menú de usuario"
-          aria-expanded={menuOpen}
+          onClick={toggleTheme}
+          aria-label={theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
+          style={{
+            width: 32, height: 32, borderRadius: "50%",
+            border: "none", background: "transparent",
+            color: "var(--muted-strong)",
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer", flexShrink: 0,
+          }}
         >
-          <span className="avatar" aria-hidden="true">{inicial}</span>
-          <span className="username">{nombre}</span>
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
+        <Link
+          to="/perfil"
+          className="avatar-button"
+          aria-label="Ver mi perfil"
+          style={{ textDecoration: "none" }}
+          onClick={() => setMenuOpen(false)}
+        >
+          <MemberAvatar name={nombre} memberId={memberId as MiembroId} size={28} />
+          <span className="username">{nombre}</span>
+        </Link>
       </div>
       {menuOpen && (
         <div className="user-menu" role="menu">
           <button
             type="button"
             className="user-menu-item"
-            onClick={() => {
-              setMenuOpen(false);
-              signOut();
-            }}
+            onClick={() => { setMenuOpen(false); void signOut(); }}
           >
             <LogOut size={16} aria-hidden />
             <span>Cerrar sesión</span>

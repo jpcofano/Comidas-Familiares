@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Voice & copy</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-sans); color: var(--text); }
+  .head { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+  .group { margin-bottom: 14px; }
+  .line { font-size: 14px; color: var(--text-strong); }
+  .line + .line { margin-top: 4px; }
+  .pill {
+    display: inline-block; padding: 1px 9px; border-radius: 9999px;
+    font-size: 12px; background: var(--surface-alt); color: var(--muted-strong);
+    margin-right: 6px;
+  }
+</style></head>
+<body>
+  <div class="group">
+    <div class="head">Verbs (sentence case · imperative)</div>
+    <span class="pill">Cocinar</span>
+    <span class="pill">Marcar Cocinada</span>
+    <span class="pill">Sumar extra</span>
+    <span class="pill">Ver receta</span>
+    <span class="pill">Descartar</span>
+    <span class="pill">Editar</span>
+    <span class="pill">Guardar</span>
+  </div>
+  <div class="group">
+    <div class="head">Honest empty states</div>
+    <p class="line">"Todavía no hay comidas elegidas para esta semana."</p>
+    <p class="line">"Ninguna receta coincide con los filtros."</p>
+  </div>
+  <div class="group">
+    <div class="head">Conversational confirmations</div>
+    <p class="line">"¿Descartar la Especial? También se van a descartar sus extras."</p>
+    <p class="line">"Tiene que cocinarlo al menos una persona."</p>
+  </div>
+</body></html>

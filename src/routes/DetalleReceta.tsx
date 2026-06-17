@@ -1,13 +1,30 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ChevronLeft, Pencil, X } from "lucide-react";
+import { SkeletonHeader } from "../components/skeletons/SkeletonHeader";
+import { SkeletonRow } from "../components/skeletons/SkeletonRow";
 import { useAuth } from "../auth/useAuth";
-import { getReceta } from "../data/recetas";
+import { getReceta, actualizarReceta } from "../data/recetas";
 import { subscribeToPlanesActivos } from "../data/planes";
 import { elegirComoEspecial, sumarComoExtra, sumarComoEnProceso } from "../data/planes";
 import { evaluarEspecial, evaluarExtra, evaluarEnProceso } from "../lib/elegibilidad";
 import { getSemanaActual, getSemanaFin } from "../lib/fechas";
-import { pluralizarUnidad } from "../lib/unidades";
+import { MetaCards } from "../components/receta/MetaCards";
+import { RecetaPill } from "../components/receta/RecetaPill";
+import { MacrosCard } from "../components/receta/MacrosCard";
+import { getCatalogo } from "../data/ingredientes";
+import type { Ingrediente } from "../types/models";
+import { subscribeVisibilidad, toggleVisibilidadReceta } from "../data/visibilidad";
+import type { VisibilidadBiblioteca } from "../types/models";
+import { IngredientesPorGondola } from "../components/receta/IngredientesPorGondola";
+import { PasosPreview } from "../components/receta/PasosPreview";
+import { AccionesPlan } from "../components/receta/AccionesPlan";
+import { CocinarSticky } from "../components/receta/CocinarSticky";
+import {
+  COCINAS, ESCENARIOS, DIFICULTADES, COSTOS,
+  APTO_NOCHE_DE_A_DOS, CLIMAS_PLATO, PENSADA_PARA,
+  GRUPOS_PROTEINA, GRUPOS_PROTEINA_ORDEN,
+} from "../types/models";
 import type { Receta, Plan } from "../types/models";
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
@@ -37,9 +54,7 @@ function Toast({ msg, onDone }: { msg: ToastMsg; onDone: () => void }) {
 // ─── Confirmación ─────────────────────────────────────────────────────────────
 
 function ConfirmDialog({
-  mensaje,
-  onConfirmar,
-  onCancelar,
+  mensaje, onConfirmar, onCancelar,
 }: {
   mensaje: string;
   onConfirmar: () => void;
@@ -62,51 +77,172 @@ function ConfirmDialog({
   );
 }
 
-// ─── Chip de dato ──────────────────────────────────────────────────────────────
+// ─── SectionTitle ─────────────────────────────────────────────────────────────
 
-function Chip({ label }: { label: string }) {
+function SectionTitle({ children }: { children: string }) {
   return (
-    <span style={{
-      fontSize: "var(--fs-xs)", padding: "2px 9px",
-      borderRadius: "var(--radius-full)", background: "var(--surface-alt)",
-      color: "var(--muted-strong)", whiteSpace: "nowrap",
+    <h2 style={{
+      fontSize: "var(--fs-base)",
+      fontWeight: "var(--fw-semibold)" as unknown as number,
+      color: "var(--text-strong)",
+      margin: "0 0 var(--space-3)",
     }}>
-      {label}
-    </span>
+      {children}
+    </h2>
   );
 }
 
-// ─── Botón de acción ──────────────────────────────────────────────────────────
+// ─── Bottom-sheet de clasificación ───────────────────────────────────────────
 
-function ActionBtn({
-  label,
-  disabled,
-  razon,
-  loading,
-  onClick,
-}: {
-  label: string;
-  disabled: boolean;
-  razon?: string;
-  loading: boolean;
-  onClick: () => void;
-}) {
+interface ClasificacionSheetProps {
+  receta: Receta;
+  onClose: () => void;
+  onSaved: (patch: Partial<Receta>) => void;
+}
+
+function ClasificacionSheet({ receta, onClose, onSaved }: ClasificacionSheetProps) {
+  const [cocina,           setCocina]           = useState<string>(receta.cocina ?? "");
+  const [proteinaPrincipal,setProteinaPrincipal] = useState<string>(receta.proteinaPrincipal ?? "");
+  const [escenarioUso,     setEscenarioUso]     = useState<string>(receta.escenarioUso ?? "");
+  const [dificultad,       setDificultad]       = useState<string>(receta.dificultad ?? "");
+  const [costoEstimado,    setCostoEstimado]    = useState<string>(receta.costoEstimado ?? "");
+  const [aptoNoche,        setAptoNoche]        = useState<string>(receta.aptoNocheDeADos ?? "No");
+  const [estilo,           setEstilo]           = useState<string>(receta.estilo ?? "");
+  const [sinLacteos,       setSinLacteos]       = useState<boolean>(receta.sinLacteos ?? false);
+  const [hidratos,         setHidratos]         = useState<boolean>(receta.hidratos ?? false);
+  const [climaDelPlato,    setClimaDelPlato]    = useState<string>(receta.climaDelPlato ?? "");
+  const [pensadaPara,      setPensadaPara]      = useState<string>(receta.pensadaPara ?? "");
+  const [tecnica,          setTecnica]          = useState<string>(receta.tecnicaPrincipal ?? "");
+  const [guardando,        setGuardando]        = useState(false);
+  const [error,            setError]            = useState<string | null>(null);
+
+  const fieldStyle: React.CSSProperties = {
+    width: "100%", padding: "7px 10px", fontSize: "var(--fs-sm)",
+    borderRadius: "var(--radius-sm)", border: "1px solid var(--border)",
+    background: "var(--surface-strong)", color: "var(--text)", fontFamily: "inherit",
+  };
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: "var(--fs-xs)", color: "var(--muted)", marginBottom: "var(--space-1)",
+  };
+
+  async function handleGuardar() {
+    setGuardando(true);
+    setError(null);
+    // Solo incluir strings no-vacíos; booleanos siempre
+    const patch: Partial<Receta> = { sinLacteos, hidratos, aptoNocheDeADos: aptoNoche as Receta["aptoNocheDeADos"] };
+    if (cocina)            patch.cocina            = cocina as Receta["cocina"];
+    if (proteinaPrincipal) patch.proteinaPrincipal = proteinaPrincipal as Receta["proteinaPrincipal"];
+    if (escenarioUso)      patch.escenarioUso      = escenarioUso as Receta["escenarioUso"];
+    if (dificultad)        patch.dificultad        = dificultad as Receta["dificultad"];
+    if (costoEstimado)     patch.costoEstimado     = costoEstimado as Receta["costoEstimado"];
+    if (estilo.trim())     patch.estilo            = estilo.trim();
+    if (climaDelPlato)     patch.climaDelPlato     = climaDelPlato as Receta["climaDelPlato"];
+    if (pensadaPara)       patch.pensadaPara       = pensadaPara as Receta["pensadaPara"];
+    if (tecnica.trim())    patch.tecnicaPrincipal  = tecnica.trim();
+
+    const r = await actualizarReceta(receta.idReceta, patch);
+    if (r.ok) {
+      onSaved(patch);
+    } else {
+      setGuardando(false);
+      setError(r.error.message);
+    }
+  }
+
+  function SelectField({ label, value, onChange, options, placeholder }: {
+    label: string; value: string; onChange: (v: string) => void;
+    options: readonly string[]; placeholder: string;
+  }) {
+    return (
+      <div style={{ marginBottom: "var(--space-3)" }}>
+        <label style={labelStyle}>{label}</label>
+        <select value={value} onChange={e => onChange(e.target.value)} style={fieldStyle}>
+          <option value="">{placeholder}</option>
+          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        </select>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ marginBottom: "var(--space-2)" }}>
-      <button
-        className={`btn ${disabled ? "btn-secondary" : "btn-primary"}`}
-        disabled={disabled || loading}
-        onClick={onClick}
-        style={{ width: "100%", opacity: disabled ? 0.6 : 1 }}
-      >
-        {loading ? "…" : label}
-      </button>
-      {disabled && razon && (
-        <p className="meta" style={{ marginTop: "var(--space-1)", fontSize: "var(--fs-xs)" }}>
-          {razon}
-        </p>
-      )}
-    </div>
+    <>
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 100 }} />
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 101,
+        maxHeight: "90dvh", overflowY: "auto",
+        background: "var(--surface)", borderRadius: "16px 16px 0 0",
+        padding: "20px 20px calc(20px + env(safe-area-inset-bottom))",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--space-4)" }}>
+          <h3 style={{ margin: 0 }}>Editar clasificación</h3>
+          <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", display: "flex", padding: 4 }}>
+            <X size={20} />
+          </button>
+        </div>
+
+        <SelectField label="Cocina de origen" value={cocina} onChange={setCocina}
+          options={COCINAS} placeholder="— Sin clasificar —" />
+        {/* Proteína — select jerárquico con optgroup */}
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Proteína principal</label>
+          <select value={proteinaPrincipal} onChange={e => setProteinaPrincipal(e.target.value)} style={fieldStyle}>
+            <option value="">— Seleccionar —</option>
+            {GRUPOS_PROTEINA_ORDEN.map(grupo => (
+              <optgroup key={grupo} label={grupo}>
+                {GRUPOS_PROTEINA[grupo].map(p => <option key={p} value={p}>{p}</option>)}
+              </optgroup>
+            ))}
+          </select>
+        </div>
+        <SelectField label="Escenario de uso" value={escenarioUso} onChange={setEscenarioUso}
+          options={ESCENARIOS} placeholder="— Seleccionar —" />
+        <SelectField label="Dificultad" value={dificultad} onChange={setDificultad}
+          options={DIFICULTADES} placeholder="— Seleccionar —" />
+        <SelectField label="Costo estimado" value={costoEstimado} onChange={setCostoEstimado}
+          options={COSTOS} placeholder="— Seleccionar —" />
+        <SelectField label="Apto noche de a dos" value={aptoNoche} onChange={setAptoNoche}
+          options={APTO_NOCHE_DE_A_DOS} placeholder="— Seleccionar —" />
+        <SelectField label="Clima del plato" value={climaDelPlato} onChange={setClimaDelPlato}
+          options={CLIMAS_PLATO} placeholder="— Seleccionar —" />
+        <SelectField label="Pensada para" value={pensadaPara} onChange={setPensadaPara}
+          options={PENSADA_PARA} placeholder="— Seleccionar —" />
+
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Estilo (texto libre)</label>
+          <input type="text" value={estilo} onChange={e => setEstilo(e.target.value)} style={fieldStyle} />
+        </div>
+        <div style={{ marginBottom: "var(--space-3)" }}>
+          <label style={labelStyle}>Técnica principal (texto libre)</label>
+          <input type="text" value={tecnica} onChange={e => setTecnica(e.target.value)} style={fieldStyle} />
+        </div>
+
+        <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-4)" }}>
+          {([
+            { label: "Sin lácteos", value: sinLacteos, set: setSinLacteos },
+            { label: "Con hidratos", value: hidratos,   set: setHidratos },
+          ] as const).map(({ label, value, set }) => (
+            <button
+              key={label}
+              onClick={() => set(!value)}
+              style={{
+                padding: "5px 12px", fontSize: "var(--fs-xs)", borderRadius: "var(--radius-full)",
+                border: "1px solid var(--border)", cursor: "pointer", fontFamily: "inherit",
+                background: value ? "var(--primary)" : "var(--surface-strong)",
+                color: value ? "var(--on-primary)" : "var(--text)",
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {error && <p style={{ color: "var(--err-text)", fontSize: "var(--fs-xs)", marginBottom: "var(--space-2)" }}>{error}</p>}
+
+        <button className="btn btn-primary" onClick={handleGuardar} disabled={guardando} style={{ width: "100%" }}>
+          {guardando ? "Guardando…" : "Guardar clasificación"}
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -116,7 +252,8 @@ export function DetalleRecetaRoute() {
   const { id: idReceta } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { state } = useAuth();
-  const isJP = state.status === "authenticated" && state.user.memberId === "juanpablo";
+  const memberId = state.status === "authenticated" ? state.user.memberId : null;
+  const isJP = memberId === "juanpablo";
 
   const [receta, setReceta] = useState<Receta | null>(null);
   const [loadingReceta, setLoadingReceta] = useState(true);
@@ -129,8 +266,11 @@ export function DetalleRecetaRoute() {
   const [toast, setToast] = useState<ToastMsg | null>(null);
   const [confirm, setConfirm] = useState<{ mensaje: string; accion: () => void } | null>(null);
   const [loadingAccion, setLoadingAccion] = useState<"especial" | "extra" | "enproceso" | null>(null);
+  const [visibilidad, setVisibilidad] = useState<VisibilidadBiblioteca>({ maria: [], sofia: [], federico: [] });
+  const [catalogo, setCatalogo] = useState<Map<string, Ingrediente>>(new Map());
+  const [sheetOpen, setSheetOpen] = useState(false);
 
-  // Carga la receta (1 query)
+  // Carga la receta
   useEffect(() => {
     if (!idReceta) return;
     getReceta(idReceta)
@@ -142,12 +282,20 @@ export function DetalleRecetaRoute() {
       .finally(() => setLoadingReceta(false));
   }, [idReceta]);
 
-  // Suscripción a planes activos de la semana (realtime)
+  // Catálogo para macros (cacheado — sin costo extra)
+  useEffect(() => { getCatalogo().then(setCatalogo).catch(() => {}); }, []);
+
+  // Suscripción a planes activos (todos — JP para acciones, miembros para gate de cocinar)
   useEffect(() => {
-    if (!isJP) return;
     const unsub = subscribeToPlanesActivos(semanaInicio, setPlanesActivos);
     return unsub;
-  }, [isJP, semanaInicio]);
+  }, [semanaInicio]);
+
+  // Suscripción a visibilidad (solo JP)
+  useEffect(() => {
+    if (!isJP) return;
+    return subscribeVisibilidad(setVisibilidad);
+  }, [isJP]);
 
   const showToast = useCallback((text: string, ok: boolean) => {
     setToast({ text, ok });
@@ -159,7 +307,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon, especialExistente } = evaluarEspecial(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede elegir como Especial.", false); return; }
-
     if (especialExistente) {
       setConfirm({
         mensaje: `Ya hay una Especial esta semana: "${especialExistente.nombreSeleccion}". ¿Reemplazarla? Se descartarán también sus extras.`,
@@ -184,7 +331,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon } = evaluarExtra(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede agregar como extra.", false); return; }
-
     setLoadingAccion("extra");
     const especial = planesActivos.find(p => p.tipoPlan === "Especial")!;
     const result = await sumarComoExtra(receta, especial, semanaInicio, semanaFin);
@@ -197,7 +343,6 @@ export function DetalleRecetaRoute() {
     if (!receta) return;
     const { puede, razon } = evaluarEnProceso(receta, planesActivos);
     if (!puede) { showToast(razon ?? "No se puede agregar como En proceso.", false); return; }
-
     setLoadingAccion("enproceso");
     const result = await sumarComoEnProceso(receta, semanaInicio, semanaFin);
     setLoadingAccion(null);
@@ -210,7 +355,11 @@ export function DetalleRecetaRoute() {
   if (loadingReceta) {
     return (
       <div className="card">
-        <p className="meta">Cargando receta…</p>
+        <SkeletonHeader />
+        <div style={{ marginTop: "var(--space-4)" }}>
+          <SkeletonRow />
+          <SkeletonRow />
+        </div>
       </div>
     );
   }
@@ -231,9 +380,14 @@ export function DetalleRecetaRoute() {
   const elegEnProceso = evaluarEnProceso(receta, planesActivos);
 
   return (
-    <>
-      {/* Cabecera con volver */}
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
+    <div>
+      {/* 1. Header con volver + chip tipo */}
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "var(--space-2)",
+        marginBottom: "var(--space-3)",
+      }}>
         <button
           className="btn btn-ghost"
           onClick={() => navigate(-1)}
@@ -245,207 +399,194 @@ export function DetalleRecetaRoute() {
         <span className="meta">{receta.tipoItem}</span>
       </div>
 
-      {/* Ficha principal */}
-      <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-        <h1 style={{
-          fontSize: "var(--fs-lg)", fontWeight: "var(--fw-semibold)",
-          color: "var(--text-strong)", marginBottom: "var(--space-3)",
-          lineHeight: 1.3,
-        }}>
-          {receta.nombre}
-        </h1>
-
-        {/* Chips de datos clave */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
-          <Chip label={receta.proteinaPrincipal} />
-          <Chip label={receta.dificultad} />
-          <Chip label={receta.costoEstimado} />
-          {receta.tiempoActivoLabel && <Chip label={`Activo: ${receta.tiempoActivoLabel}`} />}
-          {receta.tiempoTotalLabel && <Chip label={`Total: ${receta.tiempoTotalLabel}`} />}
-          {receta.porcionesLabel && <Chip label={`${receta.porcionesLabel} porciones`} />}
-          <Chip label={receta.escenarioUso} />
-          {receta.estilo && <Chip label={receta.estilo} />}
-          {receta.tecnicaPrincipal && <Chip label={receta.tecnicaPrincipal} />}
+      {/* 2. Título + porQueEspecial */}
+      <div style={{ marginBottom: "var(--space-4)" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)" }}>
+          <h1 style={{
+            flex: 1,
+            fontSize: 24,
+            fontWeight: 700,
+            color: "var(--text-strong)",
+            lineHeight: 1.2,
+            letterSpacing: "-0.02em",
+            margin: "0 0 var(--space-2)",
+          }}>
+            {receta.nombre}
+          </h1>
+          {isJP && (
+            <button
+              onClick={() => setSheetOpen(true)}
+              aria-label="Editar clasificación"
+              style={{
+                flexShrink: 0, marginTop: 4,
+                background: "none", border: "none", cursor: "pointer",
+                color: "var(--muted)", padding: 4, display: "flex",
+              }}
+            >
+              <Pencil size={16} />
+            </button>
+          )}
         </div>
-
-        {/* Flags dietéticos */}
-        {(receta.sinLacteos || !receta.hidratos || receta.aptoNocheDeADos === "Sí") && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginBottom: "var(--space-3)" }}>
-            {receta.sinLacteos && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--ok-bg)", color: "var(--ok-text)" }}>
-                Sin lácteos
-              </span>
-            )}
-            {!receta.hidratos && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--info-bg)", color: "var(--info-text)" }}>
-                Sin hidratos
-              </span>
-            )}
-            {receta.aptoNocheDeADos === "Sí" && (
-              <span style={{ fontSize: "var(--fs-xs)", padding: "2px 9px", borderRadius: "var(--radius-full)", background: "var(--surface-alt)", color: "var(--muted-strong)" }}>
-                Noche de a dos ✓
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Notas especiales */}
         {receta.porQueEspecial && (
-          <p style={{ fontSize: "var(--fs-sm)", color: "var(--muted-strong)", fontStyle: "italic", marginBottom: "var(--space-2)" }}>
+          <p style={{
+            fontSize: "var(--fs-sm)",
+            color: "var(--muted-strong)",
+            fontStyle: "italic",
+            margin: 0,
+          }}>
             {receta.porQueEspecial}
           </p>
         )}
-        {receta.notas && (
-          <p className="meta" style={{ marginBottom: 0 }}>{receta.notas}</p>
-        )}
       </div>
 
-      {/* Ingredientes */}
+      {/* 3. MetaCards */}
+      <MetaCards
+        tiempoTotalLabel={receta.tiempoTotalLabel}
+        tiempoActivoLabel={receta.tiempoActivoLabel}
+        porcionesLabel={receta.porcionesLabel}
+        dificultad={receta.dificultad}
+      />
+
+      {/* 4. Acciones JP — plegadas, arriba de las pills */}
+      {isJP && (
+        <AccionesPlan
+          elegEspecial={elegEspecial}
+          elegExtra={elegExtra}
+          elegEnProceso={elegEnProceso}
+          loadingAccion={loadingAccion}
+          onEspecial={() => void handleEspecial()}
+          onExtra={() => void handleExtra()}
+          onEnProceso={() => void handleEnProceso()}
+        />
+      )}
+
+      {/* 5. Pills */}
+      <div style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "var(--space-2)",
+        marginBottom: "var(--space-5)",
+      }}>
+        {receta.proteinaPrincipal && (
+          <RecetaPill label={receta.proteinaPrincipal} variant="accent" />
+        )}
+        {receta.escenarioUso && <RecetaPill label={receta.escenarioUso} />}
+        {receta.estilo && <RecetaPill label={receta.estilo} />}
+        {receta.tecnicaPrincipal && <RecetaPill label={receta.tecnicaPrincipal} />}
+        {receta.costoEstimado && <RecetaPill label={`Costo ${receta.costoEstimado}`} />}
+        {receta.sinLacteos && <RecetaPill label="Sin lácteos" variant="ok" />}
+        {!receta.hidratos && <RecetaPill label="Sin hidratos" variant="info" />}
+        {receta.aptoNocheDeADos === "Sí" && <RecetaPill label="Noche de a dos ✓" variant="info" />}
+        {receta.cocina
+          ? <RecetaPill label={receta.cocina} />
+          : isJP && (
+            <button
+              onClick={() => setSheetOpen(true)}
+              style={{
+                display: "inline-flex", alignItems: "center",
+                padding: "3px 10px", borderRadius: "var(--radius-full)",
+                fontSize: "var(--fs-xs)", fontWeight: 600, cursor: "pointer",
+                background: "var(--warn-bg)", color: "var(--warn-text)",
+                border: "1px dashed var(--warn-line)", fontFamily: "inherit",
+              }}
+            >
+              Sin clasificar · completar
+            </button>
+          )
+        }
+      </div>
+
+      {/* 6. Macros por porción */}
+      {catalogo.size > 0 && (
+        <MacrosCard receta={receta} catalogoById={catalogo} />
+      )}
+
+      {/* 7. Ingredientes */}
       {receta.ingredientes.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", marginBottom: "var(--space-3)" }}>
-            Ingredientes
-          </h2>
-          {(() => {
-            const secciones = new Map<string, typeof receta.ingredientes>();
-            for (const ing of receta.ingredientes) {
-              const sec = ing.seccion ?? "";
-              if (!secciones.has(sec)) secciones.set(sec, []);
-              secciones.get(sec)!.push(ing);
-            }
-            return Array.from(secciones.entries()).map(([sec, ings]) => (
-              <div key={sec} style={{ marginBottom: sec ? "var(--space-3)" : 0 }}>
-                {sec && (
-                  <p style={{ fontSize: "var(--fs-xs)", fontWeight: "var(--fw-medium)", textTransform: "uppercase", letterSpacing: ".05em", color: "var(--muted)", marginBottom: "var(--space-2)" }}>
-                    {sec}
-                  </p>
-                )}
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {ings.map((ing, idx) => (
-                    <li key={idx} style={{
-                      display: "flex", justifyContent: "space-between",
-                      padding: "5px 0", borderBottom: "1px solid var(--line)",
-                      fontSize: "var(--fs-sm)", color: ing.opcional ? "var(--muted)" : "var(--text)",
-                    }}>
-                      <span>{ing.textoOriginal}{ing.opcional ? " (opcional)" : ""}</span>
-                      <span style={{ color: "var(--muted-strong)", flexShrink: 0, marginLeft: "var(--space-3)" }}>
-                        {ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad) : "")}{" "}
-                        {pluralizarUnidad(ing.unidad ?? "", ing.cantidadMax ?? ing.cantidadMin ?? 1)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ));
-          })()}
+          <SectionTitle>Ingredientes</SectionTitle>
+          <IngredientesPorGondola ingredientes={receta.ingredientes} />
         </div>
       )}
 
-      {/* Pasos */}
+      {/* 7. Preparación */}
       {receta.pasos.length > 0 && (
         <div className="card" style={{ marginBottom: "var(--space-3)" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-3)" }}>
-            <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: 0 }}>
-              Preparación
-            </h2>
-            {isJP && (
-              <Link
-                to={`/recetas/${idReceta}/cocinar`}
-                className="btn btn-primary"
-                style={{ fontSize: "var(--fs-xs)", textDecoration: "none" }}
-              >
-                Cocinar
-              </Link>
-            )}
-          </div>
-
-          {/* Banner riesgos a nivel receta */}
-          {receta.riesgos && (
-            <div style={{
-              marginBottom: "var(--space-3)", padding: "var(--space-3)",
-              background: "var(--warn-bg)", borderRadius: "var(--radius-sm)",
-            }}>
-              <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-                ⚠ {receta.riesgos}
-              </p>
-            </div>
-          )}
-
-          <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {[...receta.pasos].sort((a, b) => a.nroPaso - b.nroPaso).map((paso) => (
-              <li key={paso.nroPaso} style={{ marginBottom: "var(--space-4)" }}>
-                <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "flex-start" }}>
-                  <span style={{
-                    flexShrink: 0, width: 24, height: 24, borderRadius: "50%",
-                    background: "var(--primary)", color: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "var(--fs-xs)", fontWeight: "var(--fw-semibold)",
-                  }}>
-                    {paso.nroPaso}
-                  </span>
-                  <div style={{ flex: 1 }}>
-                    {paso.titulo && (
-                      <p style={{ fontWeight: "var(--fw-medium)", color: "var(--text-strong)", marginBottom: "var(--space-1)", fontSize: "var(--fs-sm)" }}>
-                        {paso.titulo}
-                      </p>
-                    )}
-                    <p style={{ fontSize: "var(--fs-sm)", color: "var(--text)", lineHeight: 1.55, margin: 0 }}>
-                      {paso.detalle}
-                    </p>
-                    {paso.tiempoEstimadoLabel && (
-                      <p className="meta" style={{ marginTop: "var(--space-1)" }}>{paso.tiempoEstimadoLabel}</p>
-                    )}
-                    {paso.puntoClave && (
-                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--ok-bg)", borderRadius: "var(--radius-sm)" }}>
-                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--ok-text)" }}>
-                          ✓ Clave: {paso.puntoClave}
-                        </p>
-                      </div>
-                    )}
-                    {paso.errorComun && (
-                      <div style={{ marginTop: "var(--space-1)", padding: "6px 10px", background: "var(--warn-bg)", borderRadius: "var(--radius-sm)" }}>
-                        <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
-                          ⚠ Riesgo: {paso.errorComun}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <SectionTitle>Preparación</SectionTitle>
+          <PasosPreview pasos={receta.pasos} riesgos={receta.riesgos} />
         </div>
       )}
 
-      {/* Acciones JP — solo JP ve los botones */}
-      {isJP && (
-        <div className="card" style={{ marginBottom: "var(--space-5)" }}>
-          <h2 style={{ fontSize: "var(--fs-base)", fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", marginBottom: "var(--space-3)" }}>
-            Agregar al plan de la semana
-          </h2>
-
-          <ActionBtn
-            label="Elegir como Especial"
-            disabled={!elegEspecial.puede}
-            razon={elegEspecial.razon}
-            loading={loadingAccion === "especial"}
-            onClick={handleEspecial}
-          />
-          <ActionBtn
-            label="Sumar como Especial extra"
-            disabled={!elegExtra.puede}
-            razon={elegExtra.razon}
-            loading={loadingAccion === "extra"}
-            onClick={handleExtra}
-          />
-          <ActionBtn
-            label="Sumar como En proceso"
-            disabled={!elegEnProceso.puede}
-            razon={elegEnProceso.razon}
-            loading={loadingAccion === "enproceso"}
-            onClick={handleEnProceso}
-          />
+      {/* 8. Tip del cocinero */}
+      {receta.notas && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          <SectionTitle>Tip del cocinero</SectionTitle>
+          <p style={{
+            fontSize: "var(--fs-sm)",
+            color: "var(--muted-strong)",
+            fontStyle: "italic",
+            margin: 0,
+            lineHeight: 1.55,
+          }}>
+            {receta.notas}
+          </p>
         </div>
+      )}
+
+      {/* 9. Visibilidad en biblioteca (solo JP) */}
+      {isJP && receta && (
+        <div className="card" style={{ marginBottom: "var(--space-3)" }}>
+          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-3)", fontSize: "var(--fs-sm)" }}>
+            Visible en biblioteca de:
+          </p>
+          <div style={{ display: "flex", gap: "var(--space-4)" }}>
+            {([
+              { id: "maria",    nombre: "María" },
+              { id: "sofia",    nombre: "Sofía" },
+              { id: "federico", nombre: "Federico" },
+            ] as const).map(m => (
+              <label key={m.id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", cursor: "pointer", fontSize: "var(--fs-sm)" }}>
+                <input
+                  type="checkbox"
+                  checked={visibilidad[m.id].includes(receta.idReceta)}
+                  onChange={e => void toggleVisibilidadReceta(m.id, receta.idReceta, e.target.checked)}
+                  style={{ width: 16, height: 16, cursor: "pointer", accentColor: "var(--primary)" }}
+                />
+                {m.nombre}
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 10. Sticky bottom Cocinar — JP siempre; miembro solo con plan asignado cocinable */}
+      {isJP && (
+        <CocinarSticky onClick={() => navigate(`/recetas/${idReceta}/cocinar`)} />
+      )}
+      {!isJP && memberId && (() => {
+        const plan = planesActivos.find(p =>
+          p.tipoSeleccion === "receta" &&
+          p.idSeleccion === idReceta &&
+          (p.asignaciones as string[]).includes(memberId) &&
+          ["Compra pendiente", "Compra lista", "Cocinando"].includes(p.estado),
+        );
+        return plan ? (
+          <CocinarSticky onClick={() => navigate(`/planes/${plan.idPlan}/cocinar/${idReceta}`)} />
+        ) : null;
+      })()}
+
+      {/* Sheet de clasificación */}
+      {sheetOpen && receta && (
+        <ClasificacionSheet
+          key={receta.idReceta}
+          receta={receta}
+          onClose={() => setSheetOpen(false)}
+          onSaved={(patch) => {
+            setReceta((prev) => prev ? { ...prev, ...patch } : prev);
+            setSheetOpen(false);
+            showToast("Clasificación guardada.", true);
+          }}
+        />
       )}
 
       {/* Modal de confirmación */}
@@ -459,6 +600,6 @@ export function DetalleRecetaRoute() {
 
       {/* Toast */}
       {toast && <Toast msg={toast} onDone={() => setToast(null)} />}
-    </>
+    </div>
   );
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "canonico": "morron verde",
+    "nombrePreferido": "Morrón verde",
+    "sinonimos": [
+      "Pimiento verde",
+      "Ají verde"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

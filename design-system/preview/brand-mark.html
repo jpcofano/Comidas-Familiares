@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Brand · Comida Familiar</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); }
+  .row { display: flex; align-items: center; gap: 24px; }
+  .mark-wrap { width: 96px; height: 96px; border-radius: 50%; background: var(--primary-soft); display: grid; place-items: center; flex-shrink: 0; }
+  .mark-wrap svg { color: var(--primary); }
+  .logotype { font-family: var(--font-sans); font-size: 28px; font-weight: 700; color: var(--primary); letter-spacing: -0.01em; line-height: 1; }
+  .tag { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .swatches { display: flex; gap: 8px; margin-top: 14px; }
+  .sw { width: 28px; height: 28px; border-radius: 6px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="mark-wrap">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/>
+        <path d="M6 17h12"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logotype">Comida Familiar</div>
+      <div class="tag">Planificación semanal para la familia Cofano</div>
+      <div class="swatches">
+        <div class="sw" style="background: var(--primary)"></div>
+        <div class="sw" style="background: var(--accent)"></div>
+        <div class="sw" style="background: var(--surface-alt); border:1px solid var(--border)"></div>
+        <div class="sw" style="background: var(--surface-strong); border:1px solid var(--border)"></div>
+      </div>
+    </div>
+  </div>
+</body></html>

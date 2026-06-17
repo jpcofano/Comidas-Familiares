@@ -13,11 +13,22 @@
     "seed:planes": "tsx scripts/seed-planes-prueba.ts",
     "reseed": "tsx scripts/reseed-ingredientes.ts",
     "migrar:unidades": "tsx scripts/migrar-unidades.ts",
+    "e9:catalogo": "tsx scripts/update-catalogo-ingredientes.ts",
+    "e9:proteinas": "tsx scripts/migrate-proteinas-e9.ts",
+    "e9:importador": "tsx scripts/seed-config-importador.ts --force",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:rules": "firebase emulators:exec --only firestore \"vitest run --config vitest.rules.config.ts\"",
-    "test:all": "vitest run && npm run test:rules"
+    "test:all": "vitest run && npm run test:rules",
+    "seed:recetario-tanda1": "tsx scripts/seedRecetarioTanda1.ts",
+    "seed:gondolas": "tsx scripts/seedIngredientesGondolas.ts",
+    "seed:recetario-tanda2": "tsx scripts/seedRecetarioTanda2.ts",
+    "seed:jugos": "tsx scripts/seedJugosNaturales.ts",
+    "seed:recetario-tanda3": "tsx scripts/seedRecetarioTanda3.ts",
+    "audit:recetario": "tsx scripts/auditRecetario.ts",
+    "seed:recetario-tanda4": "tsx scripts/seedRecetarioTanda4.ts",
+    "seed:recetario-tanda5": "tsx scripts/seedRecetarioTanda5.ts"
   },
   "dependencies": {
     "firebase": "^12.13.0",

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 18px; justify-content: space-around; }
+  .item { text-align: center; }
+  .box { width: 60px; height: 60px; background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 8px; }
+  .pill { width: 90px; height: 28px; background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 8px; }
+  .tok { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .px { font-size: 12px; color: var(--text-strong); font-weight: 500; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:6px"></div><div class="px">6</div><div class="tok">sm</div></div>
+    <div class="item"><div class="box" style="border-radius:10px"></div><div class="px">10</div><div class="tok">md</div></div>
+    <div class="item"><div class="box" style="border-radius:14px"></div><div class="px">14</div><div class="tok">lg</div></div>
+    <div class="item"><div class="box" style="border-radius:20px"></div><div class="px">20</div><div class="tok">xl</div></div>
+    <div class="item"><div class="pill" style="border-radius:9999px;margin-top:16px"></div><div class="px">full</div><div class="tok">pill</div></div>
+  </div>
+</body></html>

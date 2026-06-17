@@ -1,0 +1,132 @@
+[
+  {
+    "canonico": "cafe",
+    "nombrePreferido": "Café",
+    "sinonimos": [
+      "Café fuerte",
+      "Espresso",
+      "Café instantáneo"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "gelatina sin sabor",
+    "nombrePreferido": "Gelatina sin sabor",
+    "sinonimos": [
+      "Gelatina neutra",
+      "Grenetina"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g",
+      "sobre"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "jerez seco",
+    "nombrePreferido": "Jerez seco",
+    "sinonimos": [
+      "Vino de Jerez",
+      "Fino",
+      "Jerez"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "lengua",
+    "nombrePreferido": "Lengua",
+    "sinonimos": [
+      "Lengua de vaca",
+      "Lengua de ternera"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "matambre",
+    "nombrePreferido": "Matambre",
+    "sinonimos": [
+      "Matambre de ternera"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "mollejas",
+    "nombrePreferido": "Mollejas",
+    "sinonimos": [
+      "Mollejas de ternera",
+      "Molleja"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  },
+  {
+    "canonico": "rinones",
+    "nombrePreferido": "Riñones",
+    "sinonimos": [
+      "Riñones de ternera",
+      "Riñón"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

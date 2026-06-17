@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es-AR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +18,30 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Comida Familiar" />
+
+    <!-- SEO + descripción -->
+    <meta name="description" content="Planificación semanal de comidas para la familia Cofano." />
+
+    <!-- Open Graph (WhatsApp, Telegram, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Comida Familiar" />
+    <meta property="og:title" content="Comida Familiar" />
+    <meta property="og:description" content="Planificación semanal de comidas para la familia." />
+    <meta property="og:url" content="https://comida-familiar.web.app/" />
+    <meta property="og:image" content="https://comida-familiar.web.app/og-image.png" />
+    <meta property="og:image:secure_url" content="https://comida-familiar.web.app/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Comida Familiar — planificación semanal de comidas" />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comida Familiar" />
+    <meta name="twitter:description" content="Planificación semanal de comidas para la familia." />
+    <meta name="twitter:image" content="https://comida-familiar.web.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Comida Familiar" />
 
     <!-- Splash screens de iOS (una por resolución física de iPhone) -->
     <!-- iPhone 8 / 7 / SE 2g 3g  — 375×667 @2x  → 750×1334 -->
@@ -50,9 +74,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Aplica el tema guardado antes de que React monte para evitar flash -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("cf-theme") === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

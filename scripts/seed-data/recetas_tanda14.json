@@ -1,0 +1,1522 @@
+[
+  {
+    "nombre": "Bondiola braseada estilo alemán",
+    "estilo": "Alemana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "2 h 30 min",
+    "tiempoTotalMin": 150,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bondiola braseada lenta con mostaza, comino y cebolla hasta deshacerse, el espíritu del codillo alemán sin la cerveza; rica con repollo colorado",
+    "riesgos": "poco líquido seca el brasero; horno alto endurece la carne",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bondiola de cerdo entera",
+        "textoOriginal": "Bondiola de cerdo entera",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos grandes"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Sellado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Sellado",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Líquidos",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Salar y dorar bien la bondiola por todos lados en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: un buen sellado da color y profundidad.",
+        "errorComun": "Apurar y dejarla gris.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base",
+        "detalle": "Rehogar cebolla y ajo; sumar comino y mostaza.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Brasear",
+        "detalle": "Volver la carne, agregar caldo, vinagre y laurel. Tapar y hornear a 160°C 2 h, girando a la mitad.",
+        "tiempoEstimadoLabel": "2 h",
+        "tiempoEstimadoMin": 120,
+        "puntoClave": "⚠️ Punto crítico: vigilar el líquido; si baja, sumar caldo caliente.",
+        "errorComun": "Dejar que se seque.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Deshacer en trozos grandes y servir con su jugo reducido.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Bratwurst con chucrut",
+    "estilo": "Alemana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "salchichas doradas sobre chucrut tibio con cebolla y comino; el plato alemán por excelencia, naturalmente low-carb",
+    "riesgos": "salchichas reventadas por fuego alto; chucrut sin escurrir queda muy ácido",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "salchicha",
+        "textoOriginal": "Salchicha",
+        "seccion": "Principal",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "tipo bratwurst"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Principal",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "chucrut",
+        "textoOriginal": "Chucrut",
+        "seccion": "Chucrut",
+        "cantidad": "500",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "escurrido"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Chucrut",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Chucrut",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "en grano"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Chucrut",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar salchichas",
+        "detalle": "Dorar las salchichas en el aceite a fuego medio, girando, 10 min. Reservar.",
+        "tiempoEstimadoLabel": "11 min",
+        "tiempoEstimadoMin": 11,
+        "puntoClave": "⚠️ Punto crítico: fuego medio para que no revienten.",
+        "errorComun": "Fuego alto que las abre.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Chucrut",
+        "detalle": "En la misma sartén rehogar la cebolla, sumar chucrut escurrido, comino y laurel; calentar 6 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Escurrir el chucrut para que no quede muy ácido.",
+        "errorComun": "Chucrut chorreando.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Apoyar las salchichas sobre el chucrut tibio.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Rouladen de carne",
+    "estilo": "Alemana",
+    "dificultad": "Media-alta",
+    "dificultadOrden": 3,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "35 min",
+    "tiempoActivoMin": 35,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "finos bifes rellenos con panceta, cebolla, pepino y mostaza, arrollados y braseados; el plato de domingo alemán, sin harina para espesar",
+    "riesgos": "relleno mal cerrado se sale; cocción corta deja la carne dura",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "bifecitos de cuadril",
+        "textoOriginal": "Bifecitos de cuadril",
+        "seccion": "Carne",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "finos, grandes"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Carne",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para untar"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "panceta",
+        "textoOriginal": "Panceta",
+        "seccion": "Relleno",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en bastones"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Relleno",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana"
+      },
+      {
+        "canon": "pepino en vinagre",
+        "textoOriginal": "Pepino en vinagre",
+        "seccion": "Relleno",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en bastones"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Cocción",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "hilo de cocina",
+        "textoOriginal": "Hilo de cocina",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para atar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Armar",
+        "detalle": "Untar cada bife con mostaza y sal; poner panceta, cebolla y pepino en un extremo, arrollar y atar.",
+        "tiempoEstimadoLabel": "15 min",
+        "tiempoEstimadoMin": 15,
+        "puntoClave": "⚠️ Punto crítico: arrollar firme y atar para que no se abra.",
+        "errorComun": "Relleno que se escapa.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Dorar los rollos en el aceite por todos lados. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Sellar da color al brasero.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Brasear",
+        "detalle": "Sumar zanahoria, caldo y laurel; tapar y cocinar a fuego mínimo 1 h 30, girando.",
+        "tiempoEstimadoLabel": "1 h 30 min",
+        "tiempoEstimadoMin": 90,
+        "puntoClave": "⚠️ Punto crítico: cocción larga para que la carne quede tierna.",
+        "errorComun": "Apurar y que quede dura.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsa",
+        "detalle": "Retirar el hilo; reducir el jugo de cocción y servir sobre los rollos.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El jugo reducido hace de salsa sin harina.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Sauerbraten low-carb",
+    "estilo": "Alemana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Braseado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "3 h",
+    "tiempoTotalMin": 180,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el asado agridulce alemán, marinado en vinagre y especias y braseado hasta tierno; espesado por reducción en vez de pan de jengibre",
+    "riesgos": "marinada corta no da el sabor; subir el horno reseca",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "roast beef",
+        "textoOriginal": "Roast beef",
+        "seccion": "Principal",
+        "cantidad": "1,4",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "pieza para brasear; o nalga"
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Marinada",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Marinada",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "zanahoria",
+        "textoOriginal": "Zanahoria",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "clavo de olor",
+        "textoOriginal": "Clavo de olor",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimienta negra",
+        "textoOriginal": "Pimienta negra",
+        "seccion": "Marinada",
+        "cantidad": "6",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en grano"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "equilibra el agrio"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Cocción",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Sumergir la carne en vinagre, agua, cebolla, zanahoria, laurel, clavo y pimienta; marinar mínimo 3 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: cuanto más marina, más típico el sabor agridulce.",
+        "errorComun": "Marinar poco.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Sellar",
+        "detalle": "Secar la carne, salar y dorarla en el aceite. Colar y reservar la marinada.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Secar bien para que dore.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Brasear",
+        "detalle": "Volver la carne con la marinada colada y el eritritol; tapar y hornear a 160°C 2 h 30.",
+        "tiempoEstimadoLabel": "2 h 30 min",
+        "tiempoEstimadoMin": 150,
+        "puntoClave": "Fuego bajo y tapado para que quede tierna.",
+        "errorComun": "Subir el horno y resecar.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Salsa",
+        "detalle": "Reducir el jugo hasta espesar, rectificar agrio-dulce y napar la carne fileteada.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "La reducción reemplaza el espesado con pan.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Jägerschnitzel low-carb",
+    "estilo": "Alemana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "Puré de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "milanesa de cerdo rebozada en almendra con una salsa cremosa de hongos, el schnitzel del cazador, sin harina",
+    "riesgos": "costra floja sin presionar; cortar la crema con fuego alto",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "churrasquitos de cerdo",
+        "textoOriginal": "Churrasquitos de cerdo",
+        "seccion": "Milanesa",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en milanesas finas"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Milanesa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "batidos"
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Milanesa",
+        "cantidad": "120",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "reemplaza el pan rallado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Milanesa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Milanesa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "para freír"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Salsa",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "fileteados"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Milanesas",
+        "detalle": "Salar las milanesas, pasar por huevo y almendra y freír 2 min por lado. Reservar.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "⚠️ Punto crítico: presionar la costra para que se adhiera.",
+        "errorComun": "Costra floja.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Hongos",
+        "detalle": "Dorar los champiñones sin amontonar; sumar la cebolla 3 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Hongos en una capa para que doren.",
+        "errorComun": "Amontonarlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Sumar caldo y crema, reducir 4 min. Servir las milanesas con la salsa por encima.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo con la crema para que no se corte.",
+        "errorComun": "Cortar la salsa.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Königsberger Klopse",
+    "estilo": "Alemana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "albóndigas tiernas en una salsa blanca cremosa con alcaparras, un clásico de Prusia Oriental; ligadas con almendra y la salsa espesada por reducción",
+    "riesgos": "hervir fuerte las albóndigas las endurece; cortar la crema",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Albóndigas",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "mezcla de vaca y cerdo"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Albóndigas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Albóndigas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "liga"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Albóndigas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Albóndigas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Caldo",
+        "cantidad": "700",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "alcaparras",
+        "textoOriginal": "Alcaparras",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "escurridas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Albóndigas",
+        "detalle": "Mezclar carne, huevo, almendra, cebolla y sal; formar bolitas.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Mezclar lo justo para que queden tiernas.",
+        "errorComun": "Compactarlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pochar",
+        "detalle": "Hervir el caldo con laurel y pochar las albóndigas a fuego suave 12 min. Retirar.",
+        "tiempoEstimadoLabel": "14 min",
+        "tiempoEstimadoMin": 14,
+        "puntoClave": "⚠️ Punto crítico: pochar suave, sin hervor fuerte, para que no se endurezcan.",
+        "errorComun": "Hervir a borbotones.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Salsa",
+        "detalle": "Reducir el caldo a la mitad, sumar crema, alcaparras, limón y mostaza; reducir 4 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo con la crema.",
+        "errorComun": "Cortarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Volver las albóndigas a la salsa y calentar 2 min.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Frikadellen",
+    "estilo": "Alemana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "los medallones de carne especiados alemanes, con cebolla y mostaza, dorados en sartén; ligados con almendra, sin pan",
+    "riesgos": "amasar de más endurece; darlos vuelta muchas veces los seca",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Base",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "mezcla de vaca y cerdo"
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "harina de almendra",
+        "textoOriginal": "Harina de almendra",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el pan remojado"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada muy fina"
+      },
+      {
+        "canon": "mostaza dijon",
+        "textoOriginal": "Mostaza dijon",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar todos los ingredientes sin amasar de más. Formar 8 medallones ovalados.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: mezclar lo justo para que queden tiernos.",
+        "errorComun": "Amasar de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "Dorar en aceite a fuego medio 4 min por lado, una sola vuelta.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Una sola vuelta para que queden jugosos.",
+        "errorComun": "Darlos vuelta muchas veces.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir tibios; ricos con gurkensalat o repollo colorado.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Gurkensalat",
+    "estilo": "Alemana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "ensalada de pepino bien fina con eneldo y vinagre, fresca y agridulce; el acompañamiento alemán clásico, sin azúcar",
+    "riesgos": "pepino sin escurrir aguada el aliño; cortar grueso pierde la gracia",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas muy finas"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "para sudar el pepino"
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Aliño",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eneldo",
+        "textoOriginal": "Eneldo",
+        "seccion": "Aliño",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Aliño",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aliño",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Aliño",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma fina"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sudar pepino",
+        "detalle": "Salar las rodajas de pepino y dejar 15 min; escurrir el agua que larguen.",
+        "tiempoEstimadoLabel": "16 min",
+        "tiempoEstimadoMin": 16,
+        "puntoClave": "⚠️ Punto crítico: escurrir el pepino para que el aliño no se aguade.",
+        "errorComun": "Pepino chorreando.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aliño",
+        "detalle": "Mezclar vinagre, eneldo, eritritol, aceite y cebolla morada.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Equilibrar agrio y dulce.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Mezclar",
+        "detalle": "Unir el pepino escurrido con el aliño y enfriar antes de servir.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Mejor frío y reposado.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Repollo colorado agridulce",
+    "estilo": "Alemana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el clásico Rotkohl, repollo colorado guisado con manzana y vinagre, dulzón y violeta; con eritritol en vez de azúcar, ideal con cerdo",
+    "riesgos": "poca cocción lo deja crudo y duro; sin ácido pierde el color",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "repollo colorado",
+        "textoOriginal": "Repollo colorado",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en juliana fina"
+      },
+      {
+        "canon": "manzana roja",
+        "textoOriginal": "Manzana roja",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallada; aporta dulzor natural"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Líquidos",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "mantiene el color violeta"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "clavo de olor",
+        "textoOriginal": "Clavo de olor",
+        "seccion": "Líquidos",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "laurel",
+        "textoOriginal": "Laurel",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Rehogar",
+        "detalle": "Rehogar la cebolla en el aceite; sumar repollo y manzana 5 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Guisar",
+        "detalle": "Agregar vinagre, eritritol, clavo, laurel y sal; tapar y cocinar a fuego bajo 35 min.",
+        "tiempoEstimadoLabel": "36 min",
+        "tiempoEstimadoMin": 36,
+        "puntoClave": "⚠️ Punto crítico: el vinagre fija el color violeta; sin ácido vira al azul.",
+        "errorComun": "Cocinarlo sin ácido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Destapar y evaporar el líquido restante. Rectificar agrio-dulce.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Debe quedar brillante y jugoso, no aguado.",
+        "errorComun": "Dejarlo crudo.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Currywurst low-carb",
+    "estilo": "Alemana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Sartén",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el street food berlinés de salchicha en salsa de tomate al curry, con eritritol en vez del kétchup azucarado; rápido y divertido",
+    "riesgos": "salsa cruda por poca cocción; salchichas reventadas a fuego alto",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "salchicha",
+        "textoOriginal": "Salchicha",
+        "seccion": "Principal",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "tipo bratwurst"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Principal",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "passata de tomate",
+        "textoOriginal": "Passata de tomate",
+        "seccion": "Salsa",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de manzana",
+        "textoOriginal": "Vinagre de manzana",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el azúcar"
+      },
+      {
+        "canon": "curry suave",
+        "textoOriginal": "Curry suave",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "curry suave",
+        "textoOriginal": "Curry suave",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "para espolvorear"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Salchichas",
+        "detalle": "Dorar las salchichas en el aceite a fuego medio; cortarlas en rodajas gruesas.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "⚠️ Punto crítico: fuego medio para que no revienten.",
+        "errorComun": "Fuego alto.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "En la misma sartén sumar passata, vinagre, eritritol, curry y pimentón; cocinar 6 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Cocinar la salsa para que no quede cruda.",
+        "errorComun": "Salsa ácida y cruda.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Volver las salchichas a la salsa y espolvorear más curry por encima.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El curry final es el sello de la currywurst.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es" data-screen-label="Comida Familiar — UI Kit">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comida Familiar · UI Kit</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <style>
+    html, body { margin: 0; padding: 0; background: #1f1a16; height: 100%; }
+    body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 24px 16px; box-sizing: border-box; min-height: 100vh; gap: 16px; }
+    .stage {
+      width: 390px; height: 720px;
+      background: var(--bg);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35), 0 0 0 8px #0e0a07, 0 0 0 9px #2a221d;
+      position: relative;
+      display: flex; flex-direction: column;
+    }
+    .stage-label {
+      color: #d8cdbe; font-family: var(--font-sans); font-size: 12px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    @keyframes cf-toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+    @keyframes cf-fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes cf-sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="stage-label">Comida Familiar · Mobile UI Kit</div>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" rx="20" fill="#b5532f"/>
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#fdf6ef" stroke-width="5"/>
+      <circle cx="50" cy="50" r="9" fill="#fdf6ef"/>
+    </svg>
+  </template>
+  <div class="stage" id="device-stage">
+    <div id="root" style="flex: 1; overflow: hidden;"></div>
+  </div>
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"           integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"   integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"           integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- Icons are inline-SVG via Icon.jsx; no external icon library required -->
+
+  <!-- Components: primitives -->
+  <script type="text/babel" src="Icon.jsx?v=9"></script>
+  <script type="text/babel" src="PlatoMark.jsx"></script>
+  <script type="text/babel" src="Button.jsx"></script>
+  <script type="text/babel" src="EstadoBadge.jsx"></script>
+  <script type="text/babel" src="MemberAvatar.jsx?v=2"></script>
+  <script type="text/babel" src="WeekStrip.jsx?v=3"></script>
+  <script type="text/babel" src="SelectorPuntaje.jsx"></script>
+
+  <!-- Components: chrome -->
+  <script type="text/babel" src="Header.jsx?v=5"></script>
+  <script type="text/babel" src="BottomNav.jsx?v=4"></script>
+
+  <!-- Screens: shared -->
+  <script type="text/babel" src="LoginScreen.jsx?v=3"></script>
+  <script type="text/babel" src="BibliotecaScreen.jsx?v=6"></script>
+  <script type="text/babel" src="VisibilidadScreen.jsx?v=1"></script>
+  <script type="text/babel" src="PerfilScreen.jsx?v=1"></script>
+  <script type="text/babel" src="ComprasScreen.jsx?v=5"></script>
+  <script type="text/babel" src="RecetaDetalleParts.jsx?v=7"></script>
+  <script type="text/babel" src="DetalleRecetaScreen.jsx?v=7"></script>
+  <script type="text/babel" src="DetalleMenuScreen.jsx?v=4"></script>
+  <script type="text/babel" src="CatalogoIngredientesScreen.jsx?v=10"></script>
+  <script type="text/babel" src="CocinarScreen.jsx?v=10"></script>
+  <script type="text/babel" src="CocinarConQueTengoScreen.jsx?v=2"></script>
+
+  <!-- Screens: JP-only -->
+  <script type="text/babel" src="HomeScreen.jsx?v=4"></script>
+  <script type="text/babel" src="ImportarMenuScreen.jsx?v=4"></script>
+  <script type="text/babel" src="ImportarRecetaScreen.jsx"></script>
+
+  <!-- Screens: member view -->
+  <script type="text/babel" src="MemberDashboardScreen.jsx?v=6"></script>
+
+  <!-- Screens: voto + historial (shared) -->
+  <script type="text/babel" src="VotoScreen.jsx?v=5"></script>
+  <script type="text/babel" src="HistorialScreen.jsx?v=10"></script>
+  <script type="text/babel" src="HistorialDetalleScreen.jsx?v=6"></script>
+
+  <!-- Tweaks panel + app shell -->
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="App.jsx?v=16"></script>
+</body>
+</html>

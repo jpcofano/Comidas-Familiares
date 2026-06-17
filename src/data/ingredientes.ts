@@ -1,5 +1,6 @@
 import {
-  collection, doc, getDoc, getDocs, setDoc, updateDoc, arrayUnion, serverTimestamp, query, where,
+  collection, doc, getDoc, getDocs, getDocsFromServer, setDoc, updateDoc, deleteDoc,
+  writeBatch, arrayUnion, arrayRemove, serverTimestamp, query, where,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import type { Ingrediente } from "../types/models";
@@ -11,7 +12,12 @@ let cachedCatalog: Map<string, Ingrediente> | null = null;
 
 export async function getCatalogo(): Promise<Map<string, Ingrediente>> {
   if (cachedCatalog) return cachedCatalog;
-  const snap = await getDocs(collection(db, "ingredientes"));
+  let snap;
+  try {
+    snap = await getDocsFromServer(collection(db, "ingredientes"));
+  } catch {
+    snap = await getDocs(collection(db, "ingredientes"));
+  }
   cachedCatalog = new Map(snap.docs.map((d) => [d.id, d.data() as Ingrediente]));
   return cachedCatalog;
 }
@@ -91,7 +97,7 @@ export async function getIngredientesAmbiguos(): Promise<Result<Ingrediente[], A
 
 export async function actualizarIngrediente(
   idIngrediente: string,
-  cambios: Partial<Pick<Ingrediente, "categoria" | "rolNutricional" | "seccionGondola" | "ambiguo">>
+  cambios: Partial<Pick<Ingrediente, "nombrePreferido" | "categoria" | "rolNutricional" | "seccionGondola" | "ambiguo">>
 ): Promise<Result<void, AppError>> {
   try {
     await updateDoc(doc(db, "ingredientes", idIngrediente), {
@@ -103,6 +109,66 @@ export async function actualizarIngrediente(
   } catch (e) {
     const msg = firebaseErrorMessage(e) ?? "No se pudo actualizar el ingrediente.";
     return err("ingrediente-update-failed", msg, e);
+  }
+}
+
+export async function eliminarIngrediente(
+  idIngrediente: string
+): Promise<Result<void, AppError>> {
+  try {
+    // Limpiar referencias en equivalencias de otros ingredientes
+    const refsSnap = await getDocs(
+      query(collection(db, "ingredientes"), where("equivalencias", "array-contains", idIngrediente))
+    );
+    if (refsSnap.docs.length > 0) {
+      const cleanupBatch = writeBatch(db);
+      refsSnap.docs.forEach((d) => {
+        cleanupBatch.update(d.ref, { equivalencias: arrayRemove(idIngrediente) });
+      });
+      await cleanupBatch.commit();
+    }
+    await deleteDoc(doc(db, "ingredientes", idIngrediente));
+    invalidateCatalogCache();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo eliminar el ingrediente.";
+    return err("ingrediente-delete-failed", msg, e);
+  }
+}
+
+export async function setEquivalencia(
+  idA: string,
+  idB: string
+): Promise<Result<void, AppError>> {
+  try {
+    const batch = writeBatch(db);
+    const ts = serverTimestamp();
+    batch.update(doc(db, "ingredientes", idA), { equivalencias: arrayUnion(idB), ultimaModificacion: ts });
+    batch.update(doc(db, "ingredientes", idB), { equivalencias: arrayUnion(idA), ultimaModificacion: ts });
+    await batch.commit();
+    invalidateCatalogCache();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo agregar la equivalencia.";
+    return err("equivalencia-set-failed", msg, e);
+  }
+}
+
+export async function quitarEquivalencia(
+  idA: string,
+  idB: string
+): Promise<Result<void, AppError>> {
+  try {
+    const batch = writeBatch(db);
+    const ts = serverTimestamp();
+    batch.update(doc(db, "ingredientes", idA), { equivalencias: arrayRemove(idB), ultimaModificacion: ts });
+    batch.update(doc(db, "ingredientes", idB), { equivalencias: arrayRemove(idA), ultimaModificacion: ts });
+    await batch.commit();
+    invalidateCatalogCache();
+    return ok(undefined);
+  } catch (e) {
+    const msg = firebaseErrorMessage(e) ?? "No se pudo quitar la equivalencia.";
+    return err("equivalencia-remove-failed", msg, e);
   }
 }
 
