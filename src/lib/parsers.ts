@@ -1,4 +1,4 @@
-import type { RangoNumerico, Dificultad, Costo } from "../types/models";
+import type { RangoNumerico, Dificultad, Costo, IngredienteEnReceta } from "../types/models";
 
 /**
  * Parsea un número que puede venir como:
@@ -188,5 +188,27 @@ export function parseSiNo(input: unknown): boolean | null {
 
   if (["si", "yes", "true", "1"].includes(norm)) return true;
   if (["no", "false", "0"].includes(norm)) return false;
+  return null;
+}
+
+/**
+ * Lee ing.cantidad como número resoluble.
+ * Soporta string ("2", "1,2", "1,2 a 1,5"), number, y rango → midpoint.
+ * Fallback a cantidadMin/cantidadMax para compatibilidad con fixtures de tests.
+ * Devuelve null cuando la cantidad no es numérica (ej. "a gusto", ausente).
+ */
+export function cantidadNumerica(ing: IngredienteEnReceta): number | null {
+  if (ing.cantidad != null) {
+    const parsed = parseNumber(ing.cantidad);
+    if (parsed !== null) {
+      return parsed.min != null && parsed.max != null
+        ? (parsed.min + parsed.max) / 2
+        : parsed.value;
+    }
+  } else if (ing.cantidadMin != null || ing.cantidadMax != null) {
+    return ing.cantidadMin != null && ing.cantidadMax != null
+      ? (ing.cantidadMin + ing.cantidadMax) / 2
+      : (ing.cantidadMin ?? ing.cantidadMax ?? null);
+  }
   return null;
 }
