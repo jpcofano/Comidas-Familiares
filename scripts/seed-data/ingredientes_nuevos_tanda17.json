@@ -1,0 +1,21 @@
+[
+  {
+    "canonico": "aji amarillo",
+    "nombrePreferido": "Ají amarillo",
+    "sinonimos": [
+      "Pasta de aji amarillo",
+      "Aji amarillo en pasta"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

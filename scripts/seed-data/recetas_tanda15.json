@@ -1,0 +1,1231 @@
+[
+  {
+    "nombre": "Pollo a la albahaca picante (Pad Krapow)",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "pollo salteado con ajo, ají y mucha albahaca, el plato callejero tailandés más popular, en 20 minutos y sin hidratos",
+    "riesgos": "wok poco caliente que hierve; albahaca recocida pierde aroma",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo, picado grueso"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Final",
+        "cantidad": "30",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas; tailandesa si se consigue"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Calentar",
+        "detalle": "Calentar el wok o sartén a fuego máximo con el aceite.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: mucho calor para saltear, no estofar.",
+        "errorComun": "Sartén tibia.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Saltear",
+        "detalle": "Sumar ajo y ají 30 seg, luego el pollo y saltear hasta dorar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "En tandas si hace falta para que no largue agua.",
+        "errorComun": "Amontonarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Sumar soja, salsa de pescado y eritritol; apagar y mezclar la albahaca.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "La albahaca entra al final para que quede viva.",
+        "errorComun": "Recocerla.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Curry rojo de pollo",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "curry cremoso de coco y pasta de curry rojo, picante y perfumado, naturalmente sin lácteos ni harinas",
+    "riesgos": "hervir fuerte el coco lo corta; no fraguar la pasta deja el curry plano",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en cubos",
+        "textoOriginal": "Pollo en cubos",
+        "seccion": "Principal",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo"
+      },
+      {
+        "canon": "pasta de curry rojo",
+        "textoOriginal": "Pasta de curry rojo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de coco",
+        "textoOriginal": "Aceite de coco",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Líquidos",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "morron rojo",
+        "textoOriginal": "Morrón rojo",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Verduras",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "albahaca",
+        "textoOriginal": "Albahaca",
+        "seccion": "Final",
+        "cantidad": "15",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Fraguar pasta",
+        "detalle": "Calentar el aceite de coco y cocinar la pasta de curry 1 a 2 min hasta que perfume.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: fraguar la pasta en grasa libera el aroma.",
+        "errorComun": "Tirar el coco sin activar la pasta.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pollo y coco",
+        "detalle": "Sumar el pollo y sellar; agregar leche de coco, salsa de pescado y verduras.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Cocción",
+        "detalle": "Hervor muy suave 15 min. Terminar con albahaca y lima.",
+        "tiempoEstimadoLabel": "17 min",
+        "tiempoEstimadoMin": 17,
+        "puntoClave": "⚠️ Punto crítico: hervor apenas perceptible para que el coco no se corte.",
+        "errorComun": "Hervir fuerte.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Massaman de res low-carb",
+    "estilo": "Tailandesa",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "curry massaman profundo y especiado de carne cocida lenta en coco, con maní; sin la papa del original para mantenerlo low-carb",
+    "riesgos": "cocción corta deja la carne dura; coco hervido fuerte se corta",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en cubos",
+        "textoOriginal": "Carne vacuna en cubos",
+        "seccion": "Principal",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de roast beef o nalga"
+      },
+      {
+        "canon": "pasta de curry rojo",
+        "textoOriginal": "Pasta de curry rojo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de coco",
+        "textoOriginal": "Aceite de coco",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "canela",
+        "textoOriginal": "Canela",
+        "seccion": "Especias",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Líquidos",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Líquidos",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "mani",
+        "textoOriginal": "Maní",
+        "seccion": "Final",
+        "cantidad": "50",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "tostado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Fraguar y sellar",
+        "detalle": "Fraguar la pasta y las especias en el aceite; sumar la carne y sellar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: activar la pasta antes del líquido.",
+        "errorComun": "Curry plano.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Guisar",
+        "detalle": "Sumar coco, salsa de pescado y eritritol; tapar y cocinar a fuego mínimo 1 h 30.",
+        "tiempoEstimadoLabel": "1 h 30 min",
+        "tiempoEstimadoMin": 90,
+        "puntoClave": "Cocción lenta para que la carne ceda.",
+        "errorComun": "Apurar y que quede dura.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Sumar el maní y cocinar 5 min más.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "El maní da textura y dulzor.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tom kha gai",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "sopa sedosa de coco con pollo, jengibre y lima, suave y reconfortante; sin hidratos",
+    "riesgos": "hervir el coco lo corta; exceso de lima domina",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Caldo",
+        "cantidad": "500",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Caldo",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Caldo",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en láminas; usar galanga si se consigue"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limon",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "aporta el cítrico tipo lemongrass"
+      },
+      {
+        "canon": "pollo en tiras",
+        "textoOriginal": "Pollo en tiras",
+        "seccion": "Pollo",
+        "cantidad": "400",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de pechuga"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Verduras",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Infusionar",
+        "detalle": "Calentar caldo, coco, jengibre y ralladura sin hervir fuerte 8 min.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "⚠️ Punto crítico: calor suave para que el coco no se corte.",
+        "errorComun": "Hervir a borbotones.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Pollo",
+        "detalle": "Sumar pollo y champiñones y cocinar 6 min.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Pollo a fuego suave para que quede tierno.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Apagar y sumar salsa de pescado, lima y cilantro.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El cítrico va al final.",
+        "errorComun": "Hervir la lima.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tom yum de langostinos",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "sopa tailandesa picante y ácida de langostinos, vibrante y aromática; cero hidratos y mucho carácter",
+    "riesgos": "langostinos pasados gomosos; demasiado ají tapa el equilibrio",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "caldo de pescado",
+        "textoOriginal": "Caldo de pescado",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "l",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "jengibre fresco",
+        "textoOriginal": "Jengibre fresco",
+        "seccion": "Caldo",
+        "cantidad": "20",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en láminas"
+      },
+      {
+        "canon": "ralladura de limon",
+        "textoOriginal": "Ralladura de limon",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Caldo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "champignon",
+        "textoOriginal": "Champignon",
+        "seccion": "Verduras",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cuartos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Verduras",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Caldo",
+        "detalle": "Hervir caldo con jengibre, ralladura y ají 8 min para perfumar.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Infusionar bien la base aromática.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Langostinos",
+        "detalle": "Sumar champiñones y tomate 3 min, luego langostinos 3 min.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: langostinos apenas rosados; no recocer.",
+        "errorComun": "Pasarlos.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Terminar",
+        "detalle": "Apagar y sumar salsa de pescado, lima y cilantro. Ajustar ácido-picante.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El equilibrio ácido-picante-salado es la clave.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Ensalada tailandesa de carne (Yam Nua)",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "bife jugoso fileteado sobre una ensalada cítrica y picante con hierbas frescas; liviana, vibrante y sin hidratos",
+    "riesgos": "pasar la carne la endurece; aderezar con anticipación marchita",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "ojo de bife",
+        "textoOriginal": "Ojo de bife",
+        "seccion": "Carne",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Ensalada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Ensalada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "tomates cherry",
+        "textoOriginal": "Tomates cherry",
+        "seccion": "Ensalada",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en mitades"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Ensalada",
+        "cantidad": "15",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Ensalada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Salar y marcar el bife jugoso en plancha fuerte; reposar 5 min y filetear fino.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: jugoso y fileteado fino; pasado se endurece.",
+        "errorComun": "Cocinarlo de más.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aderezo",
+        "detalle": "Mezclar lima, salsa de pescado, ají y eritritol.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Equilibrar ácido, salado y picante.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Armar",
+        "detalle": "Mezclar la carne con cebolla, pepino, tomate, menta y cilantro; aderezar al servir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Aderezar al momento.",
+        "errorComun": "Marchitar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Larb de cerdo",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Cerdo",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "ensalada tibia de cerdo picado con lima, ají y hierbas, que se come en hojas de lechuga; fresca, picante y sin hidratos",
+    "riesgos": "carne hervida por no dorar; exceso de salsa de pescado sala de más",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Principal",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de cerdo"
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo; mejor lima"
+      },
+      {
+        "canon": "salsa de pescado",
+        "textoOriginal": "Salsa de pescado",
+        "seccion": "Aderezo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Hierbas",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Hierbas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Hierbas",
+        "cantidad": "15",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Hierbas",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "lechuga",
+        "textoOriginal": "Lechuga",
+        "seccion": "Servir",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "hojas; para envolver"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Dorar cerdo",
+        "detalle": "Saltear la carne picada a fuego fuerte hasta dorar y secar. Dejar entibiar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: dorar de verdad, no hervir.",
+        "errorComun": "Carne gris.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aderezar",
+        "detalle": "Mezclar con lima, salsa de pescado y ají estando tibia.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Tibia absorbe mejor el aderezo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hierbas",
+        "detalle": "Sumar cebolla morada, verdeo, menta y cilantro. Servir en hojas de lechuga.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Las hierbas en cantidad son el alma del larb.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Satay de pollo con salsa de maní",
+    "estilo": "Tailandesa",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Parrilla",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "brochetas de pollo marinadas en cúrcuma y coco con una salsa de maní cremosa; un clásico de fiesta sin hidratos",
+    "riesgos": "marinada corta da poco sabor; salsa de maní muy espesa o quemada",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo en tiras",
+        "textoOriginal": "Pollo en tiras",
+        "seccion": "Marinada",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo, en tiras largas"
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Marinada",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pasta de mani sin azucar",
+        "textoOriginal": "Pasta de maní sin azúcar",
+        "seccion": "Salsa",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "leche de coco",
+        "textoOriginal": "Leche de coco",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "eritritol",
+        "textoOriginal": "Eritritol",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar y ensartar",
+        "detalle": "Marinar el pollo 20 min y ensartar en los palillos.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Marinar para sabor y jugosidad.",
+        "errorComun": "Marinar poco.",
+        "notas": "Tiempo activo: 12 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Calentar pasta de maní, coco, soja y eritritol a fuego bajo hasta una salsa lisa.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: fuego bajo; la pasta de maní se quema fácil.",
+        "errorComun": "Quemarla.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Grillar",
+        "detalle": "Cocinar las brochetas en plancha o parrilla fuerte 8 min, girando. Servir con la salsa.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Marcar sin secar.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

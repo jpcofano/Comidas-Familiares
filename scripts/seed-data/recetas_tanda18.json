@@ -1,0 +1,1177 @@
+[
+  {
+    "nombre": "Shawarma de pollo en plato",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "pollo marinado en especias árabes y dorado en tiras, servido en plato con vegetales en vez de pan; aromático y low-carb",
+    "riesgos": "marinada corta da poco sabor; pollo amontonado que hierve",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Adaptable",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pollo en tiras",
+        "textoOriginal": "Pollo en tiras",
+        "seccion": "Pollo",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de muslo"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "curcuma",
+        "textoOriginal": "Cúrcuma",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "coriandro",
+        "textoOriginal": "Coriandro",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Servir",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Servir",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar las especias con ajo, limón, aceite y sal; marinar el pollo 30 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El marinado lleva las especias adentro.",
+        "errorComun": "Marinar poco.",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Dorar",
+        "detalle": "Saltear el pollo en tandas a fuego fuerte hasta dorar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: en tandas para que dore y no largue agua.",
+        "errorComun": "Amontonarlo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir con tomate y cebolla morada fresca.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "El crudo fresco corta lo especiado.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Kafta de carne especiada",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Plancha",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "brochetas de carne picada con perejil, cebolla y especias, jugosas y perfumadas; sin pan ni hidratos",
+    "riesgos": "mezcla húmeda no toma forma; amasar de más endurece",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne picada",
+        "textoOriginal": "Carne picada",
+        "seccion": "Base",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de vaca o cordero"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallada y escurrida"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado fino"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "pimenton dulce",
+        "textoOriginal": "Pimentón dulce",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Cocción",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Mezclar",
+        "detalle": "Mezclar todo y escurrir bien la cebolla. Amasar lo justo.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: escurrir la cebolla para que la mezcla no quede húmeda.",
+        "errorComun": "Mezcla aguada que se desarma.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Formar",
+        "detalle": "Moldear la carne alrededor de los palillos en forma de cilindro.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Compactar bien sobre el palillo.",
+        "errorComun": "Que se caiga al cocinar.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Grillar",
+        "detalle": "Cocinar en plancha o parrilla fuerte 8 min, girando.",
+        "tiempoEstimadoLabel": "9 min",
+        "tiempoEstimadoMin": 9,
+        "puntoClave": "Sellar por todos lados sin secar.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Baba ganoush",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "45 min",
+    "tiempoTotalMin": 45,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el dip ahumado de berenjena asada con tahini, primo del hummus pero sin garbanzo, así que sin hidratos",
+    "riesgos": "berenjena poco asada no da el sabor ahumado; agua de la berenjena sin escurrir aguada el dip",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Conserva",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "enteras"
+      },
+      {
+        "canon": "tahini",
+        "textoOriginal": "Tahini",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar",
+        "detalle": "Asar las berenjenas enteras a fuego directo o al horno fuerte hasta que la piel se queme y la pulpa ceda, 30 min.",
+        "tiempoEstimadoLabel": "32 min",
+        "tiempoEstimadoMin": 32,
+        "puntoClave": "⚠️ Punto crítico: bien asadas y ahumadas; es el sabor del plato.",
+        "errorComun": "Berenjena pálida sin ahumar.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Escurrir",
+        "detalle": "Pelar y dejar escurrir la pulpa para sacar el agua amarga.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Escurrir para que el dip no quede aguado.",
+        "errorComun": "Pulpa chorreando.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Procesar",
+        "detalle": "Pisar o procesar la pulpa con tahini, limón, ajo, comino, aceite y sal. Terminar con perejil.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Dejar algo de textura.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Tabule de coliflor",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "20 min",
+    "tiempoTotalMin": 20,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la ensalada de perejil y menta del Líbano, con coliflor cruda rallada en vez de trigo burgol; fresca y sin hidratos",
+    "riesgos": "coliflor en trozos grandes queda dura; tomate sin escurrir aguada todo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "coliflor",
+        "textoOriginal": "Coliflor",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "rallada fina, cruda; reemplaza el burgol"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "taza",
+        "opcional": false,
+        "notas": "picado muy fino"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos, sin semillas"
+      },
+      {
+        "canon": "cebolla de verdeo",
+        "textoOriginal": "Cebolla de verdeo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Coliflor",
+        "detalle": "Rallar la coliflor cruda bien fina (textura de cuscús).",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: rallada bien fina para que se coma cruda y tierna.",
+        "errorComun": "Trozos grandes y duros.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Mezclar",
+        "detalle": "Unir con perejil, menta, tomate escurrido y verdeo.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Mucho verde: es una ensalada de hierbas.",
+        "errorComun": "Poco perejil.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Aderezar",
+        "detalle": "Aliñar con limón, aceite y sal al servir.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "Aderezar al momento para que no marchite.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Fattoush sin pan",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Crudo",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la ensalada libanesa fresca con zaatar y limón, sin los trozos de pan frito del original; crujiente por las verduras, sin hidratos",
+    "riesgos": "aderezar con anticipación marchita; sin acidez queda plana",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "lechuga",
+        "textoOriginal": "Lechuga",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en trozos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      },
+      {
+        "canon": "pepino",
+        "textoOriginal": "Pepino",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos"
+      },
+      {
+        "canon": "rabanito",
+        "textoOriginal": "Rabanito",
+        "seccion": "Base",
+        "cantidad": "4",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas"
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Base",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "perejil",
+        "textoOriginal": "Perejil",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Aderezo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "zaatar",
+        "textoOriginal": "Zaatar",
+        "seccion": "Aderezo",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Aderezo",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Cortar",
+        "detalle": "Cortar todas las verduras en trozos parejos y disponer en un bowl.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Cortes parejos y generosos.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Aderezo",
+        "detalle": "Mezclar limón, aceite, zaatar y sal.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "⚠️ Punto crítico: el zaatar y el limón definen el sabor fattoush.",
+        "errorComun": "Aderezo sin acidez.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Aliñar al momento de servir y mezclar.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "Aderezar al final.",
+        "errorComun": "Marchitar.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Cordero al horno con especias",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Cordero",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "2 h 30 min",
+    "tiempoTotalMin": 150,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Alto",
+    "costoOrden": 4,
+    "porQueEspecial": "paleta de cordero braseada con comino, coriandro y canela hasta deshacerse, perfumada como un plato de fiesta de Medio Oriente; sin hidratos",
+    "riesgos": "horno alto seca; poco líquido pega el fondo",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "cordero en cubos",
+        "textoOriginal": "Cordero",
+        "seccion": "Principal",
+        "cantidad": "1,5",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "en trozos grandes (paleta)"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "coriandro",
+        "textoOriginal": "Coriandro",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "canela",
+        "textoOriginal": "Canela",
+        "seccion": "Especias",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Especias",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "5",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Base",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal gruesa",
+        "textoOriginal": "Sal gruesa",
+        "seccion": "Base",
+        "cantidad": "1,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "papel aluminio",
+        "textoOriginal": "Papel aluminio",
+        "seccion": "Utensilios",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "para sellar"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar y especiar",
+        "detalle": "Frotar el cordero con las especias y la sal; dorarlo en el aceite. Acomodar sobre la cebolla y el ajo.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "Sellar y especiar bien antes de hornear.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Brasear",
+        "detalle": "Sumar el caldo, tapar con aluminio y hornear a 160°C 2 h 15.",
+        "tiempoEstimadoLabel": "2 h 15 min",
+        "tiempoEstimadoMin": 135,
+        "puntoClave": "⚠️ Punto crítico: horno bajo y tapado para que se deshaga sin secarse.",
+        "errorComun": "Horno alto que reseca.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Dorar",
+        "detalle": "Destapar y subir a 210°C 10 min para dorar la superficie.",
+        "tiempoEstimadoLabel": "12 min",
+        "tiempoEstimadoMin": 12,
+        "puntoClave": "El dorado final da color y sabor.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo al zaatar y limón",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "50 min",
+    "tiempoTotalMin": 50,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "pollo al horno sobre cebollas, con mucho zaatar y limón, inspirado en el musakhan pero sin el pan; jugoso y perfumado",
+    "riesgos": "zaatar quemado amarga; piel pálida si el horno está flojo",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Pollo",
+        "cantidad": "1,4",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con piel"
+      },
+      {
+        "canon": "zaatar",
+        "textoOriginal": "Zaatar",
+        "seccion": "Adobo",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Adobo",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo y ralladura"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Adobo",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Adobo",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en pluma"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Adobar",
+        "detalle": "Mezclar zaatar, limón, aceite y sal; untar el pollo y dejar 20 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "El zaatar y el limón perfuman la piel.",
+        "errorComun": "",
+        "notas": "Tiempo activo: 8 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Armar",
+        "detalle": "Hacer una cama de cebolla en la fuente y apoyar el pollo con la piel hacia arriba.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "La cebolla se confita con el jugo del pollo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Hornear",
+        "detalle": "Hornear a 200°C 35 a 40 min hasta dorado.",
+        "tiempoEstimadoLabel": "40 min",
+        "tiempoEstimadoMin": 40,
+        "puntoClave": "⚠️ Punto crítico: vigilar que el zaatar de la piel no se queme.",
+        "errorComun": "Quemar el zaatar.",
+        "notas": "Tiempo activo: 2 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Berenjenas con yogur y ajo",
+    "estilo": "Árabe / Medio Oriente",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "30 min",
+    "tiempoTotalMin": 30,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "berenjenas asadas sobre una crema de yogur con ajo, estilo borani; cremoso, fresco y sin hidratos",
+    "riesgos": "berenjena aceitosa si no se asa bien; ajo crudo en exceso domina el yogur",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Guarnición",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "berenjenas",
+        "textoOriginal": "Berenjenas",
+        "seccion": "Berenjenas",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en rodajas de 1 cm"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Berenjenas",
+        "cantidad": "4",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Berenjenas",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "yogur griego",
+        "textoOriginal": "Yogur griego",
+        "seccion": "Yogur",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Yogur",
+        "cantidad": "1",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Yogur",
+        "cantidad": "0,5",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "menta",
+        "textoOriginal": "Menta",
+        "seccion": "Terminación",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Terminación",
+        "cantidad": "1",
+        "unidad": "pizca",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Asar berenjenas",
+        "detalle": "Pincelar las rodajas con aceite y sal y hornear a 210°C 20 min hasta doradas y tiernas.",
+        "tiempoEstimadoLabel": "22 min",
+        "tiempoEstimadoMin": 22,
+        "puntoClave": "⚠️ Punto crítico: asar bien para que no queden aceitosas ni crudas.",
+        "errorComun": "Berenjena cruda y esponja de aceite.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Crema",
+        "detalle": "Mezclar yogur griego con ajo, limón y sal.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Poco ajo crudo para no tapar el yogur.",
+        "errorComun": "Pasarse de ajo.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Montar",
+        "detalle": "Extender la crema de yogur, apoyar las berenjenas y terminar con menta y pimentón.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "Servir tibias sobre el yogur frío.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]

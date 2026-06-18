@@ -1,0 +1,1196 @@
+[
+  {
+    "nombre": "Ají de gallina low-carb",
+    "estilo": "Peruana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "40 min",
+    "tiempoTotalMin": 40,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el clásico cremoso de pollo desmenuzado en salsa de ají amarillo, espesado con nueces molidas en vez de pan; suave y picante a la vez",
+    "riesgos": "salsa fina por no moler bien las nueces; cortar la crema con fuego alto",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pollo cocido desmenuzado",
+        "textoOriginal": "Pollo cocido desmenuzado",
+        "seccion": "Principal",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta"
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "nueces",
+        "textoOriginal": "Nueces",
+        "seccion": "Salsa",
+        "cantidad": "60",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "molidas; espesan en vez del pan"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "caldo de pollo",
+        "textoOriginal": "Caldo de pollo",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Final",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en mitades"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Base",
+        "detalle": "Rehogar cebolla y ajo en el aceite; sumar el ají amarillo y cocinar 3 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Cocinar el ají para que pierda el crudo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Sumar nueces, caldo y crema; cocinar 5 min hasta espesar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: las nueces molidas dan cuerpo sin pan; fuego bajo con la crema.",
+        "errorComun": "Salsa fina o cortada.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Pollo",
+        "detalle": "Sumar el pollo desmenuzado y calentar 5 min. Servir con huevo duro.",
+        "tiempoEstimadoLabel": "7 min",
+        "tiempoEstimadoMin": 7,
+        "puntoClave": "Debe quedar untuoso, no seco.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Lomo saltado sin papas",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Salteado",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "Arroz de coliflor",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "el salteado estrella del Perú, carne con cebolla y tomate al wok con soja y vinagre; sin las papas fritas para que quede low-carb",
+    "riesgos": "wok poco caliente que hierve; verduras recocidas pierden frescura",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Semana",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en tiras",
+        "textoOriginal": "Carne vacuna en tiras",
+        "seccion": "Carne",
+        "cantidad": "700",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de lomo o cuadril"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva suave",
+        "textoOriginal": "Aceite de oliva suave",
+        "seccion": "Salteado",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos gruesos"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en gajos"
+      },
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Salteado",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en tiras"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salteado",
+        "cantidad": "2",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar carne",
+        "detalle": "Salar y saltear la carne en tandas a fuego máximo. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: wok bien caliente y en tandas para que dore.",
+        "errorComun": "Amontonarla y hervir.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Verduras",
+        "detalle": "Saltear cebolla morada, tomate, ají y ajo 3 min, que queden enteros y crocantes.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Verduras al dente, no deshechas.",
+        "errorComun": "Recocerlas.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Unir",
+        "detalle": "Volver la carne, sumar soja y vinagre, saltear 1 min. Terminar con cilantro.",
+        "tiempoEstimadoLabel": "4 min",
+        "tiempoEstimadoMin": 4,
+        "puntoClave": "El vapor de la soja en el wok da el sabor.",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pollo a la brasa al horno",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Aves",
+    "tecnicaPrincipal": "Horno",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "1 h 30 min",
+    "tiempoTotalMin": 90,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "el pollo a la brasa peruano hecho al horno, marinado en soja, comino y pimentón ahumado; jugoso y dorado, sin hidratos",
+    "riesgos": "marinada corta da poco sabor; horno flojo no dora la piel",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "pata muslo de pollo",
+        "textoOriginal": "Pata muslo de pollo",
+        "seccion": "Pollo",
+        "cantidad": "1,4",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "con piel"
+      },
+      {
+        "canon": "salsa de soja",
+        "textoOriginal": "Salsa de soja",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "reemplaza el ají panca"
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "4",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "oregano",
+        "textoOriginal": "Orégano",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar la marinada y cubrir el pollo; marinar mínimo 1 h, mejor de un día para otro.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: cuanto más marina, más sabor.",
+        "errorComun": "Marinar poco.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Hornear",
+        "detalle": "Hornear a 200°C 45 a 50 min con la piel hacia arriba, hasta dorado y cocido.",
+        "tiempoEstimadoLabel": "50 min",
+        "tiempoEstimadoMin": 50,
+        "puntoClave": "Piel hacia arriba para que dore.",
+        "errorComun": "Horno flojo y piel pálida.",
+        "notas": "Tiempo activo: 3 min."
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Reposar",
+        "detalle": "Reposar 5 min antes de servir.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Anticuchos de carne",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Parrilla",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "1 h",
+    "tiempoTotalMin": 60,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "brochetas de carne marinadas en pimentón ahumado, vinagre y comino, marcadas a la parrilla; el clásico de la calle peruana, sin hidratos",
+    "riesgos": "marinada corta; brasa floja que no marca",
+    "notas": "",
+    "escenarioUso": "Celebración",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "entrana",
+        "textoOriginal": "Entraña",
+        "seccion": "Carne",
+        "cantidad": "800",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en cubos de 3 cm; o corazón si se consigue"
+      },
+      {
+        "canon": "pimenton ahumado",
+        "textoOriginal": "Pimentón ahumado",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta"
+      },
+      {
+        "canon": "vinagre de vino",
+        "textoOriginal": "Vinagre de vino",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "rallado"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Marinada",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Marinada",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "palitos de brochette",
+        "textoOriginal": "Palitos de brochette",
+        "seccion": "Utensilios",
+        "cantidad": "8",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "remojados"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Marinar",
+        "detalle": "Mezclar la marinada y marinar los cubos 40 min.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: el tiempo de marinada define el sabor anticuchero.",
+        "errorComun": "Marinar poco.",
+        "notas": "Tiempo activo: 10 min."
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ensartar",
+        "detalle": "Ensartar los cubos en los palillos remojados.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "Sin apretar para que doren parejo.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Grillar",
+        "detalle": "Marcar en parrilla o plancha fuerte 8 min, girando y pincelando con la marinada.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "Brasa fuerte para sellar.",
+        "errorComun": "Plancha tibia.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Seco de res",
+    "estilo": "Peruana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Vacuna",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "25 min",
+    "tiempoActivoMin": 25,
+    "tiempoTotalLabel": "2 h",
+    "tiempoTotalMin": 120,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "guiso peruano de carne braseada en una salsa verde de cilantro y ají amarillo, profundo y aromático; sin papa ni hidratos",
+    "riesgos": "cilantro hervido mucho amarga; cocción corta deja la carne dura",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "No",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "carne vacuna en cubos",
+        "textoOriginal": "Carne vacuna en cubos",
+        "seccion": "Carne",
+        "cantidad": "900",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de roast beef o nalga"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Carne",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Base",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Base",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Base",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "taza",
+        "opcional": false,
+        "notas": "en hojas; el alma del seco"
+      },
+      {
+        "canon": "caldo de carne",
+        "textoOriginal": "Caldo de carne",
+        "seccion": "Salsa",
+        "cantidad": "400",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "comino",
+        "textoOriginal": "Comino",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": "molido"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Sellar",
+        "detalle": "Salar y dorar la carne en el aceite. Reservar.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "Sellar da color al guiso.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Base verde",
+        "detalle": "Rehogar cebolla, ajo y ají; licuar el cilantro con parte del caldo y sumar.",
+        "tiempoEstimadoLabel": "10 min",
+        "tiempoEstimadoMin": 10,
+        "puntoClave": "⚠️ Punto crítico: el cilantro va licuado y entra para cocción corta, no a hervir horas.",
+        "errorComun": "Hervirlo y que amargue.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Brasear",
+        "detalle": "Volver la carne con el resto del caldo y el comino; tapar y cocinar a fuego mínimo 1 h 30.",
+        "tiempoEstimadoLabel": "1 h 30 min",
+        "tiempoEstimadoMin": 90,
+        "puntoClave": "Cocción lenta para que la carne ceda.",
+        "errorComun": "Apurar y que quede dura.",
+        "notas": "Tiempo activo: 3 min."
+      }
+    ]
+  },
+  {
+    "nombre": "Choros a la chalaca",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Mariscos",
+    "tecnicaPrincipal": "Hervido",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "20 min",
+    "tiempoActivoMin": 20,
+    "tiempoTotalLabel": "25 min",
+    "tiempoTotalMin": 25,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio",
+    "costoOrden": 2,
+    "porQueEspecial": "mejillones tibios coronados con una salsa criolla fresca de cebolla, tomate y limón; entrada marinera vistosa y sin hidratos",
+    "riesgos": "mejillones que no abren se descartan; salsa aguada sin escurrir",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Liviano",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "mejillones",
+        "textoOriginal": "Mejillones",
+        "seccion": "Principal",
+        "cantidad": "1,2",
+        "unidad": "kg",
+        "opcional": false,
+        "notas": "frescos, limpios; descartar los abiertos"
+      },
+      {
+        "canon": "agua",
+        "textoOriginal": "Agua",
+        "seccion": "Principal",
+        "cantidad": "200",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla morada",
+        "textoOriginal": "Cebolla morada",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada fina"
+      },
+      {
+        "canon": "tomate fresco",
+        "textoOriginal": "Tomate",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "en cubos chicos, sin semillas"
+      },
+      {
+        "canon": "aji picante",
+        "textoOriginal": "Ají picante",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "limon",
+        "textoOriginal": "Limón",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "jugo"
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Abrir",
+        "detalle": "Abrir los mejillones en olla tapada con el agua a fuego fuerte, 4 min. Descartar los cerrados.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: descartar los que no abren.",
+        "errorComun": "Usar los cerrados.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Media valva",
+        "detalle": "Quitar la valva vacía y disponer los mejillones en media valva.",
+        "tiempoEstimadoLabel": "5 min",
+        "tiempoEstimadoMin": 5,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Chalaca",
+        "detalle": "Mezclar cebolla, tomate, ají, limón, cilantro y sal; coronar cada mejillón.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Servir tibio o frío, recién armado.",
+        "errorComun": "Salsa aguada por no escurrir el tomate.",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Crema huancaína",
+    "estilo": "Peruana",
+    "dificultad": "Baja",
+    "dificultadOrden": 1,
+    "proteinaPrincipal": "Vegetal",
+    "tecnicaPrincipal": "Procesado",
+    "sinLacteos": false,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "15 min",
+    "tiempoActivoMin": 15,
+    "tiempoTotalLabel": "15 min",
+    "tiempoTotalMin": 15,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Bajo",
+    "costoOrden": 1,
+    "porQueEspecial": "la salsa huancaína de ají amarillo y queso, acá ligada con nueces en vez de galletas; va sobre huevo y hojas verdes en vez de papa",
+    "riesgos": "salsa muy líquida si se pasa de leche; ají crudo de más pica fuerte",
+    "notas": "",
+    "escenarioUso": "Cocina rápida",
+    "climaDelPlato": "Medio",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Entrada",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Cualquiera",
+    "ingredientes": [
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta"
+      },
+      {
+        "canon": "queso fresco",
+        "textoOriginal": "Queso fresco",
+        "seccion": "Salsa",
+        "cantidad": "150",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "nueces",
+        "textoOriginal": "Nueces",
+        "seccion": "Salsa",
+        "cantidad": "40",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "ligan la salsa"
+      },
+      {
+        "canon": "crema de leche",
+        "textoOriginal": "Crema de leche",
+        "seccion": "Salsa",
+        "cantidad": "80",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Salsa",
+        "cantidad": "0,5",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "huevos",
+        "textoOriginal": "Huevos",
+        "seccion": "Servir",
+        "cantidad": "3",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "duros, en rodajas"
+      },
+      {
+        "canon": "hojas verdes",
+        "textoOriginal": "Hojas verdes",
+        "seccion": "Servir",
+        "cantidad": "100",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "de base"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Procesar",
+        "detalle": "Procesar ají, queso, nueces, crema, aceite y sal hasta una salsa lisa y espesa.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "⚠️ Punto crítico: agregar la crema de a poco; debe quedar napante, no líquida.",
+        "errorComun": "Pasarse de líquido.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Ajustar",
+        "detalle": "Probar y ajustar sal y picante.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Servir",
+        "detalle": "Servir sobre hojas verdes con rodajas de huevo duro.",
+        "tiempoEstimadoLabel": "3 min",
+        "tiempoEstimadoMin": 3,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  },
+  {
+    "nombre": "Pescado a lo macho",
+    "estilo": "Peruana",
+    "dificultad": "Media",
+    "dificultadOrden": 2,
+    "proteinaPrincipal": "Pescado",
+    "tecnicaPrincipal": "Guiso",
+    "sinLacteos": true,
+    "hidratos": false,
+    "hidratoOpcional": "",
+    "acompPadres": "",
+    "tiempoActivoLabel": "30 min",
+    "tiempoActivoMin": 30,
+    "tiempoTotalLabel": "35 min",
+    "tiempoTotalMin": 35,
+    "porcionesLabel": "4 porciones",
+    "porcionesMin": 4,
+    "porcionesMax": 4,
+    "costoEstimado": "Medio/Alto",
+    "costoOrden": 3,
+    "porQueEspecial": "lomos de pescado bañados en una salsa picante de mariscos y ají amarillo, contundente y marina; sin hidratos",
+    "riesgos": "sobrecocinar mariscos y pescado; salsa cruda por poca cocción",
+    "notas": "",
+    "escenarioUso": "Cena Especial",
+    "climaDelPlato": "Potente",
+    "aptoNocheDeADos": "Sí",
+    "notasNocheDeADos": "",
+    "tipoItem": "Receta principal",
+    "paraJuanPablo": true,
+    "paraFamilia": true,
+    "fuente": "Claude",
+    "pensadaPara": "Especial",
+    "ingredientes": [
+      {
+        "canon": "filetes de merluza",
+        "textoOriginal": "Filetes de merluza",
+        "seccion": "Pescado",
+        "cantidad": "600",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en lomos; o abadejo"
+      },
+      {
+        "canon": "sal fina",
+        "textoOriginal": "Sal fina",
+        "seccion": "Pescado",
+        "cantidad": "1",
+        "unidad": "cdita",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "langostinos",
+        "textoOriginal": "Langostinos",
+        "seccion": "Mariscos",
+        "cantidad": "250",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "pelados"
+      },
+      {
+        "canon": "calamares limpios",
+        "textoOriginal": "Calamares limpios",
+        "seccion": "Mariscos",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": "en aros"
+      },
+      {
+        "canon": "aceite de oliva",
+        "textoOriginal": "Aceite de oliva",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cebolla",
+        "textoOriginal": "Cebolla",
+        "seccion": "Salsa",
+        "cantidad": "1",
+        "unidad": "unidad",
+        "opcional": false,
+        "notas": "picada"
+      },
+      {
+        "canon": "ajo",
+        "textoOriginal": "Ajo",
+        "seccion": "Salsa",
+        "cantidad": "3",
+        "unidad": "diente",
+        "opcional": false,
+        "notas": "picado"
+      },
+      {
+        "canon": "aji amarillo",
+        "textoOriginal": "Ají amarillo",
+        "seccion": "Salsa",
+        "cantidad": "2",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "en pasta"
+      },
+      {
+        "canon": "tomate triturado",
+        "textoOriginal": "Tomate triturado",
+        "seccion": "Salsa",
+        "cantidad": "200",
+        "unidad": "g",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "vino blanco seco",
+        "textoOriginal": "Vino blanco seco",
+        "seccion": "Salsa",
+        "cantidad": "100",
+        "unidad": "ml",
+        "opcional": false,
+        "notas": ""
+      },
+      {
+        "canon": "cilantro",
+        "textoOriginal": "Cilantro",
+        "seccion": "Final",
+        "cantidad": "3",
+        "unidad": "cda",
+        "opcional": false,
+        "notas": "picado"
+      }
+    ],
+    "pasos": [
+      {
+        "nroPaso": 1,
+        "titulo": "Pescado",
+        "detalle": "Salar y sellar los lomos 2 min por lado. Reservar.",
+        "tiempoEstimadoLabel": "6 min",
+        "tiempoEstimadoMin": 6,
+        "puntoClave": "Sellar sin cocinar del todo; se termina en la salsa.",
+        "errorComun": "",
+        "notas": ""
+      },
+      {
+        "nroPaso": 2,
+        "titulo": "Salsa",
+        "detalle": "Rehogar cebolla y ajo; sumar ají, tomate y vino y cocinar 8 min.",
+        "tiempoEstimadoLabel": "11 min",
+        "tiempoEstimadoMin": 11,
+        "puntoClave": "⚠️ Punto crítico: cocinar la salsa para quitar el crudo del tomate y el ají.",
+        "errorComun": "Salsa cruda.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 3,
+        "titulo": "Mariscos",
+        "detalle": "Sumar calamares 4 min, luego langostinos y el pescado 3 min.",
+        "tiempoEstimadoLabel": "8 min",
+        "tiempoEstimadoMin": 8,
+        "puntoClave": "⚠️ Punto crítico: tiempos escalonados; los mariscos se pasan rápido.",
+        "errorComun": "Sobrecocer todo junto.",
+        "notas": ""
+      },
+      {
+        "nroPaso": 4,
+        "titulo": "Servir",
+        "detalle": "Terminar con cilantro.",
+        "tiempoEstimadoLabel": "2 min",
+        "tiempoEstimadoMin": 2,
+        "puntoClave": "",
+        "errorComun": "",
+        "notas": ""
+      }
+    ]
+  }
+]
