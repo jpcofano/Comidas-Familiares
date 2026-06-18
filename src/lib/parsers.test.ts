@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { parseNumber, parseTime, parseDificultad, parseCosto, parseSiNo, parseTiempoEstimadoASegundos } from "./parsers";
+import { parseNumber, parseTime, parseDificultad, parseCosto, parseSiNo, parseTiempoEstimadoASegundos, cantidadNumerica } from "./parsers";
+import type { IngredienteEnReceta } from "../types/models";
+
+function makeIng(overrides: Partial<IngredienteEnReceta> = {}): IngredienteEnReceta {
+  return { idIngrediente: "ING-001", textoOriginal: "test", ...overrides } as IngredienteEnReceta;
+}
 
 describe("parseNumber", () => {
   it("punto decimal", () => {
@@ -219,5 +224,43 @@ describe("parseSiNo", () => {
 
   it("null → null", () => {
     expect(parseSiNo(null)).toBeNull();
+  });
+});
+
+// ─── cantidadNumerica — regresión E9.15 ──────────────────────────────────────
+// Verifica que la cantidad de IngredienteEnReceta se resuelve correctamente
+// tanto cuando viene como string (caso real de Firestore) como como número.
+
+describe("cantidadNumerica", () => {
+  it('string "2" → 2 (caso real: Firestore siempre devuelve string)', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: "2", unidad: "cda" }))).toBe(2);
+  });
+
+  it('string "400" → 400', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: "400", unidad: "g" }))).toBe(400);
+  });
+
+  it('string con coma decimal "1,2" → 1.2', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: "1,2", unidad: "kg" }))).toBeCloseTo(1.2);
+  });
+
+  it('rango "1,2 a 1,5" → midpoint 1.35', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: "1,2 a 1,5", unidad: "kg" }))).toBeCloseTo(1.35);
+  });
+
+  it('number 200 → 200 (compatibilidad con seeds numéricos)', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: 200, unidad: "g" }))).toBe(200);
+  });
+
+  it('"a gusto" → null (ingrediente sin cantidad definida)', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: "a gusto", unidad: "" }))).toBeNull();
+  });
+
+  it('cantidad ausente → null → compras usa label "a gusto"', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: undefined }))).toBeNull();
+  });
+
+  it('fallback a cantidadMin cuando cantidad está ausente', () => {
+    expect(cantidadNumerica(makeIng({ cantidad: undefined, cantidadMin: 2, cantidadMax: 4 }))).toBeCloseTo(3);
   });
 });
