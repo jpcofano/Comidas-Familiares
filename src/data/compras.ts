@@ -20,6 +20,7 @@ import { ok, err, type Result, type AppError } from "../lib/result";
 import { firebaseErrorMessage } from "./_helpers";
 import { getCatalogo } from "./ingredientes";
 import { normalizarUnidad } from "../lib/unidades";
+import { cantidadNumerica } from "../lib/parsers";
 
 const ESTADOS_CONTRIBUYENTES = ["Elegida", "Compra pendiente", "Compra lista", "Cocinando"] as const;
 
@@ -106,7 +107,7 @@ function agruparPorIdIngrediente(
       const cat = catalogo.get(ing.idIngrediente);
       if (!cat) continue;
 
-      const cantidadNum = typeof ing.cantidad === "number" ? ing.cantidad : 0;
+      const cantidadNum = cantidadNumerica(ing) ?? 0;
 
       const aporte: AporteCompra = {
         idPlan: plan.idPlan,
