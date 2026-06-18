@@ -1,0 +1,20 @@
+[
+  {
+    "canonico": "pasta de curry rojo",
+    "nombrePreferido": "Pasta de curry rojo",
+    "sinonimos": [
+      "Red curry paste"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

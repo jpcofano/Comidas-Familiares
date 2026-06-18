@@ -1,0 +1,21 @@
+[
+  {
+    "canonico": "zaatar",
+    "nombrePreferido": "Zaatar",
+    "sinonimos": [
+      "Za'atar",
+      "Zahtar"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]

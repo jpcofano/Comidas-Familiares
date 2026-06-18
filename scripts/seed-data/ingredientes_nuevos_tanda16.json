@@ -1,0 +1,19 @@
+[
+  {
+    "canonico": "kimchi",
+    "nombrePreferido": "Kimchi",
+    "sinonimos": [
+      "Repollo fermentado coreano"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed"
+  }
+]
