@@ -1,4 +1,4 @@
-import type { Paso } from "../types/models";
+import type { Paso, IngredienteEnReceta } from "../types/models";
 import type { TimerEntry } from "../hooks/useCocinarState";
 import { StepTimer } from "./StepTimer";
 
@@ -12,10 +12,12 @@ interface PasoCardProps {
   onIniciarTimer?: (durMs: number) => void;
   onCancelarTimer?: () => void;
   timerActivo?: TimerEntry;
+  // E9.14 Fase 1: mapa para resolver ingredientesUsados (Fase 2 lo popula)
+  ingredientesById?: Map<string, IngredienteEnReceta>;
 }
 
 export function PasoCard({
-  paso, tachado, esActual, onToggleTachado,
+  paso, tachado, esActual, onToggleTachado, ingredientesById,
 }: PasoCardProps) {
   const circleColor = tachado
     ? "var(--muted)"
@@ -98,6 +100,39 @@ export function PasoCard({
               {paso.notas}
             </p>
           )}
+
+          {/* Ingredientes de este paso — Fase 2 popula paso.ingredientesUsados */}
+          {paso.ingredientesUsados && paso.ingredientesUsados.length > 0 && ingredientesById && (() => {
+            const resueltos = paso.ingredientesUsados
+              .map(id => ingredientesById.get(id))
+              .filter((ing): ing is IngredienteEnReceta => ing !== undefined);
+            if (resueltos.length === 0) return null;
+            return (
+              <div style={{ marginTop: "var(--space-2)" }}>
+                <p style={{ margin: "0 0 4px", fontSize: "var(--fs-xs)", color: "var(--muted)", fontWeight: 600 }}>
+                  Este paso usa:
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                  {resueltos.map(ing => {
+                    const c = ing.cantidadLabel ?? (ing.cantidad != null ? String(ing.cantidad).trim() : "");
+                    const u = ing.unidad?.trim() ?? "";
+                    const label = c && u ? `${c} ${u}` : c || "a gusto";
+                    return (
+                      <span key={ing.idIngrediente} style={{
+                        fontSize: "var(--fs-xs)", padding: "2px 8px",
+                        borderRadius: 999,
+                        background: "var(--surface-alt)",
+                        color: "var(--text)",
+                        border: "1px solid var(--border-subtle)",
+                      }}>
+                        {label} {ing.textoOriginal}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Toggle tachado — solo modo scroll */}
           {onToggleTachado && (
