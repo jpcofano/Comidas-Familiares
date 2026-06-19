@@ -1,266 +1,2895 @@
 [
-  {"idIngrediente":"ING-0001","kcal":82,"carbohidratos":0,"proteinas":18,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0002","kcal":862,"carbohidratos":0,"proteinas":0,"grasas":100,"fibra":0},
-  {"idIngrediente":"ING-0003","kcal":884,"carbohidratos":0,"proteinas":0,"grasas":100,"fibra":0},
-  {"idIngrediente":"ING-0004","kcal":884,"carbohidratos":0,"proteinas":0,"grasas":100,"fibra":0},
-  {"idIngrediente":"ING-0005","kcal":884,"carbohidratos":0,"proteinas":0,"grasas":100,"fibra":0},
-  {"idIngrediente":"ING-0006","kcal":115,"carbohidratos":6,"proteinas":0.8,"grasas":11,"fibra":3},
-  {"idIngrediente":"ING-0007","kcal":145,"carbohidratos":4,"proteinas":1,"grasas":15,"fibra":2.5},
-  {"idIngrediente":"ING-0008","kcal":0,"carbohidratos":0,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0009","kcal":318,"carbohidratos":57,"proteinas":12,"grasas":17,"fibra":28},
-  {"idIngrediente":"ING-0010","kcal":40,"carbohidratos":9,"proteinas":2,"grasas":0.4,"fibra":1.5},
-  {"idIngrediente":"ING-0011","kcal":149,"carbohidratos":33,"proteinas":6.4,"grasas":0.5,"fibra":2.1,"gramosPorUnidad":5},
-  {"idIngrediente":"ING-0012","kcal":331,"carbohidratos":73,"proteinas":17,"grasas":0.7,"fibra":9},
-  {"idIngrediente":"ING-0013","kcal":575,"carbohidratos":22,"proteinas":21,"grasas":49,"fibra":13},
-  {"idIngrediente":"ING-0014","kcal":575,"carbohidratos":22,"proteinas":21,"grasas":49,"fibra":13},
-  {"idIngrediente":"ING-0015","kcal":16,"carbohidratos":3,"proteinas":0.7,"grasas":0.2,"fibra":1.6},
-  {"idIngrediente":"ING-0016","kcal":130,"carbohidratos":28,"proteinas":2.7,"grasas":0.3,"fibra":0.4},
-  {"idIngrediente":"ING-0017","kcal":355,"carbohidratos":78,"proteinas":7,"grasas":0.6,"fibra":1},
-  {"idIngrediente":"ING-0018","kcal":355,"carbohidratos":78,"proteinas":7,"grasas":0.6,"fibra":1},
-  {"idIngrediente":"ING-0019","kcal":116,"carbohidratos":0,"proteinas":26,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0020","kcal":379,"carbohidratos":65,"proteinas":14,"grasas":7,"fibra":10},
-  {"idIngrediente":"ING-0021","kcal":310,"carbohidratos":65,"proteinas":11,"grasas":6,"fibra":4},
-  {"idIngrediente":"ING-0022","kcal":383,"carbohidratos":95,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0023","kcal":270,"carbohidratos":50,"proteinas":9,"grasas":3,"fibra":2},
-  {"idIngrediente":"ING-0024","kcal":89,"carbohidratos":23,"proteinas":1.1,"grasas":0.3,"fibra":2.6},
-  {"idIngrediente":"ING-0025","kcal":86,"carbohidratos":20,"proteinas":1.6,"grasas":0.1,"fibra":3},
-  {"idIngrediente":"ING-0026","kcal":15,"carbohidratos":2,"proteinas":0.2,"grasas":0.5,"fibra":0},
-  {"idIngrediente":"ING-0027","kcal":20,"carbohidratos":2.5,"proteinas":0.5,"grasas":0.8,"fibra":0},
-  {"idIngrediente":"ING-0028","kcal":25,"carbohidratos":6,"proteinas":1,"grasas":0.2,"fibra":3},
-  {"idIngrediente":"ING-0029","kcal":0,"carbohidratos":0,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0030","kcal":150,"carbohidratos":0,"proteinas":22,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0031","kcal":280,"carbohidratos":0,"proteinas":17,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0032","kcal":290,"carbohidratos":55,"proteinas":20,"grasas":13,"fibra":28},
-  {"idIngrediente":"ING-0033","kcal":92,"carbohidratos":3,"proteinas":16,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0034","kcal":15,"carbohidratos":0.5,"proteinas":2,"grasas":0.5,"fibra":0},
-  {"idIngrediente":"ING-0035","kcal":8,"carbohidratos":0.3,"proteinas":1.5,"grasas":0.1,"fibra":0},
-  {"idIngrediente":"ING-0036","kcal":10,"carbohidratos":0.5,"proteinas":1.5,"grasas":0.2,"fibra":0},
-  {"idIngrediente":"ING-0037","kcal":5,"carbohidratos":1,"proteinas":0.3,"grasas":0.1,"fibra":0},
-  {"idIngrediente":"ING-0038","kcal":247,"carbohidratos":80,"proteinas":4,"grasas":1,"fibra":53},
-  {"idIngrediente":"ING-0039","kcal":215,"carbohidratos":0,"proteinas":19,"grasas":15,"fibra":0},
-  {"idIngrediente":"ING-0040","kcal":175,"carbohidratos":0,"proteinas":21,"grasas":10,"fibra":0},
-  {"idIngrediente":"ING-0041","kcal":175,"carbohidratos":0,"proteinas":21,"grasas":10,"fibra":0},
-  {"idIngrediente":"ING-0042","kcal":47,"carbohidratos":16,"proteinas":1.5,"grasas":0.3,"fibra":10},
-  {"idIngrediente":"ING-0043","kcal":40,"carbohidratos":9,"proteinas":1.1,"grasas":0.1,"fibra":1.7},
-  {"idIngrediente":"ING-0044","kcal":32,"carbohidratos":7,"proteinas":1.8,"grasas":0.2,"fibra":2.6},
-  {"idIngrediente":"ING-0045","kcal":40,"carbohidratos":9,"proteinas":1.1,"grasas":0.1,"fibra":1.7},
-  {"idIngrediente":"ING-0046","kcal":180,"carbohidratos":0,"proteinas":20,"grasas":11,"fibra":0},
-  {"idIngrediente":"ING-0047","kcal":22,"carbohidratos":3.3,"proteinas":3.1,"grasas":0.3,"fibra":1},
-  {"idIngrediente":"ING-0048","kcal":31,"carbohidratos":7,"proteinas":1.8,"grasas":0.1,"fibra":3.4},
-  {"idIngrediente":"ING-0049","kcal":486,"carbohidratos":42,"proteinas":17,"grasas":31,"fibra":34},
-  {"idIngrediente":"ING-0050","kcal":597,"carbohidratos":34,"proteinas":8,"grasas":50,"fibra":8},
-  {"idIngrediente":"ING-0051","kcal":614,"carbohidratos":28,"proteinas":8,"grasas":54,"fibra":9},
-  {"idIngrediente":"ING-0052","kcal":185,"carbohidratos":0,"proteinas":20,"grasas":12,"fibra":0},
-  {"idIngrediente":"ING-0053","kcal":30,"carbohidratos":4.4,"proteinas":3.3,"grasas":0.7,"fibra":2.5},
-  {"idIngrediente":"ING-0054","kcal":23,"carbohidratos":3.7,"proteinas":2.1,"grasas":0.5,"fibra":2.8},
-  {"idIngrediente":"ING-0055","kcal":52,"carbohidratos":0.7,"proteinas":11,"grasas":0.2,"fibra":0,"gramosPorUnidad":30},
-  {"idIngrediente":"ING-0056","kcal":274,"carbohidratos":65,"proteinas":6,"grasas":13,"fibra":34},
-  {"idIngrediente":"ING-0057","kcal":354,"carbohidratos":15,"proteinas":3.3,"grasas":33,"fibra":9},
-  {"idIngrediente":"ING-0058","kcal":660,"carbohidratos":7,"proteinas":7,"grasas":65,"fibra":6},
-  {"idIngrediente":"ING-0059","kcal":25,"carbohidratos":5,"proteinas":1.9,"grasas":0.3,"fibra":2},
-  {"idIngrediente":"ING-0060","kcal":375,"carbohidratos":44,"proteinas":18,"grasas":22,"fibra":11},
-  {"idIngrediente":"ING-0061","kcal":298,"carbohidratos":55,"proteinas":12,"grasas":18,"fibra":42},
-  {"idIngrediente":"ING-0062","kcal":360,"carbohidratos":72,"proteinas":12,"grasas":1,"fibra":5},
-  {"idIngrediente":"ING-0063","kcal":312,"carbohidratos":68,"proteinas":10,"grasas":3,"fibra":22},
-  {"idIngrediente":"ING-0064","kcal":325,"carbohidratos":58,"proteinas":14,"grasas":14,"fibra":33},
-  {"idIngrediente":"ING-0065","kcal":72,"carbohidratos":17,"proteinas":2.5,"grasas":0.1,"fibra":3.2},
-  {"idIngrediente":"ING-0066","kcal":0,"carbohidratos":0,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0067","kcal":200,"carbohidratos":0,"proteinas":20,"grasas":13,"fibra":0},
-  {"idIngrediente":"ING-0068","kcal":20,"carbohidratos":5,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0069","kcal":12,"carbohidratos":3,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0070","kcal":20,"carbohidratos":3.9,"proteinas":2.2,"grasas":0.1,"fibra":2.1},
-  {"idIngrediente":"ING-0071","kcal":280,"carbohidratos":50,"proteinas":10,"grasas":10,"fibra":15},
-  {"idIngrediente":"ING-0072","kcal":23,"carbohidratos":3.6,"proteinas":2.9,"grasas":0.4,"fibra":2.2},
-  {"idIngrediente":"ING-0073","kcal":355,"carbohidratos":71,"proteinas":13,"grasas":1.5,"fibra":3},
-  {"idIngrediente":"ING-0074","kcal":78,"carbohidratos":0,"proteinas":17,"grasas":0.8,"fibra":0},
-  {"idIngrediente":"ING-0075","kcal":190,"carbohidratos":3,"proteinas":13,"grasas":14,"fibra":0},
-  {"idIngrediente":"ING-0076","kcal":32,"carbohidratos":7.7,"proteinas":0.7,"grasas":0.3,"fibra":2},
-  {"idIngrediente":"ING-0077","kcal":380,"carbohidratos":82,"proteinas":7,"grasas":2,"fibra":1.5},
-  {"idIngrediente":"ING-0078","kcal":164,"carbohidratos":27,"proteinas":9,"grasas":2.6,"fibra":7},
-  {"idIngrediente":"ING-0079","kcal":364,"carbohidratos":61,"proteinas":19,"grasas":6,"fibra":17},
-  {"idIngrediente":"ING-0080","kcal":420,"carbohidratos":60,"proteinas":8,"grasas":18,"fibra":6},
-  {"idIngrediente":"ING-0081","kcal":133,"carbohidratos":4.7,"proteinas":10,"grasas":8,"fibra":0},
-  {"idIngrediente":"ING-0082","kcal":575,"carbohidratos":22,"proteinas":21,"grasas":49,"fibra":13},
-  {"idIngrediente":"ING-0083","kcal":400,"carbohidratos":57,"proteinas":14,"grasas":15,"fibra":39},
-  {"idIngrediente":"ING-0084","kcal":22,"carbohidratos":3.5,"proteinas":2,"grasas":0.3,"fibra":2},
-  {"idIngrediente":"ING-0085","kcal":155,"carbohidratos":1.1,"proteinas":13,"grasas":11,"fibra":0,"gramosPorUnidad":55},
-  {"idIngrediente":"ING-0086","kcal":145,"carbohidratos":2,"proteinas":18,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0087","kcal":80,"carbohidratos":18,"proteinas":1.8,"grasas":0.8,"fibra":2},
-  {"idIngrediente":"ING-0088","kcal":90,"carbohidratos":0.5,"proteinas":18,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0089","kcal":313,"carbohidratos":75,"proteinas":7.6,"grasas":8.4,"fibra":26},
-  {"idIngrediente":"ING-0090","kcal":197,"carbohidratos":6,"proteinas":2,"grasas":19,"fibra":0},
-  {"idIngrediente":"ING-0091","kcal":15,"carbohidratos":2.9,"proteinas":1.4,"grasas":0.2,"fibra":1.3},
-  {"idIngrediente":"ING-0092","kcal":73,"carbohidratos":0,"proteinas":16,"grasas":0.5,"fibra":0},
-  {"idIngrediente":"ING-0093","kcal":29,"carbohidratos":9,"proteinas":1.1,"grasas":0.3,"fibra":2.8},
-  {"idIngrediente":"ING-0094","kcal":567,"carbohidratos":16,"proteinas":26,"grasas":49,"fibra":8.5},
-  {"idIngrediente":"ING-0095","kcal":52,"carbohidratos":14,"proteinas":0.3,"grasas":0.2,"fibra":2.4},
-  {"idIngrediente":"ING-0096","kcal":52,"carbohidratos":14,"proteinas":0.3,"grasas":0.2,"fibra":2.4},
-  {"idIngrediente":"ING-0097","kcal":86,"carbohidratos":4,"proteinas":12,"grasas":2,"fibra":0},
-  {"idIngrediente":"ING-0098","kcal":70,"carbohidratos":14,"proteinas":3.8,"grasas":0.9,"fibra":8},
-  {"idIngrediente":"ING-0099","kcal":89,"carbohidratos":0,"proteinas":17,"grasas":2,"fibra":0},
-  {"idIngrediente":"ING-0100","kcal":304,"carbohidratos":82,"proteinas":0.3,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0101","kcal":350,"carbohidratos":88,"proteinas":0.2,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0102","kcal":31,"carbohidratos":6,"proteinas":1,"grasas":0.3,"fibra":2.1},
-  {"idIngrediente":"ING-0103","kcal":66,"carbohidratos":5,"proteinas":4,"grasas":4,"fibra":3},
-  {"idIngrediente":"ING-0104","kcal":66,"carbohidratos":5,"proteinas":4,"grasas":4,"fibra":3},
-  {"idIngrediente":"ING-0105","kcal":215,"carbohidratos":0,"proteinas":18,"grasas":16,"fibra":0},
-  {"idIngrediente":"ING-0106","kcal":47,"carbohidratos":12,"proteinas":0.9,"grasas":0.1,"fibra":2.4},
-  {"idIngrediente":"ING-0107","kcal":884,"carbohidratos":0,"proteinas":0,"grasas":100,"fibra":0},
-  {"idIngrediente":"ING-0108","kcal":654,"carbohidratos":14,"proteinas":15,"grasas":65,"fibra":6.7},
-  {"idIngrediente":"ING-0109","kcal":525,"carbohidratos":49,"proteinas":6,"grasas":36,"fibra":21},
-  {"idIngrediente":"ING-0110","kcal":210,"carbohidratos":0,"proteinas":21,"grasas":14,"fibra":0},
-  {"idIngrediente":"ING-0111","kcal":265,"carbohidratos":69,"proteinas":9,"grasas":4,"fibra":43},
-  {"idIngrediente":"ING-0113","kcal":160,"carbohidratos":9,"proteinas":2,"grasas":15,"fibra":7},
-  {"idIngrediente":"ING-0114","kcal":270,"carbohidratos":50,"proteinas":9,"grasas":3,"fibra":2},
-  {"idIngrediente":"ING-0115","kcal":270,"carbohidratos":50,"proteinas":9,"grasas":3,"fibra":2},
-  {"idIngrediente":"ING-0116","kcal":285,"carbohidratos":50,"proteinas":9,"grasas":4,"fibra":2},
-  {"idIngrediente":"ING-0117","kcal":275,"carbohidratos":55,"proteinas":9,"grasas":2,"fibra":2},
-  {"idIngrediente":"ING-0118","kcal":385,"carbohidratos":72,"proteinas":11,"grasas":5,"fibra":3},
-  {"idIngrediente":"ING-0119","kcal":77,"carbohidratos":17,"proteinas":2,"grasas":0.1,"fibra":2},
-  {"idIngrediente":"ING-0120","kcal":26,"carbohidratos":5,"proteinas":1.5,"grasas":0.3,"fibra":1},
-  {"idIngrediente":"ING-0121","kcal":588,"carbohidratos":20,"proteinas":25,"grasas":50,"fibra":6},
-  {"idIngrediente":"ING-0122","kcal":215,"carbohidratos":0,"proteinas":18,"grasas":16,"fibra":0},
-  {"idIngrediente":"ING-0123","kcal":165,"carbohidratos":0,"proteinas":31,"grasas":3.6,"fibra":0},
-  {"idIngrediente":"ING-0124","kcal":318,"carbohidratos":57,"proteinas":12,"grasas":17,"fibra":28},
-  {"idIngrediente":"ING-0125","kcal":16,"carbohidratos":3.6,"proteinas":0.7,"grasas":0.1,"fibra":0.5},
-  {"idIngrediente":"ING-0126","kcal":57,"carbohidratos":15,"proteinas":0.4,"grasas":0.1,"fibra":3.1},
-  {"idIngrediente":"ING-0127","kcal":36,"carbohidratos":6,"proteinas":3,"grasas":0.8,"fibra":3.3},
-  {"idIngrediente":"ING-0128","kcal":282,"carbohidratos":54,"proteinas":14,"grasas":13,"fibra":35},
-  {"idIngrediente":"ING-0129","kcal":282,"carbohidratos":54,"proteinas":14,"grasas":13,"fibra":35},
-  {"idIngrediente":"ING-0130","kcal":282,"carbohidratos":54,"proteinas":14,"grasas":13,"fibra":35},
-  {"idIngrediente":"ING-0131","kcal":251,"carbohidratos":64,"proteinas":10,"grasas":3,"fibra":26},
-  {"idIngrediente":"ING-0132","kcal":185,"carbohidratos":0,"proteinas":27,"grasas":8,"fibra":0},
-  {"idIngrediente":"ING-0133","kcal":165,"carbohidratos":0,"proteinas":25,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0134","kcal":165,"carbohidratos":0,"proteinas":25,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0135","kcal":165,"carbohidratos":0,"proteinas":25,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0136","kcal":53,"carbohidratos":28,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0137","kcal":29,"carbohidratos":5,"proteinas":2.9,"grasas":0.1,"fibra":2},
-  {"idIngrediente":"ING-0138","kcal":355,"carbohidratos":0,"proteinas":25,"grasas":28,"fibra":0},
-  {"idIngrediente":"ING-0139","kcal":200,"carbohidratos":80,"proteinas":0,"grasas":0,"fibra":78},
-  {"idIngrediente":"ING-0140","kcal":250,"carbohidratos":3,"proteinas":5,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0141","kcal":190,"carbohidratos":3,"proteinas":13,"grasas":14,"fibra":0},
-  {"idIngrediente":"ING-0142","kcal":400,"carbohidratos":1,"proteinas":35,"grasas":28,"fibra":0},
-  {"idIngrediente":"ING-0143","kcal":250,"carbohidratos":3,"proteinas":5,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0144","kcal":47,"carbohidratos":16,"proteinas":1.5,"grasas":0.3,"fibra":10},
-  {"idIngrediente":"ING-0145","kcal":270,"carbohidratos":50,"proteinas":9,"grasas":3,"fibra":2},
-  {"idIngrediente":"ING-0146","kcal":25,"carbohidratos":5.8,"proteinas":1.3,"grasas":0.1,"fibra":2.5},
-  {"idIngrediente":"ING-0147","kcal":290,"carbohidratos":0,"proteinas":18,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0148","kcal":131,"carbohidratos":21,"proteinas":3.3,"grasas":5.9,"fibra":14},
-  {"idIngrediente":"ING-0149","kcal":25,"carbohidratos":3.7,"proteinas":2.6,"grasas":0.7,"fibra":1.6},
-  {"idIngrediente":"ING-0150","kcal":0,"carbohidratos":0,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0151","kcal":0,"carbohidratos":0,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0152","kcal":53,"carbohidratos":7,"proteinas":5,"grasas":0.1,"fibra":0.8},
-  {"idIngrediente":"ING-0153","kcal":559,"carbohidratos":11,"proteinas":30,"grasas":49,"fibra":6},
-  {"idIngrediente":"ING-0154","kcal":584,"carbohidratos":20,"proteinas":21,"grasas":51,"fibra":8.6},
-  {"idIngrediente":"ING-0155","kcal":534,"carbohidratos":29,"proteinas":18,"grasas":42,"fibra":27},
-  {"idIngrediente":"ING-0156","kcal":573,"carbohidratos":23,"proteinas":18,"grasas":50,"fibra":12},
-  {"idIngrediente":"ING-0157","kcal":93,"carbohidratos":18,"proteinas":1.4,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0158","kcal":595,"carbohidratos":21,"proteinas":17,"grasas":54,"fibra":9},
-  {"idIngrediente":"ING-0159","kcal":18,"carbohidratos":3.9,"proteinas":0.9,"grasas":0.2,"fibra":1.2},
-  {"idIngrediente":"ING-0160","kcal":25,"carbohidratos":5,"proteinas":1,"grasas":0.2,"fibra":1},
-  {"idIngrediente":"ING-0161","kcal":18,"carbohidratos":3.9,"proteinas":0.9,"grasas":0.2,"fibra":1.2},
-  {"idIngrediente":"ING-0162","kcal":101,"carbohidratos":24,"proteinas":5.6,"grasas":1.7,"fibra":14},
-  {"idIngrediente":"ING-0163","kcal":300,"carbohidratos":52,"proteinas":8,"grasas":7,"fibra":3},
-  {"idIngrediente":"ING-0164","kcal":350,"carbohidratos":65,"proteinas":9,"grasas":5,"fibra":7},
-  {"idIngrediente":"ING-0165","kcal":18,"carbohidratos":4,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0166","kcal":21,"carbohidratos":0.9,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0167","kcal":19,"carbohidratos":0.6,"proteinas":0,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0168","kcal":82,"carbohidratos":2.7,"proteinas":0.1,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0169","kcal":85,"carbohidratos":2.6,"proteinas":0.1,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0170","kcal":85,"carbohidratos":2.6,"proteinas":0.1,"grasas":0,"fibra":0},
-  {"idIngrediente":"ING-0171","kcal":400,"carbohidratos":8,"proteinas":75,"grasas":6,"fibra":0},
-  {"idIngrediente":"ING-0172","kcal":322,"carbohidratos":3.6,"proteinas":16,"grasas":27,"fibra":0,"gramosPorUnidad":18},
-  {"idIngrediente":"ING-0173","kcal":133,"carbohidratos":4.7,"proteinas":10,"grasas":8,"fibra":0},
-  {"idIngrediente":"ING-0174","kcal":63,"carbohidratos":5,"proteinas":3.5,"grasas":3,"fibra":0},
-  {"idIngrediente":"ING-0175","kcal":45,"carbohidratos":3,"proteinas":1,"grasas":2.5,"fibra":0},
-  {"idIngrediente":"ING-0176","kcal":41,"carbohidratos":10,"proteinas":0.9,"grasas":0.2,"fibra":2.8},
-  {"idIngrediente":"ING-0177","kcal":17,"carbohidratos":3.1,"proteinas":1.2,"grasas":0.3,"fibra":1},
-  {"idIngrediente":"ING-0178","kcal":145,"carbohidratos":0,"proteinas":22,"grasas":6,"fibra":0},
-  {"idIngrediente":"ING-0179","kcal":145,"carbohidratos":0,"proteinas":22,"grasas":6,"fibra":0},
-  {"idIngrediente":"ING-0180","kcal":150,"carbohidratos":0,"proteinas":22,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0181","kcal":220,"carbohidratos":0,"proteinas":21,"grasas":15,"fibra":0},
-  {"idIngrediente":"ING-0182","kcal":190,"carbohidratos":0,"proteinas":21,"grasas":12,"fibra":0},
-  {"idIngrediente":"ING-0183","kcal":210,"carbohidratos":0,"proteinas":21,"grasas":14,"fibra":0},
-  {"idIngrediente":"ING-0184","kcal":240,"carbohidratos":0,"proteinas":19,"grasas":18,"fibra":0},
-  {"idIngrediente":"ING-0185","kcal":190,"carbohidratos":0,"proteinas":20,"grasas":12,"fibra":0},
-  {"idIngrediente":"ING-0186","kcal":290,"carbohidratos":0,"proteinas":17,"grasas":25,"fibra":0},
-  {"idIngrediente":"ING-0187","kcal":150,"carbohidratos":0,"proteinas":22,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0188","kcal":140,"carbohidratos":0,"proteinas":22,"grasas":5,"fibra":0},
-  {"idIngrediente":"ING-0189","kcal":145,"carbohidratos":0,"proteinas":22,"grasas":6,"fibra":0},
-  {"idIngrediente":"ING-0190","kcal":250,"carbohidratos":0,"proteinas":19,"grasas":19,"fibra":0},
-  {"idIngrediente":"ING-0191","kcal":200,"carbohidratos":0,"proteinas":20,"grasas":13,"fibra":0},
-  {"idIngrediente":"ING-0192","kcal":175,"carbohidratos":0,"proteinas":21,"grasas":10,"fibra":0},
-  {"idIngrediente":"ING-0193","kcal":175,"carbohidratos":0,"proteinas":21,"grasas":10,"fibra":0},
-  {"idIngrediente":"ING-0194","kcal":280,"carbohidratos":0,"proteinas":17,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0195","kcal":165,"carbohidratos":0,"proteinas":31,"grasas":3.6,"fibra":0},
-  {"idIngrediente":"ING-0196","kcal":225,"carbohidratos":0,"proteinas":19,"grasas":16,"fibra":0},
-  {"idIngrediente":"ING-0197","kcal":130,"carbohidratos":0,"proteinas":25,"grasas":3,"fibra":0},
-  {"idIngrediente":"ING-0198","kcal":280,"carbohidratos":0,"proteinas":17,"grasas":24,"fibra":0},
-  {"idIngrediente":"ING-0199","kcal":310,"carbohidratos":0,"proteinas":17,"grasas":27,"fibra":0},
-  {"idIngrediente":"ING-0200","kcal":175,"carbohidratos":0,"proteinas":22,"grasas":9,"fibra":0},
-  {"idIngrediente":"ING-0201","kcal":350,"carbohidratos":1,"proteinas":14,"grasas":32,"fibra":0},
-  {"idIngrediente":"ING-0202","kcal":380,"carbohidratos":5,"proteinas":13,"grasas":34,"fibra":0},
-  {"idIngrediente":"ING-0203","kcal":440,"carbohidratos":0,"proteinas":12,"grasas":44,"fibra":0},
-  {"idIngrediente":"ING-0204","kcal":78,"carbohidratos":0,"proteinas":17,"grasas":0.8,"fibra":0},
-  {"idIngrediente":"ING-0205","kcal":208,"carbohidratos":0,"proteinas":20,"grasas":14,"fibra":0},
-  {"idIngrediente":"ING-0206","kcal":144,"carbohidratos":0,"proteinas":23,"grasas":5,"fibra":0},
-  {"idIngrediente":"ING-0207","kcal":141,"carbohidratos":0,"proteinas":20,"grasas":6,"fibra":0},
-  {"idIngrediente":"ING-0208","kcal":85,"carbohidratos":0,"proteinas":18,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0209","kcal":83,"carbohidratos":0,"proteinas":17,"grasas":1.5,"fibra":0},
-  {"idIngrediente":"ING-0210","kcal":90,"carbohidratos":0.5,"proteinas":18,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0211","kcal":85,"carbohidratos":0.5,"proteinas":18,"grasas":0.9,"fibra":0},
-  {"idIngrediente":"ING-0212","kcal":92,"carbohidratos":3,"proteinas":16,"grasas":1,"fibra":0},
-  {"idIngrediente":"ING-0213","kcal":86,"carbohidratos":4,"proteinas":12,"grasas":2,"fibra":0},
-  {"idIngrediente":"ING-0214","kcal":20,"carbohidratos":4.6,"proteinas":0.9,"grasas":0.2,"fibra":1.7},
-  {"idIngrediente":"ING-0215","kcal":26,"carbohidratos":6.5,"proteinas":1,"grasas":0.1,"fibra":0.5},
-  {"idIngrediente":"ING-0216","kcal":17,"carbohidratos":3.4,"proteinas":1.2,"grasas":0.2,"fibra":1.1},
-  {"idIngrediente":"ING-0217","kcal":26,"carbohidratos":6.5,"proteinas":1,"grasas":0.1,"fibra":0.5},
-  {"idIngrediente":"ING-0218","kcal":86,"carbohidratos":20,"proteinas":1.6,"grasas":0.1,"fibra":3},
-  {"idIngrediente":"ING-0219","kcal":86,"carbohidratos":19,"proteinas":3.2,"grasas":1.2,"fibra":2},
-  {"idIngrediente":"ING-0220","kcal":31,"carbohidratos":7,"proteinas":1.8,"grasas":0.1,"fibra":3.4},
-  {"idIngrediente":"ING-0221","kcal":43,"carbohidratos":10,"proteinas":1.6,"grasas":0.2,"fibra":2.8},
-  {"idIngrediente":"ING-0222","kcal":20,"carbohidratos":4.1,"proteinas":1.3,"grasas":0.2,"fibra":1.5},
-  {"idIngrediente":"ING-0223","kcal":17,"carbohidratos":3.4,"proteinas":1.2,"grasas":0.2,"fibra":1.6},
-  {"idIngrediente":"ING-0224","kcal":17,"carbohidratos":3.4,"proteinas":1.3,"grasas":0.1,"fibra":3.1},
-  {"idIngrediente":"ING-0225","kcal":61,"carbohidratos":14,"proteinas":1.5,"grasas":0.3,"fibra":1.8},
-  {"idIngrediente":"ING-0226","kcal":31,"carbohidratos":7,"proteinas":1.2,"grasas":0.2,"fibra":3.1},
-  {"idIngrediente":"ING-0227","kcal":28,"carbohidratos":6.4,"proteinas":0.9,"grasas":0.1,"fibra":1.8},
-  {"idIngrediente":"ING-0228","kcal":16,"carbohidratos":3.4,"proteinas":0.7,"grasas":0.1,"fibra":1.6},
-  {"idIngrediente":"ING-0229","kcal":34,"carbohidratos":7,"proteinas":2.8,"grasas":0.4,"fibra":2.6},
-  {"idIngrediente":"ING-0230","kcal":31,"carbohidratos":7,"proteinas":1.4,"grasas":0.2,"fibra":2.1},
-  {"idIngrediente":"ING-0231","kcal":49,"carbohidratos":9,"proteinas":4.3,"grasas":0.9,"fibra":3.6},
-  {"idIngrediente":"ING-0232","kcal":19,"carbohidratos":3.7,"proteinas":1.8,"grasas":0.2,"fibra":1.6},
-  {"idIngrediente":"ING-0233","kcal":53,"carbohidratos":13,"proteinas":0.8,"grasas":0.3,"fibra":1.8},
-  {"idIngrediente":"ING-0234","kcal":42,"carbohidratos":11,"proteinas":0.8,"grasas":0.1,"fibra":1.6},
-  {"idIngrediente":"ING-0235","kcal":32,"carbohidratos":7.7,"proteinas":0.7,"grasas":0.3,"fibra":2},
-  {"idIngrediente":"ING-0236","kcal":57,"carbohidratos":14,"proteinas":0.7,"grasas":0.3,"fibra":2.4},
-  {"idIngrediente":"ING-0237","kcal":39,"carbohidratos":10,"proteinas":0.9,"grasas":0.3,"fibra":1.5},
-  {"idIngrediente":"ING-0238","kcal":46,"carbohidratos":11,"proteinas":0.7,"grasas":0.3,"fibra":1.4},
-  {"idIngrediente":"ING-0239","kcal":48,"carbohidratos":11,"proteinas":1.4,"grasas":0.4,"fibra":2},
-  {"idIngrediente":"ING-0240","kcal":74,"carbohidratos":19,"proteinas":0.8,"grasas":0.3,"fibra":3},
-  {"idIngrediente":"ING-0241","kcal":69,"carbohidratos":18,"proteinas":0.7,"grasas":0.2,"fibra":0.9},
-  {"idIngrediente":"ING-0242","kcal":34,"carbohidratos":8,"proteinas":0.8,"grasas":0.2,"fibra":0.9},
-  {"idIngrediente":"ING-0243","kcal":30,"carbohidratos":8,"proteinas":0.6,"grasas":0.2,"fibra":0.4},
-  {"idIngrediente":"ING-0244","kcal":50,"carbohidratos":13,"proteinas":0.5,"grasas":0.1,"fibra":1.4},
-  {"idIngrediente":"ING-0245","kcal":61,"carbohidratos":15,"proteinas":1.1,"grasas":0.5,"fibra":3},
-  {"idIngrediente":"ING-0246","kcal":61,"carbohidratos":4.8,"proteinas":3.2,"grasas":3.3,"fibra":0},
-  {"idIngrediente":"ING-0247","kcal":35,"carbohidratos":5,"proteinas":3.4,"grasas":0.1,"fibra":0},
-  {"idIngrediente":"ING-0248","kcal":340,"carbohidratos":3,"proteinas":2.1,"grasas":35,"fibra":0},
-  {"idIngrediente":"ING-0249","kcal":310,"carbohidratos":2,"proteinas":18,"grasas":26,"fibra":0},
-  {"idIngrediente":"ING-0250","kcal":320,"carbohidratos":0.5,"proteinas":22,"grasas":26,"fibra":0},
-  {"idIngrediente":"ING-0251","kcal":285,"carbohidratos":2,"proteinas":22,"grasas":22,"fibra":0},
-  {"idIngrediente":"ING-0252","kcal":174,"carbohidratos":3,"proteinas":11,"grasas":13,"fibra":0},
-  {"idIngrediente":"ING-0253","kcal":327,"carbohidratos":57,"proteinas":7,"grasas":7,"fibra":0},
-  {"idIngrediente":"ING-0254","kcal":717,"carbohidratos":0.1,"proteinas":0.9,"grasas":81,"fibra":0},
-  {"idIngrediente":"ING-0255","kcal":364,"carbohidratos":76,"proteinas":10,"grasas":1,"fibra":2.7},
-  {"idIngrediente":"ING-0256","kcal":332,"carbohidratos":66,"proteinas":12,"grasas":2,"fibra":11},
-  {"idIngrediente":"ING-0257","kcal":357,"carbohidratos":75,"proteinas":8,"grasas":1,"fibra":4},
-  {"idIngrediente":"ING-0258","kcal":361,"carbohidratos":75,"proteinas":7.5,"grasas":2,"fibra":3.5},
-  {"idIngrediente":"ING-0259","kcal":395,"carbohidratos":73,"proteinas":13,"grasas":5,"fibra":3},
-  {"idIngrediente":"ING-0260","kcal":252,"carbohidratos":55,"proteinas":17,"grasas":7,"fibra":15},
-  {"idIngrediente":"ING-0261","kcal":353,"carbohidratos":60,"proteinas":24,"grasas":1,"fibra":12},
-  {"idIngrediente":"ING-0262","kcal":364,"carbohidratos":61,"proteinas":19,"grasas":6,"fibra":17},
-  {"idIngrediente":"ING-0263","kcal":341,"carbohidratos":62,"proteinas":22,"grasas":0.9,"fibra":16},
-  {"idIngrediente":"ING-0264","kcal":337,"carbohidratos":61,"proteinas":22,"grasas":1,"fibra":16},
-  {"idIngrediente":"ING-0265","kcal":341,"carbohidratos":60,"proteinas":25,"grasas":1,"fibra":14}
+  {
+    "idIngrediente": "ING-0001",
+    "kcal": 82,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0002",
+    "kcal": 862,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0003",
+    "kcal": 884,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0004",
+    "kcal": 884,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0005",
+    "kcal": 884,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0006",
+    "kcal": 115,
+    "carbohidratos": 6,
+    "proteinas": 0.8,
+    "grasas": 11,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0007",
+    "kcal": 145,
+    "carbohidratos": 4,
+    "proteinas": 1,
+    "grasas": 15,
+    "fibra": 2.5
+  },
+  {
+    "idIngrediente": "ING-0008",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0009",
+    "kcal": 318,
+    "carbohidratos": 57,
+    "proteinas": 12,
+    "grasas": 17,
+    "fibra": 28
+  },
+  {
+    "idIngrediente": "ING-0010",
+    "kcal": 40,
+    "carbohidratos": 9,
+    "proteinas": 2,
+    "grasas": 0.4,
+    "fibra": 1.5
+  },
+  {
+    "idIngrediente": "ING-0011",
+    "kcal": 149,
+    "carbohidratos": 33,
+    "proteinas": 6.4,
+    "grasas": 0.5,
+    "fibra": 2.1,
+    "gramosPorUnidad": 5
+  },
+  {
+    "idIngrediente": "ING-0012",
+    "kcal": 331,
+    "carbohidratos": 73,
+    "proteinas": 17,
+    "grasas": 0.7,
+    "fibra": 9
+  },
+  {
+    "idIngrediente": "ING-0013",
+    "kcal": 575,
+    "carbohidratos": 22,
+    "proteinas": 21,
+    "grasas": 49,
+    "fibra": 13
+  },
+  {
+    "idIngrediente": "ING-0014",
+    "kcal": 575,
+    "carbohidratos": 22,
+    "proteinas": 21,
+    "grasas": 49,
+    "fibra": 13
+  },
+  {
+    "idIngrediente": "ING-0015",
+    "kcal": 16,
+    "carbohidratos": 3,
+    "proteinas": 0.7,
+    "grasas": 0.2,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0016",
+    "kcal": 130,
+    "carbohidratos": 28,
+    "proteinas": 2.7,
+    "grasas": 0.3,
+    "fibra": 0.4
+  },
+  {
+    "idIngrediente": "ING-0017",
+    "kcal": 355,
+    "carbohidratos": 78,
+    "proteinas": 7,
+    "grasas": 0.6,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0018",
+    "kcal": 355,
+    "carbohidratos": 78,
+    "proteinas": 7,
+    "grasas": 0.6,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0019",
+    "kcal": 116,
+    "carbohidratos": 0,
+    "proteinas": 26,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0020",
+    "kcal": 379,
+    "carbohidratos": 65,
+    "proteinas": 14,
+    "grasas": 7,
+    "fibra": 10
+  },
+  {
+    "idIngrediente": "ING-0021",
+    "kcal": 310,
+    "carbohidratos": 65,
+    "proteinas": 11,
+    "grasas": 6,
+    "fibra": 4
+  },
+  {
+    "idIngrediente": "ING-0022",
+    "kcal": 383,
+    "carbohidratos": 95,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0023",
+    "kcal": 270,
+    "carbohidratos": 50,
+    "proteinas": 9,
+    "grasas": 3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0024",
+    "kcal": 89,
+    "carbohidratos": 23,
+    "proteinas": 1.1,
+    "grasas": 0.3,
+    "fibra": 2.6
+  },
+  {
+    "idIngrediente": "ING-0025",
+    "kcal": 86,
+    "carbohidratos": 20,
+    "proteinas": 1.6,
+    "grasas": 0.1,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0026",
+    "kcal": 15,
+    "carbohidratos": 2,
+    "proteinas": 0.2,
+    "grasas": 0.5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0027",
+    "kcal": 20,
+    "carbohidratos": 2.5,
+    "proteinas": 0.5,
+    "grasas": 0.8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0028",
+    "kcal": 25,
+    "carbohidratos": 6,
+    "proteinas": 1,
+    "grasas": 0.2,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0029",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0030",
+    "kcal": 150,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0031",
+    "kcal": 280,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0032",
+    "kcal": 290,
+    "carbohidratos": 55,
+    "proteinas": 20,
+    "grasas": 13,
+    "fibra": 28
+  },
+  {
+    "idIngrediente": "ING-0033",
+    "kcal": 92,
+    "carbohidratos": 3,
+    "proteinas": 16,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0034",
+    "kcal": 15,
+    "carbohidratos": 0.5,
+    "proteinas": 2,
+    "grasas": 0.5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0035",
+    "kcal": 8,
+    "carbohidratos": 0.3,
+    "proteinas": 1.5,
+    "grasas": 0.1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0036",
+    "kcal": 10,
+    "carbohidratos": 0.5,
+    "proteinas": 1.5,
+    "grasas": 0.2,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0037",
+    "kcal": 5,
+    "carbohidratos": 1,
+    "proteinas": 0.3,
+    "grasas": 0.1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0038",
+    "kcal": 247,
+    "carbohidratos": 80,
+    "proteinas": 4,
+    "grasas": 1,
+    "fibra": 53
+  },
+  {
+    "idIngrediente": "ING-0039",
+    "kcal": 215,
+    "carbohidratos": 0,
+    "proteinas": 19,
+    "grasas": 15,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0040",
+    "kcal": 175,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 10,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0041",
+    "kcal": 175,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 10,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0042",
+    "kcal": 47,
+    "carbohidratos": 16,
+    "proteinas": 1.5,
+    "grasas": 0.3,
+    "fibra": 10
+  },
+  {
+    "idIngrediente": "ING-0043",
+    "kcal": 40,
+    "carbohidratos": 9,
+    "proteinas": 1.1,
+    "grasas": 0.1,
+    "fibra": 1.7
+  },
+  {
+    "idIngrediente": "ING-0044",
+    "kcal": 32,
+    "carbohidratos": 7,
+    "proteinas": 1.8,
+    "grasas": 0.2,
+    "fibra": 2.6
+  },
+  {
+    "idIngrediente": "ING-0045",
+    "kcal": 40,
+    "carbohidratos": 9,
+    "proteinas": 1.1,
+    "grasas": 0.1,
+    "fibra": 1.7
+  },
+  {
+    "idIngrediente": "ING-0046",
+    "kcal": 180,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 11,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0047",
+    "kcal": 22,
+    "carbohidratos": 3.3,
+    "proteinas": 3.1,
+    "grasas": 0.3,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0048",
+    "kcal": 31,
+    "carbohidratos": 7,
+    "proteinas": 1.8,
+    "grasas": 0.1,
+    "fibra": 3.4
+  },
+  {
+    "idIngrediente": "ING-0049",
+    "kcal": 486,
+    "carbohidratos": 42,
+    "proteinas": 17,
+    "grasas": 31,
+    "fibra": 34
+  },
+  {
+    "idIngrediente": "ING-0050",
+    "kcal": 597,
+    "carbohidratos": 34,
+    "proteinas": 8,
+    "grasas": 50,
+    "fibra": 8
+  },
+  {
+    "idIngrediente": "ING-0051",
+    "kcal": 614,
+    "carbohidratos": 28,
+    "proteinas": 8,
+    "grasas": 54,
+    "fibra": 9
+  },
+  {
+    "idIngrediente": "ING-0052",
+    "kcal": 185,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 12,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0053",
+    "kcal": 30,
+    "carbohidratos": 4.4,
+    "proteinas": 3.3,
+    "grasas": 0.7,
+    "fibra": 2.5
+  },
+  {
+    "idIngrediente": "ING-0054",
+    "kcal": 23,
+    "carbohidratos": 3.7,
+    "proteinas": 2.1,
+    "grasas": 0.5,
+    "fibra": 2.8
+  },
+  {
+    "idIngrediente": "ING-0055",
+    "kcal": 52,
+    "carbohidratos": 0.7,
+    "proteinas": 11,
+    "grasas": 0.2,
+    "fibra": 0,
+    "gramosPorUnidad": 30
+  },
+  {
+    "idIngrediente": "ING-0056",
+    "kcal": 274,
+    "carbohidratos": 65,
+    "proteinas": 6,
+    "grasas": 13,
+    "fibra": 34
+  },
+  {
+    "idIngrediente": "ING-0057",
+    "kcal": 354,
+    "carbohidratos": 15,
+    "proteinas": 3.3,
+    "grasas": 33,
+    "fibra": 9
+  },
+  {
+    "idIngrediente": "ING-0058",
+    "kcal": 660,
+    "carbohidratos": 7,
+    "proteinas": 7,
+    "grasas": 65,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0059",
+    "kcal": 25,
+    "carbohidratos": 5,
+    "proteinas": 1.9,
+    "grasas": 0.3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0060",
+    "kcal": 375,
+    "carbohidratos": 44,
+    "proteinas": 18,
+    "grasas": 22,
+    "fibra": 11
+  },
+  {
+    "idIngrediente": "ING-0061",
+    "kcal": 298,
+    "carbohidratos": 55,
+    "proteinas": 12,
+    "grasas": 18,
+    "fibra": 42
+  },
+  {
+    "idIngrediente": "ING-0062",
+    "kcal": 360,
+    "carbohidratos": 72,
+    "proteinas": 12,
+    "grasas": 1,
+    "fibra": 5
+  },
+  {
+    "idIngrediente": "ING-0063",
+    "kcal": 312,
+    "carbohidratos": 68,
+    "proteinas": 10,
+    "grasas": 3,
+    "fibra": 22
+  },
+  {
+    "idIngrediente": "ING-0064",
+    "kcal": 325,
+    "carbohidratos": 58,
+    "proteinas": 14,
+    "grasas": 14,
+    "fibra": 33
+  },
+  {
+    "idIngrediente": "ING-0065",
+    "kcal": 72,
+    "carbohidratos": 17,
+    "proteinas": 2.5,
+    "grasas": 0.1,
+    "fibra": 3.2
+  },
+  {
+    "idIngrediente": "ING-0066",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0067",
+    "kcal": 200,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 13,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0068",
+    "kcal": 20,
+    "carbohidratos": 5,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0069",
+    "kcal": 12,
+    "carbohidratos": 3,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0070",
+    "kcal": 20,
+    "carbohidratos": 3.9,
+    "proteinas": 2.2,
+    "grasas": 0.1,
+    "fibra": 2.1
+  },
+  {
+    "idIngrediente": "ING-0071",
+    "kcal": 280,
+    "carbohidratos": 50,
+    "proteinas": 10,
+    "grasas": 10,
+    "fibra": 15
+  },
+  {
+    "idIngrediente": "ING-0072",
+    "kcal": 23,
+    "carbohidratos": 3.6,
+    "proteinas": 2.9,
+    "grasas": 0.4,
+    "fibra": 2.2
+  },
+  {
+    "idIngrediente": "ING-0073",
+    "kcal": 355,
+    "carbohidratos": 71,
+    "proteinas": 13,
+    "grasas": 1.5,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0074",
+    "kcal": 78,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 0.8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0075",
+    "kcal": 190,
+    "carbohidratos": 3,
+    "proteinas": 13,
+    "grasas": 14,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0076",
+    "kcal": 32,
+    "carbohidratos": 7.7,
+    "proteinas": 0.7,
+    "grasas": 0.3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0077",
+    "kcal": 380,
+    "carbohidratos": 82,
+    "proteinas": 7,
+    "grasas": 2,
+    "fibra": 1.5
+  },
+  {
+    "idIngrediente": "ING-0078",
+    "kcal": 164,
+    "carbohidratos": 27,
+    "proteinas": 9,
+    "grasas": 2.6,
+    "fibra": 7
+  },
+  {
+    "idIngrediente": "ING-0079",
+    "kcal": 364,
+    "carbohidratos": 61,
+    "proteinas": 19,
+    "grasas": 6,
+    "fibra": 17
+  },
+  {
+    "idIngrediente": "ING-0080",
+    "kcal": 420,
+    "carbohidratos": 60,
+    "proteinas": 8,
+    "grasas": 18,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0081",
+    "kcal": 133,
+    "carbohidratos": 4.7,
+    "proteinas": 10,
+    "grasas": 8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0082",
+    "kcal": 575,
+    "carbohidratos": 22,
+    "proteinas": 21,
+    "grasas": 49,
+    "fibra": 13
+  },
+  {
+    "idIngrediente": "ING-0083",
+    "kcal": 400,
+    "carbohidratos": 57,
+    "proteinas": 14,
+    "grasas": 15,
+    "fibra": 39
+  },
+  {
+    "idIngrediente": "ING-0084",
+    "kcal": 22,
+    "carbohidratos": 3.5,
+    "proteinas": 2,
+    "grasas": 0.3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0085",
+    "kcal": 155,
+    "carbohidratos": 1.1,
+    "proteinas": 13,
+    "grasas": 11,
+    "fibra": 0,
+    "gramosPorUnidad": 55
+  },
+  {
+    "idIngrediente": "ING-0086",
+    "kcal": 145,
+    "carbohidratos": 2,
+    "proteinas": 18,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0087",
+    "kcal": 80,
+    "carbohidratos": 18,
+    "proteinas": 1.8,
+    "grasas": 0.8,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0088",
+    "kcal": 90,
+    "carbohidratos": 0.5,
+    "proteinas": 18,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0089",
+    "kcal": 313,
+    "carbohidratos": 75,
+    "proteinas": 7.6,
+    "grasas": 8.4,
+    "fibra": 26
+  },
+  {
+    "idIngrediente": "ING-0090",
+    "kcal": 197,
+    "carbohidratos": 6,
+    "proteinas": 2,
+    "grasas": 19,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0091",
+    "kcal": 15,
+    "carbohidratos": 2.9,
+    "proteinas": 1.4,
+    "grasas": 0.2,
+    "fibra": 1.3
+  },
+  {
+    "idIngrediente": "ING-0092",
+    "kcal": 73,
+    "carbohidratos": 0,
+    "proteinas": 16,
+    "grasas": 0.5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0093",
+    "kcal": 29,
+    "carbohidratos": 9,
+    "proteinas": 1.1,
+    "grasas": 0.3,
+    "fibra": 2.8
+  },
+  {
+    "idIngrediente": "ING-0094",
+    "kcal": 567,
+    "carbohidratos": 16,
+    "proteinas": 26,
+    "grasas": 49,
+    "fibra": 8.5
+  },
+  {
+    "idIngrediente": "ING-0095",
+    "kcal": 52,
+    "carbohidratos": 14,
+    "proteinas": 0.3,
+    "grasas": 0.2,
+    "fibra": 2.4
+  },
+  {
+    "idIngrediente": "ING-0096",
+    "kcal": 52,
+    "carbohidratos": 14,
+    "proteinas": 0.3,
+    "grasas": 0.2,
+    "fibra": 2.4
+  },
+  {
+    "idIngrediente": "ING-0097",
+    "kcal": 86,
+    "carbohidratos": 4,
+    "proteinas": 12,
+    "grasas": 2,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0098",
+    "kcal": 70,
+    "carbohidratos": 14,
+    "proteinas": 3.8,
+    "grasas": 0.9,
+    "fibra": 8
+  },
+  {
+    "idIngrediente": "ING-0099",
+    "kcal": 89,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 2,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0100",
+    "kcal": 304,
+    "carbohidratos": 82,
+    "proteinas": 0.3,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0101",
+    "kcal": 350,
+    "carbohidratos": 88,
+    "proteinas": 0.2,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0102",
+    "kcal": 31,
+    "carbohidratos": 6,
+    "proteinas": 1,
+    "grasas": 0.3,
+    "fibra": 2.1
+  },
+  {
+    "idIngrediente": "ING-0103",
+    "kcal": 66,
+    "carbohidratos": 5,
+    "proteinas": 4,
+    "grasas": 4,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0104",
+    "kcal": 66,
+    "carbohidratos": 5,
+    "proteinas": 4,
+    "grasas": 4,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0105",
+    "kcal": 215,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 16,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0106",
+    "kcal": 47,
+    "carbohidratos": 12,
+    "proteinas": 0.9,
+    "grasas": 0.1,
+    "fibra": 2.4
+  },
+  {
+    "idIngrediente": "ING-0107",
+    "kcal": 884,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0108",
+    "kcal": 654,
+    "carbohidratos": 14,
+    "proteinas": 15,
+    "grasas": 65,
+    "fibra": 6.7
+  },
+  {
+    "idIngrediente": "ING-0109",
+    "kcal": 525,
+    "carbohidratos": 49,
+    "proteinas": 6,
+    "grasas": 36,
+    "fibra": 21
+  },
+  {
+    "idIngrediente": "ING-0110",
+    "kcal": 210,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 14,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0111",
+    "kcal": 265,
+    "carbohidratos": 69,
+    "proteinas": 9,
+    "grasas": 4,
+    "fibra": 43
+  },
+  {
+    "idIngrediente": "ING-0112",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0113",
+    "kcal": 160,
+    "carbohidratos": 9,
+    "proteinas": 2,
+    "grasas": 15,
+    "fibra": 7
+  },
+  {
+    "idIngrediente": "ING-0114",
+    "kcal": 270,
+    "carbohidratos": 50,
+    "proteinas": 9,
+    "grasas": 3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0115",
+    "kcal": 270,
+    "carbohidratos": 50,
+    "proteinas": 9,
+    "grasas": 3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0116",
+    "kcal": 285,
+    "carbohidratos": 50,
+    "proteinas": 9,
+    "grasas": 4,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0117",
+    "kcal": 275,
+    "carbohidratos": 55,
+    "proteinas": 9,
+    "grasas": 2,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0118",
+    "kcal": 385,
+    "carbohidratos": 72,
+    "proteinas": 11,
+    "grasas": 5,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0119",
+    "kcal": 77,
+    "carbohidratos": 17,
+    "proteinas": 2,
+    "grasas": 0.1,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0120",
+    "kcal": 26,
+    "carbohidratos": 5,
+    "proteinas": 1.5,
+    "grasas": 0.3,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0121",
+    "kcal": 588,
+    "carbohidratos": 20,
+    "proteinas": 25,
+    "grasas": 50,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0122",
+    "kcal": 215,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 16,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0123",
+    "kcal": 165,
+    "carbohidratos": 0,
+    "proteinas": 31,
+    "grasas": 3.6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0124",
+    "kcal": 318,
+    "carbohidratos": 57,
+    "proteinas": 12,
+    "grasas": 17,
+    "fibra": 28
+  },
+  {
+    "idIngrediente": "ING-0125",
+    "kcal": 16,
+    "carbohidratos": 3.6,
+    "proteinas": 0.7,
+    "grasas": 0.1,
+    "fibra": 0.5
+  },
+  {
+    "idIngrediente": "ING-0126",
+    "kcal": 57,
+    "carbohidratos": 15,
+    "proteinas": 0.4,
+    "grasas": 0.1,
+    "fibra": 3.1
+  },
+  {
+    "idIngrediente": "ING-0127",
+    "kcal": 36,
+    "carbohidratos": 6,
+    "proteinas": 3,
+    "grasas": 0.8,
+    "fibra": 3.3
+  },
+  {
+    "idIngrediente": "ING-0128",
+    "kcal": 282,
+    "carbohidratos": 54,
+    "proteinas": 14,
+    "grasas": 13,
+    "fibra": 35
+  },
+  {
+    "idIngrediente": "ING-0129",
+    "kcal": 282,
+    "carbohidratos": 54,
+    "proteinas": 14,
+    "grasas": 13,
+    "fibra": 35
+  },
+  {
+    "idIngrediente": "ING-0130",
+    "kcal": 282,
+    "carbohidratos": 54,
+    "proteinas": 14,
+    "grasas": 13,
+    "fibra": 35
+  },
+  {
+    "idIngrediente": "ING-0131",
+    "kcal": 251,
+    "carbohidratos": 64,
+    "proteinas": 10,
+    "grasas": 3,
+    "fibra": 26
+  },
+  {
+    "idIngrediente": "ING-0132",
+    "kcal": 185,
+    "carbohidratos": 0,
+    "proteinas": 27,
+    "grasas": 8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0133",
+    "kcal": 165,
+    "carbohidratos": 0,
+    "proteinas": 25,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0134",
+    "kcal": 165,
+    "carbohidratos": 0,
+    "proteinas": 25,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0135",
+    "kcal": 165,
+    "carbohidratos": 0,
+    "proteinas": 25,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0136",
+    "kcal": 53,
+    "carbohidratos": 28,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0137",
+    "kcal": 29,
+    "carbohidratos": 5,
+    "proteinas": 2.9,
+    "grasas": 0.1,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0138",
+    "kcal": 355,
+    "carbohidratos": 0,
+    "proteinas": 25,
+    "grasas": 28,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0139",
+    "kcal": 200,
+    "carbohidratos": 80,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 78
+  },
+  {
+    "idIngrediente": "ING-0140",
+    "kcal": 250,
+    "carbohidratos": 3,
+    "proteinas": 5,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0141",
+    "kcal": 190,
+    "carbohidratos": 3,
+    "proteinas": 13,
+    "grasas": 14,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0142",
+    "kcal": 400,
+    "carbohidratos": 1,
+    "proteinas": 35,
+    "grasas": 28,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0143",
+    "kcal": 250,
+    "carbohidratos": 3,
+    "proteinas": 5,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0144",
+    "kcal": 47,
+    "carbohidratos": 16,
+    "proteinas": 1.5,
+    "grasas": 0.3,
+    "fibra": 10
+  },
+  {
+    "idIngrediente": "ING-0145",
+    "kcal": 270,
+    "carbohidratos": 50,
+    "proteinas": 9,
+    "grasas": 3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0146",
+    "kcal": 25,
+    "carbohidratos": 5.8,
+    "proteinas": 1.3,
+    "grasas": 0.1,
+    "fibra": 2.5
+  },
+  {
+    "idIngrediente": "ING-0147",
+    "kcal": 290,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0148",
+    "kcal": 131,
+    "carbohidratos": 21,
+    "proteinas": 3.3,
+    "grasas": 5.9,
+    "fibra": 14
+  },
+  {
+    "idIngrediente": "ING-0149",
+    "kcal": 25,
+    "carbohidratos": 3.7,
+    "proteinas": 2.6,
+    "grasas": 0.7,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0150",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0151",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0152",
+    "kcal": 53,
+    "carbohidratos": 7,
+    "proteinas": 5,
+    "grasas": 0.1,
+    "fibra": 0.8
+  },
+  {
+    "idIngrediente": "ING-0153",
+    "kcal": 559,
+    "carbohidratos": 11,
+    "proteinas": 30,
+    "grasas": 49,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0154",
+    "kcal": 584,
+    "carbohidratos": 20,
+    "proteinas": 21,
+    "grasas": 51,
+    "fibra": 8.6
+  },
+  {
+    "idIngrediente": "ING-0155",
+    "kcal": 534,
+    "carbohidratos": 29,
+    "proteinas": 18,
+    "grasas": 42,
+    "fibra": 27
+  },
+  {
+    "idIngrediente": "ING-0156",
+    "kcal": 573,
+    "carbohidratos": 23,
+    "proteinas": 18,
+    "grasas": 50,
+    "fibra": 12
+  },
+  {
+    "idIngrediente": "ING-0157",
+    "kcal": 93,
+    "carbohidratos": 18,
+    "proteinas": 1.4,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0158",
+    "kcal": 595,
+    "carbohidratos": 21,
+    "proteinas": 17,
+    "grasas": 54,
+    "fibra": 9
+  },
+  {
+    "idIngrediente": "ING-0159",
+    "kcal": 18,
+    "carbohidratos": 3.9,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.2
+  },
+  {
+    "idIngrediente": "ING-0160",
+    "kcal": 25,
+    "carbohidratos": 5,
+    "proteinas": 1,
+    "grasas": 0.2,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0161",
+    "kcal": 18,
+    "carbohidratos": 3.9,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.2
+  },
+  {
+    "idIngrediente": "ING-0162",
+    "kcal": 101,
+    "carbohidratos": 24,
+    "proteinas": 5.6,
+    "grasas": 1.7,
+    "fibra": 14
+  },
+  {
+    "idIngrediente": "ING-0163",
+    "kcal": 300,
+    "carbohidratos": 52,
+    "proteinas": 8,
+    "grasas": 7,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0164",
+    "kcal": 350,
+    "carbohidratos": 65,
+    "proteinas": 9,
+    "grasas": 5,
+    "fibra": 7
+  },
+  {
+    "idIngrediente": "ING-0165",
+    "kcal": 18,
+    "carbohidratos": 4,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0166",
+    "kcal": 21,
+    "carbohidratos": 0.9,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0167",
+    "kcal": 19,
+    "carbohidratos": 0.6,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0168",
+    "kcal": 82,
+    "carbohidratos": 2.7,
+    "proteinas": 0.1,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0169",
+    "kcal": 85,
+    "carbohidratos": 2.6,
+    "proteinas": 0.1,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0170",
+    "kcal": 85,
+    "carbohidratos": 2.6,
+    "proteinas": 0.1,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0171",
+    "kcal": 400,
+    "carbohidratos": 8,
+    "proteinas": 75,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0172",
+    "kcal": 322,
+    "carbohidratos": 3.6,
+    "proteinas": 16,
+    "grasas": 27,
+    "fibra": 0,
+    "gramosPorUnidad": 18
+  },
+  {
+    "idIngrediente": "ING-0173",
+    "kcal": 133,
+    "carbohidratos": 4.7,
+    "proteinas": 10,
+    "grasas": 8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0174",
+    "kcal": 63,
+    "carbohidratos": 5,
+    "proteinas": 3.5,
+    "grasas": 3,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0175",
+    "kcal": 45,
+    "carbohidratos": 3,
+    "proteinas": 1,
+    "grasas": 2.5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0176",
+    "kcal": 41,
+    "carbohidratos": 10,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 2.8
+  },
+  {
+    "idIngrediente": "ING-0177",
+    "kcal": 17,
+    "carbohidratos": 3.1,
+    "proteinas": 1.2,
+    "grasas": 0.3,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0178",
+    "kcal": 145,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0179",
+    "kcal": 145,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0180",
+    "kcal": 150,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0181",
+    "kcal": 220,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 15,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0182",
+    "kcal": 190,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 12,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0183",
+    "kcal": 210,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 14,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0184",
+    "kcal": 240,
+    "carbohidratos": 0,
+    "proteinas": 19,
+    "grasas": 18,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0185",
+    "kcal": 190,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 12,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0186",
+    "kcal": 290,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 25,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0187",
+    "kcal": 150,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0188",
+    "kcal": 140,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0189",
+    "kcal": 145,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0190",
+    "kcal": 250,
+    "carbohidratos": 0,
+    "proteinas": 19,
+    "grasas": 19,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0191",
+    "kcal": 200,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 13,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0192",
+    "kcal": 175,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 10,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0193",
+    "kcal": 175,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 10,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0194",
+    "kcal": 280,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0195",
+    "kcal": 165,
+    "carbohidratos": 0,
+    "proteinas": 31,
+    "grasas": 3.6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0196",
+    "kcal": 225,
+    "carbohidratos": 0,
+    "proteinas": 19,
+    "grasas": 16,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0197",
+    "kcal": 130,
+    "carbohidratos": 0,
+    "proteinas": 25,
+    "grasas": 3,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0198",
+    "kcal": 280,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0199",
+    "kcal": 310,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 27,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0200",
+    "kcal": 175,
+    "carbohidratos": 0,
+    "proteinas": 22,
+    "grasas": 9,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0201",
+    "kcal": 350,
+    "carbohidratos": 1,
+    "proteinas": 14,
+    "grasas": 32,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0202",
+    "kcal": 380,
+    "carbohidratos": 5,
+    "proteinas": 13,
+    "grasas": 34,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0203",
+    "kcal": 440,
+    "carbohidratos": 0,
+    "proteinas": 12,
+    "grasas": 44,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0204",
+    "kcal": 78,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 0.8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0205",
+    "kcal": 208,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 14,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0206",
+    "kcal": 144,
+    "carbohidratos": 0,
+    "proteinas": 23,
+    "grasas": 5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0207",
+    "kcal": 141,
+    "carbohidratos": 0,
+    "proteinas": 20,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0208",
+    "kcal": 85,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0209",
+    "kcal": 83,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 1.5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0210",
+    "kcal": 90,
+    "carbohidratos": 0.5,
+    "proteinas": 18,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0211",
+    "kcal": 85,
+    "carbohidratos": 0.5,
+    "proteinas": 18,
+    "grasas": 0.9,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0212",
+    "kcal": 92,
+    "carbohidratos": 3,
+    "proteinas": 16,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0213",
+    "kcal": 86,
+    "carbohidratos": 4,
+    "proteinas": 12,
+    "grasas": 2,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0214",
+    "kcal": 20,
+    "carbohidratos": 4.6,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.7
+  },
+  {
+    "idIngrediente": "ING-0215",
+    "kcal": 26,
+    "carbohidratos": 6.5,
+    "proteinas": 1,
+    "grasas": 0.1,
+    "fibra": 0.5
+  },
+  {
+    "idIngrediente": "ING-0216",
+    "kcal": 17,
+    "carbohidratos": 3.4,
+    "proteinas": 1.2,
+    "grasas": 0.2,
+    "fibra": 1.1
+  },
+  {
+    "idIngrediente": "ING-0217",
+    "kcal": 26,
+    "carbohidratos": 6.5,
+    "proteinas": 1,
+    "grasas": 0.1,
+    "fibra": 0.5
+  },
+  {
+    "idIngrediente": "ING-0218",
+    "kcal": 86,
+    "carbohidratos": 20,
+    "proteinas": 1.6,
+    "grasas": 0.1,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0219",
+    "kcal": 86,
+    "carbohidratos": 19,
+    "proteinas": 3.2,
+    "grasas": 1.2,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0220",
+    "kcal": 31,
+    "carbohidratos": 7,
+    "proteinas": 1.8,
+    "grasas": 0.1,
+    "fibra": 3.4
+  },
+  {
+    "idIngrediente": "ING-0221",
+    "kcal": 43,
+    "carbohidratos": 10,
+    "proteinas": 1.6,
+    "grasas": 0.2,
+    "fibra": 2.8
+  },
+  {
+    "idIngrediente": "ING-0222",
+    "kcal": 20,
+    "carbohidratos": 4.1,
+    "proteinas": 1.3,
+    "grasas": 0.2,
+    "fibra": 1.5
+  },
+  {
+    "idIngrediente": "ING-0223",
+    "kcal": 17,
+    "carbohidratos": 3.4,
+    "proteinas": 1.2,
+    "grasas": 0.2,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0224",
+    "kcal": 17,
+    "carbohidratos": 3.4,
+    "proteinas": 1.3,
+    "grasas": 0.1,
+    "fibra": 3.1
+  },
+  {
+    "idIngrediente": "ING-0225",
+    "kcal": 61,
+    "carbohidratos": 14,
+    "proteinas": 1.5,
+    "grasas": 0.3,
+    "fibra": 1.8
+  },
+  {
+    "idIngrediente": "ING-0226",
+    "kcal": 31,
+    "carbohidratos": 7,
+    "proteinas": 1.2,
+    "grasas": 0.2,
+    "fibra": 3.1
+  },
+  {
+    "idIngrediente": "ING-0227",
+    "kcal": 28,
+    "carbohidratos": 6.4,
+    "proteinas": 0.9,
+    "grasas": 0.1,
+    "fibra": 1.8
+  },
+  {
+    "idIngrediente": "ING-0228",
+    "kcal": 16,
+    "carbohidratos": 3.4,
+    "proteinas": 0.7,
+    "grasas": 0.1,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0229",
+    "kcal": 34,
+    "carbohidratos": 7,
+    "proteinas": 2.8,
+    "grasas": 0.4,
+    "fibra": 2.6
+  },
+  {
+    "idIngrediente": "ING-0230",
+    "kcal": 31,
+    "carbohidratos": 7,
+    "proteinas": 1.4,
+    "grasas": 0.2,
+    "fibra": 2.1
+  },
+  {
+    "idIngrediente": "ING-0231",
+    "kcal": 49,
+    "carbohidratos": 9,
+    "proteinas": 4.3,
+    "grasas": 0.9,
+    "fibra": 3.6
+  },
+  {
+    "idIngrediente": "ING-0232",
+    "kcal": 19,
+    "carbohidratos": 3.7,
+    "proteinas": 1.8,
+    "grasas": 0.2,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0233",
+    "kcal": 53,
+    "carbohidratos": 13,
+    "proteinas": 0.8,
+    "grasas": 0.3,
+    "fibra": 1.8
+  },
+  {
+    "idIngrediente": "ING-0234",
+    "kcal": 42,
+    "carbohidratos": 11,
+    "proteinas": 0.8,
+    "grasas": 0.1,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0235",
+    "kcal": 32,
+    "carbohidratos": 7.7,
+    "proteinas": 0.7,
+    "grasas": 0.3,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0236",
+    "kcal": 57,
+    "carbohidratos": 14,
+    "proteinas": 0.7,
+    "grasas": 0.3,
+    "fibra": 2.4
+  },
+  {
+    "idIngrediente": "ING-0237",
+    "kcal": 39,
+    "carbohidratos": 10,
+    "proteinas": 0.9,
+    "grasas": 0.3,
+    "fibra": 1.5
+  },
+  {
+    "idIngrediente": "ING-0238",
+    "kcal": 46,
+    "carbohidratos": 11,
+    "proteinas": 0.7,
+    "grasas": 0.3,
+    "fibra": 1.4
+  },
+  {
+    "idIngrediente": "ING-0239",
+    "kcal": 48,
+    "carbohidratos": 11,
+    "proteinas": 1.4,
+    "grasas": 0.4,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0240",
+    "kcal": 74,
+    "carbohidratos": 19,
+    "proteinas": 0.8,
+    "grasas": 0.3,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0241",
+    "kcal": 69,
+    "carbohidratos": 18,
+    "proteinas": 0.7,
+    "grasas": 0.2,
+    "fibra": 0.9
+  },
+  {
+    "idIngrediente": "ING-0242",
+    "kcal": 34,
+    "carbohidratos": 8,
+    "proteinas": 0.8,
+    "grasas": 0.2,
+    "fibra": 0.9
+  },
+  {
+    "idIngrediente": "ING-0243",
+    "kcal": 30,
+    "carbohidratos": 8,
+    "proteinas": 0.6,
+    "grasas": 0.2,
+    "fibra": 0.4
+  },
+  {
+    "idIngrediente": "ING-0244",
+    "kcal": 50,
+    "carbohidratos": 13,
+    "proteinas": 0.5,
+    "grasas": 0.1,
+    "fibra": 1.4
+  },
+  {
+    "idIngrediente": "ING-0245",
+    "kcal": 61,
+    "carbohidratos": 15,
+    "proteinas": 1.1,
+    "grasas": 0.5,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0246",
+    "kcal": 61,
+    "carbohidratos": 4.8,
+    "proteinas": 3.2,
+    "grasas": 3.3,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0247",
+    "kcal": 35,
+    "carbohidratos": 5,
+    "proteinas": 3.4,
+    "grasas": 0.1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0248",
+    "kcal": 340,
+    "carbohidratos": 3,
+    "proteinas": 2.1,
+    "grasas": 35,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0249",
+    "kcal": 310,
+    "carbohidratos": 2,
+    "proteinas": 18,
+    "grasas": 26,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0250",
+    "kcal": 320,
+    "carbohidratos": 0.5,
+    "proteinas": 22,
+    "grasas": 26,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0252",
+    "kcal": 174,
+    "carbohidratos": 3,
+    "proteinas": 11,
+    "grasas": 13,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0253",
+    "kcal": 327,
+    "carbohidratos": 57,
+    "proteinas": 7,
+    "grasas": 7,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0254",
+    "kcal": 717,
+    "carbohidratos": 0.1,
+    "proteinas": 0.9,
+    "grasas": 81,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0255",
+    "kcal": 364,
+    "carbohidratos": 76,
+    "proteinas": 10,
+    "grasas": 1,
+    "fibra": 2.7
+  },
+  {
+    "idIngrediente": "ING-0256",
+    "kcal": 332,
+    "carbohidratos": 66,
+    "proteinas": 12,
+    "grasas": 2,
+    "fibra": 11
+  },
+  {
+    "idIngrediente": "ING-0257",
+    "kcal": 357,
+    "carbohidratos": 75,
+    "proteinas": 8,
+    "grasas": 1,
+    "fibra": 4
+  },
+  {
+    "idIngrediente": "ING-0258",
+    "kcal": 361,
+    "carbohidratos": 75,
+    "proteinas": 7.5,
+    "grasas": 2,
+    "fibra": 3.5
+  },
+  {
+    "idIngrediente": "ING-0259",
+    "kcal": 395,
+    "carbohidratos": 73,
+    "proteinas": 13,
+    "grasas": 5,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0260",
+    "kcal": 252,
+    "carbohidratos": 55,
+    "proteinas": 17,
+    "grasas": 7,
+    "fibra": 15
+  },
+  {
+    "idIngrediente": "ING-0261",
+    "kcal": 353,
+    "carbohidratos": 60,
+    "proteinas": 24,
+    "grasas": 1,
+    "fibra": 12
+  },
+  {
+    "idIngrediente": "ING-0262",
+    "kcal": 364,
+    "carbohidratos": 61,
+    "proteinas": 19,
+    "grasas": 6,
+    "fibra": 17
+  },
+  {
+    "idIngrediente": "ING-0263",
+    "kcal": 341,
+    "carbohidratos": 62,
+    "proteinas": 22,
+    "grasas": 0.9,
+    "fibra": 16
+  },
+  {
+    "idIngrediente": "ING-0264",
+    "kcal": 337,
+    "carbohidratos": 61,
+    "proteinas": 22,
+    "grasas": 1,
+    "fibra": 16
+  },
+  {
+    "idIngrediente": "ING-0265",
+    "kcal": 341,
+    "carbohidratos": 60,
+    "proteinas": 25,
+    "grasas": 1,
+    "fibra": 14
+  },
+  {
+    "idIngrediente": "ING-0266",
+    "kcal": 250,
+    "carbohidratos": 0,
+    "proteinas": 19,
+    "grasas": 19,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0267",
+    "kcal": 884,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0268",
+    "kcal": 300,
+    "carbohidratos": 30,
+    "proteinas": 5,
+    "grasas": 15,
+    "fibra": 5
+  },
+  {
+    "idIngrediente": "ING-0269",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0270",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0271",
+    "kcal": 264,
+    "carbohidratos": 4,
+    "proteinas": 14,
+    "grasas": 21,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0272",
+    "kcal": 23,
+    "carbohidratos": 2.7,
+    "proteinas": 3.2,
+    "grasas": 0.6,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0273",
+    "kcal": 23,
+    "carbohidratos": 5,
+    "proteinas": 2.4,
+    "grasas": 0.9,
+    "fibra": 3.2
+  },
+  {
+    "idIngrediente": "ING-0274",
+    "kcal": 280,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 23,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0275",
+    "kcal": 231,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0276",
+    "kcal": 250,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 20,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0277",
+    "kcal": 290,
+    "carbohidratos": 0,
+    "proteinas": 16,
+    "grasas": 25,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0278",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0279",
+    "kcal": 380,
+    "carbohidratos": 45,
+    "proteinas": 15,
+    "grasas": 15,
+    "fibra": 25
+  },
+  {
+    "idIngrediente": "ING-0280",
+    "kcal": 210,
+    "carbohidratos": 45,
+    "proteinas": 6,
+    "grasas": 1,
+    "fibra": 3
+  },
+  {
+    "idIngrediente": "ING-0281",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0282",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0283",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0284",
+    "kcal": 120,
+    "carbohidratos": 15,
+    "proteinas": 3,
+    "grasas": 5,
+    "fibra": 4
+  },
+  {
+    "idIngrediente": "ING-0285",
+    "kcal": 250,
+    "carbohidratos": 60,
+    "proteinas": 10,
+    "grasas": 3,
+    "fibra": 25
+  },
+  {
+    "idIngrediente": "ING-0286",
+    "kcal": 562,
+    "carbohidratos": 28,
+    "proteinas": 20,
+    "grasas": 45,
+    "fibra": 10
+  },
+  {
+    "idIngrediente": "ING-0287",
+    "kcal": 82,
+    "carbohidratos": 2.2,
+    "proteinas": 15,
+    "grasas": 1,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0288",
+    "kcal": 35,
+    "carbohidratos": 4,
+    "proteinas": 5,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0289",
+    "kcal": 143,
+    "carbohidratos": 0,
+    "proteinas": 21,
+    "grasas": 6,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0290",
+    "kcal": 88,
+    "carbohidratos": 2.4,
+    "proteinas": 17,
+    "grasas": 0.8,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0291",
+    "kcal": 23,
+    "carbohidratos": 4.7,
+    "proteinas": 1.7,
+    "grasas": 0.3,
+    "fibra": 4
+  },
+  {
+    "idIngrediente": "ING-0292",
+    "kcal": 11,
+    "carbohidratos": 1.3,
+    "proteinas": 2.3,
+    "grasas": 0.1,
+    "fibra": 0.5
+  },
+  {
+    "idIngrediente": "ING-0293",
+    "kcal": 17,
+    "carbohidratos": 3.4,
+    "proteinas": 1.3,
+    "grasas": 0.2,
+    "fibra": 3.1
+  },
+  {
+    "idIngrediente": "ING-0294",
+    "kcal": 23,
+    "carbohidratos": 4.5,
+    "proteinas": 1.4,
+    "grasas": 0.3,
+    "fibra": 0.9,
+    "gramosPorUnidad": 200
+  },
+  {
+    "idIngrediente": "ING-0295",
+    "kcal": 43,
+    "carbohidratos": 9,
+    "proteinas": 3.4,
+    "grasas": 0.3,
+    "fibra": 3.8
+  },
+  {
+    "idIngrediente": "ING-0296",
+    "kcal": 47,
+    "carbohidratos": 11,
+    "proteinas": 3.3,
+    "grasas": 0.2,
+    "fibra": 5.4,
+    "gramosPorUnidad": 130
+  },
+  {
+    "idIngrediente": "ING-0297",
+    "kcal": 45,
+    "carbohidratos": 12,
+    "proteinas": 1,
+    "grasas": 0.1,
+    "fibra": 2,
+    "gramosPorUnidad": 900
+  },
+  {
+    "idIngrediente": "ING-0298",
+    "kcal": 160,
+    "carbohidratos": 38,
+    "proteinas": 1.4,
+    "grasas": 0.3,
+    "fibra": 1.8
+  },
+  {
+    "idIngrediente": "ING-0299",
+    "kcal": 81,
+    "carbohidratos": 14,
+    "proteinas": 5.4,
+    "grasas": 0.4,
+    "fibra": 5.7
+  },
+  {
+    "idIngrediente": "ING-0300",
+    "kcal": 88,
+    "carbohidratos": 18,
+    "proteinas": 8,
+    "grasas": 0.7,
+    "fibra": 5
+  },
+  {
+    "idIngrediente": "ING-0301",
+    "kcal": 27,
+    "carbohidratos": 6,
+    "proteinas": 1,
+    "grasas": 0.2,
+    "fibra": 0.9,
+    "gramosPorUnidad": 150
+  },
+  {
+    "idIngrediente": "ING-0302",
+    "kcal": 18,
+    "carbohidratos": 3.9,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.2,
+    "gramosPorUnidad": 70
+  },
+  {
+    "idIngrediente": "ING-0303",
+    "kcal": 18,
+    "carbohidratos": 3.9,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.2,
+    "gramosPorUnidad": 120
+  },
+  {
+    "idIngrediente": "ING-0304",
+    "kcal": 20,
+    "carbohidratos": 4.3,
+    "proteinas": 0.9,
+    "grasas": 0.2,
+    "fibra": 1.5,
+    "gramosPorUnidad": 40
+  },
+  {
+    "idIngrediente": "ING-0305",
+    "kcal": 33,
+    "carbohidratos": 6,
+    "proteinas": 3.3,
+    "grasas": 0.4,
+    "fibra": 2.3
+  },
+  {
+    "idIngrediente": "ING-0306",
+    "kcal": 13,
+    "carbohidratos": 2.2,
+    "proteinas": 1.5,
+    "grasas": 0.2,
+    "fibra": 1
+  },
+  {
+    "idIngrediente": "ING-0307",
+    "kcal": 30,
+    "carbohidratos": 11,
+    "proteinas": 0.7,
+    "grasas": 0.2,
+    "fibra": 2.8,
+    "gramosPorUnidad": 67
+  },
+  {
+    "idIngrediente": "ING-0308",
+    "kcal": 63,
+    "carbohidratos": 16,
+    "proteinas": 1,
+    "grasas": 0.2,
+    "fibra": 2.1
+  },
+  {
+    "idIngrediente": "ING-0309",
+    "kcal": 57,
+    "carbohidratos": 14,
+    "proteinas": 0.7,
+    "grasas": 0.3,
+    "fibra": 2.4
+  },
+  {
+    "idIngrediente": "ING-0310",
+    "kcal": 52,
+    "carbohidratos": 12,
+    "proteinas": 1.2,
+    "grasas": 0.7,
+    "fibra": 6.5
+  },
+  {
+    "idIngrediente": "ING-0311",
+    "kcal": 43,
+    "carbohidratos": 10,
+    "proteinas": 1.4,
+    "grasas": 0.5,
+    "fibra": 5.3
+  },
+  {
+    "idIngrediente": "ING-0312",
+    "kcal": 60,
+    "carbohidratos": 15,
+    "proteinas": 0.8,
+    "grasas": 0.4,
+    "fibra": 1.6,
+    "gramosPorUnidad": 200
+  },
+  {
+    "idIngrediente": "ING-0313",
+    "kcal": 83,
+    "carbohidratos": 19,
+    "proteinas": 1.7,
+    "grasas": 1.2,
+    "fibra": 4,
+    "gramosPorUnidad": 280
+  },
+  {
+    "idIngrediente": "ING-0314",
+    "kcal": 97,
+    "carbohidratos": 23,
+    "proteinas": 2.2,
+    "grasas": 0.7,
+    "fibra": 10.4,
+    "gramosPorUnidad": 40
+  },
+  {
+    "idIngrediente": "ING-0315",
+    "kcal": 43,
+    "carbohidratos": 7,
+    "proteinas": 3.5,
+    "grasas": 1.1,
+    "fibra": 2.1
+  },
+  {
+    "idIngrediente": "ING-0316",
+    "kcal": 49,
+    "carbohidratos": 8,
+    "proteinas": 4,
+    "grasas": 1,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0317",
+    "kcal": 119,
+    "carbohidratos": 24,
+    "proteinas": 4,
+    "grasas": 4,
+    "fibra": 16
+  },
+  {
+    "idIngrediente": "ING-0318",
+    "kcal": 250,
+    "carbohidratos": 1,
+    "proteinas": 26,
+    "grasas": 16,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0319",
+    "kcal": 130,
+    "carbohidratos": 1,
+    "proteinas": 22,
+    "grasas": 4,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0320",
+    "kcal": 147,
+    "carbohidratos": 2,
+    "proteinas": 22,
+    "grasas": 5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0321",
+    "kcal": 380,
+    "carbohidratos": 2,
+    "proteinas": 22,
+    "grasas": 31,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0322",
+    "kcal": 400,
+    "carbohidratos": 2,
+    "proteinas": 23,
+    "grasas": 33,
+    "fibra": 0,
+    "gramosPorUnidad": 120
+  },
+  {
+    "idIngrediente": "ING-0323",
+    "kcal": 311,
+    "carbohidratos": 3,
+    "proteinas": 16,
+    "grasas": 25,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0324",
+    "kcal": 350,
+    "carbohidratos": 1,
+    "proteinas": 24,
+    "grasas": 28,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0325",
+    "kcal": 380,
+    "carbohidratos": 2,
+    "proteinas": 20,
+    "grasas": 32,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0326",
+    "kcal": 425,
+    "carbohidratos": 1,
+    "proteinas": 23,
+    "grasas": 36,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0327",
+    "kcal": 300,
+    "carbohidratos": 2,
+    "proteinas": 12,
+    "grasas": 27,
+    "fibra": 0,
+    "gramosPorUnidad": 50
+  },
+  {
+    "idIngrediente": "ING-0328",
+    "kcal": 90,
+    "carbohidratos": 18,
+    "proteinas": 3,
+    "grasas": 1,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0329",
+    "kcal": 144,
+    "carbohidratos": 0,
+    "proteinas": 23,
+    "grasas": 5,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0330",
+    "kcal": 110,
+    "carbohidratos": 20,
+    "proteinas": 3,
+    "grasas": 3,
+    "fibra": 7
+  },
+  {
+    "idIngrediente": "ING-0331",
+    "kcal": 99,
+    "carbohidratos": 25,
+    "proteinas": 1.8,
+    "grasas": 0.5,
+    "fibra": 0,
+    "gramosPorUnidad": 20
+  },
+  {
+    "idIngrediente": "ING-0332",
+    "kcal": 1,
+    "carbohidratos": 0,
+    "proteinas": 0.1,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0333",
+    "kcal": 335,
+    "carbohidratos": 0,
+    "proteinas": 86,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0334",
+    "kcal": 116,
+    "carbohidratos": 1.4,
+    "proteinas": 0.2,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0335",
+    "kcal": 224,
+    "carbohidratos": 0,
+    "proteinas": 16,
+    "grasas": 17,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0336",
+    "kcal": 230,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 17,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0337",
+    "kcal": 103,
+    "carbohidratos": 0.8,
+    "proteinas": 17,
+    "grasas": 3,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0338",
+    "kcal": 280,
+    "carbohidratos": 3,
+    "proteinas": 22,
+    "grasas": 20,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0339",
+    "kcal": 150,
+    "carbohidratos": 18,
+    "proteinas": 0.1,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0340",
+    "kcal": 345,
+    "carbohidratos": 52,
+    "proteinas": 16,
+    "grasas": 15,
+    "fibra": 40
+  },
+  {
+    "idIngrediente": "ING-0341",
+    "kcal": 350,
+    "carbohidratos": 60,
+    "proteinas": 12,
+    "grasas": 12,
+    "fibra": 30
+  },
+  {
+    "idIngrediente": "ING-0342",
+    "kcal": 180,
+    "carbohidratos": 20,
+    "proteinas": 8,
+    "grasas": 7,
+    "fibra": 5
+  },
+  {
+    "idIngrediente": "ING-0343",
+    "kcal": 250,
+    "carbohidratos": 60,
+    "proteinas": 10,
+    "grasas": 6,
+    "fibra": 25
+  },
+  {
+    "idIngrediente": "ING-0344",
+    "kcal": 120,
+    "carbohidratos": 27,
+    "proteinas": 2,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0345",
+    "kcal": 144,
+    "carbohidratos": 3,
+    "proteinas": 17,
+    "grasas": 9,
+    "fibra": 2
+  },
+  {
+    "idIngrediente": "ING-0346",
+    "kcal": 210,
+    "carbohidratos": 0,
+    "proteinas": 29,
+    "grasas": 10,
+    "fibra": 0,
+    "gramosPorUnidad": 4
+  },
+  {
+    "idIngrediente": "ING-0347",
+    "kcal": 215,
+    "carbohidratos": 0,
+    "proteinas": 18,
+    "grasas": 15,
+    "fibra": 0,
+    "gramosPorUnidad": 1500
+  },
+  {
+    "idIngrediente": "ING-0348",
+    "kcal": 199,
+    "carbohidratos": 26,
+    "proteinas": 12,
+    "grasas": 6,
+    "fibra": 5
+  },
+  {
+    "idIngrediente": "ING-0349",
+    "kcal": 19,
+    "carbohidratos": 4.3,
+    "proteinas": 0.9,
+    "grasas": 0.1,
+    "fibra": 2.9
+  },
+  {
+    "idIngrediente": "ING-0350",
+    "kcal": 11,
+    "carbohidratos": 2.3,
+    "proteinas": 0.3,
+    "grasas": 0.2,
+    "fibra": 1,
+    "gramosPorUnidad": 30
+  },
+  {
+    "idIngrediente": "ING-0351",
+    "kcal": 110,
+    "carbohidratos": 14,
+    "proteinas": 3,
+    "grasas": 4,
+    "fibra": 4
+  },
+  {
+    "idIngrediente": "ING-0352",
+    "kcal": 23,
+    "carbohidratos": 4,
+    "proteinas": 1.7,
+    "grasas": 0.5,
+    "fibra": 1.6
+  },
+  {
+    "idIngrediente": "ING-0353",
+    "kcal": 90,
+    "carbohidratos": 18,
+    "proteinas": 3,
+    "grasas": 1,
+    "fibra": 6
+  },
+  {
+    "idIngrediente": "ING-0354",
+    "kcal": 350,
+    "carbohidratos": 40,
+    "proteinas": 12,
+    "grasas": 18,
+    "fibra": 20
+  },
+  {
+    "idIngrediente": "ING-0355",
+    "kcal": 290,
+    "carbohidratos": 0,
+    "proteinas": 17,
+    "grasas": 24,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0356",
+    "kcal": 18,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0357",
+    "kcal": 40,
+    "carbohidratos": 9,
+    "proteinas": 1.9,
+    "grasas": 0.4,
+    "fibra": 1.5
+  },
+  {
+    "idIngrediente": "ING-0358",
+    "kcal": 898,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 100,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0359",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  },
+  {
+    "idIngrediente": "ING-0360",
+    "kcal": 0,
+    "carbohidratos": 0,
+    "proteinas": 0,
+    "grasas": 0,
+    "fibra": 0
+  }
 ]
