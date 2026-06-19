@@ -157,6 +157,7 @@ export interface Paso {
   puntoClave?: string;
   errorComun?: string;
   notas?: string;
+  ingredientesUsados?: string[]; // idIngrediente[] — poblado en Fase 2 (linkage)
 }
 
 // ─── Receta ───────────────────────────────────────────────────────────────────
