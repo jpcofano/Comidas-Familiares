@@ -4,8 +4,8 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.12.0 (E14.6 — Fiambrería como sección de display propia; display pasa de 5 a 6 grupos; valores raw de Firestore no cambian)
-> **Fecha**: 2026-06-10
+> **Versión**: 2.13.0 (E14.9 — Compartir lista por WhatsApp; derivado puro, no persiste nada en Firestore)
+> **Fecha**: 2026-06-19
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
 

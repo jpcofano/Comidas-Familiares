@@ -29,6 +29,11 @@ const GONDOLA_MAP: Record<string, Seccion> = {
   'Despensa / otros':  'Almacén',      // agrupado con Almacén
 };
 
+/** Mapea un valor raw de `seccionGondola` (Firestore) a su nombre display. */
+export function seccionDisplay(raw: string): Seccion {
+  return GONDOLA_MAP[raw] ?? 'Almacén';
+}
+
 export interface GrupoGondola<T> {
   seccion: Seccion;
   items: T[];

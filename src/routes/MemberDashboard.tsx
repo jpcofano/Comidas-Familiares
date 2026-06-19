@@ -11,6 +11,7 @@ import { EstadoBadge } from "../components/EstadoBadge";
 import { AvatarStack, MemberAvatar } from "../components/MemberAvatar";
 import { SkeletonList } from "../components/skeletons/SkeletonList";
 import { tomarCompraRapida, liberarCompraRapida } from "../data/comprasRapidas";
+import { construirTextoLista, compartirLista } from "../lib/compartirLista";
 import type { Plan, Historial, MiembroId } from "../types/models";
 
 // ─── Constantes ───────────────────────────────────────────────────────────────
@@ -461,6 +462,22 @@ function CompraRapidaCardTurno({ plan, selfId }: { plan: Plan; selfId: MiembroId
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <UserCheck size={14} color="var(--ok-text)" />
             <span style={{ fontSize: 11, color: "var(--ok-text)", fontWeight: 600, flex: 1 }}>Lo estoy haciendo yo</span>
+            <button
+              onClick={() => {
+                const its = (plan.itemsCompraRapida ?? []).map((it) => ({
+                  nombre: it.nombre, cantidad: it.cantidad, unidad: it.unidad,
+                  seccion: it.seccionGondola, comprado: it.comprado,
+                }));
+                void compartirLista(construirTextoLista(
+                  `Compra · ${plan.nombreSeleccion}`,
+                  `(la hace ${NOMBRES_MIEMBROS[selfId] ?? selfId})`,
+                  its,
+                ));
+              }}
+              style={{ fontSize: 11, color: "#1f8a4c", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", flexShrink: 0, fontWeight: 600 }}
+            >
+              Compartir →
+            </button>
             <button
               onClick={() => navigate(`/compra-rapida/${plan.idPlan}`)}
               style={{ fontSize: 11, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
