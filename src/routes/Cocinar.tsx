@@ -66,6 +66,58 @@ function SustitutosRecap({
   );
 }
 
+// ─── Panel de ingredientes (red de seguridad E9.14 Fase 1) ──────────────────
+
+function labelCantidad(ing: IngredienteEnReceta): string {
+  if (ing.cantidadLabel) return ing.cantidadLabel;
+  const c = ing.cantidad != null ? String(ing.cantidad).trim() : "";
+  const u = ing.unidad?.trim() ?? "";
+  if (c && u) return `${c} ${u}`;
+  if (c) return c;
+  return "a gusto";
+}
+
+function IngredientesPanel({ ingredientes }: { ingredientes: IngredienteEnReceta[] }) {
+  const [abierto, setAbierto] = useState(false);
+  return (
+    <div style={{
+      marginBottom: "var(--space-3)",
+      borderRadius: "var(--radius-md)",
+      border: "1px solid var(--border)",
+      overflow: "hidden",
+    }}>
+      <button
+        onClick={() => setAbierto(v => !v)}
+        style={{
+          width: "100%", padding: "var(--space-3)",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          background: "var(--surface-strong)", border: "none",
+          cursor: "pointer", fontFamily: "inherit",
+          fontSize: "var(--fs-sm)", fontWeight: 600, color: "var(--text-strong)",
+        }}
+      >
+        <span>Ingredientes ({ingredientes.length})</span>
+        <span style={{ fontSize: "var(--fs-xs)", color: "var(--muted)" }}>{abierto ? "▲" : "▼"}</span>
+      </button>
+      {abierto && (
+        <div style={{ padding: "var(--space-3)", borderTop: "1px solid var(--border-subtle)" }}>
+          {ingredientes.map((ing, i) => (
+            <p key={ing.idIngrediente + i} style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-sm)", display: "flex", gap: "var(--space-2)" }}>
+              <span style={{ color: "var(--muted)", flexShrink: 0, minWidth: 72, textAlign: "right" }}>
+                {labelCantidad(ing)}
+              </span>
+              <span style={{ color: "var(--text-strong)" }}>
+                {ing.textoOriginal}
+                {ing.preparacion && <span style={{ color: "var(--muted)", fontWeight: 400 }}> — {ing.preparacion}</span>}
+              </span>
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Modo libre: /recetas/:id/cocinar ────────────────────────────────────────
 // ─── Modo plan:  /planes/:idPlan/cocinar/:idReceta ────────────────────────────
 
@@ -111,6 +163,11 @@ export function CocinarRoute() {
 
   const pasosOrdenados = useMemo(
     () => [...(receta?.pasos ?? [])].sort((a, b) => a.nroPaso - b.nroPaso),
+    [receta]
+  );
+
+  const ingredientesById = useMemo(
+    () => new Map((receta?.ingredientes ?? []).map(ing => [ing.idIngrediente, ing])),
     [receta]
   );
 
@@ -284,6 +341,9 @@ export function CocinarRoute() {
           <SustitutosRecap ingredientes={receta.ingredientes} catalogo={catalogo} />
         )}
 
+        {/* Panel de ingredientes — accesible en cualquier paso */}
+        <IngredientesPanel ingredientes={receta.ingredientes} />
+
         {/* PasoCard — key asegura remount al cambiar paso (limpia StepTimer) */}
         {pasoActualObj && (
           <div className="card" style={{ marginBottom: "var(--space-3)" }}>
@@ -296,6 +356,7 @@ export function CocinarRoute() {
               onIniciarTimer={(durMs) => iniciarTimer(pasoActualObj.nroPaso, durMs)}
               onCancelarTimer={() => cancelarTimer(pasoActualObj.nroPaso)}
               timerActivo={state.timersActivos[pasoActualObj.nroPaso]}
+              ingredientesById={ingredientesById}
             />
           </div>
         )}
@@ -470,6 +531,9 @@ export function CocinarRoute() {
       {/* Sustitutos a mano */}
       {catalogo && <SustitutosRecap ingredientes={receta.ingredientes} catalogo={catalogo} />}
 
+      {/* Panel de ingredientes — accesible en cualquier paso */}
+      <IngredientesPanel ingredientes={receta.ingredientes} />
+
       {/* Todos los pasos — con ACÁ VAS pill y borde bordó en el actual */}
       {pasosOrdenados.map((paso) => {
         const esActual = paso.nroPaso === pasoActualObj?.nroPaso && !tachados.has(paso.nroPaso);
@@ -520,6 +584,7 @@ export function CocinarRoute() {
                 onIniciarTimer={(durMs) => iniciarTimer(paso.nroPaso, durMs)}
                 onCancelarTimer={() => cancelarTimer(paso.nroPaso)}
                 timerActivo={state.timersActivos[paso.nroPaso]}
+                ingredientesById={ingredientesById}
               />
             </div>
 
