@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { Carrot, ChevronRight } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { subscribeToPlanesActivos, marcarCocinada, descartarPlan } from "../data/planes";
 import { getListaById } from "../data/compras";
@@ -227,6 +228,35 @@ function HomeJP() {
       {/* ── WeekStrip ────────────────────────────────────────────────────── */}
       <WeekStrip semanaInicio={semana} marked={marked} />
 
+      {/* ── ¿Qué cocino con lo que tengo? ────────────────────────────────── */}
+      <button
+        onClick={() => navigate("/que-cocino")}
+        style={{
+          display: "flex", alignItems: "center", gap: 12, width: "100%",
+          padding: "13px 15px", textAlign: "left", cursor: "pointer",
+          fontFamily: "inherit", borderRadius: "var(--radius-lg)",
+          background: "var(--primary-soft)", border: "1px solid transparent",
+          marginBottom: "var(--space-4)",
+        }}
+      >
+        <span style={{
+          width: 38, height: 38, borderRadius: 11, flexShrink: 0,
+          background: "var(--primary)", color: "var(--on-primary)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
+          <Carrot size={20} />
+        </span>
+        <span style={{ flex: 1, minWidth: 0 }}>
+          <span style={{ display: "block", fontSize: 15, fontWeight: 600, color: "var(--primary-strong)", lineHeight: 1.2 }}>
+            ¿Qué cocino con lo que tengo?
+          </span>
+          <span style={{ display: "block", fontSize: 12.5, color: "var(--primary)", opacity: 0.85, lineHeight: 1.35, marginTop: 2 }}>
+            Recetas según tu despensa
+          </span>
+        </span>
+        <ChevronRight size={20} style={{ color: "var(--primary)", flexShrink: 0 }} />
+      </button>
+
       {/* ── Especial + extras ────────────────────────────────────────────── */}
       <section style={{ marginBottom: "var(--space-2)" }}>
         {especial ? (
@@ -373,28 +403,6 @@ function HomeJP() {
         </div>
       )}
 
-      {/* ── ¿Qué cocino con lo que tengo? ────────────────────────────────── */}
-      <button
-        onClick={() => navigate("/que-cocino")}
-        style={{
-          marginTop: "var(--space-4)",
-          width: "100%", textAlign: "left",
-          background: "var(--surface-strong)",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius-md)",
-          padding: "var(--space-3) var(--space-4)",
-          cursor: "pointer", fontFamily: "inherit",
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-        }}
-      >
-        <div>
-          <p style={{ margin: 0, fontWeight: 600, color: "var(--text-strong)", fontSize: "var(--fs-sm)" }}>
-            ¿Qué cocino con lo que tengo?
-          </p>
-          <p className="meta" style={{ margin: "2px 0 0" }}>Recetas según tu despensa</p>
-        </div>
-        <span style={{ color: "var(--muted)", fontSize: 18 }}>›</span>
-      </button>
     </div>
   );
 }
