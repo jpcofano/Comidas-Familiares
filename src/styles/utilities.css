@@ -92,12 +92,12 @@
 }
 
 .btn-danger {
-  background: var(--accent);
+  background: var(--danger);
   color: #fff;
 }
 
 .btn-danger:hover:not(:disabled) {
-  background: var(--accent-strong);
+  background: var(--danger-strong);
 }
 
 /* ============================================

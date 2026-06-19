@@ -35,6 +35,10 @@
   /* Estrella — dorado cálido para ratings */
   --estrella: oklch(0.76 0.14 78);
 
+  /* Danger — rojo destructivo (distinto de --accent bordo y de --primary terracota) */
+  --danger:        #b23a2e;
+  --danger-strong: #8a2c22;
+
   /* Semantic — ok / err / warn / info */
   --ok-bg:    #ecf5ec;
   --ok-line:  #b6d6b6;
@@ -148,6 +152,9 @@
   --accent-strong:  #dc9cb1;
   --accent-soft:    rgba(209, 138, 163, 0.16);
   --estrella:       oklch(0.80 0.14 80);
+
+  --danger:        #d4634c;
+  --danger-strong: #e07a64;
 
   --ok-bg:    #1e2c1e;  --ok-line:  #3a5a3a;  --ok-text:  #a8d6a8;
   --err-bg:   #321e18;  --err-line: #6a3a2c;  --err-text: #f0a98f;
