@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-19T02:20:28.979Z",
+  "commitHash": "3a47bd67000722dcdc7a11225f09e7ed855b482c",
+  "colecciones": {
+    "recetas": {
+      "total": 310,
+      "reales": 308,
+      "sinteticos": 2,
+      "sinteticosIds": [
+        "REC-1535",
+        "REC-1537"
+      ],
+      "mismatches": []
+    },
+    "ingredientes": {
+      "total": 359,
+      "mismatches": []
+    }
+  }
+}
