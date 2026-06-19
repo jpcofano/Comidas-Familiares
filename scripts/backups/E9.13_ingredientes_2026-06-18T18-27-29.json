@@ -1,0 +1,5430 @@
+[
+  {
+    "idIngrediente": "ING-0001",
+    "canonico": "abadejo",
+    "nombrePreferido": "Abadejo",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0002",
+    "canonico": "aceite de coco",
+    "nombrePreferido": "Aceite de coco",
+    "sinonimos": [
+      "Aceite de coco o neutro"
+    ],
+    "categoria": "Aceite y grasa",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0003",
+    "canonico": "aceite de oliva",
+    "nombrePreferido": "Aceite de oliva",
+    "sinonimos": [
+      "Aceite"
+    ],
+    "categoria": "Aceite y grasa",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0004",
+    "canonico": "aceite de oliva suave",
+    "nombrePreferido": "Aceite de oliva suave",
+    "sinonimos": [
+      "Aceite de oliva suave o neutro"
+    ],
+    "categoria": "Aceite y grasa",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0005",
+    "canonico": "aceite de sesamo",
+    "nombrePreferido": "Aceite de sesamo",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0006",
+    "canonico": "aceitunas negras",
+    "nombrePreferido": "Aceitunas negras",
+    "sinonimos": [
+      "Aceitunas"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0007",
+    "canonico": "aceitunas verdes",
+    "nombrePreferido": "Aceitunas verdes",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0008",
+    "canonico": "agua",
+    "nombrePreferido": "Agua",
+    "sinonimos": [
+      "Agua caliente",
+      "Agua o vino blanco",
+      "Agua tibia"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Despensa / otros"
+  },
+  {
+    "idIngrediente": "ING-0009",
+    "canonico": "aji molido",
+    "nombrePreferido": "Aji molido",
+    "sinonimos": [
+      "Aji molido o peperoncino",
+      "Aji molido o sriracha"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0010",
+    "canonico": "aji picante",
+    "nombrePreferido": "Aji picante",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0011",
+    "canonico": "ajo",
+    "nombrePreferido": "Ajo",
+    "sinonimos": [
+      "Ajo asado o salteado"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0012",
+    "canonico": "ajo en polvo",
+    "nombrePreferido": "Ajo en polvo",
+    "sinonimos": [
+      "Ajo en polvo o ajo fresco"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0013",
+    "canonico": "almendra sin azucar",
+    "nombrePreferido": "Almendra sin azucar",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0014",
+    "canonico": "almendras",
+    "nombrePreferido": "Almendras",
+    "sinonimos": [
+      "Almendras fileteadas",
+      "Almendras molidas",
+      "Almendras picadas"
+    ],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0015",
+    "canonico": "apio",
+    "nombrePreferido": "Apio",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0016",
+    "canonico": "arroz cocido",
+    "nombrePreferido": "Arroz cocido",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0017",
+    "canonico": "arroz jazmin",
+    "nombrePreferido": "Arroz jazmin",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0018",
+    "canonico": "arroz largo fino",
+    "nombrePreferido": "Arroz largo fino",
+    "sinonimos": [
+      "Arroz blanco cocido",
+      "Arroz blanco largo fino",
+      "Arroz blanco o pan"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0019",
+    "canonico": "atun al natural",
+    "nombrePreferido": "Atun al natural",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0020",
+    "canonico": "avena arrollada",
+    "nombrePreferido": "Avena arrollada",
+    "sinonimos": [
+      "Avena"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0021",
+    "canonico": "azafran",
+    "nombrePreferido": "Azafran",
+    "sinonimos": [
+      "Azafran o curcuma"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0022",
+    "canonico": "azucar mascabo",
+    "nombrePreferido": "Azucar mascabo",
+    "sinonimos": [
+      "Azúcar mascabo o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0023",
+    "canonico": "baguette",
+    "nombrePreferido": "Baguette",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0024",
+    "canonico": "banana",
+    "nombrePreferido": "Banana",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0025",
+    "canonico": "batatas",
+    "nombrePreferido": "Batatas",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0026",
+    "canonico": "bebida de coco sin azucar",
+    "nombrePreferido": "Bebida de coco sin azucar",
+    "sinonimos": [
+      "Bebida de coco o almendra sin azúcar"
+    ],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0027",
+    "canonico": "bebida vegetal sin azucar",
+    "nombrePreferido": "Bebida vegetal sin azucar",
+    "sinonimos": [],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0028",
+    "canonico": "berenjenas",
+    "nombrePreferido": "Berenjenas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0029",
+    "canonico": "bicarbonato de sodio",
+    "nombrePreferido": "Bicarbonato de sodio",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0030",
+    "canonico": "bifecitos de cuadril",
+    "nombrePreferido": "Bifecitos de cuadril",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0031",
+    "canonico": "bondiola de cerdo entera",
+    "nombrePreferido": "Bondiola de cerdo entera",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0032",
+    "canonico": "cacao amargo",
+    "nombrePreferido": "Cacao amargo",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0033",
+    "canonico": "calamares limpios",
+    "nombrePreferido": "Calamares limpios",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0034",
+    "canonico": "caldo de carne",
+    "nombrePreferido": "Caldo de carne",
+    "sinonimos": [
+      "Agua o caldo",
+      "Caldo de carne o verduras"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0035",
+    "canonico": "caldo de pescado",
+    "nombrePreferido": "Caldo de pescado",
+    "sinonimos": [
+      "Caldo de pescado o verduras"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0036",
+    "canonico": "caldo de pollo",
+    "nombrePreferido": "Caldo de pollo",
+    "sinonimos": [
+      "Agua o caldo",
+      "Caldo de pollo o verduras"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0037",
+    "canonico": "caldo de verduras",
+    "nombrePreferido": "Caldo de verduras",
+    "sinonimos": [
+      "Agua o caldo caliente"
+    ],
+    "categoria": "Caldo y fondo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0038",
+    "canonico": "canela",
+    "nombrePreferido": "Canela",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0039",
+    "canonico": "carne picada",
+    "nombrePreferido": "Carne picada",
+    "sinonimos": [
+      "Carne picada especial"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0040",
+    "canonico": "carne vacuna en cubos",
+    "nombrePreferido": "Carne vacuna en cubos",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0041",
+    "canonico": "carne vacuna en tiras",
+    "nombrePreferido": "Carne vacuna en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0042",
+    "canonico": "cascara de limon",
+    "nombrePreferido": "Cascara de limon",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0043",
+    "canonico": "cebolla",
+    "nombrePreferido": "Cebolla",
+    "sinonimos": [
+      "Cebolla o echalote",
+      "Cebollas"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0044",
+    "canonico": "cebolla de verdeo",
+    "nombrePreferido": "Cebolla de verdeo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0045",
+    "canonico": "cebolla morada",
+    "nombrePreferido": "Cebolla morada",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0046",
+    "canonico": "cerdo en tiras",
+    "nombrePreferido": "Cerdo en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0047",
+    "canonico": "champignon",
+    "nombrePreferido": "Champignon",
+    "sinonimos": [
+      "Hongos frescos"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0048",
+    "canonico": "chauchas",
+    "nombrePreferido": "Chauchas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0049",
+    "canonico": "chia",
+    "nombrePreferido": "Chia",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0050",
+    "canonico": "chocolate 85%",
+    "nombrePreferido": "Chocolate 85%",
+    "sinonimos": [
+      "Chocolate 85% o 90%"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0051",
+    "canonico": "chocolate 90%",
+    "nombrePreferido": "Chocolate 90%",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0052",
+    "canonico": "churrasquitos de cerdo",
+    "nombrePreferido": "Churrasquitos de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0053",
+    "canonico": "ciboulette",
+    "nombrePreferido": "Ciboulette",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0054",
+    "canonico": "cilantro",
+    "nombrePreferido": "Cilantro",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0055",
+    "canonico": "claras de huevo",
+    "nombrePreferido": "Claras de huevo",
+    "sinonimos": [],
+    "categoria": "Huevo",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0056",
+    "canonico": "clavo de olor",
+    "nombrePreferido": "Clavo de olor",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0057",
+    "canonico": "coco rallado extra",
+    "nombrePreferido": "Coco rallado extra",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0058",
+    "canonico": "coco rallado sin azucar",
+    "nombrePreferido": "Coco rallado sin azucar",
+    "sinonimos": [
+      "Coco rallado"
+    ],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0059",
+    "canonico": "coliflor",
+    "nombrePreferido": "Coliflor",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0060",
+    "canonico": "comino",
+    "nombrePreferido": "Comino",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0061",
+    "canonico": "coriandro",
+    "nombrePreferido": "Coriandro",
+    "sinonimos": [
+      "Coriandro o curry suave"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0062",
+    "canonico": "cous cous",
+    "nombrePreferido": "Cous cous",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0063",
+    "canonico": "curcuma",
+    "nombrePreferido": "Curcuma",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0064",
+    "canonico": "curry suave",
+    "nombrePreferido": "Curry suave",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0065",
+    "canonico": "echalote",
+    "nombrePreferido": "Echalote",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0066",
+    "canonico": "edulcorante apto",
+    "nombrePreferido": "Edulcorante apto",
+    "sinonimos": [],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0067",
+    "canonico": "entrana",
+    "nombrePreferido": "Entrana",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0068",
+    "canonico": "eritritol",
+    "nombrePreferido": "Eritritol",
+    "sinonimos": [
+      "Erythritol"
+    ],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0069",
+    "canonico": "esencia de vainilla",
+    "nombrePreferido": "Esencia de vainilla",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0070",
+    "canonico": "esparragos",
+    "nombrePreferido": "Esparragos",
+    "sinonimos": [
+      "Espárragos o chauchas"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0071",
+    "canonico": "especias grill",
+    "nombrePreferido": "Especias grill",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0072",
+    "canonico": "espinaca",
+    "nombrePreferido": "Espinaca",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0073",
+    "canonico": "fideos secos",
+    "nombrePreferido": "Fideos secos",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0074",
+    "canonico": "filetes de merluza",
+    "nombrePreferido": "Filetes de merluza",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0075",
+    "canonico": "fresco",
+    "nombrePreferido": "Fresco",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0076",
+    "canonico": "frutillas",
+    "nombrePreferido": "Frutillas",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0077",
+    "canonico": "galletas de arroz",
+    "nombrePreferido": "Galletas de arroz",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0078",
+    "canonico": "garbanzos en lata",
+    "nombrePreferido": "Garbanzos en lata",
+    "sinonimos": [
+      "Garbanzos cocidos"
+    ],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0079",
+    "canonico": "garbanzos secos",
+    "nombrePreferido": "Garbanzos secos",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0080",
+    "canonico": "granola",
+    "nombrePreferido": "Granola",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0081",
+    "canonico": "griego",
+    "nombrePreferido": "Griego",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0082",
+    "canonico": "harina de almendra",
+    "nombrePreferido": "Harina de almendra",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0083",
+    "canonico": "harina de coco",
+    "nombrePreferido": "Harina de coco",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0084",
+    "canonico": "hojas verdes",
+    "nombrePreferido": "Hojas verdes",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0085",
+    "canonico": "huevos",
+    "nombrePreferido": "Huevos",
+    "sinonimos": [
+      "Huevo",
+      "Huevos duros"
+    ],
+    "categoria": "Huevo",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0086",
+    "canonico": "jamon cocido natural",
+    "nombrePreferido": "Jamon cocido natural",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria"
+  },
+  {
+    "idIngrediente": "ING-0087",
+    "canonico": "jengibre fresco",
+    "nombrePreferido": "Jengibre fresco",
+    "sinonimos": [
+      "Jengibre o cascara de limón"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0088",
+    "canonico": "langostinos",
+    "nombrePreferido": "Langostinos",
+    "sinonimos": [
+      "Langostinos limpios",
+      "Langostinos pelados"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0089",
+    "canonico": "laurel",
+    "nombrePreferido": "Laurel",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0090",
+    "canonico": "leche de coco",
+    "nombrePreferido": "Leche de coco",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0091",
+    "canonico": "lechuga",
+    "nombrePreferido": "Lechuga",
+    "sinonimos": [
+      "Lechuga o rúcula"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0092",
+    "canonico": "lenguado",
+    "nombrePreferido": "Lenguado",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0093",
+    "canonico": "limon",
+    "nombrePreferido": "Limon",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0094",
+    "canonico": "mani",
+    "nombrePreferido": "Mani",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0095",
+    "canonico": "manzana roja",
+    "nombrePreferido": "Manzana roja",
+    "sinonimos": [
+      "Manzana",
+      "Manzana o pera"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0096",
+    "canonico": "manzana verde",
+    "nombrePreferido": "Manzana verde",
+    "sinonimos": [
+      "Manzanas"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0097",
+    "canonico": "mejillones",
+    "nombrePreferido": "Mejillones",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0098",
+    "canonico": "menta",
+    "nombrePreferido": "Menta",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0099",
+    "canonico": "merluza negra",
+    "nombrePreferido": "Merluza negra",
+    "sinonimos": [
+      "Pescado blanco firme"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0100",
+    "canonico": "miel",
+    "nombrePreferido": "Miel",
+    "sinonimos": [
+      "Miel o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0101",
+    "canonico": "miel azucar mascabo",
+    "nombrePreferido": "Miel azucar mascabo",
+    "sinonimos": [
+      "Miel, azúcar mascabo o edulcorante apto"
+    ],
+    "categoria": "Endulzante",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0102",
+    "canonico": "morron rojo",
+    "nombrePreferido": "Morron rojo",
+    "sinonimos": [
+      "Morrón",
+      "Morrón rojo o amarillo"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0103",
+    "canonico": "mostaza",
+    "nombrePreferido": "Mostaza",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0104",
+    "canonico": "mostaza dijon",
+    "nombrePreferido": "Mostaza dijon",
+    "sinonimos": [
+      "Mostaza Dijon o común"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0105",
+    "canonico": "muslos",
+    "nombrePreferido": "Muslos",
+    "sinonimos": [
+      "Muslos o pata muslo de pollo"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0106",
+    "canonico": "naranja",
+    "nombrePreferido": "Naranja",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0107",
+    "canonico": "neutro",
+    "nombrePreferido": "Neutro",
+    "sinonimos": [],
+    "categoria": "Aceite y grasa",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0108",
+    "canonico": "nueces",
+    "nombrePreferido": "Nueces",
+    "sinonimos": [
+      "Nueces o almendras",
+      "Nueces picadas"
+    ],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0109",
+    "canonico": "nuez moscada",
+    "nombrePreferido": "Nuez moscada",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0110",
+    "canonico": "ojo de bife",
+    "nombrePreferido": "Ojo de bife",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0111",
+    "canonico": "oregano",
+    "nombrePreferido": "Oregano",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "nombrePreferido": "Palitos de brochette",
+    "sinonimos": [],
+    "canonico": "palitos de brochette",
+    "categoria": "Utensilio",
+    "seccionGondola": "Bazar / otros",
+    "rolNutricional": [],
+    "idIngrediente": "ING-0112"
+  },
+  {
+    "idIngrediente": "ING-0113",
+    "canonico": "palta",
+    "nombrePreferido": "Palta",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0114",
+    "canonico": "pan",
+    "nombrePreferido": "Pan",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0115",
+    "canonico": "pan de campo",
+    "nombrePreferido": "Pan de campo",
+    "sinonimos": [
+      "Pan de campo o baguette"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0116",
+    "canonico": "pan de hamburguesa",
+    "nombrePreferido": "Pan de hamburguesa",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0117",
+    "canonico": "pan pita",
+    "nombrePreferido": "Pan pita",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0118",
+    "canonico": "pan tostado",
+    "nombrePreferido": "Pan tostado",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0119",
+    "canonico": "papa",
+    "nombrePreferido": "Papa",
+    "sinonimos": [
+      "Papas",
+      "Papas aplastadas o rústicas",
+      "Papas chicas",
+      "Papas o batatas"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0120",
+    "canonico": "passata de tomate",
+    "nombrePreferido": "Passata de tomate",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0121",
+    "canonico": "pasta de mani sin azucar",
+    "nombrePreferido": "Pasta de mani sin azucar",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0122",
+    "canonico": "pata muslo de pollo",
+    "nombrePreferido": "Pata muslo de pollo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0123",
+    "canonico": "pechuga de pollo",
+    "nombrePreferido": "Pechuga de pollo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0124",
+    "canonico": "peperoncino",
+    "nombrePreferido": "Peperoncino",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0125",
+    "canonico": "pepino",
+    "nombrePreferido": "Pepino",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0126",
+    "canonico": "pera",
+    "nombrePreferido": "Pera",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0127",
+    "canonico": "perejil",
+    "nombrePreferido": "Perejil",
+    "sinonimos": [
+      "Perejil fresco",
+      "Perejil o ciboulette",
+      "Perejil o cilantro",
+      "Perejil o menta"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0128",
+    "canonico": "pimenton",
+    "nombrePreferido": "Pimenton",
+    "sinonimos": [
+      "Pimentón o especias grill"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0129",
+    "canonico": "pimenton ahumado",
+    "nombrePreferido": "Pimenton ahumado",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0130",
+    "canonico": "pimenton dulce",
+    "nombrePreferido": "Pimenton dulce",
+    "sinonimos": [
+      "Pimentón"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0131",
+    "canonico": "pimienta negra",
+    "nombrePreferido": "Pimienta negra",
+    "sinonimos": [
+      "Pimienta",
+      "Sal gruesa y pimienta",
+      "Sal y pimienta"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0132",
+    "canonico": "pollo cocido desmenuzado",
+    "nombrePreferido": "Pollo cocido desmenuzado",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0133",
+    "canonico": "pollo deshuesado",
+    "nombrePreferido": "Pollo deshuesado",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0134",
+    "canonico": "pollo en cubos",
+    "nombrePreferido": "Pollo en cubos",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0135",
+    "canonico": "pollo en tiras",
+    "nombrePreferido": "Pollo en tiras",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0136",
+    "canonico": "polvo de hornear",
+    "nombrePreferido": "Polvo de hornear",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0137",
+    "canonico": "portobello",
+    "nombrePreferido": "Portobello",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0138",
+    "canonico": "provoleta",
+    "nombrePreferido": "Provoleta",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0139",
+    "canonico": "psyllium",
+    "nombrePreferido": "Psyllium",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0140",
+    "canonico": "queso crema",
+    "nombrePreferido": "Queso crema",
+    "sinonimos": [
+      "Queso crema o yogur natural"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0141",
+    "canonico": "queso fresco",
+    "nombrePreferido": "Queso fresco",
+    "sinonimos": [
+      "Queso fresco o rallado"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria"
+  },
+  {
+    "idIngrediente": "ING-0142",
+    "canonico": "queso rallado",
+    "nombrePreferido": "Queso rallado",
+    "sinonimos": [
+      "Queso rallado o fresco"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0143",
+    "canonico": "queso untable",
+    "nombrePreferido": "Queso untable",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0144",
+    "canonico": "ralladura de limon",
+    "nombrePreferido": "Ralladura de limon",
+    "sinonimos": [
+      "Ralladura de limón o naranja"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0145",
+    "canonico": "rebanadas de pan",
+    "nombrePreferido": "Rebanadas de pan",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0146",
+    "canonico": "repollo blanco",
+    "nombrePreferido": "Repollo blanco",
+    "sinonimos": [
+      "Repollo blanco o colorado"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0147",
+    "canonico": "ribs de cerdo",
+    "nombrePreferido": "Ribs de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0148",
+    "canonico": "romero",
+    "nombrePreferido": "Romero",
+    "sinonimos": [
+      "Romero o pimentón",
+      "Romero o tomillo"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0149",
+    "canonico": "rucula",
+    "nombrePreferido": "Rucula",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0150",
+    "canonico": "sal fina",
+    "nombrePreferido": "Sal fina",
+    "sinonimos": [
+      "Sal",
+      "Sal y pimienta"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0151",
+    "canonico": "sal gruesa",
+    "nombrePreferido": "Sal gruesa",
+    "sinonimos": [
+      "Sal gruesa y pimienta"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0152",
+    "canonico": "salsa de soja",
+    "nombrePreferido": "Salsa de soja",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0153",
+    "canonico": "semillas de calabaza",
+    "nombrePreferido": "Semillas de calabaza",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0154",
+    "canonico": "semillas de girasol",
+    "nombrePreferido": "Semillas de girasol",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0155",
+    "canonico": "semillas de lino",
+    "nombrePreferido": "Semillas de lino",
+    "sinonimos": [
+      "Lino molido",
+      "Semillas de lino enteras",
+      "Semillas de lino molidas"
+    ],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0156",
+    "canonico": "semillas de sesamo",
+    "nombrePreferido": "Semillas de sesamo",
+    "sinonimos": [
+      "Semillas de sésamo o mani"
+    ],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0157",
+    "canonico": "sriracha",
+    "nombrePreferido": "Sriracha",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0158",
+    "canonico": "tahini",
+    "nombrePreferido": "Tahini",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0159",
+    "canonico": "tomate fresco",
+    "nombrePreferido": "Tomate fresco",
+    "sinonimos": [
+      "Tomate"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0160",
+    "canonico": "tomate triturado",
+    "nombrePreferido": "Tomate triturado",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0161",
+    "canonico": "tomates cherry",
+    "nombrePreferido": "Tomates cherry",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0162",
+    "canonico": "tomillo",
+    "nombrePreferido": "Tomillo",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0163",
+    "canonico": "tortillas",
+    "nombrePreferido": "Tortillas",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0164",
+    "canonico": "tostadas integrales",
+    "nombrePreferido": "Tostadas integrales",
+    "sinonimos": [
+      "Tostadas"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Panaderia"
+  },
+  {
+    "idIngrediente": "ING-0165",
+    "canonico": "vinagre de arroz",
+    "nombrePreferido": "Vinagre de arroz",
+    "sinonimos": [
+      "Vinagre de arroz o limón",
+      "Vinagre de arroz o manzana"
+    ],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0166",
+    "canonico": "vinagre de manzana",
+    "nombrePreferido": "Vinagre de manzana",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0167",
+    "canonico": "vinagre de vino",
+    "nombrePreferido": "Vinagre de vino",
+    "sinonimos": [
+      "Vinagre",
+      "Vinagre o limón"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0168",
+    "canonico": "vino blanco seco",
+    "nombrePreferido": "Vino blanco seco",
+    "sinonimos": [
+      "Vino blanco o tinto"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0169",
+    "canonico": "vino malbec",
+    "nombrePreferido": "Vino malbec",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0170",
+    "canonico": "vino tinto",
+    "nombrePreferido": "Vino tinto",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0171",
+    "canonico": "whey protein powder",
+    "nombrePreferido": "Whey protein powder",
+    "sinonimos": [],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0172",
+    "canonico": "yemas de huevo",
+    "nombrePreferido": "Yemas de huevo",
+    "sinonimos": [],
+    "categoria": "Huevo",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0173",
+    "canonico": "yogur griego",
+    "nombrePreferido": "Yogur griego",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0174",
+    "canonico": "yogur natural",
+    "nombrePreferido": "Yogur natural",
+    "sinonimos": [
+      "Yogur natural o griego"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0175",
+    "canonico": "yogur vegetal sin azucar",
+    "nombrePreferido": "Yogur vegetal sin azucar",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0176",
+    "canonico": "zanahoria",
+    "nombrePreferido": "Zanahoria",
+    "sinonimos": [
+      "Zanahorias"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0177",
+    "canonico": "zucchini",
+    "nombrePreferido": "Zucchini",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0178",
+    "canonico": "nalga",
+    "nombrePreferido": "Nalga",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0179",
+    "canonico": "peceto",
+    "nombrePreferido": "Peceto",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0180",
+    "canonico": "cuadril",
+    "nombrePreferido": "Cuadril",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0181",
+    "canonico": "bife de chorizo",
+    "nombrePreferido": "Bife de chorizo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0182",
+    "canonico": "bife angosto",
+    "nombrePreferido": "Bife angosto",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0183",
+    "canonico": "bife ancho",
+    "nombrePreferido": "Bife ancho",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0184",
+    "canonico": "vacio",
+    "nombrePreferido": "Vacío",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0185",
+    "canonico": "matambre",
+    "nombrePreferido": "Matambre",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0186",
+    "canonico": "asado de tira",
+    "nombrePreferido": "Asado de tira",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0187",
+    "canonico": "roast beef",
+    "nombrePreferido": "Roast beef",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0188",
+    "canonico": "lomo",
+    "nombrePreferido": "Lomo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0189",
+    "canonico": "colita de cuadril",
+    "nombrePreferido": "Colita de cuadril",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0190",
+    "canonico": "tapa de asado",
+    "nombrePreferido": "Tapa de asado",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0191",
+    "canonico": "aguja",
+    "nombrePreferido": "Aguja",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0192",
+    "canonico": "paleta",
+    "nombrePreferido": "Paleta",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0193",
+    "canonico": "osobuco",
+    "nombrePreferido": "Osobuco",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0194",
+    "canonico": "falda",
+    "nombrePreferido": "Falda",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0195",
+    "canonico": "suprema de pollo",
+    "nombrePreferido": "Suprema de pollo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0196",
+    "canonico": "alita de pollo",
+    "nombrePreferido": "Alita de pollo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0197",
+    "canonico": "pavita",
+    "nombrePreferido": "Pavita",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0198",
+    "canonico": "bondiola",
+    "nombrePreferido": "Bondiola",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0199",
+    "canonico": "pechito de cerdo",
+    "nombrePreferido": "Pechito de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0200",
+    "canonico": "carre de cerdo",
+    "nombrePreferido": "Carré de cerdo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0201",
+    "canonico": "chorizo",
+    "nombrePreferido": "Chorizo",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0202",
+    "canonico": "morcilla",
+    "nombrePreferido": "Morcilla",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria"
+  },
+  {
+    "idIngrediente": "ING-0203",
+    "canonico": "panceta",
+    "nombrePreferido": "Panceta",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria"
+  },
+  {
+    "idIngrediente": "ING-0204",
+    "canonico": "merluza",
+    "nombrePreferido": "Merluza",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0205",
+    "canonico": "salmon",
+    "nombrePreferido": "Salmón",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0206",
+    "canonico": "atun fresco",
+    "nombrePreferido": "Atún fresco",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0207",
+    "canonico": "trucha",
+    "nombrePreferido": "Trucha",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0208",
+    "canonico": "corvina",
+    "nombrePreferido": "Corvina",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0209",
+    "canonico": "pejerrey",
+    "nombrePreferido": "Pejerrey",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0210",
+    "canonico": "langostino",
+    "nombrePreferido": "Langostino",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0211",
+    "canonico": "camaron",
+    "nombrePreferido": "Camarón",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0212",
+    "canonico": "calamar",
+    "nombrePreferido": "Calamar",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0213",
+    "canonico": "mejillon",
+    "nombrePreferido": "Mejillón",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia"
+  },
+  {
+    "idIngrediente": "ING-0214",
+    "canonico": "morron verde",
+    "nombrePreferido": "Morrón verde",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0215",
+    "canonico": "zapallo",
+    "nombrePreferido": "Zapallo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0216",
+    "canonico": "zapallito",
+    "nombrePreferido": "Zapallito",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0217",
+    "canonico": "calabaza",
+    "nombrePreferido": "Calabaza",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0218",
+    "canonico": "batata",
+    "nombrePreferido": "Batata",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0219",
+    "canonico": "choclo",
+    "nombrePreferido": "Choclo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0220",
+    "canonico": "chaucha",
+    "nombrePreferido": "Chaucha",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0221",
+    "canonico": "remolacha",
+    "nombrePreferido": "Remolacha",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0222",
+    "canonico": "radicheta",
+    "nombrePreferido": "Radicheta",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0223",
+    "canonico": "escarola",
+    "nombrePreferido": "Escarola",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0224",
+    "canonico": "endibia",
+    "nombrePreferido": "Endibia",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0225",
+    "canonico": "puerro",
+    "nombrePreferido": "Puerro",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0226",
+    "canonico": "hinojo",
+    "nombrePreferido": "Hinojo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0227",
+    "canonico": "nabo",
+    "nombrePreferido": "Nabo",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0228",
+    "canonico": "rabanito",
+    "nombrePreferido": "Rabanito",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0229",
+    "canonico": "brocoli",
+    "nombrePreferido": "Brócoli",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0230",
+    "canonico": "repollo colorado",
+    "nombrePreferido": "Repollo colorado",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0231",
+    "canonico": "kale",
+    "nombrePreferido": "Kale",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0232",
+    "canonico": "acelga",
+    "nombrePreferido": "Acelga",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0233",
+    "canonico": "mandarina",
+    "nombrePreferido": "Mandarina",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0234",
+    "canonico": "pomelo",
+    "nombrePreferido": "Pomelo",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0235",
+    "canonico": "frutilla",
+    "nombrePreferido": "Frutilla",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0236",
+    "canonico": "arandano",
+    "nombrePreferido": "Arándano",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0237",
+    "canonico": "durazno",
+    "nombrePreferido": "Durazno",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0238",
+    "canonico": "ciruela",
+    "nombrePreferido": "Ciruela",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0239",
+    "canonico": "damasco",
+    "nombrePreferido": "Damasco",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0240",
+    "canonico": "higo",
+    "nombrePreferido": "Higo",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0241",
+    "canonico": "uva",
+    "nombrePreferido": "Uva",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0242",
+    "canonico": "melon",
+    "nombrePreferido": "Melón",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0243",
+    "canonico": "sandia",
+    "nombrePreferido": "Sandía",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0244",
+    "canonico": "anana",
+    "nombrePreferido": "Ananá",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0245",
+    "canonico": "kiwi",
+    "nombrePreferido": "Kiwi",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Verduleria"
+  },
+  {
+    "idIngrediente": "ING-0246",
+    "canonico": "leche entera",
+    "nombrePreferido": "Leche entera",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0247",
+    "canonico": "leche descremada",
+    "nombrePreferido": "Leche descremada",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0248",
+    "canonico": "crema de leche",
+    "nombrePreferido": "Crema de leche",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0249",
+    "canonico": "queso cremoso",
+    "nombrePreferido": "Queso cremoso",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria"
+  },
+  {
+    "idIngrediente": "ING-0250",
+    "canonico": "queso port salut",
+    "nombrePreferido": "Queso port salut",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria"
+  },
+  {
+    "idIngrediente": "ING-0252",
+    "canonico": "ricota",
+    "nombrePreferido": "Ricota",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0253",
+    "canonico": "dulce de leche",
+    "nombrePreferido": "Dulce de leche",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Azucar/Dulce"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0254",
+    "canonico": "manteca",
+    "nombrePreferido": "Manteca",
+    "sinonimos": [],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Lacteos y frescos"
+  },
+  {
+    "idIngrediente": "ING-0255",
+    "canonico": "harina 0000",
+    "nombrePreferido": "Harina 0000",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0256",
+    "canonico": "harina integral",
+    "nombrePreferido": "Harina integral",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0257",
+    "canonico": "polenta",
+    "nombrePreferido": "Polenta",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0258",
+    "canonico": "arroz yamani",
+    "nombrePreferido": "Arroz yamaní",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0259",
+    "canonico": "pan rallado",
+    "nombrePreferido": "Pan rallado",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0260",
+    "canonico": "salvado de avena",
+    "nombrePreferido": "Salvado de avena",
+    "sinonimos": [],
+    "categoria": "Cereal y derivado",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0261",
+    "canonico": "lenteja seca",
+    "nombrePreferido": "Lenteja seca",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0262",
+    "canonico": "garbanzo seco",
+    "nombrePreferido": "Garbanzo seco",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0263",
+    "canonico": "poroto negro",
+    "nombrePreferido": "Poroto negro",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0264",
+    "canonico": "poroto colorado",
+    "nombrePreferido": "Poroto colorado",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0265",
+    "canonico": "arveja seca",
+    "nombrePreferido": "Arveja seca",
+    "sinonimos": [],
+    "categoria": "Legumbre",
+    "rolNutricional": [
+      "Proteina",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos"
+  },
+  {
+    "idIngrediente": "ING-0266",
+    "canonico": "aranita",
+    "nombrePreferido": "Arañita",
+    "sinonimos": [],
+    "categoria": "Carne",
+    "rolNutricional": [],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": true,
+    "origen": "import",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780423502,
+      "_nanoseconds": 284000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780423502,
+      "_nanoseconds": 284000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0267",
+    "canonico": "ghee",
+    "nombrePreferido": "Ghee",
+    "sinonimos": [],
+    "categoria": "Aceite y grasa",
+    "rolNutricional": [],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": true,
+    "origen": "import",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780423502,
+      "_nanoseconds": 565000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780423502,
+      "_nanoseconds": 565000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0268",
+    "canonico": "pasta de achiote",
+    "nombrePreferido": "Pasta de achiote",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": true,
+    "origen": "import",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 347000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 347000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0269",
+    "canonico": "papel aluminio",
+    "nombrePreferido": "Papel aluminio",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [],
+    "ambiguo": true,
+    "origen": "import",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 627000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 627000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0270",
+    "canonico": "papel de cocina",
+    "nombrePreferido": "Papel de cocina",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [],
+    "ambiguo": true,
+    "origen": "import",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 897000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780423920,
+      "_nanoseconds": 897000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0271",
+    "canonico": "queso feta",
+    "nombrePreferido": "Queso Feta",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Grasa",
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [],
+    "ambiguo": false,
+    "origen": "manual",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780453360,
+      "_nanoseconds": 312000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780453360,
+      "_nanoseconds": 312000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0272",
+    "canonico": "albahaca",
+    "nombrePreferido": "Albahaca",
+    "sinonimos": [
+      "Albahaca fresca"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 301000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 301000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0273",
+    "canonico": "alcaparras",
+    "nombrePreferido": "Alcaparras",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 521000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 521000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0274",
+    "canonico": "carre de cordero",
+    "nombrePreferido": "Carré de cordero",
+    "sinonimos": [
+      "Rack de cordero"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 678000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 678000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0275",
+    "canonico": "conac",
+    "nombrePreferido": "Coñac",
+    "sinonimos": [
+      "Brandy"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 909000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617613,
+      "_nanoseconds": 909000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0276",
+    "canonico": "cordero en cubos",
+    "nombrePreferido": "Cordero en cubos",
+    "sinonimos": [
+      "Cordero para guiso"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 5000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 5000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0277",
+    "canonico": "costillas de cordero",
+    "nombrePreferido": "Costillas de cordero",
+    "sinonimos": [
+      "Costillitas de cordero"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 89000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 89000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0278",
+    "canonico": "film",
+    "nombrePreferido": "Film",
+    "sinonimos": [
+      "Film transparente"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 165000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 165000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0279",
+    "canonico": "garam masala",
+    "nombrePreferido": "Garam masala",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 242000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 242000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0280",
+    "canonico": "gochujang",
+    "nombrePreferido": "Gochujang",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 320000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 320000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0281",
+    "canonico": "hielo",
+    "nombrePreferido": "Hielo",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 385000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 385000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0282",
+    "canonico": "hilo de cocina",
+    "nombrePreferido": "Hilo de cocina",
+    "sinonimos": [],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 448000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 448000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0283",
+    "canonico": "papel manteca",
+    "nombrePreferido": "Papel manteca",
+    "sinonimos": [
+      "Papel de horno"
+    ],
+    "categoria": "Utensilio",
+    "rolNutricional": [],
+    "seccionGondola": "Bazar / otros",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 529000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 529000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0284",
+    "canonico": "pasta de curry verde",
+    "nombrePreferido": "Pasta de curry verde",
+    "sinonimos": [],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 599000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 599000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0285",
+    "canonico": "pimienta verde en grano",
+    "nombrePreferido": "Pimienta verde en grano",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 659000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 659000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0286",
+    "canonico": "pistachos",
+    "nombrePreferido": "Pistachos",
+    "sinonimos": [],
+    "categoria": "Semilla y fruto seco",
+    "rolNutricional": [
+      "Grasa"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 729000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 729000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0287",
+    "canonico": "pulpo",
+    "nombrePreferido": "Pulpo",
+    "sinonimos": [],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "kg"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 812000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 812000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0288",
+    "canonico": "salsa de pescado",
+    "nombrePreferido": "Salsa de pescado",
+    "sinonimos": [
+      "Fish sauce",
+      "Nam pla"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 869000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 869000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0289",
+    "canonico": "solomillo de cerdo",
+    "nombrePreferido": "Solomillo de cerdo",
+    "sinonimos": [
+      "Lomo de cerdo"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 930000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617614,
+      "_nanoseconds": 930000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0290",
+    "canonico": "vieiras",
+    "nombrePreferido": "Vieiras",
+    "sinonimos": [
+      "Callo de vieira"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780617615,
+      "_nanoseconds": 6000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780617615,
+      "_nanoseconds": 6000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0291",
+    "canonico": "achicoria",
+    "nombrePreferido": "Achicoria",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 234000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 234000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0292",
+    "canonico": "berro",
+    "nombrePreferido": "Berro",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 396000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 396000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0293",
+    "canonico": "endivia",
+    "nombrePreferido": "Endivia",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 504000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 504000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0294",
+    "canonico": "radicchio",
+    "nombrePreferido": "Radicchio",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 641000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 641000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0295",
+    "canonico": "repollitos de bruselas",
+    "nombrePreferido": "Repollitos de Bruselas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 732000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 732000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0296",
+    "canonico": "alcaucil",
+    "nombrePreferido": "Alcaucil",
+    "sinonimos": [
+      "Alcachofa"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 783000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 783000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0297",
+    "canonico": "zapallo anco",
+    "nombrePreferido": "Zapallo anco",
+    "sinonimos": [
+      "Calabaza anco"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 870000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 870000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0298",
+    "canonico": "mandioca",
+    "nombrePreferido": "Mandioca",
+    "sinonimos": [
+      "Yuca"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 938000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847867,
+      "_nanoseconds": 938000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0299",
+    "canonico": "arvejas frescas",
+    "nombrePreferido": "Arvejas frescas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 12000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 12000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0300",
+    "canonico": "habas",
+    "nombrePreferido": "Habas",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 86000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 86000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0301",
+    "canonico": "morron amarillo",
+    "nombrePreferido": "Morrón amarillo",
+    "sinonimos": [
+      "Pimiento amarillo"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 153000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 153000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0302",
+    "canonico": "tomate perita",
+    "nombrePreferido": "Tomate perita",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 218000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 218000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0303",
+    "canonico": "tomate redondo",
+    "nombrePreferido": "Tomate redondo",
+    "sinonimos": [
+      "Tomate"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 288000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 288000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0304",
+    "canonico": "aji verde",
+    "nombrePreferido": "Ají verde",
+    "sinonimos": [],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 349000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 349000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0305",
+    "canonico": "girgolas",
+    "nombrePreferido": "Gírgolas",
+    "sinonimos": [
+      "Hongos gírgola"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 407000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 407000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0306",
+    "canonico": "pak choi",
+    "nombrePreferido": "Pak choi",
+    "sinonimos": [
+      "Bok choy"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 473000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 473000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0307",
+    "canonico": "lima",
+    "nombrePreferido": "Lima",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 526000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 526000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0308",
+    "canonico": "cereza",
+    "nombrePreferido": "Cereza",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 591000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 591000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0309",
+    "canonico": "arandanos",
+    "nombrePreferido": "Arándanos",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 661000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 661000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0310",
+    "canonico": "frambuesas",
+    "nombrePreferido": "Frambuesas",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 729000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 729000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0311",
+    "canonico": "moras",
+    "nombrePreferido": "Moras",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 800000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 800000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0312",
+    "canonico": "mango",
+    "nombrePreferido": "Mango",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Hidrato",
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 857000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 857000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0313",
+    "canonico": "granada",
+    "nombrePreferido": "Granada",
+    "sinonimos": [],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 924000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 924000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0314",
+    "canonico": "maracuya",
+    "nombrePreferido": "Maracuyá",
+    "sinonimos": [
+      "Fruta de la pasión"
+    ],
+    "categoria": "Fruta",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 984000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847868,
+      "_nanoseconds": 984000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0315",
+    "canonico": "eneldo",
+    "nombrePreferido": "Eneldo",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 41000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 41000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0316",
+    "canonico": "estragon",
+    "nombrePreferido": "Estragón",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 99000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 99000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0317",
+    "canonico": "salvia",
+    "nombrePreferido": "Salvia",
+    "sinonimos": [],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "atado"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 157000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 157000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0318",
+    "canonico": "jamon crudo",
+    "nombrePreferido": "Jamón crudo",
+    "sinonimos": [
+      "Prosciutto",
+      "Jamón serrano"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 213000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 213000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0319",
+    "canonico": "lomito ahumado",
+    "nombrePreferido": "Lomito ahumado",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 278000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 278000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0320",
+    "canonico": "pastron",
+    "nombrePreferido": "Pastrón",
+    "sinonimos": [
+      "Pastrami"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 337000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 337000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0321",
+    "canonico": "salame",
+    "nombrePreferido": "Salame",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 393000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 393000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0322",
+    "canonico": "salamin",
+    "nombrePreferido": "Salamín",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 457000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 457000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0323",
+    "canonico": "mortadela",
+    "nombrePreferido": "Mortadela",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 515000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 515000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0324",
+    "canonico": "bondiola curada",
+    "nombrePreferido": "Bondiola curada",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g",
+      "fetas"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 586000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 586000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0325",
+    "canonico": "longaniza",
+    "nombrePreferido": "Longaniza",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 638000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 638000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0326",
+    "canonico": "sopressata",
+    "nombrePreferido": "Sopressata",
+    "sinonimos": [],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 690000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 690000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0327",
+    "canonico": "salchicha",
+    "nombrePreferido": "Salchicha",
+    "sinonimos": [
+      "Salchicha tipo viena"
+    ],
+    "categoria": "Fiambre y embutido",
+    "rolNutricional": [
+      "Proteina",
+      "Grasa"
+    ],
+    "seccionGondola": "Fiambreria",
+    "unidadesHabituales": [
+      "unidad"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 747000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780847869,
+      "_nanoseconds": 747000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0328",
+    "canonico": "aji panca",
+    "nombrePreferido": "Ají panca",
+    "sinonimos": [
+      "Pasta de ají panca"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 744000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 744000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0329",
+    "canonico": "atun rojo",
+    "nombrePreferido": "Atún rojo",
+    "sinonimos": [
+      "Atún fresco",
+      "Atún grado sushi"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Pescaderia",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 886000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 886000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0330",
+    "canonico": "chipotle",
+    "nombrePreferido": "Chipotle",
+    "sinonimos": [
+      "Chile chipotle",
+      "Chipotle en adobo"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 966000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780850958,
+      "_nanoseconds": 966000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0331",
+    "canonico": "lemongrass",
+    "nombrePreferido": "Lemongrass",
+    "sinonimos": [
+      "Citronela",
+      "Hierba limón"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Verduleria",
+    "unidadesHabituales": [
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780850959,
+      "_nanoseconds": 68000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780850959,
+      "_nanoseconds": 68000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0332",
+    "canonico": "cafe",
+    "nombrePreferido": "Café",
+    "sinonimos": [
+      "Café fuerte",
+      "Espresso",
+      "Café instantáneo"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 79000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 79000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0333",
+    "canonico": "gelatina sin sabor",
+    "nombrePreferido": "Gelatina sin sabor",
+    "sinonimos": [
+      "Gelatina neutra",
+      "Grenetina"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g",
+      "sobre"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 226000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 226000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0334",
+    "canonico": "jerez seco",
+    "nombrePreferido": "Jerez seco",
+    "sinonimos": [
+      "Vino de Jerez",
+      "Fino",
+      "Jerez"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 343000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 343000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0335",
+    "canonico": "lengua",
+    "nombrePreferido": "Lengua",
+    "sinonimos": [
+      "Lengua de vaca",
+      "Lengua de ternera"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 496000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 496000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0336",
+    "canonico": "mollejas",
+    "nombrePreferido": "Mollejas",
+    "sinonimos": [
+      "Mollejas de ternera",
+      "Molleja"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 591000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 591000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0337",
+    "canonico": "rinones",
+    "nombrePreferido": "Riñones",
+    "sinonimos": [
+      "Riñones de ternera",
+      "Riñón"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 743000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780927126,
+      "_nanoseconds": 743000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0338",
+    "canonico": "mozzarella",
+    "nombrePreferido": "Mozzarella",
+    "sinonimos": [
+      "Muzzarella",
+      "Mozzarella de búfala"
+    ],
+    "categoria": "Lacteo",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780942276,
+      "_nanoseconds": 759000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780942276,
+      "_nanoseconds": 759000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0339",
+    "canonico": "vino marsala",
+    "nombrePreferido": "Vino marsala",
+    "sinonimos": [
+      "Marsala"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Despensa / otros",
+    "unidadesHabituales": [
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1780942276,
+      "_nanoseconds": 893000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1780942276,
+      "_nanoseconds": 893000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0340",
+    "canonico": "semillas de hinojo",
+    "nombrePreferido": "Semillas de hinojo",
+    "sinonimos": [
+      "Hinojo en semilla",
+      "Fennel seeds"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita",
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781086261,
+      "_nanoseconds": 55000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781086261,
+      "_nanoseconds": 55000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0341",
+    "canonico": "cinco especias chinas",
+    "nombrePreferido": "Cinco especias chinas",
+    "sinonimos": [
+      "Five spice",
+      "Polvo de cinco especias"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 497000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 497000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0342",
+    "canonico": "doubanjiang",
+    "nombrePreferido": "Doubanjiang",
+    "sinonimos": [
+      "Pasta de habas picante",
+      "Chili bean paste",
+      "Toban djan"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 659000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 659000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0343",
+    "canonico": "pimienta de sichuan",
+    "nombrePreferido": "Pimienta de Sichuan",
+    "sinonimos": [
+      "Sichuan pepper",
+      "Pimienta de Szechuan"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cdita"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 754000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 754000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0344",
+    "canonico": "salsa de ostras",
+    "nombrePreferido": "Salsa de ostras",
+    "sinonimos": [
+      "Oyster sauce"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "ml"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 899000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 899000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0345",
+    "canonico": "tofu firme",
+    "nombrePreferido": "Tofu firme",
+    "sinonimos": [
+      "Tofu",
+      "Queso de soja"
+    ],
+    "categoria": "Despensa varios",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Lacteos y frescos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 996000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781304068,
+      "_nanoseconds": 996000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0346",
+    "canonico": "anchoas",
+    "nombrePreferido": "Anchoas",
+    "sinonimos": [
+      "Filetes de anchoa",
+      "Anchoas en aceite"
+    ],
+    "categoria": "Pescado y marisco",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781363263,
+      "_nanoseconds": 44000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781363263,
+      "_nanoseconds": 44000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0347",
+    "canonico": "pollo entero",
+    "nombrePreferido": "Pollo entero",
+    "sinonimos": [
+      "Pollo"
+    ],
+    "categoria": "Carne",
+    "rolNutricional": [
+      "Proteina"
+    ],
+    "seccionGondola": "Carniceria",
+    "unidadesHabituales": [
+      "kg",
+      "u"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781363263,
+      "_nanoseconds": 197000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781363263,
+      "_nanoseconds": 197000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0348",
+    "canonico": "miso",
+    "nombrePreferido": "Miso",
+    "sinonimos": [
+      "Pasta de miso",
+      "Miso blanco"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781363361,
+      "_nanoseconds": 474000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781363361,
+      "_nanoseconds": 474000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0349",
+    "canonico": "chucrut",
+    "nombrePreferido": "Chucrut",
+    "sinonimos": [
+      "Sauerkraut",
+      "Repollo fermentado"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781725868,
+      "_nanoseconds": 795000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781725868,
+      "_nanoseconds": 795000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0350",
+    "canonico": "pepino en vinagre",
+    "nombrePreferido": "Pepino en vinagre",
+    "sinonimos": [
+      "Pickles",
+      "Pepinillos"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "u",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781725868,
+      "_nanoseconds": 954000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781725868,
+      "_nanoseconds": 954000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0351",
+    "canonico": "pasta de curry rojo",
+    "nombrePreferido": "Pasta de curry rojo",
+    "sinonimos": [
+      "Red curry paste"
+    ],
+    "categoria": "Condimento y aderezo",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781743348,
+      "_nanoseconds": 357000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781743348,
+      "_nanoseconds": 357000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0352",
+    "canonico": "kimchi",
+    "nombrePreferido": "Kimchi",
+    "sinonimos": [
+      "Repollo fermentado coreano"
+    ],
+    "categoria": "Verdura",
+    "rolNutricional": [
+      "Fibra/Vegetal"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781743358,
+      "_nanoseconds": 208000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781743358,
+      "_nanoseconds": 208000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0353",
+    "canonico": "aji amarillo",
+    "nombrePreferido": "Ají amarillo",
+    "sinonimos": [
+      "Pasta de aji amarillo",
+      "Aji amarillo en pasta"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781743366,
+      "_nanoseconds": 351000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781743366,
+      "_nanoseconds": 351000000
+    }
+  },
+  {
+    "idIngrediente": "ING-0354",
+    "canonico": "zaatar",
+    "nombrePreferido": "Zaatar",
+    "sinonimos": [
+      "Za'atar",
+      "Zahtar"
+    ],
+    "categoria": "Hierba y especia",
+    "rolNutricional": [
+      "Neutro"
+    ],
+    "seccionGondola": "Almacen / secos",
+    "unidadesHabituales": [
+      "cda",
+      "g"
+    ],
+    "ambiguo": false,
+    "origen": "seed",
+    "vecesUsado": 0,
+    "fechaCreacion": {
+      "_seconds": 1781743375,
+      "_nanoseconds": 473000000
+    },
+    "ultimaModificacion": {
+      "_seconds": 1781743375,
+      "_nanoseconds": 473000000
+    }
+  }
+]
