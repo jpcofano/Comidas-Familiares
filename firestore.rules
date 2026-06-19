@@ -67,8 +67,13 @@ service cloud.firestore {
       allow write: if isOwner();
     }
 
-    // Perfiles de miembro: cada miembro puede escribir su propio color/preferencias.
+    // Perfiles de miembro: cada miembro puede escribir su propio color/preferencias/notif.
     match /config/perfiles {
+      allow read, write: if isFamilyMember();
+    }
+
+    // Tokens FCM: cada miembro registra/elimina su propio token (multi-dispositivo).
+    match /config/pushTokens {
       allow read, write: if isFamilyMember();
     }
 

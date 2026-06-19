@@ -4,7 +4,7 @@
 >
 > Cualquier discrepancia entre este documento y el código se resuelve actualizando el código o este documento (no ambos en deriva).
 >
-> **Versión**: 2.13.0 (E14.9 — Compartir lista por WhatsApp; derivado puro, no persiste nada en Firestore)
+> **Versión**: 2.14.0 (E15.0 — Push FCM: comida + lista de compras, con preferencias granulares por miembro)
 > **Fecha**: 2026-06-19
 > **Autor**: Juan Pablo Cofano + asistente
 > **Apps Script fuente**: D.1 cerrado (ver `readme_comida_semanal_app_script.md`)
@@ -264,6 +264,34 @@ itemsCompraRapida?: Array<{
 **`src/data/recetas.ts`:** Agrega `invalidateRecetasCache()` export.
 
 **Rutas nuevas:** `/biblioteca/compra-rapida/nueva`, `/biblioteca/compra-rapida/:id`, `/compra-rapida/:idPlan`.
+
+### 1.2.E15.0 Cambios en v2.14.0 (E15.0 — Push FCM: comida + lista de compras)
+
+**Nuevos docs Firestore:**
+- `config/pushTokens` — `{ [memberId]: { [fcmToken]: true } }`. Un miembro puede registrar múltiples dispositivos. Reglas: `isFamilyMember()` puede leer y escribir.
+- `config/perfiles.[memberId].notif` — `{ comida?: boolean; compras?: boolean }`. Default `true` al activar. Guardado con `setNotifPref(id, patch)` (merge en `config/perfiles`).
+
+**Nuevos archivos cliente:**
+- `public/firebase-messaging-sw.js` — SW de FCM compat; maneja push en background y tap → navegación.
+- `src/lib/push.ts` — `pushSoportado()`, `activarPush(memberId)` (pide permiso + registra token), `desactivarPush(memberId, token)`, `escucharPushEnForeground(cb)`.
+- `src/lib/push.test.ts` — `pushSoportado()` → false cuando `isSupported()` falla.
+
+**`PerfilMiembro` (models.ts):** nuevo campo `notif?: { comida?: boolean; compras?: boolean }`.
+
+**`src/data/perfiles.ts`:** nueva función `setNotifPref(id, patch)` → merge en `config/perfiles`.
+
+**`src/routes/Perfil.tsx`:** reemplaza el placeholder "Próximamente" por una card real con botón "Activar notificaciones" (pide permiso + graba token) y dos toggles 🍽/🛒 una vez activo. Nota para iOS no instalado.
+
+**Cloud Functions (`functions/`):**
+- `functions/src/enviar.ts` — `notificarFamilia(tipo, payload, excluir?)`: lee `config/pushTokens` + `config/perfiles`, filtra por preferencia (default true), envía con `sendEachForMulticast`.
+- `functions/src/index.ts` — `avisoComida`: dispara en `onCreate` de `planes/{id}` si no es compra-rápida; `avisoCompra`: dispara si es compra-rápida, excluye `generadaPor` si está presente.
+- `functions/src/enviar.test.ts` — filtra por preferencia (sofia con compras=false no recibe aviso de compras); excluye al generador; no llama a FCM si no hay tokens.
+
+**`firestore.rules`:** regla `config/pushTokens → allow read, write: if isFamilyMember()`.
+
+**`.env.example`:** `VITE_FCM_VAPID_KEY=` (VAPID key de Firebase Console → Cloud Messaging).
+
+**Deploy:** `firebase deploy --only firestore:rules,functions` (requiere plan Blaze).
 
 ### 1.2.E11.4 Cambios en v2.7.0 (E11.4 — Filtro hidratos netos ≤ N g en Biblioteca)
 

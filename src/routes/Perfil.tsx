@@ -3,7 +3,8 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "../auth/useAuth";
 import { useColorMiembro, usePerfiles } from "../contexts/PerfilesContext";
-import { setColorMiembro, addPreferencia, removePreferencia, setFotoMiembro } from "../data/perfiles";
+import { setColorMiembro, addPreferencia, removePreferencia, setFotoMiembro, setNotifPref } from "../data/perfiles";
+import { activarPush, pushSoportado } from "../lib/push";
 import { comprimirImagen } from "../lib/comprimirImagen";
 import { getHistorialReciente } from "../data/historial";
 import { getVisibilidad } from "../data/visibilidad";
@@ -87,6 +88,18 @@ function PerfilView({
   const fotoInputRef = useRef<HTMLInputElement>(null);
   const [fotoPending, setFotoPending] = useState(false);
   const [fotoError, setFotoError] = useState<string | null>(null);
+
+  // Push
+  const [notifPerm, setNotifPerm] = useState<NotificationPermission | "unsupported">("default");
+  const [notifBusy, setNotifBusy] = useState(false);
+
+  useEffect(() => {
+    if (targetId !== selfId) return;
+    pushSoportado().then((ok) => {
+      if (!ok) { setNotifPerm("unsupported"); return; }
+      setNotifPerm(Notification.permission);
+    });
+  }, [targetId, selfId]);
 
   useEffect(() => {
     getHistorialReciente().then(r => { if (r.ok) setHistorial(r.value); });
@@ -440,36 +453,71 @@ function PerfilView({
         </div>
       )}
 
-      {/* Notificaciones (placeholder) */}
-      <div className="card">
-        <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 4px", fontSize: "var(--fs-sm)" }}>
-          Notificaciones
-        </p>
-        <p style={{ margin: "0 0 var(--space-3)", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
-          Próximamente
-        </p>
-        {[
-          "Avisos de compra",
-          "Recordatorio de cocción",
-          "Recordatorio de votar",
-        ].map(label => (
-          <div
-            key={label}
-            style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              padding: "var(--space-2) 0",
-              borderTop: "1px solid var(--border-subtle)",
-              opacity: 0.45,
-            }}
-          >
-            <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>{label}</span>
-            <span style={{
-              width: 36, height: 20, borderRadius: 10,
-              background: "var(--border)", display: "inline-block",
-            }} />
-          </div>
-        ))}
-      </div>
+      {/* Notificaciones — solo para el propio perfil */}
+      {targetId === selfId && (
+        <div className="card">
+          <p style={{ fontWeight: "var(--fw-semibold)", color: "var(--text-strong)", margin: "0 0 var(--space-2)", fontSize: "var(--fs-sm)" }}>
+            Notificaciones
+          </p>
+
+          {notifPerm === "unsupported" ? (
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+              Tu navegador no soporta notificaciones push.
+            </p>
+          ) : notifPerm === "denied" ? (
+            <p style={{ margin: 0, fontSize: "var(--fs-xs)", color: "var(--warn-text)" }}>
+              Las notificaciones están bloqueadas. Activalas desde los ajustes del navegador o el teléfono.
+            </p>
+          ) : notifPerm === "default" ? (
+            <>
+              {isIOS && !isStandalone && (
+                <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--muted)" }}>
+                  En iPhone, agregá la app a la pantalla de inicio para recibir avisos.
+                </p>
+              )}
+              <button
+                className="btn btn-primary"
+                disabled={notifBusy || (isIOS && !isStandalone)}
+                onClick={async () => {
+                  setNotifBusy(true);
+                  const activo = await activarPush(selfId);
+                  if (activo) {
+                    await setNotifPref(selfId, { comida: true, compras: true });
+                    setNotifPerm("granted");
+                  } else {
+                    setNotifPerm(Notification.permission as NotificationPermission);
+                  }
+                  setNotifBusy(false);
+                }}
+                style={{ width: "100%", marginBottom: "var(--space-1)" }}
+              >
+                {notifBusy ? "Activando…" : "Activar notificaciones"}
+              </button>
+            </>
+          ) : /* granted */ (() => {
+            const notif = (perfil as { notif?: { comida?: boolean; compras?: boolean } }).notif;
+            const comidaOn  = notif?.comida  ?? true;
+            const comprasOn = notif?.compras ?? true;
+
+            async function toggleComida() {
+              await setNotifPref(selfId, { comida: !comidaOn });
+            }
+            async function toggleCompras() {
+              await setNotifPref(selfId, { compras: !comprasOn });
+            }
+
+            return (
+              <>
+                <p style={{ margin: "0 0 var(--space-2)", fontSize: "var(--fs-xs)", color: "var(--ok-text)", fontWeight: 600 }}>
+                  ✓ Notificaciones activas
+                </p>
+                <NotifToggle label="🍽 Avisos de comida"    on={comidaOn}  onToggle={() => void toggleComida()} />
+                <NotifToggle label="🛒 Avisos de compras"   on={comprasOn} onToggle={() => void toggleCompras()} />
+              </>
+            );
+          })()}
+        </div>
+      )}
 
       <input
         ref={fotoInputRef}
@@ -479,5 +527,36 @@ function PerfilView({
         onChange={(e) => void handleFotoChange(e)}
       />
     </>
+  );
+}
+
+// ─── NotifToggle ──────────────────────────────────────────────────────────────
+
+function NotifToggle({ label, on, onToggle }: { label: string; on: boolean; onToggle: () => void }) {
+  return (
+    <div style={{
+      display: "flex", justifyContent: "space-between", alignItems: "center",
+      padding: "var(--space-2) 0", borderTop: "1px solid var(--border-subtle)",
+    }}>
+      <span style={{ fontSize: "var(--fs-sm)", color: "var(--text)" }}>{label}</span>
+      <button
+        onClick={onToggle}
+        style={{
+          width: 40, height: 22, borderRadius: 11, padding: 0, border: "none",
+          background: on ? "var(--primary)" : "var(--border)",
+          cursor: "pointer", position: "relative", transition: "background 200ms",
+          flexShrink: 0,
+        }}
+        aria-pressed={on}
+        aria-label={label}
+      >
+        <span style={{
+          position: "absolute", top: 3, left: on ? 20 : 3,
+          width: 16, height: 16, borderRadius: "50%",
+          background: "#fff", transition: "left 200ms",
+          display: "block",
+        }} />
+      </button>
+    </div>
   );
 }

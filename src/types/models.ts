@@ -410,8 +410,12 @@ export interface PerfilMiembro {
   color?: string;          // hex de la paleta curada; si falta → token --member-{id}
   preferencias?: string[]; // lista libre de preferencias de comida
   fotoUrl?: string;        // data URL JPEG comprimida (miniatura ~128px). Ausente → inicial con color.
+  notif?: { comida?: boolean; compras?: boolean }; // E15.0 — preferencias push; default: ambos true al activar
 }
 export type PerfilesConfig = Partial<Record<MiembroId, PerfilMiembro>>;
+
+// Doc único /config/pushTokens. Por miembro, un mapa de tokens FCM activos (multi-dispositivo).
+export interface PushTokens { [memberId: string]: Record<string, true>; }
 
 // ─── Contador de compras rápidas por mes ─────────────────────────────────────
 // Doc único: /config/comprasContador. Clave = "YYYY-MM" → conteo por miembro.

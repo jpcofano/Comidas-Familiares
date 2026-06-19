@@ -55,6 +55,18 @@ export async function removePreferencia(
   }
 }
 
+export async function setNotifPref(
+  id: MiembroId,
+  patch: { comida?: boolean; compras?: boolean },
+): Promise<Result<void, AppError>> {
+  try {
+    await setDoc(REF(), { [id]: { notif: patch } }, { merge: true });
+    return ok(undefined);
+  } catch (e) {
+    return err("FIRESTORE_ERROR", firebaseErrorMessage(e) ?? "Error al guardar preferencia.");
+  }
+}
+
 export async function setFotoMiembro(
   id: MiembroId,
   fotoUrl: string | null,
