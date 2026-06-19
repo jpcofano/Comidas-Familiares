@@ -35,3 +35,6 @@ scripts/_backups/
 *.zip
 service-account*.json
 **/service-account*.json
+# env files (VAPID key)
+.env
+.env.local
